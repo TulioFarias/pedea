@@ -1,6 +1,7 @@
 import React from 'react'
+import Flag from 'react-flagkit'
 
-import '../../../sass/Header.scss/GovHeader.scss'
+import '../../../sass/govHeader/GovHeader.scss'
 function NavHeader() {
   return (
     <div className="d-flex justify-content-around my-custom-div bg-gray-header">
@@ -50,6 +51,18 @@ function NavHeader() {
         <button className="my-custom-button">A</button>
         <button className="my-custom-button">-A</button>
         <button className="my-custom-button">+A</button>
+      </div>
+
+      <div className="my-div-linguage">
+        <button className="my-btns-linguage">
+          <Flag country="BR" />
+        </button>
+        <button className="my-btns-linguage">
+          <Flag country="US" />
+        </button>
+        <button className="my-btns-linguage">
+          <Flag country="ES" />
+        </button>
       </div>
     </div>
   )

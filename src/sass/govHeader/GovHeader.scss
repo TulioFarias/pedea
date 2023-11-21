@@ -38,5 +38,21 @@ a.links-color{
     margin-top: 4px;
 }
 
+.my-div-linguage{
+    display: flex;
+    gap: 5px;
+}
+
+.my-btns-linguage{
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+
+    &:hover{
+        transform: scale(1.03);
+        transition: 0.5s all ease-in-out;
+    }
+}
+
 
 

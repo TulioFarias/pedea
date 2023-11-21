@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../sass/footer.scss/footer.scss'
+import '../../sass/footer/footer.scss'
 import { Container } from 'react-bootstrap'
 
 function Footer() {

@@ -14,7 +14,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import PEDEA from '../../assets/pedea-logo.png'
 import NavHeader from './GovHeader'
 
-import '../../sass/Header.scss/ContainerButton.scss'
+import '../../sass/Header/ContainerButton.scss'
 
 function Header() {
   return (

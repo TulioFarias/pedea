@@ -9005,6 +9005,11 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-flagkit@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-flagkit/-/react-flagkit-2.0.4.tgz#1b19ca6a20642ee2d9856e7af5c96fb3ba5c3c01"
+  integrity sha512-e0Rak6VG1+KemBFqLqTPzFDLYS40lEW1YOpG9s68WDoEoQiC0YPEXDkIGLorNgP6omJztcg/OtcjSqAKM2O1cw==
+
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"

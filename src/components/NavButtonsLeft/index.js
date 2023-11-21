@@ -6,43 +6,60 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
 import RemoveIcon from '@mui/icons-material/Remove'
 import TravelExploreIcon from '@mui/icons-material/TravelExplore'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
+import { Tooltip } from '@mui/material'
 import React from 'react'
-import '../../sass/btns-Left.scss/ButtonsLeft.scss'
+import '../../sass/btns-Left/ButtonsLeft.scss'
 
 function NavButtonsLeft() {
   return (
     <div className="d-flex flex-column justify-content-start align-items-start gap-2  my-custom-ContainerBtns">
-      <button className="my-custom-btns">
-        <ZoomOutMapIcon />
-      </button>
+      <Tooltip title="Zoom" placement="left">
+        <button className="my-custom-btns">
+          <ZoomOutMapIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <AddIcon />
-      </button>
+      <Tooltip title="Aumentar o zoom" placement="left">
+        <button className="my-custom-btns">
+          <AddIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <RemoveIcon />
-      </button>
+      <Tooltip title="Diminuir o zoom" placement="left">
+        <button className="my-custom-btns">
+          <RemoveIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <LanguageIcon />
-      </button>
+      <Tooltip title="Trocar mapa base" placement="left">
+        <button className="my-custom-btns">
+          <LanguageIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <Grid4x4Icon />
-      </button>
+      <Tooltip title="Grade de coordenadas" placement="left">
+        <button className="my-custom-btns">
+          <Grid4x4Icon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <LocationOnIcon />
-      </button>
+      <Tooltip title="Mostrar sua localização" placement="left">
+        <button className="my-custom-btns">
+          <LocationOnIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <TravelExploreIcon />
-      </button>
+      <Tooltip title="Localizar endereço" placement="left">
+        <button className="my-custom-btns">
+          <TravelExploreIcon />
+        </button>
+      </Tooltip>
 
-      <button className="my-custom-btns">
-        <QuestionMarkIcon />
-      </button>
+      <Tooltip title="Ajuda" placement="left">
+        <button className="my-custom-btns">
+          <QuestionMarkIcon />
+        </button>
+      </Tooltip>
     </div>
   )
 }
