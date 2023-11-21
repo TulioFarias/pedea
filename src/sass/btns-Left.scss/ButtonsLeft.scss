@@ -3,6 +3,7 @@
 .my-custom-ContainerBtns{
     margin-top: 20px;
     margin-left: 20px;
+
 }
 .my-custom-btns{
     padding:  4px 6px;
@@ -11,5 +12,10 @@
     border: none;
     border-radius: 5px;
     color: white;
+
+    &:hover{
+        transform: scale(1.05);
+        transition: 0.3s all ease-in-out;
+    }
 
 }
