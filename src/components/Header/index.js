@@ -1,3 +1,7 @@
+import CameraAltIcon from '@mui/icons-material/CameraAlt'
+import InfoIcon from '@mui/icons-material/Info'
+import SquareFootIcon from '@mui/icons-material/SquareFoot'
+import StraightenIcon from '@mui/icons-material/Straighten'
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -9,6 +13,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 
 import PEDEA from '../../assets/pedea-logo.png'
 import NavHeader from './GovHeader'
+
 import '../../sass/Header.scss/ContainerButton.scss'
 
 function Header() {
@@ -17,7 +22,7 @@ function Header() {
       <NavHeader />
       <Navbar
         expand={false}
-        className="d-flex bg-success p-2 text-dark bg-opacity-50"
+        className="d-flex p-2 text-dark bg-opacity-50 custom-div-header"
         variant="dark"
       >
         <Container fluid>
@@ -25,11 +30,20 @@ function Header() {
             <img src={PEDEA} alt="Logo" className="img-fluid" />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3 custom-div">
-            <button className="btn btn-outline-light">Info</button>
-            <button className="btn btn-outline-light">Info</button>
-            <button className="btn btn-outline-light">Info</button>
-            <button className="btn btn-outline-light">Info</button>
+            <button className="btn btn-outline-light">
+              <InfoIcon />
+            </button>
+            <button className="btn btn-outline-light">
+              <CameraAltIcon />
+            </button>
+            <button className="btn btn-outline-light">
+              <StraightenIcon />
+            </button>
+            <button className="btn btn-outline-light">
+              <SquareFootIcon />
+            </button>
           </div>
+
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
             id="offcanvasNavbar"

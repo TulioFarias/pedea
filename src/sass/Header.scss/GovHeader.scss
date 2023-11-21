@@ -1,5 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
 
+.custom-div-header{
+    height: 100px;
+    background-color: rgba(44, 64, 63, 0.719);
+    border-bottom: 3px solid rgb(136, 231, 136);
+}
+
 .bg-gray-header{
     background-color: #bababa;
 }
@@ -31,4 +37,6 @@ a.links-color{
 .margin-custom{
     margin-top: 4px;
 }
+
+
 
