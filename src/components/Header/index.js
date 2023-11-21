@@ -48,7 +48,7 @@ function Header() {
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             placement="end"
-            className="bg-light"
+            className="my-navToogle-custom"
           >
             <Offcanvas.Header closeButton />
             <Offcanvas.Title className="text-center">
@@ -65,8 +65,8 @@ function Header() {
             </Form>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1">Home</Nav.Link>
-                <Nav.Link href="#action2">Link</Nav.Link>
+                <Nav.Link href="#action1">Dados 1</Nav.Link>
+                <Nav.Link href="#action2">Dados 2</Nav.Link>
                 <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
                   <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">

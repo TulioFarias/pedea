@@ -14,6 +14,10 @@
     height: 30px;
 }
 
+.my-links-div{
+    margin-left: 20px;
+}
+
 a.links-color{
     color: #6c6868!important;
 }
@@ -41,6 +45,8 @@ a.links-color{
 .my-div-linguage{
     display: flex;
     gap: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .my-btns-linguage{
@@ -53,6 +59,9 @@ a.links-color{
         transition: 0.5s all ease-in-out;
     }
 }
+
+
+
 
 
 
