@@ -1,0 +1,38 @@
+
+.my-div-footer{
+    background-color: #bababa9d;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    color: #6c6868!important;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 3%;
+
+    a{
+        text-decoration: none;
+        color: #6c6868!important;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    
+    
+}
+
+  
+  .footer-text {
+    font-size: 1em; // Ajuste conforme necessário
+    margin-bottom: 10px; // Adicione espaço entre os elementos, se necessário
+  }
+  
+  .footer-link {
+    margin: 0 10px; // Adicione espaço entre os links, se necessário
+  }
+  
+  .footer-divider {
+    font-size: 1em; // Ajuste conforme necessário
+    margin: 0 5px; // Adicione espaço entre os divisores, se necessário
+  }
