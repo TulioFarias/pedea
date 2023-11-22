@@ -51,12 +51,17 @@
 
 .my-btns-linguage{
     border: none;
-    border-radius: 50%;
     background-color: transparent;
+
+    
 
     &:hover{
         transform: scale(1.03);
         transition: 0.5s all ease-in-out;
+    }
+
+    button{
+        border-radius: 50%;
     }
 }
 

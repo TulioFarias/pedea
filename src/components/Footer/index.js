@@ -1,13 +1,16 @@
 import React from 'react'
 import '../../sass/footer/footer.scss'
 import { Container } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 function Footer() {
+  const { t } = useTranslation()
   return (
     <Container fluid className=" my-div-footer">
       <p className="footer-text">
-        Dados do mapa © 2023 Governo do Estado do Ceará. Todos os direitos
-        reservados.
+        {t(
+          'Dados do mapa © 2023 Governo do Estado do Ceará. Todos os direitos reservados.'
+        )}
       </p>
 
       <span className="footer-divider">|</span>
@@ -17,7 +20,7 @@ function Footer() {
         target="_blank"
         className="footer-link"
       >
-        Termos e Condições de Uso
+        {t('Termos e Condições de Uso')}
       </a>
 
       <span className="footer-divider">|</span>
@@ -27,7 +30,7 @@ function Footer() {
         target="_blank"
         className="footer-link"
       >
-        Aviso de Privacidade
+        {t('Aviso de Privacidade')}
       </a>
     </Container>
   )

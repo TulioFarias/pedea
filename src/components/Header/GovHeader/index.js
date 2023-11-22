@@ -1,9 +1,16 @@
 import { Tooltip } from '@mui/material'
 import React from 'react'
 import Flag from 'react-flagkit'
-
 import '../../../sass/govHeader/GovHeader.scss'
+import { useTranslation } from 'react-i18next'
+
 function NavHeader() {
+  const { t, i18n } = useTranslation()
+
+  const handleLanguageChange = value => {
+    i18n.changeLanguage(value)
+  }
+
   return (
     <div className="d-flex justify-content-between my-custom-div bg-gray-header">
       <div className="d-flex gap-3 justify-content-around my-links-div">
@@ -13,7 +20,7 @@ function NavHeader() {
           className="link-secondary link-opacity-50-hover links-color"
           rel="noreferrer"
         >
-          Portal do Governo
+          {t('Portal do Governo')}
         </a>
         <span>|</span>
 
@@ -23,7 +30,7 @@ function NavHeader() {
           className=" link-secondary link-opacity-50-hover links-color"
           rel="noreferrer"
         >
-          Ceará Transparente
+          {t('Ceará Transparente')}
         </a>
         <span>|</span>
 
@@ -33,7 +40,7 @@ function NavHeader() {
           className=" link-secondary link-opacity-50-hover links-color"
           rel="noreferrer"
         >
-          Ouvidoria
+          {t('Ouvidoria')}
         </a>
         <span>|</span>
 
@@ -43,13 +50,13 @@ function NavHeader() {
           className=" link-secondary link-opacity-50-hover links-color"
           rel="noreferrer"
         >
-          Acesso a informação
+          {t('Acesso a informação')}
         </a>
       </div>
 
       <div className="d-flex gap-2">
         <div className="d-flex gap-1 margin-custom">
-          <p className="links-color">Acessibilidade</p>
+          <p className="links-color">{t('Acessibilidade')}</p>
           <button className="my-custom-button">A</button>
           <button className="my-custom-button">-A</button>
           <button className="my-custom-button">+A</button>
@@ -57,19 +64,28 @@ function NavHeader() {
 
         <div className="my-div-linguage">
           <Tooltip title="PT" placement="bottom">
-            <button className="my-btns-linguage">
+            <button
+              className="my-btns-linguage"
+              onClick={() => handleLanguageChange('pt-BR')}
+            >
               <Flag country="BR" />
             </button>
           </Tooltip>
 
           <Tooltip title="EN" placement="bottom">
-            <button className="my-btns-linguage">
+            <button
+              className="my-btns-linguage"
+              onClick={() => handleLanguageChange('en')}
+            >
               <Flag country="US" />
             </button>
           </Tooltip>
 
           <Tooltip title="ES" placement="bottom">
-            <button className="my-btns-linguage">
+            <button
+              className="my-btns-linguage"
+              onClick={() => handleLanguageChange('es')}
+            >
               <Flag country="ES" />
             </button>
           </Tooltip>
