@@ -1,5 +1,6 @@
 import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import InfoIcon from '@mui/icons-material/Info'
+import SearchIcon from '@mui/icons-material/Search'
 import SquareFootIcon from '@mui/icons-material/SquareFoot'
 import StraightenIcon from '@mui/icons-material/Straighten'
 import React from 'react'
@@ -10,6 +11,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import { useTranslation } from 'react-i18next'
 
 import PEDEA from '../../assets/pedea-logo.png'
 import NavHeader from './GovHeader'
@@ -17,6 +19,7 @@ import NavHeader from './GovHeader'
 import '../../sass/Header/ContainerButton.scss'
 
 function Header() {
+  const { t } = useTranslation()
   return (
     <div>
       <NavHeader />
@@ -48,26 +51,39 @@ function Header() {
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             placement="end"
-            className="my-navToogle-custom"
+            className=" my-navToogle-custom"
           >
             <Offcanvas.Header closeButton />
-            <Offcanvas.Title className="text-center">
-              Explorador de Dados
+            <Offcanvas.Title
+              className="text-center"
+              style={{ fontSize: '35px' }}
+            >
+              {t('Explorador de Dados')}
             </Offcanvas.Title>
             <Form className="d-flex mt-2 p-3">
               <Form.Control
                 type="search"
-                placeholder="Search"
+                placeholder="Digite o nome da camada..."
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-light">
+                <SearchIcon />
+              </Button>
             </Form>
             <Offcanvas.Body>
+              <Offcanvas.Title style={{ fontSize: '30px' }}>
+                {' '}
+                {t('Categorias')}
+              </Offcanvas.Title>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1">Dados 1</Nav.Link>
-                <Nav.Link href="#action2">Dados 2</Nav.Link>
-                <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
+                <NavDropdown title="Teste dados 1" href="#action1">
+                  Dados 1
+                </NavDropdown>
+                <NavDropdown title="Teste dados 2" href="#action2">
+                  Dados 2
+                </NavDropdown>
+                <NavDropdown title="Teste dados 3" id="offcanvasNavbarDropdown">
                   <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
                     Another action

@@ -1,5 +1,6 @@
 import { Tooltip } from '@mui/material'
 import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
 import Flag from 'react-flagkit'
 import '../../../sass/govHeader/GovHeader.scss'
 import { useTranslation } from 'react-i18next'
@@ -13,48 +14,60 @@ function NavHeader() {
 
   return (
     <div className="d-flex justify-content-between my-custom-div bg-gray-header">
-      <div className="d-flex gap-3 justify-content-around my-links-div">
-        <a
-          href="https://www.ceara.gov.br/"
-          target="_blank"
-          className="link-secondary link-opacity-50-hover links-color"
-          rel="noreferrer"
-        >
-          {t('Portal do Governo')}
-        </a>
-        <span>|</span>
+      <Navbar expand="sm" className="">
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          className="custom-toogler"
+        />
 
-        <a
-          href="https://cearatransparente.ce.gov.br/"
-          target="_blank"
-          className=" link-secondary link-opacity-50-hover links-color"
-          rel="noreferrer"
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="custom-toogler-open"
         >
-          {t('Ceará Transparente')}
-        </a>
-        <span>|</span>
+          <Nav className="mr-auto">
+            <Nav.Link
+              href="https://www.ceara.gov.br/"
+              target="_blank"
+              className="link-secondary link-opacity-50-hover links-color"
+              rel="noreferrer"
+            >
+              {t('Portal do Governo')}
+            </Nav.Link>
 
-        <a
-          href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
-          target="_blank"
-          className=" link-secondary link-opacity-50-hover links-color"
-          rel="noreferrer"
-        >
-          {t('Ouvidoria')}
-        </a>
-        <span>|</span>
+            <span className="custom-span">|</span>
+            <Nav.Link
+              href="https://cearatransparente.ce.gov.br/"
+              target="_blank"
+              className="link-secondary link-opacity-50-hover links-color"
+              rel="noreferrer"
+            >
+              {t('Ceará Transparente')}
+            </Nav.Link>
 
-        <a
-          href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
-          target="_blank"
-          className=" link-secondary link-opacity-50-hover links-color"
-          rel="noreferrer"
-        >
-          {t('Acesso a informação')}
-        </a>
-      </div>
+            <span className="custom-span">|</span>
+            <Nav.Link
+              href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
+              target="_blank"
+              className="link-secondary link-opacity-50-hover links-color"
+              rel="noreferrer"
+            >
+              {t('Ouvidoria')}
+            </Nav.Link>
 
-      <div className="d-flex gap-2">
+            <span className="custom-span">|</span>
+            <Nav.Link
+              href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
+              target="_blank"
+              className="link-secondary link-opacity-50-hover links-color"
+              rel="noreferrer"
+            >
+              {t('Acesso a informação')}
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+
+      <div className="d-flex gap-2 custom-div-acess">
         <div className="d-flex gap-1 margin-custom">
           <p className="links-color">{t('Acessibilidade')}</p>
           <button className="my-custom-button">A</button>
