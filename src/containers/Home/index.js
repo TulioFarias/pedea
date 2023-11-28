@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import NavButtonsLeft from '../../components/NavButtonsLeft'
-import OpenLayersMap from '../Map'
+// import NavButtonsLeft from '../../components/NavButtonsLeft'
+import MapPedea from '../Map'
 function Home() {
+  const mapTargetElement = useRef(null)
   return (
     <div>
       <Header />
-      <div>
-        <NavButtonsLeft />
+      <div className="Container-map">
+        <MapPedea mapTargetElement={mapTargetElement} />
       </div>
-      <OpenLayersMap />
       <Footer />
     </div>
   )
