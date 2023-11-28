@@ -3,6 +3,7 @@ import React from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import NavButtonsLeft from '../../components/NavButtonsLeft'
+import OpenLayersMap from '../Map'
 function Home() {
   return (
     <div>
@@ -10,7 +11,7 @@ function Home() {
       <div>
         <NavButtonsLeft />
       </div>
-
+      <OpenLayersMap />
       <Footer />
     </div>
   )

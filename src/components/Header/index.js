@@ -3,6 +3,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import SearchIcon from '@mui/icons-material/Search'
 import SquareFootIcon from '@mui/icons-material/SquareFoot'
 import StraightenIcon from '@mui/icons-material/Straighten'
+import { Link } from '@mui/material'
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -33,17 +34,17 @@ function Header() {
             <img src={PEDEA} alt="Logo" className="img-fluid" />
           </Navbar.Brand>
           <div className="d-flex align-items-center gap-3 custom-div">
-            <button className="btn btn-outline-light">
-              <InfoIcon />
+            <button className="btn btn-outline-light btns-header">
+              <InfoIcon className="btns-icon" />
             </button>
-            <button className="btn btn-outline-light">
-              <CameraAltIcon />
+            <button className="btn btn-outline-light btns-header">
+              <CameraAltIcon className="btns-icon" />
             </button>
-            <button className="btn btn-outline-light">
-              <StraightenIcon />
+            <button className="btn btn-outline-light btns-header">
+              <StraightenIcon className="btns-icon" />
             </button>
-            <button className="btn btn-outline-light">
-              <SquareFootIcon />
+            <button className="btn btn-outline-light btns-header">
+              <SquareFootIcon className="btns-icon" />
             </button>
           </div>
 
@@ -52,6 +53,7 @@ function Header() {
             id="offcanvasNavbar"
             placement="end"
             className=" my-navToogle-custom"
+            backdrop={false}
           >
             <Offcanvas.Header closeButton />
             <Offcanvas.Title
@@ -94,6 +96,14 @@ function Header() {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
+              <hr />
+
+              <div className="div-footer-toogler">
+                <Button variant="outline-light">Baixar Dados</Button>
+                <Link className="justify-content-end link-light">
+                  Desativar camadas vísiveis
+                </Link>
+              </div>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

@@ -103,12 +103,16 @@
         padding-left: 5px;
         position: absolute;
         top: 35px;
+        border: 1px solid white;
+        z-index: 2;
+        
         
     }
     
     .custom-span{
         display: none;
     }
+    
 
 
 }
