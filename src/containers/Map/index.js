@@ -1,28 +1,38 @@
+import 'ol/ol.css'
+import '../../sass/Map/map.scss'
+
+import FullScreen from 'ol/control/FullScreen.js'
 import TileLayer from 'ol/layer/Tile.js'
 import Map from 'ol/Map.js'
 import OSM from 'ol/source/OSM.js'
 import View from 'ol/View.js'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
-import 'ol/ol.css'
-import '../../sass/Map/map.scss'
+
+import NavButtonsLeft from '../../components/NavButtonsLeft'
 
 function MapPedea({ mapTargetElement }) {
+  const mapInstance = null
+
   useEffect(() => {
-    let mapInstance
     const initializeMap = () => {
       if (mapTargetElement.current) {
         const mapInstance = new Map({
           layers: [new TileLayer({ source: new OSM() })],
           view: new View({
-            center: [],
-            zoom: 6,
+            center: [0, 0],
+            zoom: 0,
             minZoom: 0,
             maxZoom: 28
           })
         })
 
         mapInstance.setTarget(mapTargetElement.current)
+
+        const fullScreenControl = new FullScreen({
+          target: mapTargetElement.current
+        })
+        mapInstance.addControl(fullScreenControl)
       }
     }
 
@@ -35,16 +45,15 @@ function MapPedea({ mapTargetElement }) {
     }
   }, [mapTargetElement])
 
+  console.log(mapInstance)
+
   return (
-    <div
-      ref={mapTargetElement}
-      className="map"
-      style={{
-        width: '100%',
-        height: '85vh',
-        position: 'absolute'
-      }}
-    ></div>
+    <div>
+      <div>
+        <NavButtonsLeft />
+      </div>
+      <div ref={mapTargetElement} className="map"></div>
+    </div>
   )
 }
 
