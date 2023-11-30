@@ -11,22 +11,22 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import '../../sass/btns-Left/ButtonsLeft.scss'
 
-function NavButtonsLeft({ onZoomIn, onZoomOut, toggleFullScreen }) {
+function NavButtonsLeft({ handleZoomOut }) {
   return (
     <div className="d-flex flex-column justify-content-start align-items-start gap-2  my-custom-ContainerBtns">
-      <Tooltip title="Zoom" placement="left" onClick={toggleFullScreen}>
+      <Tooltip title="Zoom" placement="left">
         <button className="my-custom-btns">
           <ZoomOutMapIcon />
         </button>
       </Tooltip>
 
       <Tooltip title="Aumentar o zoom" placement="left">
-        <button className="my-custom-btns" onClick={onZoomIn}>
+        <button className="my-custom-btns">
           <AddIcon />
         </button>
       </Tooltip>
 
-      <Tooltip title="Diminuir o zoom" placement="left" onClick={onZoomOut}>
+      <Tooltip title="Diminuir o zoom" placement="left" onClick={handleZoomOut}>
         <button className="my-custom-btns">
           <RemoveIcon />
         </button>
@@ -66,9 +66,7 @@ function NavButtonsLeft({ onZoomIn, onZoomOut, toggleFullScreen }) {
 }
 
 NavButtonsLeft.propTypes = {
-  onZoomIn: PropTypes.func.isRequired,
-  onZoomOut: PropTypes.func.isRequired,
-  toggleFullScreen: PropTypes.func.isRequired
+  handleZoomOut: PropTypes.func.isRequired
 }
 
 export default NavButtonsLeft
