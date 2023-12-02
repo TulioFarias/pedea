@@ -2,10 +2,10 @@ import { Tooltip } from '@mui/material'
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import Flag from 'react-flagkit'
-import '../../../sass/govHeader/GovHeader.scss'
+import '../../sass/govHeader/GovHeader.scss'
 import { useTranslation } from 'react-i18next'
 
-function NavHeader() {
+function GovHeader() {
   const { t, i18n } = useTranslation()
 
   const handleLanguageChange = value => {
@@ -74,7 +74,6 @@ function NavHeader() {
           <button className="my-custom-button">-A</button>
           <button className="my-custom-button">+A</button>
         </div>
-
         <div className="my-div-linguage">
           <Tooltip title="PT" placement="bottom">
             <button
@@ -108,4 +107,4 @@ function NavHeader() {
   )
 }
 
-export default NavHeader
+export default GovHeader

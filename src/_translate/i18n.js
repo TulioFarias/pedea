@@ -1,9 +1,9 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-import enTranslations from '../locale/en.json'
-import esTranslations from '../locale/es.json'
-import ptTranslations from '../locale/pt.json'
+import enTranslations from '../_translate/languages/en.json'
+import esTranslations from '../_translate/languages/es.json'
+import ptTranslations from '../_translate/languages/pt.json'
 
 i18n.use(initReactI18next).init({
   fallbackLgn: 'pt',

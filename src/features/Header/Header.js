@@ -14,16 +14,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { useTranslation } from 'react-i18next'
 
-import PEDEA from '../../assets/pedea-logo.png'
-import NavHeader from './GovHeader'
+import PEDEA from '../../assets/img/pedea-logo.png'
 
 import '../../sass/Header/ContainerButton.scss'
 
-function Header() {
+function HeaderActions() {
   const { t } = useTranslation()
   return (
     <div>
-      <NavHeader />
       <Navbar
         expand={false}
         className="d-flex p-2 text-dark bg-opacity-50 custom-div-header"
@@ -112,4 +110,4 @@ function Header() {
   )
 }
 
-export default Header
+export default HeaderActions
