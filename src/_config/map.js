@@ -1,5 +1,5 @@
 import 'ol/ol.css'
-import '../../sass/Map/map.scss'
+import '../sass/Map/map.scss'
 
 import MousePosition from 'ol/control/MousePosition.js'
 import ScaleLine from 'ol/control/ScaleLine.js'

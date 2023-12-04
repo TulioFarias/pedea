@@ -30,6 +30,7 @@
             }
         ],
         "react-hooks/rules-of-hooks": "error",
+        "no-unused-vars":"warn",
         "react-hooks/exhaustive-deps": "warn",
         "import-helpers/order-imports": [
             "warn",

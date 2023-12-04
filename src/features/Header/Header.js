@@ -14,9 +14,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { useTranslation } from 'react-i18next'
 
-import PEDEA from '../../assets/img/pedea-logo.png'
-
 import '../../sass/Header/ContainerButton.scss'
+import PEDEA from '../../assets/img/pedea-logo.png'
+import { ContainerLogin } from './ContainerLogin'
 
 function HeaderActions() {
   const { t } = useTranslation()
@@ -31,6 +31,8 @@ function HeaderActions() {
           <Navbar.Brand href="#">
             <img src={PEDEA} alt="Logo" className="img-fluid" />
           </Navbar.Brand>
+
+          <ContainerLogin />
           <div className="d-flex align-items-center gap-3 custom-div">
             <button className="btn btn-outline-light btns-header">
               <InfoIcon className="btns-icon" />

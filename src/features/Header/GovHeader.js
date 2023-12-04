@@ -5,6 +5,8 @@ import Flag from 'react-flagkit'
 import '../../sass/govHeader/GovHeader.scss'
 import { useTranslation } from 'react-i18next'
 
+// import * as yup from 'yup'
+
 function GovHeader() {
   const { t, i18n } = useTranslation()
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MapPedea from '../../_config/Map/index.js'
+import MapPedea from '../../_config/map.js'
 import Footer from '../Footer/index.js'
 import Header from '../Header/index.js'
 
