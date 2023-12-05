@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 
 import IconLogin from '../../assets/icons/icon-login.png'
+import logo from '../../assets/img/pedea-logo.png'
 
 function LoginSystem() {
   const [show, setShow] = useState(false)
@@ -50,14 +51,18 @@ function LoginSystem() {
         </p>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className="containerInfo">
-          <Modal.Title>PEDEA TEST</Modal.Title>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title className="title-custom">
+            <img src={logo} />
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="containerInfo">
-          <Form onSubmit={handleSubmit(onSubmit)}>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit(onSubmit)} className="custom-modal-body">
             <div className="custom-info">
-              <Form.Label htmlFor="email">Seu email:</Form.Label>
+              <Form.Label htmlFor="email" className="LabelForm">
+                Seu email:
+              </Form.Label>
               <Form.Control
                 {...register('email')}
                 type="email"
@@ -68,7 +73,9 @@ function LoginSystem() {
             </div>
 
             <div className="custom-info">
-              <Form.Label htmlFor="password">Senha:</Form.Label>
+              <Form.Label htmlFor="password" className="LabelForm">
+                Senha:
+              </Form.Label>
               <Form.Control
                 {...register('password')}
                 type="password"
@@ -82,8 +89,11 @@ function LoginSystem() {
               Entrar
             </Button>
 
-            <p>
-              Não possui conta? <a href="#">Cadastre-se aqui</a>
+            <p className="end-txt">
+              Não possui conta?{' '}
+              <a href="#" className="link-end">
+                Cadastre-se aqui
+              </a>
             </p>
           </Form>
         </Modal.Body>

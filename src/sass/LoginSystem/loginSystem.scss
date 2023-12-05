@@ -35,16 +35,39 @@
 }
 
 
-.containerInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: transparent!important;
+.modal-content{
+    background-color: rgba(44, 64, 63, 0.719)!important;
     border: none;
 
 
 }
+
+.modal-header{
+    width: 100%;
+    text-align: center;
+
+    img{
+        width: 90%;
+    }
+}
+
+
+
+.btn-close{
+    border: 1px solid white;
+    padding: 5px!important;
+    
+}
+
+.custom-modal-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
 
 .custom-info{
     display: flex;
@@ -55,7 +78,7 @@
 .LabelForm{
     font-size: 16px;
     color: white;
-    font-weight: 300;
+    
 }
 
 .InputForm{
@@ -65,21 +88,21 @@
     padding-left: 10px;
     outline: none;
     border-radius: 5px;
-    border: none;
-    
-    margin-top: 3px;
+
     font-size: 16px;
 }
 
 .Btn-Form{
-
+    background-color: transparent;
+    border: 1px solid white;
     font-size: 20px;
     border-radius: 5px;
     outline: none;
 
     &:hover{
-        transform: scale(1.01);
+        transform: scale(1.02);
         transition: 0.2s all ease-in-out;
+        background-color: transparent;
     }
 
 
@@ -90,8 +113,25 @@
     font-size: 14px;
     line-height: 16px;
     color: red;
-    margin-top: 2px;
+    margin-top: 4px;
     margin-left: 5px;
+}
+
+.end-txt{
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.link-end{
+    font-size: 16px;
+    color: rgb(0, 110, 255);
+
+    &:hover{
+        color: white;
+    }
 }
 
 
