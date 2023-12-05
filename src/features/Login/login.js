@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import IconLogin from '../../assets/icons/icon-login.png'
@@ -13,6 +14,7 @@ import logo from '../../assets/img/pedea-logo.png'
 
 function LoginSystem() {
   const [show, setShow] = useState(false)
+  const navigate = useNavigate()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -42,13 +44,10 @@ function LoginSystem() {
     <>
       <div className="container-login">
         <img src={IconLogin} />
-        <p>
-          Olá, seja bem-vindo(a), realize seu{' '}
-          <a className="links-login" onClick={handleShow}>
-            Login
-          </a>{' '}
-          ou faça seu <a className="links-login">Cadastro</a>
-        </p>
+
+        <a className="links-login" onClick={handleShow}>
+          Login
+        </a>
       </div>
 
       <Modal show={show} onHide={handleClose} centered>
