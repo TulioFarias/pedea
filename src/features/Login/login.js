@@ -1,10 +1,18 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
 import '../../sass/LoginSystem/loginSystem.scss'
+
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 
+import IconLogin from '../../assets/icons/icon-login.png'
+
 function LoginSystem() {
+  const [show, setShow] = useState(false)
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um email válido.')
@@ -22,41 +30,65 @@ function LoginSystem() {
     resolver: yupResolver(schema)
   })
 
+  const handleShow = () => {
+    console.log('fui chamado')
+    setShow(true)
+  }
+  const handleClose = () => setShow(false)
+
   const onSubmit = data => console.log(data)
   return (
-    <div className="Container-Form">
-      <h1>PEDEA TEST</h1>
-
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="containerInfo">
-          <div className="custom-info">
-            <label className="LabelForm" htmlFor="email">
-              Seu email:
-            </label>
-            <input {...register('email')} className="InputForm" id="email" />
-            <p className="error-txt">{errors.email?.message}</p>
-          </div>
-
-          <div className="custom-info">
-            <label className="LabelForm" htmlFor="password">
-              Senha:
-            </label>
-            <input
-              {...register('password')}
-              className="InputForm"
-              id="password"
-            />
-            <p className="error-txt">{errors.password?.message}</p>
-          </div>
-
-          <button type="submit" className="Btn-Form">
-            Entrar
-          </button>
-
-          <a>Não possui conta? Cadastre-se aqui</a>
-        </form>
+    <>
+      <div className="container-login">
+        <img src={IconLogin} />
+        <p>
+          Olá, seja bem-vindo(a), realize seu{' '}
+          <a className="links-login" onClick={handleShow}>
+            Login
+          </a>{' '}
+          ou faça seu <a className="links-login">Cadastro</a>
+        </p>
       </div>
-    </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton className="containerInfo">
+          <Modal.Title>PEDEA TEST</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="containerInfo">
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <div className="custom-info">
+              <Form.Label htmlFor="email">Seu email:</Form.Label>
+              <Form.Control
+                {...register('email')}
+                type="email"
+                className="InputForm"
+                id="email"
+              />
+              <p className="error-txt">{errors.email?.message}</p>
+            </div>
+
+            <div className="custom-info">
+              <Form.Label htmlFor="password">Senha:</Form.Label>
+              <Form.Control
+                {...register('password')}
+                type="password"
+                className="InputForm"
+                id="password"
+              />
+              <p className="error-txt">{errors.password?.message}</p>
+            </div>
+
+            <Button variant="primary" type="submit" className="Btn-Form">
+              Entrar
+            </Button>
+
+            <p>
+              Não possui conta? <a href="#">Cadastre-se aqui</a>
+            </p>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
   )
 }
 

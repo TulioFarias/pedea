@@ -1,24 +1,47 @@
-
-
-.Container-Form{
-    position: fixed;
-    top: 100px;
-    left: 100px;
-    background-color: rgba(44, 64, 63, 0.719)!important;
-    border-radius: 10px;
-    width: 400px;
-    height: 400px;
+.container-login{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    width: 14vw;
+    border: 1px solid rgba(255, 255, 255, 0.363);
+    border-radius: 10px;
+
+    img{
+        width: 35px;
+        height: 35px;
+    }
+    
+
+    p{
+        margin-top: 6px;
+        margin-left: 5px;
+        font-size: 14px;
+        padding-left: 2px;
+        text-align: justify;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    a{
+        font-size: 14px;
+        font-weight: bold;
+        font-style: italic;
+        cursor: pointer;
+        text-decoration: underline;
+        color: rgba(255, 255, 255, 0.849)
+    }
 }
+
 
 .containerInfo{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: transparent!important;
+    border: none;
 
 
 }
@@ -49,10 +72,8 @@
 }
 
 .Btn-Form{
-    background-color: transparent;
-    color: white;
+
     font-size: 20px;
-    border: 1px solid white;
     border-radius: 5px;
     outline: none;
 
@@ -72,3 +93,12 @@
     margin-top: 2px;
     margin-left: 5px;
 }
+
+
+@media only screen and (max-width: 740px){
+    .container-login{
+        display: none;
+    }
+}
+
+  

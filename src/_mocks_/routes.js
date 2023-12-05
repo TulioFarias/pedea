@@ -2,14 +2,14 @@ import React from 'react'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import ContainerHome from '../features/ContainerWelcome'
-import LoginSystem from '../features/Login/login'
+import Login from '../features/Login'
 
 function NewRoutes() {
   return (
     <Router>
       <Routes>
-        <Route element={ContainerHome} path="/"></Route>
-        <Route element={LoginSystem} path="/login"></Route>
+        <Route Component={ContainerHome} path="/"></Route>
+        <Route Component={Login} path="/login"></Route>
       </Routes>
     </Router>
   )
