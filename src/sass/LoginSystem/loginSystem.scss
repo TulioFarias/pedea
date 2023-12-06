@@ -1,72 +1,51 @@
-.container-login{
+
+
+
+.container-form{
+    background-color: rgba(44, 64, 63, 0.726);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+
+    img{
+        width: 30%;
+    }
+
+}
+
+.btnBack{
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    background: transparent;
+    border: none;
+
+    img{
+        width: 40px;
+    }
+
+
+    :hover{
+        transform: scale(1.05);
+        transition: all 0.1s ease-in-out;
+    }
+}
+
+.customBody-form{
+    background-color: rgba(170, 170, 170, 0.527);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.527);
+    width: 30%;
+    height: 40%;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 2px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.363);
-    border-radius: 10px;
-
-    img{
-        width: 35px;
-        height: 35px;
-    }
-    
-
-    p{
-        margin-top: 6px;
-        margin-left: 5px;
-        font-size: 14px;
-        padding-left: 2px;
-        text-align: justify;
-        font-weight: 400;
-        color: #000;
-    }
-    
-    a{
-        font-size: 14px;
-        font-weight: bold;
-        font-style: italic;
-        cursor: pointer;
-        text-decoration: underline;
-        color: rgba(255, 255, 255, 0.849)
-    }
-}
-
-
-.modal-content{
-    background-color: rgba(44, 64, 63, 0.719)!important;
-    border: none;
-
-
-}
-
-.modal-header{
-    width: 100%;
-    text-align: center;
-
-    img{
-        width: 90%;
-    }
-}
-
-
-
-.btn-close{
-    border: 1px solid white;
-    padding: 5px!important;
-    
-}
-
-.custom-modal-body{
-    display: flex;
     flex-direction: column;
-    align-items: center;
 }
-
-
-
-
 
 .custom-info{
     display: flex;

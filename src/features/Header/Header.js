@@ -32,7 +32,6 @@ function HeaderActions() {
             <img src={PEDEA} alt="Logo" className="img-fluid" />
           </Navbar.Brand>
 
-          <Login />
           <div className="d-flex align-items-center gap-3 custom-div">
             <button className="btn btn-outline-light btns-header">
               <InfoIcon className="btns-icon" />

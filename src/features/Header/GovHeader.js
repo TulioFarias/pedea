@@ -5,7 +5,7 @@ import Flag from 'react-flagkit'
 import '../../sass/govHeader/GovHeader.scss'
 import { useTranslation } from 'react-i18next'
 
-// import * as yup from 'yup'
+import ContainerLogin from '../Login/linkLogin'
 
 function GovHeader() {
   const { t, i18n } = useTranslation()
@@ -68,6 +68,8 @@ function GovHeader() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
+      <ContainerLogin />
 
       <div className="d-flex gap-2 custom-div-acess">
         <div className="d-flex gap-1 margin-custom">
