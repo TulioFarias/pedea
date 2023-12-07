@@ -35,8 +35,8 @@
 }
 
 .customBody-form{
-    background-color: rgba(170, 170, 170, 0.527);
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.527);
+    background-color: rgba(207, 207, 207, 0.527);
+    box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
     width: 30%;
     height: 40%;
     padding: 20px;
@@ -54,7 +54,7 @@
 }
 
 .LabelForm{
-    font-size: 16px;
+    font-size: 18px;
     color: white;
     
 }
@@ -67,37 +67,45 @@
     outline: none;
     border-radius: 5px;
 
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .Btn-Form{
+    margin-top: 20px;
     background-color: transparent;
     border: 1px solid white;
     font-size: 20px;
     border-radius: 5px;
+    width: 96px;
+    height: 40px;
     outline: none;
+    color: white;
 
     &:hover{
-        transform: scale(1.02);
-        transition: 0.2s all ease-in-out;
+        transform: scale(1.04);
+        transition: 0.4s all ease-in-out;
         background-color: transparent;
+        border: 1px solid black;
+        color: black;
     }
+
+    
 
 
     
 }
 
 .error-txt{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16px;
     color: rgb(236, 0, 0);
-    margin-top: 4px;
+    margin-top: 5px;
     margin-left: 5px;
 }
 
 .end-txt{
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 10px;
     display: flex;
     gap: 5px;
@@ -105,17 +113,21 @@
 
 .link-end{
     font-size: 16px;
-    color: rgb(0, 110, 255);
+    color: white;
 
     &:hover{
-        color: white;
+        color: black;
     }
 }
 
 
 @media only screen and (max-width: 740px){
-    .container-login{
-        display: none;
+    .container-form img {
+        width: 90%;
+    }
+
+    .customBody-form{
+        width: auto;
     }
 }
 

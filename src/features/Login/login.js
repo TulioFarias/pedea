@@ -2,7 +2,6 @@ import '../../sass/LoginSystem/loginSystem.scss'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -19,7 +18,7 @@ function LoginSystem() {
       .email('Digite um email válido.')
       .required('O email é obrigatório.'),
     password: Yup.string()
-      .required('A senha é obrigatório.')
+      .required('A senha é obrigatória.')
       .min(6, 'A senha deve ter no minímo 6 dígitos.')
   })
 
@@ -35,7 +34,13 @@ function LoginSystem() {
     navigate('/')
   }
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => {
+    setTimeout(() => {
+      console.log(data)
+      navigate('/admin')
+    }, 1000)
+  }
+
   return (
     <>
       <div className="container-form">
@@ -48,7 +53,7 @@ function LoginSystem() {
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
           <div className="custom-info">
             <Form.Label htmlFor="email" className="LabelForm">
-              Seu email:
+              Email:
             </Form.Label>
             <Form.Control
               {...register('email')}
@@ -72,9 +77,9 @@ function LoginSystem() {
             <p className="error-txt">{errors.password?.message}</p>
           </div>
 
-          <Button variant="primary" type="submit" className="Btn-Form">
+          <button type="submit" className="Btn-Form">
             Entrar
-          </Button>
+          </button>
 
           <p className="end-txt">
             Não possui conta?{' '}
