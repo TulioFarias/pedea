@@ -62,7 +62,6 @@ function MapPedea() {
     }
   }
 
-  console.log(mapInstance)
   return (
     <div>
       <div ref={mapTargetElement} className="map"></div>

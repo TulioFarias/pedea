@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 
 import '../../sass/Header/ContainerButton.scss'
 import PEDEA from '../../assets/img/pedea-logo.png'
-import Login from '../Login'
 
 function HeaderActions() {
   const { t } = useTranslation()

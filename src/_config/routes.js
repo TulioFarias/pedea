@@ -4,16 +4,22 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import Home from '../containers/Home'
 import Admin from '../features/Admin'
 import Login from '../features/Login'
+import { UserProvider } from '../services/auth'
+import { PrivateRoute } from './private-route'
 
 function NewRoutes() {
   return (
-    <Router>
-      <Routes>
-        <Route Component={Home} path="/"></Route>
-        <Route Component={Login} path="/login"></Route>
-        <Route Component={Admin} path="/Admin"></Route>
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Login />} path="/login" />
+          <Route path="/admin">
+            <PrivateRoute element={<Admin />} />
+          </Route>
+        </Routes>
+      </Router>
+    </UserProvider>
   )
 }
 

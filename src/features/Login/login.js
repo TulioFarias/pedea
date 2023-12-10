@@ -1,17 +1,24 @@
 import '../../sass/LoginSystem/loginSystem.scss'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
+import { useUser } from '../../services/auth'
+import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
 
 function LoginSystem() {
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const { putUserData } = useUser()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -34,11 +41,31 @@ function LoginSystem() {
     navigate('/')
   }
 
-  const onSubmit = data => {
-    setTimeout(() => {
-      console.log(data)
-      navigate('/admin')
-    }, 1000)
+  const onSubmit = async () => {
+    try {
+      const { user } = await loginAndRetrieveToken(email, password)
+
+      putUserData(user)
+
+      setTimeout(() => {
+        navigate('/Admin')
+      }, 2000)
+
+      toast.success('Deu certo', {
+        autoClose: 2000
+      })
+    } catch (error) {
+      toast.error('Nao deu certo!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      })
+    }
   }
 
   return (
@@ -60,6 +87,7 @@ function LoginSystem() {
               type="email"
               className="InputForm"
               id="email"
+              onChange={e => setEmail(e.target.value)}
             />
             <p className="error-txt">{errors.email?.message}</p>
           </div>
@@ -73,6 +101,7 @@ function LoginSystem() {
               type="password"
               className="InputForm"
               id="password"
+              onChange={e => setPassword(e.target.value)}
             />
             <p className="error-txt">{errors.password?.message}</p>
           </div>
