@@ -5,7 +5,7 @@ import Home from '../containers/Home'
 import Admin from '../features/Admin'
 import Login from '../features/Login'
 import { UserProvider } from '../services/auth'
-import { PrivateRoute } from './private-route'
+import { RoutesPrivate } from './private-route'
 
 function NewRoutes() {
   return (
@@ -14,9 +14,14 @@ function NewRoutes() {
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<Login />} path="/login" />
-          <Route path="/admin">
-            <PrivateRoute element={<Admin />} />
-          </Route>
+          <Route
+            element={
+              <RoutesPrivate>
+                <Admin />
+              </RoutesPrivate>
+            }
+            path="/Admin"
+          />
         </Routes>
       </Router>
     </UserProvider>

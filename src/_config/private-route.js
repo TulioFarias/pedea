@@ -1,20 +1,29 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import { Navigate, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import Admin from '../features/Admin'
-import { useUser } from '../services/auth'
-
-export function PrivateRoute({ element, ...rest }) {
-  const { userData } = useUser()
-  console.log('userData:', userData)
-
-  if (!userData) {
-    return <Navigate to="/login" />
-  }
-  return <Route {...rest} element={<Admin />} />
+export const loadUser = async () => {
+  const user = await localStorage.getItem('PEDEA-AdminSystem')
+  return user
 }
 
-PrivateRoute.propTypes = {
-  element: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired
+export const RoutesPrivate = ({ children, ...rest }) => {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    loadUser().then(user => setUser(user))
+  }, [])
+
+  console.log(user)
+
+  if (!user) {
+    return <Navigate to="/login" />
+  }
+
+  return user ? children : <Navigate to="/login" />
+}
+
+RoutesPrivate.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+  isAdmin: PropTypes.bool
 }
