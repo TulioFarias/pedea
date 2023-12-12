@@ -4,21 +4,28 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
-import { useUser } from '../../services/auth'
-import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
+import { setData } from '../../utils/JwtAuth'
+import rootReducer from '../../utils/redux/rootReducer'
+import { loginUser } from '../../utils/redux/user/actions'
 
 function LoginSystem() {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [form, setForm] = useState({ email: '', password: '' })
 
-  const { putUserData } = useUser()
+  const changeForm = e => {
+    const { name, value } = e.target
+
+    setForm({ ...form, [name]: value })
+  }
+
+  const dispatch = useDispatch()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -41,15 +48,17 @@ function LoginSystem() {
     navigate('/')
   }
 
+  const handleLoginClick = () => {
+    dispatch(loginUser(form))
+    dispatch()
+  }
+
   const onSubmit = async () => {
     try {
-      const { user } = await loginAndRetrieveToken(email, password)
-
-      putUserData(user)
-
-      setTimeout(() => {
-        navigate('/admin')
-      }, 2000)
+      await handleLoginClick()
+      // setTimeout(() => {
+      //   navigate('/admin')
+      // }, 2000)
 
       toast.success('Seja bem-vindo(a).', {
         position: 'top-right',
@@ -94,7 +103,9 @@ function LoginSystem() {
               type="email"
               className="InputForm"
               id="email"
-              onChange={e => setEmail(e.target.value)}
+              name="email"
+              value={form.email}
+              onChange={changeForm}
             />
             <p className="error-txt">{errors.email?.message}</p>
           </div>
@@ -108,7 +119,9 @@ function LoginSystem() {
               type="password"
               className="InputForm"
               id="password"
-              onChange={e => setPassword(e.target.value)}
+              name="password"
+              value={form.password}
+              onChange={changeForm}
             />
             <p className="error-txt">{errors.password?.message}</p>
           </div>

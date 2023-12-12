@@ -1,15 +1,15 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import Home from '../containers/Home'
 import Admin from '../features/Admin'
 import Login from '../features/Login'
-import { UserProvider } from '../services/auth'
-import { RoutesPrivate } from './private-route'
+import store from '../utils/redux/store'
 
 function NewRoutes() {
   return (
-    <UserProvider>
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route element={<Home />} path="/" />
@@ -17,7 +17,7 @@ function NewRoutes() {
           <Route element={<Admin />} path="/admin" />
         </Routes>
       </Router>
-    </UserProvider>
+    </Provider>
   )
 }
 

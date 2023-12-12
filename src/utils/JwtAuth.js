@@ -41,3 +41,14 @@ export const CreateToken = async () => {
     console.log(error)
   }
 }
+
+export const setData = async userInfo => {
+  try {
+    await localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(userInfo))
+
+    return userInfo
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
