@@ -14,14 +14,7 @@ function NewRoutes() {
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<Login />} path="/login" />
-          <Route
-            element={
-              <RoutesPrivate>
-                <Admin />
-              </RoutesPrivate>
-            }
-            path="/Admin"
-          />
+          <Route element={<Admin />} path="/admin" />
         </Routes>
       </Router>
     </UserProvider>

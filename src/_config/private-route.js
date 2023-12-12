@@ -11,16 +11,25 @@ export const RoutesPrivate = ({ children, ...rest }) => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    loadUser().then(user => setUser(user))
-  }, [])
+    const fetchUser = async () => {
+      try {
+        const user = await loadUser()
+        setUser(prevUser => ({ ...prevUser, ...user }))
+        console.log('User state after setting:', user)
+      } catch (error) {
+        console.error('Error loading user:', error)
+        setUser(null)
+      }
+    }
 
-  console.log(user)
+    fetchUser()
+  }, [])
 
   if (!user) {
     return <Navigate to="/login" />
   }
 
-  return user ? children : <Navigate to="/login" />
+  return children
 }
 
 RoutesPrivate.propTypes = {

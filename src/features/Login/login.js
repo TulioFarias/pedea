@@ -48,22 +48,29 @@ function LoginSystem() {
       putUserData(user)
 
       setTimeout(() => {
-        navigate('/Admin')
+        navigate('/admin')
       }, 2000)
 
-      toast.success('Deu certo', {
-        autoClose: 2000
-      })
-    } catch (error) {
-      toast.error('Nao deu certo!', {
+      toast.success('Seja bem-vindo(a).', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'light'
+        theme: 'dark'
+      })
+    } catch (error) {
+      toast.error('Email ou senha incorretos, verifique e tente novamente...', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
       })
     }
   }
