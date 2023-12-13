@@ -24,11 +24,13 @@ async function generateRsaKey() {
   }
 }
 
-export const CreateToken = async () => {
+export const CreateToken = async (email, password) => {
   try {
     const privateKey = await generateRsaKey()
 
-    const jwt = await new SignJWT({ 'urn:example:claim': true })
+    const payload = { email, password }
+
+    const jwt = await new SignJWT(payload)
       .setProtectedHeader({ alg: 'RS256' })
       .setIssuedAt()
       .setIssuer('urn:example:issuer')
@@ -44,9 +46,12 @@ export const CreateToken = async () => {
 
 export const setData = async userInfo => {
   try {
-    await localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(userInfo))
+    const storage = await localStorage.setItem(
+      'PEDEA-AdminSystem',
+      JSON.stringify(userInfo)
+    )
 
-    return userInfo
+    return storage
   } catch (error) {
     console.log(error)
     throw error

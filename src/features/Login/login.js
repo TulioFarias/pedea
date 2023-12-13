@@ -1,18 +1,19 @@
 import '../../sass/LoginSystem/loginSystem.scss'
 
+import { useAuth0 } from '@auth0/auth0-react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
-import { setData } from '../../utils/JwtAuth'
-import rootReducer from '../../utils/redux/rootReducer'
+import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
+import { CreateToken, setData } from '../../utils/JwtAuth'
 import { loginUser } from '../../utils/redux/user/actions'
 
 function LoginSystem() {
@@ -24,6 +25,8 @@ function LoginSystem() {
 
     setForm({ ...form, [name]: value })
   }
+
+  const { loginwithRedirect } = useAuth0()
 
   const dispatch = useDispatch()
 
@@ -48,17 +51,20 @@ function LoginSystem() {
     navigate('/')
   }
 
-  const handleLoginClick = () => {
-    dispatch(loginUser(form))
-    dispatch()
-  }
-
   const onSubmit = async () => {
     try {
-      await handleLoginClick()
-      // setTimeout(() => {
-      //   navigate('/admin')
-      // }, 2000)
+      const { email, password } = form
+
+      const fireauth = await loginAndRetrieveToken(email, password)
+      const userAuthInfo = {
+        uid: fireauth.user.uid,
+        displayName: fireauth.user.displayName,
+        email: fireauth.user.email
+      }
+
+      const jwtoken = await CreateToken(email, password)
+
+      dispatch(loginUser({ token: jwtoken, auth: userAuthInfo }))
 
       toast.success('Seja bem-vindo(a).', {
         position: 'top-right',
@@ -132,9 +138,9 @@ function LoginSystem() {
 
           <p className="end-txt">
             Não possui conta?{' '}
-            <a href="#" className="link-end">
+            <Link href="#" className="link-end" to="/cadastro">
               Cadastre-se aqui
-            </a>
+            </Link>
           </p>
         </Form>
       </div>
