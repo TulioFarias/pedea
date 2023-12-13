@@ -1,6 +1,5 @@
 import '../../sass/LoginSystem/loginSystem.scss'
 
-import { useAuth0 } from '@auth0/auth0-react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
