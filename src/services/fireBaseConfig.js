@@ -2,8 +2,6 @@ import { getAnalytics } from 'firebase/analytics'
 import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
-import { CreateToken } from '../utils/JwtAuth'
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCIanJNhT26ISsLitxIhW1MGviSM-RU4nY',
   authDomain: 'pedea-89d5b.firebaseapp.com',

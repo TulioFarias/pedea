@@ -13,7 +13,7 @@ import * as Yup from 'yup'
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
-import { CreateToken, setData } from '../../utils/JwtAuth'
+import { CreateToken } from '../../services/JwtAuth'
 import { loginUser } from '../../utils/redux/user/actions'
 
 function LoginSystem() {
@@ -25,8 +25,6 @@ function LoginSystem() {
 
     setForm({ ...form, [name]: value })
   }
-
-  const { loginwithRedirect } = useAuth0()
 
   const dispatch = useDispatch()
 
@@ -76,6 +74,10 @@ function LoginSystem() {
         progress: undefined,
         theme: 'dark'
       })
+
+      setTimeout(() => {
+        navigate('/admin')
+      }, 2000)
     } catch (error) {
       toast.error('Email ou senha incorretos, verifique e tente novamente...', {
         position: 'top-right',
