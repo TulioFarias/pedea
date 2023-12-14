@@ -1,0 +1,75 @@
+.bodyHeader{
+    background-color: rgb(245, 245, 245);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    gap: 115px;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.containerDivs{
+    display: flex;
+    
+    
+    
+}
+
+.inputSearch{
+    width: 300px;
+}
+
+.SearchButton{
+    background-color: rgba(44, 64, 63, 0.726);
+    
+    img{
+        width: 25px;
+        height: 25px;
+    }
+
+
+    &:hover{
+        background-color: rgb(16, 29, 129);
+        border: 1px solid white;
+    }
+}
+
+.customDivRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+
+    
+}
+
+.containerUser{
+   
+
+    p{
+        width: 190px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        
+       
+    }
+    
+    
+    
+}
+
+.backButton{
+    color: red;
+    border: 1px solid red;
+
+    &:hover{
+        color: white;
+        border: white;
+        background-color: red;
+    }
+}
+

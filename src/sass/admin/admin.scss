@@ -1,0 +1,30 @@
+.containerAdmin{
+    background-color: #d3d3d3be;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.containerWrapper{
+ 
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    width: 80vw;
+    height: 85vh;
+    margin-left: 200px;
+    border-radius: 12px;
+    padding: 10px;
+    
+    
+}
+
+@media only screen and (max-width: 740px){
+
+    .containerAdmin{
+        
+    }
+   }
+    
