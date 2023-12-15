@@ -1,0 +1,14 @@
+.ButtonAdd{
+    background-color: rgb(16, 29, 129);
+    border: none;
+
+    &:hover{
+        background-color: rgb(16, 29, 129);;
+        opacity: 0.8;
+        transition: 0.2s all ease-in-out;
+    }
+}
+
+.btnClose{
+    background-color: rgba(44, 64, 63, 0.726);;
+}

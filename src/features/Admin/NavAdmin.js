@@ -11,7 +11,6 @@ export const NavAdmin = () => {
       </div>
 
       <hr></hr>
-      <p>Resto da nav</p>
     </div>
   )
 }
