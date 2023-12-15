@@ -31,8 +31,8 @@ export const ModalAdd = () => {
     setFormData(prevData => ({ ...prevData, observation: e.target.value }))
   }
   const sendForm = async () => {
-    const id = idCounter
-    const formDataWithId = { ...formsData, id }
+    const ids = idCounter
+    const formDataWithId = { ...formsData, ids }
 
     await setIdCounter(prevCounter => prevCounter + 1)
     dispatch(addInfo(formDataWithId))

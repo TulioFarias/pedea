@@ -21,6 +21,28 @@
     
 }
 
+.btnEdited {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
+.btns {
+    background-color: transparent;
+    border: none;
+    
+    &:hover{
+        transform: scale(1.05);
+        transition: 0.3s all ease-in-out;
+    }
+}
+
+
+
 @media only screen and (max-width: 740px){
 
     .containerAdmin{
