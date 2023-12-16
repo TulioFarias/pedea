@@ -13,20 +13,35 @@ const cardInfo = createSlice({
     addInfo: (state, action) => {
       state.info.push(action.payload)
       localStorage.setItem('infoList', JSON.stringify(state.info))
-      console.log(state)
     },
+
     removeInfo: (state, action) => {
-      const updatedInfo = state.info.slice()
-      const index = updatedInfo.findIndex(
-        item => item.id === action.payload.ids
-      )
-      if (index !== -1) updatedInfo.splice(index, 1)
+      const id = action.payload
+      if (!id) return state
+
+      const updatedInfoList = state.info.filter(info => info.id !== id)
+      localStorage.setItem('infoList', JSON.stringify(updatedInfoList))
+
       return {
         ...state,
-        info: updatedInfo
+        info: updatedInfoList
+      }
+    },
+    updateInfo: (state, action) => {
+      const { id, name, email, observation } = action.payload
+
+      const existingInfo = state.info.find(item => item.id === id)
+
+      if (existingInfo) {
+        existingInfo.name = name !== undefined ? name : existingInfo.name
+        existingInfo.email = email !== undefined ? email : existingInfo.email
+        existingInfo.observation =
+          observation !== undefined ? observation : existingInfo.observation
+
+        localStorage.setItem('infoList', JSON.stringify(state.info))
       }
     }
   }
 })
-export const { addInfo, removeInfo } = cardInfo.actions
+export const { addInfo, removeInfo, updateInfo } = cardInfo.actions
 export default cardInfo.reducer

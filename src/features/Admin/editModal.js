@@ -1,24 +1,20 @@
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import '../../sass/admin/modalAdmin.scss'
+import { Button, Modal, Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 
-import { addInfo } from '../../utils/redux/CRUD/actions'
-
-export const ModalAdd = () => {
+import edit from '../../assets/icons/edit.png'
+import { updateInfo } from '../../utils/redux/CRUD/actions'
+export const EditedModal = ({ editId }) => {
   const [show, setShow] = useState(false)
+
   const [formsData, setFormData] = useState({
-    id: 0,
     name: '',
     email: '',
     observation: ''
   })
 
-  const handleClose = () => {
-    setShow(false)
-  }
+  const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   const dispatch = useDispatch()
@@ -26,38 +22,40 @@ export const ModalAdd = () => {
   const handleNameChange = e => {
     setFormData(prevData => ({ ...prevData, name: e.target.value }))
   }
+
   const handleEmailChange = e => {
     setFormData(prevData => ({ ...prevData, email: e.target.value }))
   }
+
   const handleObservationChange = e => {
     setFormData(prevData => ({ ...prevData, observation: e.target.value }))
   }
-  const sendForm = () => {
-    setFormData(prevData => {
-      const updatedData = { ...prevData, id: prevData.id + 1 }
 
-      dispatch(addInfo(updatedData))
-      handleClose()
-      return updatedData
-    })
+  const EditForm = async e => {
+    if (e) {
+      e.preventDefault()
+    }
+    const formDataWithId = { ...formsData, id: editId }
+
+    dispatch(updateInfo(formDataWithId))
+    handleClose()
   }
-  const sendSubmit = event => {
-    event.preventDefault()
-    sendForm()
+
+  const EditChanges = async () => {
+    EditForm()
   }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="ButtonAdd">
-        Adicionar
-      </Button>
-
+      <button onClick={handleShow} className="btns">
+        <img src={edit} alt="Edit" />
+      </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Adicionar Informações</Modal.Title>
+          <Modal.Title>Editar Informações</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={sendForm}>
+          <Form onSubmit={EditForm}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nome</Form.Label>
               <Form.Control
@@ -68,7 +66,7 @@ export const ModalAdd = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -88,6 +86,14 @@ export const ModalAdd = () => {
                 onChange={handleObservationChange}
               />
             </Form.Group>
+            <Button
+              className="ButtonAdd"
+              variant="primary"
+              type="submit"
+              onClick={EditChanges}
+            >
+              Salvar
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -98,16 +104,12 @@ export const ModalAdd = () => {
           >
             Fechar
           </Button>
-          <Button
-            className="ButtonAdd"
-            variant="primary"
-            type="submit"
-            onClick={sendSubmit}
-          >
-            Salvar
-          </Button>
         </Modal.Footer>
       </Modal>
     </>
   )
+}
+
+EditedModal.propTypes = {
+  editId: PropTypes.number.isRequired // Assuming editId is a number, adjust accordingly
 }

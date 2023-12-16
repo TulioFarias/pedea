@@ -12,7 +12,6 @@ const userReducer = (state = initalState, action) => {
       const { auth } = action.payload
       localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(auth))
       const newState = { ...state, userData: action.payload }
-      console.log(newState)
 
       return newState
     }
