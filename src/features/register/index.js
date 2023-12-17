@@ -1,11 +1,11 @@
 import React from 'react'
 
-import RegisterSystem from './register'
+import Cadastro from './register'
 
 function Register() {
   return (
     <>
-      <RegisterSystem />
+      <Cadastro />
     </>
   )
 }

@@ -26,7 +26,6 @@ function AdminSystem() {
     dispatch(updateInfo(id))
     setSelectedId(id)
   }
-  console.log(selectedId)
 
   return (
     <>

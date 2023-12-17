@@ -1,6 +1,10 @@
 import { getAnalytics } from 'firebase/analytics'
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
+} from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCIanJNhT26ISsLitxIhW1MGviSM-RU4nY',
@@ -30,4 +34,16 @@ export const loginAndRetrieveToken = async (email, password) => {
   }
 }
 
-loginAndRetrieveToken()
+export const createRegister = async (email, password) => {
+  try {
+    const createUser = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
+    console.log('Usuário criado com sucesso:', createUser.user)
+    return createUser
+  } catch (error) {
+    console.error('Erro durante a criação do usuário', error)
+  }
+}
