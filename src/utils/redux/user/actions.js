@@ -8,3 +8,8 @@ export const loginUser = payload => ({
 export const logoutUser = () => ({
   type: userActionTypes.Logout
 })
+
+export const createUser = payload => ({
+  type: userActionTypes.CreateUser,
+  payload
+})

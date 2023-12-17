@@ -11,7 +11,7 @@ import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import { createRegister } from '../../services/fireBaseConfig'
 import { CreateToken } from '../../services/JwtAuth'
-import { loginUser } from '../../utils/redux/user/actions'
+import { createUser } from '../../utils/redux/user/actions'
 import '../../sass/Register/register.scss'
 
 function Cadastro() {
@@ -59,16 +59,19 @@ function Cadastro() {
     try {
       const { name, email, password } = form
 
-      const createUser = await createRegister(email, password)
+      const createNewUser = await createRegister(email, password)
       const userAuthInfo = {
-        uid: createUser.user.uid,
-        displayName: createUser.user.displayName,
-        email: createUser.user.email
+        uid: createNewUser.user.uid,
+        displayName: createNewUser.user.displayName,
+        email: createNewUser.user.email
       }
       const jwtoken = await CreateToken(name, email, password)
-      dispatch(loginUser({ token: jwtoken, auth: userAuthInfo }))
 
-      toast.success('Cadastro realizado com sucesso. Seja bem-vindo(a)!', {
+      dispatch(
+        createUser({ username: name, token: jwtoken, auth: userAuthInfo })
+      )
+
+      toast.success('Cadastro realizado com sucesso.', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,

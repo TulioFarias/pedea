@@ -8,9 +8,15 @@ const initalState = {
 
 const userReducer = (state = initalState, action) => {
   switch (action.type) {
+    case userActionTypes.CreateUser: {
+      console.log(action.payload)
+
+      return { ...state, userData: action.payload }
+    }
+
     case userActionTypes.Login: {
-      const { auth } = action.payload
-      localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(auth))
+      console.log(action.payload)
+      localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(action.payload))
       const newState = { ...state, userData: action.payload }
 
       return newState

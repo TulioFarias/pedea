@@ -36,13 +36,13 @@ export const loginAndRetrieveToken = async (email, password) => {
 
 export const createRegister = async (email, password) => {
   try {
-    const createUser = await createUserWithEmailAndPassword(
+    const CreateUser = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     )
-    console.log('Usuário criado com sucesso:', createUser.user)
-    return createUser
+
+    return CreateUser
   } catch (error) {
     console.error('Erro durante a criação do usuário', error)
   }

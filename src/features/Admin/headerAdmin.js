@@ -14,6 +14,7 @@ export const HeaderAdmin = () => {
   const userDataFromStorage = JSON.parse(
     localStorage.getItem('PEDEA-AdminSystem')
   )
+
   const userEmail =
     userData || userDataFromStorage
       ? userData?.auth?.email || userDataFromStorage?.email

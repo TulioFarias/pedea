@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
@@ -59,9 +59,7 @@ function LoginSystem() {
         email: fireauth.user.email
       }
 
-      const jwtoken = await CreateToken(email, password)
-
-      dispatch(loginUser({ token: jwtoken, auth: userAuthInfo }))
+      dispatch(loginUser({ auth: userAuthInfo }))
 
       toast.success('Seja bem-vindo(a).', {
         position: 'top-right',
