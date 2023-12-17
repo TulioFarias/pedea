@@ -73,3 +73,90 @@
     }
 }
 
+@media only screen and (max-width: 740px){
+
+    .bodyHeader{
+        background-color: rgb(245, 245, 245);
+        height: 10vh;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        gap: 1px;
+    }
+    
+    .containerDivs{
+        display: flex;
+        
+    }
+    
+    .inputSearch{
+        width: 120px;
+        height: 30px;
+    }
+    
+    .SearchButton{
+        background-color: rgba(44, 64, 63, 0.726);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 10px;
+            height: 10px;
+        }
+    
+    
+        &:hover{
+            background-color: rgb(16, 29, 129);
+            border: 1px solid white;
+        }
+    }
+    
+    .customDivRight{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+        width: 180px;
+        
+    
+        
+    }
+    
+    .containerUser{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    
+        p{
+        position: relative;
+        top: 8px;
+        left: 8px;
+        width: 105px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+            
+           
+        }
+        
+        
+        
+    }
+    
+    .backButton{
+        color: red;
+        border: 1px solid red;
+        width: 40px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        &:hover{
+            color: white;
+            border: white;
+            background-color: red;
+        }
+    }
+   }

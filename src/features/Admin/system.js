@@ -26,6 +26,7 @@ function AdminSystem() {
     dispatch(updateInfo(id))
     setSelectedId(id)
   }
+  console.log(selectedId)
 
   return (
     <>
@@ -33,7 +34,7 @@ function AdminSystem() {
         <div className="containerWrapper">
           <ModalAdd />
 
-          <div>
+          <div className="table-responsive">
             <h2>Lista de Informações</h2>
             <Table striped bordered hover>
               <thead>
@@ -54,12 +55,9 @@ function AdminSystem() {
                     <td>{info.observation}</td>
                     <td>
                       <div className="btnEdited">
-                        <button
-                          className="btns"
-                          onClick={() => handleEdit(info.id)}
-                        >
+                        <a className="btns" onClick={() => handleEdit(info.id)}>
                           <EditedModal editId={selectedId} />
-                        </button>
+                        </a>
 
                         <button
                           className="btns"

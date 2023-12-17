@@ -58,7 +58,7 @@ export const HeaderAdmin = () => {
 
       <div className="d-flex justify-content-end align-items-center customDivRight">
         <div className="containerUser">
-          <p>
+          <p className="user">
             {userEmail
               ? `Seja bem vindo(a), ${userEmail}!`
               : 'Seja bem vindo(a).'}{' '}

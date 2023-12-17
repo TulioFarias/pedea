@@ -26,3 +26,11 @@
     position: relative;
     bottom: 18px;
 }
+
+@media only screen and (max-width: 740px){
+
+    .bodyNav{
+        display: none;
+    }
+   }
+    
