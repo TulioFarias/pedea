@@ -2,10 +2,10 @@ import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
+import Admin from '../components/Admin'
+import Login from '../components/Login'
+import Register from '../components/register'
 import Home from '../containers/Home'
-import Admin from '../features/Admin'
-import Login from '../features/Login'
-import Register from '../features/register'
 import store from '../utils/redux/store'
 import { Private } from './private-route'
 

@@ -1,14 +1,14 @@
 import React from 'react'
 
-import MapPedea from '../../_config/map.js'
-import Footer from '../../features/Footer'
-import Header from '../../features/Header'
+import Footer from '../../components/Footer/index.js'
+import Header from '../../components/Header/index.js'
+import Welcome from '../../features/index.js'
 
 function Home() {
   return (
     <div className="Container-Home">
       <Header />
-      <MapPedea />
+      <Welcome />
       <Footer />
     </div>
   )
