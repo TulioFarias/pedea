@@ -25,3 +25,13 @@
     }
 
 }
+
+.GridLayer {
+    position: fixed;
+    z-index:2;
+    left:5px;
+    top:275px;
+    width:50px;
+    padding: 5px;
+    text-align: center;
+  }
