@@ -1,0 +1,45 @@
+.modal-content{
+    height: 80vh;
+}
+.containersOptions{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   
+}
+
+.BtnSubmit{
+        background-color: rgb(16, 29, 129);
+        border: none;
+        width: 100px;
+        height: 45px;
+        border-radius: 10px;
+        color: white;
+        
+    
+        &:hover{
+            background-color: rgb(16, 29, 129);
+            transform: scale(1.04);
+            transition: 0.2s all ease-in-out;
+        }
+    
+}
+
+@media only screen and (max-width: 740px){
+    .modal-content{
+        height: max-content
+    }
+    
+    .BtnSubmit{
+        background-color: rgb(16, 29, 129);
+        border: none;
+        position: relative;
+        top: 0px;
+    
+        &:hover{
+            background-color: rgb(16, 29, 129);;
+            opacity: 0.8;
+            transition: 0.2s all ease-in-out;
+        }
+    }
+}

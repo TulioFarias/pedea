@@ -1,10 +1,8 @@
-import { Tooltip } from '@mui/material'
-
 import '../../sass/btns-Left/ButtonsLeft.scss'
 
 import React from 'react'
 
-import ChangeMap from './ChangeMap'
+import ChangeMap from './ChangeMap/ChangeMap'
 import FindMe from './FindMe'
 import GridLayer from './gridLayer'
 import Help from './help'
