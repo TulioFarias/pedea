@@ -12,8 +12,6 @@ function GridLayer() {
     mapInstance.getLayers().getArray().length - 1
   ]
 
-  console.log(vector)
-
   const handleClick = () => {
     console.log('Antes de setVisible:', gridLayer.getVisible())
     gridLayer.setVisible(!gridLayer.getVisible())
