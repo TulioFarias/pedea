@@ -8663,7 +8663,7 @@ obuf@^1.0.0, obuf@^1.1.2:
 
 ol@^8.2.0:
   version "8.2.0"
-  resolved "https://registry.npmjs.org/ol/-/ol-8.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/ol/-/ol-8.2.0.tgz#145153eab0ea3b5d04f51f46d6c69c224cccd5c3"
   integrity sha512-/m1ddd7Jsp4Kbg+l7+ozR5aKHAZNQOBAoNZ5pM9Jvh4Etkf0WGkXr9qXd7PnhmwiC1Hnc2Toz9XjCzBBvexfXw==
   dependencies:
     color-rgba "^3.0.0"

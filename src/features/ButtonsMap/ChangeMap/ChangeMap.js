@@ -15,8 +15,8 @@ function ChangeMap() {
         <button className="my-custom-btns" onClick={showOptionsMaps}>
           <LanguageIcon />
         </button>
-        <ModalChange show={show} setShow={setShow} />
       </Tooltip>
+      <ModalChange show={show} setShow={setShow} />
     </>
   )
 }

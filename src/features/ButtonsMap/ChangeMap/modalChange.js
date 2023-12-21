@@ -12,7 +12,7 @@ function ModalChange({ show, setShow }) {
   console.log(selectedOption)
 
   const handleSubmit = () => {
-    console.log('Opção selecionada:', selectedOption)
+    console.log('Apenas teste')
   }
   return (
     <>
