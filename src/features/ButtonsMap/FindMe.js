@@ -31,7 +31,7 @@ function FindMe() {
           alert(`Sua localização: Latitude ${latitude}, Longitude ${longitude}`)
         })
       } else {
-        alert('Geolocalização não suportada pelo seu navegador.')
+        alert('Ocorreu um erro')
       }
     } catch (error) {
       console.error('Erro ao obter localização:', error)
