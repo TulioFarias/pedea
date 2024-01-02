@@ -9,18 +9,12 @@ function ModalChange({ show, setShow }) {
     setSelectedOption(option)
   }
 
-  console.log(selectedOption)
-
   const handleSubmit = () => {
     console.log('Apenas teste')
   }
   return (
     <>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        className="customBodyModal"
-      >
+      <Modal show={show} onHide={() => setShow(false)} id="ModalMap">
         <Modal.Header closeButton>
           <Modal.Title>Trocar mapa base</Modal.Title>
         </Modal.Header>

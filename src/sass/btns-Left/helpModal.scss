@@ -1,0 +1,53 @@
+#containerModalHelp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .modal-content{
+        padding: 0px 50px 30px 50px;
+    }
+
+    p{
+        font-size: 16px;
+    }
+
+   
+  
+}
+
+.linksText{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+
+
+    &:hover{
+        color: rgb(10, 88, 255);
+    }
+}
+
+
+
+.containerBttnsInfo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: auto;
+    gap: 20px; 
+  }
+
+
+  .customCloseBtn{
+    width: 200px;
+    font-size: 25px;
+    
+  }
+
+  .closeBtnInfo{
+    display: flex;
+    justify-content: end;
+  }
+  

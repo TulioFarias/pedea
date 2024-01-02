@@ -1,0 +1,17 @@
+.SearchLocate{
+    display: flex;
+    justify-content: center;
+}
+.inputText{
+    border-radius: 1px;
+}
+
+.btnSearchAdress{
+    width: 50px;
+    height: 38px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    border-left: none;
+    cursor: pointer;
+    background-color: transparent;
+}
