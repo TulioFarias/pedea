@@ -2,10 +2,10 @@ import { Vector as VectorLayer } from 'ol/layer'
 import { Vector as VectorSource } from 'ol/source'
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style'
 
-const source = new VectorSource()
+const newSource = new VectorSource()
 
 const vector = new VectorLayer({
-  source,
+  source: newSource,
   style: new Style({
     fill: new Fill({
       color: 'rgba(255, 255, 255, 0.2)'
@@ -45,4 +45,4 @@ const vectorForCSV = new VectorLayer({
   })
 })
 
-export { vector, vectorForCSV, source }
+export { vector, vectorForCSV, newSource }

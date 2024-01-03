@@ -1,24 +1,16 @@
 import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import InfoIcon from '@mui/icons-material/Info'
-import SearchIcon from '@mui/icons-material/Search'
 import SquareFootIcon from '@mui/icons-material/SquareFoot'
 import StraightenIcon from '@mui/icons-material/Straighten'
-import { Link } from '@mui/material'
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
-import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Offcanvas from 'react-bootstrap/Offcanvas'
-import { useTranslation } from 'react-i18next'
 
 import '../../sass/Header/ContainerButton.scss'
 import PEDEA from '../../assets/img/pedea-logo.png'
+import NavOptions from './NavHeader'
 
 function HeaderActions() {
-  const { t } = useTranslation()
   return (
     <div>
       <Navbar
@@ -53,56 +45,7 @@ function HeaderActions() {
             className=" my-navToogle-custom"
             backdrop={false}
           >
-            <Offcanvas.Header closeButton />
-            <Offcanvas.Title
-              className="text-center"
-              style={{ fontSize: '35px' }}
-            >
-              {t('Explorador de Dados')}
-            </Offcanvas.Title>
-            <Form className="d-flex mt-2 p-3">
-              <Form.Control
-                type="search"
-                placeholder="Digite o nome da camada..."
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-light">
-                <SearchIcon />
-              </Button>
-            </Form>
-            <Offcanvas.Body>
-              <Offcanvas.Title style={{ fontSize: '30px' }}>
-                {' '}
-                {t('Categorias')}
-              </Offcanvas.Title>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <NavDropdown title="Teste dados 1" href="#action1">
-                  Dados 1
-                </NavDropdown>
-                <NavDropdown title="Teste dados 2" href="#action2">
-                  Dados 2
-                </NavDropdown>
-                <NavDropdown title="Teste dados 3" id="offcanvasNavbarDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-              <hr />
-
-              <div className="div-footer-toogler">
-                <Button variant="outline-light">Baixar Dados</Button>
-                <Link className="justify-content-end link-light">
-                  Desativar camadas vísiveis
-                </Link>
-              </div>
-            </Offcanvas.Body>
+            <NavOptions />
           </Navbar.Offcanvas>
         </Container>
       </Navbar>

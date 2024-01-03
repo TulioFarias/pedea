@@ -8,15 +8,17 @@ import { vector } from '../../_config/vector'
 
 function GridLayer() {
   const restoreElement = useRef()
-  const gridLayer = mapInstance.getLayers().getArray()[
-    mapInstance.getLayers().getArray().length - 1
-  ]
+  const [gridLayer, setGridLayer] = useState(
+    mapInstance.getLayers().getArray()[
+      mapInstance.getLayers().getArray().length - 1
+    ]
+  )
 
   const handleClick = () => {
     console.log('Antes de setVisible:', gridLayer.getVisible())
     gridLayer.setVisible(!gridLayer.getVisible())
-    console.log('Depois de setVisible:', gridLayer.getVisible())
     vector.getSource().clear()
+    console.log('Depois de setVisible:', gridLayer.getVisible())
   }
 
   return (
