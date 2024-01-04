@@ -51,19 +51,44 @@ const ModalHelp = ({ show, setShow }) => {
           <strong>Precisa de ajuda para interagir com a plataforma?</strong>
 
           <div className="containerBttnsInfo">
-            <Button variant="outline-dark" size="lg">
+            <Button
+              variant="outline-dark"
+              size="lg"
+              href="https://pedea.sema.ce.gov.br/portal/manual.pdf"
+              target="_blank"
+            >
               Consultar manual do usuário
             </Button>
-            <Button variant="outline-dark" size="lg">
+            <Button
+              variant="outline-dark"
+              size="lg"
+              href="https://www.sema.ce.gov.br/89965-2/planejamento-costeiro-e-marinho-do-ceara/atlas-digital-costeiro-e-marinho-do-ceara/"
+              target="_blank"
+            >
               Consultar site do Atlas
             </Button>
-            <Button variant="outline-dark" size="lg">
+            <Button
+              variant="outline-dark"
+              size="lg"
+              href="https://www.sema.ce.gov.br/gerenciamento-costeiro/zoneamento-ecologico-economico-da-zona-costeira-zeec/documentos-previos-para-consulta-publica-do-zeec/"
+              target="_blank"
+            >
               Consultar informações do ZEEC
             </Button>
-            <Button variant="outline-dark" size="lg">
+            <Button
+              variant="outline-dark"
+              size="lg"
+              href="https://www.youtube.com/watch?v=TP_4v8EfJZ4"
+              target="_blank"
+            >
               Vídeo tutorial da plataforma
             </Button>
-            <Button variant="outline-dark" size="lg">
+            <Button
+              variant="outline-dark"
+              size="lg"
+              href="https://www.sema.ce.gov.br/89965-2/"
+              target="_blank"
+            >
               Consultar site do programa CCMA
             </Button>
           </div>
