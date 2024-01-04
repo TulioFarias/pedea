@@ -3,8 +3,8 @@ import { Tooltip } from '@mui/material'
 import React, { useRef, useState } from 'react'
 
 import '../../sass/btns-Left/ButtonsLeft.scss'
-import { mapInstance } from '../../_config/map'
-import { vector } from '../../_config/vector'
+import { mapInstance } from '../../_config/layers/map'
+import { vector } from '../../_config/layers/vector'
 
 function GridLayer() {
   const restoreElement = useRef()

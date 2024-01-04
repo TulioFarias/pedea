@@ -5,8 +5,8 @@ import Point from 'ol/geom/Point'
 import { Vector as VectorLayer } from 'ol/layer'
 import React from 'react'
 
-import { mapInstance } from '../../_config/map'
-import { vector } from '../../_config/vector'
+import { mapInstance } from '../../_config/layers/map'
+import { vector } from '../../_config/layers/vector'
 
 function FindMe() {
   const buscarLocalizacao = async () => {

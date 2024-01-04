@@ -3,7 +3,7 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { Tooltip } from '@mui/material'
 import React from 'react'
 
-import { mapInstance } from '../../_config/map'
+import { mapInstance } from '../../_config/layers/map'
 function ZoomInOut() {
   const zoomIn = () => {
     const currentZoom = mapInstance.getView().getZoom()

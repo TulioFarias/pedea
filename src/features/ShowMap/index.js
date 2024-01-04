@@ -4,7 +4,7 @@ import ScaleLine from 'ol/control/ScaleLine.js'
 import { createStringXY } from 'ol/coordinate'
 import React, { useEffect, useRef, useState } from 'react'
 
-import { mapInstance } from '../../_config/map'
+import { mapInstance } from '../../_config/layers/map'
 
 function MapPedea() {
   const [showMap, setShowMap] = useState(null)
