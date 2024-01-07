@@ -66,9 +66,9 @@ export const HeaderAdmin = () => {
           </p>
         </div>
 
-        <button className="btn backButton" onClick={voltar}>
+        <a className=" backButton" onClick={voltar}>
           Sair
-        </button>
+        </a>
       </div>
     </div>
   )

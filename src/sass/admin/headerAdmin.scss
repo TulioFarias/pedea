@@ -21,6 +21,7 @@
 
 .SearchButton{
     background-color: rgba(44, 64, 63, 0.726);
+  
     
     img{
         width: 25px;
@@ -31,6 +32,8 @@
     &:hover{
         background-color: rgb(16, 29, 129);
         border: 1px solid white;
+        transition: 0.4s all ease-in-out;
+
     }
 }
 
@@ -65,11 +68,15 @@
 .backButton{
     color: red;
     border: 1px solid red;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
 
     &:hover{
-        color: white;
-        border: white;
-        background-color: red;
+        transform: scale(1.02);
+        opacity: 0.6;
+        
     }
 }
 

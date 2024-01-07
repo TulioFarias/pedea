@@ -111,5 +111,5 @@ export const EditedModal = ({ editId }) => {
 }
 
 EditedModal.propTypes = {
-  editId: PropTypes.number.isRequired // Assuming editId is a number, adjust accordingly
+  editId: PropTypes.number.isRequired
 }
