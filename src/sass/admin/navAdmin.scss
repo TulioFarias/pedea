@@ -27,6 +27,44 @@
     bottom: 18px;
 }
 
+.ContainerButtonsSystem{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    gap: 25px;
+    width: 85%;
+    padding: 10px;
+}
+
+.NavBtns{
+    border: 1px solid rgba(202, 202, 202, 0.856);
+    background: transparent;
+    color: rgba(202, 202, 202, 0.856);
+    font-size: 18px;
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    &:hover{
+        
+        color: white;
+        border: 1px dashed white;
+    }
+}
+
+.containerNavFooter{
+    color: white;
+    padding: 10px;
+    text-align:justify;
+    
+    p{
+        font-size: 14px;
+    }
+}
+
 @media only screen and (max-width: 740px){
 
     .bodyNav{

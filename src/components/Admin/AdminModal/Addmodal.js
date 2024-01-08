@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import '../../sass/admin/modalAdmin.scss'
+import '../../../sass/admin/modalAdmin.scss'
 import { useDispatch } from 'react-redux'
 
-import { addInfo } from '../../utils/redux/CRUD/actions'
+import { addInfo } from '../../../utils/redux/CRUD/actions'
 
 export const ModalAdd = () => {
   const [show, setShow] = useState(false)

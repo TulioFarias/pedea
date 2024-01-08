@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { HeaderAdmin } from './headerAdmin'
-import { NavAdmin } from './NavAdmin'
+import HeaderAdmin from './headerAdmin'
+import NavAdmin from './NavAdmin/NavAdmin'
 import AdminSystem from './system'
 
 function Admin() {

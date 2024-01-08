@@ -3,15 +3,13 @@
     height: 10vh;
     display: flex;
     align-items: center;
-    gap: 115px;
     justify-content: space-around;
+    gap:115px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-.containerDivs{
+.containerDivLeft{
     display: flex;
-    
-    
     
 }
 
@@ -45,6 +43,8 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
+    position: relative;
+    left: 212px;
 
     
 }
@@ -66,8 +66,7 @@
 }
 
 .backButton{
-    color: red;
-    border: 1px solid red;
+    color: rgb(221, 0, 0);
     border: none;
     background: transparent;
     cursor: pointer;
@@ -125,6 +124,7 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         border-radius: 10px;
         width: 180px;
+        left: -10px;
         
     
         
@@ -138,7 +138,6 @@
         p{
         position: relative;
         top: 8px;
-        left: 8px;
         width: 105px;
         text-align: center;
         font-size: 10px;
@@ -152,18 +151,17 @@
     }
     
     .backButton{
-        color: red;
-        border: 1px solid red;
-        width: 40px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        color: rgb(221, 0, 0);
+      
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 12px;
     
         &:hover{
-            color: white;
-            border: white;
-            background-color: red;
+            transform: scale(1.02);
+            opacity: 0.6;
+            
         }
     }
    }

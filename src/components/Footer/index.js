@@ -9,7 +9,7 @@ function Footer() {
     <Container fluid className=" my-div-footer">
       <p className="footer-textOne">
         {t(
-          'Dados do mapa © 2023 Governo do Estado do Ceará. Todos os direitos reservados.'
+          'Dados do mapa © 2024 Governo do Estado do Ceará. Todos os direitos reservados.'
         )}
       </p>
 

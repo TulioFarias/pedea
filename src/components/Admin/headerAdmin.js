@@ -6,7 +6,7 @@ import Search from '../../assets/icons/search.png'
 import { logoutUser } from '../../utils/redux/user/actions'
 import '../../sass/admin/headerAdmin.scss'
 
-export const HeaderAdmin = () => {
+function HeaderAdmin() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -38,7 +38,7 @@ export const HeaderAdmin = () => {
   }
   return (
     <div className="container-fluid bodyHeader">
-      <div className="containerDivs">
+      <div className="containerDivLeft">
         <input
           type="text"
           placeholder="Procurar por..."
@@ -73,3 +73,5 @@ export const HeaderAdmin = () => {
     </div>
   )
 }
+
+export default HeaderAdmin

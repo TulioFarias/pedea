@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 
-import edit from '../../assets/icons/edit.png'
-import { updateInfo } from '../../utils/redux/CRUD/actions'
+import edit from '../../../assets/icons/edit.png'
+import { updateInfo } from '../../../utils/redux/CRUD/actions'
 export const EditedModal = ({ editId }) => {
   const [show, setShow] = useState(false)
 

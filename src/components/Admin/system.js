@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import trash from '../../assets/icons/lixeira.png'
 import { removeInfo, updateInfo } from '../../utils/redux/CRUD/actions'
-import { ModalAdd } from './Addmodal'
-import { EditedModal } from './editModal'
+import { ModalAdd } from './AdminModal/Addmodal'
+import { EditedModal } from './AdminModal/editModal'
 
 function AdminSystem() {
   const infoList = useSelector(state => state.infoReducer.info)
