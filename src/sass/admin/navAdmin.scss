@@ -1,8 +1,10 @@
 .bodyNav{
     background-color: rgba(44, 64, 63, 0.726);
+    background: rgb(215,215,215);
+    background: linear-gradient(6deg, rgb(194, 194, 194) 0%, rgb(44, 64, 63) 15%);
     position: absolute;
     height: 100vh;
-    width: 14vw;
+    width: 15vw;
     z-index: 3;
     display: flex;
     align-items: center;
@@ -10,7 +12,7 @@
 
 
     img{
-        width: 250px;
+        width: 300px;
         margin-top: 50px;
         
     }
@@ -18,6 +20,7 @@
     hr{
         border: 1px dashed rgb(253, 253, 253);
         width: 100%;
+        margin-top: 9px;
     }
     
 }

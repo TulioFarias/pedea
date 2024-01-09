@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import IconLogin from '../../assets/icons/iconlogin.png'
-import '../../sass/LoginSystem/containerLogin.scss'
+
 function ContainerLogin() {
   return (
     <>

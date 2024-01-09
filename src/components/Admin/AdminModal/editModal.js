@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
 import edit from '../../../assets/icons/edit.png'
 import { updateInfo } from '../../../utils/redux/CRUD/actions'
@@ -35,10 +36,16 @@ export const EditedModal = ({ editId }) => {
     if (e) {
       e.preventDefault()
     }
-    const formDataWithId = { ...formsData, id: editId }
 
-    dispatch(updateInfo(formDataWithId))
-    handleClose()
+    try {
+      const formDataWithId = { ...formsData, id: editId }
+      await dispatch(updateInfo(formDataWithId))
+      toast.success('Informações atualizadas com sucesso!')
+
+      handleClose()
+    } catch (error) {
+      toast.error('Erro ao atualizar as informações.')
+    }
   }
 
   const EditChanges = async () => {

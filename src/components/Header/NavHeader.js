@@ -18,7 +18,7 @@ function NavOptions() {
     <div>
       <Container fluid className="ContainerNavOptions">
         <Offcanvas.Header closeButton />
-        <Offcanvas.Title className="text-center" style={{ fontSize: '30px' }}>
+        <Offcanvas.Title className="titleNav">
           {t('Explorador de Dados')}
         </Offcanvas.Title>
         <Form className=" containerForm">
@@ -196,7 +196,12 @@ function NavOptions() {
         <a>{t('Desativar camadas visíveis')}</a>
       </div>
 
-      <Button variant="outline-light" className="btnBaixarDados">
+      <Button
+        variant="outline-light"
+        href="https://pedea.sema.ce.gov.br/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage;jsessionid=8237CF805015537DA43E7554E8944E92?0"
+        target="_blank"
+        className="btnBaixarDados"
+      >
         {t('Baixar Dados')}
       </Button>
     </div>

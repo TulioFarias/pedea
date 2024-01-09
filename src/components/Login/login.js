@@ -94,10 +94,10 @@ function LoginSystem() {
         <button className="btnBack" onClick={handleBack}>
           <img src={backIcon} />
         </button>
-
         <img src={logo} />
 
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
+          <h1 className="titleLogin">Sistema de Admininstração</h1>
           <div className="custom-info">
             <Form.Label htmlFor="email" className="LabelForm">
               Email:
