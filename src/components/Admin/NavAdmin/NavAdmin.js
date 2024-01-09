@@ -25,6 +25,7 @@ function NavAdmin() {
           direitos reservados.
         </p>
       </div>
+      <hr />
     </div>
   )
 }
