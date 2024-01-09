@@ -18,19 +18,19 @@ function NavOptions() {
     <div>
       <Container fluid className="ContainerNavOptions">
         <Offcanvas.Header closeButton />
-        <Offcanvas.Title className="text-center" style={{ fontSize: '35px' }}>
+        <Offcanvas.Title className="text-center" style={{ fontSize: '30px' }}>
           {t('Explorador de Dados')}
         </Offcanvas.Title>
-        <Form className="d-flex  p-3">
+        <Form className=" containerForm">
           <Form.Control
             type="search"
-            placeholder="Digite o nome da camada..."
-            className="me-2"
+            placeholder={t('Digite o nome da camada...')}
+            className="inputForm"
             aria-label="Search"
           />
-          <Button variant="outline-light">
+          <button className="BtnForm">
             <SearchIcon />
-          </Button>
+          </button>
         </Form>
 
         <Offcanvas.Body className="containerNav">
@@ -41,7 +41,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Biodiversidade">
+                <NavDropdown title={t('Biodiversidade')}>
                   <NavDropdown.Item href="#biodiversidade1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -56,7 +56,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Educação Ambiental">
+                <NavDropdown title={t('Educação Ambiental')}>
                   <NavDropdown.Item href="#educacaoambiental1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -72,7 +72,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Energia e Telecomunicações">
+                <NavDropdown title={t('Energia e Telecomunicações')}>
                   <NavDropdown.Item href="#energiatelecomunicacoes1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -88,7 +88,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Fiscalização Ambiental">
+                <NavDropdown title={t('Fiscalização Ambiental')}>
                   <NavDropdown.Item href="#fiscalizacaoambiental1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -103,7 +103,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Hidrografia">
+                <NavDropdown title={t('Hidrografia')}>
                   <NavDropdown.Item href="#hidrografia1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -118,7 +118,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Instrumentos e Projetos Territoriais">
+                <NavDropdown title={t('Instrumentos e Projetos Territoriais')}>
                   <NavDropdown.Item href="#instrumentoseprojetosterritoriais1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -133,7 +133,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Recuperação Ambiental">
+                <NavDropdown title={t('Recuperação Ambiental')}>
                   <NavDropdown.Item href="#recuperacaoambiental1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -148,7 +148,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Saneamento Básico">
+                <NavDropdown title={t('Saneamento Básico')}>
                   <NavDropdown.Item href="#saneamentobasico1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -163,7 +163,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Sistemas de Transportes">
+                <NavDropdown title={t('Sistemas de Transportes')}>
                   <NavDropdown.Item href="#sistemasdetransportes1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -178,7 +178,7 @@ function NavOptions() {
                 <img src={folder} />
               </div>
               <div className="containerOptionsFolder">
-                <NavDropdown title="Território">
+                <NavDropdown title={t('Território')}>
                   <NavDropdown.Item href="#territorio1">
                     <img src={foldermin} /> Opção 1
                   </NavDropdown.Item>
@@ -193,11 +193,11 @@ function NavOptions() {
       </Container>
 
       <div className="desativarCamadas">
-        <a>Desativar camadas visíveis</a>
+        <a>{t('Desativar camadas visíveis')}</a>
       </div>
 
       <Button variant="outline-light" className="btnBaixarDados">
-        Baixar Dados
+        {t('Baixar Dados')}
       </Button>
     </div>
   )

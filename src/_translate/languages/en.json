@@ -5,12 +5,26 @@
         "Ouvidoria": "Ombudsman",
         "Acesso a informação": "Access to information",
         "Acessibilidade": "Accessibility",
-        "Dados do mapa © 2023 Governo do Estado do Ceará. Todos os direitos reservados.": "Map data © 2024 Government of the State of Ceará. All rights reserved.",
+        "Dados do mapa © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Map data © 2024 Government of the State of Ceará. All rights reserved.",
         "Termos e Condições de Uso": "Terms and conditions of use",
         "Aviso de Privacidade": "Privacy Notice",
         "Explorador de Dados": "Data Explorer",
         "Pesquisar": "Search",
-        "Categorias": "Categories"
+        "Categorias": "Categories",
+        "Digite o nome da camada...":"Enter layer name...",
+        "Biodiversidade": "Biodiversity",
+        "Educação Ambiental": "Environmental Education",
+        "Energia e Telecomunicações": "Energy and Telecommunications",
+        "Fiscalização Ambiental": "Environmental Inspection",
+        "Hidrografia": "Hydrography",
+        "Instrumentos e Projetos Territoriais": "Territorial Instruments and Projects",
+        "Recuperação Ambiental": "Environmental Recovery",
+        "Saneamento Básico": "Basic Sanitation",
+        "Sistemas de Transportes": "Transportation Systems",
+        "Território": "Territory",
+        "Desativar camadas visíveis": "Disable visible layers",
+        "Baixar Dados":"Download Data"
+        
         
 
     }

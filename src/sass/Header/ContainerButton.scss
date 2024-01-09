@@ -23,6 +23,29 @@
   border-left: 2px solid rgb(136, 231, 136)!important;
   
 }
+.containerForm{
+  display: flex;
+  padding: 17px;
+
+}
+
+.inputForm{
+  border-right: none;
+}
+
+.BtnForm{
+  position: relative;
+  border: none;
+  background-color: transparent;
+  right: 39px;
+  border-radius: 50%;
+
+
+ &:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 0.5s all ease-in-out;
+ }
+}
 
 .div-footer-toogler{
     display: flex;
@@ -108,7 +131,9 @@
 }
 
 .btnBaixarDados{
-  margin: 45px 0px 0px 25px;
+  position: relative;
+  top: 45px;
+  left: 25px;
 }
 
 
