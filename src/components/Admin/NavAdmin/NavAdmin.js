@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import '../../../sass/admin/navAdmin.scss'
 import PEDEA from '../../../assets/img/pedea-logo.png'
 import ButtonSystem from './NavButtonsSystem'
 
 function NavAdmin() {
+  const [showNav, setShowNav] = useState(false)
+
+  const toggleNav = () => {
+    setShowNav(!showNav)
+  }
   return (
     <div className="bodyNav">
       <div className="divImg">

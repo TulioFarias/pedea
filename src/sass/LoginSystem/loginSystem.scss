@@ -40,30 +40,40 @@
     background-color: #e4e4e423;
     box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
     width: 30%;
-    height: 40%;
+    height: 50%;
     padding: 20px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    hr{
+        width: 107%;
+        border: 1px dashed white;
+        margin-bottom: 20px;
+    }
 }
 
 .custom-info{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    gap: 5px;
 }
 
 .titleLogin{
     font-size: 40px;
     font-weight: 500;
-    border: 1px solid red;
+    color: white;
+    margin-bottom: 10px;
+    
 }
 
 .LabelForm{
     font-size: 18px;
-    color: white
+    color: white;
+    margin-bottom: 6px;
     
 }
 
@@ -85,12 +95,13 @@
 
 .Btn-Form{
     margin-top: 20px;
+    margin-bottom: 10px;
     background-color: transparent;
     border: 1px solid white;
     font-size: 20px;
     border-radius: 5px;
-    width: 96px;
-    height: 40px;
+    width: 120px;
+    height: 45px;
     outline: none;
     color: white;
     &:hover{
