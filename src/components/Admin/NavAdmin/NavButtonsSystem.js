@@ -13,8 +13,15 @@ function ButtonSystem() {
       <button className="NavBtns">
         <PublicIcon /> Geoserver
       </button>
-      <button className="NavBtns">Option</button>
-      <button className="NavBtns">Option</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
+      <button className="NavBtns">Options</button>
     </div>
   )
 }
