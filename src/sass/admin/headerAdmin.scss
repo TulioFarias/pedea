@@ -4,13 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 50px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .containerDivLeft{
     display: flex;
+    position: relative;
+    right: 50px;
     
+}
+
+.OpenNavBarWithToogle{
+
+    display: none;
 }
 
 .inputSearch{
@@ -35,33 +41,45 @@
     }
 }
 
-.customDivRight{
+.containerButtonsHeader{
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 100px;
+    gap: 8px;
+    position: relative;
+    left: 55px;
+
+    button{
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        color: rgb(122, 122, 122);
+        background-color: transparent;
+
+        &:hover{
+            background-color: rgba(122, 122, 122, 0.295);
+            transition: 0.5s all ease-in-out;
+        }
+    }
+}
+
+.customDivRight{
     gap: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
-    position: relative;
-    left: 250px;
 
     
 }
 
 .containerUser{
-   
-
     p{
         width: 190px;
         text-align: center;
         font-size: 16px;
         font-weight: 600;
-        
-       
-    }
-    
-    
+    }   
     
 }
 
@@ -85,7 +103,34 @@
         background-color: rgb(245, 245, 245);
         height: 10vh;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-        gap: 1px;
+        justify-content: start;
+    }
+
+    .OpenNavBarWithToogle{
+        display: flex;
+        position: absolute;
+        padding: 5px;
+        top: 100px;
+        left: 5px;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(44, 64, 63, 0.726);
+        color: rgb(255, 255, 255);;
+
+        &:hover{
+            background-color: rgba(44, 64, 63, 0.726);
+            transition: 0.5s all ease-in-out;
+        }
+    }
+
+    .containerDivLeft{
+        display: flex;
+        position: relative;
+        right: 0;
+        
     }
     
     .containerDivs{
@@ -116,15 +161,35 @@
             border: 1px solid white;
         }
     }
+
+    .containerButtonsHeader{
+        display: flex;
+        align-items: center;
+        width: 100px;
+        gap: 0px;
+        position: relative;
+        left: 0;
+        gap: 1px;
+    
+        button{
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            color: rgb(122, 122, 122);
+            background-color: transparent;
+    
+            &:hover{
+                background-color: rgba(122, 122, 122, 0.295);
+                transition: 0.5s all ease-in-out;
+            }
+        }
+    }
     
     .customDivRight{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         border-radius: 10px;
         width: 180px;
-        left: -10px;
         
     
         

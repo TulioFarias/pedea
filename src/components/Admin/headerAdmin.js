@@ -1,9 +1,13 @@
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded'
+import CircleNotificationsOutlinedIcon from '@mui/icons-material/CircleNotificationsOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import Search from '../../assets/icons/search.png'
 import { logoutUser } from '../../utils/redux/user/actions'
+
 import '../../sass/admin/headerAdmin.scss'
 
 function HeaderAdmin() {
@@ -38,6 +42,9 @@ function HeaderAdmin() {
   }
   return (
     <div className="container-fluid bodyHeader">
+      <button className="OpenNavBarWithToogle">
+        <ChevronRightRoundedIcon />
+      </button>
       <div className="containerDivLeft">
         <input
           type="text"
@@ -57,18 +64,27 @@ function HeaderAdmin() {
         </div>
       </div>
 
-      <div className="d-flex justify-content-end align-items-center customDivRight">
-        <div className="containerUser">
-          <p className="user">
-            {userEmail
-              ? `Seja bem vindo(a), ${userEmail}!`
-              : 'Seja bem vindo(a).'}{' '}
-          </p>
-        </div>
+      <div className="containerButtonsHeader">
+        <button>
+          <CircleNotificationsOutlinedIcon />
+        </button>
+        <button>
+          <DarkModeOutlinedIcon />
+        </button>
 
-        <a className=" backButton" onClick={voltar}>
-          Sair
-        </a>
+        <div className="d-flex justify-content-end align-items-center customDivRight">
+          <div className="containerUser">
+            <p className="user">
+              {userEmail
+                ? `Seja bem vindo(a), ${userEmail}!`
+                : 'Seja bem vindo(a).'}{' '}
+            </p>
+          </div>
+
+          <a className=" backButton" onClick={voltar}>
+            Sair
+          </a>
+        </div>
       </div>
     </div>
   )
