@@ -14,17 +14,19 @@ function Footer() {
       </p>
 
       <a
-        href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://pedea.sema.ce.gov.br/portal/termos_e_condicoes_de_uso_pedea.pdf"
+        href="https://pedea.sema.ce.gov.br/portal/termos_e_condicoes_de_uso_pedea.pdf"
         target="_blank"
         className="footer-textTwo"
+        rel="noreferrer"
       >
         {t('Termos e Condições de Uso')}
       </a>
 
       <a
-        href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://pedea.sema.ce.gov.br/portal/aviso_privacidade_pedea.pdf"
+        href="https://pedea.sema.ce.gov.br/portal/aviso_privacidade_pedea.pdf"
         target="_blank"
         className="footer-textTwo"
+        rel="noreferrer"
       >
         {t('Aviso de Privacidade')}
       </a>

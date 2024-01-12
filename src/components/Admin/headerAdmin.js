@@ -1,6 +1,6 @@
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded'
-import CircleNotificationsOutlinedIcon from '@mui/icons-material/CircleNotificationsOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -66,7 +66,7 @@ function HeaderAdmin() {
 
       <div className="containerButtonsHeader">
         <button>
-          <CircleNotificationsOutlinedIcon />
+          <NotificationsNoneRoundedIcon />
         </button>
         <button>
           <DarkModeOutlinedIcon />

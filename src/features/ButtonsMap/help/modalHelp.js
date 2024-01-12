@@ -93,8 +93,24 @@ const ModalHelp = ({ show, setShow }) => {
             </Button>
           </div>
           <p>
-            Leia nossos <a className="linksText">Termos e Condições de Uso</a> e{' '}
-            <a className="linksText">Aviso de Privacidade.</a>
+            Leia nossos{' '}
+            <a
+              className="linksText"
+              href="https://pedea.sema.ce.gov.br/portal/termos_e_condicoes_de_uso_pedea.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Termos e Condições de Uso
+            </a>{' '}
+            e{' '}
+            <a
+              className="linksText"
+              href="https://pedea.sema.ce.gov.br/portal/aviso_privacidade_pedea.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Aviso de Privacidade.
+            </a>
           </p>
         </Modal.Body>
 
