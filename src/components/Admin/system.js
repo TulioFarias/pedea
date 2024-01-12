@@ -8,18 +8,25 @@ import trash from '../../assets/icons/lixeira.png'
 import { removeInfo, updateInfo } from '../../utils/redux/CRUD/actions'
 import { ModalAdd } from './AdminModal/Addmodal'
 import { EditedModal } from './AdminModal/editModal'
+import ConfirmDeleteModal from './deleteModal'
 
 function AdminSystem() {
   const infoList = useSelector(state => state.infoReducer.info)
   const dispatch = useDispatch()
   const [selectedId, setSelectedId] = useState(null)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
 
   useEffect(() => {
     localStorage.setItem('infoList', JSON.stringify(infoList))
   }, [infoList])
 
   const handleRemove = id => {
-    dispatch(removeInfo(id))
+    setSelectedId(id)
+    setShowDeleteModal(true)
+  }
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false)
   }
 
   const handleEdit = id => {
@@ -73,6 +80,11 @@ function AdminSystem() {
           </div>
         </div>
       </div>
+      <ConfirmDeleteModal
+        show={showDeleteModal}
+        handleClose={() => setShowDeleteModal(false)}
+        selectedId={selectedId}
+      />
     </>
   )
 }
