@@ -94,16 +94,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 
 
     &:hover{
         
         color: white;
         border: 1px dashed white;
-    }
-
-    &:active{
-        background-color: blue;
+        border-radius: 50px 50px 50px 50px / 25px 100px 100px 25px;
     }
 
    
