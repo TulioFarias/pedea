@@ -1,27 +1,24 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
-import PublicIcon from '@mui/icons-material/Public'
 import React from 'react'
+import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import '../../../sass/admin/navAdmin.scss'
+import { useTranslation } from 'react-i18next'
 
 function ButtonSystem() {
+  const { t } = useTranslation()
+
   return (
     <div className="ContainerButtonsSystem">
-      <button className="NavBtns">
-        <HomeRoundedIcon />
-        Home
-      </button>
-      <button className="NavBtns">
-        <PublicIcon /> Geoserver
-      </button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
-      <button className="NavBtns">Options</button>
+      <div className="titleText">
+        <p>Menu de navegação</p>
+      </div>
+      <div className="containerButtons">
+        <button className="NavBtns">Option 1</button>
+        <button className="NavBtns">Option 2</button>
+        <button className="NavBtns">Option 3</button>
+        <button className="NavBtns">Option 4</button>
+      </div>
     </div>
   )
 }

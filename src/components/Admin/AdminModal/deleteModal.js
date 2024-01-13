@@ -3,7 +3,7 @@ import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 
-import { removeInfo } from '../../utils/redux/CRUD/actions'
+import { removeInfo } from '../../../utils/redux/CRUD/actions'
 
 function ConfirmDeleteModal({ show, handleClose, selectedId }) {
   const id = selectedId

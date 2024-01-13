@@ -5,10 +5,10 @@ import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
 import trash from '../../assets/icons/lixeira.png'
-import { removeInfo, updateInfo } from '../../utils/redux/CRUD/actions'
+import { updateInfo } from '../../utils/redux/CRUD/actions'
 import { ModalAdd } from './AdminModal/Addmodal'
+import ConfirmDeleteModal from './AdminModal/deleteModal'
 import { EditedModal } from './AdminModal/editModal'
-import ConfirmDeleteModal from './deleteModal'
 
 function AdminSystem() {
   const infoList = useSelector(state => state.infoReducer.info)
