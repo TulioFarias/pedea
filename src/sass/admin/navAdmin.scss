@@ -77,33 +77,31 @@
 .containerButtons{
     display: flex;
     flex-direction: column;
-    height: max-content;
-    width: 14vw;
-    gap: 15px;
+    border: 1px solid;
+    margin-left: 20px;
+    width: 100%;
 
 }
 
-
-.NavBtns{
-    border: 1px solid rgba(202, 202, 202, 0.856);
-    background: transparent;
-    color: rgba(202, 202, 202, 0.856);
-    font-size: 18px;
-    padding: 2px;
-    border-radius: 5px;
+.NavOptionsLinks{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-left: 10px;
+    gap: 20px;
+    margin-left: 20px;
+    width: 100%;
+    border-bottom: none;
+}
 
+.nav-link{
+    display: flex;
+    color: rgba(202, 202, 202, 0.856);
+    gap: 10px;
 
     &:hover{
-        
         color: white;
-        border: 1px dashed white;
-        border-radius: 50px 50px 50px 50px / 25px 100px 100px 25px;
+        background-color: rgba(202, 202, 202, 0.856);
     }
-
    
 }
 
@@ -134,4 +132,3 @@
         display: none;
     }
    }
-    

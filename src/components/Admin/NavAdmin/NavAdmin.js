@@ -1,4 +1,5 @@
 import { Tooltip } from '@mui/material'
+import PropTypes from 'prop-types'
 import React from 'react'
 import Flag from 'react-flagkit'
 import { useTranslation } from 'react-i18next'
@@ -7,12 +8,13 @@ import '../../../sass/admin/navAdmin.scss'
 import PEDEA from '../../../assets/img/pedea-logo.png'
 import ButtonSystem from './NavButtonsSystem'
 
-function NavAdmin() {
+function NavAdmin({ handleOptionChange }) {
   const { t, i18n } = useTranslation()
 
   const handleLanguageChange = value => {
     i18n.changeLanguage(value)
   }
+
   return (
     <div className="bodyNav">
       <div className="containerDivsLanguage">
@@ -49,7 +51,7 @@ function NavAdmin() {
       </div>
 
       <hr />
-      <ButtonSystem />
+      <ButtonSystem handleOptionChange={handleOptionChange} />
 
       <hr />
       <div className="containerNavFooter">
@@ -61,6 +63,10 @@ function NavAdmin() {
       <hr />
     </div>
   )
+}
+
+NavAdmin.propTypes = {
+  handleOptionChange: PropTypes.func.isRequired
 }
 
 export default NavAdmin

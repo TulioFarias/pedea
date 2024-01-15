@@ -54,7 +54,7 @@ function AdminSystem() {
               </thead>
               <tbody>
                 {infoList.map(info => (
-                  <tr key={info.ids}>
+                  <tr key={info.id}>
                     <td>{info.id}</td>
                     <td>{info.name}</td>
                     <td>{info.email}</td>

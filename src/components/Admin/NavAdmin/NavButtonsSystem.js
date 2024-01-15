@@ -1,26 +1,47 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
+import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
+import PropTypes from 'prop-types'
 import React from 'react'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+
 import '../../../sass/admin/navAdmin.scss'
-import { useTranslation } from 'react-i18next'
 
-function ButtonSystem() {
-  const { t } = useTranslation()
-
+function ButtonSystem({ handleOptionChange }) {
+  const handleButtonClick = option => {
+    handleOptionChange(option)
+  }
   return (
     <div className="ContainerButtonsSystem">
       <div className="titleText">
         <p>Menu de navegação</p>
       </div>
-      <div className="containerButtons">
-        <button className="NavBtns">Option 1</button>
-        <button className="NavBtns">Option 2</button>
-        <button className="NavBtns">Option 3</button>
-        <button className="NavBtns">Option 4</button>
+
+      <div className="containerLinks">
+        <Nav variant="tabs" defaultActiveKey="" className="NavOptionsLinks">
+          <Nav.Item className="OptionsItems">
+            <Nav.Link href="/admin" onClick={() => handleButtonClick('Home')}>
+              <HomeRoundedIcon />
+              Home
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              eventKey="link-1"
+              onClick={() => handleButtonClick('Geoserver')}
+              href="/admin/geoserver"
+            >
+              <PublicRoundedIcon />
+              Geoserver
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
       </div>
     </div>
   )
+}
+
+ButtonSystem.propTypes = {
+  handleOptionChange: PropTypes.func.isRequired
 }
 
 export default ButtonSystem

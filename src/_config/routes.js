@@ -19,6 +19,10 @@ function NewRoutes() {
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/cadastro" />
             <Route element={<Private Admin={<Admin />} />} path="/admin" />
+            <Route
+              element={<Private Admin={<Admin />} />}
+              path="/admin/geoserver"
+            />
           </Routes>
         </Fragment>
       </Router>
