@@ -2,15 +2,29 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import InfoIcon from '@mui/icons-material/Info'
 import SquareFootIcon from '@mui/icons-material/SquareFoot'
 import StraightenIcon from '@mui/icons-material/Straighten'
-import React from 'react'
+import { saveAs } from 'file-saver'
+import html2canvas from 'html2canvas'
+import React, { useRef } from 'react'
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 
+import { vector } from '../../_config/layers/index'
 import '../../sass/Header/ContainerButton.scss'
 import PEDEA from '../../assets/img/pedea-logo.png'
 import NavOptions from './NavHeader'
 
 function HeaderActions() {
+  const modalRef = useRef(null)
+  const handlePrintAndDownload = () => {
+    console.log('ta clicando')
+    html2canvas(modalRef.current).then(canvas => {
+      // Convertendo o canvas para uma imagem em formato PNG
+      canvas.toBlob(blob => {
+        // Salvando a imagem como arquivo PNG usando FileSaver.js
+        saveAs(blob, 'screenshot.png')
+      })
+    })
+  }
   return (
     <div>
       <Navbar
@@ -27,7 +41,10 @@ function HeaderActions() {
             <button className="btn btn-outline-light btns-header">
               <InfoIcon className="btns-icon" />
             </button>
-            <button className="btn btn-outline-light btns-header">
+            <button
+              className="btn btn-outline-light btns-header"
+              onClick={handlePrintAndDownload}
+            >
               <CameraAltIcon className="btns-icon" />
             </button>
             <button className="btn btn-outline-light btns-header">

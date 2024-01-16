@@ -1,15 +1,19 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav'
 
 import '../../../sass/admin/navAdmin.scss'
 
 function ButtonSystem({ handleOptionChange }) {
+  const [activeButton, setActiveButton] = useState('Home')
   const handleButtonClick = option => {
     handleOptionChange(option)
+    setActiveButton(option)
   }
+
+  console.log(activeButton)
   return (
     <div className="ContainerButtonsSystem">
       <div className="titleText">
@@ -19,7 +23,16 @@ function ButtonSystem({ handleOptionChange }) {
       <div className="containerLinks">
         <Nav variant="tabs" defaultActiveKey="" className="NavOptionsLinks">
           <Nav.Item className="OptionsItems">
-            <Nav.Link href="/admin" onClick={() => handleButtonClick('Home')}>
+            <Nav.Link
+              href="/admin"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Home')
+              }}
+              className={
+                activeButton === 'Home' ? 'nav-link active' : 'nav-link'
+              }
+            >
               <HomeRoundedIcon />
               Home
             </Nav.Link>
@@ -27,8 +40,14 @@ function ButtonSystem({ handleOptionChange }) {
           <Nav.Item>
             <Nav.Link
               eventKey="link-1"
-              onClick={() => handleButtonClick('Geoserver')}
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Geoserver')
+              }}
               href="/admin/geoserver"
+              className={
+                activeButton === 'Geoserver' ? 'nav-link active' : 'nav-link'
+              }
             >
               <PublicRoundedIcon />
               Geoserver

@@ -3,11 +3,14 @@ import '../../sass/admin/geoserver.scss'
 function Geoserver() {
   return (
     <>
-      <div className="containerWrapper">
-        <p>info</p>
-        <p>info</p>
-        <p>info</p>
-        <p>info</p>
+      <div className="containerAll">
+        <div className="containerGeoserver">
+          <h2>Sistema Geoserver</h2>
+          <p>info</p>
+          <p>info</p>
+          <p>info</p>
+          <p>info</p>
+        </div>
       </div>
     </>
   )

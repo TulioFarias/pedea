@@ -6,6 +6,7 @@ import ChangeMap from './ChangeMap/ChangeMap'
 import FindMe from './FindMe'
 import GridLayer from './gridLayer'
 import Help from './help/help'
+import ImportData from './ImportData/importData'
 import LocaleAdress from './LocateAdress/LocateAdress'
 import ResetZoom from './ResetZoom'
 import ZoomInOut from './ZoomInOut'
@@ -25,6 +26,8 @@ function ButtonsMap() {
         <FindMe />
 
         <LocaleAdress />
+
+        <ImportData />
 
         <Help />
       </div>

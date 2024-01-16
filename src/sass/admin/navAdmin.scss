@@ -102,7 +102,13 @@
         color: white;
         background-color: rgba(202, 202, 202, 0.856);
     }
+
    
+   
+}
+.nav-link.active{
+    color: white!important;
+    background-color: rgba(202, 202, 202, 0.856)!important;
 }
 
 .containerNavFooter{
