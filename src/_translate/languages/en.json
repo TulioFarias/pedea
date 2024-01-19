@@ -23,7 +23,17 @@
         "Sistemas de Transportes": "Transportation Systems",
         "Território": "Territory",
         "Desativar camadas visíveis": "Disable visible layers",
-        "Baixar Dados":"Download Data"
+        "Baixar Dados":"Download Data",
+
+        "Procurar por...": "Search for...",
+        "Seja bem vindo(a),": "Welcome,",
+        "Sair": "Logout",
+        "Sistema de Navegação": "Navigation System",
+        "Home": "Home",
+        "Geoserver": "Geoserver",
+        "Configurações": "Settings",
+        "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "System Information © 2024 Government of the State of Ceará. All rights reserved."
+      
         
         
 

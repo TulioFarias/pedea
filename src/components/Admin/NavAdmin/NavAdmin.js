@@ -56,8 +56,9 @@ function NavAdmin({ handleOptionChange }) {
       <hr />
       <div className="containerNavFooter">
         <p>
-          Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os
-          direitos reservados.
+          {t(
+            'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.'
+          )}
         </p>
       </div>
       <hr />

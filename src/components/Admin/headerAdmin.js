@@ -2,15 +2,16 @@ import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import Search from '../../assets/icons/search.png'
 import { logoutUser } from '../../utils/redux/user/actions'
-
 import '../../sass/admin/headerAdmin.scss'
 
 function HeaderAdmin() {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -48,7 +49,7 @@ function HeaderAdmin() {
       <div className="containerDivLeft">
         <input
           type="text"
-          placeholder="Procurar por..."
+          placeholder={t('Procurar por...')}
           className="form-control inputSearch"
           aria-label="Procurar por..."
           aria-describedby="basic-addon2"
@@ -76,8 +77,8 @@ function HeaderAdmin() {
           <div className="containerUser">
             <p className="user">
               {userEmail
-                ? `Seja bem vindo(a), ${userEmail}!`
-                : 'Seja bem vindo(a).'}{' '}
+                ? `${t('Seja bem vindo(a),')} ${userEmail}!`
+                : `${t('Seja bem vindo(a).')}`}
             </p>
           </div>
 

@@ -1,7 +1,7 @@
 {
     "translation": {
         
-         
+
             "Portal do Governo": "Portal do Governo",
             "Ceará Transparente": "Ceará Transparente",
             "Ouvidoria": "Ouvidoria",
@@ -24,9 +24,17 @@
             "Saneamento Básico": "Saneamento Básico",
             "Sistemas de Transportes": "Sistemas de Transportes",
             "Território": "Território",
-            "Baixar Dados":"Baixar Dados"
+            "Baixar Dados":"Baixar Dados",
+            "Procurar por...": "Procurar por...",
+            "Seja bem vindo(a),": "Seja bem vindo(a),",
+            "Sair": "Sair",
 
-       
+            "Sistema de Navegação": "Sistema de Navegação",
+            "Home": "Inicio",
+            "Geoserver": "Geoserver",
+            "Configurações": "Configurações",
+            "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados."
+
         
     }
 }

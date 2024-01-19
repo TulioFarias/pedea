@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../../../sass/admin/navAdmin.scss'
-
+import { useTranslation } from 'react-i18next'
 function ButtonSystem({ handleOptionChange }) {
+  const { t } = useTranslation()
   const [activeButton, setActiveButton] = useState('Home')
   const handleButtonClick = option => {
     handleOptionChange(option)
     setActiveButton(option)
   }
 
-  console.log(activeButton)
   return (
     <div className="ContainerButtonsSystem">
       <div className="titleText">
@@ -34,7 +34,7 @@ function ButtonSystem({ handleOptionChange }) {
               }
             >
               <HomeRoundedIcon />
-              Home
+              {t('Home')}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -157,7 +157,7 @@ function ButtonSystem({ handleOptionChange }) {
               }
             >
               <SettingsRoundedIcon />
-              Configurações
+              {t('Configurações')}
             </Nav.Link>
           </Nav.Item>
         </Nav>

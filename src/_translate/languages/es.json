@@ -24,8 +24,17 @@
         "Sistemas de Transportes": "Sistemas de Transporte",
         "Território": "Territorio",
         "Desativar camadas visíveis": "Deshabilitar capas visibles",
-        "Baixar Dados":"Descargar datos"
-
+        "Baixar Dados":"Descargar datos",
+        "Procurar por...": "Buscar por...",
+        "Seja bem vindo(a),": "Bienvenido(a),",
+        "Sair": "Salir",
+        
+        "Sistema de Navegação": "Sistema de Navegación",
+        "Home": "Inicio",
+        "Geoserver": "Geoserver",
+        "Configurações": "Configuración",
+        "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Información del Sistema © 2024 Gobierno del Estado de Ceará. Todos los derechos reservados."
+  
 
 
     }
