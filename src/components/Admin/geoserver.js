@@ -6,10 +6,13 @@ function Geoserver() {
       <div className="containerAll">
         <div className="containerGeoserver">
           <h2>Sistema Geoserver</h2>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
-          <p>info</p>
+          <div>
+            <p>Label com info</p>
+            <p>info</p>
+            <p>info</p>
+            <p>info</p>
+            <p>info</p>
+          </div>
         </div>
       </div>
     </>

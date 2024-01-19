@@ -17,7 +17,7 @@ function ButtonSystem({ handleOptionChange }) {
   return (
     <div className="ContainerButtonsSystem">
       <div className="titleText">
-        <p>Menu de navegação</p>
+        <p>{t('Menu de navegação')}</p>
       </div>
 
       <div className="containerLinks">

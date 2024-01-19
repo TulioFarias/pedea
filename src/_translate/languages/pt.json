@@ -29,11 +29,14 @@
             "Seja bem vindo(a),": "Seja bem vindo(a),",
             "Sair": "Sair",
 
-            "Sistema de Navegação": "Sistema de Navegação",
-            "Home": "Inicio",
+            "Menu de navegação": "Menu de navegação",
+            "Home": "Início",
             "Geoserver": "Geoserver",
             "Configurações": "Configurações",
-            "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados."
+            "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.",
+
+
+            "Lista de Informações": "Lista de Informações"
 
         
     }

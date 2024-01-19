@@ -2,6 +2,7 @@ import '../../sass/admin/admin.scss'
 
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
 import trash from '../../assets/icons/lixeira.png'
@@ -9,8 +10,8 @@ import { updateInfo } from '../../utils/redux/CRUD/actions'
 import { ModalAdd } from './AdminModal/Addmodal'
 import ConfirmDeleteModal from './AdminModal/deleteModal'
 import { EditedModal } from './AdminModal/editModal'
-
 function AdminSystem() {
+  const { t } = useTranslation()
   const infoList = useSelector(state => state.infoReducer.info)
   const dispatch = useDispatch()
   const [selectedId, setSelectedId] = useState(null)
@@ -39,7 +40,7 @@ function AdminSystem() {
       <div className="containerAdmin">
         <div className="containerWrapper">
           <div className="table-responsive">
-            <h2>Lista de Informações</h2>
+            <h2>{t('Lista de Informações')}</h2>
             <ModalAdd />
             <Table striped bordered hover>
               <thead>

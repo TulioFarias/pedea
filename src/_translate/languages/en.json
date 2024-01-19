@@ -28,11 +28,13 @@
         "Procurar por...": "Search for...",
         "Seja bem vindo(a),": "Welcome,",
         "Sair": "Logout",
-        "Sistema de Navegação": "Navigation System",
+        "Menu de navegação": "Navigation menu",
         "Home": "Home",
         "Geoserver": "Geoserver",
         "Configurações": "Settings",
-        "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "System Information © 2024 Government of the State of Ceará. All rights reserved."
+        "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "System Information © 2024 Government of the State of Ceará. All rights reserved.",
+
+        "Lista de Informações": "Information List"
       
         
         
