@@ -1,7 +1,7 @@
 import Graticule from 'ol/layer/Graticule'
 import Stroke from 'ol/style/Stroke'
 
-import { LayerFolderHelper } from '../helpers'
+import { LayerFolderHelper } from './helpers'
 
 const latFormatter = e => {
   return e.toFixed(4)

@@ -1,9 +1,9 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav'
-
 import '../../../sass/admin/navAdmin.scss'
 
 function ButtonSystem({ handleOptionChange }) {
@@ -44,13 +44,120 @@ function ButtonSystem({ handleOptionChange }) {
                 e.preventDefault()
                 handleButtonClick('Geoserver')
               }}
-              href="/admin/geoserver"
               className={
                 activeButton === 'Geoserver' ? 'nav-link active' : 'nav-link'
               }
             >
               <PublicRoundedIcon />
               Geoserver
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-2"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link2')
+              }}
+              className={
+                activeButton === 'Link2' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 2
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-3"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link3')
+              }}
+              className={
+                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 3
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-3"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link3')
+              }}
+              className={
+                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 4
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-3"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link3')
+              }}
+              className={
+                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 5
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-3"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link3')
+              }}
+              className={
+                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 6
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/link-3"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Link3')
+              }}
+              className={
+                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+              }
+            >
+              Link 7
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link
+              href="/configurações"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Configurações')
+              }}
+              className={
+                activeButton === 'Configurações'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+            >
+              <SettingsRoundedIcon />
+              Configurações
             </Nav.Link>
           </Nav.Item>
         </Nav>

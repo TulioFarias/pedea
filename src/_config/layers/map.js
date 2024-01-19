@@ -3,7 +3,7 @@ import Map from 'ol/Map.js'
 import OSM from 'ol/source/OSM.js'
 import View from 'ol/View.js'
 
-import { newLayers, explorer } from './index'
+import { explorer } from './index'
 
 const projection = 'EPSG:4326'
 const center = [-39.6956, -4.7907]

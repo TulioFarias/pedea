@@ -1,4 +1,4 @@
-import { ServerTypeHelper, LayerFolderHelper } from '../helpers'
+import { ServerTypeHelper, LayerFolderHelper } from './helpers'
 
 const googleLayers = [
   {

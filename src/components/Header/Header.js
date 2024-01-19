@@ -16,11 +16,8 @@ import NavOptions from './NavHeader'
 function HeaderActions() {
   const modalRef = useRef(null)
   const handlePrintAndDownload = () => {
-    console.log('ta clicando')
     html2canvas(modalRef.current).then(canvas => {
-      // Convertendo o canvas para uma imagem em formato PNG
       canvas.toBlob(blob => {
-        // Salvando a imagem como arquivo PNG usando FileSaver.js
         saveAs(blob, 'screenshot.png')
       })
     })

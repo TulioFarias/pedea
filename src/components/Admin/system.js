@@ -38,10 +38,9 @@ function AdminSystem() {
     <>
       <div className="containerAdmin">
         <div className="containerWrapper">
-          <ModalAdd />
-
           <div className="table-responsive">
             <h2>Lista de Informações</h2>
+            <ModalAdd />
             <Table striped bordered hover>
               <thead>
                 <tr>
