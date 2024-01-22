@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Geoserver from './geoserver'
 import HeaderAdmin from './headerAdmin'
 import NavAdmin from './NavAdmin/NavAdmin'
+import SettingsAdmin from './settings'
 import AdminSystem from './system'
 import '../../sass/admin/admin.scss'
 
@@ -19,6 +20,7 @@ function Admin() {
       <HeaderAdmin />
       {selectedOption === 'Home' && <AdminSystem />}
       {selectedOption === 'Geoserver' && <Geoserver />}
+      {selectedOption === 'Configurações' && <SettingsAdmin />}
     </div>
   )
 }

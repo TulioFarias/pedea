@@ -85,13 +85,13 @@ function ButtonSystem({ handleOptionChange }) {
 
           <Nav.Item>
             <Nav.Link
-              href="/link-3"
+              href="/link-4"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link3')
+                handleButtonClick('Link4')
               }}
               className={
-                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Link4' ? 'nav-link active' : 'nav-link'
               }
             >
               Link 4
@@ -100,13 +100,13 @@ function ButtonSystem({ handleOptionChange }) {
 
           <Nav.Item>
             <Nav.Link
-              href="/link-3"
+              href="/link-5"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link3')
+                handleButtonClick('Link5')
               }}
               className={
-                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Link5' ? 'nav-link active' : 'nav-link'
               }
             >
               Link 5
@@ -115,13 +115,13 @@ function ButtonSystem({ handleOptionChange }) {
 
           <Nav.Item>
             <Nav.Link
-              href="/link-3"
+              href="/link-6"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link3')
+                handleButtonClick('Link6')
               }}
               className={
-                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Link6' ? 'nav-link active' : 'nav-link'
               }
             >
               Link 6
@@ -130,13 +130,13 @@ function ButtonSystem({ handleOptionChange }) {
 
           <Nav.Item>
             <Nav.Link
-              href="/link-3"
+              href="/link-7"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link3')
+                handleButtonClick('Link7')
               }}
               className={
-                activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Link7' ? 'nav-link active' : 'nav-link'
               }
             >
               Link 7
@@ -145,7 +145,7 @@ function ButtonSystem({ handleOptionChange }) {
 
           <Nav.Item>
             <Nav.Link
-              href="/configurações"
+              href="/Configurações"
               onClick={e => {
                 e.preventDefault()
                 handleButtonClick('Configurações')

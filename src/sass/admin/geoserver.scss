@@ -25,3 +25,25 @@ h2{
     text-align: center;
     font-weight: bold;
 }
+
+.containerInfo{
+    background-color: #d3d3d3be;
+    border-radius: 10px;
+    width: 30%;
+    height: 40%;
+    display: flex;
+    padding-left: 50px;
+   
+
+
+}
+
+.customContainerForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.buttonSubmit{
+    margin-top: 20px;
+}
