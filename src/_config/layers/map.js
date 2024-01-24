@@ -10,6 +10,7 @@ const center = [-39.6956, -4.7907]
 const zoom = 7
 
 const mapInstance = new Map({
+  target: 'map',
   layers: [new TileLayer({ source: new OSM() })],
   view: new View({
     projection,
