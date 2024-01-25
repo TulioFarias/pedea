@@ -9,11 +9,36 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import { useTranslation } from 'react-i18next'
 
 import '../../sass/Header/ContainerButton.scss'
+import { ServerTypeHelper } from '../../_config/layers/helpers'
+import { mapInstance } from '../../_config/layers/map'
 import folder from '../../assets/icons/folder.png'
 import foldermin from '../../assets/icons/foldermin.png'
 
 function NavOptions() {
   const { t } = useTranslation()
+
+  const deactivateLayers = () => {
+    const layers = mapInstance.getLayers().getArray()
+
+    for (let i = 0; i < layers.length; i++) {
+      const layer = layers[i]
+
+      if (
+        layer.getVisible() &&
+        layer.get('serverType') === ServerTypeHelper.GEOSERVER
+      ) {
+        layer.setVisible(false)
+
+        const checkbox = document.getElementById('layer' + i)
+
+        if (checkbox) {
+          checkbox.checked = false
+        }
+      }
+    }
+
+    return false
+  }
   return (
     <div>
       <Container fluid className="ContainerNavOptions">
@@ -193,7 +218,7 @@ function NavOptions() {
       </Container>
 
       <div className="desativarCamadas">
-        <a>{t('Desativar camadas visíveis')}</a>
+        <a onClick={deactivateLayers}>{t('Desativar camadas visíveis')}</a>
       </div>
 
       <Button
