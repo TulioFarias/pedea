@@ -1,5 +1,5 @@
-import zcmData from '../../_assets/data/zcm'
-import geoCSVReader from '../../_assets/js/geoCSVReader'
+import zcmData from '../../assets/data/zmc'
+import geoCSVReader from '../../assets/js/geoCSVReader'
 import { ServerTypeHelper } from './helpers'
 
 const geoWorkspace = 'zcm'

@@ -1,6 +1,6 @@
-import { LayerFolderHelper } from '../helpers'
 import esriLayers from './esri'
 import googleLayers from './google'
+import { LayerFolderHelper } from './helpers'
 import osmLayers from './osm'
 
 const baseTree = [

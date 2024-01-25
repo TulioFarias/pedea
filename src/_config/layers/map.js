@@ -3,7 +3,7 @@ import Map from 'ol/Map.js'
 import OSM from 'ol/source/OSM.js'
 import View from 'ol/View.js'
 
-import { explorer } from './index'
+import { explorer, layers } from './index'
 
 const projection = 'EPSG:4326'
 const center = [-39.6956, -4.7907]
@@ -11,7 +11,7 @@ const zoom = 7
 
 const mapInstance = new Map({
   target: 'map',
-  layers: [new TileLayer({ source: new OSM() })],
+  layers,
   view: new View({
     projection,
     center,
