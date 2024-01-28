@@ -2,8 +2,8 @@ import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import { Tooltip } from '@mui/material'
 import React, { useRef } from 'react'
 
-import { center, zoom, mapInstance } from '../../_config/layers/map'
-import { vector } from '../../_config/layers/vector'
+import { center, zoom, mapInstance } from '../../../_config/layers/map'
+import { vector } from '../../../_config/layers/vector'
 
 function ResetZoom() {
   const element = useRef()

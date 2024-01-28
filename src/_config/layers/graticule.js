@@ -13,7 +13,7 @@ const lonFormatter = e => {
 
 const graticule = new Graticule({
   strokeStyle: new Stroke({
-    color: 'rgba(255,120,0,0.9)',
+    color: 'rgba(171,0,204,1)',
     width: 2,
     lineDash: [0.5, 4]
   }),

@@ -5,6 +5,42 @@ function geoCSVReader(resource, geoWorkspace, serverURL, serverType) {
   const layers = []
   const rows = resource.split('\n')
 
+  function populateTree(object, title, folderSequence, hasSubFolder = true) {
+    if (title && object && !object.find(e => e.title === title)) {
+      object.push({
+        title,
+        folderSequence,
+        subFolder: hasSubFolder ? [] : null
+      })
+    }
+    return object.findIndex(e => e.title === title) >= 0
+      ? object.findIndex(e => e.title === title)
+      : 0
+  }
+
+  function layerInclude(
+    object,
+    wmsName,
+    title,
+    folder,
+    folderSequence,
+    url,
+    serverType
+  ) {
+    const visibility = !!visibleLayers.find(layer => layer === wmsName)
+
+    object.push({
+      wmsName,
+      title,
+      folder,
+      folderSequence,
+      url,
+      visibility,
+      queryable: true,
+      serverType
+    })
+  }
+
   rows.map(row => {
     const data = row.split(';')
     let folderSequence = data[1]
@@ -62,38 +98,6 @@ function geoCSVReader(resource, geoWorkspace, serverURL, serverType) {
   })
 
   return { tree, layers }
-}
-
-function populateTree(object, title, folderSequence, hasSubFolder = true) {
-  if (title && object && !object.find(e => e.title === title)) {
-    object.push({ title, folderSequence, subFolder: hasSubFolder ? [] : null })
-  }
-  return object.findIndex(e => e.title === title) >= 0
-    ? object.findIndex(e => e.title === title)
-    : 0
-}
-
-function layerInclude(
-  object,
-  wmsName,
-  title,
-  folder,
-  folderSequence,
-  url,
-  serverType
-) {
-  const visibility = !!visibleLayers.find(layer => layer === wmsName)
-
-  object.push({
-    wmsName,
-    title,
-    folder,
-    folderSequence,
-    url,
-    visibility,
-    queryable: true,
-    serverType
-  })
 }
 
 export default geoCSVReader

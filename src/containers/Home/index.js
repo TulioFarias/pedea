@@ -9,7 +9,6 @@ function Home() {
     <div className="Container-Home">
       <Header />
       <Welcome />
-
       <Footer />
     </div>
   )
