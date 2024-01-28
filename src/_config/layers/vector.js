@@ -18,19 +18,7 @@ const vector = new VectorLayer({
       image: new CircleStyle({
         radius: 4,
         fill: new Fill({
-          color: 'rgba(171,0,204,0.9)'
-        })
-      })
-    }),
-    new Style({
-      image: new CircleStyle({
-        radius: 30, // Raio do círculo externo (raio de alcance)
-        fill: new Fill({
-          color: 'rgba(171,0,204,0.2)' // Cor com opacidade para o fundo
-        }),
-        stroke: new Stroke({
-          color: 'rgba(171,0,204,0.2)',
-          width: 2 // Largura do raio de alcance
+          color: '#ffcc33'
         })
       })
     })
