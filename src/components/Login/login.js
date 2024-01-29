@@ -136,9 +136,9 @@ function LoginSystem() {
           </button>
 
           <p className="end-txt">
-            Não possui conta?{' '}
-            <Link href="#" className="link-end" to="/cadastro">
-              Cadastre-se aqui
+            Esqueceu a senha?{' '}
+            <Link href="#" className="link-end">
+              Clique aqui
             </Link>
           </p>
         </Form>
