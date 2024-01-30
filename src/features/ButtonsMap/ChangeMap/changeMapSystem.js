@@ -1,40 +1,43 @@
+import LanguageIcon from '@mui/icons-material/Language'
+import { Tooltip } from '@mui/material'
 import React, { useRef, useState, useEffect } from 'react'
 
 import { ServerTypeHelper } from '../../../_config/layers/helpers'
 import { vector } from '../../../_config/layers/index'
 import { mapInstance } from '../../../_config/layers/map'
+import ModalChange from './modalChange'
 
-const baseLayer = []
+let baseLayer = []
 
 function MapLayers() {
   const restoreElement = useRef()
-
   const [active, setActive] = useState(0)
-  const [baseLayersJSX, setBaseLayersJSX] = useState([])
+  const [BaseLayersJSX, setBaseLayersJSX] = useState([])
+  const [selectedOption, setSelectedOption] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
   const handleClick = () => {
-    vector.getSource.clear()
-    setActive(active => active + 1)
+    vector.getSource().clear()
+    setActive(prevActive => prevActive + 1)
+    setShowModal(true)
   }
 
   const handleBaseLayerClick = event => {
     const key = event.target.value
+    setSelectedOption(key)
 
     baseLayer.forEach(layer => {
       if (layer.get('title') === key) layer.setVisible(true)
-      else {
-        layer.setVisible(false)
-      }
+      else layer.setVisible(false)
     })
   }
+
   const buildBaseLayerTree = () => {
     const currentLayersJSX = []
-
     const layersAux = []
+    let provider = selectedOption
 
-    let provider = ''
-
-    mapInstance.map
+    mapInstance
       .getLayers()
       .getArray()
       .forEach((layer, index) => {
@@ -63,6 +66,7 @@ function MapLayers() {
                 id={'layer' + index}
                 value={layer.get('title')}
                 onClick={handleBaseLayerClick}
+                ref={restoreElement}
               />
 
               <label className="form-radio-label" htmlFor={'layer' + index}>
@@ -74,14 +78,29 @@ function MapLayers() {
         isBaseLayer && layersAux.push(layer)
       })
 
-    // console.log(layersAux)
-
-    baseLayerSwitcher = layersAux
+    baseLayer = layersAux
 
     setBaseLayersJSX(currentLayersJSX)
   }
 
-  useEffect(buildBaseLayerTree, [])
+  useEffect(buildBaseLayerTree, [selectedOption])
+
+  return (
+    <>
+      <Tooltip title="Trocar mapa base" placement="left">
+        <button className="my-custom-btns" onClick={handleClick}>
+          <LanguageIcon />
+        </button>
+      </Tooltip>
+      <ModalChange
+        BaseLayersJSX={BaseLayersJSX}
+        handleBaseLayerClick={handleBaseLayerClick}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        active={active}
+      />
+    </>
+  )
 }
 
 export default MapLayers

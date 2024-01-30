@@ -2,7 +2,7 @@ import '../../sass/btns-Left/ButtonsLeft.scss'
 
 import React from 'react'
 
-import ChangeMap from './ChangeMap/ChangeMap'
+import MapLayers from './ChangeMap/changeMapSystem'
 import FindMe from './FindMe/FindMe'
 import GridLayer from './gridLayer/gridLayer'
 import Help from './help/help'
@@ -19,7 +19,7 @@ function ButtonsMap() {
 
         <ZoomInOut />
 
-        <ChangeMap />
+        <MapLayers />
 
         <GridLayer />
 
