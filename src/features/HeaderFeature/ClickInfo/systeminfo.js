@@ -10,6 +10,10 @@ function ClickInfo() {
   const [active, setActive] = useState(false)
   const clientWidth = document.documentElement.clientWidth
 
+  const handleClickActive = () => {
+    setActive(true)
+  }
+
   const checkQueryableLayers = () => {
     const queryableLayers = []
 
