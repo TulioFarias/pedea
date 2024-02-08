@@ -1,15 +1,15 @@
-import '../../sass/admin/admin.scss'
+import '../../../sass/admin/admin.scss'
 
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
-import trash from '../../assets/icons/lixeira.png'
-import { updateInfo } from '../../utils/redux/CRUD/actions'
-import { ModalAdd } from './AdminModal/Addmodal'
-import ConfirmDeleteModal from './AdminModal/deleteModal'
-import { EditedModal } from './AdminModal/editModal'
+import trash from '../../../assets/icons/lixeira.png'
+import { updateInfo } from '../../../utils/redux/CRUD/actions'
+import { ModalAdd } from '../AdminModal/Addmodal'
+import ConfirmDeleteModal from '../AdminModal/deleteModal'
+import { EditedModal } from '../AdminModal/editModal'
 function AdminSystem() {
   const { t } = useTranslation()
   const infoList = useSelector(state => state.infoReducer.info)

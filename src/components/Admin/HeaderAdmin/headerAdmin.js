@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import Search from '../../assets/icons/search.png'
-import { logoutUser } from '../../utils/redux/user/actions'
-import '../../sass/admin/headerAdmin.scss'
+import Search from '../../../assets/icons/search.png'
+import { logoutUser } from '../../../utils/redux/user/actions'
+import '../../../sass/admin/headerAdmin.scss'
 
-function HeaderAdmin() {
+function HeaderAdm() {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -91,4 +91,4 @@ function HeaderAdmin() {
   )
 }
 
-export default HeaderAdmin
+export default HeaderAdm

@@ -1,4 +1,4 @@
-.customBody-formRegister{
+.formRegister{
         background-color: #e4e4e423;
         box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
         width: 30%;
@@ -9,14 +9,19 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+
+    }
+
+    hr{
+        width: 107%;
+        border: 1px dashed white;
+        margin-bottom: 20px;
     }
 
     @media only screen and (max-width: 740px){
-        .customBody-formRegister{
-            background-color: rgb(241, 241, 241);
+        .formRegister{
             box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
             width: 90%;
-            height: 60%;
             padding: 20px;
             border-radius: 10px;
             display: flex;

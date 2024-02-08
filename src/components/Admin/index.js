@@ -1,28 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import Geoserver from './geoserver'
-import HeaderAdmin from './headerAdmin'
-import NavAdmin from './NavAdmin/NavAdmin'
-import SettingsAdmin from './settings'
-import AdminSystem from './system'
-import '../../sass/admin/admin.scss'
+import MainAdmin from './MainAdminSystem'
 
-function Admin() {
-  const [selectedOption, setSelectedOption] = useState('Home')
-
-  const handleOptionChange = async option => {
-    await setSelectedOption(option)
-  }
-
+function AdminSystem() {
   return (
-    <div className="ContainerAllAdmin">
-      <NavAdmin handleOptionChange={handleOptionChange} />
-      <HeaderAdmin />
-      {selectedOption === 'Home' && <AdminSystem />}
-      {selectedOption === 'Geoserver' && <Geoserver />}
-      {selectedOption === 'Configurações' && <SettingsAdmin />}
-    </div>
+    <>
+      <MainAdmin />
+    </>
   )
 }
 
-export default Admin
+export default AdminSystem

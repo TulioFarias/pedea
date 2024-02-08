@@ -1,38 +1,43 @@
-import '../../sass/LoginSystem/loginSystem.scss'
+import '../../sass/Register/register.scss'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
-import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
-import { loginUser } from '../../utils/redux/user/actions'
+import { createRegister } from '../../services/fireBaseConfig'
 
-function LoginSystem() {
+function RegisterUser() {
   const navigate = useNavigate()
-  const [form, setForm] = useState({ email: '', password: '' })
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
 
   const changeForm = e => {
     const { name, value } = e.target
-
     setForm({ ...form, [name]: value })
   }
 
-  const dispatch = useDispatch()
-
   const schema = Yup.object().shape({
+    name: Yup.string().required('O nome é obrigatório.'),
     email: Yup.string()
       .email('Digite um email válido.')
       .required('O email é obrigatório.'),
     password: Yup.string()
       .required('A senha é obrigatória.')
-      .min(6, 'A senha deve ter no minímo 6 dígitos.')
+      .min(6, 'A senha deve ter no mínimo 6 dígitos.'),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      'Senhas devem ser iguais.'
+    )
   })
 
   const {
@@ -49,18 +54,16 @@ function LoginSystem() {
 
   const onSubmit = async () => {
     try {
-      const { email, password } = form
+      const { name, email, password } = form
 
-      const fireauth = await loginAndRetrieveToken(email, password)
+      const fireauth = await createRegister(email, password)
       const userAuthInfo = {
         uid: fireauth.user.uid,
         displayName: fireauth.user.displayName,
         email: fireauth.user.email
       }
 
-      dispatch(loginUser({ auth: userAuthInfo }))
-
-      toast.success('Seja bem-vindo(a).', {
+      toast.success('Conta criada com sucesso.', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
@@ -72,19 +75,22 @@ function LoginSystem() {
       })
 
       setTimeout(() => {
-        navigate('/admin')
+        navigate('/login')
       }, 2000)
     } catch (error) {
-      toast.error('Email ou senha incorretos, verifique e tente novamente...', {
-        position: 'top-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      })
+      toast.error(
+        'Opsss, aconteceu algum erro ao criar seu usuário, verifique e tente novamente...',
+        {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light'
+        }
+      )
     }
   }
 
@@ -92,13 +98,29 @@ function LoginSystem() {
     <>
       <div className="container-form">
         <button className="btnBack" onClick={handleBack}>
-          <img src={backIcon} />
+          <img src={backIcon} alt="Back" />
         </button>
-        <img src={logo} />
+        <img src={logo} alt="Logo" />
 
-        <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
-          <h1 className="titleLogin">Sistema de Admininstração</h1>
+        <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
+          <h1 className="titleLogin">Cadastro PEDEA Admin</h1>
           <hr />
+          <div className="custom-info">
+            <Form.Label htmlFor="name" className="LabelForm">
+              Nome:
+            </Form.Label>
+            <Form.Control
+              {...register('name')}
+              type="text"
+              className="InputForm"
+              id="name"
+              name="name"
+              value={form.name}
+              onChange={changeForm}
+            />
+            <p className="error-txt">{errors.name?.message}</p>
+          </div>
+
           <div className="custom-info">
             <Form.Label htmlFor="email" className="LabelForm">
               Email:
@@ -131,13 +153,29 @@ function LoginSystem() {
             <p className="error-txt">{errors.password?.message}</p>
           </div>
 
+          <div className="custom-info">
+            <Form.Label htmlFor="confirmPassword" className="LabelForm">
+              Confirmar Senha:
+            </Form.Label>
+            <Form.Control
+              {...register('confirmPassword')}
+              type="password"
+              className="InputForm"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={form.confirmPassword}
+              onChange={changeForm}
+            />
+            <p className="error-txt">{errors.confirmPassword?.message}</p>
+          </div>
+
           <button type="submit" className="Btn-Form">
             Entrar
           </button>
 
           <p className="end-txt">
-            Esqueceu a senha?{' '}
-            <Link href="#" className="link-end">
+            Ja tem conta criada?{' '}
+            <Link to="#" className="link-end">
               Clique aqui
             </Link>
           </p>
@@ -147,4 +185,4 @@ function LoginSystem() {
   )
 }
 
-export default LoginSystem
+export default RegisterUser
