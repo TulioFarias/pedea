@@ -47,10 +47,6 @@ function LoginSystem() {
     navigate('/')
   }
 
-  const LinkRegister = () => {
-    navigate('/register')
-  }
-
   const onSubmit = async () => {
     try {
       const { email, password } = form
@@ -134,20 +130,14 @@ function LoginSystem() {
             />
             <p className="error-txt">{errors.password?.message}</p>
           </div>
-          <p className="end-txt">
-            Esqueceu a senha?{' '}
-            <Link href="#" className="link-end">
-              Clique aqui
-            </Link>
-          </p>
-
+          <Link className="RetrieveAccLink">Esqueceu sua senha?</Link>
           <button type="submit" className="Btn-Form">
             Entrar
           </button>
 
           <p className="end-txt">
             Não tem cadastro?{' '}
-            <Link href="#" className="link-end" onClick={LinkRegister}>
+            <Link href="#" className="link-end" to="/register">
               Clique aqui
             </Link>
           </p>

@@ -103,8 +103,12 @@ function RegisterUser() {
         <img src={logo} alt="Logo" />
 
         <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
-          <h1 className="titleLogin">Cadastro PEDEA Admin</h1>
+          <h1 className="titleLogin">Cadastro Portal Admin</h1>
           <hr />
+          <h6>
+            Para realizar seu cadastro ao sistema de administração da PEDEA,
+            preencha os campos abaixo:
+          </h6>
           <div className="custom-info">
             <Form.Label htmlFor="name" className="LabelForm">
               Nome:
@@ -170,12 +174,12 @@ function RegisterUser() {
           </div>
 
           <button type="submit" className="Btn-Form">
-            Entrar
+            Cadastrar
           </button>
 
           <p className="end-txt">
             Ja tem conta criada?{' '}
-            <Link to="#" className="link-end">
+            <Link className="link-end" to="/login">
               Clique aqui
             </Link>
           </p>
