@@ -4,16 +4,16 @@
 .containersOptions{
     display: flex;
     flex-direction: column;
-    gap: 10px;
     padding: 25px;
+    height: max-content;
    
 }
 
 .LayerTitle{
     margin-left: 10px;
+    color: black;
 }
 .CloseBtn{
-    margin-top: 50px;
     position: relative;
     bottom: 10px;
     right: 25px;

@@ -3,6 +3,7 @@ import '../../sass/Register/register.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -20,6 +21,7 @@ function RegisterUser() {
     password: '',
     confirmPassword: ''
   })
+  const [recaptcha, setRecaptcha] = useState(null)
 
   const changeForm = e => {
     const { name, value } = e.target
@@ -172,7 +174,10 @@ function RegisterUser() {
             />
             <p className="error-txt">{errors.confirmPassword?.message}</p>
           </div>
-
+          <ReCAPTCHA
+            sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
+            onChange={value => setRecaptcha(value)}
+          />
           <button type="submit" className="Btn-Form">
             Cadastrar
           </button>

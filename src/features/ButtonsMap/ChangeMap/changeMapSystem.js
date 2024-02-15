@@ -68,7 +68,6 @@ function MapLayers() {
                 onClick={handleBaseLayerClick}
                 ref={restoreElement}
               />
-
               <label className="form-radio-label" htmlFor={'layer' + index}>
                 <h6 className="LayerTitle">🌎 {layer.get('title')}</h6>
               </label>

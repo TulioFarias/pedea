@@ -3,6 +3,7 @@ import '../../sass/LoginSystem/loginSystem.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -17,8 +18,9 @@ import { loginUser } from '../../utils/redux/user/actions'
 function LoginSystem() {
   const navigate = useNavigate()
   const [form, setForm] = useState({ email: '', password: '' })
+  const [recaptcha, setRecaptcha] = useState(null)
 
-  const changeForm = e => {
+  const changeForm = async e => {
     const { name, value } = e.target
 
     setForm({ ...form, [name]: value })
@@ -130,8 +132,13 @@ function LoginSystem() {
             />
             <p className="error-txt">{errors.password?.message}</p>
           </div>
+
           <Link className="RetrieveAccLink">Esqueceu sua senha?</Link>
-          <button type="submit" className="Btn-Form">
+          <ReCAPTCHA
+            sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
+            onChange={value => setRecaptcha(value)}
+          />
+          <button type="submit" className="Btn-Form" disabled={!recaptcha}>
             Entrar
           </button>
 

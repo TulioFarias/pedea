@@ -30,6 +30,7 @@
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-flagkit": "^2.0.4",
+    "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.48.2",
     "react-modal": "^3.16.1",
     "react-redux": "^9.0.4",
