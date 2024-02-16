@@ -25,7 +25,7 @@ function RegisterUser() {
   })
   const [recaptcha, setRecaptcha] = useState(null)
 
-  const changeForm = e => {
+  const changeForm = async e => {
     const { name, value } = e.target
     setForm({ ...form, [name]: value })
   }
@@ -114,141 +114,142 @@ function RegisterUser() {
             preencha os campos abaixo:
           </h6>
           <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
-            <div className="customContainerUser">
-              <Form.Label htmlFor="name" className="LabelFormRegister">
-                Nome:
-              </Form.Label>
-              <Form.Control
-                {...register('name')}
-                type="text"
-                className="InputFormRegister"
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.name?.message}</p>
-            </div>
+            <div className="containerUserInfo">
+              <div className="customContainerUser">
+                <Form.Label htmlFor="name" className="LabelFormRegister">
+                  Nome:
+                </Form.Label>
+                <Form.Control
+                  {...register('name')}
+                  type="text"
+                  className="InputFormRegister"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">{errors.name?.message}</p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label htmlFor="lastName" className="LabelFormRegister">
-                Sobrenome:
-              </Form.Label>
-              <Form.Control
-                {...register('lastName')}
-                type="text"
-                className="InputFormRegister"
-                id="lastName"
-                name="lastName"
-                value={form.lastName}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.name?.message}</p>
-            </div>
+              <div className="customContainerUser">
+                <Form.Label htmlFor="lastName" className="LabelFormRegister">
+                  Sobrenome:
+                </Form.Label>
+                <Form.Control
+                  {...register('lastName')}
+                  type="text"
+                  className="InputFormRegister"
+                  id="lastName"
+                  name="lastName"
+                  value={form.lastName}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">{errors.name?.message}</p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label htmlFor="email" className="LabelFormRegister">
-                Email:
-              </Form.Label>
-              <Form.Control
-                {...register('email')}
-                type="email"
-                className="InputFormRegister"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.email?.message}</p>
-            </div>
+              <div className="customContainerUser">
+                <Form.Label htmlFor="email" className="LabelFormRegister">
+                  Email:
+                </Form.Label>
+                <Form.Control
+                  {...register('email')}
+                  type="email"
+                  className="InputFormRegister"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">{errors.email?.message}</p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label htmlFor="phoneNumber" className="LabelFormRegister">
-                Número de Telefone:
-              </Form.Label>
-              <Form.Control
-                {...register('phoneNumber')}
-                type="phone"
-                className="InputFormRegister"
-                id="phoneNumber"
-                name="phoneNumber"
-                value={form.phoneNumber}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.phoneNumber?.message}</p>
-            </div>
+              <div className="customContainerUser">
+                <Form.Label htmlFor="phoneNumber" className="LabelFormRegister">
+                  Número de Telefone:
+                </Form.Label>
+                <Form.Control
+                  {...register('phoneNumber')}
+                  type="phone"
+                  className="InputFormRegister"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={form.phoneNumber}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">
+                  {errors.phoneNumber?.message}
+                </p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label htmlFor="address" className="LabelFormRegister">
-                Endereço:
-              </Form.Label>
-              <Form.Control
-                {...register('address')}
-                type="text"
-                className="InputFormRegister"
-                id="address"
-                name="address"
-                value={form.address}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.address?.message}</p>
-            </div>
+              <div className="customContainerUser">
+                <Form.Label htmlFor="address" className="LabelFormRegister">
+                  Endereço:
+                </Form.Label>
+                <Form.Control
+                  {...register('address')}
+                  type="text"
+                  className="InputFormRegister"
+                  id="address"
+                  name="address"
+                  value={form.address}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">{errors.address?.message}</p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label htmlFor="password" className="LabelFormRegister">
-                Senha:
-              </Form.Label>
-              <Form.Control
-                {...register('password')}
-                type="password"
-                className="InputFormRegister"
-                id="password"
-                name="password"
-                value={form.password}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.password?.message}</p>
-            </div>
+              <div className="customContainerUser">
+                <Form.Label htmlFor="password" className="LabelFormRegister">
+                  Senha:
+                </Form.Label>
+                <Form.Control
+                  {...register('password')}
+                  type="password"
+                  className="InputFormRegister"
+                  id="password"
+                  name="password"
+                  value={form.password}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">{errors.password?.message}</p>
+              </div>
 
-            <div className="customContainerUser">
-              <Form.Label
-                htmlFor="confirmPassword"
-                className="LabelFormRegister"
-              >
-                Confirmar Senha:
-              </Form.Label>
-              <Form.Control
-                {...register('confirmPassword')}
-                type="password"
-                className="InputFormRegister"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={form.confirmPassword}
-                onChange={changeForm}
-              />
-              <p className="error-txt">{errors.confirmPassword?.message}</p>
+              <div className="customContainerUser">
+                <Form.Label
+                  htmlFor="confirmPassword"
+                  className="LabelFormRegister"
+                >
+                  Confirmar Senha:
+                </Form.Label>
+                <Form.Control
+                  {...register('confirmPassword')}
+                  type="password"
+                  className="InputFormRegister"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={form.confirmPassword}
+                  onChange={changeForm}
+                />
+                <p className="error-txtRegister">
+                  {errors.confirmPassword?.message}
+                </p>
+              </div>
             </div>
+            <ReCAPTCHA
+              sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
+              onChange={value => setRecaptcha(value)}
+            />
+
+            <button disabled={!recaptcha} type="submit" className="Btn-Form">
+              Cadastrar
+            </button>
+
+            <p className="end-txt">
+              Já tem conta criada?{' '}
+              <Link className="link-end" to="/login">
+                Clique aqui
+              </Link>
+            </p>
           </Form>
-          <ReCAPTCHA
-            sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-            onChange={value => setRecaptcha(value)}
-          />
-
-          <button
-            disabled={!recaptcha}
-            type="submit"
-            className="Btn-Form"
-            onClick={onSubmit}
-          >
-            Cadastrar
-          </button>
-
-          <p className="end-txt">
-            Já tem conta criada?{' '}
-            <Link className="link-end" to="/login">
-              Clique aqui
-            </Link>
-          </p>
         </div>
       </div>
     </>
