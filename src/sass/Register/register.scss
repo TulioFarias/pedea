@@ -1,18 +1,31 @@
-.formRegister{
+
+.containerRegisterUsers{
         background-color: #e4e4e423;
         box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-        width: 30%;
+        width: 60%;
         padding: 20px;
         border-radius: 10px;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
+        align-items: center;
+        
+}
 
+.formRegister{
+    width: max-content;
+    height: max-content;
+    background-color: #bebebe17;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 5px;
     }
 
     hr{
-        width: 107%;
+        width: 103.5%;
         border: 1px dashed white;
         margin-bottom: 20px;
     }
@@ -31,6 +44,32 @@
         &:hover{
             color: #2C403F;
         }
+    }
+   
+    .customContainerUser{
+        width: 340px;
+        
+        
+    }
+
+    .LabelFormRegister{
+        font-size: 18px;
+        color: white;
+        margin-bottom: 6px;
+        
+    }
+    
+    .InputFormRegister{
+        
+        width: 300px;
+        height: 32px;
+        padding-left: 10px;
+        outline: none;
+        border-radius: 5px;
+        font-size: 18px;
+        color: black;
+    
+    
     }
 
     @media only screen and (max-width: 740px){
