@@ -127,6 +127,7 @@ function RegisterUser() {
                   name="name"
                   value={form.name}
                   onChange={changeForm}
+                  placeholder="Seu nome"
                 />
                 <p className="error-txtRegister">{errors.name?.message}</p>
               </div>
@@ -143,8 +144,9 @@ function RegisterUser() {
                   name="lastName"
                   value={form.lastName}
                   onChange={changeForm}
+                  placeholder="Seu sobrenome"
                 />
-                <p className="error-txtRegister">{errors.name?.message}</p>
+                <p className="error-txtRegister">{errors.lastName?.message}</p>
               </div>
 
               <div className="customContainerUser">
@@ -159,6 +161,7 @@ function RegisterUser() {
                   name="email"
                   value={form.email}
                   onChange={changeForm}
+                  placeholder="exemplo@email.com"
                 />
                 <p className="error-txtRegister">{errors.email?.message}</p>
               </div>
@@ -169,12 +172,13 @@ function RegisterUser() {
                 </Form.Label>
                 <Form.Control
                   {...register('phoneNumber')}
-                  type="phone"
+                  type="tel"
                   className="InputFormRegister"
                   id="phoneNumber"
                   name="phoneNumber"
                   value={form.phoneNumber}
                   onChange={changeForm}
+                  placeholder="(00)00000-0000"
                 />
                 <p className="error-txtRegister">
                   {errors.phoneNumber?.message}
@@ -193,6 +197,7 @@ function RegisterUser() {
                   name="address"
                   value={form.address}
                   onChange={changeForm}
+                  placeholder="123 Rua Brasil, Bairro, Cidade, Estado..."
                 />
                 <p className="error-txtRegister">{errors.address?.message}</p>
               </div>
@@ -209,6 +214,7 @@ function RegisterUser() {
                   name="password"
                   value={form.password}
                   onChange={changeForm}
+                  placeholder="Mínimo de 6 caracteres..."
                 />
                 <p className="error-txtRegister">{errors.password?.message}</p>
               </div>
@@ -228,6 +234,7 @@ function RegisterUser() {
                   name="confirmPassword"
                   value={form.confirmPassword}
                   onChange={changeForm}
+                  placeholder="Por favor, confirme sua senha..."
                 />
                 <p className="error-txtRegister">
                   {errors.confirmPassword?.message}
