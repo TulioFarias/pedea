@@ -18,6 +18,7 @@ function RegisterUser() {
     name: '',
     lastName: '',
     email: '',
+    office: '',
     phoneNumber: '',
     address: '',
     password: '',
@@ -36,6 +37,7 @@ function RegisterUser() {
     email: Yup.string()
       .email('Digite um email válido.')
       .required('O email é obrigatório.'),
+    office: Yup.string().required('O cargo é obrigatório.'),
     phoneNumber: Yup.string()
       .matches(
         /^\d{11}$/,
@@ -60,7 +62,7 @@ function RegisterUser() {
   })
 
   const handleBack = () => {
-    navigate('/')
+    navigate('/login')
   }
 
   const onSubmit = async () => {
@@ -101,7 +103,7 @@ function RegisterUser() {
   return (
     <>
       <div className="container-formRegister">
-        <button className="btnBack" onClick={handleBack}>
+        <button className="btnBackRegister" onClick={handleBack}>
           <img src={backIcon} alt="Back" />
         </button>
         <img src={logo} alt="Logo" />
@@ -167,6 +169,23 @@ function RegisterUser() {
               </div>
 
               <div className="customContainerUser">
+                <Form.Label htmlFor="email" className="LabelFormRegister">
+                  Cargo:
+                </Form.Label>
+                <Form.Control
+                  {...register('office')}
+                  type="text"
+                  className="InputFormRegister"
+                  id="office"
+                  name="office"
+                  value={form.office}
+                  onChange={changeForm}
+                  placeholder="Técnico - Sig"
+                />
+                <p className="error-txtRegister">{errors.office?.message}</p>
+              </div>
+
+              <div className="customContainerUser">
                 <Form.Label htmlFor="phoneNumber" className="LabelFormRegister">
                   Número de Telefone:
                 </Form.Label>
@@ -197,7 +216,7 @@ function RegisterUser() {
                   name="address"
                   value={form.address}
                   onChange={changeForm}
-                  placeholder="123 Rua Brasil, Bairro, Cidade, Estado..."
+                  placeholder="Rua Brasil, 100 - Bairro, Cidade, Estado..."
                 />
                 <p className="error-txtRegister">{errors.address?.message}</p>
               </div>
@@ -258,6 +277,10 @@ function RegisterUser() {
             </p>
           </Form>
         </div>
+        <p className="govTxt">
+          © 2024 - Secretaria do Meio Ambiente e Mudança de Clima do Estado do
+          Ceará
+        </p>
       </div>
     </>
   )

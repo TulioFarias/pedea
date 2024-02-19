@@ -27,6 +27,7 @@
 
 .btnBack{
     position: absolute;
+    width: 100px;
     top: 30px;
     left: 50px;
     background: transparent;
@@ -113,27 +114,22 @@
     outline: none;
     color: white;
     &:hover{
-        transform: scale(1.04);
+        transform: scale(1.03);
         transition: 0.4s all ease-in-out;
         border: none;
         background-color: #2C403F
     }
-
-    
-
-
-    
-
-
     
 }
 
 .error-txt{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 16px;
-     color: rgba(173, 2, 2, 0.849);
+    color: rgba(173, 2, 2, 0.849);
     margin-left: 5px;
 }
+
+
 
 .end-txt{
     color: white;

@@ -1,5 +1,4 @@
 import '../../sass/LoginSystem/loginSystem.scss'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
@@ -21,11 +20,16 @@ function LoginSystem() {
   const [show, setShow] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
   const [recaptcha, setRecaptcha] = useState(null)
+  console.log(recaptcha)
 
   const changeForm = async e => {
     const { name, value } = e.target
 
     setForm({ ...form, [name]: value })
+  }
+
+  const handleClickRecaptcha = event => {
+    setRecaptcha(event)
   }
 
   const dispatch = useDispatch()
@@ -140,8 +144,9 @@ function LoginSystem() {
           </Link>
           <ReCAPTCHA
             sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-            onChange={value => setRecaptcha(value)}
+            onChange={handleClickRecaptcha}
           />
+
           <button type="submit" className="Btn-Form" disabled={!recaptcha}>
             Entrar
           </button>
