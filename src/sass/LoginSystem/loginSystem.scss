@@ -18,6 +18,13 @@
 
 }
 
+.ModalRecoverPassword{
+    background: transparent;
+    color: red;
+}
+
+
+
 .btnBack{
     position: absolute;
     top: 30px;
@@ -143,6 +150,11 @@
     &:hover{
         color: #2C403F;
     }
+}
+
+.govTxt{
+    color: white;
+    font-size: 14px;
 }
 
 

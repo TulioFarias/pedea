@@ -14,9 +14,11 @@ import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
 import { loginUser } from '../../utils/redux/user/actions'
+import RecoverPasswordModal from './RecoverPasswordModal'
 
 function LoginSystem() {
   const navigate = useNavigate()
+  const [show, setShow] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
   const [recaptcha, setRecaptcha] = useState(null)
 
@@ -133,7 +135,9 @@ function LoginSystem() {
             <p className="error-txt">{errors.password?.message}</p>
           </div>
 
-          <Link className="RetrieveAccLink">Esqueceu sua senha?</Link>
+          <Link className="RetrieveAccLink" onClick={() => setShow(true)}>
+            Esqueceu sua senha?
+          </Link>
           <ReCAPTCHA
             sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
             onChange={value => setRecaptcha(value)}
@@ -149,7 +153,12 @@ function LoginSystem() {
             </Link>
           </p>
         </Form>
+        <p className="govTxt">
+          © 2024 - Secretaria do Meio Ambiente e Mudança de Clima do Estado do
+          Ceará
+        </p>
       </div>
+      <RecoverPasswordModal show={show} setShow={setShow} />
     </>
   )
 }

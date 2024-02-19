@@ -1,4 +1,19 @@
+.container-formRegister{
+    background-color: #7d7d7d;
+    background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    font-family: 'Roboto', sans-serif;
 
+    img{
+        width: 30%;
+    }
+
+}
 .containerRegisterUsers{
         background-color: #e4e4e423;
         box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
@@ -90,14 +105,16 @@
     }
 
     @media only screen and (max-width: 740px){
-        .formRegister{
+        .containerRegisterUsers{
+            background-color: #e4e4e423;
             box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-            width: 90%;
+            width: 60%;
+            height: max-content;
             padding: 20px;
             border-radius: 10px;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-        }
+            align-items: center;
+            
+    }
     }

@@ -100,7 +100,7 @@ function RegisterUser() {
 
   return (
     <>
-      <div className="container-form">
+      <div className="container-formRegister">
         <button className="btnBack" onClick={handleBack}>
           <img src={backIcon} alt="Back" />
         </button>
