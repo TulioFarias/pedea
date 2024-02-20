@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 import Admin from '../containers/Admin'
 
 export const Private = () => {
-  const user = localStorage.getItem('PEDEA-AdminSystem')
+  const user = localStorage.getItem('pedea-admin: user')
 
   if (!user) {
     return <Navigate to="/login" />

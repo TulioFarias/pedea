@@ -260,6 +260,7 @@ function RegisterUser() {
                 </p>
               </div>
             </div>
+
             <ReCAPTCHA
               sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
               onChange={value => setRecaptcha(value)}

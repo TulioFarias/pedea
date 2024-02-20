@@ -1,12 +1,12 @@
 import userActionTypes from './actionTypes'
 
-const storedUserData = JSON.parse(localStorage.getItem('PEDEA-AdminSystem'))
+const storedUserData = JSON.parse(localStorage.getItem('pedea-admin: user'))
 
 const initalState = {
   userData: storedUserData || null
 }
 
-const userReducer = (state = initalState, action) => {
+const userReducer = async (state = initalState, action) => {
   switch (action.type) {
     case userActionTypes.CreateUser: {
       console.log(action.payload)
@@ -15,14 +15,14 @@ const userReducer = (state = initalState, action) => {
     }
 
     case userActionTypes.Login: {
-      localStorage.setItem('PEDEA-AdminSystem', JSON.stringify(action.payload))
+      localStorage.setItem('pedea-admin: user', JSON.stringify(action.payload))
       const newState = { ...state, userData: action.payload }
 
       return newState
     }
 
     case userActionTypes.Logout:
-      localStorage.removeItem('PEDEA-AdminSystem')
+      localStorage.removeItem('pedea-admin: user')
       return { ...state, userData: null }
 
     default:

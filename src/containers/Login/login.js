@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
-import { loginAndRetrieveToken } from '../../services/fireBaseConfig'
+import api from '../../services/api'
 import { loginUser } from '../../utils/redux/user/actions'
 import RecoverPasswordModal from './RecoverPasswordModal'
 
@@ -20,7 +20,6 @@ function LoginSystem() {
   const [show, setShow] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
   const [recaptcha, setRecaptcha] = useState(null)
-  console.log(recaptcha)
 
   const changeForm = async e => {
     const { name, value } = e.target
@@ -55,18 +54,14 @@ function LoginSystem() {
     navigate('/')
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async data => {
     try {
-      const { email, password } = form
+      const response = await api.post('/login/auth', {
+        email: data.email,
+        password: data.password
+      })
 
-      const fireauth = await loginAndRetrieveToken(email, password)
-      const userAuthInfo = {
-        uid: fireauth.user.uid,
-        displayName: fireauth.user.displayName,
-        email: fireauth.user.email
-      }
-
-      dispatch(loginUser({ auth: userAuthInfo }))
+      dispatch(loginUser(response.data))
 
       toast.success('Seja bem-vindo(a).', {
         position: 'top-right',
