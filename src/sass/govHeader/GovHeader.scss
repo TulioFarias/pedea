@@ -36,18 +36,57 @@
     
 }
 
-.my-links-div{
-    margin-left: 20px;
+.linksHeaderGov{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #6c6868;
+
+    &:hover{
+        text-decoration: underline;
+    }
 }
 
-.links-color{
-    color: #6c6868!important;
+.margin-custom{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    
+}
+
+.custom-span{
+    color:#6c6868!important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.custom-div-acess{
+    margin-left: 10px;
+}
+
+.custom-div-acess{
+    display: flex;
+    width: 370px;
+
+
+}
+
+.divBtnsAcess{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    
+}
+
+.AcessName{
+    color: #6c6868;
+    margin-top: 15px;
+    margin-right: 5px;
 }
 
 .my-custom-button{
-    display: flex;
     border: 1px solid black;
-    padding: 5px 3px;
+    width: 30px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,29 +100,18 @@
 
 }
 
-.margin-custom{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    
-}
 
-.custom-span{
-    color:#6c6868!important;
-    margin: 7px 0px 7px 0px;
-}
-.custom-div-acess{
-    margin-left: 10px;
-}
 
 .my-div-linguage{
     display: flex;
-    gap: 20px;
+    gap: 5px;
     margin-right: 40px;
     margin-left: 10px;
 }
 
 .my-btns-linguage{
-    border: none;
+    width: 40px;
+    height: 25px;
     background-color: transparent;
 
     

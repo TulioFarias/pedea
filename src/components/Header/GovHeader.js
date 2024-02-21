@@ -25,50 +25,50 @@ function GovHeader() {
           className="custom-toogler-open"
         >
           <Nav className="mr-auto">
-            <Nav.Link
+            <a
               href="https://www.ceara.gov.br/"
               target="_blank"
-              className="link-secondary link-opacity-50-hover links-color"
+              className="linksHeaderGov"
               rel="noreferrer"
             >
               {t('Portal do Governo')}
-            </Nav.Link>
+            </a>
 
             <span className="custom-span">|</span>
-            <Nav.Link
+            <a
               href="https://cearatransparente.ce.gov.br/"
               target="_blank"
-              className="link-secondary link-opacity-50-hover links-color"
+              className="linksHeaderGov"
               rel="noreferrer"
             >
               {t('Ceará Transparente')}
-            </Nav.Link>
+            </a>
 
             <span className="custom-span">|</span>
-            <Nav.Link
+            <a
               href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
               target="_blank"
-              className="link-secondary link-opacity-50-hover links-color"
+              className="linksHeaderGov"
               rel="noreferrer"
             >
               {t('Ouvidoria')}
-            </Nav.Link>
+            </a>
 
             <span className="custom-span">|</span>
-            <Nav.Link
+            <a
               href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
               target="_blank"
-              className="link-secondary link-opacity-50-hover links-color"
+              className="linksHeaderGov"
               rel="noreferrer"
             >
               {t('Acesso a informação')}
-            </Nav.Link>
+            </a>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <div className="d-flex gap-2 custom-div-acess">
-        <div className="d-flex gap-1 margin-custom">
-          <p className="links-color">{t('Acessibilidade')}</p>
+      <div className="custom-div-acess">
+        <div className="divBtnsAcess">
+          <p className="AcessName">{t('Acessibilidade')}</p>
           <button className="my-custom-button">A</button>
           <button className="my-custom-button">-A</button>
           <button className="my-custom-button">+A</button>
