@@ -17,18 +17,15 @@ function HeaderAdm() {
 
   const userData = useSelector(state => state.userReducer.userData)
   const userDataFromStorage = JSON.parse(
-    localStorage.getItem('PEDEA-AdminSystem')
+    localStorage.getItem('pedea-admin: user')
   )
 
-  const userEmail =
-    userData || userDataFromStorage
-      ? userData?.auth?.email || userDataFromStorage?.email
-      : ''
+  const { name, lastName } = userDataFromStorage.user
 
   useEffect(() => {
     if (!userData) {
       const userDataFromStorage = JSON.parse(
-        localStorage.getItem('PEDEA-AdminSystem')
+        localStorage.getItem('pedea-admin: user')
       )
       if (userDataFromStorage) {
         dispatch({ type: 'UPDATE_USER_DATA', payload: userDataFromStorage })
@@ -76,9 +73,8 @@ function HeaderAdm() {
         <div className="d-flex justify-content-end align-items-center customDivRight">
           <div className="containerUser">
             <p className="user">
-              {userEmail
-                ? `${t('Seja bem vindo(a),')} ${userEmail}!`
-                : `${t('Seja bem vindo(a).')}`}
+              {t(`Seja bem vindo(a),`)} <br />
+              {`${name} ${lastName}`}
             </p>
           </div>
 

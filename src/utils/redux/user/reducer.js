@@ -9,8 +9,6 @@ const initalState = {
 const userReducer = async (state = initalState, action) => {
   switch (action.type) {
     case userActionTypes.CreateUser: {
-      console.log(action.payload)
-
       return { ...state, userData: action.payload }
     }
 

@@ -5,12 +5,15 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
+import api from '../../services/api'
+import { createUser } from '../../utils/redux/user/actions'
 
 function RegisterUser() {
   const navigate = useNavigate()
@@ -31,6 +34,7 @@ function RegisterUser() {
     setForm({ ...form, [name]: value })
   }
 
+  const dispatch = useDispatch()
   const schema = Yup.object().shape({
     name: Yup.string().required('O nome é obrigatório.'),
     lastName: Yup.string().required('O Sobrenome é obrigatório.'),
@@ -65,10 +69,19 @@ function RegisterUser() {
     navigate('/login')
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async data => {
     try {
-      console.log(form)
+      const registerUser = await api.post('/register/user', {
+        name: data.name,
+        lastName: data.lastName,
+        email: data.email,
+        office: data.office,
+        phoneNumber: data.phoneNumber,
+        address: data.address,
+        password: data.password
+      })
 
+      dispatch(createUser(registerUser))
       toast.success('Conta criada com sucesso.', {
         position: 'top-right',
         autoClose: 2000,
