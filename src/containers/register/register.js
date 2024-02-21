@@ -82,7 +82,7 @@ function RegisterUser() {
       })
 
       dispatch(createUser(registerUser))
-      toast.success('Conta criada com sucesso.', {
+      toast.success('Usuário cadastrado com sucesso.', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,

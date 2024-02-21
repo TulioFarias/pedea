@@ -70,7 +70,10 @@ function HeaderAdm() {
           <DarkModeOutlinedIcon />
         </button>
 
-        <div className="d-flex justify-content-end align-items-center customDivRight">
+        <div className="customDivRight">
+          <p alt="userphoto" className="custom-userPhoto">
+            User Photo
+          </p>
           <div className="containerUser">
             <p className="user">
               {t(`Seja bem vindo(a),`)} <br />
