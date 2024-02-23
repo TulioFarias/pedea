@@ -71,45 +71,30 @@ function RegisterUser() {
 
   const onSubmit = async data => {
     try {
-      const registerUser = await api.post('/register/user', {
-        name: data.name,
-        lastName: data.lastName,
-        email: data.email,
-        office: data.office,
-        phoneNumber: data.phoneNumber,
-        address: data.address,
-        password: data.password
-      })
+      const registerUser = await toast.promise(
+        api.post('/register/user', {
+          name: data.name,
+          lastName: data.lastName,
+          email: data.email,
+          office: data.office,
+          phoneNumber: data.phoneNumber,
+          address: data.address,
+          password: data.password
+        }),
+        {
+          pending: 'Verificando os dados...',
+          success: 'Usuário cadastrado com sucesso.',
+          error: 'Ops! Aconteceu algo de errado, tente novamente...'
+        }
+      )
 
       dispatch(createUser(registerUser))
-      toast.success('Usuário cadastrado com sucesso.', {
-        position: 'top-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      })
 
       setTimeout(() => {
         navigate('/login')
       }, 2000)
     } catch (error) {
-      toast.error(
-        'Opsss, aconteceu algum erro ao criar seu usuário, verifique e tente novamente...',
-        {
-          position: 'top-right',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light'
-        }
-      )
+      return error
     }
   }
 

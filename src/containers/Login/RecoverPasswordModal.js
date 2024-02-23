@@ -2,19 +2,40 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
+import api from '../../services/api'
 function RecoverPasswordModal({ show, setShow }) {
   const [email, setEmail] = useState('')
   const [recaptcha, setRecaptcha] = useState(null)
-
+  const navigate = useNavigate()
   const handleEmailChange = event => {
     setEmail(event.target.value)
   }
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    // Aqui você pode fazer algo com o e-mail, como enviar para o servidor
-    console.log('E-mail enviado:', email)
+  const handleSubmit = async data => {
+    data.preventDefault()
+    try {
+      const response = await toast.promise(
+        api.post('/login/auth', {
+          email: data.email,
+          password: data.password
+        }),
+        {
+          pending: 'Enviando seu email...',
+          success:
+            'As instruções para recuperar sua senha foram enviadas para o seu e-mail. 😬',
+          error: 'Ops! Verifique seu email ou senha e tente novamente... 😕'
+        }
+      )
+
+      setTimeout(() => {
+        navigate('/admin')
+      }, 2000)
+    } catch (error) {
+      return error
+    }
   }
 
   return (

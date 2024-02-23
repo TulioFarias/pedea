@@ -56,38 +56,25 @@ function LoginSystem() {
 
   const onSubmit = async data => {
     try {
-      const response = await api.post('/login/auth', {
-        email: data.email,
-        password: data.password
-      })
+      const response = await toast.promise(
+        api.post('/login/auth', {
+          email: data.email,
+          password: data.password
+        }),
+        {
+          pending: 'Verificando os dados...',
+          success: 'Seja bem-vindo(a).',
+          error: 'Ops! Verifique seu email ou senha e tente novamente... '
+        }
+      )
 
       dispatch(loginUser(response.data))
-
-      toast.success('Seja bem-vindo(a).', {
-        position: 'top-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      })
 
       setTimeout(() => {
         navigate('/admin')
       }, 2000)
     } catch (error) {
-      toast.error('Email ou senha incorretos, verifique e tente novamente...', {
-        position: 'top-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light'
-      })
+      return error
     }
   }
 
