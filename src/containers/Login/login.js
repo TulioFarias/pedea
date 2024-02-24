@@ -72,7 +72,7 @@ function LoginSystem() {
 
       setTimeout(() => {
         navigate('/admin')
-      }, 2000)
+      }, 2500)
     } catch (error) {
       return error
     }

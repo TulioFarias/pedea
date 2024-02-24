@@ -11,6 +11,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <>
     <NewRoutes />
-    <ToastContainer position="top-right" autoClose={2000} />
+    <ToastContainer position="top-right" autoClose={2500} />
   </>
 )
