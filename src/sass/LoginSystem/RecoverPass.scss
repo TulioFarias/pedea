@@ -1,0 +1,49 @@
+#ModalRecover .modal-content{
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    border: 1px solid white;
+    color: white;
+
+}
+
+.HeaderModalRecover .btn-close{
+    border: 1px solid white;
+}
+
+.BodyModalRecover{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reCapModalRecover{
+    margin-top: 20px;
+}
+
+.Btn-FormRecover{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 120px;
+    height: 45px;
+    outline: none;
+    color: white;
+    &:hover{
+        transform: scale(1.03);
+        transition: 0.4s all ease-in-out;
+        border: none;
+        background-color: #2C403F
+    }
+    
+}
+
+.error-txtRecover{
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(255, 0, 0, 0.849);
+    margin-left: 5px;
+    margin-top: 5px;
+}
