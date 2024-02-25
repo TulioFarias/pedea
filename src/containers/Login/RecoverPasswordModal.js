@@ -26,7 +26,7 @@ function RecoverPasswordModal({ show, setShow }) {
           pending: 'Verificando seu email...',
           success:
             'As instruções para recuperar sua senha foram enviadas para o seu e-mail. 😬',
-          error: 'Ops! Verifique seu email ou senha e tente novamente... 😕'
+          error: 'Ops! Seu e-mail não está cadastrado... 😕'
         }
       )
 
@@ -63,7 +63,7 @@ function RecoverPasswordModal({ show, setShow }) {
           </p>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>E-mail</Form.Label>
+              <Form.Label>E-mail:</Form.Label>
               <Form.Control
                 {...register('email')}
                 type="email"
