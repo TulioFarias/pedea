@@ -5,10 +5,8 @@ import '../../../sass/admin/settings.scss'
 function SettingsAdmin() {
   return (
     <>
-      <div className="containerAll">
-        <div className="containerSettings">
-          <h2>Configurações</h2>
-        </div>
+      <div className="containerWrapperOptions">
+        <h2>Configurações</h2>
       </div>
     </>
   )

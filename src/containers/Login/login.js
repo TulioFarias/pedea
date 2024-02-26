@@ -88,7 +88,7 @@ function LoginSystem() {
 
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
           <h1 className="titleLogin">Sistema de Admininstração</h1>
-          <hr />
+          <hr className="hrLoginAndRegister" />
           <div className="custom-info">
             <Form.Label htmlFor="email" className="LabelForm">
               Email:

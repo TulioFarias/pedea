@@ -1,6 +1,7 @@
 import { Tooltip } from '@mui/material'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Container } from 'react-bootstrap'
 import Flag from 'react-flagkit'
 import { useTranslation } from 'react-i18next'
 
@@ -8,7 +9,7 @@ import '../../../sass/admin/navAdmin.scss'
 import PEDEA from '../../../assets/img/pedea-logo.png'
 import ButtonSystem from './NavButtonsSystem'
 
-function NavAdmin({ handleOptionChange }) {
+function NavAdmin({ handleOptionChange, isOpen }) {
   const { t, i18n } = useTranslation()
 
   const handleLanguageChange = value => {
@@ -16,7 +17,7 @@ function NavAdmin({ handleOptionChange }) {
   }
 
   return (
-    <div className="bodyNav">
+    <Container fluid className={`bodyNav ${isOpen ? 'open' : 'closed'}`}>
       <div className="containerDivsLanguage">
         <Tooltip title="PT" placement="bottom">
           <button
@@ -50,10 +51,10 @@ function NavAdmin({ handleOptionChange }) {
         <img src={PEDEA} alt="PEDEA Logo" className="imgPEDEA" />
       </div>
 
-      <hr />
+      <hr className="hrNavOptons" />
       <ButtonSystem handleOptionChange={handleOptionChange} />
 
-      <hr />
+      <hr className="hrNavOptons" />
       <div className="containerNavFooter">
         <p>
           {t(
@@ -61,13 +62,14 @@ function NavAdmin({ handleOptionChange }) {
           )}
         </p>
       </div>
-      <hr />
-    </div>
+      <hr className="hrNavOptons" />
+    </Container>
   )
 }
 
 NavAdmin.propTypes = {
-  handleOptionChange: PropTypes.func.isRequired
+  handleOptionChange: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 }
 
 export default NavAdmin

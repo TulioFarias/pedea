@@ -108,7 +108,7 @@ function RegisterUser() {
 
         <div className="containerRegisterUsers">
           <h1 className="titleLogin">Cadastro Portal Admin</h1>
-          <hr />
+          <hr className="hrLoginAndRegister" />
           <h6>
             Para realizar seu cadastro ao sistema de administração da PEDEA,
             preencha os campos abaixo:

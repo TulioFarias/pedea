@@ -1,5 +1,5 @@
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -8,13 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 import Search from '../../../assets/icons/search.png'
 import { logoutUser } from '../../../utils/redux/user/actions'
+
 import '../../../sass/admin/headerAdmin.scss'
 
 function HeaderAdm() {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
   const userData = useSelector(state => state.userReducer.userData)
   const userDataFromStorage = JSON.parse(
     localStorage.getItem('pedea-admin: user')
@@ -27,9 +27,6 @@ function HeaderAdm() {
       const userDataFromStorage = JSON.parse(
         localStorage.getItem('pedea-admin: user')
       )
-      if (userDataFromStorage) {
-        dispatch({ type: 'UPDATE_USER_DATA', payload: userDataFromStorage })
-      }
     }
   }, [])
 
@@ -40,10 +37,11 @@ function HeaderAdm() {
   }
   return (
     <div className="container-fluid bodyHeader">
-      <button className="OpenNavBarWithToogle">
-        <ChevronRightRoundedIcon />
-      </button>
       <div className="containerDivLeft">
+        <button className="OpenNavBarWithToogle">
+          {' '}
+          <MenuOpenRoundedIcon />
+        </button>
         <input
           type="text"
           placeholder={t('Procurar por...')}

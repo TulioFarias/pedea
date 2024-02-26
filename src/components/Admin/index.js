@@ -1,6 +1,7 @@
 import React from 'react'
 
-import MainAdmin from './MainAdminSystem'
+import '../../sass/admin/admin.scss'
+import MainAdmin from './MainAdmin/index'
 
 function AdminSystem() {
   return (

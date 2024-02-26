@@ -5,18 +5,33 @@
     align-items: center;
     justify-content: space-around;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
 }
 
 .containerDivLeft{
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    right: 50px;
+    right: 12px;
+    gap: 2px;
     
 }
 
 .OpenNavBarWithToogle{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: rgba(44, 64, 63, 0.726);
+    border: none;
 
-    display: none;
+    &:hover{
+        transition: 0.3s all ease-in-out;
+        background-color: rgba(44, 64, 63, 0.726);
+        color: white;
+        border: 1px solid white;
+
+    }
 }
 
 .inputSearch{
@@ -25,6 +40,11 @@
 
 .SearchButton{
     background-color: rgba(44, 64, 63, 0.726);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
     
     img{
@@ -47,7 +67,7 @@
     width: 100px;
     gap: 8px;
     position: relative;
-    left: 19px;
+    left: 22px;
 
     button{
         width: 40px;
@@ -68,7 +88,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
