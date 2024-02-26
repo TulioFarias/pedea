@@ -26,10 +26,6 @@ function AdminSystem() {
     setShowDeleteModal(true)
   }
 
-  const handleCancelDelete = () => {
-    setShowDeleteModal(false)
-  }
-
   const handleEdit = id => {
     dispatch(updateInfo(id))
     setSelectedId(id)

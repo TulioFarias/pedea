@@ -1,7 +1,7 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -13,6 +13,7 @@ import '../../../sass/admin/headerAdmin.scss'
 
 function HeaderAdm() {
   const { t } = useTranslation()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userData = useSelector(state => state.userReducer.userData)
@@ -35,10 +36,14 @@ function HeaderAdm() {
 
     navigate('/login')
   }
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
   return (
     <div className="container-fluid bodyHeader">
       <div className="containerDivLeft">
-        <button className="OpenNavBarWithToogle">
+        <button className="OpenNavBarWithToogle" onClick={toggleSidebar}>
           {' '}
           <MenuOpenRoundedIcon />
         </button>
