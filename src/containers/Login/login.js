@@ -64,7 +64,7 @@ function LoginSystem() {
         {
           pending: 'Verificando os dados...',
           success: 'Seja bem-vindo(a).',
-          error: 'Ops! Verifique seu email ou senha e tente novamente... '
+          error: 'Ops! E-mail e/ou senha inválidos '
         }
       )
 

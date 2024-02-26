@@ -25,8 +25,8 @@ function RecoverPasswordModal({ show, setShow }) {
         {
           pending: 'Verificando seu email...',
           success:
-            'As instruções para recuperar sua senha foram enviadas para o seu e-mail. 😬',
-          error: 'Ops! Seu e-mail não está cadastrado... 😕'
+            'As instruções para recuperar sua senha foram enviadas para o seu e-mail.',
+          error: 'Ops! Seu e-mail não está cadastrado...'
         }
       )
 
