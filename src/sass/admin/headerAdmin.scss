@@ -91,6 +91,7 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
+    height: max-content;
 
     
 }
@@ -106,8 +107,9 @@
 }
 
 .containerUser{
-
-    p{
+    
+    p{  
+        margin-top: 15px;
         width: 190px;
         text-align: center;
         font-size: 16px;
@@ -282,6 +284,7 @@
        justify-content: center;
     
         p{
+            margin-top: 20px;
         position: relative;
         top: 8px;
         width: 105px;

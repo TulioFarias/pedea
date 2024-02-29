@@ -37,18 +37,9 @@ function RegisterUser() {
   const dispatch = useDispatch()
   const schema = Yup.object().shape({
     name: Yup.string().required('O nome é obrigatório.'),
-    lastName: Yup.string().required('O Sobrenome é obrigatório.'),
     email: Yup.string()
       .email('Digite um email válido.')
       .required('O email é obrigatório.'),
-    office: Yup.string().required('O cargo é obrigatório.'),
-    phoneNumber: Yup.string()
-      .matches(
-        /^\d{11}$/,
-        'Digite um número de telefone válido com 11 dígitos.'
-      )
-      .required('O número de telefone é obrigatório.'),
-    address: Yup.string().required('O endereço é obrigatório.'),
     password: Yup.string()
       .required('A senha é obrigatória.')
       .min(6, 'A senha deve ter no mínimo 6 dígitos.'),
@@ -72,13 +63,9 @@ function RegisterUser() {
   const onSubmit = async data => {
     try {
       const registerUser = await toast.promise(
-        api.post('/register/user', {
+        api.post('/register', {
           name: data.name,
-          lastName: data.lastName,
           email: data.email,
-          office: data.office,
-          phoneNumber: data.phoneNumber,
-          address: data.address,
           password: data.password
         }),
         {
@@ -133,23 +120,6 @@ function RegisterUser() {
               </div>
 
               <div className="customContainerUser">
-                <Form.Label htmlFor="lastName" className="LabelFormRegister">
-                  Sobrenome:
-                </Form.Label>
-                <Form.Control
-                  {...register('lastName')}
-                  type="text"
-                  className="InputFormRegister"
-                  id="lastName"
-                  name="lastName"
-                  value={form.lastName}
-                  onChange={changeForm}
-                  placeholder="Seu sobrenome"
-                />
-                <p className="error-txtRegister">{errors.lastName?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
                 <Form.Label htmlFor="email" className="LabelFormRegister">
                   Email:
                 </Form.Label>
@@ -164,59 +134,6 @@ function RegisterUser() {
                   placeholder="exemplo@email.com"
                 />
                 <p className="error-txtRegister">{errors.email?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label htmlFor="email" className="LabelFormRegister">
-                  Cargo:
-                </Form.Label>
-                <Form.Control
-                  {...register('office')}
-                  type="text"
-                  className="InputFormRegister"
-                  id="office"
-                  name="office"
-                  value={form.office}
-                  onChange={changeForm}
-                  placeholder="Técnico - Sig"
-                />
-                <p className="error-txtRegister">{errors.office?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label htmlFor="phoneNumber" className="LabelFormRegister">
-                  Número de Telefone:
-                </Form.Label>
-                <Form.Control
-                  {...register('phoneNumber')}
-                  type="tel"
-                  className="InputFormRegister"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={form.phoneNumber}
-                  onChange={changeForm}
-                  placeholder="(00)00000-0000"
-                />
-                <p className="error-txtRegister">
-                  {errors.phoneNumber?.message}
-                </p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label htmlFor="address" className="LabelFormRegister">
-                  Endereço:
-                </Form.Label>
-                <Form.Control
-                  {...register('address')}
-                  type="text"
-                  className="InputFormRegister"
-                  id="address"
-                  name="address"
-                  value={form.address}
-                  onChange={changeForm}
-                  placeholder="Rua Brasil, 100 - Bairro, Cidade, Estado..."
-                />
-                <p className="error-txtRegister">{errors.address?.message}</p>
               </div>
 
               <div className="customContainerUser">

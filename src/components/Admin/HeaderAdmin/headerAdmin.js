@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import userPhoto from '../../../assets/icons/icon-user.png'
 import Search from '../../../assets/icons/search.png'
 import { logoutUser } from '../../../utils/redux/user/actions'
 
@@ -17,11 +18,6 @@ function HeaderAdm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userData = useSelector(state => state.userReducer.userData)
-  const userDataFromStorage = JSON.parse(
-    localStorage.getItem('pedea-admin: user')
-  )
-
-  const { name, lastName } = userDataFromStorage.user
 
   useEffect(() => {
     if (!userData) {
@@ -74,13 +70,11 @@ function HeaderAdm() {
         </button>
 
         <div className="customDivRight">
-          <p alt="userphoto" className="custom-userPhoto">
-            User Photo
-          </p>
+          <img src={userPhoto} alt="userphoto" className="custom-userPhoto" />
+
           <div className="containerUser">
             <p className="user">
               {t(`Seja bem vindo(a),`)} <br />
-              {`${name} ${lastName}`}
             </p>
           </div>
 

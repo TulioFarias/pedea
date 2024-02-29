@@ -57,7 +57,7 @@ function LoginSystem() {
   const onSubmit = async data => {
     try {
       const response = await toast.promise(
-        api.post('/login/auth', {
+        api.post('/login', {
           email: data.email,
           password: data.password
         }),
