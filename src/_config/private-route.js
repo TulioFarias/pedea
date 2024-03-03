@@ -12,3 +12,5 @@ export const Private = () => {
 
   return <Admin />
 }
+
+export const PrivateRecoverPass = () => {}

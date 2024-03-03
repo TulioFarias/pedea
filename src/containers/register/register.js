@@ -19,11 +19,7 @@ function RegisterUser() {
   const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '',
-    lastName: '',
     email: '',
-    office: '',
-    phoneNumber: '',
-    address: '',
     password: '',
     confirmPassword: ''
   })
