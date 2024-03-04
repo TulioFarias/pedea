@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
+import SettingsAdmin from '../MainAdmin//settings/settings'
 import Geoserver from '../MainAdmin/geoserver'
-import SettingsAdmin from '../MainAdmin/settings'
 import AdminSystem from '../MainAdmin/system'
 import NavAdmin from '../NavAdmin/NavAdmin'
 import '../../../sass/admin/admin.scss'
