@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import api from '../../services/api'
-import { loginUser } from '../../utils/redux/user/actions'
+import { login } from '../../utils/redux/user/actions'
 import RecoverPasswordModal from './RecoverPasswordModal'
 
 function LoginSystem() {
@@ -68,7 +68,7 @@ function LoginSystem() {
         }
       )
 
-      dispatch(loginUser(response.data))
+      dispatch(login(response.data))
 
       setTimeout(() => {
         navigate('/admin')

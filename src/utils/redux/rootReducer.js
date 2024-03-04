@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
 import infoReducer from './CRUD/actions'
-import userReducer from './user/reducer'
+import userInfoSlice from './user/actions'
 
-const rootReducer = combineReducers({ userReducer, infoReducer })
+const rootReducer = combineReducers({ userInfoSlice, infoReducer })
 
 export default rootReducer

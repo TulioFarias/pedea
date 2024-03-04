@@ -1,15 +1,14 @@
+import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
 import EditRoundedIcon from '@mui/icons-material/EditRounded'
 import React, { useState } from 'react'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import '../../../../sass/admin/settings.scss'
 import { useSelector } from 'react-redux'
-import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
+
 function SettingsSystemAndUser() {
-  const userReducer = useSelector(state => state.userReducer)
+  const userReducer = useSelector(state => state.userInfoSlice.infoUser)
 
-  console.log(userReducer)
-
-  const [fileName, setfileName] = useState(null)
+  const { name, email } = userReducer
 
   return (
     <>
@@ -28,7 +27,6 @@ function SettingsSystemAndUser() {
                 type="file"
                 className="fileImageInput"
                 accept="image/png, image/jpeg"
-                onChange={value => setfileName(value.target.files[0]?.name)}
               />
             </div>
           </Form.Group>
@@ -39,7 +37,7 @@ function SettingsSystemAndUser() {
             className="inputsValuesUser"
           >
             <Col sm="9">
-              <Form.Control type="text" name="name" readOnly />
+              <Form.Control type="text" name="name" value={name} readOnly />
             </Col>
             <Col sm="1">
               <Button variant="secondary">
@@ -54,7 +52,7 @@ function SettingsSystemAndUser() {
             className="inputsValuesUser"
           >
             <Col sm="9">
-              <Form.Control type="email" name="email" readOnly />
+              <Form.Control type="email" name="email" value={email} readOnly />
             </Col>
             <Col sm="1">
               <Button variant="secondary">

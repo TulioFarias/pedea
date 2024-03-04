@@ -1,15 +1,29 @@
-import userActionTypes from './actionTypes'
+import { createSlice } from '@reduxjs/toolkit'
+const storedUserData = JSON.parse(localStorage.getItem('pedea-admin: user'))
 
-export const loginUser = payload => ({
-  type: userActionTypes.Login,
-  payload
+const initialState = {
+  infoUser: storedUserData
+}
+
+const userInfoSlice = createSlice({
+  name: 'infoUser',
+  initialState,
+  reducers: {
+    createUser: (state, action) => {
+      state.infoUser = action.payload
+      localStorage.setItem('pedea-admin: user', JSON.stringify(action.payload))
+    },
+    login: (state, action) => {
+      state.infoUser = action.payload
+      localStorage.setItem('pedea-admin: user', JSON.stringify(action.payload))
+    },
+    logout: state => {
+      state.infoUser = null
+      localStorage.removeItem('pedea-admin: user')
+    }
+  }
 })
 
-export const logoutUser = () => ({
-  type: userActionTypes.Logout
-})
+export const { createUser, login, logout } = userInfoSlice.actions
 
-export const createUser = payload => ({
-  type: userActionTypes.CreateUser,
-  payload
-})
+export default userInfoSlice.reducer

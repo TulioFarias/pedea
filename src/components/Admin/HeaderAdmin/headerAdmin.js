@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 import userPhoto from '../../../assets/icons/icon-user.png'
 import Search from '../../../assets/icons/search.png'
-import { logoutUser } from '../../../utils/redux/user/actions'
+import { logout } from '../../../utils/redux/user/actions'
 
 import '../../../sass/admin/headerAdmin.scss'
 
@@ -17,7 +17,9 @@ function HeaderAdm() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const userData = useSelector(state => state.userReducer.userData)
+  const userData = useSelector(state => state.userInfoSlice.infoUser)
+
+  const { name } = userData
 
   useEffect(() => {
     if (!userData) {
@@ -28,7 +30,7 @@ function HeaderAdm() {
   }, [])
 
   const voltar = () => {
-    dispatch(logoutUser())
+    dispatch(logout())
 
     navigate('/login')
   }
@@ -75,6 +77,7 @@ function HeaderAdm() {
           <div className="containerUser">
             <p className="user">
               {t(`Seja bem vindo(a),`)} <br />
+              <p className="nameUser">{name}</p>
             </p>
           </div>
 
