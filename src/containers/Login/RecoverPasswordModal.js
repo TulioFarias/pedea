@@ -19,7 +19,7 @@ function RecoverPasswordModal({ show, setShow }) {
   const onSubmit = async data => {
     try {
       const response = await toast.promise(
-        api.post('/login/recoverPass', {
+        api.post('/recover-password', {
           email: data.email
         }),
         {
@@ -32,7 +32,7 @@ function RecoverPasswordModal({ show, setShow }) {
 
       setShow(false)
     } catch (error) {
-      return error
+      return console.log(error)
     }
   }
 

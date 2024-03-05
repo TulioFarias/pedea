@@ -30,8 +30,8 @@
 
 
 .user-imageSettings{
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,8 +47,8 @@
     height: 30px;
     position: relative;
     justify-content: center;
-    top: 100px;
-    right: 20px;
+    bottom: 30px;
+    left: 50px;
     cursor: pointer;
     }
 
@@ -74,10 +74,16 @@
     border: 1px dashed;
     cursor: pointer;
 }
+
+
 .inputsValuesUser{
     width: 30vw;
     display: flex;
     justify-content: center;
+}
+
+.valueInputCustom{
+    color: gray;
 }
 
 
