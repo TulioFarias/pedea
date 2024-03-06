@@ -1,22 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
-import '../../../../sass/admin/Settings/modalPhotoSettings.scss'
-function ModalChangePhotoUser() {
-  const [show, setShow] = useState(false)
-
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+import '../../../../sass/admin/Settings/photouserModal.scss'
+import PropTypes from 'prop-types'
+function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
+  const handleClose = () => setShowModalPhoto(false)
 
   const handleSubmit = e => {
     e.preventDefault()
-    // Adicione aqui a lógica para enviar a foto
+
     handleClose()
   }
   return (
     <>
       <div>
         {' '}
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={showModalPhoto} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Mudar foto de perfil</Modal.Title>
           </Modal.Header>
@@ -44,6 +42,11 @@ function ModalChangePhotoUser() {
       </div>
     </>
   )
+}
+
+ModalChangePhotoUser.propTypes = {
+  showModalPhoto: PropTypes.bool.isRequired,
+  setShowModalPhoto: PropTypes.func.isRequired
 }
 
 export default ModalChangePhotoUser

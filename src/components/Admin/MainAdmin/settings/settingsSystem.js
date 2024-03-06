@@ -17,15 +17,18 @@ import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
 import api from '../../../../services/api'
+import ModalChangePassword from './PasswordChange'
+import ModalChangePhotoUser from './PhotoUserChange'
 
 function SettingsSystemAndUser() {
+  const [showModalPhoto, setShowModalPhoto] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const [user, setUser] = useState([])
   const userData = useSelector(state => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
 
-  console.log(user)
-
-  console.log(user)
+  const handleShowPhoto = () => setShowModalPhoto(true)
+  const handleShowPassword = () => setShowPassword(true)
   useEffect(() => {
     async function loadUserData() {
       try {
@@ -49,8 +52,6 @@ function SettingsSystemAndUser() {
   })
 
   const {
-    register,
-    handleSubmit,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -69,7 +70,7 @@ function SettingsSystemAndUser() {
                 </div>
 
                 <div className="containerFileImg">
-                  <button className="file-btn">
+                  <button className="file-btn" onClick={handleShowPhoto}>
                     <CloudUploadRoundedIcon />
                   </button>
                 </div>
@@ -105,7 +106,7 @@ function SettingsSystemAndUser() {
                         className="valueInputCustom"
                         value={'XXXXXXXXXXX'}
                       />
-                      <Button variant="secondary">
+                      <Button variant="secondary" onClick={handleShowPassword}>
                         <EditRoundedIcon />
                       </Button>
                     </InputGroup>
@@ -113,6 +114,14 @@ function SettingsSystemAndUser() {
                 </Row>
               </div>
             </Container>
+            <ModalChangePhotoUser
+              showModalPhoto={showModalPhoto}
+              setShowModalPhoto={setShowModalPhoto}
+            />
+            <ModalChangePassword
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
           </div>
         ))}
     </div>
