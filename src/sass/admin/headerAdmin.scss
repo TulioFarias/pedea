@@ -286,9 +286,17 @@
     .customDivRight{
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         border-radius: 10px;
-        width: 180px;
+        width: 15vw;
+        height: 7vh;
         
     
+        
+    }
+
+    .custom-userPhoto{
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
         
     }
     
@@ -298,7 +306,7 @@
        justify-content: center;
     
         p{
-            margin-top: 20px;
+        margin-top: 20px;
         position: relative;
         top: 8px;
         width: 105px;
@@ -315,7 +323,6 @@
     
     .backButton{
         color: rgb(221, 0, 0);
-      
         border: none;
         background: transparent;
         cursor: pointer;
