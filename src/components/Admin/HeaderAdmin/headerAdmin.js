@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import userPhoto from '../../../assets/icons/icon-user.png'
 import Search from '../../../assets/icons/search.png'
+import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
 
 import '../../../sass/admin/headerAdmin.scss'
@@ -18,16 +18,25 @@ function HeaderAdm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userData = useSelector(state => state.userInfoSlice.infoUser)
-
-  const { name } = userData
+  const [user, setUser] = useState([])
+  const { id: loggedInUserId } = userData
 
   useEffect(() => {
-    if (!userData) {
-      const userDataFromStorage = JSON.parse(
-        localStorage.getItem('pedea-admin: user')
-      )
+    async function loadUserData() {
+      try {
+        const { data } = await api.get('/admin')
+        const loggedInUser = data.filter(user => user.id === loggedInUserId)
+
+        if (loggedInUser) {
+          setUser(loggedInUser)
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
     }
-  }, [])
+
+    loadUserData()
+  }, [loggedInUserId])
 
   const voltar = () => {
     dispatch(logout())
@@ -72,14 +81,23 @@ function HeaderAdm() {
         </button>
 
         <div className="customDivRight">
-          <img src={userPhoto} alt="userphoto" className="custom-userPhoto" />
+          {user &&
+            user.map(value => (
+              <div className="containerUser" key={value.id}>
+                <div className="containerImageHeaderAdmin">
+                  <img
+                    alt="userphoto"
+                    className="custom-userPhoto"
+                    src={value.url}
+                  />
+                </div>
 
-          <div className="containerUser">
-            <p className="user">
-              {t(`Seja bem vindo(a),`)} <br />
-              <p className="nameUser">{name}</p>
-            </p>
-          </div>
+                <p className="user">
+                  {t(`Seja bem vindo(a),`)} <br />
+                  <p className="nameUser">{value.name}</p>
+                </p>
+              </div>
+            ))}
 
           <a className=" backButton" onClick={voltar}>
             Sair

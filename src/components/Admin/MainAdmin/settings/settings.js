@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../../../sass/admin/settings.scss'
+import '../../../../sass/admin/Settings/settings.scss'
 import SettingsSystemAndUser from './settingsSystem'
 function SettingsAdmin() {
   return (

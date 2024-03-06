@@ -1,26 +1,37 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
-import '../../../../sass/admin/settings.scss'
+import '../../../../sass/admin/Settings/settings.scss'
 import EditRoundedIcon from '@mui/icons-material/EditRounded'
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, Form } from 'react-bootstrap'
+import {
+  Row,
+  Col,
+  Button,
+  Form,
+  FormControl,
+  InputGroup,
+  Container
+} from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import api from '../../../../services/api'
 
 function SettingsSystemAndUser() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState([])
   const userData = useSelector(state => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
 
+  console.log(user)
+
+  console.log(user)
   useEffect(() => {
     async function loadUserData() {
       try {
         const { data } = await api.get('/admin')
-        const loggedInUser = data.find(user => user.id === loggedInUserId)
+        const loggedInUser = data.filter(user => user.id === loggedInUserId)
+        console.log(loggedInUser)
 
         if (loggedInUser) {
           setUser(loggedInUser)
@@ -47,67 +58,63 @@ function SettingsSystemAndUser() {
 
   return (
     <div className="ContainerSettingsAndUser container-fluid">
-      {user && (
-        <div>
-          <Form className="containerUserSettings" onSubmit={handleSubmit}>
-            <h3>Informações do Usuário</h3>
-            <Form.Group className="containerUserSettings">
-              <div className="user-imageSettings">
-                <img alt="photo-user" src={user.url} />
-              </div>
+      {user &&
+        user.map(value => (
+          <div key={value.id}>
+            <Container fluid>
+              <div className="containerUserSettings">
+                <h3>Informações do Usuário</h3>
+                <div className="user-imageSettings">
+                  <img alt="photo-user" src={value.url} />
+                </div>
 
-              <div className="containerFileImg">
-                <label htmlFor="fileInput" className="file-label">
-                  <CloudUploadRoundedIcon />
-                </label>
-                <input
-                  type="file"
-                  className="fileImageInput"
-                  accept="image/png, image/jpeg"
-                  {...register('file')}
-                />
-              </div>
+                <div className="containerFileImg">
+                  <button className="file-btn">
+                    <CloudUploadRoundedIcon />
+                  </button>
+                </div>
 
-              <Form.Group as={Row} className="inputsValuesUser">
-                <Col sm="9">
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={user.name}
-                    readOnly
-                    className="valueInputCustom"
-                  />
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row} className="inputsValuesUser">
-                <Col sm="9">
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={user.email}
-                    readOnly
-                    className="valueInputCustom"
-                  />
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row} className="inputsValuesUser">
-                <Col sm="9">
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    className="valueInputCustom"
-                    value={'XXXXXXXXXXX'}
-                  />
-                </Col>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Salvar Alterações
-              </Button>
-              <Button variant="danger">Sair</Button>
-            </Form.Group>
-          </Form>
-        </div>
-      )}
+                <Row className="inputsValuesUser">
+                  <Col sm="9">
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={value.name}
+                      readOnly
+                      className="valueInputCustom"
+                    />
+                  </Col>
+                </Row>
+                <Row className="inputsValuesUser">
+                  <Col sm="9">
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={value.email}
+                      readOnly
+                      className="valueInputCustom"
+                    />
+                  </Col>
+                </Row>
+                <Row className="inputsValuesUser">
+                  <Col sm="9">
+                    <InputGroup>
+                      <FormControl
+                        type="password"
+                        name="password"
+                        className="valueInputCustom"
+                        value={'XXXXXXXXXXX'}
+                      />
+                      <Button variant="secondary">
+                        <EditRoundedIcon />
+                      </Button>
+                    </InputGroup>
+                  </Col>
+                </Row>
+              </div>
+            </Container>
+          </div>
+        ))}
     </div>
   )
 }
