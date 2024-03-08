@@ -1,4 +1,4 @@
-import '../../sass/LoginSystem/resetPass.scss'
+import '../../sass/login/resetPass.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'

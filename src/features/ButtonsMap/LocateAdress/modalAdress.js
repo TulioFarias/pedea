@@ -11,7 +11,7 @@ import { Modal, Form, Button } from 'react-bootstrap'
 
 import 'ol/ol.css'
 import { mapInstance } from '../../../_config/layers/map'
-import '../../../sass/btns-Left/locateModal.scss'
+import '../../../sass/btns-map/locateModal.scss'
 import searchIcon from '../../../assets/icons/searchIcon.png'
 
 function LocateModal({ show, setShow }) {

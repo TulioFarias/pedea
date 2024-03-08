@@ -65,33 +65,48 @@ function SettingsSystemAndUser() {
             <Container fluid>
               <div className="containerUserSettings">
                 <h3>Informações do Usuário</h3>
-                <div className="user-imageSettings">
-                  <img alt="photo-user" src={value.url} />
-                </div>
-
-                <div className="containerFileImg">
-                  <button className="file-btn" onClick={handleShowPhoto}>
-                    <CloudUploadRoundedIcon />
-                  </button>
-                </div>
+                <Row>
+                  <Col sm={3}>
+                    <div className="user-imageSettings">
+                      <img alt="photo-user" src={value.url} />
+                    </div>
+                  </Col>
+                  <Col sm={9}>
+                    <div className="containerFileImg">
+                      <button className="file-btn" onClick={handleShowPhoto}>
+                        <CloudUploadRoundedIcon />
+                      </button>
+                    </div>
+                    <div className="inputsValuesUserName">
+                      <Form.Control
+                        type="text"
+                        name="name"
+                        value={value.name}
+                        readOnly
+                        className="valueInputCustom"
+                      />
+                    </div>
+                  </Col>
+                </Row>
 
                 <Row className="inputsValuesUser">
                   <Col sm="9">
                     <Form.Control
                       type="text"
-                      name="name"
-                      value={value.name}
+                      name="role"
+                      value={value.email}
                       readOnly
                       className="valueInputCustom"
                     />
                   </Col>
                 </Row>
+
                 <Row className="inputsValuesUser">
                   <Col sm="9">
                     <Form.Control
-                      type="email"
-                      name="email"
-                      value={value.email}
+                      type="text"
+                      name="role"
+                      value={'Cargo'}
                       readOnly
                       className="valueInputCustom"
                     />

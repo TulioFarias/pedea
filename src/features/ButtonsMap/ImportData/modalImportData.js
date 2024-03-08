@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
-import '../../../sass/btns-Left/importModal.scss'
+import '../../../sass/btns-map/importModal.scss'
 function ModalImport({ show, setShow }) {
   const handleClose = () => {
     setShow(false)

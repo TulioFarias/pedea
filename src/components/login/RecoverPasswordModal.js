@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import '../../sass/LoginSystem/RecoverPass.scss'
+import '../../sass/login/RecoverPass.scss'
 import api from '../../services/api'
 function RecoverPasswordModal({ show, setShow }) {
   const [email, setEmail] = useState('')

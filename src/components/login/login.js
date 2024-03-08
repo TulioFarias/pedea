@@ -1,4 +1,4 @@
-import '../../sass/LoginSystem/loginSystem.scss'
+import '../../sass/login/loginSystem.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'

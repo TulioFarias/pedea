@@ -30,13 +30,12 @@
 
 
 .user-imageSettings{
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid;
     overflow: hidden;
 }
 
@@ -55,8 +54,8 @@
     height: 30px;
     position: relative;
     justify-content: center;
-    bottom: 30px;
-    left: 50px;
+    top: 120px;
+    left: 8px;
     cursor: pointer;
     }
 
@@ -88,6 +87,14 @@
     width: 30vw;
     display: flex;
     justify-content: center;
+    margin-top: 5px;
+}
+
+.inputsValuesUserName{
+    width: 13vw;
+    position: relative;
+    top: 30px;
+    left: 53px;
 }
 
 .valueInputCustom{

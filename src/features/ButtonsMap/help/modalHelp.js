@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import '../../../sass/btns-Left/helpModal.scss'
+import '../../../sass/btns-map/helpModal.scss'
 
 import logoIMG from '../../../assets/img/logoCientistaChefe.png'
 

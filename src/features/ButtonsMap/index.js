@@ -1,4 +1,4 @@
-import '../../sass/btns-Left/ButtonsLeft.scss'
+import '../../sass/btns-map/ButtonsLeft.scss'
 
 import React from 'react'
 
