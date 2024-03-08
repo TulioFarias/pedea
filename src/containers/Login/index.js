@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LoginSystem from './login'
+import LoginSystem from '../../components/login/login'
 
 function Login() {
   return (
