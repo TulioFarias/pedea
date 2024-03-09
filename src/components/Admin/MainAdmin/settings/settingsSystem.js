@@ -20,6 +20,8 @@ import api from '../../../../services/api'
 import ModalChangePassword from './PasswordChange'
 import ModalChangePhotoUser from './PhotoUserChange'
 
+import { Label } from '@mui/icons-material'
+
 function SettingsSystemAndUser() {
   const [showModalPhoto, setShowModalPhoto] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -57,6 +59,30 @@ function SettingsSystemAndUser() {
     resolver: yupResolver(schema)
   })
 
+  const formatarDataLegivel = dataString => {
+    const meses = [
+      'janeiro',
+      'fevereiro',
+      'março',
+      'abril',
+      'maio',
+      'junho',
+      'julho',
+      'agosto',
+      'setembro',
+      'outubro',
+      'novembro',
+      'dezembro'
+    ]
+
+    const data = new Date(dataString)
+    const dia = data.getDate()
+    const mes = meses[data.getMonth()]
+    const ano = data.getFullYear()
+
+    return `${dia} de ${mes} de ${ano}`
+  }
+
   return (
     <div className="ContainerSettingsAndUser container-fluid">
       {user &&
@@ -64,7 +90,7 @@ function SettingsSystemAndUser() {
           <div key={value.id}>
             <Container fluid>
               <div className="containerUserSettings">
-                <h3>Informações do Usuário</h3>
+                <h3 className="titleUserSettings">Informações do Usuário</h3>
                 <Row>
                   <Col sm={3}>
                     <div className="user-imageSettings">
@@ -78,6 +104,7 @@ function SettingsSystemAndUser() {
                       </button>
                     </div>
                     <div className="inputsValuesUserName">
+                      <Form.Label className="customLabelUser">Nome:</Form.Label>
                       <Form.Control
                         type="text"
                         name="name"
@@ -91,6 +118,7 @@ function SettingsSystemAndUser() {
 
                 <Row className="inputsValuesUser">
                   <Col sm="9">
+                    <Form.Label className="customLabelUser">Email:</Form.Label>
                     <Form.Control
                       type="text"
                       name="role"
@@ -103,6 +131,7 @@ function SettingsSystemAndUser() {
 
                 <Row className="inputsValuesUser">
                   <Col sm="9">
+                    <Form.Label className="customLabelUser">Cargo:</Form.Label>
                     <Form.Control
                       type="text"
                       name="role"
@@ -114,6 +143,23 @@ function SettingsSystemAndUser() {
                 </Row>
                 <Row className="inputsValuesUser">
                   <Col sm="9">
+                    <Form.Label className="customLabelUser">
+                      Criado em:
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="create"
+                      value={value.createdAt}
+                      readOnly
+                      className="valueInputCustom"
+                    />
+                  </Col>
+                </Row>
+                <Row className="inputsValuesUser">
+                  <Col sm="9">
+                    <Form.Label className="customLabelUser">
+                      Trocar sua senha?
+                    </Form.Label>
                     <InputGroup>
                       <FormControl
                         type="password"
