@@ -30,8 +30,6 @@ function ModalChangePassword({ showPassword, setShowPassword }) {
   }
 
   const onSubmit = data => {
-    // Aqui você pode realizar a lógica para enviar os dados do formulário
-    // por exemplo, chamando uma função da API para alterar a senha
     console.log('Formulário submetido:', data)
     handleClose()
   }

@@ -16,11 +16,10 @@ import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
+import userPhotoIcon from '../../../../assets/img/user.png'
 import api from '../../../../services/api'
 import ModalChangePassword from './PasswordChange'
 import ModalChangePhotoUser from './PhotoUserChange'
-
-import { Label } from '@mui/icons-material'
 
 function SettingsSystemAndUser() {
   const [showModalPhoto, setShowModalPhoto] = useState(false)
@@ -36,7 +35,6 @@ function SettingsSystemAndUser() {
       try {
         const { data } = await api.get('/admin')
         const loggedInUser = data.filter(user => user.id === loggedInUserId)
-        console.log(loggedInUser)
 
         if (loggedInUser) {
           setUser(loggedInUser)
@@ -90,11 +88,14 @@ function SettingsSystemAndUser() {
           <div key={value.id}>
             <Container fluid>
               <div className="containerUserSettings">
-                <h3 className="titleUserSettings">Informações do Usuário</h3>
+                <h3 className="titleUserSettings">Detalhes do usuário</h3>
                 <Row>
                   <Col sm={3}>
                     <div className="user-imageSettings">
-                      <img alt="photo-user" src={value.url} />
+                      <img
+                        alt="photo-user"
+                        src={value.url ? value.url : userPhotoIcon}
+                      />
                     </div>
                   </Col>
                   <Col sm={9}>
@@ -149,7 +150,7 @@ function SettingsSystemAndUser() {
                     <Form.Control
                       type="text"
                       name="create"
-                      value={value.createdAt}
+                      value={formatarDataLegivel(value.createdAt)}
                       readOnly
                       className="valueInputCustom"
                     />
