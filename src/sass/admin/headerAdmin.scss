@@ -206,16 +206,18 @@
     .OpenNavBarWithToogle{
         display: flex;
         position: relative;
-        right: 25px;
-        width: 30px;
-        height: 30px;
+        top: 26px;
+        left: 10px;
+        width: 25px;
+        height: 25px;
         justify-content: center;
         align-items: center;
         border: none;
         border-radius: 50%;
         border: none;
         background-color: rgba(44, 64, 63, 0.726);
-        color: rgb(255, 255, 255);;
+        color: rgb(255, 255, 255);
+        display: none;
 
         &:hover{
             background-color: rgba(44, 64, 63, 0.726);
@@ -226,7 +228,7 @@
     .containerDivLeft{
         display: flex;
         position: relative;
-        left: 26px;
+        left: 75px;
         right: 0;
         
     }
@@ -266,7 +268,7 @@
         width: 100px;
         gap: 0px;
         position: relative;
-        left: 46px;
+        left: 75px;
     
         button{
             width: 40px;
@@ -288,8 +290,6 @@
         border-radius: 10px;
         width: 15vw;
         height: 7vh;
-        
-    
         
     }
 

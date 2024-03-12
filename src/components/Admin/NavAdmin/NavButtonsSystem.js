@@ -1,3 +1,4 @@
+import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
@@ -37,7 +38,7 @@ function ButtonSystem({ handleOptionChange }) {
               {t('Home')}
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               eventKey="link-1"
               onClick={e => {
@@ -53,7 +54,7 @@ function ButtonSystem({ handleOptionChange }) {
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-2"
               onClick={e => {
@@ -64,11 +65,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link2' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 2
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-3"
               onClick={e => {
@@ -79,11 +81,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link3' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 3
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-4"
               onClick={e => {
@@ -94,11 +97,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link4' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 4
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-5"
               onClick={e => {
@@ -109,11 +113,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link5' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 5
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-6"
               onClick={e => {
@@ -124,11 +129,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link6' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 6
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/link-7"
               onClick={e => {
@@ -139,11 +145,12 @@ function ButtonSystem({ handleOptionChange }) {
                 activeButton === 'Link7' ? 'nav-link active' : 'nav-link'
               }
             >
+              <AppsRoundedIcon />
               Link 7
             </Nav.Link>
           </Nav.Item>
 
-          <Nav.Item>
+          <Nav.Item className="OptionsItems">
             <Nav.Link
               href="/Configurações"
               onClick={e => {

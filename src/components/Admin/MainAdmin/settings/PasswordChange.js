@@ -1,13 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import { Modal, Button, Form, Alert } from 'react-bootstrap'
+import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import * as Yup from 'yup'
 import '../../../../sass/admin/Settings/passwordModal.scss'
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+import * as Yup from 'yup'
 
+import api from '../../../../services/api'
 function ModalChangePassword({ showPassword, setShowPassword }) {
   const [error, setError] = useState(null)
+  const userData = useSelector(state => state.userInfoSlice.infoUser)
+  const { id: loggedInUserId } = userData
   const schema = Yup.object().shape({
     oldPassword: Yup.string().required('Senha antiga é obrigatória'),
     newPassword: Yup.string().required('Nova senha é obrigatória'),
@@ -29,9 +34,25 @@ function ModalChangePassword({ showPassword, setShowPassword }) {
     setError(null)
   }
 
-  const onSubmit = data => {
-    console.log('Formulário submetido:', data)
-    handleClose()
+  const onSubmit = async data => {
+    try {
+      const response = await toast.promise(
+        api.put(`/admin/update-user/${loggedInUserId}`, {
+          oldPassword: data.oldPassword,
+          newPassword: data.newPassword
+        }),
+        {
+          pending: 'Atualizando senha...',
+          success: 'Senha atualizada com sucesso.',
+          error: 'Ocorreu algum erro ao atualizar a senha.'
+        }
+      )
+
+      console.log('Resposta:', response)
+      handleClose()
+    } catch (error) {
+      return error
+    }
   }
 
   return (

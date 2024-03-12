@@ -16,6 +16,7 @@ function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
   const [fileName, setFileName] = useState(null)
   const [user, setUser] = useState([])
   const userData = useSelector(state => state.userInfoSlice.infoUser)
+  const { id: loggedInUserId } = userData
 
   const schema = Yup.object().shape({
     file: Yup.mixed()
@@ -68,8 +69,6 @@ function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
       return error
     }
   }
-
-  const { id: loggedInUserId } = userData
 
   useEffect(() => {
     async function loadUserData() {
