@@ -18,8 +18,12 @@ const userInfoSlice = createSlice({
       localStorage.setItem('pedea-admin: user', JSON.stringify(action.payload))
     },
     logout: state => {
+      const token = state.infoUser
       state.infoUser = null
-      localStorage.removeItem('pedea-admin: user')
+
+      if (!token || !state.infoUser) {
+        localStorage.removeItem('pedea-admin: user')
+      }
     }
   }
 })

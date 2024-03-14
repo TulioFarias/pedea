@@ -10,7 +10,7 @@ import { updateInfo } from '../../../utils/redux/CRUD/actions'
 import { ModalAdd } from '../AdminModal/Addmodal'
 import ConfirmDeleteModal from '../AdminModal/deleteModal'
 import { EditedModal } from '../AdminModal/editModal'
-function AdminSystem() {
+function HomeAdmin() {
   const { t } = useTranslation()
   const infoList = useSelector(state => state.infoReducer.info)
   const dispatch = useDispatch()
@@ -84,4 +84,4 @@ function AdminSystem() {
   )
 }
 
-export default AdminSystem
+export default HomeAdmin

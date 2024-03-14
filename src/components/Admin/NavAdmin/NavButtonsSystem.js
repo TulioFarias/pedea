@@ -43,14 +43,14 @@ function ButtonSystem({ handleOptionChange }) {
               eventKey="link-1"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Geoserver')
+                handleButtonClick('Link1')
               }}
               className={
-                activeButton === 'Geoserver' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Link1' ? 'nav-link active' : 'nav-link'
               }
             >
               <PublicRoundedIcon />
-              Geoserver
+              Link 1
             </Nav.Link>
           </Nav.Item>
 
