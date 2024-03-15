@@ -9,7 +9,7 @@ import '../../../sass/admin/navAdmin.scss'
 import PEDEA from '../../../assets/img/pedea-logo.png'
 import ButtonSystem from './NavButtonsSystem'
 
-function NavAdmin({ handleOptionChange, isOpen }) {
+function NavAdmin({ handleOptionChange, sidebarOpen }) {
   const { t, i18n } = useTranslation()
 
   const handleLanguageChange = value => {
@@ -17,7 +17,10 @@ function NavAdmin({ handleOptionChange, isOpen }) {
   }
 
   return (
-    <Container fluid className={`bodyNav ${isOpen ? 'open' : 'closed'}`}>
+    <Container
+      fluid
+      className={`bodyNav ${sidebarOpen ? 'bodyNav-expanded' : ''}`}
+    >
       <div className="containerDivsLanguage">
         <Tooltip title="PT" placement="bottom">
           <button
@@ -51,10 +54,10 @@ function NavAdmin({ handleOptionChange, isOpen }) {
         <img src={PEDEA} alt="PEDEA Logo" className="imgPEDEA" />
       </div>
 
-      <hr className="hrNavOptons" />
+      <hr className="hrNavOptionsOne" />
       <ButtonSystem handleOptionChange={handleOptionChange} />
 
-      <hr className="hrNavOptons" />
+      <hr className="hrNavOptionsTwo" />
       <div className="containerNavFooter">
         <p>
           {t(
@@ -62,14 +65,13 @@ function NavAdmin({ handleOptionChange, isOpen }) {
           )}
         </p>
       </div>
-      <hr className="hrNavOptons" />
     </Container>
   )
 }
 
 NavAdmin.propTypes = {
   handleOptionChange: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired
+  sidebarOpen: PropTypes.bool.isRequired
 }
 
 export default NavAdmin

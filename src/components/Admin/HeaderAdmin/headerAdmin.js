@@ -1,6 +1,7 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,12 +10,14 @@ import { useNavigate } from 'react-router-dom'
 import Search from '../../../assets/icons/search.png'
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
+import DarkMode from './darkMode'
 
 import '../../../sass/admin/headerAdmin.scss'
+import { Container } from 'react-bootstrap'
 
-function HeaderAdm() {
+function HeaderAdm({ sidebarOpen, setSidebarOpen }) {
   const { t } = useTranslation()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userData = useSelector(state => state.userInfoSlice.infoUser)
@@ -47,8 +50,12 @@ function HeaderAdm() {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
+
   return (
-    <div className="container-fluid bodyHeader">
+    <Container
+      fluid
+      className={`bodyHeader ${sidebarOpen ? 'bodyHeader-expanded' : ''}`}
+    >
       <div className="containerDivLeft">
         <button className="OpenNavBarWithToogle" onClick={toggleSidebar}>
           {' '}
@@ -76,9 +83,7 @@ function HeaderAdm() {
         <button>
           <NotificationsNoneRoundedIcon />
         </button>
-        <button>
-          <DarkModeOutlinedIcon />
-        </button>
+        <DarkMode />
 
         <div className="customDivRight">
           {user &&
@@ -104,8 +109,13 @@ function HeaderAdm() {
           </a>
         </div>
       </div>
-    </div>
+    </Container>
   )
+}
+
+HeaderAdm.propTypes = {
+  setSidebarOpen: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired
 }
 
 export default HeaderAdm

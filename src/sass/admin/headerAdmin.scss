@@ -64,10 +64,11 @@
 .containerButtonsHeader{
     display: flex;
     align-items: center;
-    width: 100px;
+    width: 80px;
+    height: 50px;
     gap: 8px;
     position: relative;
-    left: 22px;
+    left: 5px;
 
     button{
         width: 40px;
@@ -83,6 +84,8 @@
         }
     }
 }
+
+
 
 .customDivRight{
     display: flex;

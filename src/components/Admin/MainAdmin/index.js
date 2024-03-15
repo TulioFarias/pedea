@@ -11,10 +11,13 @@ import Link5 from './Link5'
 import Link6 from './Link6'
 import Link7 from './Link7'
 import SettingsAdmin from './settings/settings'
+
 import '../../../sass/admin/admin.scss'
+import { Container } from 'react-bootstrap'
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleOptionChange = async option => {
     await setSelectedOption(option)
@@ -22,9 +25,17 @@ function MainAdmin() {
 
   return (
     <>
-      <HeaderAdmin />
-      <NavAdmin handleOptionChange={handleOptionChange} />
-      <div className="container-fluid ContainerMainSystem">
+      <HeaderAdmin setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
+      <NavAdmin
+        handleOptionChange={handleOptionChange}
+        sidebarOpen={sidebarOpen}
+      />
+      <Container
+        fluid
+        className={`ContainerMainSystem ${
+          sidebarOpen ? 'ContainerMainSystem-expanded' : ''
+        }`}
+      >
         {selectedOption === 'Home' && <HomeAdmin />}
         {selectedOption === 'Link1' && <Link1 />}
         {selectedOption === 'Link2' && <Link2 />}
@@ -33,9 +44,8 @@ function MainAdmin() {
         {selectedOption === 'Link5' && <Link5 />}
         {selectedOption === 'Link6' && <Link6 />}
         {selectedOption === 'Link7' && <Link7 />}
-
         {selectedOption === 'Configurações' && <SettingsAdmin />}
-      </div>
+      </Container>
     </>
   )
 }

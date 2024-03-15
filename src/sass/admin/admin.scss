@@ -1,3 +1,6 @@
+$containerMainSystem-width-closed: 80%;
+$containerMainSystem-width-open: 90%;
+
 
 .containerAdminSystem{
     font-family: 'Roboto' , sans-serif;
@@ -7,13 +10,23 @@
 }
 
 .ContainerMainSystem{
-    width: 80%;
+    width: $containerMainSystem-width-closed;
     height: max-content;
     position: relative;
     left: 150px;
     top: 20px;
 
 }
+
+//*** aumentar tamanho do container do mainsystem **// 
+
+.ContainerMainSystem-expanded{
+    width: $containerMainSystem-width-open;
+    transition: all 1s ease-in-out;
+    left: 55px;
+}
+
+//*** final do tamanho do container do mainsystem **// 
 
 
 .containerWrapperOptions{
