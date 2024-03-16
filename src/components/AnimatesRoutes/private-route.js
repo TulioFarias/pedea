@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
-import Admin from '../containers/Admin'
-import api from '../services/api'
-import { logout } from '../utils/redux/user/actions'
+import Admin from '../../containers/Admin'
+import api from '../../services/api'
 
 export const Private = () => {
   const dispatch = useDispatch()
@@ -36,5 +35,3 @@ export const Private = () => {
 
   return <Admin />
 }
-
-export const PrivateRecoverPass = () => {}

@@ -129,6 +129,7 @@ $border-radius: 1rem;
     color: rgba(44, 64, 63, 0.726);
     background-color: #c9c9c9;
     position: relative;
+    view-transition-name: activeNavTab;
 }
 
 .links-btnsNav.active::before, .links-btnsNav.active::after{

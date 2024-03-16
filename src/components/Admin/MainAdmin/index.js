@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion'
 import React, { useState } from 'react'
+import { Container } from 'react-bootstrap'
 
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
@@ -13,7 +15,7 @@ import Link7 from './Link7'
 import SettingsAdmin from './settings/settings'
 
 import '../../../sass/admin/admin.scss'
-import { Container } from 'react-bootstrap'
+import { duration } from '@mui/material'
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
@@ -24,7 +26,12 @@ function MainAdmin() {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{}}
+    >
       <HeaderAdmin setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
       <NavAdmin
         handleOptionChange={handleOptionChange}
@@ -36,17 +43,25 @@ function MainAdmin() {
           sidebarOpen ? 'ContainerMainSystem-expanded' : ''
         }`}
       >
-        {selectedOption === 'Home' && <HomeAdmin />}
-        {selectedOption === 'Link1' && <Link1 />}
-        {selectedOption === 'Link2' && <Link2 />}
-        {selectedOption === 'Link3' && <Link3 />}
-        {selectedOption === 'Link4' && <Link4 />}
-        {selectedOption === 'Link5' && <Link5 />}
-        {selectedOption === 'Link6' && <Link6 />}
-        {selectedOption === 'Link7' && <Link7 />}
-        {selectedOption === 'Configurações' && <SettingsAdmin />}
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -10, opacity: 0 }}
+          transition={{ duration: 1.5 }}
+          key={selectedOption || 'empty'}
+        >
+          {selectedOption === 'Home' && <HomeAdmin />}
+          {selectedOption === 'Link1' && <Link1 />}
+          {selectedOption === 'Link2' && <Link2 />}
+          {selectedOption === 'Link3' && <Link3 />}
+          {selectedOption === 'Link4' && <Link4 />}
+          {selectedOption === 'Link5' && <Link5 />}
+          {selectedOption === 'Link6' && <Link6 />}
+          {selectedOption === 'Link7' && <Link7 />}
+          {selectedOption === 'Configurações' && <SettingsAdmin />}
+        </motion.div>
       </Container>
-    </>
+    </motion.div>
   )
 }
 
