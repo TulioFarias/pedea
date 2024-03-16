@@ -1,5 +1,6 @@
-$bodyNav-width-collapsed: 17vw;
+$bodyNav-width-collapsed: 15vw;
 $bodyNav-width-expanded: 7vw;
+$border-radius: 1rem;
 
 .bodyNav{
     background-color: rgba(44, 64, 63, 0.726);
@@ -14,6 +15,154 @@ $bodyNav-width-expanded: 7vw;
     
 }
 
+
+.containerDivsLanguage{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    
+    
+
+}
+
+
+.my-btns-linguage{
+    width: 15px;
+    height: 15px;
+    border: none;
+    background-color: transparent;
+
+    
+
+    &:hover{
+        transform: scale(1.03);
+        transition: 0.5s all ease-in-out;
+    }
+
+    button{
+        border-radius: 50%;
+    }
+}
+
+
+.divImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    
+}
+.imgPEDEA{
+    width: 15vw;
+}
+
+.hrNavOptionsOne{
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border: 1px dashed white;
+}
+
+.hrNavOptionsTwo{
+    margin-top: 9px;
+    margin-bottom: 10px;
+    border: 1px dashed white;
+}
+.titleText{
+    color: rgba(204, 204, 204, 0.76);
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 14vw;
+
+    h5{
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+}
+
+.ContainerButtonsSystem{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    gap: 25px;
+    width: 104%;
+}
+
+
+
+
+.NavOptionsLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    width: 15vw;
+    gap: 23px;
+}
+
+.OptionsItems {
+    width: 99.5%;
+    border: none;
+
+}
+
+.links-btnsNav{
+    display: flex;
+    color: rgb(173, 173, 173);
+    gap: 5px;
+    align-items: center;
+    border: none;
+    border-radius: 100px 0 0 100px;
+    
+
+    &:hover{
+        color: white;
+        background-color: #c9c9c9;
+    }
+
+}
+.links-btnsNav.active{
+    color: rgba(44, 64, 63, 0.726);
+    background-color: #c9c9c9;
+    position: relative;
+}
+
+.links-btnsNav.active::before, .links-btnsNav.active::after{
+    content: '';
+    position: absolute;
+    width: $border-radius;
+    height: $border-radius;
+    background: rgba(44, 64, 63, 0.726);
+    border-radius: 100px;
+    left: 93.6%;
+}
+
+.links-btnsNav.active::before {
+    top: calc(-#{$border-radius} * -2.5);
+    border-radius: 0 100px 0 0;
+    box-shadow: 5px -5px  0 5px #c9c9c9;
+}
+
+.links-btnsNav.active::after {
+    bottom: calc(-#{$border-radius} * -2.5);
+    border-radius: 0 0 100px 0;
+    box-shadow: 5px 5px  0 5px #c9c9c9;
+}
+
+.containerNavFooter{
+    color: white;
+    padding: 10px;
+    text-align:justify;
+    
+    p{
+        font-size: 14px;
+    }
+}
+
 //*** Diminuir tamanho do container do NavBar-expanded **// 
 
 .bodyNav-expanded {
@@ -22,12 +171,11 @@ $bodyNav-width-expanded: 7vw;
   
 
     .containerDivsLanguage{
-        width: vw;
         display: flex;
         justify-content: center;
         position: relative;
         left: 10px;
-        gap: 18px;
+        gap: 12px;
         flex-direction: column;
         margin-top: 2px;
         
@@ -61,6 +209,18 @@ $bodyNav-width-expanded: 7vw;
         
     }
 
+    .hrNavOptionsOne{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border: 1px dashed white;
+    }
+    
+    .hrNavOptionsTwo{
+        margin-top: 9px;
+        margin-bottom: 10px;
+        border: 1px dashed white;
+    }
+
     .titleText{
         color: rgba(204, 204, 204, 0.76);
         display: flex;
@@ -78,37 +238,65 @@ $bodyNav-width-expanded: 7vw;
         flex-direction: column;
         justify-content: center;
         padding: 10px;
-        width: 15vw;
+        width: 109%;
         gap: 20px;
-        border: none;
     }
     
-    .OptionsItems .nav-link{
-        width: 4vw;
+    .OptionsItems{
+        width: 113%;
         font-size: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
+        border: none;
     }
-    
-    .nav-link{
+
+    .links-btnsNav{
         display: flex;
-        color: rgba(202, 202, 202, 0.856);
+        color: rgb(173, 173, 173);
         gap: 5px;
         align-items: center;
+        border: none;
+        border-radius: 100px 0 0 100px;
+        
     
         &:hover{
             color: white;
-            background-color: rgba(202, 202, 202, 0.856);
+            background-color: #c9c9c9;
         }
     
-       
-       
     }
-    .nav-link.active{
-        color: white!important;
-        background-color: rgba(202, 202, 202, 0.856)!important;
+    .links-btnsNav.active{
+        color: rgba(44, 64, 63, 0.726);
+        background-color: #c9c9c9;
+        position: relative;
+        width: 200%;
     }
+    
+    .links-btnsNav.active::before, .links-btnsNav.active::after{
+        content: '';
+        position: absolute;
+        width: $border-radius;
+        height: $border-radius;
+        background: rgba(44, 64, 63, 0.726);
+        border-radius: 100px;
+        left: 81%;
+        transition: all 0s ease-in-out;
+    }
+    
+    .links-btnsNav.active::before {
+        top: calc(-#{$border-radius} * -2.5);
+        border-radius: 0 100px 0 0;
+        box-shadow: 5px -5px  0 5px #c9c9c9;
+    }
+    
+    .links-btnsNav.active::after {
+        bottom: calc(-#{$border-radius} * -2.5);
+        border-radius: 0 0 100px 0;
+        box-shadow: 5px 5px  0 5px #c9c9c9;
+    }
+    
+    
 
     .containerNavFooter{
         color: white;
@@ -116,8 +304,8 @@ $bodyNav-width-expanded: 7vw;
         text-align:justify;
         
         p{
-            font-size: 10px;
-            width: 60px;
+            font-size: 12px;
+            width: 100px;
         }
     }
     
@@ -125,124 +313,6 @@ $bodyNav-width-expanded: 7vw;
 
 //***  tamanho do container do NavBar-expanded **// 
 
-.containerDivsLanguage{
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    
-
-}
-
-
-.my-btns-linguage{
-    width: 15px;
-    height: 15px;
-    border: none;
-    background-color: transparent;
-
-    
-
-    &:hover{
-        transform: scale(1.03);
-        transition: 0.5s all ease-in-out;
-    }
-
-    button{
-        border-radius: 50%;
-    }
-}
-
-
-.divImg{
-    margin-top: 18px;
-    
-}
-.imgPEDEA{
-    width: 14vw;
-}
-
-.hrNavOptionsOne{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px dashed white;
-}
-
-.hrNavOptionsTwo{
-    margin-top: 9px;
-    margin-bottom: 10px;
-    border: 1px dashed white;
-}
-
-.ContainerButtonsSystem{
-    display: flex;
-    flex-direction: column;
-    height: 70vh;
-    gap: 25px;
-    width: 85%;
-}
-
-.titleText{
-    color: rgba(204, 204, 204, 0.76);
-    display: flex;
-    margin-top: 20px;
-    margin-left: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 14vw;
-
-    h5{
-        font-size: 20px;
-        font-weight: 800;
-    }
-
-}
-
-
-.NavOptionsLinks{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    width: 15vw;
-    gap: 20px;
-    border: none;
-}
-
-.OptionsItems .nav-link{
-    width: 13vw;
-    font-size: 16px;
-}
-
-.nav-link{
-    display: flex;
-    color: rgba(202, 202, 202, 0.856);
-    gap: 5px;
-    align-items: center;
-    
-
-    &:hover{
-        color: white;
-        background-color: rgba(202, 202, 202, 0.856);
-    }
-
-   
-   
-}
-.nav-link.active{
-    color: white!important;
-    background-color: rgba(202, 202, 202, 0.856)!important;
-}
-
-.containerNavFooter{
-    color: white;
-    padding: 10px;
-    text-align:justify;
-    
-    p{
-        font-size: 14px;
-    }
-}
 
 @media only screen and (max-width: 1040px){
     .OptionsItems .nav-link{
@@ -338,6 +408,7 @@ $bodyNav-width-expanded: 7vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 1px;
             position: relative;
             right: 8px;
