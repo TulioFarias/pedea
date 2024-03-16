@@ -137,19 +137,18 @@ $border-radius: 1rem;
     width: $border-radius;
     height: $border-radius;
     background: rgba(44, 64, 63, 0.726);
-    border-radius: 100px;
     left: 93.6%;
 }
 
 .links-btnsNav.active::before {
     top: calc(-#{$border-radius} * -2.5);
-    border-radius: 0 100px 0 0;
+    border-radius: 0 100vw 0 0;
     box-shadow: 5px -5px  0 5px #c9c9c9;
 }
 
 .links-btnsNav.active::after {
     bottom: calc(-#{$border-radius} * -2.5);
-    border-radius: 0 0 100px 0;
+    border-radius: 0 0 100vw 0;
     box-shadow: 5px 5px  0 5px #c9c9c9;
 }
 
@@ -167,7 +166,7 @@ $border-radius: 1rem;
 
 .bodyNav-expanded {
     width: $bodyNav-width-expanded;
-    transition: all 0.8s ease-in-out;
+    transition: all 1s ease-in-out;
   
 
     .containerDivsLanguage{
@@ -188,7 +187,8 @@ $border-radius: 1rem;
         height: 15px;
         border: none;
         background-color: transparent;
-        margin-left: 20px;
+        margin-left: 30px;
+        transition: all 0.8s ease-in-out;
        
     
         
@@ -206,7 +206,7 @@ $border-radius: 1rem;
     .divImg{
         display: none;
         
-        
+  
     }
 
     .hrNavOptionsOne{
@@ -223,12 +223,13 @@ $border-radius: 1rem;
 
     .titleText{
         color: rgba(204, 204, 204, 0.76);
-        display: flex;
-        width: 4vw;
+        width: 5vw;
+        transition: all 1s ease-in-out;
     
         h5{
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 800;
+            text-align: center;
         }
     
     }
@@ -247,7 +248,6 @@ $border-radius: 1rem;
         font-size: 0px;
         display: flex;
         align-items: center;
-        justify-content: center;
         border: none;
     }
 
@@ -258,11 +258,12 @@ $border-radius: 1rem;
         align-items: center;
         border: none;
         border-radius: 100px 0 0 100px;
-        
+        font-size: 9px;
     
         &:hover{
             color: white;
             background-color: #c9c9c9;
+            width: 113%;
         }
     
     }
@@ -286,13 +287,13 @@ $border-radius: 1rem;
     
     .links-btnsNav.active::before {
         top: calc(-#{$border-radius} * -2.5);
-        border-radius: 0 100px 0 0;
+        border-radius: 0 100vw 0 0;
         box-shadow: 5px -5px  0 5px #c9c9c9;
     }
     
     .links-btnsNav.active::after {
         bottom: calc(-#{$border-radius} * -2.5);
-        border-radius: 0 0 100px 0;
+        border-radius: 0 0 100vw 0;
         box-shadow: 5px 5px  0 5px #c9c9c9;
     }
     
@@ -315,136 +316,14 @@ $border-radius: 1rem;
 
 
 @media only screen and (max-width: 1040px){
-    .OptionsItems .nav-link{
-        width: 13vw;
-        font-size: 13px;
-    }
+   
   }
 
 @media only screen and (max-width: 740px){
     .bodyNav{
         width: 17vw;
     }
-
-    .bodyNav-expanded{
-
-        .bodyNav{
-            width: 17vw;
-        }
-        .containerDivsLanguage{
-            display: flex;
-            gap: 5px;
-            margin-right: 10px;
-            
-        }
-        .my-btns-linguage{
-            display:flex;
-            align-items: center;
-            justify-content: center;
-            width: 15px;
-            height: 15px;
-            border: none;
-            background-color: transparent;
-            position: relative;
-            right: 15px;
-
-        
-            &:hover{
-                transform: scale(1.03);
-                transition: 0.5s all ease-in-out;
-            }
-        
-            button{
-                border-radius: 50%;
-            }
-        }
-
     
-        .imgPEDEA{
-            display: none;
-        }
-    
-        .hrNavOptionsOne{
-            position: relative;
-            top: 1px;
-            bottom: 12px;
-            margin-bottom: 0px;
-            border: 1px dashed white;
-        }
-
-        .hrNavOptionsTwo{
-            position: relative;
-            bottom: 12px;
-            margin-bottom: 0px;
-            border: 1px dashed white;
-        }
-    
-        .my-btns-linguage{
-            width: 5px;
-            height: 20px;
-            border: none;
-            background-color: transparent;
-        }
-    
-        .titleText{
-            color: rgba(204, 204, 204, 0.76);
-            display: flex;
-            margin-top: 10px;
-            margin-left: 0px;
-            justify-content: center;
-            align-items: center;
-            width: 14vw;
-           
-        
-            h5{
-                font-size: 10px;
-                font-weight: 800;
-                
-            }
-        
-        }
-    
-        .NavOptionsLinks{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1px;
-            position: relative;
-            right: 8px;
-            gap: 8px;
-    
-    
-        }
-    
-        .OptionsItems .nav-link{
-            width: 13vw;
-            font-size: 0px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            p{
-                display: none;
-            }
-        }
-    
-    
-        .containerNavFooter{
-            color: white;
-            padding: 10px;
-            position: relative;
-            right: 17px;
-            bottom: 15px;
-            width: 12vw;
-            
-            p{  
-                width: 50px;
-                font-size: 9px;
-            }
-        }
-    
-    }
-
     .containerDivsLanguage{
         margin-top: 2px;
         display: flex;
@@ -456,13 +335,6 @@ $border-radius: 1rem;
         display: none;
     }
 
-    .hrNavOptons{
-        margin-top: 0px;
-        position: relative;
-        bottom: 12px;
-        margin-bottom: 0px;
-        border: 1px dashed white;
-    }
 
     .my-btns-linguage{
         width: 5px;
@@ -471,11 +343,20 @@ $border-radius: 1rem;
         background-color: transparent;
     }
 
-    .hrNavOptons{
-        margin-top: 9px;
-        margin-bottom: 1px;
+    .hrNavOptionsOne{
+        position: relative;
+        bottom: 22px;
+        margin-bottom: 0px;
         border: 1px dashed white;
     }
+
+    .hrNavOptionsTwo{
+        position: relative;
+        bottom: 12px;
+        margin-bottom: 0px;
+        border: 1px dashed white;
+    }
+
 
     .titleText{
         color: rgba(204, 204, 204, 0.76);
@@ -507,15 +388,51 @@ $border-radius: 1rem;
 
     }
 
-    .OptionsItems .nav-link{
-        width: 13vw;
-        font-size: 0px;
+    .links-btnsNav{
         display: flex;
+        color: rgb(173, 173, 173);
+        gap: 5px;
         align-items: center;
-        justify-content: center;
-        p{
-            display: none;
+        border: none;
+        border-radius: 100px 0 0 100px;
+        font-size: 0px;
+    
+        &:hover{
+            color: white;
+            background-color: #c9c9c9;
+            width: 113%;
         }
+
+        
+    
+    }
+    .links-btnsNav.active{
+        color: rgba(44, 64, 63, 0.726);
+        background-color: #c9c9c9;
+        position: relative;
+        width: 110%;
+    }
+    
+    .links-btnsNav.active::before, .links-btnsNav.active::after{
+        content: '';
+        position: absolute;
+        width: 0.7rem;
+        height: $border-radius;
+        background: rgba(44, 64, 63, 0.726);
+        left: 80%;
+        
+    }
+    
+    .links-btnsNav.active::before {
+        top: calc(-#{$border-radius} * -2.5);
+        border-radius: 0 100vw 0 110vw;
+        box-shadow: 5px -5px  0 5px #c9c9c9;
+    }
+    
+    .links-btnsNav.active::after {
+        bottom: calc(-#{$border-radius} * -2.5);
+        border-radius: 110vw 0 100vw 0;
+        box-shadow: 5px 5px  0 5px #c9c9c9;
     }
 
 
@@ -532,6 +449,156 @@ $border-radius: 1rem;
             font-size: 10px;
         }
     }
+
+
+     //** start container mobile after click **//
+
+     .bodyNav-expanded{
+
+        .bodyNav{
+            width: 17vw;
+        }
+        .containerDivsLanguage{
+            display: flex;
+            gap: 10px;
+            margin-right: 10px;
+            
+        }
+        .my-btns-linguage{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+            height: 15px;
+            border: none;
+            background-color: transparent;
+            position: relative;
+            right: 25px;
+ 
+
+        
+            &:hover{
+                transform: scale(1.03);
+                transition: 0.5s all ease-in-out;
+            }
+        
+            button{
+                border-radius: 50%;
+            }
+        }
+
+    
+        .imgPEDEA{
+            display: none;
+        }
+    
+        .hrNavOptionsOne{
+            position: relative;
+            bottom: 5px;
+            margin-bottom: 0px;
+            border: 1px dashed white;
+        }
+
+        .hrNavOptionsTwo{
+            position: relative;
+            bottom: 20px;
+            margin-bottom: 0px;
+            border: 1px dashed white;
+        }
+    
+    
+        .titleText{
+            color: rgba(204, 204, 204, 0.76);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 12vw;
+           
+        
+            h5{
+                font-size: 10px;
+                font-weight: 800;
+                
+            }
+        
+        }
+    
+        .NavOptionsLinks{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1px;
+            position: relative;
+            right: 8px;
+            gap: 8px;
+    
+    
+        }
+    
+        .links-btnsNav{
+            display: flex;
+            color: rgb(173, 173, 173);
+            gap: 5px;
+            align-items: center;
+            border: none;
+            border-radius: 100px 0 0 100px;
+            font-size: 0px;
+        
+            &:hover{
+                color: white;
+                background-color: #c9c9c9;
+                width: 113%;
+            }
+    
+            
+        
+        }
+        .links-btnsNav.active{
+            color: rgba(44, 64, 63, 0.726);
+            background-color: #c9c9c9;
+            position: relative;
+            width: 125%;
+        }
+        
+        .links-btnsNav.active::before, .links-btnsNav.active::after{
+            content: '';
+            position: absolute;
+            width: 0.7rem;
+            height: $border-radius;
+            background: rgba(44, 64, 63, 0.726);
+            left: 82%;
+            
+        }
+        
+        .links-btnsNav.active::before {
+            top: calc(-#{$border-radius} * -2.5);
+            border-radius: 0 100vw 0 110vw;
+            box-shadow: 5px -5px  0 5px #c9c9c9;
+        }
+        
+        .links-btnsNav.active::after {
+            bottom: calc(-#{$border-radius} * -2.5);
+            border-radius: 110vw 0 100vw 0;
+            box-shadow: 5px 5px  0 5px #c9c9c9;
+        }
+    
+    
+        .containerNavFooter{
+            color: white;
+            padding: 10px;
+            position: relative;
+            right: 17px;
+            bottom: 25px;
+            width: 12vw;
+            
+            p{  
+                width: 50px;
+                font-size: 9px;
+            }
+        }
+    
+    }
+        //*** container mobile afeter click **//
 
 
     
