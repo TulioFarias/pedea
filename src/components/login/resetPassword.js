@@ -74,7 +74,7 @@ function LoginSystem() {
         <img src={logo} />
 
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
-          <h1 className="titleLogin">Recuperação de senha</h1>
+          <h1 className="titleLoginResetPass">Recuperação de senha</h1>
           <hr className="hrLoginAndRegister" />
           <div className="custom-info">
             <p className="txtRecoverPass">
@@ -88,14 +88,14 @@ function LoginSystem() {
             </p>
           </div>
 
-          <div className="containerUserInfo">
+          <div className="containerUserInfoResetPass">
             <div className="custom-info">
-              <Form.Label htmlFor="token" className="LabelForm">
+              <Form.Label htmlFor="token" className="LabelFormResetPass">
                 Digite aqui o token recebido:
               </Form.Label>
               <Form.Control
                 {...register('token')}
-                type="text"
+                type="password"
                 className="InputFormResetPass"
                 id="token"
                 name="token"
@@ -107,7 +107,7 @@ function LoginSystem() {
             </div>
 
             <div className="custom-info">
-              <Form.Label htmlFor="password" className="LabelForm">
+              <Form.Label htmlFor="password" className="LabelFormResetPass">
                 Nova senha:
               </Form.Label>
               <Form.Control
@@ -126,7 +126,7 @@ function LoginSystem() {
             <div className="custom-info">
               <Form.Label
                 htmlFor="confirmPassword"
-                className="LabelFormRegister"
+                className="LabelFormResetPass"
               >
                 Confirmar nova senha:
               </Form.Label>

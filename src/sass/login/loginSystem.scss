@@ -12,10 +12,7 @@
     gap: 30px;
     font-family: 'Roboto', sans-serif;
 
-    img{
-        width: 30%;
-    }
-
+    
 }
 
 .ModalRecoverPassword{
@@ -161,6 +158,33 @@
 
     .customBody-form{
         width: 90vw;
+    }
+
+    .btnBack{
+        position: absolute;
+        width: 100px;
+        top: 10px;
+        left: 0px;
+        background: transparent;
+        border: none;
+    
+        img{
+            width: 30px;
+        }
+    
+    
+        :hover{
+            transform: scale(1.05);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+
+    .govTxt{
+        color: white;
+        font-size: 12px;
+        width: 350px;
+        margin-left: 15px;
+        text-align: center  ;
     }
 }
 

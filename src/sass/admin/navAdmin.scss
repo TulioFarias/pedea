@@ -118,6 +118,7 @@ $border-radius: 1rem;
     border: none;
     border-radius: 100px 0 0 100px;
     
+    
 
     &:hover{
         color: white;
@@ -126,10 +127,12 @@ $border-radius: 1rem;
 
 }
 .links-btnsNav.active{
+    view-transition-name: activeNavTab;
     color: rgba(44, 64, 63, 0.726);
     background-color: #c9c9c9;
     position: relative;
-    view-transition-name: activeNavTab;
+  
+
 }
 
 .links-btnsNav.active::before, .links-btnsNav.active::after{

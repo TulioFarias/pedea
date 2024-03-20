@@ -2,6 +2,7 @@ import '../../sass/Register/register.scss'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
@@ -84,115 +85,143 @@ function RegisterUser() {
   return (
     <>
       <div className="container-formRegister">
-        <button className="btnBackRegister" onClick={handleBack}>
-          <img src={backIcon} alt="Back" />
-        </button>
-        <img src={logo} alt="Logo" />
-
-        <div className="containerRegisterUsers">
-          <h1 className="titleLogin">Cadastro Portal Admin</h1>
-          <hr className="hrLoginAndRegister" />
-          <h6>
-            Para realizar seu cadastro ao sistema de administração da PEDEA,
-            preencha os campos abaixo:
-          </h6>
-          <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
-            <div className="containerUserInfo">
-              <div className="customContainerUser">
-                <Form.Label htmlFor="name" className="LabelFormRegister">
-                  Nome:
-                </Form.Label>
-                <Form.Control
-                  {...register('name')}
-                  type="text"
-                  className="InputFormRegister"
-                  id="name"
-                  name="name"
-                  value={form.name}
-                  onChange={changeForm}
-                  placeholder="Seu nome"
-                />
-                <p className="error-txtRegister">{errors.name?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label htmlFor="email" className="LabelFormRegister">
-                  Email:
-                </Form.Label>
-                <Form.Control
-                  {...register('email')}
-                  type="email"
-                  className="InputFormRegister"
-                  id="email"
-                  name="email"
-                  value={form.email}
-                  onChange={changeForm}
-                  placeholder="exemplo@email.com"
-                />
-                <p className="error-txtRegister">{errors.email?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label htmlFor="password" className="LabelFormRegister">
-                  Senha:
-                </Form.Label>
-                <Form.Control
-                  {...register('password')}
-                  type="password"
-                  className="InputFormRegister"
-                  id="password"
-                  name="password"
-                  value={form.password}
-                  onChange={changeForm}
-                  placeholder="Mínimo de 6 caracteres..."
-                />
-                <p className="error-txtRegister">{errors.password?.message}</p>
-              </div>
-
-              <div className="customContainerUser">
-                <Form.Label
-                  htmlFor="confirmPassword"
-                  className="LabelFormRegister"
-                >
-                  Confirmar Senha:
-                </Form.Label>
-                <Form.Control
-                  {...register('confirmPassword')}
-                  type="password"
-                  className="InputFormRegister"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={form.confirmPassword}
-                  onChange={changeForm}
-                  placeholder="Por favor, confirme sua senha..."
-                />
-                <p className="error-txtRegister">
-                  {errors.confirmPassword?.message}
-                </p>
-              </div>
-            </div>
-
-            <ReCAPTCHA
-              sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-              onChange={value => setRecaptcha(value)}
-            />
-
-            <button disabled={!recaptcha} type="submit" className="Btn-Form">
-              Cadastrar
+        <Row>
+          <div>
+            <button className="btnBackRegister" onClick={handleBack}>
+              <img src={backIcon} alt="Back" />
             </button>
-
-            <p className="end-txt">
-              Já tem conta criada?{' '}
-              <Link className="link-end" to="/login">
-                Clique aqui
-              </Link>
+          </div>
+          <div>
+            <img src={logo} alt="Logo" className="pedeaImg" />
+          </div>
+        </Row>
+        <Row>
+          <Col>
+            <div className="containerRegisterUsers">
+              <h1 className="titleLogin">Cadastro Portal Admin</h1>
+              <hr className="hrLoginAndRegister" />
+              <h6>
+                Para realizar seu cadastro ao sistema de administração da PEDEA,
+                preencha os campos abaixo:
+              </h6>
+              <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
+                <div className="containerUserInfo">
+                  <Row>
+                    <Col>
+                      <Form.Label htmlFor="name" className="LabelFormRegister">
+                        Nome:
+                      </Form.Label>
+                      <Form.Control
+                        {...register('name')}
+                        type="text"
+                        className="InputFormRegister"
+                        id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={changeForm}
+                        placeholder="Seu nome"
+                      />
+                      <p className="error-txtRegister">
+                        {errors.name?.message}
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Form.Label htmlFor="email" className="LabelFormRegister">
+                        Email:
+                      </Form.Label>
+                      <Form.Control
+                        {...register('email')}
+                        type="email"
+                        className="InputFormRegister"
+                        id="email"
+                        name="email"
+                        value={form.email}
+                        onChange={changeForm}
+                        placeholder="exemplo@email.com"
+                      />
+                      <p className="error-txtRegister">
+                        {errors.email?.message}
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Form.Label
+                        htmlFor="password"
+                        className="LabelFormRegister"
+                      >
+                        Senha:
+                      </Form.Label>
+                      <Form.Control
+                        {...register('password')}
+                        type="password"
+                        className="InputFormRegister"
+                        id="password"
+                        name="password"
+                        value={form.password}
+                        onChange={changeForm}
+                        placeholder="Mínimo de 6 caracteres..."
+                      />
+                      <p className="error-txtRegister">
+                        {errors.password?.message}
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Form.Label
+                        htmlFor="confirmPassword"
+                        className="LabelFormRegister"
+                      >
+                        Confirmar Senha:
+                      </Form.Label>
+                      <Form.Control
+                        {...register('confirmPassword')}
+                        type="password"
+                        className="InputFormRegister"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        value={form.confirmPassword}
+                        onChange={changeForm}
+                        placeholder="Por favor, confirme sua senha..."
+                      />
+                      <p className="error-txtRegister">
+                        {errors.confirmPassword?.message}
+                      </p>
+                    </Col>
+                  </Row>
+                </div>
+                <ReCAPTCHA
+                  sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
+                  onChange={value => setRecaptcha(value)}
+                />
+                <button
+                  disabled={!recaptcha}
+                  type="submit"
+                  className="Btn-Form"
+                >
+                  Cadastrar
+                </button>
+                <p className="end-txtRegister">
+                  Já tem conta criada?{' '}
+                  <Link className="link-endRegister" to="/login">
+                    Clique aqui
+                  </Link>
+                </p>
+              </Form>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <div>
+            <p className="govTxt">
+              © 2024 - Secretaria do Meio Ambiente e Mudança de Clima do Estado
+              do Ceará
             </p>
-          </Form>
-        </div>
-        <p className="govTxt">
-          © 2024 - Secretaria do Meio Ambiente e Mudança de Clima do Estado do
-          Ceará
-        </p>
+          </div>
+        </Row>
       </div>
     </>
   )

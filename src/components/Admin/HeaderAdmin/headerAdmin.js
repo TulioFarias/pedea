@@ -1,3 +1,4 @@
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import PropTypes from 'prop-types'
@@ -10,11 +11,10 @@ import { useNavigate } from 'react-router-dom'
 import Search from '../../../assets/icons/search.png'
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
-import DarkMode from './darkMode'
 
 import '../../../sass/admin/headerAdmin.scss'
 
-function HeaderAdm({ sidebarOpen, setSidebarOpen }) {
+function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
@@ -82,7 +82,10 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen }) {
         <button>
           <NotificationsNoneRoundedIcon />
         </button>
-        <DarkMode />
+
+        <button onClick={toggleTheme}>
+          <DarkModeOutlinedIcon />
+        </button>
 
         <div className="customDivRight">
           {user &&
@@ -114,7 +117,8 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen }) {
 
 HeaderAdm.propTypes = {
   setSidebarOpen: PropTypes.func.isRequired,
-  sidebarOpen: PropTypes.bool.isRequired
+  sidebarOpen: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.bool.isRequired
 }
 
 export default HeaderAdm

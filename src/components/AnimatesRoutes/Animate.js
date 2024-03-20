@@ -18,10 +18,6 @@ function AnimatedRoutes() {
           <Routes location={location} key={location.pathname}>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
-            {/* <Route
-              element={<PrivateRecoverPass Admin={<ResetPass />} />}
-              path="/resetPass"
-            /> */}
             <Route element={<ResetPass />} path="/resetpassword" />
             <Route element={<Register />} path="/register" />
             <Route element={<Private Admin={<Admin />} />} path="/admin" />

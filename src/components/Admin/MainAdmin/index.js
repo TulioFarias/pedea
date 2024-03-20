@@ -15,14 +15,18 @@ import Link7 from './Link7'
 import SettingsAdmin from './settings/settings'
 
 import '../../../sass/admin/admin.scss'
-import { duration } from '@mui/material'
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [darkTheme, setDarkTheme] = useState(false)
 
   const handleOptionChange = async option => {
     await setSelectedOption(option)
+  }
+
+  const toggleTheme = () => {
+    setDarkTheme(prevTheme => !prevTheme)
   }
 
   return (
@@ -32,7 +36,11 @@ function MainAdmin() {
       exit={{ opacity: 0 }}
       transition={{}}
     >
-      <HeaderAdmin setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
+      <HeaderAdmin
+        setSidebarOpen={setSidebarOpen}
+        sidebarOpen={sidebarOpen}
+        toggleTheme={toggleTheme}
+      />
       <NavAdmin
         handleOptionChange={handleOptionChange}
         sidebarOpen={sidebarOpen}

@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../../../sass/admin/navAdmin.scss'
 import { useTranslation } from 'react-i18next'
+
 function ButtonSystem({ handleOptionChange }) {
   const { t } = useTranslation()
   const [activeButton, setActiveButton] = useState('Home')
