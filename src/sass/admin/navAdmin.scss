@@ -10,6 +10,7 @@ $border-radius: 1rem;
     width: $bodyNav-width-collapsed;
     position: absolute;
     top: 0;
+    border-radius:  0 20px 20px 0px;
 
 
     
@@ -311,6 +312,7 @@ $border-radius: 1rem;
         p{
             font-size: 12px;
             width: 100px;
+            margin-bottom: 5px;
         }
     }
     
