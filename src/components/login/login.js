@@ -1,8 +1,8 @@
 import '../../sass/login/loginSystem.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
-import Spinner from 'react-bootstrap/Spinner'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
@@ -15,7 +15,6 @@ import logo from '../../assets/img/pedea-logo.png'
 import api from '../../services/api'
 import { login } from '../../utils/redux/user/actions'
 import RecoverPasswordModal from './RecoverPasswordModal'
-
 function LoginSystem() {
   const navigate = useNavigate()
   const [show, setShow] = useState(false)
@@ -132,6 +131,7 @@ function LoginSystem() {
 
           <button type="submit" className="Btn-Form" disabled={!recaptcha}>
             Entrar
+            <ArrowRightAltRoundedIcon className="iconArrow" />
           </button>
 
           <p className="end-txt">

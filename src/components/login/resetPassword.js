@@ -4,20 +4,16 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import api from '../../services/api'
-import { loginUser } from '../../utils/redux/user/actions'
-import RecoverPasswordModal from './RecoverPasswordModal'
 
 function LoginSystem() {
   const navigate = useNavigate()
-  const [show, setShow] = useState(false)
   const [form, setForm] = useState({
     token: '',
     password: '',
@@ -54,14 +50,35 @@ function LoginSystem() {
   })
 
   const handleBack = () => {
-    navigate('/')
+    navigate('/login')
   }
 
   const onSubmit = async data => {
+    console.log(data)
     try {
-      console.log('enviado')
+      const response = await toast.promise(
+        api.put('/reset-password', {
+          token: data.token,
+          newPassword: data.password,
+          confirmPassword: data.confirmPassword
+        }),
+        {
+          pending: 'Aguarde um instante...',
+          success: 'Tudo certo! Sua senha foi alterada com sucesso.',
+          error: 'Ops! Aconteceu algum problema, tente novamente.'
+        }
+      )
+
+      setForm({
+        token: '',
+        password: '',
+        confirmPassword: ''
+      })
+      setTimeout(() => {
+        navigate('/login')
+      }, 2000)
     } catch (error) {
-      return error
+      return console.log(error)
     }
   }
 
@@ -152,7 +169,7 @@ function LoginSystem() {
           />
 
           <button type="submit" className="Btn-Form" disabled={!recaptcha}>
-            Entrar
+            Enviar
           </button>
         </Form>
         <p className="govTxt">
@@ -160,7 +177,6 @@ function LoginSystem() {
           Ceará
         </p>
       </div>
-      <RecoverPasswordModal show={show} setShow={setShow} />
     </>
   )
 }

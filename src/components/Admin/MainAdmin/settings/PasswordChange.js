@@ -48,7 +48,6 @@ function ModalChangePassword({ showPassword, setShowPassword }) {
         }
       )
 
-      console.log('Resposta:', response)
       handleClose()
     } catch (error) {
       return error
