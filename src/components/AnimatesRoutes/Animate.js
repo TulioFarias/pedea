@@ -21,7 +21,6 @@ function AnimatedRoutes() {
             <Route element={<ResetPass />} path="/resetpassword" />
             <Route element={<Register />} path="/register" />
             <Route element={<Private Admin={<Admin />} />} path="/admin" />
-            <Route element={<Private Admin={<Admin />} />} path="/admin" />
           </Routes>
         </Fragment>
       </AnimatePresence>

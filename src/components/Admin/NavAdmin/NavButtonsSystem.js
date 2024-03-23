@@ -3,14 +3,41 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../../../sass/admin/navAdmin.scss'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded'
 
+import api from '../../../services/api'
 function ButtonSystem({ handleOptionChange }) {
   const { t } = useTranslation()
   const [activeButton, setActiveButton] = useState('Home')
+  const [user, setUser] = useState([])
+  const userData = useSelector(state => state.userInfoSlice.infoUser)
+  const { id: loggedInUserId } = userData
+
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await api.get('/admin')
+        const loggedInUser = data.find(user => user.id === loggedInUserId)
+
+        if (loggedInUser) {
+          setUser(loggedInUser)
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }
+
+    loadUserData()
+  }, [loggedInUserId])
+
+  const { admin } = user
+  console.log(admin)
+
   const handleButtonClick = option => {
     handleOptionChange(option)
     setActiveButton(option)
@@ -123,9 +150,19 @@ function ButtonSystem({ handleOptionChange }) {
             className={`links-btnsNav ${
               activeButton === 'Link6' ? 'nav-link active' : 'nav-link'
             }`}
+            disabled={!admin}
           >
-            <AppsRoundedIcon />
-            Link 6
+            {admin ? (
+              <>
+                <AppsRoundedIcon />
+                Link 6
+              </>
+            ) : (
+              <div className="disableLink">
+                <HttpsRoundedIcon />
+                <p>Acesso restrito</p>
+              </div>
+            )}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="OptionsItems">
@@ -138,9 +175,19 @@ function ButtonSystem({ handleOptionChange }) {
             className={`links-btnsNav ${
               activeButton === 'Link7' ? 'nav-link active' : 'nav-link'
             }`}
+            disabled={!admin}
           >
-            <AppsRoundedIcon />
-            Link 7
+            {admin ? (
+              <>
+                <AppsRoundedIcon />
+                Link 7
+              </>
+            ) : (
+              <div className="disableLink">
+                <HttpsRoundedIcon />
+                <p>Acesso restrito</p>
+              </div>
+            )}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="OptionsItems">

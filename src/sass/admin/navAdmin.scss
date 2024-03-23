@@ -65,7 +65,7 @@ $border-radius: 1rem;
 }
 
 .hrNavOptionsTwo{
-    margin-top: 9px;
+    margin-top: 20px;
     margin-bottom: 10px;
     border: 1px dashed white;
 }
@@ -102,12 +102,13 @@ $border-radius: 1rem;
     justify-content: center;
     padding: 10px;
     width: 15vw;
-    gap: 25px;
+    gap: 22px;
 }
 
 .OptionsItems {
     width: 99.5%;
     border: none;
+    
 
 }
 
@@ -126,7 +127,21 @@ $border-radius: 1rem;
         background-color: #c9c9c9;
     }
 
+    
+
 }
+
+.disableLink{
+    display: flex;
+    gap: 5px;
+    color: rgb(77, 0, 0);
+}
+
+
+
+
+
+
 .links-btnsNav.active{
     view-transition-name: activeNavTab;
     color: rgba(44, 64, 63, 0.726);
@@ -221,7 +236,7 @@ $border-radius: 1rem;
     }
     
     .hrNavOptionsTwo{
-        margin-top: 9px;
+        margin-top: 20px;
         margin-bottom: 10px;
         border: 1px dashed white;
     }
@@ -271,6 +286,12 @@ $border-radius: 1rem;
             width: 113%;
         }
     
+    }
+
+    .disableLink{
+        display: flex;
+        gap: 5px;
+        color: rgb(77, 0, 0);
     }
     .links-btnsNav.active{
         color: rgba(44, 64, 63, 0.726);

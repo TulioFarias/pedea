@@ -74,7 +74,7 @@ function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
     async function loadUserData() {
       try {
         const { data } = await api.get('/admin')
-        const loggedInUser = data.filter(user => user.id === loggedInUserId)
+        const loggedInUser = data.find(user => user.id === loggedInUserId)
 
         if (loggedInUser) {
           setUser(loggedInUser)
