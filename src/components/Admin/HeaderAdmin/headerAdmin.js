@@ -1,4 +1,5 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import PropTypes from 'prop-types'
@@ -107,7 +108,7 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
             ))}
 
           <a className=" backButton" onClick={voltar}>
-            Sair
+            <LogoutRoundedIcon />
           </a>
         </div>
       </div>
