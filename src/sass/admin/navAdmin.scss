@@ -123,8 +123,8 @@ $border-radius: 1rem;
     
 
     &:hover{
-        color: white;
-        background-color: #c9c9c9;
+        color: rgba(44, 64, 63, 0.726);
+        background-color: rgb(151, 151, 151);
     }
 
     
@@ -145,7 +145,7 @@ $border-radius: 1rem;
 .links-btnsNav.active{
     view-transition-name: activeNavTab;
     color: rgba(44, 64, 63, 0.726);
-    background-color: #c9c9c9;
+    background-color: rgb(151, 151, 151);
     position: relative;
   
 
@@ -163,17 +163,17 @@ $border-radius: 1rem;
 .links-btnsNav.active::before {
     top: calc(-#{$border-radius} * -2.5);
     border-radius: 0 100vw 0 0;
-    box-shadow: 5px -5px  0 5px #c9c9c9;
+    box-shadow: 5px -5px  0 5px rgb(151, 151, 151);
 }
 
 .links-btnsNav.active::after {
     bottom: calc(-#{$border-radius} * -2.5);
     border-radius: 0 0 100vw 0;
-    box-shadow: 5px 5px  0 5px #c9c9c9;
+    box-shadow: 5px 5px  0 5px rgb(151, 151, 151);
 }
 
 .containerNavFooter{
-    color: white;
+    color: rgba(204, 204, 204, 0.76);
     padding: 10px;
     text-align:justify;
     
@@ -281,8 +281,8 @@ $border-radius: 1rem;
         font-size: 9px;
     
         &:hover{
-            color: white;
-            background-color: #c9c9c9;
+            color: rgba(44, 64, 63, 0.726);
+            background-color: rgb(151, 151, 151);
             width: 113%;
         }
     
@@ -295,7 +295,7 @@ $border-radius: 1rem;
     }
     .links-btnsNav.active{
         color: rgba(44, 64, 63, 0.726);
-        background-color: #c9c9c9;
+        background-color: rgb(151, 151, 151);
         position: relative;
         width: 200%;
     }
@@ -314,19 +314,19 @@ $border-radius: 1rem;
     .links-btnsNav.active::before {
         top: calc(-#{$border-radius} * -2.5);
         border-radius: 0 100vw 0 0;
-        box-shadow: 5px -5px  0 5px #c9c9c9;
+        box-shadow: 5px -5px  0 5px rgb(151, 151, 151);
     }
     
     .links-btnsNav.active::after {
         bottom: calc(-#{$border-radius} * -2.5);
         border-radius: 0 0 100vw 0;
-        box-shadow: 5px 5px  0 5px #c9c9c9;
+        box-shadow: 5px 5px  0 5px rgb(151, 151, 151);
     }
     
     
 
     .containerNavFooter{
-        color: white;
+        color: rgba(204, 204, 204, 0.76);
         padding: 10px;
         text-align:justify;
         
@@ -372,14 +372,14 @@ $border-radius: 1rem;
 
     .hrNavOptionsOne{
         position: relative;
-        bottom: 22px;
+        bottom: 18px;
         margin-bottom: 0px;
         border: 1px dashed white;
     }
 
     .hrNavOptionsTwo{
         position: relative;
-        bottom: 12px;
+        bottom: 40px;
         margin-bottom: 0px;
         border: 1px dashed white;
     }
@@ -426,7 +426,7 @@ $border-radius: 1rem;
     
         &:hover{
             color: white;
-            background-color: #c9c9c9;
+            background-color: rgb(151, 151, 151);
             width: 113%;
         }
 
@@ -435,7 +435,7 @@ $border-radius: 1rem;
     }
     .links-btnsNav.active{
         color: rgba(44, 64, 63, 0.726);
-        background-color: #c9c9c9;
+        background-color: rgb(151, 151, 151);
         position: relative;
         width: 110%;
     }
@@ -443,7 +443,7 @@ $border-radius: 1rem;
     .links-btnsNav.active::before, .links-btnsNav.active::after{
         content: '';
         position: absolute;
-        width: 0.7rem;
+        width: 0.8rem;
         height: $border-radius;
         background: rgba(44, 64, 63, 0.726);
         left: 80%;
@@ -453,22 +453,22 @@ $border-radius: 1rem;
     .links-btnsNav.active::before {
         top: calc(-#{$border-radius} * -2.5);
         border-radius: 0 100vw 0 110vw;
-        box-shadow: 5px -5px  0 5px #c9c9c9;
+        box-shadow: 5px -5px  0 5px rgb(151, 151, 151);
     }
     
     .links-btnsNav.active::after {
         bottom: calc(-#{$border-radius} * -2.5);
         border-radius: 110vw 0 100vw 0;
-        box-shadow: 5px 5px  0 5px #c9c9c9;
+        box-shadow: 5px 5px  0 5px rgb(151, 151, 151);
     }
 
 
     .containerNavFooter{
-        color: white;
+        color: rgba(204, 204, 204, 0.76);
         padding: 10px;
         position: relative;
         right: 17px;
-        bottom: 15px;
+        bottom: 30px;
         width: 12vw;
         
         p{  
@@ -611,7 +611,7 @@ $border-radius: 1rem;
     
     
         .containerNavFooter{
-            color: white;
+            color: rgba(204, 204, 204, 0.76);
             padding: 10px;
             position: relative;
             right: 17px;
