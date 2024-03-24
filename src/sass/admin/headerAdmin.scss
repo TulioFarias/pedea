@@ -31,10 +31,10 @@ $space-btnToogle-open: 200px;
     border: none;
 
     &:hover{
-        transition: 0.3s all ease-in-out;
+        transition: 0.6s all ease-in-out;
         background-color: rgba(44, 64, 63, 0.726);
         color: white;
-        border: 1px solid white;
+       
 
     }
 }
@@ -60,8 +60,7 @@ $space-btnToogle-open: 200px;
 
     &:hover{
         background-color: rgb(16, 29, 129);
-        border: 1px solid white;
-        transition: 0.4s all ease-in-out;
+        transition: 0.6s all ease-in-out;
 
     }
 }
@@ -223,9 +222,9 @@ $space-btnToogle-open: 200px;
 @media only screen and (max-width: 740px){
 
     .bodyHeader{
-        background-color: rgb(245, 245, 245);
+        background-color: rgb(231, 230, 230);
         height: 10vh;
-        box-shadow: rgba(223, 223, 223, 0.25) 0px 14px 28px, rgba(214, 214, 214, 0.22) 0px 10px 10px;
+        box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
         justify-content: start;
     }
 

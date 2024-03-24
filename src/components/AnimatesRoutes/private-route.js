@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 import Admin from '../../containers/Admin'
 import api from '../../services/api'
+import { logout } from '../../utils/redux/user/actions'
 
 export const Private = () => {
+  const dispatch = useDispatch()
   const [user, setUser] = useState([])
   const userData = useSelector(state => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
