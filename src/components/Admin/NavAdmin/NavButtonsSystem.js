@@ -39,7 +39,6 @@ function ButtonSystem({ handleOptionChange }) {
   }, [loggedInUserId])
 
   const { admin } = user
-  console.log(admin)
 
   const handleButtonClick = option => {
     handleOptionChange(option)
