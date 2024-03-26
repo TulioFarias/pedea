@@ -65,7 +65,7 @@ $border-radius: 1rem;
 }
 
 .hrNavOptionsTwo{
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 10px;
     border: 1px dashed white;
 }
@@ -231,12 +231,12 @@ $border-radius: 1rem;
 
     .hrNavOptionsOne{
         margin-top: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
         border: 1px dashed white;
     }
     
     .hrNavOptionsTwo{
-        margin-top: 20px;
+        margin-top: 30px;
         margin-bottom: 10px;
         border: 1px dashed white;
     }
@@ -279,11 +279,12 @@ $border-radius: 1rem;
         border: none;
         border-radius: 100px 0 0 100px;
         font-size: 9px;
+        width: 113px;
     
         &:hover{
             color: rgba(44, 64, 63, 0.726);
             background-color: rgb(151, 151, 151);
-            width: 96%;
+            width: 114px;
         }
     
     }
@@ -297,7 +298,10 @@ $border-radius: 1rem;
         color: rgba(44, 64, 63, 0.726);
         background-color: rgb(165, 165, 165);
         position: relative;
-        width: 113%;
+        width: 119px;
+        
+        
+       
     }
     
     .links-btnsNav.active::before, .links-btnsNav.active::after{
@@ -308,7 +312,7 @@ $border-radius: 1rem;
         background: rgba(44, 64, 63, 0.726);
         border-radius: 100px;
         left: 81%;
-        transition: all 0s ease-in-out;
+        
     }
     
     .links-btnsNav.active::before {
@@ -573,7 +577,7 @@ $border-radius: 1rem;
         
             &:hover{
                 color: white;
-                background-color: #c9c9c9;
+                background-color: rgb(165, 165, 165);
                 width: 113%;
             }
     
@@ -582,9 +586,9 @@ $border-radius: 1rem;
         }
         .links-btnsNav.active{
             color: rgba(44, 64, 63, 0.726);
-            background-color: #c9c9c9;
+            background-color: rgb(165, 165, 165);
             position: relative;
-            width: 125%;
+            width: 101%;
         }
         
         .links-btnsNav.active::before, .links-btnsNav.active::after{
@@ -593,20 +597,20 @@ $border-radius: 1rem;
             width: 0.7rem;
             height: $border-radius;
             background: rgba(44, 64, 63, 0.726);
-            left: 82%;
+            left: 81%;
             
         }
         
         .links-btnsNav.active::before {
             top: calc(-#{$border-radius} * -2.5);
             border-radius: 0 100vw 0 110vw;
-            box-shadow: 5px -5px  0 5px #c9c9c9;
+            box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
         }
         
         .links-btnsNav.active::after {
             bottom: calc(-#{$border-radius} * -2.5);
             border-radius: 110vw 0 100vw 0;
-            box-shadow: 5px 5px  0 5px #c9c9c9;
+            box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
         }
     
     
