@@ -91,16 +91,14 @@ function RegisterUser() {
               <img src={backIcon} alt="Back" />
             </button>
           </div>
-          <div>
-            <img src={logo} alt="Logo" className="pedeaImg" />
-          </div>
+          <img src={logo} alt="Logo" className="pedeaImg" />
         </Row>
         <Row>
           <Col>
             <div className="containerRegisterUsers">
-              <h1 className="titleLogin">Cadastro Portal Admin</h1>
+              <h1 className="titleRegister">Cadastro Portal Admin</h1>
               <hr className="hrLoginAndRegister" />
-              <h6>
+              <h6 className="txtRegister">
                 Para realizar seu cadastro ao sistema de administração da PEDEA,
                 preencha os campos abaixo:
               </h6>
