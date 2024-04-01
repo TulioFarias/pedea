@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import userIcon from '../../../assets/icons/icon-user.png'
 import Search from '../../../assets/icons/search.png'
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
@@ -96,7 +97,7 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
                   <img
                     alt="userphoto"
                     className="custom-userPhoto"
-                    src={value.url}
+                    src={value.path ? value.url : userIcon}
                   />
                 </div>
 

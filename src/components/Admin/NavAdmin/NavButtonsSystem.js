@@ -76,7 +76,7 @@ function ButtonSystem({ handleOptionChange }) {
         </Nav.Item>
 
         <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 1 }}>
+          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
               href="/link-1"
               onClick={e => {

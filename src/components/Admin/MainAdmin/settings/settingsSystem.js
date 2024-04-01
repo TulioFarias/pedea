@@ -16,7 +16,7 @@ import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
-import userPhotoIcon from '../../../../assets/img/user.png'
+import userIcon from '../../../../assets/icons/icon-user.png'
 import api from '../../../../services/api'
 import ModalChangePassword from './PasswordChange'
 import ModalChangePhotoUser from './PhotoUserChange'
@@ -94,7 +94,7 @@ function SettingsSystemAndUser() {
                     <div className="user-imageSettings">
                       <img
                         alt="photo-user"
-                        src={value.url ? value.url : userPhotoIcon}
+                        src={value.path ? value.url : userIcon}
                       />
                     </div>
                   </Col>

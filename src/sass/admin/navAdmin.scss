@@ -119,6 +119,7 @@ $border-radius: 1rem;
     align-items: center;
     border: none;
     border-radius: 100px 0 0 100px;
+    transition: 1s all ease-in-out;
     
     
 
@@ -143,11 +144,11 @@ $border-radius: 1rem;
 
 
 .links-btnsNav.active{
-    view-transition-name: activeNavTab;
+    view-transition-name: linkBtnsNavActive;
     color: rgba(44, 64, 63, 0.726);
     background-color: rgb(165, 165, 165);
     position: relative;
-  
+    
 
 }
 
@@ -376,14 +377,14 @@ $border-radius: 1rem;
 
     .hrNavOptionsOne{
         position: relative;
-        bottom: 18px;
+        bottom: 20px;
         margin-bottom: 0px;
         border: 1px dashed white;
     }
 
     .hrNavOptionsTwo{
         position: relative;
-        bottom: 40px;
+        bottom: 80px;
         margin-bottom: 0px;
         border: 1px dashed white;
     }
@@ -472,7 +473,7 @@ $border-radius: 1rem;
         padding: 10px;
         position: relative;
         right: 17px;
-        bottom: 30px;
+        bottom: 80px;
         width: 12vw;
         
         p{  
