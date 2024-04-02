@@ -2,7 +2,7 @@ import '../../sass/Register/register.scss'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
@@ -194,11 +194,12 @@ function RegisterUser() {
                 <ReCAPTCHA
                   sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
                   onChange={value => setRecaptcha(value)}
+                  className="ReCaptchaRegister"
                 />
                 <button
                   disabled={!recaptcha}
                   type="submit"
-                  className="Btn-Form"
+                  className="Btn-FormRegister"
                 >
                   Cadastrar
                 </button>

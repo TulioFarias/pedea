@@ -1,6 +1,8 @@
 import '../../sass/login/loginSystem.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded'
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
+import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -20,6 +22,7 @@ function LoginSystem() {
   const [show, setShow] = useState(false)
   const [form, setForm] = useState({ email: '', password: '' })
   const [recaptcha, setRecaptcha] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
 
   const changeForm = async e => {
     const { name, value } = e.target
@@ -78,6 +81,10 @@ function LoginSystem() {
     }
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
   return (
     <>
       <div className="container-form">
@@ -104,6 +111,13 @@ function LoginSystem() {
             />
             <p className="error-txt">{errors.email?.message}</p>
           </div>
+          <button onClick={togglePasswordVisibility} className="IconVisibility">
+            {showPassword ? (
+              <VisibilityRoundedIcon />
+            ) : (
+              <VisibilityOffRoundedIcon />
+            )}
+          </button>
 
           <div className="custom-info">
             <Form.Label htmlFor="password" className="LabelForm">
@@ -111,13 +125,14 @@ function LoginSystem() {
             </Form.Label>
             <Form.Control
               {...register('password')}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               className="InputForm"
               id="password"
               name="password"
               value={form.password}
               onChange={changeForm}
             />
+
             <p className="error-txt">{errors.password?.message}</p>
           </div>
 

@@ -126,23 +126,26 @@
         flex-direction: column;
         grid-template-columns: 2fr 2fr;
         gap: 25px;
-        margin-bottom: 10px;
         background-color: #ffffff3f;
         border-radius: 15px;
     }
 
     .hrLoginAndRegister{
-        width: 103.5%;
+        width: 102.5%;
         border: 1px dashed white;
-        margin-bottom: 10px;
+        
     }
 
    .titleRegister{
     color: white;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 22px;
    }
 
    .txtRegister{
     color: white;
+    font-size: 12px;
    }
 
     .RetrieveAccLink{
@@ -194,6 +197,93 @@
         
     }
 
+    .ReCaptchaRegister{
+        margin-top: 10px;
+    }
+
+    //** btnRegister **//
+
+.Btn-FormRegister {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-color: transparent;
+    width: 120px;
+    height: 45px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 0 0 2px #2C403F;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+  }
+  
+  
+  .Btn-FormRegister .arr-1 {
+    right: 16px;
+  }
+  
+  .Btn-FormRegister .arr-2 {
+    left: -25%;
+  }
+  
+  
+  
+  .Btn-FormRegister .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .Btn-FormRegister:hover {
+    box-shadow: 0 0 0 12px transparent;
+    border-radius: 12px;
+    transform: scale(1.03);
+    transition: 0.4s all ease-in-out;
+    border: none;
+    background-color: #2C403F
+  }
+  
+  .Btn-FormRegister:hover .arr-1 {
+    right: -25%;
+  }
+  
+  .Btn-FormRegister:hover .arr-2 {
+    left: 16px;
+  }
+  
+  .Btn-FormRegister:hover .text {
+    transform: translateX(12px);
+  }
+  
+  .Btn-FormRegister:hover img {
+    color: white;
+  }
+  
+  .Btn-FormRegister:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px white;
+  }
+  
+  .Btn-FormRegister:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+  }
+
+//** end **//
+
+
     .end-txtRegister{
         color: white;
         font-size: 18px;
@@ -210,6 +300,8 @@
             color: #2C403F;
         }
     }
+
+
     
 
     @media only screen and (max-width: 740px){
@@ -219,7 +311,7 @@
             box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
             width: 85%;
             height: max-content;
-            padding: 10px;
+            padding: 5px;
             border-radius: 10px;
             display: flex;
             margin-left: 30px;
@@ -302,6 +394,10 @@
         margin-bottom: 6px;
         
     }
+
+    .btnBackRegister{
+        color: red;
+    }
     
     .InputFormRegister{
         
@@ -320,6 +416,8 @@
     
     
     }
+
+   
     .error-txtRegister{
         margin-top: 6px;
         margin-left: 5px;
@@ -328,6 +426,9 @@
         color: rgba(173, 2, 2, 0.849);
         
     }
+
+
+    
 
     .end-txtRegister{
         color: white;
