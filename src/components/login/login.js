@@ -111,7 +111,11 @@ function LoginSystem() {
             />
             <p className="error-txt">{errors.email?.message}</p>
           </div>
-          <button onClick={togglePasswordVisibility} className="IconVisibility">
+          <button
+            type="button"
+            onClick={togglePasswordVisibility}
+            className="IconVisibility"
+          >
             {showPassword ? (
               <VisibilityRoundedIcon />
             ) : (
@@ -144,7 +148,12 @@ function LoginSystem() {
             onChange={handleClickRecaptcha}
           />
 
-          <button type="submit" className="Btn-Form" disabled={!recaptcha}>
+          <button
+            type="submit"
+            className="Btn-Form"
+            disabled={!recaptcha}
+            formNoValidate
+          >
             Entrar
             <ArrowRightAltRoundedIcon className="iconArrow" />
           </button>

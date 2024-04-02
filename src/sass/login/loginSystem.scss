@@ -1,6 +1,5 @@
 
 
-
 .container-form{
     background-color: #7d7d7d;
     background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
@@ -13,11 +12,6 @@
     font-family: 'Roboto', sans-serif;
 
     
-}
-
-.ModalRecoverPassword{
-    background: transparent;
-    color: red;
 }
 
 
@@ -148,17 +142,15 @@
     
 }
 
-.InputForm{
-    
+.InputForm{ 
     width: 300px;
     height: 32px;
     padding-left: 10px;
     outline: none;
     border-radius: 5px;
-    font-size: 18px;
-    color: black;
-
-
+    font-size: 16px;
+    font-weight: 800;
+    
 }
 
 .IconVisibility{
