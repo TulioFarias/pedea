@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
-import HomeAdmin from './HomeAdmin'
+import HomeAdmin from './home/HomeAdmin'
 import Link1 from './Link1'
 import Link2 from './Link2'
 import Link3 from './Link3'

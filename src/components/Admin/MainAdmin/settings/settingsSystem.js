@@ -82,7 +82,7 @@ function SettingsSystemAndUser() {
   }
 
   return (
-    <div className="ContainerSettingsAndUser container-fluid">
+    <Container fluid className="ContainerSettingsAndUser ">
       {user &&
         user.map(value => (
           <div key={value.id}>
@@ -186,7 +186,7 @@ function SettingsSystemAndUser() {
             />
           </div>
         ))}
-    </div>
+    </Container>
   )
 }
 

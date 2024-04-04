@@ -54,7 +54,6 @@ function LoginSystem() {
   }
 
   const onSubmit = async data => {
-    console.log(data)
     try {
       const response = await toast.promise(
         api.put('/reset-password', {
@@ -77,9 +76,7 @@ function LoginSystem() {
       setTimeout(() => {
         navigate('/login')
       }, 2000)
-    } catch (error) {
-      return console.log(error)
-    }
+    } catch (error) {}
   }
 
   return (
