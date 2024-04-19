@@ -13,7 +13,6 @@ import { motion } from 'framer-motion'
 
 import api from '../../../services/api'
 
-import { duration } from '@mui/material'
 function ButtonSystem({ handleOptionChange }) {
   const { t } = useTranslation()
   const [activeButton, setActiveButton] = useState('Home')
@@ -75,7 +74,7 @@ function ButtonSystem({ handleOptionChange }) {
           </motion.div>
         </Nav.Item>
 
-        <Nav.Item className="OptionsItems">
+        {/* <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
               href="/link-1"
@@ -163,7 +162,7 @@ function ButtonSystem({ handleOptionChange }) {
               Link 5
             </Nav.Link>
           </motion.div>
-        </Nav.Item>
+        </Nav.Item> */}
 
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
