@@ -1,21 +1,22 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import '../../../sass/admin/link7/link7.scss'
+import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 
-import api from '../../../services/api'
-function Link7() {
+import api from '../../../../services/api'
+function RotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
     key: '',
-    language: ''
+    language: '',
+    result: ''
   })
 
   const schema = Yup.object().shape({
-    key: Yup.string().required('Senha antiga é obrigatória'),
-    language: Yup.string().required('Nova senha é obrigatória')
+    key: Yup.string().required('A chave é obrigatória'),
+    language: Yup.string().required('Selecione um idioma.')
   })
 
   const {
@@ -49,12 +50,18 @@ function Link7() {
           key: data.key,
           language: data.language
         }),
+
         {
           pending: 'Atualizando...',
           success: 'Enviado com sucesso',
-          error: 'Error!!!'
+          error: 'Chave não encontrada...'
         }
       )
+
+      setValueLanguage(prevState => ({
+        ...prevState,
+        result: response.data.value
+      }))
     } catch (error) {
       return error
     }
@@ -88,8 +95,8 @@ function Link7() {
               <option value="ptBR">Português</option>
               <option value="es">Espanhol</option>
               <option value="en">Inglês</option>
-              <p className="txtErrorPassword">{errors.language?.message}</p>
             </Form.Control>
+            <p className="txtErrorPassword">{errors.language?.message}</p>
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -98,7 +105,7 @@ function Link7() {
 
           <Form.Group>
             <Form.Label>Resultado:</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" value={valueLanguage.result} />
           </Form.Group>
         </Form>
       </Container>
@@ -106,4 +113,4 @@ function Link7() {
   )
 }
 
-export default Link7
+export default RotulosSystem

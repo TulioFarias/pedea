@@ -164,7 +164,7 @@ function ButtonSystem({ handleOptionChange }) {
           </motion.div>
         </Nav.Item> */}
 
-        <Nav.Item className="OptionsItems">
+        {/* <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
               href="/link-6"
@@ -190,25 +190,25 @@ function ButtonSystem({ handleOptionChange }) {
               )}
             </Nav.Link>
           </motion.div>
-        </Nav.Item>
+        </Nav.Item> */}
 
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
-              href="/link-7"
+              href="/Rotulos"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link7')
+                handleButtonClick('Rotulos')
               }}
               className={`links-btnsNav ${
-                activeButton === 'Link7' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Rotulos' ? 'nav-link active' : 'nav-link'
               }`}
               disabled={!admin}
             >
               {admin ? (
                 <>
                   <AppsRoundedIcon />
-                  Link 7
+                  Rotulos
                 </>
               ) : (
                 <div className="disableLink">
