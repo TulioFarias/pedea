@@ -74,7 +74,17 @@ function RotulosSystem() {
       <Container fluid className="containerWrapperOptions">
         <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group>
-            <Form.Label>Key:</Form.Label>
+            <Form.Label>ID:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Digite o ID"
+              onChange={handleChange}
+              {...register('id')}
+            />
+            <p className="txtErrorPassword">{errors.id?.message}</p>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Chaves:</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite a chave"
@@ -92,9 +102,9 @@ function RotulosSystem() {
               {...register('language')}
             >
               <option value="">Selecione...</option>
-              <option value="ptBR">Português</option>
-              <option value="es">Espanhol</option>
-              <option value="en">Inglês</option>
+              <option value="PTBR">Português</option>
+              <option value="ES">Espanhol</option>
+              <option value="EN">Inglês</option>
             </Form.Control>
             <p className="txtErrorPassword">{errors.language?.message}</p>
           </Form.Group>

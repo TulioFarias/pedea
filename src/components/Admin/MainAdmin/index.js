@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 
+import FooterAdmin from '../FooterAdmin'
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
 import HomeAdmin from './home/HomeAdmin'
@@ -13,7 +14,6 @@ import Link5 from './Link5'
 import Link6 from './Link6'
 import Rotulos from './Rotulos/index'
 import SettingsAdmin from './settings/settings'
-
 import '../../../sass/admin/admin.scss'
 
 function MainAdmin() {
@@ -69,6 +69,7 @@ function MainAdmin() {
           {selectedOption === 'Configurações' && <SettingsAdmin />}
         </motion.div>
       </Container>
+      <FooterAdmin />
     </motion.div>
   )
 }

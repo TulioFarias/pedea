@@ -3,16 +3,14 @@ $bodyNav-width-expanded: 7vw;
 $border-radius: 1rem;
 
 .bodyNav{
-    background-color: rgba(44, 64, 63, 0.726);
-    background: rgb(215,215,215);
-    background: linear-gradient(6deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 15%);
-    height: 100vh;
+
+    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 15%);
+    height: 97vh;
     width: $bodyNav-width-collapsed;
     position: absolute;
     top: 0;
     border-radius:  0 20px 20px 0px;
-
-
+   
     
 }
 
@@ -64,11 +62,7 @@ $border-radius: 1rem;
     border: 1px dashed white;
 }
 
-.hrNavOptionsTwo{
-    margin-top: 50px;
-    margin-bottom: 10px;
-    border: 1px dashed white;
-}
+
 .titleText{
     color: rgba(204, 204, 204, 0.76);
     display: flex;
@@ -173,15 +167,7 @@ $border-radius: 1rem;
     box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
 }
 
-.containerNavFooter{
-    color: rgba(204, 204, 204, 0.76);
-    padding: 10px;
-    text-align:justify;
-    
-    p{
-        font-size: 14px;
-    }
-}
+
 
 //*** Diminuir tamanho do container do NavBar-expanded **// 
 
@@ -236,11 +222,7 @@ $border-radius: 1rem;
         border: 1px dashed white;
     }
     
-    .hrNavOptionsTwo{
-        margin-top: 30px;
-        margin-bottom: 10px;
-        border: 1px dashed white;
-    }
+   
 
     .titleText{
         color: rgba(204, 204, 204, 0.76);
@@ -330,17 +312,6 @@ $border-radius: 1rem;
     
     
 
-    .containerNavFooter{
-        color: rgba(204, 204, 204, 0.76);
-        padding: 10px;
-        text-align:justify;
-        
-        p{
-            font-size: 12px;
-            width: 100px;
-            margin-bottom: 5px;
-        }
-    }
     
 }
 
@@ -382,12 +353,7 @@ $border-radius: 1rem;
         border: 1px dashed white;
     }
 
-    .hrNavOptionsTwo{
-        position: relative;
-        bottom: 80px;
-        margin-bottom: 0px;
-        border: 1px dashed white;
-    }
+  
 
 
     .titleText{
@@ -469,19 +435,7 @@ $border-radius: 1rem;
     }
 
 
-    .containerNavFooter{
-        color: rgba(204, 204, 204, 0.76);
-        padding: 10px;
-        position: relative;
-        right: 17px;
-        bottom: 80px;
-        width: 12vw;
-        
-        p{  
-            width: 50px;
-            font-size: 10px;
-        }
-    }
+
 
 
      //** start container mobile after click **//
@@ -615,20 +569,7 @@ $border-radius: 1rem;
             box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
         }
     
-    
-        .containerNavFooter{
-            color: rgba(204, 204, 204, 0.76);
-            padding: 10px;
-            position: relative;
-            right: 17px;
-            bottom: 25px;
-            width: 12vw;
-            
-            p{  
-                width: 50px;
-                font-size: 9px;
-            }
-        }
+
     
     }
         //*** container mobile afeter click **//

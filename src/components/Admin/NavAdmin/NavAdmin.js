@@ -56,15 +56,6 @@ function NavAdmin({ handleOptionChange, sidebarOpen }) {
 
       <hr className="hrNavOptionsOne" />
       <ButtonSystem handleOptionChange={handleOptionChange} />
-
-      <hr className="hrNavOptionsTwo" />
-      <div className="containerNavFooter">
-        <p>
-          {t(
-            'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.'
-          )}
-        </p>
-      </div>
     </Container>
   )
 }
