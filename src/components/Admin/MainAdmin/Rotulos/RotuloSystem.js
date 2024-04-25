@@ -84,7 +84,7 @@ function RotulosSystem() {
             <p className="txtErrorPassword">{errors.id?.message}</p>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Chaves:</Form.Label>
+            <Form.Label>Chave:</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite a chave"

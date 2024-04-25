@@ -4,7 +4,7 @@ import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, InputGroup, FormControl, Button } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -62,32 +62,32 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
           {' '}
           <MenuOpenRoundedIcon />
         </button>
-        <input
-          type="text"
-          placeholder={t('Procurar por...')}
-          className="form-control inputSearch"
-          aria-label="Procurar por..."
-          aria-describedby="basic-addon2"
-        />
 
-        <div className="input-group-append">
-          <button
-            className="btn btn-outline-secondary SearchButton"
-            type="button"
-          >
-            <img src={Search} />
-          </button>
-        </div>
+        <InputGroup>
+          <FormControl
+            type="text"
+            placeholder="Procurar por..."
+            aria-label="Procurar por..."
+            aria-describedby="basic-addon2"
+            className="inputSearch"
+          />
+
+          <Button variant="outline-secondary" className="SearchButton">
+            <img src={Search} alt="Search Icon" />
+          </Button>
+        </InputGroup>
       </div>
 
       <div className="containerButtonsHeader">
-        <button>
-          <NotificationsNoneRoundedIcon />
-        </button>
+        <div className="buttonsNotification">
+          <button>
+            <NotificationsNoneRoundedIcon />
+          </button>
 
-        <button onClick={toggleTheme}>
-          <DarkModeOutlinedIcon />
-        </button>
+          <button onClick={toggleTheme}>
+            <DarkModeOutlinedIcon />
+          </button>
+        </div>
 
         <div className="customDivRight">
           {user &&

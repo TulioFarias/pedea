@@ -32,26 +32,129 @@
    
 }
 
-
-
-
 @media only screen and (max-width: 1000px){
 
-  .my-div-footer{
-    height: 50px;
-  }
+  .my-div-footerAdmin{
+    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    color: rgba(204, 204, 204, 0.76);
+    position: fixed;
+    left: 0;
+    bottom: 30px;
+    height: 30px;
+   
+}
 
-  .footer-textOne{
-    font-size: 11px;
-    text-align: start;
-  
-  }
-
-  .footer-textTwo{
-    font-size: 11px;
+.footer-textOneAdmin{
+    margin-top: 2px;
     text-align: center;
-    
+    font-size: 8px;
+    width: 300px;
+}
+
+.footer-textTwoAdmin{
+  border-left: 1px solid #6c6868!important;
+  color: rgba(204, 204, 204, 0.76);
+  text-decoration: none;
+  margin: 5px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 8px;
+
+  &:hover{
+    text-decoration: underline;
   }
+   
+}
+  
+  
+}
+
+@media only screen and (max-width: 1040px){
+
+  .my-div-footerAdmin{
+    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    color: rgba(204, 204, 204, 0.76);
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    height: 30px;
+   
+}
+
+.footer-textOneAdmin{
+    margin-top: 2px;
+    text-align: center;
+    font-size: 14px;
+    
+}
+
+.footer-textTwoAdmin{
+  border-left: 1px solid #6c6868!important;
+  color: rgba(204, 204, 204, 0.76);
+  text-decoration: none;
+  margin: 5px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 14px;
+
+  &:hover{
+    text-decoration: underline;
+  }
+   
+}
+  
+  
+}
+
+
+@media only screen and (max-width: 480px){
+
+  .my-div-footerAdmin{
+    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    color: rgba(204, 204, 204, 0.76);
+    position: fixed;
+    left: 0;
+    bottom: 30px;
+    height: 30px;
+   
+}
+
+.footer-textOneAdmin{
+    margin-top: 2px;
+    text-align: center;
+    font-size: 8px;
+    width: 300px;
+}
+
+.footer-textTwoAdmin{
+  border-left: 1px solid #6c6868!important;
+  color: rgba(204, 204, 204, 0.76);
+  text-decoration: none;
+  margin: 5px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 8px;
+
+  &:hover{
+    text-decoration: underline;
+  }
+   
+}
   
   
 }

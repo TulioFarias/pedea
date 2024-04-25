@@ -6,10 +6,12 @@ $space-btnToogle-open: 200px;
 .bodyHeader{
     background-color: rgb(231, 230, 230);
     height: 10vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
+    gap: 100px;
     
 }
 
@@ -89,7 +91,10 @@ $space-btnToogle-open: 200px;
     }
 }
 
+.buttonsNotification{
+    display: flex;
 
+}
 
 .customDivRight{
     display: flex;
@@ -99,6 +104,7 @@ $space-btnToogle-open: 200px;
     padding: 5px 10px 5px 10px;
     height: 9vh;
     gap: 15px;
+    
     
     
 }
@@ -212,10 +218,206 @@ $space-btnToogle-open: 200px;
     }
 }
 
+@media only screen and (max-width: 1040px){
+
+    .bodyHeader{
+        background-color: rgb(231, 230, 230);
+        height: 10vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
+        gap: 0px;
+        
+    }
+
+
+    .OpenNavBarWithToogle{
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        color: rgba(44, 64, 63, 0.726);
+        border: none;
+    
+        &:hover{
+            transition: 0.6s all ease-in-out;
+            background-color: rgba(44, 64, 63, 0.726);
+            color: white;
+           
+    
+        }
+    }
+
+    .containerDivLeft{
+        display: flex;
+        position: relative;
+        left: 50px;
+        right: 0;
+        
+    }
+    
+    .containerDivs{
+        display: flex;
+        
+    }
+    
+    
+    .SearchButton{
+        background-color: rgba(44, 64, 63, 0.726);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        &:hover{
+            background-color: rgb(16, 29, 129);
+            border: 1px solid white;
+        }
+    }
+
+    .containerButtonsHeader{
+        display: flex;
+        align-items: center;
+        width: 80px;
+        height: 50px;
+        gap: 8px;
+        position: relative;
+        left: 0px;
+        right: 20px;
+    
+        button{
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            color: rgb(122, 122, 122);
+            background-color: transparent;
+            border: 1px solid yellow;
+    
+            &:hover{
+                background-color: rgba(122, 122, 122, 0.295);
+                transition: 0.5s all ease-in-out;
+            }
+        }
+    }
+    
+ 
+    .buttonsNotification{
+        display: flex;
+        border: 1px solid red;
+        position: relative;
+        right: 200px;
+    
+    }
+    
+    .customDivRight{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        padding: 5px 10px 5px 10px;
+        height: 8vh;
+        gap: 15px;
+        border: 1px solid blue;
+        width: 15vw;
+        height: 7vh;
+        
+        
+        
+    }
+
+    .custom-userPhoto{
+        border-radius: 50%;
+        
+        
+    }
+    
+    
+    
+    .containerUser{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        padding: 0px 5px 0px 5px;
+        background-color: rgba(155, 155, 155, 0.384);
+        
+    
+    
+        p{ 
+            position: relative;
+            top: 10px; 
+            width: 150px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgb(90, 90, 90);
+        } 
+        
+        .nameUser{
+            color: rgb(90, 90, 90);
+        }
+        
+    }
+
+   
+    
+   //** buttonExit **//
+
+
+  .backButton {
+    background-color: transparent;
+    position: relative;
+    right: 0;
+    border: none;
+    color: rgb(168, 7, 7);
+    cursor: pointer;
+  }
+  
+  .backButton::after {
+    content: 'Sair';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(168, 7, 7);
+    padding: 4px 8px;
+    border-radius: 5px;
+    transition: .5s ease-in-out;
+    transition-delay: .2s;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .iconLogout {
+    transform: scale(1.2);
+    transition: .2s linear;
+  }
+  
+  .backButton:hover > .iconLogout {
+    transform: scale(1.5);
+  }
+  
+  .backButton:hover > .iconLogout path {
+    fill: rgb(168, 7, 7);
+  }
+  
+  .backButton:hover::after {
+    visibility: visible;
+    opacity: 1;
+    top: -120%;
+  }
+//** buttonExit final code **//
+   }
+
 
 //** before click **//
 
-@media only screen and (max-width: 740px){
+@media only screen and (max-width: 480px){
 
     .bodyHeader{
         background-color: rgb(231, 230, 230);
@@ -257,27 +459,7 @@ $space-btnToogle-open: 200px;
     
     
 
-    .OpenNavBarWithToogle{
-        display: flex;
-        position: relative;
-        top: 26px;
-        left: 10px;
-        width: 25px;
-        height: 25px;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 50%;
-        border: none;
-        background-color: rgba(44, 64, 63, 0.726);
-        color: rgb(255, 255, 255);
-        display: none;
-
-        &:hover{
-            background-color: rgba(44, 64, 63, 0.726);
-            transition: 0.5s all ease-in-out;
-        }
-    }
+   
 
     .containerDivLeft{
         display: flex;

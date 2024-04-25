@@ -4,7 +4,7 @@ $border-radius: 1rem;
 
 .bodyNav{
 
-    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 15%);
+    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 12%);
     height: 97vh;
     width: $bodyNav-width-collapsed;
     position: absolute;
@@ -319,12 +319,16 @@ $border-radius: 1rem;
 
 
 @media only screen and (max-width: 1040px){
-   
+    .bodyNav{
+        width: 17vw;
+        height: 97vh;
+    }
   }
 
 @media only screen and (max-width: 740px){
     .bodyNav{
         width: 17vw;
+        height: 94vh;
     }
     
     .containerDivsLanguage{

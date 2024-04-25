@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import '../../../sass/admin/geoserver.scss'
+import '../../../sass/admin/admin.scss'
 
 function Link5() {
   return (

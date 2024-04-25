@@ -64,16 +64,14 @@ $containerMainSystem-width-open: 90%;
     
 }
 
-
-
-@media only screen and (max-width: 740px){
+@media only screen and (max-width: 1040px){
 
     .containerWrapperOptions{
         background-color: rgb(231, 230, 230);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 12px;
         padding: 10px;
-        height: 86vh;
+        height: 84vh;
         
         
     }
@@ -83,7 +81,33 @@ $containerMainSystem-width-open: 90%;
     width: 80%;
     height: max-content;
     position: relative;
-    left: 35px;
+    left: 100px;
+    top: 20px;
+
+}
+
+   }
+
+
+
+@media only screen and (max-width: 740px){
+
+    .containerWrapperOptions{
+        background-color: rgb(231, 230, 230);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        border-radius: 12px;
+        padding: 10px;
+        height: 81vh;
+        
+        
+    }
+    
+   
+.ContainerMainSystem{
+    width: 80%;
+    height: max-content;
+    position: relative;
+    left: 30px;
     top: 20px;
 
 }
