@@ -42,8 +42,9 @@ $space-btnToogle-open: 200px;
 }
 
 .inputSearch{
-    width: 300px;
+    width: 250px;
 }
+
 
 .SearchButton{
     background-color: rgba(44, 64, 63, 0.726);
@@ -76,7 +77,19 @@ $space-btnToogle-open: 200px;
     position: relative;
     left: 30px;
 
+}
+
+.ContainerNotificationBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    right: 30px;
+
     button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 40px;
         height: 40px;
         border: none;
@@ -87,16 +100,13 @@ $space-btnToogle-open: 200px;
         &:hover{
             background-color: rgba(122, 122, 122, 0.295);
             transition: 0.5s all ease-in-out;
+            color: rgba(44, 64, 63, 0.726);
         }
     }
-}
-
-.buttonsNotification{
-    display: flex;
 
 }
 
-.customDivRight{
+.ContainerUserCustom{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,8 +114,6 @@ $space-btnToogle-open: 200px;
     padding: 5px 10px 5px 10px;
     height: 9vh;
     gap: 15px;
-    
-    
     
 }
 
@@ -226,9 +234,9 @@ $space-btnToogle-open: 200px;
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
-        gap: 0px;
+        gap: 150px;
         
     }
 
@@ -249,18 +257,8 @@ $space-btnToogle-open: 200px;
         }
     }
 
-    .containerDivLeft{
-        display: flex;
-        position: relative;
-        left: 50px;
-        right: 0;
-        
-    }
-    
-    .containerDivs{
-        display: flex;
-        
-    }
+   
+
     
     
     .SearchButton{
@@ -280,11 +278,10 @@ $space-btnToogle-open: 200px;
         align-items: center;
         width: 80px;
         height: 50px;
-        gap: 8px;
         position: relative;
         left: 0px;
-        right: 20px;
-    
+        gap: 0px;
+        
         button{
             width: 40px;
             height: 40px;
@@ -292,7 +289,6 @@ $space-btnToogle-open: 200px;
             border-radius: 10px;
             color: rgb(122, 122, 122);
             background-color: transparent;
-            border: 1px solid yellow;
     
             &:hover{
                 background-color: rgba(122, 122, 122, 0.295);
@@ -302,33 +298,22 @@ $space-btnToogle-open: 200px;
     }
     
  
-    .buttonsNotification{
+    .ContainerNotificationBtns{
         display: flex;
-        border: 1px solid red;
-        position: relative;
-        right: 200px;
+        gap: 10px;
+        position: absolute;
+        right: 30px;
     
     }
-    
-    .customDivRight{
+
+    .ContainerUserCustom{
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 10px;
         padding: 5px 10px 5px 10px;
-        height: 8vh;
+        height: 9vh;
         gap: 15px;
-        border: 1px solid blue;
-        width: 15vw;
-        height: 7vh;
-        
-        
-        
-    }
-
-    .custom-userPhoto{
-        border-radius: 50%;
-        
         
     }
     
@@ -360,7 +345,13 @@ $space-btnToogle-open: 200px;
         
     }
 
-   
+    .custom-userPhoto{
+        border-radius: 50%;
+    
+        
+    }
+    
+
     
    //** buttonExit **//
 
@@ -424,20 +415,11 @@ $space-btnToogle-open: 200px;
         height: 10vh;
         box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
         justify-content: start;
+        gap: 0px;
     }
 
   
 
-    .customDivRight{
-        display: flex;
-        align-items: center;
-        height: 70px;
-        justify-content: center;
-        border-radius: 10px;
-        padding: 5px 10px 5px 10px;
-    
-        
-    }
     .custom-userPhoto{
         border-radius: 50%;
         width: 60px;
@@ -456,10 +438,16 @@ $space-btnToogle-open: 200px;
         }   
         
     }
-    
-    
 
-   
+    .OpenNavBarWithToogle{   
+        display: none;
+    
+    }
+
+    .inputSearch{
+        width: 250px;
+    }
+    
 
     .containerDivLeft{
         display: flex;
@@ -501,10 +489,9 @@ $space-btnToogle-open: 200px;
     .containerButtonsHeader{
         display: flex;
         align-items: center;
-        width: 100px;
         gap: 0px;
         position: relative;
-        left: 130px;
+        left: 100px;
     
         button{
             display: none;
@@ -521,13 +508,9 @@ $space-btnToogle-open: 200px;
             }
         }
     }
+
+   
     
-    .customDivRight{
-        border-radius: 10px;
-        width: 15vw;
-        height: 7vh;
-        
-    }
 
     .custom-userPhoto{
         border-radius: 50%;

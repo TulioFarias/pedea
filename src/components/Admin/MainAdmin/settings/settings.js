@@ -6,7 +6,7 @@ function SettingsAdmin() {
   return (
     <>
       <div className="containerWrapperOptions">
-        <h2>Configurações</h2>
+        <h2 className="titleSettings">Configurações</h2>
         <SettingsSystemAndUser />
       </div>
     </>

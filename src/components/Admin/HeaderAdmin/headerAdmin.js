@@ -63,33 +63,28 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
           <MenuOpenRoundedIcon />
         </button>
 
-        <InputGroup>
-          <FormControl
-            type="text"
-            placeholder="Procurar por..."
-            aria-label="Procurar por..."
-            aria-describedby="basic-addon2"
-            className="inputSearch"
-          />
+        <FormControl
+          type="text"
+          placeholder="Procurar por..."
+          className="inputSearch"
+        />
 
-          <Button variant="outline-secondary" className="SearchButton">
-            <img src={Search} alt="Search Icon" />
-          </Button>
-        </InputGroup>
+        <Button variant="outline-secondary" className="SearchButton">
+          <img src={Search} alt="Search Icon" />
+        </Button>
       </div>
 
       <div className="containerButtonsHeader">
-        <div className="buttonsNotification">
-          <button>
+        <div className="ContainerNotificationBtns">
+          <Button>
             <NotificationsNoneRoundedIcon />
-          </button>
-
-          <button onClick={toggleTheme}>
+          </Button>
+          <Button>
             <DarkModeOutlinedIcon />
-          </button>
+          </Button>
         </div>
 
-        <div className="customDivRight">
+        <div className="ContainerUserCustom">
           {user &&
             user.map(value => (
               <div className="containerUser" key={value.id}>

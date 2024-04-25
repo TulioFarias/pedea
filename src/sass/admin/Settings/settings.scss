@@ -1,4 +1,7 @@
-
+.titleSettings{
+    text-align: center;
+    font-weight: bold;
+}
 .ContainerSettingsAndUser{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -127,7 +130,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap:20px;
-        border: 1px solid red;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -400,7 +402,7 @@
         color: gray;
         width: max-content;
         height: 30px;
-        border: 1px solid;
+    
     }
 
     .input-group{
