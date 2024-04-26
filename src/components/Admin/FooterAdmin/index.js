@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../sass/admin/footerAdmin/footeradmin.scss'
+import '../../../sass/admin/FooterAdmin/footeradmin.scss'
 import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 
