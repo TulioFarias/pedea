@@ -9,14 +9,19 @@ import * as Yup from 'yup'
 import api from '../../../../services/api'
 function RotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
+    id: '',
     key: '',
-    language: '',
-    result: ''
+    PTBR: '',
+    EN: '',
+    ES: ''
   })
 
   const schema = Yup.object().shape({
+    id: Yup.string().required('O ID é obrigatório.'),
     key: Yup.string().required('A chave é obrigatória'),
-    language: Yup.string().required('Selecione um idioma.')
+    PTBR: Yup.string().required('Esse campo é obrigatório.'),
+    EN: Yup.string().required('Esse campo é obrigatório.'),
+    ES: Yup.string().required('Esse campo é obrigatório.')
   })
 
   const {
@@ -28,98 +33,135 @@ function RotulosSystem() {
   })
 
   const handleChange = event => {
-    const { value } = event.target
+    const { name, value } = event.target
     setValueLanguage(prevState => ({
       ...prevState,
-      key: value
-    }))
-  }
-
-  const handleSelectChange = event => {
-    const { value } = event.target
-    setValueLanguage(prevState => ({
-      ...prevState,
-      language: value
+      [name]: value
     }))
   }
 
   const onSubmit = async data => {
+    console.log(data)
     try {
       const response = await toast.promise(
-        api.post('/language', {
+        api.post('/rotulos', {
+          id: data.id,
           key: data.key,
-          language: data.language
+          PTBR: data.PTBR,
+          EN: data.EN,
+          ES: data.ES
         }),
-
         {
-          pending: 'Atualizando...',
+          pending: 'Cadastrando...',
           success: 'Enviado com sucesso',
-          error: 'Chave não encontrada...'
+          error: 'Não foi possível realizar o cadastro.'
         }
       )
-
-      setValueLanguage(prevState => ({
-        ...prevState,
-        result: response.data.value
-      }))
     } catch (error) {
-      return error
+      return console.log(error)
     }
   }
 
-  console.log(valueLanguage)
-
   return (
-    <>
-      <Container fluid className="containerWrapperOptions">
-        <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group>
-            <Form.Label>ID:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Digite o ID"
-              onChange={handleChange}
-              {...register('id')}
-            />
-            <p className="txtErrorPassword">{errors.id?.message}</p>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Chave:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Digite a chave"
-              onChange={handleChange}
-              {...register('key')}
-            />
-            <p className="txtErrorPassword">{errors.key?.message}</p>
-          </Form.Group>
+    <Container fluid className="containerWrapperOptions">
+      <div className="ContainerAllRotulosOptions">
+        <div className="ContainerAddInfoRotulos">
+          <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">ID:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite o ID"
+                onChange={handleChange}
+                {...register('id')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.id?.message}</p>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Chave:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite a chave"
+                onChange={handleChange}
+                {...register('key')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.key?.message}</p>
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Selecione Idioma:</Form.Label>
-            <Form.Control
-              as="select"
-              onChange={handleSelectChange}
-              {...register('language')}
-            >
-              <option value="">Selecione...</option>
-              <option value="PTBR">Português</option>
-              <option value="ES">Espanhol</option>
-              <option value="EN">Inglês</option>
-            </Form.Control>
-            <p className="txtErrorPassword">{errors.language?.message}</p>
-          </Form.Group>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Português:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder=""
+                onChange={handleChange}
+                {...register('PTBR')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.PTBR?.message}</p>
+            </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Enviar
-          </Button>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Inglês:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder=""
+                onChange={handleChange}
+                {...register('EN')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.EN?.message}</p>
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Resultado:</Form.Label>
-            <Form.Control type="text" value={valueLanguage.result} />
-          </Form.Group>
-        </Form>
-      </Container>
-    </>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Espanhol:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder=""
+                onChange={handleChange}
+                {...register('ES')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.ES?.message}</p>
+            </Form.Group>
+
+            <Button variant="secondary" type="submit">
+              Enviar
+            </Button>
+          </Form>
+        </div>
+
+        <div className="containerResultofRotulos">
+          <Form className="ResultRotulos" onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">ID:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite o ID"
+                onChange={handleChange}
+                {...register('id')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.id?.message}</p>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Chave:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite a chave"
+                onChange={handleChange}
+                {...register('key')}
+                className="InputRotulos"
+              />
+              <p className="txtErrorPassword">{errors.key?.message}</p>
+            </Form.Group>
+
+            <Button variant="secondary">Enviar</Button>
+          </Form>
+        </div>
+      </div>
+    </Container>
   )
 }
 
