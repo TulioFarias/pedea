@@ -18,6 +18,7 @@ import '../../../sass/admin/admin.scss'
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
+  const [activeButton, setActiveButton] = useState('Home')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [darkTheme, setDarkTheme] = useState(false)
 
@@ -28,7 +29,6 @@ function MainAdmin() {
   const toggleTheme = () => {
     setDarkTheme(prevTheme => !prevTheme)
   }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -40,10 +40,14 @@ function MainAdmin() {
         setSidebarOpen={setSidebarOpen}
         sidebarOpen={sidebarOpen}
         toggleTheme={toggleTheme}
+        handleOptionChange={handleOptionChange}
+        setActiveButton={setActiveButton}
       />
       <NavAdmin
         handleOptionChange={handleOptionChange}
         sidebarOpen={sidebarOpen}
+        setActiveButton={setActiveButton}
+        activeButton={activeButton}
       />
       <Container
         fluid

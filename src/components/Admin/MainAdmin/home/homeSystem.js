@@ -8,8 +8,8 @@ function HomeSystem() {
         <div className="ContainerTitleHome">
           <h2 className="titleHomeAdmin">
             {' '}
-            Bem-vindo ao sistema de administração Plataforma Estadual de Dados
-            Espaciais Ambientais do Ceará.
+            Sistema de administração da Plataforma Estadual de Dados Espaciais
+            Ambientais do Ceará.
           </h2>
         </div>
 

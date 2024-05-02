@@ -7,8 +7,8 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import api from '../../../../services/api'
+import ContainerGetInfoRotulos from './getRotulos'
 
-import { Label } from '@mui/icons-material'
 function RotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
     id: '',
@@ -23,9 +23,9 @@ function RotulosSystem() {
   const schema = Yup.object().shape({
     id: Yup.string().required('O ID é obrigatório.'),
     key: Yup.string().required('A chave é obrigatória'),
-    PTBR: Yup.string().required('Esse campo é obrigatório.'),
-    EN: Yup.string().required('Esse campo é obrigatório.'),
-    ES: Yup.string().required('Esse campo é obrigatório.')
+    pt_br: Yup.string().required('Esse campo é obrigatório.'),
+    en: Yup.string().required('Esse campo é obrigatório.'),
+    es: Yup.string().required('Esse campo é obrigatório.')
   })
 
   const {
@@ -44,8 +44,7 @@ function RotulosSystem() {
     }))
   }
 
-  const onSubmit = async data => {
-    console.log(data)
+  const onSubmit = async (data, event) => {
     try {
       const response = await toast.promise(
         api.post('/rotulos', {
@@ -61,26 +60,12 @@ function RotulosSystem() {
           error: 'Não foi possível realizar o cadastro.'
         }
       )
+
+      event.preventDefault()
     } catch (error) {
       return console.log(error)
     }
   }
-
-  useEffect(() => {
-    async function loadUserData() {
-      try {
-        const { data } = await api.get('/rotulos')
-
-        setRotulosData(data)
-      } catch (error) {
-        console.error('Error fetching user data:', error)
-      }
-    }
-
-    loadUserData()
-  }, [])
-
-  console.log(rotulosData)
 
   return (
     <Container fluid className="containerWrapperOptions">
@@ -116,10 +101,10 @@ function RotulosSystem() {
                 type="text"
                 placeholder=""
                 onChange={handleChange}
-                {...register('PTBR')}
+                {...register('pt_br')}
                 className="InputRotulos"
               />
-              <p className="txtErrorPassword">{errors.PTBR?.message}</p>
+              <p className="txtErrorPassword">{errors.pt_br?.message}</p>
             </Form.Group>
 
             <Form.Group>
@@ -128,10 +113,10 @@ function RotulosSystem() {
                 type="text"
                 placeholder=""
                 onChange={handleChange}
-                {...register('EN')}
+                {...register('en')}
                 className="InputRotulos"
               />
-              <p className="txtErrorPassword">{errors.EN?.message}</p>
+              <p className="txtErrorPassword">{errors.en?.message}</p>
             </Form.Group>
 
             <Form.Group>
@@ -140,10 +125,10 @@ function RotulosSystem() {
                 type="text"
                 placeholder=""
                 onChange={handleChange}
-                {...register('ES')}
+                {...register('es')}
                 className="InputRotulos"
               />
-              <p className="txtErrorPassword">{errors.ES?.message}</p>
+              <p className="txtErrorPassword">{errors.es?.message}</p>
             </Form.Group>
 
             <Button variant="secondary" type="submit">
@@ -152,62 +137,7 @@ function RotulosSystem() {
           </Form>
         </div>
 
-        <div className="containerResultofRotulos">
-          <Form className="ResultRotulos">
-            <Form.Group>
-              <Form.Label className="LabelRotulos">ID:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite o ID"
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.id?.message}</p>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label className="LabelRotulos">Chave:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite a chave"
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.key?.message}</p>
-            </Form.Group>
-
-            <Button variant="secondary">Enviar</Button>
-
-            <div className="ContainerValuesDataRotulos">
-              {rotulosData &&
-                rotulosData.map(value => (
-                  <div key={value.id}>
-                    <div className="containerValues">
-                      <label>ID:</label>
-                      <p> {value.id}</p>
-                    </div>
-
-                    <div className="containerValues">
-                      <label>Chave:</label>
-                      <p>{value.key}</p>
-                    </div>
-
-                    <div className="containerValues">
-                      <label>Português:</label>
-                      <p>{value.pt_br}</p>
-                    </div>
-
-                    <div className="containerValues">
-                      <label>Inglês:</label>
-                      <p>{value.en}</p>
-                    </div>
-
-                    <div className="containerValues">
-                      <label>Espanhol:</label>
-                      <p>{value.es}</p>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </Form>
-        </div>
+        <ContainerGetInfoRotulos />
       </div>
     </Container>
   )

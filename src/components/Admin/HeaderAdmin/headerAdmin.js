@@ -4,7 +4,7 @@ import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { Container, InputGroup, FormControl, Button } from 'react-bootstrap'
+import { Container, FormControl, Button } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,12 @@ import { logout } from '../../../utils/redux/user/actions'
 
 import '../../../sass/admin/headerAdmin.scss'
 
-function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
+function HeaderAdm({
+  sidebarOpen,
+  setSidebarOpen,
+  handleOptionChange,
+  setActiveButton
+}) {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
@@ -50,6 +55,11 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
+  }
+
+  const SendToSettings = options => {
+    handleOptionChange(options)
+    setActiveButton(options)
   }
 
   return (
@@ -93,6 +103,10 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
                     alt="userphoto"
                     className="custom-userPhoto"
                     src={value.path ? value.url : userIcon}
+                    onClick={e => {
+                      e.preventDefault()
+                      SendToSettings('Configurações')
+                    }}
                   />
                 </div>
 
@@ -115,7 +129,9 @@ function HeaderAdm({ sidebarOpen, setSidebarOpen, toggleTheme }) {
 HeaderAdm.propTypes = {
   setSidebarOpen: PropTypes.func.isRequired,
   sidebarOpen: PropTypes.bool.isRequired,
-  toggleTheme: PropTypes.bool.isRequired
+  toggleTheme: PropTypes.bool.isRequired,
+  handleOptionChange: PropTypes.func.isRequired,
+  setActiveButton: PropTypes.func.isRequired
 }
 
 export default HeaderAdm

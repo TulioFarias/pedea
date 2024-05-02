@@ -13,9 +13,9 @@ import { motion } from 'framer-motion'
 
 import api from '../../../services/api'
 
-function ButtonSystem({ handleOptionChange }) {
+function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
   const { t } = useTranslation()
-  const [activeButton, setActiveButton] = useState('Home')
+
   const [user, setUser] = useState([])
   const userData = useSelector(state => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
@@ -245,7 +245,9 @@ function ButtonSystem({ handleOptionChange }) {
 }
 
 ButtonSystem.propTypes = {
-  handleOptionChange: PropTypes.func.isRequired
+  handleOptionChange: PropTypes.func.isRequired,
+  setActiveButton: PropTypes.func.isRequired,
+  activeButton: PropTypes.string.isRequired
 }
 
 export default ButtonSystem

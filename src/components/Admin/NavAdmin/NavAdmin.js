@@ -9,7 +9,12 @@ import '../../../sass/admin/navAdmin.scss'
 import PEDEA from '../../../assets/img/pedea-logo.png'
 import ButtonSystem from './NavButtonsSystem'
 
-function NavAdmin({ handleOptionChange, sidebarOpen }) {
+function NavAdmin({
+  handleOptionChange,
+  sidebarOpen,
+  setActiveButton,
+  activeButton
+}) {
   const { t, i18n } = useTranslation()
 
   const handleLanguageChange = value => {
@@ -55,14 +60,20 @@ function NavAdmin({ handleOptionChange, sidebarOpen }) {
       </div>
 
       <hr className="hrNavOptionsOne" />
-      <ButtonSystem handleOptionChange={handleOptionChange} />
+      <ButtonSystem
+        handleOptionChange={handleOptionChange}
+        setActiveButton={setActiveButton}
+        activeButton={activeButton}
+      />
     </Container>
   )
 }
 
 NavAdmin.propTypes = {
   handleOptionChange: PropTypes.func.isRequired,
-  sidebarOpen: PropTypes.bool.isRequired
+  sidebarOpen: PropTypes.bool.isRequired,
+  setActiveButton: PropTypes.func.isRequired,
+  activeButton: PropTypes.string.isRequired
 }
 
 export default NavAdmin
