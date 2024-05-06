@@ -12,7 +12,7 @@ function ContainerInfoRotulos() {
   useEffect(() => {
     async function loadRotulosData() {
       try {
-        const { data } = await api.get('/getRotulos')
+        const { data } = await api.get('/getAllRotulos')
 
         console.log(data)
 

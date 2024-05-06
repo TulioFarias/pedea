@@ -86,7 +86,7 @@ function RotulosSystem() {
               <Form.Label className="LabelRotulos">Português:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder=""
+                placeholder="Digite valor em português"
                 onChange={handleChange}
                 {...register('pt_br')}
                 className="InputRotulos"
@@ -98,7 +98,7 @@ function RotulosSystem() {
               <Form.Label className="LabelRotulos">Inglês:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder=""
+                placeholder="Digite valor em inglês"
                 onChange={handleChange}
                 {...register('en')}
                 className="InputRotulos"
@@ -110,7 +110,7 @@ function RotulosSystem() {
               <Form.Label className="LabelRotulos">Espanhol:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder=""
+                placeholder="Digite valor em espanhol"
                 onChange={handleChange}
                 {...register('es')}
                 className="InputRotulos"
@@ -118,7 +118,11 @@ function RotulosSystem() {
               <p className="txtErrorPassword">{errors.es?.message}</p>
             </Form.Group>
 
-            <Button variant="secondary" type="submit">
+            <Button
+              variant="secondary"
+              type="submit"
+              className="btnSubmitAddRotulos"
+            >
               Enviar
             </Button>
           </Form>

@@ -36,7 +36,7 @@ function ContainerGetInfoRotulos() {
   const onSubmit = async data => {
     try {
       const response = await toast.promise(
-        api.post('/getRotulos', {
+        api.post('/getWithKeyRotulos', {
           key: data.key
         }),
         {
