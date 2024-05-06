@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import trash from '../../../assets/icons/lixeira.png'
 import { updateInfo } from '../../../utils/redux/CRUD/actions'
 import { ModalAdd } from '../AdminModal/Addmodal'
-import ConfirmDeleteModal from '../AdminModal/deleteModal'
 import { EditedModal } from '../AdminModal/editModal'
 function Link1() {
   const { t } = useTranslation()
@@ -74,12 +73,6 @@ function Link1() {
           </Table>
         </div>
       </div>
-
-      <ConfirmDeleteModal
-        show={showDeleteModal}
-        handleClose={() => setShowDeleteModal(false)}
-        selectedId={selectedId}
-      />
     </>
   )
 }

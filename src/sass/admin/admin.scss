@@ -1,5 +1,7 @@
 $containerMainSystem-width-closed: 82%;
 $containerMainSystem-width-open: 90%;
+$containerWrapper-width-closed: 83vw; 
+$containerWrapper-width-open: 90vw; 
 
 
 .containerAdminSystem{
@@ -15,6 +17,7 @@ $containerMainSystem-width-open: 90%;
     position: relative;
     left: 130px;
     top: 10px;
+    
 
 }
 
@@ -23,7 +26,13 @@ $containerMainSystem-width-open: 90%;
 .ContainerMainSystem-expanded{
     width: $containerMainSystem-width-open;
     transition: all 1s ease-in-out;
-    left: 55px;
+    left: 50px;
+
+    .containerWrapperOptions{
+        width: 90vw;
+        transition: all 1s ease-in-out;
+    }
+    
 }
 
 //*** final do tamanho do container do mainsystem **// 
@@ -39,6 +48,7 @@ $containerMainSystem-width-open: 90%;
     
     
 }
+
 
 
 

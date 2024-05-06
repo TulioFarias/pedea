@@ -1,20 +1,22 @@
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
 import React, { useEffect, useState } from 'react'
-
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { Table, Button } from 'react-bootstrap'
+import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded'
 
 import api from '../../../../services/api'
+import ModalConfirmDelete from './modalsRotulos/modalDelete'
+import EditModalRotulos from './modalsRotulos/modalEdit'
 
 function ContainerInfoRotulos() {
   const [rotulosData, setRotulosData] = useState([])
   const [openModal, setOpenModal] = useState(false)
+  const [openModalEdit, setOpenModalEdit] = useState(false)
 
   useEffect(() => {
     async function loadRotulosData() {
       try {
         const { data } = await api.get('/getAllRotulos')
-
-        console.log(data)
 
         setRotulosData(data)
       } catch (error) {
@@ -27,6 +29,10 @@ function ContainerInfoRotulos() {
 
   const openModalNow = () => {
     setOpenModal(true)
+  }
+
+  const openEditModalNow = () => {
+    setOpenModalEdit(true)
   }
   return (
     <>
@@ -50,16 +56,24 @@ function ContainerInfoRotulos() {
                 <td>{item.pt_br}</td>
                 <td>{item.en}</td>
                 <td>{item.es}</td>
-                <td>
-                  <Button variant="info" onClick={openModalNow}>
-                    Editar
+                <td className="ActionCollumCustomRotulosTable">
+                  <Button variant="secondary" onClick={openEditModalNow}>
+                    <EditNoteRoundedIcon />
                   </Button>
-                  <Button variant="danger">Excluir</Button>
+                  <Button variant="danger" onClick={openModalNow}>
+                    <DeleteSweepRoundedIcon />
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
+
+        <ModalConfirmDelete openModal={openModal} setOpenModal={setOpenModal} />
+        <EditModalRotulos
+          openModalEdit={openModalEdit}
+          setOpenModalEdit={setOpenModalEdit}
+        />
       </div>
     </>
   )
