@@ -10,12 +10,10 @@ import api from '../../../../services/api'
 
 function ContainerGetInfoRotulos() {
   const [findDataRotulos, setfindDataRotulos] = useState({
-    id: '',
     key: ''
   })
   const [rotulosData, setRotulosData] = useState([])
   const schema = Yup.object().shape({
-    id: Yup.string().required('O ID é obrigatório.'),
     key: Yup.string().required('A chave é obrigatória')
   })
 
@@ -39,7 +37,6 @@ function ContainerGetInfoRotulos() {
     try {
       const response = await toast.promise(
         api.post('/getRotulos', {
-          id: data.id,
           key: data.key
         }),
         {
@@ -59,36 +56,19 @@ function ContainerGetInfoRotulos() {
       try {
         const { data } = await api.get('/getRotulos')
 
-        const filteredData = data.filter(item => {
-          return (
-            item.id === findDataRotulos.id && item.key === findDataRotulos.key
-          )
-        })
-
-        setRotulosData(filteredData)
+        setRotulosData(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
       }
     }
 
     loadRotulosData()
-  }, [rotulosData])
+  }, [])
 
   return (
     <>
       <div className="containerResultofRotulos">
         <Form className="ResultRotulos" onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group>
-            <Form.Label className="LabelRotulos">ID:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              {...register('id')}
-              className="InputRotulos"
-              onChange={handleChange}
-            />
-            <p className="txtErrorPassword">{errors.id?.message}</p>
-          </Form.Group>
           <Form.Group>
             <Form.Label className="LabelRotulos">Chave:</Form.Label>
             <Form.Control

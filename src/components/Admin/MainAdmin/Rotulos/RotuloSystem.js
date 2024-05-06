@@ -11,7 +11,6 @@ import ContainerGetInfoRotulos from './getRotulos'
 
 function RotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
-    id: '',
     key: '',
     pt_br: '',
     en: '',
@@ -21,7 +20,6 @@ function RotulosSystem() {
   const [rotulosData, setRotulosData] = useState([])
 
   const schema = Yup.object().shape({
-    id: Yup.string().required('O ID é obrigatório.'),
     key: Yup.string().required('A chave é obrigatória'),
     pt_br: Yup.string().required('Esse campo é obrigatório.'),
     en: Yup.string().required('Esse campo é obrigatório.'),
@@ -48,7 +46,6 @@ function RotulosSystem() {
     try {
       const response = await toast.promise(
         api.post('/rotulos', {
-          id: data.id,
           key: data.key,
           pt_br: data.pt_br,
           en: data.en,
@@ -72,17 +69,6 @@ function RotulosSystem() {
       <div className="ContainerAllRotulosOptions">
         <div className="ContainerAddInfoRotulos">
           <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group>
-              <Form.Label className="LabelRotulos">ID:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite o ID"
-                onChange={handleChange}
-                {...register('id')}
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.id?.message}</p>
-            </Form.Group>
             <Form.Group>
               <Form.Label className="LabelRotulos">Chave:</Form.Label>
               <Form.Control
