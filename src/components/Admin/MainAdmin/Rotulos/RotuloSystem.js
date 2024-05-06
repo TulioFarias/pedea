@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 
 import api from '../../../../services/api'
 import ContainerGetInfoRotulos from './getRotulos'
+import ContainerInfoRotulos from './TableInfoRotulos'
 
 function RotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
@@ -121,6 +122,8 @@ function RotulosSystem() {
               Enviar
             </Button>
           </Form>
+
+          <ContainerInfoRotulos />
         </div>
 
         <ContainerGetInfoRotulos />

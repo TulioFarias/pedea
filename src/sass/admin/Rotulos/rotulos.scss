@@ -1,44 +1,64 @@
 
 
-.containerInfos{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    gap: 20px;
-    width: 300px;
-    background-color: #cacaca;
-    border-radius: 10px;
-}
+
 
 .ContainerAllRotulosOptions{
     display: flex;
     gap: 100px;
+    width: 82vw;
+    height: 82vh;
+}
+
+.containerInfos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 15px;
+    width: 100%;
+    background-color: #cacaca;
+    border-radius: 10px;
     
 }
 
 .ContainerAddInfoRotulos{
-
+    border-radius: 10px;
+    width: 50vw;
+    height: 83vh;
 }
+
 
 .LabelRotulos{
     color: gray;
 }
 
 .InputRotulos{
-    width: 250px;
+    width: 200px;
 
     &::placeholder{
         color: #cacaca
     }
 }
 
+.containerTableInfoRotulos{
+    margin-top: 12px;
+    height: 70vh;
+    background-color: #cacaca;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: auto;
+
+}
+
+
 .containerResultofRotulos{
     display: flex;
     flex-direction: column;
     padding: 10px;
     gap: 20px;
-    width: 350px;
+    width: 18vw;
+    height: 83vh;
     background-color: #cacaca;
     border-radius: 10px;
 }

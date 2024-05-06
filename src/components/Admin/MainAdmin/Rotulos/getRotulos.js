@@ -51,19 +51,19 @@ function ContainerGetInfoRotulos() {
     }
   }
 
-  useEffect(() => {
-    async function loadRotulosData() {
-      try {
-        const { data } = await api.get('/getRotulos')
+  // useEffect(() => {
+  //   async function loadRotulosData() {
+  //     try {
+  //       const { data } = await api.get('/getRotulos')
 
-        setRotulosData(data)
-      } catch (error) {
-        console.error('Error fetching user data:', error)
-      }
-    }
+  //       setRotulosData(data)
+  //     } catch (error) {
+  //       console.error('Error fetching user data:', error)
+  //     }
+  //   }
 
-    loadRotulosData()
-  }, [])
+  //   loadRotulosData()
+  // }, [])
 
   return (
     <>
