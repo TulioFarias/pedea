@@ -138,10 +138,10 @@ $border-radius: 1rem;
 
 
 .links-btnsNav.active{
-    view-transition-name: linkBtnsNavActive;
     color: rgba(44, 64, 63, 0.726);
     background-color: rgb(165, 165, 165);
     position: relative;
+    transition: all 1s ease-in-out;
     
 
 }
@@ -153,18 +153,22 @@ $border-radius: 1rem;
     height: $border-radius;
     background: rgba(44, 64, 63, 0.726);
     left: 93.6%;
+    transition: all 1s ease-in-out;
+
 }
 
 .links-btnsNav.active::before {
     top: calc(-#{$border-radius} * -2.5);
     border-radius: 0 100vw 0 0;
     box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
+    transition: all 1s ease-in-out;
 }
 
 .links-btnsNav.active::after {
     bottom: calc(-#{$border-radius} * -2.5);
     border-radius: 0 0 100vw 0;
     box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
+    transition: all 1s ease-in-out;
 }
 
 
@@ -269,6 +273,8 @@ $border-radius: 1rem;
             background-color: rgb(151, 151, 151);
             width: 114px;
         }
+
+        transition: all 1s ease-in-out;
     
     }
 
@@ -284,6 +290,7 @@ $border-radius: 1rem;
         width: 119px;
         
         
+        
        
     }
     
@@ -295,6 +302,8 @@ $border-radius: 1rem;
         background: rgba(44, 64, 63, 0.726);
         border-radius: 100px;
         left: 81%;
+        
+        
         
     }
     

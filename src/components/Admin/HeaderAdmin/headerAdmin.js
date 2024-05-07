@@ -14,7 +14,7 @@ import Search from '../../../assets/icons/search.png'
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
 
-import '../../../sass/admin/headerAdmin.scss'
+import '../../../sass/admin/HeaderAdmin/headerAdmin.scss'
 
 function HeaderAdm({
   sidebarOpen,
