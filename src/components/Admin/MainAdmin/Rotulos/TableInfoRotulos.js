@@ -27,7 +27,7 @@ function ContainerInfoRotulos() {
     loadRotulosData()
   }, [])
 
-  const openModalNow = () => {
+  const openModalNow = id => {
     setOpenModal(true)
   }
 
