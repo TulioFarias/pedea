@@ -36,7 +36,7 @@ function ContainerGetInfoRotulos() {
   const onSubmit = async data => {
     try {
       const response = await toast.promise(
-        api.post('/getWithKeyRotulos', {
+        api.post('/getRotulos', {
           key: data.key
         }),
         {
@@ -46,24 +46,18 @@ function ContainerGetInfoRotulos() {
             'Não foi possível encontrar os dados. Verifique e tente novamente.'
         }
       )
+
+      if (response.data.result) {
+        setRotulosData([response.data.result])
+      } else {
+        toast.error(
+          'Dados não encontrados... Verificar a chave e tentar novamente.'
+        )
+      }
     } catch (error) {
       return console.log(error)
     }
   }
-
-  // useEffect(() => {
-  //   async function loadRotulosData() {
-  //     try {
-  //       const { data } = await api.get('/getRotulos')
-
-  //       setRotulosData(data)
-  //     } catch (error) {
-  //       console.error('Error fetching user data:', error)
-  //     }
-  //   }
-
-  //   loadRotulosData()
-  // }, [])
 
   return (
     <>

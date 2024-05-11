@@ -1,8 +1,8 @@
+import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded'
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
 import React, { useEffect, useState } from 'react'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { Table, Button } from 'react-bootstrap'
-import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded'
 
 import api from '../../../../services/api'
 import ModalConfirmDelete from './modalsRotulos/modalDelete'
@@ -27,7 +27,7 @@ function ContainerInfoRotulos() {
     loadRotulosData()
   }, [])
 
-  const openModalNow = id => {
+  const openModalNow = () => {
     setOpenModal(true)
   }
 

@@ -49,16 +49,15 @@ function ModalConfirmDelete({ openModal, setOpenModal }) {
   const onSubmit = async (data, event) => {
     try {
       const response = await toast.promise(
-        api.delete('/rotulosDelete', {
-          id: data.id,
-          key: data.key
-        }),
+        api.delete(`/rotulosDelete?id=${data.id}&key=${data.key}`),
         {
           pending: 'Atualizando...',
           success: 'Dados excluídos do banco de dados',
           error: 'Não foi possível excluir os dados...'
         }
       )
+
+      console.log(response.data)
 
       event.preventDefault()
     } catch (error) {
