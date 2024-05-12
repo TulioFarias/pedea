@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import api from '../../../../../services/api'
-function ModalConfirmDelete({ openModal, setOpenModal }) {
+function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
   const [valueDelete, setValueDelete] = useState({
     id: '',
     key: ''
@@ -41,15 +41,22 @@ function ModalConfirmDelete({ openModal, setOpenModal }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = async (data, event) => {
+  const onSubmit = async data => {
     try {
+      const payload = {
+        id: data.id,
+        key: data.key
+      }
       const response = await toast.promise(
-        api.delete(`/rotulosDelete?id=${data.id}&key=${data.key}`),
+        api.delete('/rotulosDelete', {
+          data: payload
+        }),
         {
           pending: 'Atualizando...',
           success: 'Dados excluídos do banco de dados',
@@ -57,9 +64,9 @@ function ModalConfirmDelete({ openModal, setOpenModal }) {
         }
       )
 
-      console.log(response.data)
-
-      event.preventDefault()
+      reset()
+      handleTableUpdate()
+      handleClose()
     } catch (error) {
       return console.log(error)
     }
@@ -109,7 +116,8 @@ function ModalConfirmDelete({ openModal, setOpenModal }) {
 
 ModalConfirmDelete.propTypes = {
   openModal: PropTypes.bool.isRequired,
-  setOpenModal: PropTypes.func.isRequired
+  setOpenModal: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default ModalConfirmDelete

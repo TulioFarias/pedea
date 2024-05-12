@@ -19,6 +19,13 @@ function RotulosSystem() {
   })
 
   const [rotulosData, setRotulosData] = useState([])
+  const [tableUpdated, setTableUpdated] = useState(false)
+
+  console.log(tableUpdated)
+
+  const handleTableUpdate = () => {
+    setTableUpdated(true)
+  }
 
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
@@ -30,6 +37,7 @@ function RotulosSystem() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -59,6 +67,8 @@ function RotulosSystem() {
         }
       )
 
+      reset()
+      handleTableUpdate()
       event.preventDefault()
     } catch (error) {
       return console.log(error)
@@ -127,7 +137,10 @@ function RotulosSystem() {
             </Button>
           </Form>
 
-          <ContainerInfoRotulos />
+          <ContainerInfoRotulos
+            tableUpdated={tableUpdated}
+            handleTableUpdate={handleTableUpdate}
+          />
         </div>
 
         <ContainerGetInfoRotulos />

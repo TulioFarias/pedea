@@ -3,12 +3,13 @@ import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
 import React, { useEffect, useState } from 'react'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { Table, Button } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 import api from '../../../../services/api'
 import ModalConfirmDelete from './modalsRotulos/modalDelete'
 import EditModalRotulos from './modalsRotulos/modalEdit'
 
-function ContainerInfoRotulos() {
+function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
   const [rotulosData, setRotulosData] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
@@ -25,7 +26,7 @@ function ContainerInfoRotulos() {
     }
 
     loadRotulosData()
-  }, [])
+  }, [tableUpdated])
 
   const openModalNow = () => {
     setOpenModal(true)
@@ -34,6 +35,7 @@ function ContainerInfoRotulos() {
   const openEditModalNow = () => {
     setOpenModalEdit(true)
   }
+
   return (
     <>
       <div className="containerTableInfoRotulos">
@@ -69,14 +71,23 @@ function ContainerInfoRotulos() {
           </tbody>
         </Table>
 
-        <ModalConfirmDelete openModal={openModal} setOpenModal={setOpenModal} />
+        <ModalConfirmDelete
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          handleTableUpdate={handleTableUpdate}
+        />
         <EditModalRotulos
           openModalEdit={openModalEdit}
           setOpenModalEdit={setOpenModalEdit}
+          handleTableUpdate={handleTableUpdate}
         />
       </div>
     </>
   )
+}
+ContainerInfoRotulos.propTypes = {
+  tableUpdated: PropTypes.bool.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default ContainerInfoRotulos

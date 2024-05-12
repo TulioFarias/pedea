@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
-function EditModalRotulos({ openModalEdit, setOpenModalEdit }) {
+function EditModalRotulos({
+  openModalEdit,
+  setOpenModalEdit,
+  handleTableUpdate
+}) {
   const [formsData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,7 +88,8 @@ function EditModalRotulos({ openModalEdit, setOpenModalEdit }) {
 
 EditModalRotulos.propTypes = {
   openModalEdit: PropTypes.bool.isRequired,
-  setOpenModalEdit: PropTypes.func.isRequired
+  setOpenModalEdit: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default EditModalRotulos
