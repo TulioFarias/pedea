@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+import '../../../../../sass/admin/Rotulos/modalRotulos.scss'
 import api from '../../../../../services/api'
 function EditModalRotulos({
   openModalEdit,
@@ -88,17 +89,20 @@ function EditModalRotulos({
   return (
     <>
       <div>
-        <Modal show={openModalEdit} onHide={handleClose}>
+        <Modal
+          show={openModalEdit}
+          onHide={handleClose}
+          id="customModalRotulos"
+        >
           <Modal.Header closeButton>
-            <Modal.Title>Editar valores do rótulo.</Modal.Title>
+            <Modal.Title className="titleEditRotulos">
+              Editar valores do rótulo.
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit(onSubmitUpdate)}>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Chave:</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="labelValuesRotulos">Chave:</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder=""
@@ -107,11 +111,10 @@ function EditModalRotulos({
                 />
                 <p className="txtErrorPassword">{errors.key?.message}</p>
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Novo valor em português:</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="labelValuesRotulos">
+                  Novo valor em português:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder=""
@@ -121,11 +124,10 @@ function EditModalRotulos({
                 <p className="txtErrorPassword">{errors.pt_br?.message}</p>
               </Form.Group>
 
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput2"
-              >
-                <Form.Label>Novo valor em inglês:</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="labelValuesRotulos">
+                  Novo valor em inglês:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder=""
@@ -134,11 +136,10 @@ function EditModalRotulos({
                 />
                 <p className="txtErrorPassword">{errors.en?.message}</p>
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Novo valor em espanhol:</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label className="labelValuesRotulos">
+                  Novo valor em espanhol:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   rows={3}
@@ -155,7 +156,7 @@ function EditModalRotulos({
           <Modal.Footer>
             <Button
               className="btnClose"
-              variant="secondary"
+              variant="outline-secondary"
               onClick={handleClose}
             >
               Fechar

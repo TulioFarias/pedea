@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+import '../../../../../sass/admin/Rotulos/modalRotulos.scss'
 import api from '../../../../../services/api'
 function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
   const [valueDelete, setValueDelete] = useState({
@@ -74,16 +75,23 @@ function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
 
   return (
     <>
-      <Modal show={openModal} onHide={handleClose} closeButton>
+      <Modal
+        show={openModal}
+        onHide={handleClose}
+        closeButton
+        id="customModalDelete"
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Excluir rótulo.</Modal.Title>
+          <Modal.Title className="titleDeleteRotulos">
+            Excluir rótulo.
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p> ⚠️ : Os dados excluídos não podem ser recuperados.</p>
           <p>Tem certeza que deseja excluir os dados permanentemente?</p>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group controlId="formId">
-              <Form.Label>ID:</Form.Label>
+              <Form.Label className="labelValuesRotulos">ID:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Digite o ID"
@@ -94,7 +102,7 @@ function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
             </Form.Group>
 
             <Form.Group controlId="formKey">
-              <Form.Label>Chave:</Form.Label>
+              <Form.Label className="labelValuesRotulos">Chave:</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Digite a chave"
