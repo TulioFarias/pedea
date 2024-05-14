@@ -13,6 +13,7 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
   const [rotulosData, setRotulosData] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
+  const [editItemId, setEditItemId] = useState(null)
 
   useEffect(() => {
     async function loadRotulosData() {
@@ -32,8 +33,9 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
     setOpenModal(true)
   }
 
-  const openEditModalNow = () => {
+  const openEditModalNow = id => {
     setOpenModalEdit(true)
+    setEditItemId(id)
   }
 
   return (
@@ -59,7 +61,10 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
                 <td>{item.en}</td>
                 <td>{item.es}</td>
                 <td className="ActionCollumCustomRotulosTable">
-                  <Button variant="secondary" onClick={openEditModalNow}>
+                  <Button
+                    variant="secondary"
+                    onClick={() => openEditModalNow(item.id)}
+                  >
                     <EditNoteRoundedIcon />
                   </Button>
                   <Button variant="danger" onClick={openModalNow}>
@@ -80,6 +85,7 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
           openModalEdit={openModalEdit}
           setOpenModalEdit={setOpenModalEdit}
           handleTableUpdate={handleTableUpdate}
+          editItemId={editItemId}
         />
       </div>
     </>

@@ -10,7 +10,8 @@ import api from '../../../../../services/api'
 function EditModalRotulos({
   openModalEdit,
   setOpenModalEdit,
-  handleTableUpdate
+  handleTableUpdate,
+  editItemId
 }) {
   const [formsData, setFormData] = useState({
     key: '',
@@ -20,8 +21,10 @@ function EditModalRotulos({
   })
 
   const schema = Yup.object().shape({
-    id: Yup.string().required('O ID é obrigatório.'),
-    key: Yup.string().required('A chave é obrigatória')
+    key: Yup.string().required('A chave é obrigatória'),
+    pt_br: Yup.string().required('O novo valor é obrigatório.'),
+    en: Yup.string().required('O novo valor é obrigatório.'),
+    es: Yup.string().required('O novo valor é obrigatório.')
   })
 
   const {
@@ -58,11 +61,10 @@ function EditModalRotulos({
   }
 
   const onSubmitUpdate = async data => {
-    console.log(data)
-    console.log('ta clicando aqui')
     try {
       const response = await toast.promise(
         api.put('/rotulosUpdate', {
+          id: editItemId,
           key: data.key,
           pt_br: data.pt_br,
           en: data.en,
@@ -71,11 +73,9 @@ function EditModalRotulos({
         {
           pending: 'Atualizando...',
           success: 'Dados atualizados no banco de dados',
-          error: 'Não foi possível atualizar os dados...'
+          error: 'Chave não corresponde ao ID fornecido.'
         }
       )
-
-      console.log('ta clicando aqui')
 
       reset()
       handleTableUpdate()
@@ -84,8 +84,6 @@ function EditModalRotulos({
       return console.log(error)
     }
   }
-
-  console.log(formsData)
 
   return (
     <>
@@ -104,7 +102,6 @@ function EditModalRotulos({
                 <Form.Control
                   type="text"
                   placeholder=""
-                  autoFocus
                   {...register('key')}
                   onChange={handleChangeKey}
                 />
@@ -118,7 +115,6 @@ function EditModalRotulos({
                 <Form.Control
                   type="text"
                   placeholder=""
-                  autoFocus
                   {...register('pt_br')}
                   onChange={handleChangePT}
                 />
@@ -133,7 +129,6 @@ function EditModalRotulos({
                 <Form.Control
                   type="text"
                   placeholder=""
-                  autoFocus
                   {...register('en')}
                   onChange={handleChangeEN}
                 />
@@ -174,6 +169,7 @@ function EditModalRotulos({
 
 EditModalRotulos.propTypes = {
   openModalEdit: PropTypes.bool.isRequired,
+  editItemId: PropTypes.string.isRequired,
   setOpenModalEdit: PropTypes.func.isRequired,
   handleTableUpdate: PropTypes.func.isRequired
 }
