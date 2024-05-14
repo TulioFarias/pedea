@@ -207,7 +207,7 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
               {admin ? (
                 <>
                   <AppsRoundedIcon />
-                  Rotulos
+                  Rótulos
                 </>
               ) : (
                 <div className="disableLink">

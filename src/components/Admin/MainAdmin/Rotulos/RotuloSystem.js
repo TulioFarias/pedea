@@ -21,8 +21,6 @@ function RotulosSystem() {
   const [rotulosData, setRotulosData] = useState([])
   const [tableUpdated, setTableUpdated] = useState(false)
 
-  console.log(tableUpdated)
-
   const handleTableUpdate = () => {
     setTableUpdated(true)
   }

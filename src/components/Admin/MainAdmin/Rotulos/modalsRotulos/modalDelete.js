@@ -76,7 +76,7 @@ function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
     <>
       <Modal show={openModal} onHide={handleClose} closeButton>
         <Modal.Header closeButton>
-          <Modal.Title>Excluir dados</Modal.Title>
+          <Modal.Title>Excluir rótulo.</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p> ⚠️ : Os dados excluídos não podem ser recuperados.</p>
