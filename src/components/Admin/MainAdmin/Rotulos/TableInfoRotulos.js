@@ -9,11 +9,16 @@ import api from '../../../../services/api'
 import ModalConfirmDelete from './modalsRotulos/modalDelete'
 import EditModalRotulos from './modalsRotulos/modalEdit'
 
-function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
+function ContainerInfoRotulos({
+  tableUpdated,
+  setDataInfoKey,
+  handleTableUpdate,
+  setEditItemId,
+  editItemId
+}) {
   const [rotulosData, setRotulosData] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
-  const [editItemId, setEditItemId] = useState(null)
 
   useEffect(() => {
     async function loadRotulosData() {
@@ -21,6 +26,7 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
         const { data } = await api.get('/getAllRotulos')
 
         setRotulosData(data)
+        setDataInfoKey(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
       }
@@ -93,7 +99,10 @@ function ContainerInfoRotulos({ tableUpdated, handleTableUpdate }) {
 }
 ContainerInfoRotulos.propTypes = {
   tableUpdated: PropTypes.bool.isRequired,
-  handleTableUpdate: PropTypes.func.isRequired
+  handleTableUpdate: PropTypes.func.isRequired,
+  setDataInfoKey: PropTypes.func.isRequired,
+  setEditItemId: PropTypes.func.isRequired,
+  editItemId: PropTypes.string.isRequired
 }
 
 export default ContainerInfoRotulos

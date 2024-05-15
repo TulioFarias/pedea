@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
@@ -8,18 +8,20 @@ import * as Yup from 'yup'
 
 import api from '../../../../services/api'
 import ContainerGetInfoRotulos from './getRotulos'
+import IfKeyExist from './modalsRotulos/modalKeyExist'
 import ContainerInfoRotulos from './TableInfoRotulos'
 
-function RotulosSystem() {
+function CreateRotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
     key: '',
     pt_br: '',
     en: '',
     es: ''
   })
-
-  const [rotulosData, setRotulosData] = useState([])
+  const [dataInfoKey, setDataInfoKey] = useState([])
   const [tableUpdated, setTableUpdated] = useState(false)
+  const [showModalIfKey, setShowModalIfKey] = useState(false)
+  const [editItemId, setEditItemId] = useState(null)
 
   const handleTableUpdate = () => {
     setTableUpdated(true)
@@ -49,21 +51,27 @@ function RotulosSystem() {
     }))
   }
 
+  const showModalToUpdate = () => {
+    setShowModalIfKey(true)
+  }
+
   const onSubmit = async (data, event) => {
     try {
-      const response = await toast.promise(
-        api.post('/rotulos', {
+      const foundItem = dataInfoKey.find(item => item.key === data.key)
+
+      if (!foundItem) {
+        const response = await api.post('/rotulos', {
           key: data.key,
           pt_br: data.pt_br,
           en: data.en,
           es: data.es
-        }),
-        {
-          pending: 'Cadastrando...',
-          success: 'Enviado com sucesso',
-          error: 'Não foi possível realizar o cadastro.'
-        }
-      )
+        })
+
+        toast.success('Cadastrado com sucesso.')
+      } else {
+        toast.error('Chave já cadastrada')
+        showModalToUpdate()
+      }
 
       reset()
       handleTableUpdate()
@@ -72,6 +80,8 @@ function RotulosSystem() {
       return console.log(error)
     }
   }
+
+  console.log(editItemId)
 
   return (
     <Container fluid className="containerWrapperOptions">
@@ -136,15 +146,23 @@ function RotulosSystem() {
           </Form>
 
           <ContainerInfoRotulos
+            setDataInfoKey={setDataInfoKey}
             tableUpdated={tableUpdated}
             handleTableUpdate={handleTableUpdate}
+            setEditItemId={setEditItemId}
+            editItemId={editItemId}
+          />
+          <IfKeyExist
+            showModalIfKey={showModalIfKey}
+            setShowModalIfKey={setShowModalIfKey}
+            handleTableUpdate={handleTableUpdate}
+            setEditItemId={setEditItemId}
           />
         </div>
-
         <ContainerGetInfoRotulos />
       </div>
     </Container>
   )
 }
 
-export default RotulosSystem
+export default CreateRotulosSystem
