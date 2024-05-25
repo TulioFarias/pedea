@@ -62,6 +62,7 @@ function ContainerGetInfoRotulos() {
   return (
     <>
       <div className="containerResultofRotulos">
+        <p>Digite a chave do rótulo:</p>
         <Form className="ResultRotulos" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group>
             <Form.Label className="LabelRotulos">Chave:</Form.Label>

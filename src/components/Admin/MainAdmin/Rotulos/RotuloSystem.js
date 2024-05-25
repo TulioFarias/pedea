@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
@@ -9,6 +9,7 @@ import * as Yup from 'yup'
 import api from '../../../../services/api'
 import ContainerGetInfoRotulos from './getRotulos'
 import IfKeyExist from './modalsRotulos/modalKeyExist'
+import ImportFileRotulos from './registerFileRotulos'
 import ContainerInfoRotulos from './TableInfoRotulos'
 
 function CreateRotulosSystem() {
@@ -69,7 +70,7 @@ function CreateRotulosSystem() {
 
         toast.success('Cadastrado com sucesso.')
       } else {
-        toast.error('Chave já cadastrada')
+        toast.error('Chave já cadastrada.')
         showModalToUpdate()
       }
 
@@ -88,78 +89,92 @@ function CreateRotulosSystem() {
       <div className="ContainerAllRotulosOptions">
         <div className="ContainerAddInfoRotulos">
           <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group>
-              <Form.Label className="LabelRotulos">Chave:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite a chave"
-                onChange={handleChange}
-                {...register('key')}
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.key?.message}</p>
-            </Form.Group>
+            <div className="titleRegisterRotulo">
+              <p>Preencha os campos abaixo para cadastrar um rótulo:</p>
+            </div>
 
-            <Form.Group>
-              <Form.Label className="LabelRotulos">Português:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite valor em português"
-                onChange={handleChange}
-                {...register('pt_br')}
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.pt_br?.message}</p>
-            </Form.Group>
+            <div className="containersLabelsFormRegisterRotulos">
+              <Form.Group>
+                <Form.Label className="LabelRotulos">Chave:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite a chave"
+                  onChange={handleChange}
+                  {...register('key')}
+                  className="InputRotulos"
+                />
+                <p className="txtErrorPassword">{errors.key?.message}</p>
+              </Form.Group>
 
-            <Form.Group>
-              <Form.Label className="LabelRotulos">Inglês:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite valor em inglês"
-                onChange={handleChange}
-                {...register('en')}
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.en?.message}</p>
-            </Form.Group>
+              <Form.Group>
+                <Form.Label className="LabelRotulos">Português:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite valor em português"
+                  onChange={handleChange}
+                  {...register('pt_br')}
+                  className="InputRotulos"
+                />
+                <p className="txtErrorPassword">{errors.pt_br?.message}</p>
+              </Form.Group>
 
-            <Form.Group>
-              <Form.Label className="LabelRotulos">Espanhol:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite valor em espanhol"
-                onChange={handleChange}
-                {...register('es')}
-                className="InputRotulos"
-              />
-              <p className="txtErrorPassword">{errors.es?.message}</p>
-            </Form.Group>
+              <Form.Group>
+                <Form.Label className="LabelRotulos">Inglês:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite valor em inglês"
+                  onChange={handleChange}
+                  {...register('en')}
+                  className="InputRotulos"
+                />
+                <p className="txtErrorPassword">{errors.en?.message}</p>
+              </Form.Group>
 
-            <Button
-              variant="secondary"
-              type="submit"
-              className="btnSubmitAddRotulos"
-            >
-              Enviar
-            </Button>
+              <Form.Group>
+                <Form.Label className="LabelRotulos">Espanhol:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Digite valor em espanhol"
+                  onChange={handleChange}
+                  {...register('es')}
+                  className="InputRotulos"
+                />
+                <p className="txtErrorPassword">{errors.es?.message}</p>
+              </Form.Group>
+
+              <Button
+                variant="secondary"
+                type="submit"
+                className="btnSubmitAddRotulos"
+              >
+                Cadastrar
+              </Button>
+            </div>
           </Form>
 
-          <ContainerInfoRotulos
-            setDataInfoKey={setDataInfoKey}
-            tableUpdated={tableUpdated}
-            handleTableUpdate={handleTableUpdate}
-            setEditItemId={setEditItemId}
-            editItemId={editItemId}
-          />
           <IfKeyExist
             showModalIfKey={showModalIfKey}
             setShowModalIfKey={setShowModalIfKey}
             handleTableUpdate={handleTableUpdate}
             setEditItemId={setEditItemId}
           />
+
+          <div className="ContainersRegisterFileRotulos">
+            <ImportFileRotulos />
+          </div>
+
+          <div className="ContainerGetWithKeyRotulos">
+            <ContainerGetInfoRotulos />
+          </div>
         </div>
-        <ContainerGetInfoRotulos />
+
+        <ContainerInfoRotulos
+          setDataInfoKey={setDataInfoKey}
+          tableUpdated={tableUpdated}
+          handleTableUpdate={handleTableUpdate}
+          setEditItemId={setEditItemId}
+          editItemId={editItemId}
+        />
       </div>
     </Container>
   )

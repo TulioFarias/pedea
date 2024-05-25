@@ -102,9 +102,9 @@ function IfKeyExist({
 
           <Modal.Body>
             <p>
-              ⚠️ : Chave já está cadastrada! Tem a opção de atualizar essa
-              chave, porém as atualizações após concluídas, não terá como
-              recuperar os dados atualizados.
+              ⚠️ : A chave já está registrada! Você tem a opção de atualizá-la,
+              mas saiba que uma vez concluídas as atualizações, os dados
+              atualizados não poderão ser recuperados.
             </p>
             <p>Deseja atualizar os dados? Basta atualizar nos campos abaixo:</p>
             <Form onSubmit={handleSubmit(onSubmitUpdate)}>

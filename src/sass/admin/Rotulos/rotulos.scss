@@ -4,7 +4,7 @@
 
 .ContainerAllRotulosOptions{
     display: flex;
-    gap: 100px;
+    gap: 15px;
     width: 82vw;
     height: 82vh;
 }
@@ -13,34 +13,53 @@
 
 .ContainerAddInfoRotulos{
     border-radius: 10px;
-    width: 50vw;
+    width: 51vw;
     height: max-content;
+    display: flex;
+    flex-direction: column;
+
+    
 }
 
 .containerInfos{
     padding: 10px;
-    gap: 15px;
     width: 100%;
-    background-color: #cacaca;
     border-radius: 10px;
-    display: flex;
+    background-color: #cacaca;
     
 
     .btnSubmitAddRotulos{
         height: 40px;
         position: relative;
-        top: 32px;
+        top: 30px;
     }
     
+}
+
+.titleRegisterRotulo{
+    color: gray;
+    font-weight: 900;
+    font-size: 16px;
+    
+   
+}
+
+.containersLabelsFormRegisterRotulos{
+       display: flex;
+       width: max-content;
+       gap: 15px;
+       width: 100%;
 }
 
 
 .LabelRotulos{
     color: gray;
+    font-size: 14px !important;
+    margin-left: 5px;
+    
 }
 
 .InputRotulos{
-    width: 200px;
 
     &::placeholder{
         color: #cacaca
@@ -48,24 +67,63 @@
 }
 
 .containerTableInfoRotulos{
-    margin-top: 12px;
-    height: 66vh;
+    width: 100vw;
+    height: 83vh;
     background-color: #cacaca;
-    padding: 10px;
+    padding: 12px;
     border-radius: 10px 0px 0px 10px;
     overflow: auto;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
 }
 
-.TableRotulos{
-   
-  
+.headerContainerTableRotulos{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px dashed gray;
+    margin-bottom: 10px;
+}
+
+.titleTableRotulos{
+    color: gray;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.BtnChangeTableRotulos{
+    position: relative;
+    left: 130px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: gray;
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        background-color:  rgba(44, 64, 63, 0.726);
+        color: white;
+        border: 1px dashed  rgba(44, 64, 63, 0.726);
+        transition: all 1s es;
+    }
 }
 
 .ActionCollumCustomRotulosTable{
     display: flex;
     gap: 20px;
+}
+
+.ContainersRegisterFileRotulos{
+    display: flex;
+    gap: 50px;
+    margin-top: 15px;
+}
+
+.ContainerGetWithKeyRotulos{
+    margin-top: 15px;
 }
 
 
@@ -84,6 +142,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 
 .ContainerValuesDataRotulos{

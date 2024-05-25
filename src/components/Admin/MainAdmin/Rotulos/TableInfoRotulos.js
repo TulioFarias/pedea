@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { Table, Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import TuneRoundedIcon from '@mui/icons-material/TuneRounded'
 
 import api from '../../../../services/api'
 import ModalConfirmDelete from './modalsRotulos/modalDelete'
@@ -47,6 +48,13 @@ function ContainerInfoRotulos({
   return (
     <>
       <div className="containerTableInfoRotulos">
+        <div className="headerContainerTableRotulos">
+          <p className="titleTableRotulos">Tabela de rótulos cadastrados:</p>
+          <button className="BtnChangeTableRotulos">
+            <TuneRoundedIcon />
+          </button>
+        </div>
+
         <Table striped bordered hover className="TableRotulos">
           <thead>
             <tr>
