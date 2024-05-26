@@ -5,6 +5,7 @@ import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
+import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded'
 
 import api from '../../../../services/api'
 
@@ -42,8 +43,7 @@ function ContainerGetInfoRotulos() {
         {
           pending: 'Buscando...',
           success: 'Dados encontrados.',
-          error:
-            'Não foi possível encontrar os dados. Verifique e tente novamente.'
+          error: 'Chave não encontrada, verifique e tente novamente...'
         }
       )
 
@@ -62,48 +62,56 @@ function ContainerGetInfoRotulos() {
   return (
     <>
       <div className="containerResultofRotulos">
-        <p>Digite a chave do rótulo:</p>
+        <p className="titleGetRotulosWithKey">
+          Buscar valores e arquivos de um rótulo:
+        </p>
         <Form className="ResultRotulos" onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group>
-            <Form.Label className="LabelRotulos">Chave:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              className="InputRotulos"
-              {...register('key')}
-              onChange={handleChange}
-            />
-            <p className="txtErrorPassword">{errors.key?.message}</p>
-          </Form.Group>
+          <div className="containerSearchWithKey">
+            <Form.Group>
+              <Form.Label className="LabelRotulos">Chave:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder=""
+                className="InputRotulos"
+                {...register('key')}
+                onChange={handleChange}
+              />
+              <p className="txtErrorPassword">{errors.key?.message}</p>
+            </Form.Group>
 
-          <Button variant="secondary" type="submit">
-            Enviar
-          </Button>
-
-          <div className="ContainerValuesDataRotulos">
-            {rotulosData &&
-              rotulosData.map(value => (
-                <div key={value.id}>
-                  <p>Aqui está os valores encontrados:</p>
-
-                  <div className="containerValues">
-                    <label>Português:</label>
-                    <p>{value.pt_br}</p>
-                  </div>
-
-                  <div className="containerValues">
-                    <label>Inglês:</label>
-                    <p>{value.en}</p>
-                  </div>
-
-                  <div className="containerValues">
-                    <label>Espanhol:</label>
-                    <p>{value.es}</p>
-                  </div>
-                </div>
-              ))}
+            <Button
+              variant="secondary"
+              type="submit"
+              className="btnSubmitGetRotulos"
+            >
+              <ManageSearchRoundedIcon />
+            </Button>
           </div>
         </Form>
+
+        <div className="ContainerValuesDataRotulos">
+          {rotulosData &&
+            rotulosData.map(value => (
+              <div key={value.id}>
+                <p>Aqui está os valores encontrados:</p>
+
+                <div className="containerValues">
+                  <label>Português:</label>
+                  <p>{value.pt_br}</p>
+                </div>
+
+                <div className="containerValues">
+                  <label>Inglês:</label>
+                  <p>{value.en}</p>
+                </div>
+
+                <div className="containerValues">
+                  <label>Espanhol:</label>
+                  <p>{value.es}</p>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </>
   )

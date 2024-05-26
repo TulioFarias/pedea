@@ -1,8 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import ListRoundedIcon from '@mui/icons-material/ListRounded'
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+
 import '../../../../sass/admin/Rotulos/importRotulos.scss'
+import { Button, Form, Dropdown } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
@@ -13,13 +14,16 @@ function ImportFileRotulos() {
   const [findDataRotulos, setfindDataRotulos] = useState({
     key: '',
     fileType: '',
-    file: null
+    file: null,
+    name: ''
   })
   const [rotulosData, setRotulosData] = useState([])
+  const [fileName, setFileName] = useState('Nenhum arquivo selecionado')
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
     fileType: Yup.string().required('O tipo de arquivo é obrigatório'),
-    file: Yup.mixed().required('O arquivo é obrigatório')
+    file: Yup.mixed().required('O arquivo é obrigatório'),
+    name: Yup.string().required('Nome é obrigatório')
   })
 
   const {
@@ -29,22 +33,6 @@ function ImportFileRotulos() {
   } = useForm({
     resolver: yupResolver(schema)
   })
-
-  const handleChange = event => {
-    const { name, value } = event.target
-    setfindDataRotulos(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
-  }
-
-  const handleFileChange = event => {
-    const file = event.target.files[0]
-    setfindDataRotulos(prevState => ({
-      ...prevState,
-      file
-    }))
-  }
 
   const onSubmit = async data => {
     const formData = new FormData()
@@ -79,6 +67,32 @@ function ImportFileRotulos() {
     }
   }
 
+  const handleChange = event => {
+    const { name, value } = event.target
+    setfindDataRotulos(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  const handleFileChange = event => {
+    const file = event.target.files[0]
+    setfindDataRotulos(prevState => ({
+      ...prevState,
+      file
+    }))
+    setFileName(file ? file.name : 'Nenhum arquivo selecionado')
+  }
+
+  const onSelectFileType = eventKey => {
+    setfindDataRotulos(prevState => ({
+      ...prevState,
+      fileType: eventKey
+    }))
+  }
+
+  console.log(findDataRotulos)
+
   return (
     <>
       <div className="containerImportRotulos">
@@ -92,28 +106,41 @@ function ImportFileRotulos() {
           >
             <Form.Group>
               <Form.Label className="LabelRotulosImports">
-                Tipo de Arquivo:
+                Nome do arquivo:
               </Form.Label>
               <Form.Control
-                as="select"
+                type="text"
                 className="inputRotulosImports"
-                {...register('fileType')}
+                {...register('name')}
                 onChange={handleChange}
+              />
+              <p className="txtErrorPassword">{errors.name?.message}</p>
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label className="LabelRotulosImports">
+                Tipo de Arquivo:
+              </Form.Label>
+              <Form.Select
+                className="customDropDownItems"
+                {...register('type_files')}
+                value={findDataRotulos.type_files}
+                onChange={onSelectFileType}
               >
                 <option value="" className="customOptionsSelect">
-                  Selecione um arquivo
+                  Selecione um tipo de arquivo
                 </option>
-                <option value="csv" className="customOptionsSelect">
+                <option value="CSV" className="customOptionsSelect">
                   CSV
                 </option>
-                <option value="xml" className="customOptionsSelect">
+                <option value="XML" className="customOptionsSelect">
                   XML
                 </option>
-                <option value="shp" className="customOptionsSelect">
+                <option value="SHP" className="customOptionsSelect">
                   SHP
                 </option>
-              </Form.Control>
-              <p className="txtErrorPassword">{errors.fileType?.message}</p>
+              </Form.Select>
+              <p className="txtErrorPassword">{errors.type_files?.message}</p>
             </Form.Group>
 
             <Form.Group>
@@ -122,6 +149,7 @@ function ImportFileRotulos() {
                 type="file"
                 className="inputRotulosImportsFiles"
                 onChange={handleFileChange}
+                {...register('file')}
               />
 
               <p className="txtErrorPassword">{errors.file?.message}</p>

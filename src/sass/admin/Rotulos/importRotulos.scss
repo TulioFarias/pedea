@@ -11,8 +11,7 @@
 
 .customFormsFileImports{
     display: flex;
-    gap: 40px;
-    align-items: center;
+    gap: 15px;
 }
 
 .titleFilesImports{
@@ -31,18 +30,33 @@
     color: gray;
 }
 
-.inputRotulosImports{
-
+.customDropDownItems{
+    width: 240px;
+    color: gray;
+    background-color: #cacaca;
+    
 }
+
+.customOptionsSelect{
+    color: white;
+
+    
+    
+}
+
 
 .inputRotulosImportsFiles{
     color: gray;
+
+    &::placeholder{
+        color: #cacaca
+    }
 }
 
 .BtnSubmitImport{
     position: relative;
     width: 100px;
     height: 40px;
-    top: 7px;
+    top: 30px;
 }
 

@@ -120,10 +120,12 @@
     display: flex;
     gap: 50px;
     margin-top: 15px;
+    
 }
 
 .ContainerGetWithKeyRotulos{
     margin-top: 15px;
+   
 }
 
 
@@ -132,16 +134,39 @@
     flex-direction: column;
     padding: 10px;
     gap: 20px;
-    width: 18vw;
-    height: max-content;
+    height: 48vh;
     background-color: #cacaca;
     border-radius: 10px;
+
+    .titleGetRotulosWithKey{
+        color: gray;
+        font-weight: 900;
+        margin-bottom: 0px;
+    }
 }
 
 .ResultRotulos{
+    border-bottom: 1px dashed gray;
+    padding-bottom: 5px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    
+
+
+    .containerSearchWithKey{
+        display: flex;
+        gap: 15px;
+        padding: 10px;
+        border-radius: 20px;
+        background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+        backdrop-filter: blur(10px);
+    }
+
+    .btnSubmitGetRotulos{
+        height: 40px;
+        position: relative;
+        top: 30px;
+    }
     
 }
 
