@@ -71,7 +71,7 @@ function ContainerGetInfoRotulos() {
               <Form.Label className="LabelRotulos">Chave:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder=""
+                placeholder="Digite o valor da chave..."
                 className="InputRotulos"
                 {...register('key')}
                 onChange={handleChange}
