@@ -1,0 +1,68 @@
+
+.containerResultofRotulos{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+    height: 48vh;
+    background-color: #cacaca;
+    border-radius: 10px;
+
+    .titleGetRotulosWithKey{
+        color: gray;
+        font-weight: 900;
+        margin-bottom: 0px;
+    }
+}
+
+.ResultRotulos{
+    border-bottom: 1px dashed gray;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    
+
+
+    .containerSearchWithKey{
+        display: flex;
+        gap: 30px;
+        padding: 10px;
+        border-radius: 20px;
+        background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+        backdrop-filter: blur(10px);
+    }
+
+    .btnSubmitGetRotulos{
+        height: 40px;
+        position: relative;
+        top: 30px;
+    }
+    
+}
+
+.ContainerValuesDataRotulos{
+    border-radius: 10px;
+    padding: 10px;
+    background-color:rgb(44, 64, 63);
+    color: white;
+    overflow: auto;
+    max-height: 300px;
+}
+
+
+.tableResultHeader{
+    background-color: red;
+}
+
+.containerResultRotulosTable{
+    color: red;
+}
+
+
+.LineHR{
+    border: 1px dashed;
+}
+
+.containerTableResultFiles{
+
+}
