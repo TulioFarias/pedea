@@ -17,7 +17,6 @@ function ImportFileRotulos() {
     file: null,
     name: ''
   })
-  const [rotulosData, setRotulosData] = useState([])
   const [fileName, setFileName] = useState('Nenhum arquivo selecionado')
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
@@ -35,33 +34,27 @@ function ImportFileRotulos() {
   })
 
   const onSubmit = async data => {
-    const formData = new FormData()
-    formData.append('file', findDataRotulos.file)
-    formData.append('key', data.key)
-    formData.append('fileType', data.fileType)
-
     try {
+      const formData = new FormData()
+      if (data.file && data.file.length > 0) {
+        formData.append('file', data.file[0])
+        formData.append('key', data.key)
+        formData.append('name', data.name)
+        formData.append('type_files', data.fileType)
+      }
+
       const response = await toast.promise(
-        api.post('/getRotulos', formData, {
+        api.post('/rotulosCSV', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }),
         {
-          pending: 'Buscando...',
-          success: 'Dados encontrados.',
-          error:
-            'Não foi possível encontrar os dados. Verifique e tente novamente.'
+          pending: 'Cadastrando...',
+          success: 'Arquivo de rótulos criado com sucesso!',
+          error: 'Chave ou arquivo inválido, verifique novamente.'
         }
       )
-
-      if (response.data.result) {
-        setRotulosData([response.data.result])
-      } else {
-        toast.error(
-          'Dados não encontrados... Verificar a chave e tentar novamente.'
-        )
-      }
     } catch (error) {
       return console.log(error)
     }
@@ -83,15 +76,6 @@ function ImportFileRotulos() {
     }))
     setFileName(file ? file.name : 'Nenhum arquivo selecionado')
   }
-
-  const onSelectFileType = eventKey => {
-    setfindDataRotulos(prevState => ({
-      ...prevState,
-      fileType: eventKey
-    }))
-  }
-
-  console.log(findDataRotulos)
 
   return (
     <>
@@ -123,9 +107,9 @@ function ImportFileRotulos() {
               </Form.Label>
               <Form.Select
                 className="customDropDownItems"
-                {...register('type_files')}
-                value={findDataRotulos.type_files}
-                onChange={onSelectFileType}
+                {...register('fileType')}
+                value={findDataRotulos.fileType}
+                onChange={handleChange}
               >
                 <option value="" className="customOptionsSelect">
                   Selecione um tipo de arquivo
@@ -148,8 +132,8 @@ function ImportFileRotulos() {
               <Form.Control
                 type="file"
                 className="inputRotulosImportsFiles"
-                onChange={handleFileChange}
                 {...register('file')}
+                onChange={handleFileChange}
               />
 
               <p className="txtErrorPassword">{errors.file?.message}</p>
