@@ -111,6 +111,18 @@
     }
 }
 
+#containerOffCanvasTable{
+    background-color: rgba(44, 64, 63, 0.726);
+    color: white;
+    margin-top: 90px;
+    height: 100%;
+    overflow: auto;
+}
+
+.titleSideBarChangeTable{
+    font-size: 30px;
+}
+
 .ActionCollumCustomRotulosTable{
     display: flex;
     gap: 20px;

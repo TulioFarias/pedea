@@ -7,10 +7,10 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import api from '../../../../services/api'
+import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
 import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
 import IfKeyExist from './modalsRotulos/modalKeyExist'
 import ImportFileRotulos from './registerFileRotulos'
-import ContainerInfoRotulos from './TableInfoRotulos'
 
 function CreateRotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
