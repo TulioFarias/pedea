@@ -51,7 +51,7 @@ function ContainerGetInfoRotulos() {
       if (responseRotulos.data.result) {
         setRotulosData([responseRotulos.data.result])
 
-        const responseFiles = await api.post('/getAllRotulosCSV', {
+        const responseFiles = await api.post('/getWithKeyRotulosCSV', {
           key: data.key
         })
 

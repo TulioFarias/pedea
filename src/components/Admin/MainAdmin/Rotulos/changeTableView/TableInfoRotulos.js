@@ -19,9 +19,11 @@ function ContainerInfoRotulos({
   editItemId
 }) {
   const [rotulosData, setRotulosData] = useState([])
+  const [tableFilesRotulos, setTableFilesRotulos] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
   const [showSideBar, setShowSideBar] = useState(false)
+  const [currentTable, setCurrentTable] = useState('rotulos')
 
   const openSideBar = () => {
     setShowSideBar(!showSideBar)
@@ -39,7 +41,19 @@ function ContainerInfoRotulos({
       }
     }
 
+    async function loadTableFilesRotulos() {
+      try {
+        const { data } = await api.get('/getAllRotulosCSV')
+
+        setTableFilesRotulos(data)
+        setDataInfoKey(data)
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }
+
     loadRotulosData()
+    loadTableFilesRotulos()
   }, [tableUpdated])
 
   const openModalNow = () => {
@@ -51,6 +65,7 @@ function ContainerInfoRotulos({
     setEditItemId(id)
   }
 
+  console.log(tableFilesRotulos)
   return (
     <>
       <div className="containerTableInfoRotulos">

@@ -69,7 +69,7 @@
 .containerTableInfoRotulos{
     width: 100vw;
     height: 83vh;
-    background-color: #cacaca;
+    background-color: rgb(44, 64, 63);
     padding: 12px;
     border-radius: 10px;
     overflow: auto;
@@ -80,12 +80,12 @@
 .headerContainerTableRotulos{
     display: flex;
     justify-content: center;
-    border-bottom: 1px dashed gray;
+    border-bottom: 1px dashed white;
     margin-bottom: 10px;
 }
 
 .titleTableRotulos{
-    color: gray;
+    color: white;
     font-size: 18px;
     font-weight: 900;
 }
@@ -95,8 +95,8 @@
     left: 130px;
     background-color: transparent;
     border-radius: 10px;
-    color: gray;
-    border: 1px solid gray;
+    color: white;
+    border: none;
     width: 30px;
     height: 30px;
     display: flex;
@@ -105,9 +105,8 @@
 
     &:hover{
         background-color:  rgba(44, 64, 63, 0.726);
-        color: white;
-        border: 1px dashed  rgba(44, 64, 63, 0.726);
-        transition: all 1s es;
+        color: rgb(92, 89, 89);
+        transition: all 0.3s ease-in-out;
     }
 }
 
@@ -117,6 +116,10 @@
     margin-top: 90px;
     height: 100%;
     overflow: auto;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-radius:10px 0px;
+   
 }
 
 .titleSideBarChangeTable{

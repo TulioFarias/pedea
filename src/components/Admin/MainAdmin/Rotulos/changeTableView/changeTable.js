@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { React, useState } from 'react'
+import { React } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 function ChangeTableSideBar({ setShowSideBar, showSideBar }) {
   const handleClose = () => setShowSideBar(false)
@@ -15,12 +15,22 @@ function ChangeTableSideBar({ setShowSideBar, showSideBar }) {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title className="titleSideBarChangeTable">
-              Troca de tabela.
+              Mudar de tabela.
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
+            <div className="buttonContainer">
+              <div className="buttonWrapper">
+                <button className="buttonClass" onClick={() => {}}>
+                  Tabela de rótulos
+                </button>
+              </div>
+              <div className="buttonWrapper">
+                <button className="buttonClass" onClick={() => {}}>
+                  Tabela de arquivos cadastrados
+                </button>
+              </div>
+            </div>
           </Offcanvas.Body>
         </Offcanvas>
       </div>
