@@ -7,6 +7,7 @@ import '../../../../../sass/admin/Rotulos/tableResultSearchWithKey.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
+import { saveAs } from 'file-saver'
 
 import api from '../../../../../services/api'
 
@@ -96,7 +97,21 @@ function ContainerGetInfoRotulos() {
 
     return `${dia} de ${mes} de ${ano} - ${horas}:${minutos}`
   }
-  console.log(filesRotulosData)
+
+  const getIdFilesToDownload = async id => {
+    try {
+      const response = await api.get(`/downloadFile/${id}`, {
+        responseType: 'blob'
+      })
+
+      const blob = new Blob([response.data])
+      saveAs(blob, 'nome_do_arquivo.csv')
+    } catch (error) {
+      console.error(error)
+      toast.error('Erro ao baixar o arquivo.')
+    }
+  }
+
   return (
     <>
       <div className="containerResultofRotulos">
@@ -186,7 +201,10 @@ function ContainerGetInfoRotulos() {
                               <td>{value.type_files}</td>
                               <td id="valuePathWithIcon">
                                 {value.path}{' '}
-                                <DownloadRoundedIcon className="iconDownload" />
+                                <DownloadRoundedIcon
+                                  className="iconDownload"
+                                  onClick={() => getIdFilesToDownload(value.id)}
+                                />
                               </td>
                               <td>{formatarDataLegivel(value.createdAt)}</td>
                               <td>{formatarDataLegivel(value.updatedAt)}</td>

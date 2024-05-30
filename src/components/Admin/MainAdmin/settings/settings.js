@@ -1,13 +1,18 @@
 import React from 'react'
 
 import '../../../../sass/admin/Settings/settings.scss'
-import SettingsSystemAndUser from './settingsSystem'
+import ContainerLogoutUserSettings from './logoutInfo'
+import SettingsSystemAndUser from './userSettings/settingsSystem'
 function SettingsAdmin() {
   return (
     <>
       <div className="containerWrapperOptions">
         <h2 className="titleSettings">Configurações</h2>
-        <SettingsSystemAndUser />
+
+        <div className="ContainerAllSettingsInfo">
+          <SettingsSystemAndUser />
+          <ContainerLogoutUserSettings />
+        </div>
       </div>
     </>
   )

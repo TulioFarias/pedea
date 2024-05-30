@@ -1,3 +1,10 @@
+
+
+.ContainerAllSettingsInfo{
+    display: flex;
+    justify-content: center;
+}
+
 .titleSettings{
     text-align: center;
     font-weight: bold;
@@ -8,8 +15,10 @@
     gap:20px;
     padding: 10px;
     display: flex;
-    justify-content: start;
     align-items: center;
+    width: 35vw;
+    
+    
   
    
 }
@@ -21,6 +30,7 @@
     height: 70vh;
     border-radius: 20px;
     padding: 10px;
+    
     background-color: rgb(202, 202, 202);
     gap: 20px;
 

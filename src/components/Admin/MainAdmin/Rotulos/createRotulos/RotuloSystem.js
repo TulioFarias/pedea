@@ -82,8 +82,6 @@ function CreateRotulosSystem() {
     }
   }
 
-  console.log(editItemId)
-
   return (
     <Container fluid className="containerWrapperOptions">
       <div className="ContainerAllRotulosOptions">

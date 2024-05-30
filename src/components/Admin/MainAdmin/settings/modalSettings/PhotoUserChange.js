@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../services/api'
+import api from '../../../../../services/api'
 
-import '../../../../sass/admin/Settings/photouserModal.scss'
+import '../../../../../sass/admin/Settings/photouserModal.scss'
 
 function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
   const [fileName, setFileName] = useState(null)

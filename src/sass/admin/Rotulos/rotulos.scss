@@ -126,6 +126,32 @@
     font-size: 30px;
 }
 
+
+.buttonChangeMapWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+ 
+
+
+    button{
+        background-color: transparent;
+        color: white;
+        border: 1px solid;
+        padding: 5px;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: #cacaca;
+            color: rgba(44, 64, 63, 0.726);
+            transition: all 0.3s ease-in-out;
+        }
+
+    }
+}
+
 .ActionCollumCustomRotulosTable{
     display: flex;
     gap: 20px;

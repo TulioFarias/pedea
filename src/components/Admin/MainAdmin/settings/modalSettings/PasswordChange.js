@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import '../../../../sass/admin/Settings/passwordModal.scss'
+import '../../../../../sass/admin/Settings/passwordModal.scss'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../services/api'
+import api from '../../../../../services/api'
 function ModalChangePassword({ showPassword, setShowPassword }) {
   const [error, setError] = useState(null)
   const userData = useSelector(state => state.userInfoSlice.infoUser)

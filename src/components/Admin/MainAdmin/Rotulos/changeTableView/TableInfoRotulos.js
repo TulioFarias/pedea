@@ -23,6 +23,7 @@ function ContainerInfoRotulos({
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
   const [showSideBar, setShowSideBar] = useState(false)
+  const [selectedTable, setSelectedTable] = useState('TableRotulos')
 
   const openSideBar = () => {
     setShowSideBar(!showSideBar)
@@ -64,54 +65,110 @@ function ContainerInfoRotulos({
     setEditItemId(id)
   }
 
+  const formatarDataLegivel = dataString => {
+    const meses = [
+      'janeiro',
+      'fevereiro',
+      'março',
+      'abril',
+      'maio',
+      'junho',
+      'julho',
+      'agosto',
+      'setembro',
+      'outubro',
+      'novembro',
+      'dezembro'
+    ]
+
+    const data = new Date(dataString)
+    const dia = data.getDate()
+    const mes = meses[data.getMonth()]
+    const ano = data.getFullYear()
+    const horas = data.getHours()
+    const minutos = data.getMinutes().toString().padStart(2, '0')
+
+    return `${dia} de ${mes} de ${ano} - ${horas}:${minutos}`
+  }
+
   return (
     <>
       <div className="containerTableInfoRotulos">
         <div className="headerContainerTableRotulos">
-          <p className="titleTableRotulos">Tabela de rótulos cadastrados:</p>
+          <p className="titleTableRotulos">
+            {selectedTable === 'TableRotulos'
+              ? 'Tabela de rótulos cadastrados:'
+              : 'Tabela de arquivos cadastrados:'}
+          </p>
           <button className="BtnChangeTableRotulos" onClick={openSideBar}>
-            <ChangeTableSideBar
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-            />
             <TuneRoundedIcon />
           </button>
+          <ChangeTableSideBar
+            setShowSideBar={setShowSideBar}
+            showSideBar={showSideBar}
+            setSelectedTable={setSelectedTable}
+          />
         </div>
 
-        <Table striped bordered hover className="TableRotulos">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Chave</th>
-              <th>Português</th>
-              <th>Inglês</th>
-              <th>Espanhol</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rotulosData.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.key}</td>
-                <td>{item.pt_br}</td>
-                <td>{item.en}</td>
-                <td>{item.es}</td>
-                <td className="ActionCollumCustomRotulosTable">
-                  <Button
-                    variant="secondary"
-                    onClick={() => openEditModalNow(item.id)}
-                  >
-                    <EditNoteRoundedIcon />
-                  </Button>
-                  <Button variant="danger" onClick={openModalNow}>
-                    <DeleteSweepRoundedIcon />
-                  </Button>
-                </td>
+        {selectedTable === 'TableRotulos' ? (
+          <Table striped bordered hover className="TableRotulos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Chave</th>
+                <th>Português</th>
+                <th>Inglês</th>
+                <th>Espanhol</th>
+                <th>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {rotulosData.map(item => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.key}</td>
+                  <td>{item.pt_br}</td>
+                  <td>{item.en}</td>
+                  <td>{item.es}</td>
+                  <td className="ActionCollumCustomRotulosTable">
+                    <Button
+                      variant="secondary"
+                      onClick={() => openEditModalNow(item.id)}
+                    >
+                      <EditNoteRoundedIcon />
+                    </Button>
+                    <Button variant="danger" onClick={openModalNow}>
+                      <DeleteSweepRoundedIcon />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          <Table striped bordered hover className="TableRotulos">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo do arquivo</th>
+                <th>Arquivo</th>
+                <th>Data de Criação</th>
+                <th>Data de Atualização</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableFilesRotulos.map(item => (
+                <tr key={item.id}>
+                  <td>{item.name}</td>
+                  <td>{item.type_files}</td>
+                  <td>{item.path}</td>
+                  <td>{formatarDataLegivel(item.createdAt)}</td>
+                  <td>{formatarDataLegivel(item.updatedAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
 
         <ModalConfirmDelete
           openModal={openModal}

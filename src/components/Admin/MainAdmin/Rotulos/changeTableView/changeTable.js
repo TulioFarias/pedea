@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types'
-import { React } from 'react'
+import React, { useState } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
-function ChangeTableSideBar({ setShowSideBar, showSideBar }) {
+function ChangeTableSideBar({ setShowSideBar, showSideBar, setSelectedTable }) {
   const handleClose = () => setShowSideBar(false)
+
+  const handleSelectTable = table => {
+    setSelectedTable(table)
+    handleClose()
+  }
 
   return (
     <>
@@ -20,13 +25,17 @@ function ChangeTableSideBar({ setShowSideBar, showSideBar }) {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <div className="buttonContainer">
-              <div className="buttonWrapper">
-                <button className="buttonClass" onClick={() => {}}>
+              <div className="buttonChangeMapWrapper">
+                <button
+                  className="buttonClass"
+                  onClick={() => handleSelectTable('TableRotulos')}
+                >
                   Tabela de rótulos
                 </button>
-              </div>
-              <div className="buttonWrapper">
-                <button className="buttonClass" onClick={() => {}}>
+                <button
+                  className="buttonClass"
+                  onClick={() => handleSelectTable('FilesRotulos')}
+                >
                   Tabela de arquivos cadastrados
                 </button>
               </div>
@@ -40,7 +49,8 @@ function ChangeTableSideBar({ setShowSideBar, showSideBar }) {
 
 ChangeTableSideBar.propTypes = {
   setShowSideBar: PropTypes.func.isRequired,
-  showSideBar: PropTypes.bool.isRequired
+  showSideBar: PropTypes.bool.isRequired,
+  setSelectedTable: PropTypes.func.isRequired
 }
 
 export default ChangeTableSideBar
