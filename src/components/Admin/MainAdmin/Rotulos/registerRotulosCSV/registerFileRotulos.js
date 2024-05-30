@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import ListRoundedIcon from '@mui/icons-material/ListRounded'
 import React, { useState } from 'react'
 
-import '../../../../sass/admin/Rotulos/importRotulos.scss'
-import { Button, Form, Dropdown } from 'react-bootstrap'
+import '../../../../../sass/admin/Rotulos/importRotulos.scss'
+import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../services/api'
+import api from '../../../../../services/api'
 
 function ImportFileRotulos() {
   const [findDataRotulos, setfindDataRotulos] = useState({
@@ -28,6 +27,7 @@ function ImportFileRotulos() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -55,6 +55,8 @@ function ImportFileRotulos() {
           error: 'Chave ou arquivo inválido, verifique novamente.'
         }
       )
+
+      reset()
     } catch (error) {
       return console.log(error)
     }

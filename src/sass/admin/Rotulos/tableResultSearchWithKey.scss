@@ -50,19 +50,23 @@
 }
 
 
-.tableResultHeader{
-    background-color: red;
-}
-
-.containerResultRotulosTable{
-    color: red;
-}
-
-
 .LineHR{
     border: 1px dashed;
 }
 
-.containerTableResultFiles{
 
+
+#valuePathWithIcon{
+    display: flex;
+    gap: 10px;
+
+    .iconDownload{
+        color: rgb(44, 64, 63);
+        cursor: pointer;
+
+        &:hover{
+            scale: (1.2);
+            transition: all 0.3s ease-in-out;
+        }
+    }
 }

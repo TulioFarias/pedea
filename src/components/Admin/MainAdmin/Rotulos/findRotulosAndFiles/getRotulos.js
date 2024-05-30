@@ -184,8 +184,9 @@ function ContainerGetInfoRotulos() {
                             <tr key={value.id}>
                               <td>{value.name}</td>
                               <td>{value.type_files}</td>
-                              <td>
-                                {value.path} <DownloadRoundedIcon />
+                              <td id="valuePathWithIcon">
+                                {value.path}{' '}
+                                <DownloadRoundedIcon className="iconDownload" />
                               </td>
                               <td>{formatarDataLegivel(value.createdAt)}</td>
                               <td>{formatarDataLegivel(value.updatedAt)}</td>

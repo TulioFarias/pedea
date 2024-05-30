@@ -1,16 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import '../../../../sass/admin/Rotulos/rotulos.scss'
+import '../../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../services/api'
-import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
-import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
-import IfKeyExist from './modalsRotulos/modalKeyExist'
-import ImportFileRotulos from './registerFileRotulos'
+import api from '../../../../../services/api'
+import ContainerInfoRotulos from '../changeTableView/TableInfoRotulos'
+import ContainerGetInfoRotulos from '../findRotulosAndFiles/getRotulos'
+import IfKeyExist from '../modalsRotulos/modalKeyExist'
+import ImportFileRotulos from '../registerRotulosCSV/registerFileRotulos'
 
 function CreateRotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({

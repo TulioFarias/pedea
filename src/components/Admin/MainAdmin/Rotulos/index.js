@@ -1,6 +1,6 @@
 import React from 'react'
 
-import RotulosSystem from './RotuloSystem'
+import RotulosSystem from './createRotulos/RotuloSystem'
 
 function Rotulos() {
   return (

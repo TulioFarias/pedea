@@ -23,7 +23,6 @@ function ContainerInfoRotulos({
   const [openModal, setOpenModal] = useState(false)
   const [openModalEdit, setOpenModalEdit] = useState(false)
   const [showSideBar, setShowSideBar] = useState(false)
-  const [currentTable, setCurrentTable] = useState('rotulos')
 
   const openSideBar = () => {
     setShowSideBar(!showSideBar)
