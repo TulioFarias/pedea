@@ -65,7 +65,6 @@ function ContainerInfoRotulos({
     setEditItemId(id)
   }
 
-  console.log(tableFilesRotulos)
   return (
     <>
       <div className="containerTableInfoRotulos">

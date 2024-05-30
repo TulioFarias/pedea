@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded'
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded'
 import React, { useState } from 'react'
 import { Button, Form, Table } from 'react-bootstrap'
@@ -56,7 +57,7 @@ function ContainerGetInfoRotulos() {
         })
 
         if (responseFiles.data.result) {
-          setFilesRotulosData(responseFiles.data.result)
+          setFilesRotulosData([responseFiles.data.result])
         } else {
           console.log('Arquivos não encontrados para esta chave.')
         }
@@ -70,8 +71,32 @@ function ContainerGetInfoRotulos() {
     }
   }
 
-  console.log(filesRotulosData)
+  const formatarDataLegivel = dataString => {
+    const meses = [
+      'janeiro',
+      'fevereiro',
+      'março',
+      'abril',
+      'maio',
+      'junho',
+      'julho',
+      'agosto',
+      'setembro',
+      'outubro',
+      'novembro',
+      'dezembro'
+    ]
 
+    const data = new Date(dataString)
+    const dia = data.getDate()
+    const mes = meses[data.getMonth()]
+    const ano = data.getFullYear()
+    const horas = data.getHours()
+    const minutos = data.getMinutes().toString().padStart(2, '0')
+
+    return `${dia} de ${mes} de ${ano} - ${horas}:${minutos}`
+  }
+  console.log(filesRotulosData)
   return (
     <>
       <div className="containerResultofRotulos">
@@ -136,35 +161,46 @@ function ContainerGetInfoRotulos() {
           <hr className="LineHR" />
 
           <div className="containerTableResultFiles">
-            {Object.keys(filesRotulosData).length > 0 ? (
-              <div className="containerTableResultFiles">
-                <p>Arquivos encontrados relacionados à chave:</p>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Nome</th>
-                      <th>Tipo de arquivo</th>
-                      <th>Path</th>
-                      <th>Data de Criação</th>
-                      <th>Última Atualização</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr key={filesRotulosData.id}>
-                      <td>{filesRotulosData.name}</td>
-                      <td>{filesRotulosData.type_files}</td>
-                      <td>{filesRotulosData.path}</td>
-                      <td>{filesRotulosData.createdAt}</td>
-                      <td>{filesRotulosData.updatedAt}</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </div>
-            ) : (
-              <div className="containerTableResultFiles">
-                <p>Nenhum arquivo relacionado à chave foi encontrado.</p>
-              </div>
-            )}
+            {filesRotulosData &&
+              filesRotulosData.length > 0 &&
+              filesRotulosData[0] &&
+              filesRotulosData.map((filesArray, index) => (
+                <div key={index}>
+                  {filesArray.length > 0 ? (
+                    <React.Fragment>
+                      <p>Arquivos encontrados relacionados à chave:</p>
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            <th>Nome</th>
+                            <th>Tipo de arquivo</th>
+                            <th>Arquivo</th>
+                            <th>Data de Criação</th>
+                            <th>Última Atualização</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filesArray.map(value => (
+                            <tr key={value.id}>
+                              <td>{value.name}</td>
+                              <td>{value.type_files}</td>
+                              <td>
+                                {value.path} <DownloadRoundedIcon />
+                              </td>
+                              <td>{formatarDataLegivel(value.createdAt)}</td>
+                              <td>{formatarDataLegivel(value.updatedAt)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </React.Fragment>
+                  ) : (
+                    <p>
+                      Arquivos relacionado a essa chave não foram encontrados.
+                    </p>
+                  )}
+                </div>
+              ))}
           </div>
         </div>
       </div>
