@@ -150,6 +150,7 @@ function ContainerInfoRotulos({
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>Chave ID</th>
                 <th>Tipo do arquivo</th>
                 <th>Arquivo</th>
                 <th>Data de Criação</th>
@@ -160,6 +161,7 @@ function ContainerInfoRotulos({
               {tableFilesRotulos.map(item => (
                 <tr key={item.id}>
                   <td>{item.name}</td>
+                  <td>{item.id_key}</td>
                   <td>{item.type_files}</td>
                   <td>{item.path}</td>
                   <td>{formatarDataLegivel(item.createdAt)}</td>

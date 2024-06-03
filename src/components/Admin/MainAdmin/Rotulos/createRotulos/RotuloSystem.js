@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../../services/api'
+import apiPEDEA from '../../../../../services/api'
 import ContainerInfoRotulos from '../changeTableView/TableInfoRotulos'
 import ContainerGetInfoRotulos from '../findRotulosAndFiles/getRotulos'
 import IfKeyExist from '../modalsRotulos/modalKeyExist'
@@ -57,17 +57,21 @@ function CreateRotulosSystem() {
   }
 
   const onSubmit = async (data, event) => {
+    console.log(data)
+
     try {
-      const foundItem = dataInfoKey.find(item => item.key === data.key)
+      const foundItem = await dataInfoKey.find(item => item.key === data.key)
+      console.log(foundItem)
 
       if (!foundItem) {
-        const response = await api.post('/rotulos', {
+        const APIResponse = await apiPEDEA.post('/rotulos', {
           key: data.key,
           pt_br: data.pt_br,
           en: data.en,
           es: data.es
         })
 
+        console.log(APIResponse.data)
         toast.success('Cadastrado com sucesso.')
       } else {
         toast.error('Chave já cadastrada.')
@@ -78,7 +82,7 @@ function CreateRotulosSystem() {
       handleTableUpdate()
       event.preventDefault()
     } catch (error) {
-      return console.log(error)
+      console.log(error)
     }
   }
 
@@ -142,8 +146,8 @@ function CreateRotulosSystem() {
 
               <Button
                 variant="secondary"
-                type="submit"
                 className="btnSubmitAddRotulos"
+                type="submit"
               >
                 Cadastrar
               </Button>
