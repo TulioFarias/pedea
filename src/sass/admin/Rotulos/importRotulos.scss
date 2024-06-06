@@ -12,6 +12,7 @@
 .customFormsFileImports{
     display: flex;
     gap: 15px;
+
 }
 
 .titleFilesImports{
@@ -23,6 +24,9 @@
     color: gray;
     margin-left: 5px;
     font-size: 14px!important;
+    width: 180px;
+
+   
 }
 
 
@@ -44,14 +48,17 @@
     
 }
 
+.inputRotulosImports{
 
-.inputRotulosImportsFiles{
-    color: gray;
 
     &::placeholder{
-        color: #cacaca
+        color: gray;
+        font-size: 12px;
     }
+    
 }
+
+
 
 .BtnSubmitImport{
     position: relative;

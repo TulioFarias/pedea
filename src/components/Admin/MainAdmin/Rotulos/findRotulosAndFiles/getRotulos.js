@@ -99,17 +99,19 @@ function ContainerGetInfoRotulos() {
   }
 
   const getIdFilesToDownload = async id => {
-    try {
-      const response = await api.get(`/downloadFile/${id}`, {
-        responseType: 'blob'
-      })
-
-      const blob = new Blob([response.data])
-      saveAs(blob, 'nome_do_arquivo.csv')
-    } catch (error) {
-      console.error(error)
-      toast.error('Erro ao baixar o arquivo.')
-    }
+    toast.promise(
+      api
+        .get(`/downloadFile/${id}`, { responseType: 'blob' })
+        .then(response => {
+          const blob = new Blob([response.data], { type: 'text/csv' })
+          saveAs(blob, 'nome_do_arquivo.csv')
+        }),
+      {
+        pending: 'Baixando o arquivo...',
+        success: 'Arquivo baixado com sucesso!',
+        error: 'Erro ao baixar o arquivo.'
+      }
+    )
   }
 
   return (

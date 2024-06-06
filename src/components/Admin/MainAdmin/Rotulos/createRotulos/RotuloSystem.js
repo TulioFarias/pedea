@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import '../../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
@@ -25,7 +25,7 @@ function CreateRotulosSystem() {
   const [editItemId, setEditItemId] = useState(null)
 
   const handleTableUpdate = () => {
-    setTableUpdated(true)
+    setTableUpdated(prev => !prev)
   }
 
   const schema = Yup.object().shape({
@@ -71,7 +71,6 @@ function CreateRotulosSystem() {
           es: data.es
         })
 
-        console.log(APIResponse.data)
         toast.success('Cadastrado com sucesso.')
       } else {
         toast.error('Chave já cadastrada.')
@@ -85,6 +84,21 @@ function CreateRotulosSystem() {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    async function loadRotulosData() {
+      try {
+        const { data } = await apiPEDEA.get('/getAllRotulos')
+
+        console.log(data)
+        setDataInfoKey(data)
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }
+
+    loadRotulosData()
+  }, [])
 
   return (
     <Container fluid className="containerWrapperOptions">
@@ -171,7 +185,6 @@ function CreateRotulosSystem() {
         </div>
 
         <ContainerInfoRotulos
-          setDataInfoKey={setDataInfoKey}
           tableUpdated={tableUpdated}
           handleTableUpdate={handleTableUpdate}
           setEditItemId={setEditItemId}

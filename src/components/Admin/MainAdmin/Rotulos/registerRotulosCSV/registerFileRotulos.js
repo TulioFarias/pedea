@@ -20,7 +20,7 @@ function ImportFileRotulos() {
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
     fileType: Yup.string().required('O tipo de arquivo é obrigatório'),
-    file: Yup.mixed().required('O arquivo é obrigatório'),
+    file: Yup.mixed('').required('O arquivo é obrigatório'),
     name: Yup.string().required('Nome é obrigatório')
   })
 
@@ -99,6 +99,7 @@ function ImportFileRotulos() {
                 className="inputRotulosImports"
                 {...register('name')}
                 onChange={handleChange}
+                placeholder="Escolha um nome para o arquivo."
               />
               <p className="txtErrorPassword">{errors.name?.message}</p>
             </Form.Group>
@@ -133,11 +134,10 @@ function ImportFileRotulos() {
               <Form.Label className="LabelRotulosImports">Arquivo:</Form.Label>
               <Form.Control
                 type="file"
-                className="inputRotulosImportsFiles"
+                className="inputRotulosImports"
                 {...register('file')}
                 onChange={handleFileChange}
               />
-
               <p className="txtErrorPassword">{errors.file?.message}</p>
             </Form.Group>
 
@@ -148,6 +148,7 @@ function ImportFileRotulos() {
                 className="inputRotulosImports"
                 {...register('key')}
                 onChange={handleChange}
+                placeholder="Escolha a chave para atribuir."
               />
               <p className="txtErrorPassword">{errors.key?.message}</p>
             </Form.Group>

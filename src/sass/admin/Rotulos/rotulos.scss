@@ -17,7 +17,7 @@
     height: max-content;
     display: flex;
     flex-direction: column;
-
+   
     
 }
 
@@ -49,7 +49,10 @@
        width: max-content;
        gap: 15px;
        width: 100%;
+      
 }
+
+
 
 
 .LabelRotulos{
@@ -62,7 +65,8 @@
 .InputRotulos{
 
     &::placeholder{
-        color: #cacaca
+        color: gray;
+        font-size: 12px;
     }
 }
 

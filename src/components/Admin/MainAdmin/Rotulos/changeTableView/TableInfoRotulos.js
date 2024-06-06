@@ -13,7 +13,6 @@ import ChangeTableSideBar from './changeTable'
 
 function ContainerInfoRotulos({
   tableUpdated,
-  setDataInfoKey,
   handleTableUpdate,
   setEditItemId,
   editItemId
@@ -35,7 +34,6 @@ function ContainerInfoRotulos({
         const { data } = await api.get('/getAllRotulos')
 
         setRotulosData(data)
-        setDataInfoKey(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
       }
@@ -46,7 +44,6 @@ function ContainerInfoRotulos({
         const { data } = await api.get('/getAllRotulosCSV')
 
         setTableFilesRotulos(data)
-        setDataInfoKey(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
       }
@@ -190,7 +187,6 @@ function ContainerInfoRotulos({
 ContainerInfoRotulos.propTypes = {
   tableUpdated: PropTypes.bool.isRequired,
   handleTableUpdate: PropTypes.func.isRequired,
-  setDataInfoKey: PropTypes.func.isRequired,
   setEditItemId: PropTypes.func.isRequired,
   editItemId: PropTypes.string.isRequired
 }
