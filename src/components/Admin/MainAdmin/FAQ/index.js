@@ -1,8 +1,8 @@
-import '../../../sass/admin/admin.scss'
+import '../../../../sass/admin/FAQ/FAQ.scss'
 
 import React from 'react'
 
-function Link1() {
+function FAQ() {
   return (
     <>
       <div className="containerWrapperOptions"></div>
@@ -10,4 +10,4 @@ function Link1() {
   )
 }
 
-export default Link1
+export default FAQ

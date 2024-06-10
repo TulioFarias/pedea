@@ -5,8 +5,8 @@ import { Container } from 'react-bootstrap'
 import FooterAdmin from '../FooterAdmin'
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
+import FAQ from './FAQ'
 import HomeAdmin from './home'
-import Link1 from './Link1'
 import Link2 from './Link2'
 import Link3 from './Link3'
 import Link4 from './Link4'
@@ -21,6 +21,8 @@ function MainAdmin() {
   const [activeButton, setActiveButton] = useState('Home')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [darkTheme, setDarkTheme] = useState(false)
+
+  console.log(darkTheme)
 
   const handleOptionChange = async option => {
     await setSelectedOption(option)
@@ -63,7 +65,7 @@ function MainAdmin() {
           key={selectedOption || 'empty'}
         >
           {selectedOption === 'Home' && <HomeAdmin />}
-          {selectedOption === 'Link1' && <Link1 />}
+          {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'Link2' && <Link2 />}
           {selectedOption === 'Link3' && <Link3 />}
           {selectedOption === 'Link4' && <Link4 />}
