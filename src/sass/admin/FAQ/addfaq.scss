@@ -1,5 +1,32 @@
-.containerWrapperAddInfoFAQ{
- border: 1px solid red;
- display: flex;
- padding: 10px;
+
+
+.FormsContainerAddFAQ{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+ 
 }
+
+.containerInputsFAQ{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+
+.labelsInputsFAQ{
+    font-size: 16px;
+    font-weight: 900;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.AddinputFAQ{
+
+    &::placeholder{
+        color: gray;
+        font-size: 14px;
+    }
+}
+

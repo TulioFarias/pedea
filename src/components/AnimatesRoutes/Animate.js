@@ -6,8 +6,8 @@ import ResetPass from '../../components/login/resetPassword'
 import Admin from '../../containers/Admin'
 import Home from '../../containers/Home'
 import Login from '../../containers/Login'
+import WebPageFAQ from '../../containers/perguntasFrequentes(FAQ)'
 import Register from '../../containers/register'
-import FAQ from '../Admin/MainAdmin/FAQ'
 import { Private } from './private-route'
 
 function AnimatedRoutes() {
@@ -21,7 +21,7 @@ function AnimatedRoutes() {
             <Route element={<Login />} path="/login" />
             <Route element={<ResetPass />} path="/resetpassword" />
             <Route element={<Register />} path="/register" />
-            <Route element={<FAQ />} path="/perguntasfrequentes" />
+            <Route element={<WebPageFAQ />} path="/perguntasfrequentes" />
             <Route element={<Private Admin={<Admin />} />} path="/admin" />
           </Routes>
         </Fragment>

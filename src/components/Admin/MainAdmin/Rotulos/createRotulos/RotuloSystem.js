@@ -89,8 +89,6 @@ function CreateRotulosSystem() {
     async function loadRotulosData() {
       try {
         const { data } = await apiPEDEA.get('/getAllRotulos')
-
-        console.log(data)
         setDataInfoKey(data)
       } catch (error) {
         console.error('Error fetching user data:', error)

@@ -9,9 +9,17 @@ function FAQ() {
   return (
     <>
       <div className="containerWrapperOptions">
-        <p>Gerenciamento de Perguntas Frequentes:</p>
-        <AddInfoFAQ />
-        <ShowContainerEditFAQ />
+        <div className="ContainerAllFAQ">
+          <h1>Gerenciamento de Perguntas Frequentes:</h1>
+          <hr />
+          <div className="containerOneFAQ">
+            <AddInfoFAQ />
+          </div>
+
+          <div className="containerTwoFAQ">
+            <ShowContainerEditFAQ />
+          </div>
+        </div>
       </div>
     </>
   )

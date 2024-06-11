@@ -22,8 +22,6 @@ function MainAdmin() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [darkTheme, setDarkTheme] = useState(false)
 
-  console.log(darkTheme)
-
   const handleOptionChange = async option => {
     await setSelectedOption(option)
   }
