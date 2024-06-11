@@ -1,6 +1,7 @@
 import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded'
+import QuestionAnswerRoundedIcon from '@mui/icons-material/QuestionAnswerRounded'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
@@ -178,7 +179,7 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
             >
               {admin ? (
                 <>
-                  <AppsRoundedIcon />
+                  <QuestionAnswerRoundedIcon />
                   FAQ
                 </>
               ) : (

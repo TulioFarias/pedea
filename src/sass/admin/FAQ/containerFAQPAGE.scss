@@ -1,0 +1,23 @@
+
+.ContainerFAQ{
+    background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.ContainerFAQAllItens{
+   
+}
+
+.customAccordion{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}

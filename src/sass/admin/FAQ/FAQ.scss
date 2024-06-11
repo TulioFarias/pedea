@@ -1,7 +1,8 @@
 
 
 .ContainerAllFAQ{
-    width: 40%;
+    height: 83vh;
+    width: 60%;
     display: flex;
     flex-direction: column;
     background-color: rgb(44, 64, 63);
@@ -12,11 +13,12 @@
         color: white;
         text-align: center;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     hr{
         border: 1px dashed white;
+        margin-top: 0px;
     }
 }
 .containerOneFAQ{
@@ -33,7 +35,6 @@
 
 .containerTwoFAQ{
     color: white;
-  
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;

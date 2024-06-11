@@ -1,0 +1,44 @@
+
+.ContainerFAQAllItens{
+
+    p{
+        font-size: 16px;
+        margin-bottom: 0px;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+.carouselCustomFAQ{
+    height: 32vh;
+    overflow: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .carousel-indicators{
+        bottom: -25px;
+    }
+}
+
+.ContainerItensCarousel{
+    height: max-content;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px dashed rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 85px;
+    width: 80%;
+}
+
+.LabelFAQEditAndDelete{
+    font-size: 12px;
+}
+
+.ContainerBtnsFAQ{
+    display: flex;
+    gap: 20px;
+}

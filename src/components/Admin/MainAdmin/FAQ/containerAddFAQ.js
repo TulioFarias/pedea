@@ -10,13 +10,18 @@ import apiPEDEA from '../../../../services/api'
 
 function AddInfoFAQ() {
   const schema = Yup.object().shape({
-    question: Yup.string().required('A pergunta é obrigatória'),
-    answer: Yup.string().required('A resposta é obrigatória')
+    question: Yup.string()
+      .max(255, 'A pergunta deve ter no máximo 255 caracteres.')
+      .required('A pergunta é obrigatória'),
+    answer: Yup.string()
+      .max(2000, 'A resposta deve ter no máximo 2000 caracteres.')
+      .required('A resposta é obrigatória')
   })
 
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -36,6 +41,8 @@ function AddInfoFAQ() {
           error: 'Erro ao adicionar FAQ.'
         }
       )
+
+      reset()
     } catch (error) {
       console.error(error)
     }
@@ -73,9 +80,9 @@ function AddInfoFAQ() {
           </Form.Group>
           <p className="txtErrorPassword">{errors.answer?.message}</p>
         </div>
-        <Button type="submit" variant="secondary-outline">
+        <button type="submit" className="btnSubmitFAQ">
           Criar nova FAQ
-        </Button>
+        </button>
       </Form>
     </Container>
   )
