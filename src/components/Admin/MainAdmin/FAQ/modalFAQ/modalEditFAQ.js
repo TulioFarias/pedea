@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import '../../../../../sass/admin/Settings/passwordModal.scss'
-import { useSelector } from 'react-redux'
+
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -59,8 +59,6 @@ function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
     const { value } = e.target
     setValueEditFAQ(prevData => ({ ...prevData, answer: value }))
   }
-
-  console.log(valueEditFAQ)
 
   return (
     <Modal show={openModal} onHide={closeModal} id="ContainerModalFAQEdit">

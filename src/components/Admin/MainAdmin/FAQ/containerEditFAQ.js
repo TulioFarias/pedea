@@ -5,11 +5,13 @@ import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 
 import apiPEDEA from '../../../../services/api'
+import ModalFAQDelete from './modalFAQ/modalDeleteFAQ'
 import ModalEditFAQ from './modalFAQ/modalEditFAQ'
 
 function ShowContainerEditFAQ() {
   const [valuesFAQ, setValuesFAQ] = useState([])
   const [openModal, setOpenModal] = useState(false)
+  const [openModalDelete, setOpenModalDelete] = useState(false)
   const [idEditValueFAQ, setIdEditValueFAQ] = useState(null)
 
   useEffect(() => {
@@ -27,6 +29,11 @@ function ShowContainerEditFAQ() {
 
   const openModalNow = id => {
     setOpenModal(true)
+    setIdEditValueFAQ(id)
+  }
+
+  const OpenModalDeleteFAQ = id => {
+    setOpenModalDelete(true)
     setIdEditValueFAQ(id)
   }
 
@@ -68,7 +75,10 @@ function ShowContainerEditFAQ() {
                 >
                   <DrawRoundedIcon />
                 </Button>
-                <Button className="BtnsIconsFAQDelete">
+                <Button
+                  className="BtnsIconsFAQDelete"
+                  onClick={() => OpenModalDeleteFAQ(faq.id)}
+                >
                   <DeleteForeverRoundedIcon />
                 </Button>
               </div>
@@ -79,6 +89,11 @@ function ShowContainerEditFAQ() {
       <ModalEditFAQ
         setOpenModal={setOpenModal}
         openModal={openModal}
+        idEditValue={idEditValueFAQ}
+      />
+      <ModalFAQDelete
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
         idEditValue={idEditValueFAQ}
       />
     </div>
