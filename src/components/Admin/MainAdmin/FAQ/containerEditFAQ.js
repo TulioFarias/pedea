@@ -32,7 +32,10 @@ function ShowContainerEditFAQ() {
 
   return (
     <div className="ContainerFAQAllItens">
-      <p>As perguntas ativas atualmente na página de Perguntas Frequentes:</p>
+      <p>
+        Todas as perguntas ativas na página de perguntas frequentes estão
+        abaixo:
+      </p>
       <Carousel interval={null} controls={true} className="carouselCustomFAQ">
         {valuesFAQ.map((faq, index) => (
           <Carousel.Item key={index}>
