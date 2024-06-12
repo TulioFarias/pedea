@@ -40,5 +40,30 @@
 
 .ContainerBtnsFAQ{
     display: flex;
+    justify-content: space-evenly;
     gap: 20px;
+}
+
+
+.BtnsIconsEditFAQ{
+    background-color: rgb(46, 43, 43);
+    border: none;
+
+
+    &:hover{
+        background-color: white;
+        color: rgb(44, 64, 63);
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+.BtnsIconsFAQDelete{
+    background-color: rgba(255, 0, 0, 0.788);
+    border: none;
+
+    &:hover{
+        background-color: white;
+        color: red;
+        transition: all 0.9s ease-in-out;
+    }
 }

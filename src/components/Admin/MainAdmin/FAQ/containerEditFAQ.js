@@ -5,9 +5,12 @@ import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 
 import apiPEDEA from '../../../../services/api'
+import ModalEditFAQ from './modalFAQ/modalEditFAQ'
 
 function ShowContainerEditFAQ() {
   const [valuesFAQ, setValuesFAQ] = useState([])
+  const [openModal, setOpenModal] = useState(false)
+  const [idEditValueFAQ, setIdEditValueFAQ] = useState(null)
 
   useEffect(() => {
     async function loadRotulosData() {
@@ -21,6 +24,11 @@ function ShowContainerEditFAQ() {
 
     loadRotulosData()
   }, [])
+
+  const openModalNow = id => {
+    setOpenModal(true)
+    setIdEditValueFAQ(id)
+  }
 
   return (
     <div className="ContainerFAQAllItens">
@@ -51,10 +59,13 @@ function ShowContainerEditFAQ() {
                 />
               </Form.Group>
               <div className="ContainerBtnsFAQ">
-                <Button variant="primary">
+                <Button
+                  className="BtnsIconsEditFAQ"
+                  onClick={() => openModalNow(faq.id)}
+                >
                   <DrawRoundedIcon />
                 </Button>
-                <Button variant="danger">
+                <Button className="BtnsIconsFAQDelete">
                   <DeleteForeverRoundedIcon />
                 </Button>
               </div>
@@ -62,6 +73,11 @@ function ShowContainerEditFAQ() {
           </Carousel.Item>
         ))}
       </Carousel>
+      <ModalEditFAQ
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+        idEditValue={idEditValueFAQ}
+      />
     </div>
   )
 }
