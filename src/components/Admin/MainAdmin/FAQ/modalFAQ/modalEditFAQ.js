@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import '../../../../../sass/admin/Settings/passwordModal.scss'
-
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import api from '../../../../../services/api'
+import '../../../../../sass/admin/FAQ/modalsFAQ.scss'
 
 function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
   const [valueEditFAQ, setValueEditFAQ] = useState({
@@ -91,13 +90,13 @@ function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
             </Form.Group>
           </div>
 
-          <Button variant="secondary" type="submit" className="btn-sendFAQ">
+          <Button className="btnsSubmit" type="submit">
             Enviar
           </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-secondary" onClick={closeModal}>
+        <Button className="btnsClose" onClick={closeModal}>
           Fechar
         </Button>
       </Modal.Footer>

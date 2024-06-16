@@ -1,0 +1,49 @@
+#ContainerModalFAQEdit .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+
+}
+
+#ContainerModalFAQDelete .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+
+}
+
+.txtErrorFAQ{
+    color: red;
+    font-size: 12px;
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+.btnsSubmit{
+  
+    background-color: rgb(44, 64, 63);
+    color: white;
+    border: none;
+
+    &:hover{
+        background-color: gray;
+        color: rgb(44, 64, 63);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.btnsSubmitDelete{
+    background-color: rgb(44, 64, 63);
+    color: white;
+    border: none;
+
+    &:hover{
+        background-color: red;
+        color: rgb(44, 64, 63);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.btnsClose{
+    background-color: rgb(88, 88, 88);
+    color: white;
+    border: none;
+}

@@ -11,7 +11,7 @@ function SettingsAdmin() {
 
         <div className="ContainerAllSettingsInfo">
           <SettingsSystemAndUser />
-          <ContainerLogoutUserSettings />
+          {/* <ContainerLogoutUserSettings /> */}
         </div>
       </div>
     </>

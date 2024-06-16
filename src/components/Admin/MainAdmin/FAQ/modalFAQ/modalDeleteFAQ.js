@@ -1,18 +1,16 @@
-import '../../../../../sass/admin/Settings/passwordModal.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+import '../../../../../sass/admin/FAQ/modalsFAQ.scss'
 import api from '../../../../../services/api'
 
 function ModalFAQDelete({ setOpenModalDelete, openModalDelete, idEditValue }) {
-  const [valueDeleteFAQ, setValueDeleteFAQ] = useState({})
   const schema = Yup.object().shape({
-    question: Yup.string().required('A pergunta é obrigatória'),
     confirmDelete: Yup.bool().oneOf(
       [true],
       'Confirme a exclusão para prosseguir'
@@ -33,53 +31,44 @@ function ModalFAQDelete({ setOpenModalDelete, openModalDelete, idEditValue }) {
 
   const onSubmit = async data => {
     try {
+      const payload = {
+        id: idEditValue
+      }
+
       const response = await toast.promise(
-        api.put('/editFAQ', {
-          id: idEditValue,
-          question: data.question,
-          answer: data.answer
-        }),
+        api.delete('/deleteFAQ', { data: payload }),
         {
           pending: 'Excluindo...',
-          success: 'FAQ excluido com sucesso!',
+          success: 'FAQ excluído com sucesso!',
           error:
-            'Ocorreu um erro, infelizmente não foi possivel excluir os dados.'
+            'Ocorreu um erro, infelizmente não foi possível excluir os dados.'
         }
       )
     } catch (error) {
-      return console.log(error)
+      console.log(error)
     }
-  }
-
-  const handleChangeQuestion = e => {
-    const { value } = e.target
-    setValueDeleteFAQ(prevData => ({ ...prevData, question: value }))
   }
 
   return (
     <Modal
       show={openModalDelete}
       onHide={closeModal}
-      id="ContainerModalFAQEdit"
+      id="ContainerModalFAQDelete"
     >
       <Modal.Header closeButton>
         <Modal.Title className="titleModalFAQ">Excluir FAQ</Modal.Title>
       </Modal.Header>
       <Modal.Body className="bodyModalFAQEdit">
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <p className="txt">Edite a pergunta e confirme a exclusão abaixo:</p>
+          <p className="txt">
+            {' '}
+            ⚠️ : A pergunta excluída não pode ser recuperada.
+          </p>
+          <p className="txt">
+            Tem certeza que deseja excluir a pergunta permanentemente?
+          </p>
 
           <div className="containerInputsFAQEdit">
-            <Form.Group controlId="formQuestion">
-              <Form.Label className="labelInputFAQ">Pergunta:</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('question')}
-                onChange={handleChangeQuestion}
-                value={valueDeleteFAQ.question || ''}
-              />
-              <p className="txtErrorFAQ">{errors.question?.message}</p>
-            </Form.Group>
             <Form.Group controlId="formConfirmDelete">
               <Form.Check
                 type="checkbox"
@@ -90,13 +79,13 @@ function ModalFAQDelete({ setOpenModalDelete, openModalDelete, idEditValue }) {
             </Form.Group>
           </div>
 
-          <Button variant="danger" type="submit" className="btn-sendFAQ">
+          <Button variant="danger" type="submit" className="btnsSubmitDelete">
             Excluir
           </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-secondary" onClick={closeModal}>
+        <Button className="btnsClose" onClick={closeModal}>
           Fechar
         </Button>
       </Modal.Footer>
