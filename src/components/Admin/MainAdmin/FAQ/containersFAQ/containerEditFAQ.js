@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Carousel, Button, Form } from 'react-bootstrap'
-import '../../../../sass/admin/FAQ/EditAndDeleteFAQ.scss'
+import '../../../../../sass/admin/FAQ/EditAndDeleteFAQ.scss'
 import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 
-import apiPEDEA from '../../../../services/api'
-import ModalFAQDelete from './modalFAQ/modalDeleteFAQ'
-import ModalEditFAQ from './modalFAQ/modalEditFAQ'
+import apiPEDEA from '../../../../../services/api'
+import ModalFAQDelete from '../modalFAQ/modalDeleteFAQ'
+import ModalEditFAQ from '../modalFAQ/modalEditFAQ'
 
 function ShowContainerEditFAQ() {
   const [valuesFAQ, setValuesFAQ] = useState([])

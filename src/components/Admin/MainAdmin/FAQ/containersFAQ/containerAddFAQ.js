@@ -1,12 +1,12 @@
 import React from 'react'
-import '../../../../sass/admin/FAQ/addfaq.scss'
-import { Form, InputGroup, Container, Button } from 'react-bootstrap'
+import '../../../../../sass/admin/FAQ/addfaq.scss'
+import { Form, InputGroup, Container } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import apiPEDEA from '../../../../services/api'
+import apiPEDEA from '../../../../../services/api'
 
 function AddInfoFAQ() {
   const schema = Yup.object().shape({
