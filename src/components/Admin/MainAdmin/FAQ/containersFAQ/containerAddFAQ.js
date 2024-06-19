@@ -65,7 +65,7 @@ function AddInfoFAQ() {
               className="AddinputFAQ"
             />
           </InputGroup>
-          <p className="txtErrorPassword">{errors.question?.message}</p>
+          <p className="txtErrorAddFAQ">{errors.question?.message}</p>
         </div>
         <div className="containerInputsFAQ">
           <label className="labelsInputsFAQ">Adicione uma resposta:</label>
@@ -78,7 +78,7 @@ function AddInfoFAQ() {
               className="AddinputFAQ"
             />
           </Form.Group>
-          <p className="txtErrorPassword">{errors.answer?.message}</p>
+          <p className="txtErrorAddFAQ">{errors.answer?.message}</p>
         </div>
         <button type="submit" className="btnSubmitFAQ">
           Criar nova FAQ

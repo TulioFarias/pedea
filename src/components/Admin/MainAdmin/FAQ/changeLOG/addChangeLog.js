@@ -1,51 +1,81 @@
-import React, { useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React from 'react'
 import { Form, InputGroup, Button } from 'react-bootstrap'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import * as Yup from 'yup'
 
+import apiPEDEA from '../../../../../services/api'
 function AddInfoChangeLog() {
-  const [numberFloat, setNumberFloat] = useState('')
-  const [message, setMessage] = useState('')
+  const schema = Yup.object().shape({
+    version: Yup.number().required('A numeração da versão é obrigatória.'),
+    answer: Yup.string().required('A mensagem é obrigatória.')
+  })
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  })
 
-  const handleCreateChangeLog = event => {
-    event.preventDefault()
-    console.log('Number Float:', numberFloat)
-    console.log('Message:', message)
-    // Aqui você pode adicionar a lógica para criar o changelog
+  const onSubmit = async data => {
+    console.log(data)
+    try {
+      await toast.promise(
+        apiPEDEA.post('/addInfoEvolution', {
+          version: data.version,
+          message: data.message
+        }),
+        {
+          pending: 'Adicionando novo registro...',
+          success: 'Registro de atualização criado com sucesso!',
+          error: 'Erro ao adicionar novo registro.'
+        }
+      )
+
+      reset()
+    } catch (error) {
+      console.error(error)
+    }
   }
-
   return (
     <>
       <div>
         <div className="containerAddChangeLog">
-          <p>
-            Para adicionar um novo registro de atualização, preencha os campos
-            abaixo:
-          </p>
-          <Form onSubmit={handleCreateChangeLog}>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="numberFloat">
-                Versão de atualização:
-              </Form.Label>
+          <Form
+            onSubmit={handleSubmit(onSubmit)}
+            className="containerFormChangeLog"
+          >
+            <p>
+              Para adicionar um novo registro de atualização, preencha os campos
+              abaixo:
+            </p>
+            <Form.Group className="containerInputsChangeLog">
+              <Form.Label>Versão de atualização:</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="number"
-                  id="numberFloat"
                   placeholder="Digite o número da versão de atualização"
+                  {...register('version')}
                 />
               </InputGroup>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="message">
+            <Form.Group className="containerInputsChangeLog">
+              <Form.Label className="labelChangeLog">
                 Mensagem de atualização:
               </Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Escreva a mensagem de atualização"
+                {...register('message')}
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-              Create Change Log
+            <Button className="BtnChangeLogSubmit" type="submit">
+              Registrar nova atualização
             </Button>
           </Form>
         </div>

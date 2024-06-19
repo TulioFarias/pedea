@@ -31,9 +31,8 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.267);
     backdrop-filter: blur(10px);
+    max-height: max-content;
 
-
-    
 }
 
 
@@ -43,7 +42,6 @@
     padding: 10px;
     margin-top: 3px;
     background-color: rgba(255, 255, 255, 0.267);
-    height: 37vh;
+    max-height: 37vh;
 
-   
 }
