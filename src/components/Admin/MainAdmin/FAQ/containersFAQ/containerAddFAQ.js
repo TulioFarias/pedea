@@ -29,23 +29,23 @@ function AddInfoFAQ() {
 
   const onSubmit = async data => {
     console.log(data)
-    try {
-      await toast.promise(
-        apiPEDEA.post('/addFAQ', {
-          question: data.question,
-          answer: data.answer
-        }),
-        {
-          pending: 'Adicionando FAQ...',
-          success: 'FAQ adicionada com sucesso!',
-          error: 'Erro ao adicionar FAQ.'
-        }
-      )
+    // try {
+    //   await toast.promise(
+    //     apiPEDEA.post('/addFAQ', {
+    //       question: data.question,
+    //       answer: data.answer
+    //     }),
+    //     {
+    //       pending: 'Adicionando FAQ...',
+    //       success: 'FAQ adicionada com sucesso!',
+    //       error: 'Erro ao adicionar FAQ.'
+    //     }
+    //   )
 
-      reset()
-    } catch (error) {
-      console.error(error)
-    }
+    //   reset()
+    // } catch (error) {
+    //   console.error(error)
+    // }
   }
 
   return (
@@ -65,7 +65,7 @@ function AddInfoFAQ() {
               className="AddinputFAQ"
             />
           </InputGroup>
-          <p className="txtErrorAddFAQ">{errors.question?.message}</p>
+          <p className="txtErrorAddFAQ">{errors.version?.message}</p>
         </div>
         <div className="containerInputsFAQ">
           <label className="labelsInputsFAQ">Adicione uma resposta:</label>
@@ -78,7 +78,7 @@ function AddInfoFAQ() {
               className="AddinputFAQ"
             />
           </Form.Group>
-          <p className="txtErrorAddFAQ">{errors.answer?.message}</p>
+          <p className="txtErrorAddFAQ">{errors.message?.message}</p>
         </div>
         <button type="submit" className="btnSubmitFAQ">
           Criar nova FAQ

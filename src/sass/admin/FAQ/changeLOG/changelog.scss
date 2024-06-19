@@ -26,6 +26,18 @@
 
 }
 
+
+.containerAddChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    margin-top: 0px;
+    height: 34vh;
+}
+
+
 .containerFormChangeLog{
     padding: 5px;
     display: flex;
@@ -36,39 +48,19 @@
     }
 }
 
+.inputChangeLog{
+    
 
-.containerAddChangeLog{
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.267);
-    backdrop-filter: blur(10px);
-    margin-top: 0px;
-    max-height: max-content;
+    &::placeholder{
+        font-size: 12px;
+    }
 }
-
-.containerShowChangeLog{
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.267);
-    backdrop-filter: blur(10px);
-    height: 37vh;
-    margin-top: 3px;
-}
-
-.containerInputsChangeLog{
-    display: flex;
-    flex-direction: column;
-  
-}
-
 
 .BtnChangeLogSubmit{
     border: none;
-    height: 30px;
+    height: 32px;
     width: 250px;
-    margin-top: 20px;
+    margin-top: 48px;
     border-radius: 10px;
     background-color: rgb(44, 64, 63);
     color: white;
@@ -83,3 +75,16 @@
         transition: all 0.5s ease-in-out;
     }
 }
+
+
+.containerShowChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    height: 37vh;
+    margin-top: 3px;
+}
+
+

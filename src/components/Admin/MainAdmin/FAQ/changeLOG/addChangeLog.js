@@ -59,6 +59,7 @@ function AddInfoChangeLog() {
                   type="number"
                   placeholder="Digite o número da versão de atualização"
                   {...register('version')}
+                  className="inputChangeLog"
                 />
               </InputGroup>
             </Form.Group>
@@ -71,6 +72,7 @@ function AddInfoChangeLog() {
                 as="textarea"
                 placeholder="Escreva a mensagem de atualização"
                 {...register('message')}
+                className="inputChangeLog"
               />
             </Form.Group>
 
