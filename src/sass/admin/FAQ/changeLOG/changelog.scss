@@ -7,5 +7,42 @@
     background-color: rgb(44, 64, 63);
     padding: 10px;
     color: white;
+    display: flex;
+    flex-direction: column;
 
+    .titleChangeLog{
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 25px;
+        margin-bottom: 0px;
+        
+    }
+
+    hr{
+        border: 1px dashed white;
+        margin-top: 0px;
+    }
+
+}
+
+
+.containerAddChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    height: 37.5vh;
+    margin-top: 0px;
+}
+
+.containerShowChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    height: 37vh;
+    margin-top: 3px;
 }

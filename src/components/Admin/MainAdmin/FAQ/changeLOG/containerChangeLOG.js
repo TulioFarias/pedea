@@ -1,12 +1,20 @@
 import React from 'react'
+
 import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss'
+import AddInfoChangeLog from './addChangeLog'
+import ShowAndEditChangeLog from './showandeditChangeLog'
 function ChangeLogContainer() {
   return (
     <>
       <div className="containerChangeLOG">
-        <p>Gerenciamento de atualizações do log:</p>
+        <p className="titleChangeLog">Gerenciamento de atualizações do log:</p>
+        <hr />
         <div>
-          <p>Aqui sera o resto</p>
+          <AddInfoChangeLog />
+        </div>
+
+        <div>
+          <ShowAndEditChangeLog />
         </div>
       </div>
     </>
