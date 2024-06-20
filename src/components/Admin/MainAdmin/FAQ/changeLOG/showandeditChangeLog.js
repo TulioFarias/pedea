@@ -3,11 +3,15 @@ import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import React, { useEffect, useState } from 'react'
 import { Carousel, Form, Button } from 'react-bootstrap'
 
-import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss'
 import apiPEDEA from '../../../../../services/api'
+import ModalChangeLogDelete from './modalsChangeLogs/modalDeleteChangeLog'
+import ModalEditChangeLog from './modalsChangeLogs/modalEditChangeLog'
 
 function ShowAndEditChangeLog() {
   const [dataChangeLog, setDataChangeLog] = useState([])
+  const [openModalEdit, setOpenModalEdit] = useState(false)
+  const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [idEditValueLog, setIdEditValueLog] = useState(null)
 
   useEffect(() => {
     async function loadRotulosData() {
@@ -21,6 +25,17 @@ function ShowAndEditChangeLog() {
 
     loadRotulosData()
   }, [])
+
+  const openModalNow = id => {
+    console.log(id)
+    setOpenModalEdit(true)
+    setIdEditValueLog(id)
+  }
+
+  const OpenModalDeleteLog = id => {
+    setOpenModalDelete(true)
+    setIdEditValueLog(id)
+  }
 
   return (
     <>
@@ -77,10 +92,16 @@ function ShowAndEditChangeLog() {
                       />
                     </Form.Group>
                     <div className="containerBtnsChangeLog">
-                      <Button className="btnEditChangeLog">
+                      <Button
+                        className="btnEditChangeLog"
+                        onClick={() => openModalNow(log.id)}
+                      >
                         <DrawRoundedIcon />
                       </Button>
-                      <Button className="btnDeleteChangeLog">
+                      <Button
+                        className="btnDeleteChangeLog"
+                        onClick={() => OpenModalDeleteLog(log.id)}
+                      >
                         <DeleteForeverRoundedIcon />
                       </Button>
                     </div>
@@ -91,6 +112,18 @@ function ShowAndEditChangeLog() {
           </Carousel>
         </div>
       </div>
+
+      <ModalEditChangeLog
+        openModalEdit={openModalEdit}
+        setOpenModalEdit={setOpenModalEdit}
+        idEditValueLog={idEditValueLog}
+      />
+
+      <ModalChangeLogDelete
+        idEditValueLog={idEditValueLog}
+        setOpenModalDelete={setOpenModalDelete}
+        openModalDelete={openModalDelete}
+      />
     </>
   )
 }

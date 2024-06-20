@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PageFAQ from '../../components/Admin/MainAdmin/FAQ/webpageFAQ'
+import PageFAQ from '../../components/Admin/MainAdmin/FAQ/pages/webpageFAQ'
 
 function WebPageFAQ() {
   return (

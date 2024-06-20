@@ -7,8 +7,8 @@ import Admin from '../../containers/Admin'
 import Home from '../../containers/Home'
 import Login from '../../containers/Login'
 import WebPageFAQ from '../../containers/perguntasFrequentes(FAQ)'
+import PageChangeLog from '../../containers/perguntasFrequentes(FAQ)/pageChangeLog'
 import Register from '../../containers/register'
-import PageChangeLog from '../Admin/MainAdmin/FAQ/changeLOG/containerPageChangeLog/containerPageChangeLog'
 import { Private } from './private-route'
 
 function AnimatedRoutes() {

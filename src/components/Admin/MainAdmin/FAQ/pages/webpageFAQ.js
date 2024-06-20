@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Accordion } from 'react-bootstrap'
 
-import '../../../../sass/admin/FAQ/containerFAQPAGE.scss'
-import logo from '../../../../assets/img/pedea-logo.png'
-import apiPEDEA from '../../../../services/api'
+import '../../../../../sass/admin/FAQ/containerFAQPAGE.scss'
+import logo from '../../../../../assets/img/pedea-logo.png'
+import apiPEDEA from '../../../../../services/api'
 function PageFAQ() {
   const [valuesFAQ, setValuesFAQ] = useState([])
 
