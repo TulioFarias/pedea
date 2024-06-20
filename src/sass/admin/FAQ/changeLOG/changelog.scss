@@ -9,6 +9,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 
     .titleChangeLog{
         color: white;
@@ -34,7 +35,7 @@
     background-color: rgba(255, 255, 255, 0.267);
     backdrop-filter: blur(10px);
     margin-top: 0px;
-    height: 34vh;
+    height: max-content;
 }
 
 
@@ -45,7 +46,16 @@
 
     p{
         font-size: 14px;
+        margin-bottom: 5px;
     }
+}
+
+.labelChangeLog{
+    font-size: 14px;
+    font-weight: 900;
+    padding-left: 5px;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .inputChangeLog{
@@ -56,11 +66,24 @@
     }
 }
 
+.errorTxtChangeLog {
+    color: red;
+    font-size: 12px !important;
+    padding-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+   
+  }
+  
+  
+
+
+
 .BtnChangeLogSubmit{
     border: none;
     height: 32px;
     width: 250px;
-    margin-top: 48px;
+    margin-top: 12px;
     border-radius: 10px;
     background-color: rgb(44, 64, 63);
     color: white;
@@ -83,8 +106,129 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.267);
     backdrop-filter: blur(10px);
-    height: 37vh;
+    height: 40vh;
     margin-top: 3px;
+  
+
+
+    p{
+        margin-bottom: 0px;
+        font-weight: 900;
+        text-align: center;
+    }
+   
 }
+
+.containerCarousel{
+    padding: 10px;
+    margin-top: 0px;
+    height: 37vh;
+
+}
+
+.containerItemsDataChangeLog{
+    border: 1px dashed;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    position: relative;
+    left: 70px;
+    top: 10px;
+
+   
+}
+
+.groupItemOne{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .labelgroupone{
+        position: relative;
+        top: 3px;
+    }
+    
+    .inputgroupone{
+        width: 50px;
+        height: 30px;
+    }
+}
+
+.groupItemsTwo{
+    margin-top: 15px;
+}
+
+.logDates{
+    padding: 5px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+
+
+    .groupDate{
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 0px;
+    }
+
+    .labelsdate{
+        font-size: 14px;
+        position: relative;
+        top: 5px;
+    }
+
+    .inputsdate{
+        width: 200px;
+        height: 30px;
+    }
+}
+
+.containerBtnsChangeLog{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 14px;
+    gap: 5px
+}
+
+.btnEditChangeLog{
+    background-color: rgb(46, 43, 43);
+    border: none;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &:hover{
+        background-color: white;
+        color: rgb(44, 64, 63);
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+.btnDeleteChangeLog{
+    background-color: rgba(255, 0, 0, 0.788);
+    border: none;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        background-color: white;
+        color: red;
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+
+
+
 
 

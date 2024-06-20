@@ -8,8 +8,10 @@ import * as Yup from 'yup'
 import apiPEDEA from '../../../../../services/api'
 function AddInfoChangeLog() {
   const schema = Yup.object().shape({
-    version: Yup.number().required('A numeração da versão é obrigatória.'),
-    answer: Yup.string().required('A mensagem é obrigatória.')
+    version: Yup.number('Insira o número da versão').required(
+      'A numeração da versão é obrigatória.'
+    ),
+    message: Yup.string().required('A mensagem é obrigatória.')
   })
   const {
     handleSubmit,
@@ -53,7 +55,7 @@ function AddInfoChangeLog() {
               abaixo:
             </p>
             <Form.Group className="containerInputsChangeLog">
-              <Form.Label>Versão de atualização:</Form.Label>
+              <label className="labelChangeLog">Versão de atualização:</label>
               <InputGroup>
                 <Form.Control
                   type="number"
@@ -62,18 +64,19 @@ function AddInfoChangeLog() {
                   className="inputChangeLog"
                 />
               </InputGroup>
+              <p className="errorTxtChangeLog">{errors.version?.message}</p>
             </Form.Group>
 
             <Form.Group className="containerInputsChangeLog">
-              <Form.Label className="labelChangeLog">
-                Mensagem de atualização:
-              </Form.Label>
+              <label className="labelChangeLog">Mensagem de atualização:</label>
               <Form.Control
                 as="textarea"
+                rows={3}
                 placeholder="Escreva a mensagem de atualização"
                 {...register('message')}
                 className="inputChangeLog"
               />
+              <p className="errorTxtChangeLog">{errors.message?.message}</p>
             </Form.Group>
 
             <Button className="BtnChangeLogSubmit" type="submit">
