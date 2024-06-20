@@ -58,7 +58,7 @@ function AddInfoChangeLog() {
               <label className="labelChangeLog">Versão de atualização:</label>
               <InputGroup>
                 <Form.Control
-                  type="number"
+                  type="text"
                   placeholder="Digite o número da versão de atualização"
                   {...register('version')}
                   className="inputChangeLog"
