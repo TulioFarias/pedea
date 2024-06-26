@@ -55,7 +55,7 @@ function FindMe() {
           markerLayer.getSource().addFeature(pointFeature)
 
           mapInstance.getView().setCenter(coords)
-          mapInstance.getView().setZoom(13)
+          mapInstance.getView().setZoom()
         })
       } else {
         alert('Ocorreu um erro')

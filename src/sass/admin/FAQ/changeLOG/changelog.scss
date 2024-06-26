@@ -11,6 +11,20 @@
     flex-direction: column;
     overflow: auto;
 
+   
+
+    hr{
+        border: 1px dashed white;
+        margin-top: 0px;
+    }
+
+}
+
+.containerTitleAndLinkChangeLog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .titleChangeLog{
         color: white;
         text-align: center;
@@ -18,13 +32,20 @@
         font-size: 25px;
         margin-bottom: 0px;
         
+        
     }
 
-    hr{
-        border: 1px dashed white;
-        margin-top: 0px;
-    }
+    .iconLinkChangeLog{
+        position: relative;
+        left: 140px;
+        cursor: pointer;
+        color: white;
 
+        &:hover{
+            color: gray;
+            transition: all 0.3s ease-in-out;
+        }
+    }
 }
 
 

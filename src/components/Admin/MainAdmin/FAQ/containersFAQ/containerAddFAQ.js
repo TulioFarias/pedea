@@ -56,6 +56,7 @@ function AddInfoFAQ() {
             Para adicionar uma nova pergunta e uma nova resposta na página de
             FAQ PEDEA, preencha os campos abaixo:
           </p>
+
           <label className="labelsInputsFAQ">Adicione uma pergunta:</label>
           <InputGroup>
             <Form.Control

@@ -14,6 +14,18 @@
     border-radius: 10px;
     overflow: auto;
 
+    
+
+    hr{
+        border: 1px dashed white;
+        margin-top: 0px;
+    }
+}
+
+.containerTitleFAQ{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h1{
         color: white;
         text-align: center;
@@ -21,9 +33,16 @@
         font-size: 25px;
     }
 
-    hr{
-        border: 1px dashed white;
-        margin-top: 0px;
+    .iconTitleFAQlink{
+        position: relative;
+        left: 120px;
+        cursor: pointer;
+        color: white;
+
+        &:hover{
+            color: gray;
+            transition: all 0.3s ease-in-out;
+        }
     }
 }
 .containerOneFAQ{
