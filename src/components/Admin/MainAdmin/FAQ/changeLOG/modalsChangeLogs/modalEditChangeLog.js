@@ -71,7 +71,7 @@ function ModalEditChangeLog({
     >
       <Modal.Header closeButton>
         <Modal.Title className="titleModalChangeLog">
-          Editar Log de Atualização
+          Editar log de atualização
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="bodyModalChangeLogEdit">

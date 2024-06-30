@@ -10,6 +10,7 @@ import Nav from 'react-bootstrap/Nav'
 import '../../../sass/admin/NavAdmin/navAdmin.scss'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
 
 import api from '../../../services/api'
 
@@ -86,7 +87,6 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
                 activeButton === 'Link1' ? 'nav-link active' : 'nav-link'
               }`}
             >
-              <PublicRoundedIcon />
               Link 1
             </Nav.Link>
           </motion.div>
@@ -144,25 +144,25 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
               Link 4
             </Nav.Link>
           </motion.div>
-        </Nav.Item>
+        </Nav.Item> */}
 
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
-              href="/link-5"
+              href="/DataExplorer"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Link5')
+                handleButtonClick('DataExplorer')
               }}
               className={`links-btnsNav ${
-                activeButton === 'Link5' ? 'nav-link active' : 'nav-link'
+                activeButton === 'DataExplorer' ? 'nav-link active' : 'nav-link'
               }`}
             >
-              <AppsRoundedIcon />
-              Link 5
+              <TravelExploreRoundedIcon />
+              Explorador de Dados
             </Nav.Link>
           </motion.div>
-        </Nav.Item> */}
+        </Nav.Item>
 
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>

@@ -7,7 +7,6 @@ import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
 import FAQ from './FAQ'
 import HomeAdmin from './home'
-import Link2 from './Link2'
 import Link3 from './Link3'
 import Link4 from './Link4'
 import Link5 from './Link5'
@@ -15,6 +14,7 @@ import Link6 from './Link6'
 import Rotulos from './Rotulos/index'
 import SettingsAdmin from './settings/settings'
 import '../../../sass/admin/admin.scss'
+import DataExplorer from './DataExplorer'
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
@@ -64,7 +64,7 @@ function MainAdmin() {
         >
           {selectedOption === 'Home' && <HomeAdmin />}
           {selectedOption === 'FAQ' && <FAQ />}
-          {selectedOption === 'Link2' && <Link2 />}
+          {selectedOption === 'DataExplorer' && <DataExplorer />}
           {selectedOption === 'Link3' && <Link3 />}
           {selectedOption === 'Link4' && <Link4 />}
           {selectedOption === 'Link5' && <Link5 />}

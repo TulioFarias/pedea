@@ -61,7 +61,9 @@ function ModalChangeLogDelete({
       id="ContainerModalChangeLogDelete"
     >
       <Modal.Header closeButton>
-        <Modal.Title className="titleModalFAQ">Excluir FAQ</Modal.Title>
+        <Modal.Title className="titleModalFAQ">
+          Excluir a atualização ativa
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="bodyModalFAQEdit">
         <Form onSubmit={handleSubmit(onSubmit)}>
