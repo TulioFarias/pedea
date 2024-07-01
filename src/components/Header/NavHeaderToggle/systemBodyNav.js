@@ -1,10 +1,29 @@
+import FolderOpenRoundedIcon from '@mui/icons-material/FolderOpenRounded'
+import FolderRoundedIcon from '@mui/icons-material/FolderRounded'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import '../../../sass/Header/navOffCanvas.scss'
 
 function BodyNavSystem({ data }) {
+  const [openDropdowns, setOpenDropdowns] = useState({})
+
+  const toggleDropdown = (category, classeMaior) => {
+    setOpenDropdowns(prevState => {
+      const newOpenDropdowns = { ...prevState }
+      if (classeMaior) {
+        newOpenDropdowns[category] = {
+          ...newOpenDropdowns[category],
+          [classeMaior]: !newOpenDropdowns[category]?.[classeMaior]
+        }
+      } else {
+        newOpenDropdowns[category] = !newOpenDropdowns[category]
+      }
+      return newOpenDropdowns
+    })
+  }
+
   const groupByCategory = array => {
     return array.reduce((acc, item) => {
       const category = item.categoria_de_informacao
@@ -22,29 +41,64 @@ function BodyNavSystem({ data }) {
 
   const groupedData = groupByCategory(data)
 
-  console.log(groupedData)
-
   return (
     <>
-      {Object.keys(groupedData).map((category, idx) => (
-        <div key={idx} className="ContainerBodyDropDowns">
-          <NavDropdown title={category} className="customDropDown">
-            {Object.keys(groupedData[category]).map((classeMaior, index) => (
-              <NavDropdown key={index} title={classeMaior}>
-                {groupedData[category][classeMaior].map((item, i) => (
-                  <NavDropdown.Item key={i}>
-                    <Form.Check
-                      type="checkbox"
-                      id={`checkbox-${item.id}`}
-                      label={item.nomenclatura_pedea}
-                    />
-                  </NavDropdown.Item>
-                ))}
-              </NavDropdown>
-            ))}
-          </NavDropdown>
-        </div>
-      ))}
+      <div>
+        {Object.keys(groupedData).map((category, idx) => (
+          <div key={idx} className="ContainerBodyDropDowns">
+            <div
+              className="ImageFolderCategory"
+              onClick={() => toggleDropdown(category)}
+            >
+              {openDropdowns[category] ? (
+                <FolderOpenRoundedIcon />
+              ) : (
+                <FolderRoundedIcon />
+              )}
+            </div>
+            <NavDropdown
+              title={category}
+              className="customDropDown"
+              show={openDropdowns[category]}
+              onToggle={() => toggleDropdown(category)}
+            >
+              {Object.keys(groupedData[category]).map((classeMaior, index) => (
+                <div key={index} className="ContainerClasseMaior">
+                  <div
+                    className="ImageFolderCategory"
+                    onClick={() => toggleDropdown(category, classeMaior)}
+                  >
+                    {openDropdowns[category]?.[classeMaior] ? (
+                      <FolderOpenRoundedIcon />
+                    ) : (
+                      <FolderRoundedIcon />
+                    )}
+                  </div>
+
+                  <NavDropdown
+                    title={classeMaior}
+                    className="dropDownItemsClasseMaior"
+                    show={openDropdowns[category]?.[classeMaior]}
+                    onToggle={() => toggleDropdown(category, classeMaior)}
+                  >
+                    {groupedData[category][classeMaior].map((item, i) => (
+                      <NavDropdown.Item
+                        key={i}
+                        className="containerNomeclaturaPedea"
+                      >
+                        <Form.Check
+                          type="checkbox"
+                          label={item.nomenclatura_pedea}
+                        />
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
+                </div>
+              ))}
+            </NavDropdown>
+          </div>
+        ))}
+      </div>
     </>
   )
 }

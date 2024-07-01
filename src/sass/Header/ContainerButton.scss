@@ -8,7 +8,7 @@
   position: fixed;
   top: 30px;
   width: 100%;
-  overflow: auto;
+ 
   
 }
 
@@ -22,6 +22,9 @@
   background-color: rgba(44, 64, 63, 0.719)!important;
   color: white!important;
   border-left: 2px solid rgb(136, 231, 136)!important;
+  overflow: auto;
+  width: 450px!important;
+
   
 }
 .containerForm{
@@ -57,11 +60,12 @@
 .containerNav{
   display: flex;
   flex-direction: column;
+  gap: 5px;
   border-top: 1px dashed white ;
   border-bottom: 1px dashed white ;
 
     h2{
-      font-size: 32px;
+      font-size: 35px;
     }
   
 }

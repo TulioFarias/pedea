@@ -1,11 +1,21 @@
 
 
 .ContainerBodyDropDowns{
+    display: flex;
+    gap: 5px;
+    
+}
+
+.ImageFolderCategory{
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    color: rgb(216, 216, 216);
     
 }
 
 .customDropDown{
-    font-size: 18px;
+    font-size: 20px;
     color: rgb(216, 216, 216);
 
 
@@ -16,5 +26,31 @@
 
     .dropdown-toggle::after{
         display: none;
+    }
+
+
+    .dropdown-menu.show{
+        color: rgb(216, 216, 216);
+        padding: 10px;
+        background-color: transparent;
+        border: none;
+        border-left: 1px solid white;
+        position: static;
+    }
+
+    .ContainerClasseMaior{
+        display: flex;
+        gap: 5px;
+    }
+
+
+    .dropDownItemsClasseMaior{
+        margin-top: 2px;
+    }
+
+
+    .containerNomeclaturaPedea{
+        color: white;
+        background-color: transparent;
     }
 }
