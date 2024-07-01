@@ -8,6 +8,7 @@
   position: fixed;
   top: 30px;
   width: 100%;
+  overflow: auto;
   
 }
 
@@ -29,16 +30,14 @@
 
 }
 .titleNav{
-  font-size: 35px;
+  font-size: 32px;
   margin-left: 15px;
 }
 
 .inputForm{
-  width: 400px;
+  width: 320px;
   
 }
-
-
 
 .BtnForm{
   position: relative;
@@ -54,78 +53,21 @@
  }
 }
 
-.div-footer-toogler{
-    display: flex;
-    justify-content: space-between;
-}
 
 .containerNav{
   display: flex;
   flex-direction: column;
   border-top: 1px dashed white ;
   border-bottom: 1px dashed white ;
-  
-}
 
-.ContainerNavOptions{
-  display: flex;
-  flex-direction: column;
-}
-
-.customContainerOptionsNav{
-  display: flex;
-  
-}
-
-.containerAllOptions{
-  display: flex;
-  gap: 5px;
-}
-.containerOptionsFolder{
-  display: flex;
-  font-size: 18px;
-  background-color: transparent;
-
-
-  .dropdown-menu{
-    background-color: transparent;
-    border: none;
-    border-left: 1px solid white;
-    border-radius: 0;
-    
-    &:hover{
-      background-color: transparent;
+    h2{
+      font-size: 32px;
     }
-    
-  }
-  
- 
-
-
-  .dropdown-toggle::after{
-    display: none;
-  }
   
 }
-.dropdown-item{
-  color: white;
 
-  img{
-    width: 20px;
-    height: 20px;
-  }
-}
 
-.customContainerImage{
-     
-  img{
-    margin-top: 7px;
-    width: 25px;
-    height: 25px;
-  }
-      
-      
-}
+
 
 .desativarCamadas{
   margin-top: 10px;

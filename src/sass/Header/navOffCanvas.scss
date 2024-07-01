@@ -1,0 +1,20 @@
+
+
+.ContainerBodyDropDowns{
+    
+}
+
+.customDropDown{
+    font-size: 18px;
+    color: rgb(216, 216, 216);
+
+
+    :hover{
+        color: white;
+    }
+
+
+    .dropdown-toggle::after{
+        display: none;
+    }
+}

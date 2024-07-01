@@ -11,7 +11,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { vector } from '../../_config/layers/index'
 import '../../sass/Header/ContainerButton.scss'
 import PEDEA from '../../assets/img/pedea-logo.png'
-import NavOptions from './NavHeader'
+import NavOptions from './NavHeaderToggle/NavHeader'
 
 function HeaderActions() {
   const modalRef = useRef(null)
