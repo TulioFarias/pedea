@@ -53,8 +53,6 @@ function NavOptions() {
     return false
   }
 
-  console.log(dataExplorer)
-
   return (
     <div>
       <Container fluid className="ContainerNavOptions">

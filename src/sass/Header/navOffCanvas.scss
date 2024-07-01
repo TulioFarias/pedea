@@ -6,15 +6,12 @@
     
 }
 
-.ImageFolderCategory{
-    cursor: pointer;
-    position: relative;
-    top: 0px;
-    color: rgb(216, 216, 216);
-    
-}
+
 
 .customDropDown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 20px;
     color: rgb(216, 216, 216);
 
@@ -34,13 +31,17 @@
         padding: 10px;
         background-color: transparent;
         border: none;
+        padding-left: 20px;
         border-left: 1px solid white;
+        margin-top: 8px;
         position: static;
     }
 
-    .ContainerClasseMaior{
+    .dropdown-toggle{
         display: flex;
-        gap: 5px;
+        align-items: center;
+        gap: 2px;
+      
     }
 
 

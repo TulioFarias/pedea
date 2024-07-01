@@ -4,18 +4,42 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+
 import '../../../sass/Header/navOffCanvas.scss'
 
 function BodyNavSystem({ data }) {
   const [openDropdowns, setOpenDropdowns] = useState({})
 
-  const toggleDropdown = (category, classeMaior) => {
+  const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
       const newOpenDropdowns = { ...prevState }
-      if (classeMaior) {
+      if (minorClass) {
         newOpenDropdowns[category] = {
           ...newOpenDropdowns[category],
-          [classeMaior]: !newOpenDropdowns[category]?.[classeMaior]
+          [majorClass]: {
+            ...newOpenDropdowns[category]?.[majorClass],
+            [subMajorClass]: {
+              ...newOpenDropdowns[category]?.[majorClass]?.[subMajorClass],
+              [minorClass]:
+                !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]?.[
+                  minorClass
+                ]
+            }
+          }
+        }
+      } else if (subMajorClass) {
+        newOpenDropdowns[category] = {
+          ...newOpenDropdowns[category],
+          [majorClass]: {
+            ...newOpenDropdowns[category]?.[majorClass],
+            [subMajorClass]:
+              !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]
+          }
+        }
+      } else if (majorClass) {
+        newOpenDropdowns[category] = {
+          ...newOpenDropdowns[category],
+          [majorClass]: !newOpenDropdowns[category]?.[majorClass]
         }
       } else {
         newOpenDropdowns[category] = !newOpenDropdowns[category]
@@ -27,14 +51,46 @@ function BodyNavSystem({ data }) {
   const groupByCategory = array => {
     return array.reduce((acc, item) => {
       const category = item.categoria_de_informacao
-      const classeMaior = item.classe_maior
-      if (!acc[category]) {
-        acc[category] = {}
+      const majorClass = item.classe_maior
+      const subMajorClass = item.subclasse_maior
+      const minorClass = item.classe_menor
+      const nomenclature = item.nomenclatura_pedea
+
+      if (!acc[category]) acc[category] = {}
+      if (!acc[category][majorClass]) acc[category][majorClass] = {}
+      if (subMajorClass) {
+        if (!acc[category][majorClass][subMajorClass]) {
+          acc[category][majorClass][subMajorClass] = {
+            items: [],
+            classesMenores: {}
+          }
+        }
+        if (minorClass) {
+          if (
+            !acc[category][majorClass][subMajorClass].classesMenores[minorClass]
+          ) {
+            acc[category][majorClass][subMajorClass].classesMenores[
+              minorClass
+            ] = []
+          }
+          acc[category][majorClass][subMajorClass].classesMenores[
+            minorClass
+          ].push(nomenclature)
+        } else {
+          acc[category][majorClass][subMajorClass].items.push(nomenclature)
+        }
+      } else if (minorClass) {
+        if (!acc[category][majorClass].classesMenores)
+          acc[category][majorClass].classesMenores = {}
+        if (!acc[category][majorClass].classesMenores[minorClass]) {
+          acc[category][majorClass].classesMenores[minorClass] = []
+        }
+        acc[category][majorClass].classesMenores[minorClass].push(nomenclature)
+      } else {
+        if (!acc[category][majorClass].items)
+          acc[category][majorClass].items = []
+        acc[category][majorClass].items.push(nomenclature)
       }
-      if (!acc[category][classeMaior]) {
-        acc[category][classeMaior] = []
-      }
-      acc[category][classeMaior].push(item)
       return acc
     }, {})
   }
@@ -42,64 +98,89 @@ function BodyNavSystem({ data }) {
   const groupedData = groupByCategory(data)
 
   return (
-    <>
-      <div>
-        {Object.keys(groupedData).map((category, idx) => (
-          <div key={idx} className="ContainerBodyDropDowns">
-            <div
-              className="ImageFolderCategory"
-              onClick={() => toggleDropdown(category)}
-            >
-              {openDropdowns[category] ? (
-                <FolderOpenRoundedIcon />
-              ) : (
-                <FolderRoundedIcon />
-              )}
-            </div>
-            <NavDropdown
-              title={category}
-              className="customDropDown"
-              show={openDropdowns[category]}
-              onToggle={() => toggleDropdown(category)}
-            >
-              {Object.keys(groupedData[category]).map((classeMaior, index) => (
-                <div key={index} className="ContainerClasseMaior">
-                  <div
-                    className="ImageFolderCategory"
-                    onClick={() => toggleDropdown(category, classeMaior)}
-                  >
-                    {openDropdowns[category]?.[classeMaior] ? (
+    <div>
+      {Object.keys(groupedData).map((category, idx) => (
+        <div key={idx} className="ContainerBodyDropDowns">
+          <NavDropdown
+            title={
+              <>
+                {openDropdowns[category] ? (
+                  <FolderOpenRoundedIcon />
+                ) : (
+                  <FolderRoundedIcon />
+                )}
+                {category}
+              </>
+            }
+            className="customDropDown"
+            show={openDropdowns[category]}
+            onToggle={() => toggleDropdown(category)}
+          >
+            {Object.keys(groupedData[category]).map((majorClass, index) => (
+              <NavDropdown
+                key={index}
+                title={
+                  <>
+                    {openDropdowns[category]?.[majorClass] ? (
                       <FolderOpenRoundedIcon />
                     ) : (
                       <FolderRoundedIcon />
                     )}
-                  </div>
-
-                  <NavDropdown
-                    title={classeMaior}
-                    className="dropDownItemsClasseMaior"
-                    show={openDropdowns[category]?.[classeMaior]}
-                    onToggle={() => toggleDropdown(category, classeMaior)}
-                  >
-                    {groupedData[category][classeMaior].map((item, i) => (
-                      <NavDropdown.Item
-                        key={i}
-                        className="containerNomeclaturaPedea"
-                      >
-                        <Form.Check
-                          type="checkbox"
-                          label={item.nomenclatura_pedea}
-                        />
-                      </NavDropdown.Item>
-                    ))}
-                  </NavDropdown>
-                </div>
-              ))}
-            </NavDropdown>
-          </div>
-        ))}
-      </div>
-    </>
+                    {majorClass}
+                  </>
+                }
+                className="dropDownItemsClasseMaior"
+                show={openDropdowns[category]?.[majorClass]}
+                onToggle={() => toggleDropdown(category, majorClass)}
+              >
+                {groupedData[category][majorClass].items
+                  ? groupedData[category][majorClass].items.map(
+                      (nomenclature, i) => (
+                        <NavDropdown.Item
+                          key={i}
+                          className="containerNomeclaturaPedea"
+                        >
+                          <Form.Check type="checkbox" label={nomenclature} />
+                        </NavDropdown.Item>
+                      )
+                    )
+                  : null}
+                {groupedData[category][majorClass].classesMenores &&
+                  Object.keys(
+                    groupedData[category][majorClass].classesMenores
+                  ).map((minorClass, minorIndex) => (
+                    <NavDropdown
+                      key={minorIndex}
+                      title={
+                        <>
+                          <FolderRoundedIcon />
+                          {minorClass}
+                        </>
+                      }
+                      className="dropDownItemsClasseMenor"
+                      show={openDropdowns[category]?.[majorClass]?.[minorClass]}
+                      onToggle={() =>
+                        toggleDropdown(category, majorClass, null, minorClass)
+                      }
+                    >
+                      {groupedData[category][majorClass].classesMenores[
+                        minorClass
+                      ].map((nomenclature, j) => (
+                        <NavDropdown.Item
+                          key={j}
+                          className="containerNomeclaturaPedea"
+                        >
+                          <Form.Check type="checkbox" label={nomenclature} />
+                        </NavDropdown.Item>
+                      ))}
+                    </NavDropdown>
+                  ))}
+              </NavDropdown>
+            ))}
+          </NavDropdown>
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -108,6 +189,8 @@ BodyNavSystem.propTypes = {
     PropTypes.shape({
       categoria_de_informacao: PropTypes.string.isRequired,
       classe_maior: PropTypes.string.isRequired,
+      subclasse_maior: PropTypes.string,
+      classe_menor: PropTypes.string,
       nomenclatura_pedea: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired
     })
