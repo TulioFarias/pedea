@@ -15,6 +15,7 @@ import BodyNavSystem from './systemBodyNav'
 function NavOptions() {
   const { t } = useTranslation()
   const [dataExplorer, setDataExplorer] = useState([])
+  const [selectedNomenclature, setSelectedNomenclature] = useState('')
 
   useEffect(() => {
     async function getInfoDataExplorer() {
@@ -29,6 +30,10 @@ function NavOptions() {
 
     getInfoDataExplorer()
   }, [])
+
+  const handleSelectChange = event => {
+    setSelectedNomenclature(event.target.value)
+  }
 
   const deactivateLayers = () => {
     const layers = mapInstance.getLayers().getArray()
@@ -61,7 +66,12 @@ function NavOptions() {
           {t('Explorador de Dados')}
         </Offcanvas.Title>
         <Form className="containerForm">
-          <Form.Control as="select" className="inputForm" aria-label="Search">
+          <Form.Control
+            as="select"
+            className="inputForm"
+            aria-label="Search"
+            onChange={handleSelectChange}
+          >
             <option value="">{t('Selecione uma camada...')}</option>
             {dataExplorer.map((item, index) => (
               <option key={index} value={item.nomenclatura_pedea}>
@@ -76,7 +86,10 @@ function NavOptions() {
 
         <Offcanvas.Body className="containerNav">
           <h2>{t('Categorias')}</h2>
-          <BodyNavSystem data={dataExplorer} />
+          <BodyNavSystem
+            data={dataExplorer}
+            selectedNomenclature={selectedNomenclature}
+          />
         </Offcanvas.Body>
       </Container>
 

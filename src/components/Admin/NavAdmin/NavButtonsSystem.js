@@ -157,9 +157,19 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
               className={`links-btnsNav ${
                 activeButton === 'DataExplorer' ? 'nav-link active' : 'nav-link'
               }`}
+              disabled={!admin}
             >
-              <TravelExploreRoundedIcon />
-              Explorador de Dados
+              {admin ? (
+                <>
+                  <TravelExploreRoundedIcon />
+                  Explorador de Dados
+                </>
+              ) : (
+                <div className="disableLink">
+                  <HttpsRoundedIcon />
+                  <p>Acesso restrito</p>
+                </div>
+              )}
             </Nav.Link>
           </motion.div>
         </Nav.Item>

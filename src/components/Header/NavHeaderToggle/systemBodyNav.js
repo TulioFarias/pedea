@@ -1,18 +1,39 @@
 import FolderOpenRoundedIcon from '@mui/icons-material/FolderOpenRounded'
 import FolderRoundedIcon from '@mui/icons-material/FolderRounded'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import '../../../sass/Header/navOffCanvas.scss'
 
-function BodyNavSystem({ data }) {
+function BodyNavSystem({ data, selectedNomenclature }) {
   const [openDropdowns, setOpenDropdowns] = useState({})
+  const [checkedNomenclatures, setCheckedNomenclatures] = useState({})
+
+  useEffect(() => {
+    const initialCheckedState = {}
+    data.forEach(item => {
+      if (item.nomenclatura_pedea === selectedNomenclature) {
+        initialCheckedState[item.nomenclatura_pedea] = true
+      } else {
+        initialCheckedState[item.nomenclatura_pedea] = false
+      }
+    })
+    setCheckedNomenclatures(initialCheckedState)
+  }, [data, selectedNomenclature])
+
+  const handleCheckboxChange = (e, nomenclature) => {
+    setCheckedNomenclatures(prevState => ({
+      ...prevState,
+      [nomenclature]: !prevState[nomenclature]
+    }))
+  }
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
       const newOpenDropdowns = { ...prevState }
+
       if (minorClass) {
         newOpenDropdowns[category] = {
           ...newOpenDropdowns[category],
@@ -44,6 +65,7 @@ function BodyNavSystem({ data }) {
       } else {
         newOpenDropdowns[category] = !newOpenDropdowns[category]
       }
+
       return newOpenDropdowns
     })
   }
@@ -149,6 +171,24 @@ function BodyNavSystem({ data }) {
                 show={openDropdowns[category]?.[majorClass]}
                 onToggle={() => toggleDropdown(category, majorClass)}
               >
+                {groupedData[category][majorClass].items &&
+                  groupedData[category][majorClass].items.map(
+                    (nomenclature, i) => (
+                      <NavDropdown.Item
+                        key={i}
+                        className="containerNomeclaturaPedea"
+                      >
+                        <Form.Check
+                          type="checkbox"
+                          label={nomenclature}
+                          onClick={e => e.stopPropagation()}
+                          onChange={e => handleCheckboxChange(e, nomenclature)}
+                          checked={checkedNomenclatures[nomenclature]}
+                        />
+                      </NavDropdown.Item>
+                    )
+                  )}
+
                 {Object.keys(
                   groupedData[category][majorClass].subClassesMaiores
                 ).map((subMajorClass, subIndex) => (
@@ -174,6 +214,28 @@ function BodyNavSystem({ data }) {
                       toggleDropdown(category, majorClass, subMajorClass)
                     }
                   >
+                    {groupedData[category][majorClass].subClassesMaiores[
+                      subMajorClass
+                    ].items &&
+                      groupedData[category][majorClass].subClassesMaiores[
+                        subMajorClass
+                      ].items.map((nomenclature, i) => (
+                        <NavDropdown.Item
+                          key={i}
+                          className="containerNomeclaturaPedea"
+                        >
+                          <Form.Check
+                            type="checkbox"
+                            label={nomenclature}
+                            onClick={e => e.stopPropagation()}
+                            onChange={e =>
+                              handleCheckboxChange(e, nomenclature)
+                            }
+                            checked={checkedNomenclatures[nomenclature]}
+                          />
+                        </NavDropdown.Item>
+                      ))}
+
                     {Object.keys(
                       groupedData[category][majorClass].subClassesMaiores[
                         subMajorClass
@@ -215,43 +277,18 @@ function BodyNavSystem({ data }) {
                             key={j}
                             className="containerNomeclaturaPedea"
                           >
-                            <Form.Check type="checkbox" label={nomenclature} />
+                            <Form.Check
+                              type="checkbox"
+                              label={nomenclature}
+                              onClick={e => e.stopPropagation()}
+                              onChange={e =>
+                                handleCheckboxChange(e, nomenclature)
+                              }
+                              checked={checkedNomenclatures[nomenclature]}
+                            />
                           </NavDropdown.Item>
                         ))}
                       </NavDropdown>
-                    ))}
-                  </NavDropdown>
-                ))}
-                {Object.keys(
-                  groupedData[category][majorClass].classesMenores
-                ).map((minorClass, minorIndex) => (
-                  <NavDropdown
-                    key={minorIndex}
-                    title={
-                      <>
-                        {openDropdowns[category]?.[majorClass]?.[minorClass] ? (
-                          <FolderOpenRoundedIcon />
-                        ) : (
-                          <FolderRoundedIcon />
-                        )}
-                        {minorClass}
-                      </>
-                    }
-                    className="dropDownItemsClasseMenor"
-                    show={openDropdowns[category]?.[majorClass]?.[minorClass]}
-                    onToggle={() =>
-                      toggleDropdown(category, majorClass, null, minorClass)
-                    }
-                  >
-                    {groupedData[category][majorClass].classesMenores[
-                      minorClass
-                    ].map((nomenclature, j) => (
-                      <NavDropdown.Item
-                        key={j}
-                        className="containerNomeclaturaPedea"
-                      >
-                        <Form.Check type="checkbox" label={nomenclature} />
-                      </NavDropdown.Item>
                     ))}
                   </NavDropdown>
                 ))}
@@ -274,7 +311,8 @@ BodyNavSystem.propTypes = {
       nomenclatura_pedea: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  selectedNomenclature: PropTypes.string.isRequired
 }
 
 export default BodyNavSystem
