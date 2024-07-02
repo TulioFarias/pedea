@@ -72,9 +72,15 @@ function NavOptions() {
             aria-label="Search"
             onChange={handleSelectChange}
           >
-            <option value="">{t('Selecione uma camada...')}</option>
+            <option value="" className="optionsValues">
+              {t('Selecione uma camada...')}
+            </option>
             {dataExplorer.map((item, index) => (
-              <option key={index} value={item.nomenclatura_pedea}>
+              <option
+                key={index}
+                value={item.nomenclatura_pedea}
+                className="optionsValues"
+              >
                 {item.nomenclatura_pedea}
               </option>
             ))}

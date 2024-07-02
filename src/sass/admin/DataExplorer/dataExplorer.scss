@@ -1,0 +1,39 @@
+.ContainerAllInfoDataExplorer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .ContainerButtonsDataExplorer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    width: 20vw;
+    height: 82vh;
+  }
+  
+  .ContainerTableRotulosData {
+    width: 60vw;
+    height: 82vh;
+    padding: 10px;
+    background-color: #2c403f;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    overflow: auto;
+  
+    h2 {
+      font-weight: 900;
+      font-size: 28px;
+    }
+  }
+  
+  .TableViewRotulos {
+    
+  }
+  
+  .TableView {
+    height: 100%; 
+    overflow: auto; 
+  }

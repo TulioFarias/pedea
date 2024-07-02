@@ -14,21 +14,11 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   useEffect(() => {
     const initialCheckedState = {}
     data.forEach(item => {
-      if (item.nomenclatura_pedea === selectedNomenclature) {
-        initialCheckedState[item.nomenclatura_pedea] = true
-      } else {
-        initialCheckedState[item.nomenclatura_pedea] = false
-      }
+      initialCheckedState[item.nomenclatura_pedea] =
+        item.nomenclatura_pedea === selectedNomenclature
     })
     setCheckedNomenclatures(initialCheckedState)
   }, [data, selectedNomenclature])
-
-  const handleCheckboxChange = (e, nomenclature) => {
-    setCheckedNomenclatures(prevState => ({
-      ...prevState,
-      [nomenclature]: !prevState[nomenclature]
-    }))
-  }
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
@@ -68,6 +58,13 @@ function BodyNavSystem({ data, selectedNomenclature }) {
 
       return newOpenDropdowns
     })
+  }
+
+  const handleCheckboxChange = (e, nomenclature) => {
+    setCheckedNomenclatures(prevState => ({
+      ...prevState,
+      [nomenclature]: !prevState[nomenclature]
+    }))
   }
 
   const groupByCategory = array => {
@@ -272,9 +269,9 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                       >
                         {groupedData[category][majorClass].subClassesMaiores[
                           subMajorClass
-                        ][minorClass].map((nomenclature, j) => (
+                        ][minorClass].map((nomenclature, i) => (
                           <NavDropdown.Item
-                            key={j}
+                            key={i}
                             className="containerNomeclaturaPedea"
                           >
                             <Form.Check
@@ -302,16 +299,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
 }
 
 BodyNavSystem.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      categoria_de_informacao: PropTypes.string.isRequired,
-      classe_maior: PropTypes.string.isRequired,
-      subclasse_maior: PropTypes.string,
-      classe_menor: PropTypes.string,
-      nomenclatura_pedea: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired
-    })
-  ).isRequired,
+  data: PropTypes.array.isRequired,
   selectedNomenclature: PropTypes.string.isRequired
 }
 
