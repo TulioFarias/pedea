@@ -1,10 +1,15 @@
+import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded'
 import React from 'react'
+import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
 
 function AddInfoDataExplorer() {
   return (
     <>
       <div>
-        <button>Add</button>
+        <button className="ButtonAddDataExplorer">
+          <PlaylistAddRoundedIcon />
+          Adicionar
+        </button>
       </div>
     </>
   )
