@@ -22,6 +22,8 @@ function TableViewRotulosData() {
 
   return (
     <div className="ContainerTableRotulosData">
+      <h2>Tabela ativa de rotulos do explorador de dados:</h2>
+      <hr />
       <div className="TableViewRotulos">
         <Table striped bordered hover>
           <thead>
