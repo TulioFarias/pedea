@@ -76,21 +76,33 @@ function ModalChangePassword({ showPassword, setShowPassword }) {
               <Form.Label className="labelInputPassword">
                 Senha antiga:
               </Form.Label>
-              <Form.Control type="password" {...register('oldPassword')} />
+              <Form.Control
+                type="password"
+                {...register('oldPassword')}
+                isInvalid={errors.oldPassword}
+              />
               <p className="txtErrorPassword">{errors.oldPassword?.message}</p>
             </Form.Group>
             <Form.Group controlId="formNewPassword">
               <Form.Label className="labelInputPassword">
                 Nova senha:
               </Form.Label>
-              <Form.Control type="password" {...register('newPassword')} />
+              <Form.Control
+                type="password"
+                {...register('newPassword')}
+                isInvalid={errors.newPassword}
+              />
               <p className="txtErrorPassword">{errors.newPassword?.message}</p>
             </Form.Group>
             <Form.Group controlId="formConfirmNewPassword">
               <Form.Label className="labelInputPassword">
                 Confirme a nova senha:
               </Form.Label>
-              <Form.Control type="password" {...register('confirmPassword')} />
+              <Form.Control
+                type="password"
+                {...register('confirmPassword')}
+                isInvalid={errors.confirmPassword}
+              />
               <p className="txtErrorPassword">
                 {errors.confirmPassword?.message}
               </p>

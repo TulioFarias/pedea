@@ -12,7 +12,7 @@ function DataExplorer() {
       <div className="containerWrapperOptions">
         <div className="ContainerAllInfoDataExplorer">
           <div className="ContainerButtonsDataExplorer">
-            <p className="instructions">
+            <p>
               Use os botões abaixo para adicionar, editar ou excluir rótulos no
               explorador de dados.
             </p>

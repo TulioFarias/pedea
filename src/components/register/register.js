@@ -118,6 +118,7 @@ function RegisterUser() {
                         value={form.name}
                         onChange={changeForm}
                         placeholder="Seu nome"
+                        isInvalid={errors.name}
                       />
                       <p className="error-txtRegister">
                         {errors.name?.message}
@@ -138,6 +139,7 @@ function RegisterUser() {
                         value={form.email}
                         onChange={changeForm}
                         placeholder="exemplo@email.com"
+                        isInvalid={errors.email}
                       />
                       <p className="error-txtRegister">
                         {errors.email?.message}
@@ -161,6 +163,7 @@ function RegisterUser() {
                         value={form.password}
                         onChange={changeForm}
                         placeholder="Mínimo de 6 caracteres..."
+                        isInvalid={errors.password}
                       />
                       <p className="error-txtRegister">
                         {errors.password?.message}
@@ -184,6 +187,7 @@ function RegisterUser() {
                         value={form.confirmPassword}
                         onChange={changeForm}
                         placeholder="Por favor, confirme sua senha..."
+                        isInvalid={errors.confirmPassword}
                       />
                       <p className="error-txtRegister">
                         {errors.confirmPassword?.message}

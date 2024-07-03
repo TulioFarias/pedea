@@ -13,16 +13,18 @@ function TableViewRotulosData() {
         const sortedData = data.sort((a, b) => a.id - b.id)
         setDataExplorer(sortedData)
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Erro ao buscar os dados do usuário:', error)
       }
     }
 
     getInfoDataExplorer()
   }, [])
 
+  console.log(dataExplorer)
+
   return (
     <div className="ContainerTableRotulosData">
-      <h2>Tabela ativa de rotulos do explorador de dados:</h2>
+      <h2>Tabela ativa de rótulos do explorador de dados:</h2>
       <hr />
       <div className="TableViewRotulos">
         <Table striped bordered hover>
@@ -36,6 +38,10 @@ function TableViewRotulosData() {
               <th>Nomenclatura PEDEA</th>
               <th>Fonte</th>
               <th>Coluna Atributo</th>
+              <th>Link Drive SHP</th>
+              <th>Link Drive KML</th>
+              <th>Criado em</th>
+              <th>Atualizado em</th>
             </tr>
           </thead>
           <tbody>
@@ -49,6 +55,10 @@ function TableViewRotulosData() {
                 <td>{item.nomenclatura_pedea}</td>
                 <td>{item.fonte}</td>
                 <td>{item.coluna_atributo}</td>
+                <td>{item.link_drive_shp}</td>
+                <td>{item.link_drive_kml}</td>
+                <td>{item.createdAt}</td>
+                <td>{item.updatedAt}</td>
               </tr>
             ))}
           </tbody>
