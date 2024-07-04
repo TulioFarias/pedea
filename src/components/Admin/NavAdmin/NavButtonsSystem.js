@@ -149,6 +149,34 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
+              href="/Rotulos"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Rotulos')
+              }}
+              className={`links-btnsNav ${
+                activeButton === 'Rotulos' ? 'nav-link active' : 'nav-link'
+              }`}
+              disabled={!admin}
+            >
+              {admin ? (
+                <>
+                  <AppsRoundedIcon />
+                  Rótulos
+                </>
+              ) : (
+                <div className="disableLink">
+                  <HttpsRoundedIcon />
+                  <p>Acesso restrito</p>
+                </div>
+              )}
+            </Nav.Link>
+          </motion.div>
+        </Nav.Item>
+
+        <Nav.Item className="OptionsItems">
+          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+            <Nav.Link
               href="/DataExplorer"
               onClick={e => {
                 e.preventDefault()
@@ -191,34 +219,6 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
                 <>
                   <QuestionAnswerRoundedIcon />
                   FAQ
-                </>
-              ) : (
-                <div className="disableLink">
-                  <HttpsRoundedIcon />
-                  <p>Acesso restrito</p>
-                </div>
-              )}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
-
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/Rotulos"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('Rotulos')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'Rotulos' ? 'nav-link active' : 'nav-link'
-              }`}
-              disabled={!admin}
-            >
-              {admin ? (
-                <>
-                  <AppsRoundedIcon />
-                  Rótulos
                 </>
               ) : (
                 <div className="disableLink">

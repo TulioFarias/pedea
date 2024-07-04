@@ -17,6 +17,7 @@ function ContainerGetInfoRotulos() {
   })
   const [rotulosData, setRotulosData] = useState([])
   const [filesRotulosData, setFilesRotulosData] = useState([])
+  const [valuesDataFileRotulos, setValuesDataFileRotulos] = useState([])
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória')
   })
@@ -59,6 +60,10 @@ function ContainerGetInfoRotulos() {
 
         if (responseFiles.data.result) {
           setFilesRotulosData([responseFiles.data.result])
+        }
+
+        if (responseFiles.data.dataRotulos) {
+          setValuesDataFileRotulos(responseFiles.data.dataRotulos)
         } else {
           console.log('Arquivos não encontrados para esta chave.')
         }
@@ -71,6 +76,8 @@ function ContainerGetInfoRotulos() {
       console.log(error)
     }
   }
+
+  console.log(valuesDataFileRotulos)
 
   const formatarDataLegivel = dataString => {
     const meses = [
@@ -150,28 +157,24 @@ function ContainerGetInfoRotulos() {
               <div key={value.id}>
                 <p>Aqui estão os valores encontrados:</p>
                 <Table striped bordered hover>
-                  <div key={value.id}>
-                    <Table striped bordered hover>
-                      <thead>
-                        <tr className="tableResultHeader">
-                          <th>ID</th>
-                          <th>Chave</th>
-                          <th>Português</th>
-                          <th>Inglês</th>
-                          <th>Espanhol</th>
-                        </tr>
-                      </thead>
-                      <tbody className="containerResultRotulosTable">
-                        <tr>
-                          <td>{value.id}</td>
-                          <td>{value.key}</td>
-                          <td>{value.pt_br}</td>
-                          <td>{value.en}</td>
-                          <td>{value.es}</td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </div>
+                  <thead>
+                    <tr className="tableResultHeader">
+                      <th>ID</th>
+                      <th>Chave</th>
+                      <th>Português</th>
+                      <th>Inglês</th>
+                      <th>Espanhol</th>
+                    </tr>
+                  </thead>
+                  <tbody className="containerResultRotulosTable">
+                    <tr>
+                      <td>{value.id}</td>
+                      <td>{value.key}</td>
+                      <td>{value.pt_br}</td>
+                      <td>{value.en}</td>
+                      <td>{value.es}</td>
+                    </tr>
+                  </tbody>
                 </Table>
               </div>
             ))}
@@ -223,10 +226,59 @@ function ContainerGetInfoRotulos() {
                 </div>
               ))}
           </div>
+          <hr className="LineHR" />
+
+          {valuesDataFileRotulos && valuesDataFileRotulos.length > 0 && (
+            <div className="containerTableResultValues">
+              <p>
+                Valores encontrados relacionados à chave no explorador de dados:
+              </p>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Categoria de Informação</th>
+                    <th>Classe Maior</th>
+                    <th>Subclasse Maior</th>
+                    <th>Classe Menor</th>
+                    <th>Coluna Atributo</th>
+                    <th>Fonte</th>
+                    <th>Nomenclatura GreenCloud</th>
+                    <th>Nomenclatura PEDEA</th>
+                    <th>Link Drive SHP</th>
+                    <th>Link Drive KML</th>
+                    <th>Data de Criação</th>
+                    <th>Última Atualização</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {valuesDataFileRotulos
+                    .slice()
+                    .sort((a, b) => parseInt(a.id) - parseInt(b.id))
+                    .map(value => (
+                      <tr key={value.id}>
+                        <td>{value.id}</td>
+                        <td>{value.categoria_de_informacao}</td>
+                        <td>{value.classe_maior}</td>
+                        <td>{value.sub_classe_maior}</td>
+                        <td>{value.classe_menor}</td>
+                        <td>{value.coluna_atributo}</td>
+                        <td>{value.fonte}</td>
+                        <td>{value.nomenclatura_greencloud}</td>
+                        <td>{value.nomenclatura_pedea}</td>
+                        <td>{value.link_drive_shp}</td>
+                        <td>{value.link_drive_kml}</td>
+                        <td>{formatarDataLegivel(value.createdAt)}</td>
+                        <td>{formatarDataLegivel(value.updatedAt)}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </div>
+          )}
         </div>
       </div>
     </>
   )
 }
-
 export default ContainerGetInfoRotulos

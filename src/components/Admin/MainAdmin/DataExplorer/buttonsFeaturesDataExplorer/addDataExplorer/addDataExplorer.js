@@ -2,7 +2,7 @@ import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded'
 import React, { useState } from 'react'
 
 import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
-import ModalAddDataExplorer from './modalAddDataExplorer'
+import ModalAddDataExplorer from './modalDataExplorer/modalAddDataExplorer'
 
 function AddInfoDataExplorer() {
   const [showModal, setShowModal] = useState(false)

@@ -1,11 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 
+import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
+import dataValues from './values'
+
 function ModalAddDataExplorer({ show, handleClose }) {
+  const [subcategorias, setSubcategorias] = useState([])
+
   const schema = Yup.object().shape({
     categoriaDeInformacao: Yup.string().required('Campo obrigatório'),
     classeMaior: Yup.string().required('Campo obrigatório'),
@@ -28,6 +33,10 @@ function ModalAddDataExplorer({ show, handleClose }) {
     resolver: yupResolver(schema)
   })
 
+  const handleCategoriaChange = categoria => {
+    setSubcategorias(dataValues.Categorias[categoria] || [])
+  }
+
   const onSubmit = data => {
     console.log(data)
     handleClose()
@@ -36,17 +45,30 @@ function ModalAddDataExplorer({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose} size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>Adicionar Informação ao Explorer de Dados</Modal.Title>
+        <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <p>
+          Crie um rótulo no explorador de dados preenchendo os campos abaixo:
+        </p>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group controlId="categoriaDeInformacao">
             <Form.Label>Categoria de Informação</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               {...register('categoriaDeInformacao')}
+              onChange={e => {
+                handleCategoriaChange(e.target.value)
+              }}
               isInvalid={errors.categoriaDeInformacao}
-            />
+            >
+              <option value="">Selecione...</option>
+              {Object.keys(dataValues.Categorias).map(categoria => (
+                <option key={categoria} value={categoria}>
+                  {categoria}
+                </option>
+              ))}
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
               {errors.categoriaDeInformacao?.message}
             </Form.Control.Feedback>
@@ -55,10 +77,17 @@ function ModalAddDataExplorer({ show, handleClose }) {
           <Form.Group controlId="classeMaior">
             <Form.Label>Classe Maior</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               {...register('classeMaior')}
               isInvalid={errors.classeMaior}
-            />
+            >
+              <option value="">Selecione...</option>
+              {subcategorias.map(subcategoria => (
+                <option key={subcategoria} value={subcategoria}>
+                  {subcategoria}
+                </option>
+              ))}
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
               {errors.classeMaior?.message}
             </Form.Control.Feedback>
