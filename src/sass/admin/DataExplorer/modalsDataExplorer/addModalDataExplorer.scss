@@ -1,0 +1,62 @@
+#ContainerAddDataExplorer {
+    color: rgb(63, 63, 63);
+  
+   
+}
+
+#ContainerAddDataExplorer .modal-content {
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    width: max-content;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    p{
+        color: white;
+    }
+}
+   
+
+
+.BodyModalAdd {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px; 
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+    height: max-content;
+
+}
+
+.inputDataExplorer{
+    width: 300px;
+}
+
+
+.BtnAddDataExplorer{
+    background-color: rgb(44, 64, 63);
+    color: white;
+    border: none;
+    height: 50px;
+    width: 300px;
+    margin-top: 110px;
+    position: relative;
+    right: 325px;
+
+    &:hover{
+        background-color: gray;
+        color: rgb(44, 64, 63);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.BtnCloseAddDataExplorer{
+    background-color: rgb(88, 88, 88);
+    color: white;
+    border: none;
+    position: relative;
+    left: 850px;
+    top: 10px;
+}
+

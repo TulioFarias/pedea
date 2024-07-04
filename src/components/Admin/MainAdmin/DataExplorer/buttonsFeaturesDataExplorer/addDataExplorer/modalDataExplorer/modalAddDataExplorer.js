@@ -16,6 +16,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
     classeMaior: Yup.string().required('Campo obrigatório'),
     subclasseMaior: Yup.string().required('Campo obrigatório'),
     classeMenor: Yup.string().required('Campo obrigatório'),
+    nomeclaturaGreenCloud: Yup.string().required('Campo obrigatório'),
     nomenclaturaPedea: Yup.string().required('Campo obrigatório'),
     fonte: Yup.string().required('Campo obrigatório'),
     colunaAtributo: Yup.string().required('Campo obrigatório'),
@@ -43,146 +44,188 @@ function ModalAddDataExplorer({ show, handleClose }) {
   }
 
   return (
-    <Modal show={show} onHide={handleClose} size="lg">
-      <Modal.Header closeButton>
-        <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>
-          Crie um rótulo no explorador de dados preenchendo os campos abaixo:
-        </p>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group controlId="categoriaDeInformacao">
-            <Form.Label>Categoria de Informação</Form.Label>
-            <Form.Control
-              as="select"
-              {...register('categoriaDeInformacao')}
-              onChange={e => {
-                handleCategoriaChange(e.target.value)
-              }}
-              isInvalid={errors.categoriaDeInformacao}
+    <>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        size="lg"
+        id="ContainerAddDataExplorer"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>
+            Crie um rótulo no explorador de dados preenchendo os campos abaixo:
+          </p>
+          <Form onSubmit={handleSubmit(onSubmit)} className="BodyModalAdd">
+            <Form.Group controlId="categoriaDeInformacao">
+              <Form.Label>Categoria de Informação</Form.Label>
+              <Form.Control
+                as="select"
+                {...register('categoriaDeInformacao')}
+                onChange={e => {
+                  handleCategoriaChange(e.target.value)
+                }}
+                isInvalid={errors.categoriaDeInformacao}
+                className="inputDataExplorer"
+              >
+                <option value="">Selecione...</option>
+                {Object.keys(dataValues.Categorias).map(categoria => (
+                  <option key={categoria} value={categoria}>
+                    {categoria}
+                  </option>
+                ))}
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                {errors.categoriaDeInformacao?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="classeMaior">
+              <Form.Label>Classe Maior</Form.Label>
+              <Form.Control
+                as="select"
+                {...register('classeMaior')}
+                isInvalid={errors.classeMaior}
+                className="inputDataExplorer"
+              >
+                <option value="">Selecione...</option>
+                {subcategorias.map(subcategoria => (
+                  <option key={subcategoria} value={subcategoria}>
+                    {subcategoria}
+                  </option>
+                ))}
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                {errors.classeMaior?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="subclasseMaior">
+              <Form.Label>Subclasse Maior</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('subclasseMaior')}
+                isInvalid={errors.subclasseMaior}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.subclasseMaior?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="classeMenor">
+              <Form.Label>Classe Menor</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('classeMenor')}
+                isInvalid={errors.classeMenor}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.classeMenor?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="nomenclaturaPedea">
+              <Form.Label>Nomenclatura Green Cloud</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('nomenclaturaGreenCloud')}
+                isInvalid={errors.nomeclaturaGreenCloud}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.nomeclaturaGreenCloud?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="nomenclaturaPedea">
+              <Form.Label>Nomenclatura PEDEA</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('nomenclaturaPedea')}
+                isInvalid={errors.nomenclaturaPedea}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.nomenclaturaPedea?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="fonte">
+              <Form.Label>Fonte</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('fonte')}
+                isInvalid={errors.fonte}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.fonte?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="colunaAtributo">
+              <Form.Label>Coluna Atributo</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('colunaAtributo')}
+                isInvalid={errors.colunaAtributo}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.colunaAtributo?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="linkDriveShp">
+              <Form.Label>Link Drive SHP</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('linkDriveShp')}
+                isInvalid={errors.linkDriveShp}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.linkDriveShp?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="linkDriveKml">
+              <Form.Label>Link Drive KML</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('linkDriveKml')}
+                isInvalid={errors.linkDriveKml}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.linkDriveKml?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Button
+              variant="primary"
+              type="submit"
+              className="BtnAddDataExplorer"
             >
-              <option value="">Selecione...</option>
-              {Object.keys(dataValues.Categorias).map(categoria => (
-                <option key={categoria} value={categoria}>
-                  {categoria}
-                </option>
-              ))}
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              {errors.categoriaDeInformacao?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
+              Adicionar
+            </Button>
+          </Form>
 
-          <Form.Group controlId="classeMaior">
-            <Form.Label>Classe Maior</Form.Label>
-            <Form.Control
-              as="select"
-              {...register('classeMaior')}
-              isInvalid={errors.classeMaior}
-            >
-              <option value="">Selecione...</option>
-              {subcategorias.map(subcategoria => (
-                <option key={subcategoria} value={subcategoria}>
-                  {subcategoria}
-                </option>
-              ))}
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              {errors.classeMaior?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="subclasseMaior">
-            <Form.Label>Subclasse Maior</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('subclasseMaior')}
-              isInvalid={errors.subclasseMaior}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.subclasseMaior?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="classeMenor">
-            <Form.Label>Classe Menor</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('classeMenor')}
-              isInvalid={errors.classeMenor}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.classeMenor?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="nomenclaturaPedea">
-            <Form.Label>Nomenclatura PEDEA</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('nomenclaturaPedea')}
-              isInvalid={errors.nomenclaturaPedea}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.nomenclaturaPedea?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="fonte">
-            <Form.Label>Fonte</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('fonte')}
-              isInvalid={errors.fonte}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.fonte?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="colunaAtributo">
-            <Form.Label>Coluna Atributo</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('colunaAtributo')}
-              isInvalid={errors.colunaAtributo}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.colunaAtributo?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="linkDriveShp">
-            <Form.Label>Link Drive SHP</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('linkDriveShp')}
-              isInvalid={errors.linkDriveShp}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.linkDriveShp?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="linkDriveKml">
-            <Form.Label>Link Drive KML</Form.Label>
-            <Form.Control
-              type="text"
-              {...register('linkDriveKml')}
-              isInvalid={errors.linkDriveKml}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.linkDriveKml?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
-            Adicionar
+          <Button
+            variant="primary"
+            className="BtnCloseAddDataExplorer"
+            onClick={handleClose}
+          >
+            Fechar
           </Button>
-        </Form>
-      </Modal.Body>
-    </Modal>
+        </Modal.Body>
+      </Modal>
+    </>
   )
 }
 
