@@ -20,8 +20,6 @@ function TableViewRotulosData() {
     getInfoDataExplorer()
   }, [])
 
-  console.log(dataExplorer)
-
   return (
     <div className="ContainerTableRotulosData">
       <h2>Tabela ativa de rótulos do explorador de dados:</h2>
