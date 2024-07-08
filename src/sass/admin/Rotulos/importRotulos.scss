@@ -3,17 +3,31 @@
 .containerImportRotulos{
     background-color: #cacaca;
     border-radius: 10px;
-    width: 51vw;
+    width: 45vw;
     padding: 10px;
+    
    
+}
+
+.customContainerImporRotulos{
+    padding: 10px;
+    
+
+}
+
+.containerInputsAndLabels{
+    display: flex;
+    flex-direction: column;
 }
 
 
 .customFormsFileImports{
     display: flex;
-    gap: 15px;
+    gap: 12px;
 
 }
+
+
 
 .titleFilesImports{
     color: gray;
@@ -23,8 +37,7 @@
 .LabelRotulosImports{
     color: gray;
     margin-left: 5px;
-    font-size: 14px!important;
-    width: 180px;
+    font-size: 12px!important;
 
    
 }
@@ -53,7 +66,7 @@
 
     &::placeholder{
         color: gray;
-        font-size: 12px;
+        font-size: 11px;
     }
     
 }
@@ -61,9 +74,7 @@
 
 
 .BtnSubmitImport{
-    position: relative;
-    width: 100px;
     height: 40px;
-    top: 30px;
+    margin-top: 30px;
 }
 

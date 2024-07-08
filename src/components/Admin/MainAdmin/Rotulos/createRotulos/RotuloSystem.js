@@ -5,6 +5,8 @@ import '../../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
+import { Tooltip } from '@mui/material'
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 
 import apiPEDEA from '../../../../../services/api'
 import ContainerInfoRotulos from '../changeTableView/TableInfoRotulos'
@@ -98,6 +100,15 @@ function CreateRotulosSystem() {
     loadRotulosData()
   }, [])
 
+  const infoUserTutorial = {
+    createRotuos: {
+      key: 'Para criar uma chave para um rótulo com nome à sua escolha, é necessário definir os valores em três idiomas: português, inglês e espanhol. ',
+      pt: 'Escreva um valor para esse campo em português.',
+      en: 'Escreva um valor para esse campo em inglês.',
+      es: 'Escreva um valor para esse campo em espanhol'
+    }
+  }
+
   return (
     <Container fluid className="containerWrapperOptions">
       <div className="ContainerAllRotulosOptions">
@@ -109,7 +120,16 @@ function CreateRotulosSystem() {
 
             <div className="containersLabelsFormRegisterRotulos">
               <Form.Group>
-                <Form.Label className="LabelRotulos">Chave:</Form.Label>
+                <Form.Label className="LabelRotulos">
+                  Chave:
+                  <Tooltip
+                    title={infoUserTutorial.createRotuos.key}
+                    className="customToltip"
+                    placement="right"
+                  >
+                    <InfoRoundedIcon />
+                  </Tooltip>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Digite a chave"
@@ -122,7 +142,16 @@ function CreateRotulosSystem() {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label className="LabelRotulos">Português:</Form.Label>
+                <Form.Label className="LabelRotulos">
+                  Português:
+                  <Tooltip
+                    title={infoUserTutorial.createRotuos.pt}
+                    className="customToltip"
+                    placement="right"
+                  >
+                    <InfoRoundedIcon />
+                  </Tooltip>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Digite valor em português"
@@ -135,7 +164,16 @@ function CreateRotulosSystem() {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label className="LabelRotulos">Inglês:</Form.Label>
+                <Form.Label className="LabelRotulos">
+                  Inglês:
+                  <Tooltip
+                    title={infoUserTutorial.createRotuos.en}
+                    className="customToltip"
+                    placement="right"
+                  >
+                    <InfoRoundedIcon />
+                  </Tooltip>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Digite valor em inglês"
@@ -148,7 +186,16 @@ function CreateRotulosSystem() {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label className="LabelRotulos">Espanhol:</Form.Label>
+                <Form.Label className="LabelRotulos">
+                  Espanhol:
+                  <Tooltip
+                    title={infoUserTutorial.createRotuos.es}
+                    className="customToltip"
+                    placement="right"
+                  >
+                    <InfoRoundedIcon />
+                  </Tooltip>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Digite valor em espanhol"

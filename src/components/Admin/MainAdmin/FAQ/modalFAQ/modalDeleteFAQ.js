@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import '../../../../../../sass/admin/FAQ/modalsFAQ.scss'
-import apiPEDEA from '../../../../../../services/api'
+import '../../../../../sass/admin/FAQ/modalsFAQ.scss'
+import apiPEDEA from '../../../../../services/api'
 
 function ModalFAQDelete({ setOpenModalDelete, openModalDelete, idEditValue }) {
   const schema = Yup.object().shape({

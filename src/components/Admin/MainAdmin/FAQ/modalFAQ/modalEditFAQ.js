@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import apiPEDEA from '../../../../../services/api'
-import '../../../../../../sass/admin/FAQ/modalsFAQ.scss'
+import '../../../../../sass/admin/FAQ/modalsFAQ.scss'
 
 function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
   const [valueEditFAQ, setValueEditFAQ] = useState({

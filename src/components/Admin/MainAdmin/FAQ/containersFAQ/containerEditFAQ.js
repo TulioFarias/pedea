@@ -5,8 +5,8 @@ import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 
 import apiPEDEA from '../../../../../services/api'
-import ModalFAQDelete from './modalFAQ/modalDeleteFAQ'
-import ModalEditFAQ from './modalFAQ/modalEditFAQ'
+import ModalFAQDelete from '../modalFAQ/modalDeleteFAQ'
+import ModalEditFAQ from '../modalFAQ/modalEditFAQ'
 
 function ShowContainerEditFAQ() {
   const [valuesFAQ, setValuesFAQ] = useState([])
