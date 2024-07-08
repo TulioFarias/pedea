@@ -67,6 +67,24 @@
     }
 }
 
+.ActionCollumCustomRotulosTable{
+    display: flex;
+    gap: 20px;
+}
+
+.ContainersRegisterFileRotulos{
+    display: flex;
+    gap: 50px;
+    margin-top: 15px;
+    
+}
+
+.ContainerGetWithKeyRotulos{
+    margin-top: 15px;
+   
+}
+
+
 .containerTableInfoRotulos{
     width: 100vw;
     height: 83vh;
@@ -153,22 +171,40 @@
     }
 }
 
-.ActionCollumCustomRotulosTable{
+.containerBtnsTableView{
     display: flex;
-    gap: 20px;
+    flex-direction: row;
+    gap: 10px;
+
+    :hover{
+        transform: scale(1.04);
+    }
+
 }
 
-.ContainersRegisterFileRotulos{
-    display: flex;
-    gap: 50px;
-    margin-top: 15px;
-    
+.btnEditCustom{
+    padding: 5px;
+    background-color:  rgba(44, 64, 63, 0.726);
+    border: none;
+    border-radius: 10px;
+    color: white;
 }
 
-.ContainerGetWithKeyRotulos{
-    margin-top: 15px;
-   
+.btnRemoveCustom{
+    padding: 5px;
+    background-color: rgb(78, 27, 27);
+    border: none;
+    border-radius: 10px;
+    color: white;
+
+    :hover{
+        transform: scale(1.04);
+       
+    }
 }
+
+
+
 
 
 

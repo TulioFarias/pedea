@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { Table } from 'react-bootstrap'
+import Paper from '@mui/material/Paper'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TablePagination from '@mui/material/TablePagination'
+import TableRow from '@mui/material/TableRow'
+import { useState, useEffect } from 'react'
+import * as React from 'react'
 
 import apiPEDEA from '../../../../services/api'
 
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([])
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   useEffect(() => {
     async function getInfoDataExplorer() {
@@ -20,47 +30,72 @@ function TableViewRotulosData() {
     getInfoDataExplorer()
   }, [])
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value)
+    setPage(0)
+  }
+
   return (
     <div className="ContainerTableRotulosData">
       <h2>Tabela ativa de rótulos do explorador de dados:</h2>
       <hr />
       <div className="TableViewRotulos">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Categoria de Informação</th>
-              <th>Classe Maior</th>
-              <th>Subclasse Maior</th>
-              <th>Classe Menor</th>
-              <th>Nomenclatura PEDEA</th>
-              <th>Fonte</th>
-              <th>Coluna Atributo</th>
-              <th>Link Drive SHP</th>
-              <th>Link Drive KML</th>
-              <th>Criado em</th>
-              <th>Atualizado em</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dataExplorer.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.categoria_de_informacao}</td>
-                <td>{item.classe_maior}</td>
-                <td>{item.sub_classe_maior}</td>
-                <td>{item.classe_menor}</td>
-                <td>{item.nomenclatura_pedea}</td>
-                <td>{item.fonte}</td>
-                <td>{item.coluna_atributo}</td>
-                <td>{item.link_drive_shp}</td>
-                <td>{item.link_drive_kml}</td>
-                <td>{item.createdAt}</td>
-                <td>{item.updatedAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <Paper className="ContainerTableView">
+          <TableContainer className="viewTable">
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Categoria de Informação</TableCell>
+                  <TableCell>Classe Maior</TableCell>
+                  <TableCell>Subclasse Maior</TableCell>
+                  <TableCell>Classe Menor</TableCell>
+                  <TableCell>Nomenclatura PEDEA</TableCell>
+                  <TableCell>Fonte</TableCell>
+                  <TableCell>Coluna Atributo</TableCell>
+                  <TableCell>Link Drive SHP</TableCell>
+                  <TableCell>Link Drive KML</TableCell>
+                  <TableCell>Criado em</TableCell>
+                  <TableCell>Atualizado em</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {dataExplorer
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(item => (
+                    <TableRow key={item.id} hover role="checkbox" tabIndex={-1}>
+                      <TableCell>{item.id}</TableCell>
+                      <TableCell>{item.categoria_de_informacao}</TableCell>
+                      <TableCell>{item.classe_maior}</TableCell>
+                      <TableCell>{item.sub_classe_maior}</TableCell>
+                      <TableCell>{item.classe_menor}</TableCell>
+                      <TableCell>{item.nomenclatura_pedea}</TableCell>
+                      <TableCell>{item.fonte}</TableCell>
+                      <TableCell>{item.coluna_atributo}</TableCell>
+                      <TableCell>{item.link_drive_shp}</TableCell>
+                      <TableCell>{item.link_drive_kml}</TableCell>
+                      <TableCell>{item.createdAt}</TableCell>
+                      <TableCell>{item.updatedAt}</TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={dataExplorer.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            className="containerPagination"
+          />
+        </Paper>
       </div>
     </div>
   )

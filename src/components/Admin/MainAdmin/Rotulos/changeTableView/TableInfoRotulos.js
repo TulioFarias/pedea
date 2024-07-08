@@ -1,10 +1,15 @@
 import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded'
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
-import React, { useEffect, useState } from 'react'
-import '../../../../../sass/admin/Rotulos/rotulos.scss'
-import { Table, Button } from 'react-bootstrap'
-import PropTypes from 'prop-types'
 import TuneRoundedIcon from '@mui/icons-material/TuneRounded'
+import Paper from '@mui/material/Paper'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import PropTypes from 'prop-types'
+import * as React from 'react'
 
 import api from '../../../../../services/api'
 import ModalConfirmDelete from '../modalsRotulos/modalDelete'
@@ -17,22 +22,21 @@ function ContainerInfoRotulos({
   setEditItemId,
   editItemId
 }) {
-  const [rotulosData, setRotulosData] = useState([])
-  const [tableFilesRotulos, setTableFilesRotulos] = useState([])
-  const [openModal, setOpenModal] = useState(false)
-  const [openModalEdit, setOpenModalEdit] = useState(false)
-  const [showSideBar, setShowSideBar] = useState(false)
-  const [selectedTable, setSelectedTable] = useState('TableRotulos')
+  const [rotulosData, setRotulosData] = React.useState([])
+  const [tableFilesRotulos, setTableFilesRotulos] = React.useState([])
+  const [openModal, setOpenModal] = React.useState(false)
+  const [openModalEdit, setOpenModalEdit] = React.useState(false)
+  const [showSideBar, setShowSideBar] = React.useState(false)
+  const [selectedTable, setSelectedTable] = React.useState('TableRotulos')
 
   const openSideBar = () => {
     setShowSideBar(!showSideBar)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function loadRotulosData() {
       try {
         const { data } = await api.get('/getAllRotulos')
-
         setRotulosData(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
@@ -42,7 +46,6 @@ function ContainerInfoRotulos({
     async function loadTableFilesRotulos() {
       try {
         const { data } = await api.get('/getAllRotulosCSV')
-
         setTableFilesRotulos(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
@@ -107,67 +110,75 @@ function ContainerInfoRotulos({
           />
         </div>
 
-        {selectedTable === 'TableRotulos' ? (
-          <Table striped bordered hover className="TableRotulos">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Chave</th>
-                <th>Português</th>
-                <th>Inglês</th>
-                <th>Espanhol</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rotulosData.map(item => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.key}</td>
-                  <td>{item.pt_br}</td>
-                  <td>{item.en}</td>
-                  <td>{item.es}</td>
-                  <td className="ActionCollumCustomRotulosTable">
-                    <Button
-                      variant="secondary"
-                      onClick={() => openEditModalNow(item.id)}
-                    >
-                      <EditNoteRoundedIcon />
-                    </Button>
-                    <Button variant="danger" onClick={openModalNow}>
-                      <DeleteSweepRoundedIcon />
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+        <TableContainer component={Paper} className="TableRotulos">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                {selectedTable === 'TableRotulos' ? (
+                  <>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Chave</TableCell>
+                    <TableCell>Português</TableCell>
+                    <TableCell>Inglês</TableCell>
+                    <TableCell>Espanhol</TableCell>
+                    <TableCell>Ações</TableCell>
+                  </>
+                ) : (
+                  <>
+                    <TableCell>Nome</TableCell>
+                    <TableCell>Chave ID</TableCell>
+                    <TableCell>Tipo do arquivo</TableCell>
+                    <TableCell>Arquivo</TableCell>
+                    <TableCell>Data de Criação</TableCell>
+                    <TableCell>Data de Atualização</TableCell>
+                  </>
+                )}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {selectedTable === 'TableRotulos'
+                ? rotulosData.map(item => (
+                    <TableRow key={item.id}>
+                      <TableCell>{item.id}</TableCell>
+                      <TableCell>{item.key}</TableCell>
+                      <TableCell>{item.pt_br}</TableCell>
+                      <TableCell>{item.en}</TableCell>
+                      <TableCell>{item.es}</TableCell>
+                      <TableCell>
+                        <div className="containerBtnsTableView">
+                          <button
+                            onClick={() => openEditModalNow(item.id)}
+                            className="btnEditCustom"
+                          >
+                            <EditNoteRoundedIcon />
+                          </button>
+                          <button
+                            onClick={openModalNow}
+                            className="btnRemoveCustom"
+                          >
+                            <DeleteSweepRoundedIcon />
+                          </button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                : tableFilesRotulos.map(item => (
+                    <TableRow key={item.id}>
+                      <TableCell>{item.name}</TableCell>
+                      <TableCell>{item.id_key}</TableCell>
+                      <TableCell>{item.type_files}</TableCell>
+                      <TableCell>{item.path}</TableCell>
+                      <TableCell>
+                        {formatarDataLegivel(item.createdAt)}
+                      </TableCell>
+                      <TableCell>
+                        {formatarDataLegivel(item.updatedAt)}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+            </TableBody>
           </Table>
-        ) : (
-          <Table striped bordered hover className="TableRotulos">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Chave ID</th>
-                <th>Tipo do arquivo</th>
-                <th>Arquivo</th>
-                <th>Data de Criação</th>
-                <th>Data de Atualização</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableFilesRotulos.map(item => (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>{item.id_key}</td>
-                  <td>{item.type_files}</td>
-                  <td>{item.path}</td>
-                  <td>{formatarDataLegivel(item.createdAt)}</td>
-                  <td>{formatarDataLegivel(item.updatedAt)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
+        </TableContainer>
 
         <ModalConfirmDelete
           openModal={openModal}
@@ -184,6 +195,7 @@ function ContainerInfoRotulos({
     </>
   )
 }
+
 ContainerInfoRotulos.propTypes = {
   tableUpdated: PropTypes.bool.isRequired,
   handleTableUpdate: PropTypes.func.isRequired,

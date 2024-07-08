@@ -39,6 +39,7 @@
     h2 {
       font-weight: 900;
       font-size: 28px;
+  
     }
 
     hr{
@@ -48,11 +49,12 @@
     }
   }
   
-  .TableViewRotulos {
-   
+  .ContainerTableView{
+    height: max-content;
+    overflow: auto;
+    
   }
-  
-  .TableView {
-    height: 100%; 
-    overflow: auto; 
+
+  .viewTable{
+    color: red;
   }
