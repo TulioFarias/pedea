@@ -116,6 +116,7 @@ function CreateRotulosSystem() {
                   onChange={handleChange}
                   {...register('key')}
                   className="InputRotulos"
+                  isInvalid={errors.key}
                 />
                 <p className="txtErrorPassword">{errors.key?.message}</p>
               </Form.Group>
@@ -128,6 +129,7 @@ function CreateRotulosSystem() {
                   onChange={handleChange}
                   {...register('pt_br')}
                   className="InputRotulos"
+                  isInvalid={errors.pt_br}
                 />
                 <p className="txtErrorPassword">{errors.pt_br?.message}</p>
               </Form.Group>
@@ -140,6 +142,7 @@ function CreateRotulosSystem() {
                   onChange={handleChange}
                   {...register('en')}
                   className="InputRotulos"
+                  isInvalid={errors.en}
                 />
                 <p className="txtErrorPassword">{errors.en?.message}</p>
               </Form.Group>
@@ -152,6 +155,7 @@ function CreateRotulosSystem() {
                   onChange={handleChange}
                   {...register('es')}
                   className="InputRotulos"
+                  isInvalid={errors.es}
                 />
                 <p className="txtErrorPassword">{errors.es?.message}</p>
               </Form.Group>

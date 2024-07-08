@@ -72,14 +72,14 @@ function EditaModalDataExplorer({ show, handleClose }) {
   }
 
   const onSubmit = async data => {
-    try {
-      await apiPEDEA.put(`/infoDataExplorer/${selectedId}`, data)
-      console.log('Dados atualizados com sucesso:', data)
-      reset()
-      handleClose()
-    } catch (error) {
-      console.error('Erro ao atualizar os dados:', error)
-    }
+    // try {
+    //   await apiPEDEA.put(`/infoDataExplorer/${selectedId}`, data)
+    //   console.log('Dados atualizados com sucesso:', data)
+    //   reset()
+    //   handleClose()
+    // } catch (error) {
+    //   console.error('Erro ao atualizar os dados:', error)
+    // }
   }
 
   return (

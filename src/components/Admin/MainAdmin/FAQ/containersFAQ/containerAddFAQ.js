@@ -64,6 +64,7 @@ function AddInfoFAQ() {
               placeholder="Digite a pergunta..."
               {...register('question')}
               className="AddinputFAQ"
+              isInvalid={errors.question}
             />
           </InputGroup>
           <p className="txtErrorAddFAQ">{errors.question?.message}</p>
@@ -77,6 +78,7 @@ function AddInfoFAQ() {
               placeholder="Digite a resposta..."
               {...register('answer')}
               className="AddinputFAQ"
+              isInvalid={errors.answer}
             />
           </Form.Group>
           <p className="txtErrorAddFAQ">{errors.answer?.message}</p>

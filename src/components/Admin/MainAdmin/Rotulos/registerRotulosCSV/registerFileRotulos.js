@@ -100,6 +100,7 @@ function ImportFileRotulos() {
                 {...register('name')}
                 onChange={handleChange}
                 placeholder="Escolha um nome para o arquivo."
+                isInvalid={errors.name}
               />
               <p className="txtErrorPassword">{errors.name?.message}</p>
             </Form.Group>
@@ -113,6 +114,7 @@ function ImportFileRotulos() {
                 {...register('fileType')}
                 value={findDataRotulos.fileType}
                 onChange={handleChange}
+                isInvalid={errors.type_files}
               >
                 <option value="" className="customOptionsSelect">
                   Selecione um tipo de arquivo
@@ -137,6 +139,7 @@ function ImportFileRotulos() {
                 className="inputRotulosImports"
                 {...register('file')}
                 onChange={handleFileChange}
+                isInvalid={errors.file}
               />
               <p className="txtErrorPassword">{errors.file?.message}</p>
             </Form.Group>
@@ -149,6 +152,7 @@ function ImportFileRotulos() {
                 {...register('key')}
                 onChange={handleChange}
                 placeholder="Escolha a chave para atribuir."
+                isInvalid={errors.key}
               />
               <p className="txtErrorPassword">{errors.key?.message}</p>
             </Form.Group>

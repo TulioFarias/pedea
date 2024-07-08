@@ -12,10 +12,33 @@
   
 }
 
-.custom-div{
+.ContainerBtnsHeader{
   margin-left: auto;
-  margin-right: 25px;
+  margin-right: 20px;
+  display: flex;
+  gap: 10px;
+
+
+
 }
+
+
+.HeaderBtbs{
+  background-color: transparent;
+  padding: 5px;
+  width: 50px;
+  color: rgb(187, 187, 187);
+  border: 1px solid;
+  border-radius: 5px;
+
+  :hover{
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;
+    
+  }
+}
+
+
 
 .my-navToogle-custom{
   margin-top: 130px;

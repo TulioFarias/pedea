@@ -62,6 +62,7 @@ function AddInfoChangeLog() {
                   placeholder="Digite o número da versão de atualização"
                   {...register('version')}
                   className="inputChangeLog"
+                  isInvalid={errors.version}
                 />
               </InputGroup>
               <p className="errorTxtChangeLog">{errors.version?.message}</p>
@@ -75,6 +76,7 @@ function AddInfoChangeLog() {
                 placeholder="Escreva a mensagem de atualização"
                 {...register('message')}
                 className="inputChangeLog"
+                isInvalid={errors.message}
               />
               <p className="errorTxtChangeLog">{errors.message?.message}</p>
             </Form.Group>

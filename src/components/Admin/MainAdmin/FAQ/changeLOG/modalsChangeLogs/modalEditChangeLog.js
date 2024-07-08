@@ -87,6 +87,7 @@ function ModalEditChangeLog({
                 type="text"
                 {...register('version')}
                 onChange={handleChangeQuestion}
+                isInvalid={errors.version}
               />
               <p className="txtErrorChangeLog">{errors.version?.message}</p>
             </Form.Group>
@@ -99,6 +100,7 @@ function ModalEditChangeLog({
                 rows={3}
                 {...register('message')}
                 onChange={handleChangeAnswer}
+                isInvalid={errors.message}
               />
               <p className="txtErrorChangeLog">{errors.message?.message}</p>
             </Form.Group>

@@ -1,4 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -66,28 +68,19 @@ function NavOptions() {
           {t('Explorador de Dados')}
         </Offcanvas.Title>
         <Form className="containerForm">
-          <Form.Control
-            as="select"
-            className="inputForm"
-            aria-label="Search"
+          <Autocomplete
+            freeSolo
+            options={dataExplorer.map(item => item.nomenclatura_pedea)}
             onChange={handleSelectChange}
-          >
-            <option value="" className="optionsValues">
-              {t('Selecione uma camada...')}
-            </option>
-            {dataExplorer.map((item, index) => (
-              <option
-                key={index}
-                value={item.nomenclatura_pedea}
-                className="optionsValues"
-              >
-                {item.nomenclatura_pedea}
-              </option>
-            ))}
-          </Form.Control>
-          <button className="BtnForm">
-            <SearchIcon />
-          </button>
+            renderInput={params => (
+              <TextField
+                {...params}
+                label={t('Selecione uma camada...')}
+                variant="outlined"
+              />
+            )}
+            className="inputForm"
+          />
         </Form>
 
         <Offcanvas.Body className="containerNav">

@@ -137,6 +137,7 @@ function ContainerGetInfoRotulos() {
                 className="InputRotulos"
                 {...register('key')}
                 onChange={handleChange}
+                isInvalid={errors.key}
               />
               <p className="txtErrorPassword">{errors.key?.message}</p>
             </Form.Group>

@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import api from '../../../../../services/api'
-import '../../../../../sass/admin/FAQ/modalsFAQ.scss'
+import apiPEDEA from '../../../../../../services/api'
+import '../../../../../../sass/admin/FAQ/modalsFAQ.scss'
 
 function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
   const [valueEditFAQ, setValueEditFAQ] = useState({
@@ -33,7 +33,7 @@ function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
   const onSubmit = async data => {
     try {
       const response = await toast.promise(
-        api.put('/editFAQ', {
+        apiPEDEA.put('/editFAQ', {
           id: idEditValue,
           question: data.question,
           answer: data.answer
@@ -75,6 +75,7 @@ function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
                 type="text"
                 {...register('question')}
                 onChange={handleChangeQuestion}
+                isInvalid={errors.question}
               />
               <p className="txtErrorFAQ">{errors.question?.message}</p>
             </Form.Group>
@@ -85,6 +86,7 @@ function ModalEditFAQ({ openModal, setOpenModal, idEditValue }) {
                 rows={3}
                 {...register('answer')}
                 onChange={handleChangeAnswer}
+                isInvalid={errors.answer}
               />
               <p className="txtErrorFAQ">{errors.answer?.message}</p>
             </Form.Group>
