@@ -1,5 +1,6 @@
-import SearchIcon from '@mui/icons-material/Search'
+import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
 import Autocomplete from '@mui/material/Autocomplete'
+import InputAdornment from '@mui/material/InputAdornment'
 import TextField from '@mui/material/TextField'
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
@@ -33,8 +34,8 @@ function NavOptions() {
     getInfoDataExplorer()
   }, [])
 
-  const handleSelectChange = event => {
-    setSelectedNomenclature(event.target.value)
+  const handleSelectChange = (event, value) => {
+    setSelectedNomenclature(value)
   }
 
   const deactivateLayers = () => {
@@ -70,13 +71,43 @@ function NavOptions() {
         <Form className="containerForm">
           <Autocomplete
             freeSolo
+            id="ContainerInput"
             options={dataExplorer.map(item => item.nomenclatura_pedea)}
             onChange={handleSelectChange}
             renderInput={params => (
               <TextField
                 {...params}
-                label={t('Selecione uma camada...')}
-                variant="outlined"
+                label={
+                  <>
+                    <TravelExploreRoundedIcon id="iconInputDataExplorer" />
+                    {t('Selecione uma camada...')}
+                  </>
+                }
+                sx={{
+                  '& .MuiInputBase-input': {
+                    color: 'white'
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: 'white'
+                  },
+                  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'white'
+                  },
+                  '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'white'
+                    },
+                  '&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'white'
+                    },
+                  '& .MuiAutocomplete-popupIndicator': {
+                    color: 'white'
+                  },
+                  '& .MuiAutocomplete-clearIndicator': {
+                    color: 'white'
+                  }
+                }}
               />
             )}
             className="inputForm"
