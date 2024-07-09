@@ -1,6 +1,6 @@
 import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
 import Autocomplete from '@mui/material/Autocomplete'
-import InputAdornment from '@mui/material/InputAdornment'
+import Popper from '@mui/material/Popper'
 import TextField from '@mui/material/TextField'
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
@@ -61,6 +61,10 @@ function NavOptions() {
     return false
   }
 
+  const CustomPopper = props => {
+    return <Popper {...props} placement="right-start" />
+  }
+
   return (
     <div>
       <Container fluid className="ContainerNavOptions">
@@ -90,17 +94,23 @@ function NavOptions() {
                   '& .MuiInputLabel-root': {
                     color: 'white'
                   },
-                  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'white'
+                  '& .MuiInputLabel-root.Mui-focused': {
+                    color: 'white'
                   },
-                  '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                    {
+                  '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                    color: 'white'
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    '& .MuiOutlinedInput-notchedOutline': {
                       borderColor: 'white'
                     },
-                  '&.Mui-focused .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                    {
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
                       borderColor: 'white'
                     },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: 'white'
+                    }
+                  },
                   '& .MuiAutocomplete-popupIndicator': {
                     color: 'white'
                   },
@@ -111,6 +121,7 @@ function NavOptions() {
               />
             )}
             className="inputForm"
+            PopperComponent={CustomPopper}
           />
         </Form>
 
