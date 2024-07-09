@@ -3,7 +3,7 @@ import React from 'react'
 import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
 import EditDataExplorer from './buttonsFeaturesDataExplorer/editDataExplorer/editDataExplorer'
-import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer/removeDataExmplorer'
+import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer/removeDataExplorer'
 import TableViewRotulosData from './tableviewallrotulos'
 
 function DataExplorer() {

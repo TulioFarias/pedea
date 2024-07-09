@@ -39,6 +39,20 @@ function TableViewRotulosData() {
     setPage(0)
   }
 
+  const formatTimestamp = timestamp => {
+    const date = new Date(timestamp)
+    return date.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
+  }
+
+  console.log(dataExplorer)
+
   return (
     <div className="ContainerTableRotulosData">
       <h2>Tabela ativa de rótulos do explorador de dados:</h2>
@@ -59,6 +73,7 @@ function TableViewRotulosData() {
                   <TableCell>Coluna Atributo</TableCell>
                   <TableCell>Link Drive SHP</TableCell>
                   <TableCell>Link Drive KML</TableCell>
+                  <TableCell>Chave vinculada</TableCell>
                   <TableCell>Criado em</TableCell>
                   <TableCell>Atualizado em</TableCell>
                 </TableRow>
@@ -78,8 +93,9 @@ function TableViewRotulosData() {
                       <TableCell>{item.coluna_atributo}</TableCell>
                       <TableCell>{item.link_drive_shp}</TableCell>
                       <TableCell>{item.link_drive_kml}</TableCell>
-                      <TableCell>{item.createdAt}</TableCell>
-                      <TableCell>{item.updatedAt}</TableCell>
+                      <TableCell>{item.key_rotulo}</TableCell>
+                      <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
+                      <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
                     </TableRow>
                   ))}
               </TableBody>

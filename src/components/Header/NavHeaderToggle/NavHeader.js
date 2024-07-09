@@ -18,6 +18,7 @@ import BodyNavSystem from './systemBodyNav'
 function NavOptions() {
   const { t } = useTranslation()
   const [dataExplorer, setDataExplorer] = useState([])
+  const [rotulosDataExplorer, setRotulosDataExplorer] = useState([])
   const [selectedNomenclature, setSelectedNomenclature] = useState('')
 
   useEffect(() => {
@@ -31,7 +32,17 @@ function NavOptions() {
       }
     }
 
+    async function getInfoRotulosDataExplorer() {
+      try {
+        const { data } = apiPEDEA.get('/getAllRotulos')
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }
+
     getInfoDataExplorer()
+    getInfoRotulosDataExplorer()
   }, [])
 
   const handleSelectChange = (event, value) => {
@@ -84,7 +95,7 @@ function NavOptions() {
                 label={
                   <>
                     <TravelExploreRoundedIcon id="iconInputDataExplorer" />
-                    {t('Selecione uma camada...')}
+                    {t('Digite o nome da camada que você procura...')}
                   </>
                 }
                 sx={{

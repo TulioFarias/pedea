@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+import '../../../../../../sass/admin/DataExplorer/modalsDataExplorer/editModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../services/api'
 function ModalEditChangeLog({
   openModalEdit,

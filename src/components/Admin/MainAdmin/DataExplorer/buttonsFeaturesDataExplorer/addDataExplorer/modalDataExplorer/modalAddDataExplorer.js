@@ -14,8 +14,8 @@ function ModalAddDataExplorer({ show, handleClose }) {
   const schema = Yup.object().shape({
     categoriaDeInformacao: Yup.string().required('Campo obrigatório'),
     classeMaior: Yup.string().required('Campo obrigatório'),
-    subclasseMaior: Yup.string().required('Campo obrigatório'),
-    classeMenor: Yup.string().required('Campo obrigatório'),
+    subclasseMaior: Yup.string().nullable(),
+    classeMenor: Yup.string().nullable(),
     nomeclaturaGreenCloud: Yup.string().required('Campo obrigatório'),
     nomenclaturaPedea: Yup.string().required('Campo obrigatório'),
     fonte: Yup.string().required('Campo obrigatório'),
@@ -23,7 +23,10 @@ function ModalAddDataExplorer({ show, handleClose }) {
     linkDriveShp: Yup.string()
       .url('URL inválida')
       .required('Campo obrigatório'),
-    linkDriveKml: Yup.string().url('URL inválida').required('Campo obrigatório')
+    linkDriveKml: Yup.string()
+      .url('URL inválida')
+      .required('Campo obrigatório'),
+    key_rotulo: Yup.string().nullable()
   })
 
   const {
@@ -204,6 +207,19 @@ function ModalAddDataExplorer({ show, handleClose }) {
               />
               <Form.Control.Feedback type="invalid">
                 {errors.linkDriveKml?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="keyRotulo">
+              <Form.Label>Chave Rotulo</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('key_rotulo')}
+                isInvalid={errors.key_rotulo}
+                className="inputDataExplorer"
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.key_rotulo?.message}
               </Form.Control.Feedback>
             </Form.Group>
 

@@ -1,0 +1,40 @@
+
+#ContainerModalEditDataExplorer .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    width: 55vw;
+
+}
+
+.ContainerId{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputID{
+    width: 300px;
+}
+
+.BtnEditDE{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-top: 15px;
+       margin-bottom: 15px;
+}
+
+.ContainerAllInfoEdit{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px; 
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+    height: max-content;
+}
+
+.inputEditModalDE{
+    
+}
