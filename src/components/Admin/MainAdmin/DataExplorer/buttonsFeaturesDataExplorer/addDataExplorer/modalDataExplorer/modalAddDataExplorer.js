@@ -223,13 +223,15 @@ function ModalAddDataExplorer({ show, handleClose }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Button
-              variant="primary"
-              type="submit"
-              className="BtnAddDataExplorer"
-            >
-              Adicionar
-            </Button>
+            <div className="ContainerBtnModalAdd">
+              <Button
+                variant="primary"
+                type="submit"
+                className="BtnAddDataExplorer"
+              >
+                Adicionar
+              </Button>
+            </div>
           </Form>
 
           <Button
