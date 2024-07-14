@@ -222,25 +222,25 @@ function ModalAddDataExplorer({ show, handleClose }) {
                 {errors.key_rotulo?.message}
               </Form.Control.Feedback>
             </Form.Group>
-
-            <div className="ContainerBtnModalAdd">
-              <Button
-                variant="primary"
-                type="submit"
-                className="BtnAddDataExplorer"
-              >
-                Adicionar
-              </Button>
-            </div>
           </Form>
 
-          <Button
-            variant="primary"
-            className="BtnCloseAddDataExplorer"
-            onClick={handleClose}
-          >
-            Fechar
-          </Button>
+          <div className="ContainerBtnModalAdd">
+            <Button
+              variant="primary"
+              onClick={handleSubmit(onSubmit)}
+              className="BtnAddDataExplorer"
+            >
+              Adicionar
+            </Button>
+
+            <Button
+              variant="primary"
+              className="BtnCloseAddDataExplorer"
+              onClick={handleClose}
+            >
+              Fechar
+            </Button>
+          </div>
         </Modal.Body>
       </Modal>
     </>

@@ -288,14 +288,18 @@ function EditaModalDataExplorer({ show, handleClose }) {
               )}
 
               {isEditable && (
-                <div className="d-flex justify-content-end">
-                  <Button variant="primary" onClick={handleSubmit(onSubmit)}>
+                <div className="containerBtnsAtt">
+                  <Button
+                    variant="primary"
+                    onClick={handleSubmit(onSubmit)}
+                    className="BtnEditSubmit"
+                  >
                     Atualizar
                   </Button>
                   <Button
-                    variant="secondary"
+                    variant="primary"
                     onClick={handleClose}
-                    className="ml-2"
+                    className="BtnCloseEditDataExplorer"
                   >
                     Fechar
                   </Button>

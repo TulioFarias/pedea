@@ -2,7 +2,7 @@ import PlaylistRemoveRoundedIcon from '@mui/icons-material/PlaylistRemoveRounded
 import React, { useState } from 'react'
 
 import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
-import ModalRemoveDataExplorer from './modalRemoveDataExplorer'
+import DeleteModalDataExplorer from './modalRemoveDataExplorer'
 function RemoveDataExplorer() {
   const [showModal, setShowModal] = useState(false)
 
@@ -15,7 +15,8 @@ function RemoveDataExplorer() {
           <PlaylistRemoveRoundedIcon />
           Remover
         </button>
-        <ModalRemoveDataExplorer
+
+        <DeleteModalDataExplorer
           show={showModal}
           handleClose={handleCloseModal}
         />

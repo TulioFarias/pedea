@@ -8,7 +8,6 @@
     background-color: rgba(255, 255, 255, 0.267);
     backdrop-filter: blur(10px);
     width: max-content;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     
@@ -39,16 +38,20 @@
 }
 
 
+.ContainerBtnModalAdd{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+    gap: 10px;
+}
+
 
 
 .BtnAddDataExplorer{
     background-color: rgb(44, 64, 63);
     color: white;
     border: none;
-    height: 40px;
-    width: 300px;
-    margin-top: 110px;
-    position: relative;
     
 
     &:hover{
@@ -62,8 +65,7 @@
     background-color: rgb(88, 88, 88);
     color: white;
     border: none;
-    position: relative;
-    left: 850px;
-    top: 10px;
+    
+   
 }
 
