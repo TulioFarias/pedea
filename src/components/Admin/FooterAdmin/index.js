@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../../sass/admin/FooterAdmin/footeradmin.scss'
 import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 
@@ -9,7 +8,7 @@ function FooterAdmin() {
     <Container fluid className=" my-div-footerAdmin">
       <p className="footer-textOneAdmin">
         {t(
-          'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.'
+          'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados. teste1'
         )}
       </p>
 
