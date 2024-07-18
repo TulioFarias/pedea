@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import apiPEDEA from '../../../../../../services/api'
@@ -19,6 +20,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
     classe_maior: Yup.string().required('Campo obrigatório'),
     sub_classe_maior: Yup.string().nullable(),
     classe_menor: Yup.string().nullable(),
+    nomenclatura_greencloud: Yup.string().required('Campo obrigatório'),
     nomenclatura_pedea: Yup.string().required('Campo obrigatório'),
     fonte: Yup.string().required('Campo obrigatório'),
     coluna_atributo: Yup.string().required('Campo obrigatório'),
@@ -76,12 +78,33 @@ function EditaModalDataExplorer({ show, handleClose }) {
 
   const onSubmit = async data => {
     try {
-      await apiPEDEA.put(`/infoDataExplorer/${selectedId}`, data)
-      console.log('Dados atualizados com sucesso:', data)
+      const response = await toast.promise(
+        apiPEDEA.put('/updateDataExplorer/', {
+          id: parseInt(selectedId),
+          categoriadeinformação: data.categoria_de_informacao,
+          classemaior: data.classe_maior,
+          subclassemaior: data.sub_classe_maior,
+          classemenor: data.classe_menor,
+          nomenclaturagreencloud: data.nomenclatura_greencloud,
+          nomenclaturapedea: data.nomenclatura_pedea,
+          fonte: data.fonte,
+          colunaatributo: data.coluna_atributo,
+          linkdriveshp: data.link_drive_shp,
+          linkdrivekml: data.link_drive_kml,
+          key_rotulos: data.key_rotulos
+        }),
+        {
+          pending: 'Atualizando...',
+          success: 'Dados atualizados no banco de dados',
+          error: 'Erro ao atualizar os dados'
+        }
+      )
+
       reset()
       handleClose()
     } catch (error) {
       console.error('Erro ao atualizar os dados:', error)
+      reset()
     }
   }
 
@@ -190,6 +213,21 @@ function EditaModalDataExplorer({ show, handleClose }) {
                           />
                           <Form.Control.Feedback type="invalid">
                             {errors.classe_menor?.message}
+                          </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group controlId="nomenclatura_pedea">
+                          <Form.Label>Nomenclatura Green Cloud</Form.Label>
+                          <Form.Control
+                            type="text"
+                            {...register('nomenclatura_greencloud')}
+                            isInvalid={errors.nomenclatura_greencloud}
+                            defaultValue={item.nomenclatura_greencloud}
+                            disabled={!isEditable}
+                            className="inputEditModalDE"
+                          />
+                          <Form.Control.Feedback type="invalid">
+                            {errors.nomenclatura_greencloud?.message}
                           </Form.Control.Feedback>
                         </Form.Group>
 

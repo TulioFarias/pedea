@@ -68,8 +68,6 @@ function ModalAddDataExplorer({ show, handleClose }) {
         }
       )
 
-      console.log(response)
-
       reset()
       handleClose()
     } catch (error) {

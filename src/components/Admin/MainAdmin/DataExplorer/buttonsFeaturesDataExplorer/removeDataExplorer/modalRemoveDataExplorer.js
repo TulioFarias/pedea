@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import apiPEDEA from '../../../../../../services/api'
@@ -15,24 +16,10 @@ function DeletaModalDataExplorer({ show, handleClose }) {
   const [isChecked, setIsChecked] = useState(false)
 
   const schema = Yup.object().shape({
-    categoria_de_informacao: Yup.string().required('Campo obrigatório'),
-    classe_maior: Yup.string().required('Campo obrigatório'),
-    sub_classe_maior: Yup.string().nullable(),
-    classe_menor: Yup.string().nullable(),
-    nomenclatura_pedea: Yup.string().required('Campo obrigatório'),
-    fonte: Yup.string().required('Campo obrigatório'),
-    coluna_atributo: Yup.string().required('Campo obrigatório'),
-    link_drive_shp: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
-    link_drive_kml: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
-    key_rotulos: Yup.string().nullable()
+    id: Yup.number().required('Campo obrigatório')
   })
 
   const {
-    register,
     handleSubmit,
     reset,
     setValue,
@@ -69,10 +56,27 @@ function DeletaModalDataExplorer({ show, handleClose }) {
     }
   }
 
-  const onDelete = async () => {
-    alert('deu certo')
-    reset()
-    handleClose()
+  const onDelete = async (data, event) => {
+    try {
+      const payload = {
+        id: parseInt(selectedId)
+      }
+      const response = await toast.promise(
+        apiPEDEA.delete('/deleteDataExplorer', {
+          data: payload
+        }),
+        {
+          pending: 'Atualizando...',
+          success: 'Dados excluídos do banco de dados',
+          error: 'Não foi possível excluir os dados...'
+        }
+      )
+
+      reset()
+      handleClose()
+    } catch (error) {
+      return console.log(error)
+    }
   }
 
   const handleCheckboxChange = e => {
@@ -120,8 +124,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Categoria de Informação</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('categoria_de_informacao')}
-                          isInvalid={errors.categoria_de_informacao}
                           defaultValue={item.categoria_de_informacao}
                           disabled
                           className="inputDeleteModalDE"
@@ -135,8 +137,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Classe Maior</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('classe_maior')}
-                          isInvalid={errors.classe_maior}
                           defaultValue={item.classe_maior}
                           disabled
                           className="inputDeleteModalDE"
@@ -150,8 +150,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Subclasse Maior</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('sub_classe_maior')}
-                          isInvalid={errors.sub_classe_maior}
                           defaultValue={item.sub_classe_maior}
                           disabled
                           className="inputDeleteModalDE"
@@ -165,8 +163,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Classe Menor</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('classe_menor')}
-                          isInvalid={errors.classe_menor}
                           defaultValue={item.classe_menor}
                           disabled
                           className="inputDeleteModalDE"
@@ -180,8 +176,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Nomenclatura PEDEA</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('nomenclatura_pedea')}
-                          isInvalid={errors.nomenclatura_pedea}
                           defaultValue={item.nomenclatura_pedea}
                           disabled
                           className="inputDeleteModalDE"
@@ -195,8 +189,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Fonte</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('fonte')}
-                          isInvalid={errors.fonte}
                           defaultValue={item.fonte}
                           disabled
                           className="inputDeleteModalDE"
@@ -210,8 +202,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Coluna Atributo</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('coluna_atributo')}
-                          isInvalid={errors.coluna_atributo}
                           defaultValue={item.coluna_atributo}
                           disabled
                           className="inputDeleteModalDE"
@@ -225,8 +215,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Link Drive SHP</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('link_drive_shp')}
-                          isInvalid={errors.link_drive_shp}
                           defaultValue={item.link_drive_shp}
                           disabled
                           className="inputDeleteModalDE"
@@ -240,8 +228,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Link Drive KML</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('link_drive_kml')}
-                          isInvalid={errors.link_drive_kml}
                           defaultValue={item.link_drive_kml}
                           disabled
                           className="inputDeleteModalDE"
@@ -255,8 +241,6 @@ function DeletaModalDataExplorer({ show, handleClose }) {
                         <Form.Label>Chave</Form.Label>
                         <Form.Control
                           type="text"
-                          {...register('key_rotulos')}
-                          isInvalid={errors.key_rotulos}
                           defaultValue={item.key_rotulos}
                           disabled
                           className="inputDeleteModalDE"
@@ -282,7 +266,7 @@ function DeletaModalDataExplorer({ show, handleClose }) {
               </p>
               <Form.Check
                 type="checkbox"
-                label="Confirmo que desejo deletar esta informação"
+                label="Confirmo que desejo deletar esta informação."
                 onChange={handleCheckboxChange}
                 checked={isChecked}
               />
