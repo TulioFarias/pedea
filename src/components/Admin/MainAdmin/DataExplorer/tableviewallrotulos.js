@@ -66,6 +66,7 @@ function TableViewRotulosData() {
                   <TableCell>Classe Maior</TableCell>
                   <TableCell>Subclasse Maior</TableCell>
                   <TableCell>Classe Menor</TableCell>
+                  <TableCell>Nomenclatura GreenCloud</TableCell>
                   <TableCell>Nomenclatura PEDEA</TableCell>
                   <TableCell>Fonte</TableCell>
                   <TableCell>Coluna Atributo</TableCell>
@@ -86,6 +87,7 @@ function TableViewRotulosData() {
                       <TableCell>{item.classe_maior}</TableCell>
                       <TableCell>{item.sub_classe_maior}</TableCell>
                       <TableCell>{item.classe_menor}</TableCell>
+                      <TableCell>{item.nomenclatura_greencloud}</TableCell>
                       <TableCell>{item.nomenclatura_pedea}</TableCell>
                       <TableCell>{item.fonte}</TableCell>
                       <TableCell>{item.coluna_atributo}</TableCell>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import '../../../../sass/admin/Settings/settings.scss'
-import ContainerLogoutUserSettings from './logoutInfo'
+
 import SettingsSystemAndUser from './userSettings/settingsSystem'
 function SettingsAdmin() {
   return (
@@ -11,7 +11,6 @@ function SettingsAdmin() {
 
         <div className="ContainerAllSettingsInfo">
           <SettingsSystemAndUser />
-          {/* <ContainerLogoutUserSettings /> */}
         </div>
       </div>
     </>

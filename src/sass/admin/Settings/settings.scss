@@ -27,17 +27,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh;
+    height: 76vh;
     border-radius: 20px;
     padding: 10px;
     
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(44, 64, 63);
+    color: white;
     gap: 20px;
 
 
     .form-label{
         font-size: 14px!important;
-        color: gray;
+        color: white
     }
 }
 
@@ -57,7 +58,7 @@
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow:  0px 0px 2px 2px rgba(119, 119, 119, 0.637);
+    box-shadow:  0px 0px 2px 2px rgba(255, 255, 255, 0.637);
 }
 
 .user-imageSettings img {
@@ -78,7 +79,7 @@
     top: 120px;
     left: 8px;
     cursor: pointer;
-    }
+}
 
 
 
@@ -94,6 +95,7 @@
     cursor: pointer;
     border: 1px dashed;
     background-color: transparent;
+    color: gray;
 
     &:hover{
         transform: scale(1.05);
@@ -123,8 +125,6 @@
 
 .valueInputCustom{
     color: gray;
-    
-
     
 }
 
