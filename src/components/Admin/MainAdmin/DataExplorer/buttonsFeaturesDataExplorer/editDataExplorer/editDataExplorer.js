@@ -10,16 +10,11 @@ function EditDataExplorer() {
   const handleCloseModal = () => setShowModal(false)
   return (
     <>
-      <div>
-        <button className="EditDataExplorer" onClick={handleShowModal}>
-          <EditNoteRoundedIcon />
-          Editar
-        </button>
-        <EditaModalDataExplorer
-          show={showModal}
-          handleClose={handleCloseModal}
-        />
-      </div>
+      <button className="EditDataExplorer" onClick={handleShowModal}>
+        <EditNoteRoundedIcon />
+        Editar
+      </button>
+      <EditaModalDataExplorer show={showModal} handleClose={handleCloseModal} />
     </>
   )
 }

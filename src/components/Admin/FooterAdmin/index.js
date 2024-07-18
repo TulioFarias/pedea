@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import '../../../sass/admin/footerAdmin/footeradmin.scss'
 
 function FooterAdmin() {
   const { t } = useTranslation()

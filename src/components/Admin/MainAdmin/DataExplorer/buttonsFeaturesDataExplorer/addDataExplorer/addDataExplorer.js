@@ -12,12 +12,11 @@ function AddInfoDataExplorer() {
 
   return (
     <>
-      <div>
-        <button className="ButtonAddDataExplorer" onClick={handleShowModal}>
-          <PlaylistAddRoundedIcon />
-          Adicionar
-        </button>
-      </div>
+      <button className="ButtonAddDataExplorer" onClick={handleShowModal}>
+        <PlaylistAddRoundedIcon />
+        Adicionar
+      </button>
+
       <ModalAddDataExplorer show={showModal} handleClose={handleCloseModal} />
     </>
   )

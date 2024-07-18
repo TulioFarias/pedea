@@ -6,9 +6,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-import apiPEDEA from '../../../../../../../services/api'
-
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
+import apiPEDEA from '../../../../../../../services/api'
 import dataValues from './values'
 
 function ModalAddDataExplorer({ show, handleClose }) {
@@ -29,7 +28,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
     linkDriveKml: Yup.string()
       .url('URL inválida')
       .required('Campo obrigatório'),
-    key_rotulo: Yup.string().nullable()
+    key_rotulos: Yup.string().nullable()
   })
 
   const {
@@ -46,10 +45,11 @@ function ModalAddDataExplorer({ show, handleClose }) {
   }
 
   const onSubmit = async data => {
+    console.log(data)
     try {
       const response = await toast.promise(
         apiPEDEA.post('/createDataExplore', {
-          categoriadeinformacao: data.categoriaDeInformacao,
+          categoriadeinformação: data.categoriaDeInformacao,
           classemaior: data.classeMaior,
           subclassemaior: data.subclasseMaior,
           classemenor: data.classeMenor,
@@ -59,7 +59,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
           colunaatributo: data.colunaAtributo,
           linkdriveshp: data.linkDriveShp,
           linkdrivekml: data.linkDriveKml,
-          key_rotulos: data.key_rotulo
+          key_rotulos: data.key_rotulos
         }),
         {
           pending: 'Adicionando novo registro...',
@@ -73,7 +73,6 @@ function ModalAddDataExplorer({ show, handleClose }) {
       reset()
       handleClose()
     } catch (error) {
-      console.error(error)
       console.error('Erro ao atualizar os dados:', error)
     }
   }
@@ -246,8 +245,8 @@ function ModalAddDataExplorer({ show, handleClose }) {
               <Form.Label>Chave Rotulo</Form.Label>
               <Form.Control
                 type="text"
-                {...register('key_rotulo')}
-                isInvalid={errors.key_rotulo}
+                {...register('key_rotulos')}
+                isInvalid={errors.key_rotulos}
                 className="inputDataExplorer"
               />
               <Form.Control.Feedback type="invalid">

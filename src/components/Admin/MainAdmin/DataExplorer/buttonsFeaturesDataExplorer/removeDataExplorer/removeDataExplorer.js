@@ -10,17 +10,15 @@ function RemoveDataExplorer() {
   const handleCloseModal = () => setShowModal(false)
   return (
     <>
-      <div>
-        <button className="RemoveDataExplorer" onClick={handleShowModal}>
-          <PlaylistRemoveRoundedIcon />
-          Remover
-        </button>
+      <button className="RemoveDataExplorer" onClick={handleShowModal}>
+        <PlaylistRemoveRoundedIcon />
+        Remover
+      </button>
 
-        <DeleteModalDataExplorer
-          show={showModal}
-          handleClose={handleCloseModal}
-        />
-      </div>
+      <DeleteModalDataExplorer
+        show={showModal}
+        handleClose={handleCloseModal}
+      />
     </>
   )
 }

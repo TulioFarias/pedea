@@ -12,7 +12,6 @@ import apiPEDEA from '../../../../../services/api'
 import ContainerInfoRotulos from '../changeTableView/TableInfoRotulos'
 import ContainerGetInfoRotulos from '../findRotulosAndFiles/getRotulos'
 import IfKeyExist from '../modalsRotulos/modalKeyExist'
-import ImportFileRotulos from '../registerRotulosCSV/registerFileRotulos'
 
 function CreateRotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
@@ -223,10 +222,6 @@ function CreateRotulosSystem() {
             handleTableUpdate={handleTableUpdate}
             setEditItemId={setEditItemId}
           />
-
-          <div className="ContainersRegisterFileRotulos">
-            <ImportFileRotulos />
-          </div>
 
           <div className="ContainerGetWithKeyRotulos">
             <ContainerGetInfoRotulos />

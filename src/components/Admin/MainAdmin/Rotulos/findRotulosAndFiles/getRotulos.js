@@ -77,8 +77,6 @@ function ContainerGetInfoRotulos() {
     }
   }
 
-  console.log(valuesDataFileRotulos)
-
   const formatarDataLegivel = dataString => {
     const meses = [
       'janeiro',
