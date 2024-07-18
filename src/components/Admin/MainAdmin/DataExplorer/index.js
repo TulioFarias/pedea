@@ -4,6 +4,7 @@ import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
 import EditDataExplorer from './buttonsFeaturesDataExplorer/editDataExplorer/editDataExplorer'
 import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer/removeDataExplorer'
+import ContainerImportCSV from './importCSVDataExplorer/importCSV'
 import TableViewRotulosData from './tableviewallrotulos'
 
 function DataExplorer() {
@@ -21,6 +22,17 @@ function DataExplorer() {
               <AddInfoDataExplorer />
               <EditDataExplorer />
               <RemoveDataExplorer />
+            </div>
+
+            <hr />
+
+            <p>
+              Para adicionar dados atraves de um arquivo csv, basta seguir o
+              exemplo:
+            </p>
+
+            <div>
+              <ContainerImportCSV />
             </div>
           </div>
           <div className="ContainerTableViewRotulos">

@@ -23,7 +23,6 @@ function AddInfoChangeLog() {
   })
 
   const onSubmit = async data => {
-    console.log(data)
     try {
       await toast.promise(
         apiPEDEA.post('/addInfoEvolution', {

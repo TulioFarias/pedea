@@ -35,7 +35,6 @@ function NavOptions() {
     async function getInfoRotulosDataExplorer() {
       try {
         const { data } = apiPEDEA.get('/getAllRotulos')
-        console.log(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
       }

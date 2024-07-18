@@ -8,7 +8,7 @@ function FooterAdmin() {
     <Container fluid className=" my-div-footerAdmin">
       <p className="footer-textOneAdmin">
         {t(
-          'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados. teste1'
+          'Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.'
         )}
       </p>
 

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
+
+import apiPEDEA from '../../../../../../../services/api'
 
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
 import dataValues from './values'
@@ -32,6 +35,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -41,9 +45,37 @@ function ModalAddDataExplorer({ show, handleClose }) {
     setSubcategorias(dataValues.Categorias[categoria] || [])
   }
 
-  const onSubmit = data => {
-    console.log(data)
-    handleClose()
+  const onSubmit = async data => {
+    try {
+      const response = await toast.promise(
+        apiPEDEA.post('/createDataExplore', {
+          categoriadeinformacao: data.categoriaDeInformacao,
+          classemaior: data.classeMaior,
+          subclassemaior: data.subclasseMaior,
+          classemenor: data.classeMenor,
+          nomenclaturagreencloud: data.nomeclaturaGreenCloud,
+          nomenclaturapedea: data.nomenclaturaPedea,
+          fonte: data.fonte,
+          colunaatributo: data.colunaAtributo,
+          linkdriveshp: data.linkDriveShp,
+          linkdrivekml: data.linkDriveKml,
+          key_rotulos: data.key_rotulo
+        }),
+        {
+          pending: 'Adicionando novo registro...',
+          success: 'Registro criado com sucesso!',
+          error: 'Erro ao adicionar novo registro.'
+        }
+      )
+
+      console.log(response)
+
+      reset()
+      handleClose()
+    } catch (error) {
+      console.error(error)
+      console.error('Erro ao atualizar os dados:', error)
+    }
   }
 
   return (
@@ -136,7 +168,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
               <Form.Label>Nomenclatura Green Cloud</Form.Label>
               <Form.Control
                 type="text"
-                {...register('nomenclaturaGreenCloud')}
+                {...register('nomeclaturaGreenCloud')}
                 isInvalid={errors.nomeclaturaGreenCloud}
                 className="inputDataExplorer"
               />
