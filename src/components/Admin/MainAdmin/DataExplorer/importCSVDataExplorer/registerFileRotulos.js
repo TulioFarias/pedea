@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+import ModalConfirmAddDataExplorer from './modalConfirmRegisteCSV'
+
 import '../../../../../sass/admin/DataExplorer/importcsvdataexplore.scss'
 import api from '../../../../../services/api'
 
@@ -17,9 +19,9 @@ function ImportFileRotulos() {
     name: ''
   })
   const [fileName, setFileName] = useState('Nenhum arquivo selecionado')
+  const [showModalConfirm, setModalConfirm] = useState(false)
 
   const schema = Yup.object().shape({
-    key: Yup.string().required('A chave é obrigatória'),
     file: Yup.mixed().required('O arquivo é obrigatório'),
     name: Yup.string().required('Nome é obrigatório')
   })
@@ -33,12 +35,15 @@ function ImportFileRotulos() {
     resolver: yupResolver(schema)
   })
 
+  const openModal = () => {
+    setModalConfirm(true)
+  }
+
   const onSubmit = async data => {
     try {
       const formData = new FormData()
       if (data.file && data.file.length > 0) {
         formData.append('file', data.file[0])
-        formData.append('key', data.key)
         formData.append('name', data.name)
       }
 
@@ -140,31 +145,26 @@ function ImportFileRotulos() {
           <p className="txtErrorPassword">{errors.file?.message}</p>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label className="LabelRotulosImports">
-            Chave Rótulo:
-            <Tooltip
-              title={infoUserTutorial.importFile.key}
-              className="toltipCustom"
-            >
-              <InfoRoundedIcon />
-            </Tooltip>
-          </Form.Label>
-          <Form.Control
-            type="text"
-            className="inputRotulosImports"
-            {...register('key')}
-            onChange={handleChange}
-            placeholder="Escolha a chave para atribuir."
-            isInvalid={errors.key}
-          />
-          <p className="txtErrorPassword">{errors.key?.message}</p>
-        </Form.Group>
-
         <Button variant="secondary" type="submit" className="BtnSubmitImport">
           Adicionar CSV
         </Button>
       </Form>
+
+      <hr className="HRCustom" />
+      <div className="containerButtonAddDataCSV">
+        <p>
+          Para adicionar os dados do arquivo .csv enviados, clique no botão
+          abaixo:
+        </p>
+        <Button className="ButtonAddCSV" onClick={openModal}>
+          Adicionar dados do arquivo CSV
+        </Button>
+      </div>
+
+      <ModalConfirmAddDataExplorer
+        showModalConfirm={showModalConfirm}
+        setModalConfirm={setModalConfirm}
+      />
     </>
   )
 }

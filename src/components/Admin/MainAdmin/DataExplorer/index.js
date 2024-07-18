@@ -11,7 +11,7 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import { Tooltip } from '@mui/material'
 function DataExplorer() {
   const textExemple =
-    'O arquivo .CSV a ser importado precisa ter a sua primeira linha definida apenas com nomes de campos. Dentre estes campos, um precisa se chamar "Latitude" e outro "Longitude". As demais linhas precisam ter dados vinculados aos campos definidos na primeira linha. Dados de latitude e longitude precisam estar em graus decimais e projeção SIRGAS 2000, EPSG 4674. Procure usar '
+    'O arquivo .CSV a ser importado precisa ter a sua primeira linha definida apenas com nomes de campos. Entre estes campos, um precisa se chamar "ID", outro "Categoria de Informação", e assim por diante, conforme o exemplo: "ID", "Categoria de Informação", "Classe Maior", "Subclasse Maior", "Classe Menor", "Nomenclatura Greencloud", "Nomenclatura PEDEA", "Fonte", "Coluna Atributo", "Link Drive SHP", "Link Drive KML". As demais linhas precisam conter dados correspondentes aos campos definidos na primeira linha. Certifique-se de que o arquivo esteja em UTF-8.'
 
   return (
     <>

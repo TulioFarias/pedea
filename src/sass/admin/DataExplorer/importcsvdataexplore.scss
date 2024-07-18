@@ -12,6 +12,11 @@
         width: 100%;
         font-size: 12px;
     }
+
+    .HRCustom{
+        margin-top: 6px;
+        
+    }
 }
 
 .titleFilesImports{
@@ -76,3 +81,29 @@
         transition: all 0.5s ease-in-out;
     }
 }
+
+
+.containerButtonAddDataCSV{
+    margin-top: 10px;
+}
+
+.ButtonAddCSV{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 32px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background-color: rgb(44, 64, 63);
+    color: white;
+
+
+
+    &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(255, 254, 254);
+        transition: all 0.5s ease-in-out;
+    }
+}
+

@@ -126,8 +126,6 @@ function ContainerInfoRotulos({
                 ) : (
                   <>
                     <TableCell>Nome</TableCell>
-                    <TableCell>Chave ID</TableCell>
-                    <TableCell>Tipo do arquivo</TableCell>
                     <TableCell>Arquivo</TableCell>
                     <TableCell>Data de Criação</TableCell>
                     <TableCell>Data de Atualização</TableCell>
@@ -165,8 +163,6 @@ function ContainerInfoRotulos({
                 : tableFilesRotulos.map(item => (
                     <TableRow key={item.id}>
                       <TableCell>{item.name}</TableCell>
-                      <TableCell>{item.id_key}</TableCell>
-                      <TableCell>{item.type_files}</TableCell>
                       <TableCell>{item.path}</TableCell>
                       <TableCell>
                         {formatarDataLegivel(item.createdAt)}

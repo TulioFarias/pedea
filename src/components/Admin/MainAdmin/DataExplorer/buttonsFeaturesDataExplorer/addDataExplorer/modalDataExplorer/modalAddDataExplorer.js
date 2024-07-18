@@ -45,7 +45,6 @@ function ModalAddDataExplorer({ show, handleClose }) {
   }
 
   const onSubmit = async data => {
-    console.log(data)
     try {
       const response = await toast.promise(
         apiPEDEA.post('/createDataExplore', {

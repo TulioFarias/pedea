@@ -1,0 +1,44 @@
+
+#ContainerModalConfirmSend .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+
+}
+
+.inputSelect{
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.inputSelect:focus {
+    background-color: transparent;
+
+    color: white;
+}
+
+.inputSelect option {
+    background-color: gray; 
+    color: white;
+
+}
+
+.inputSelect option:checked {
+    background-color: darkgray; 
+    color: white;
+}
+
+.btnsSubmitSend{
+    background-color: rgb(44, 64, 63);
+    color: white;
+    border: none;
+    
+
+    &:hover{
+        background-color: gray;
+        color: rgb(44, 64, 63);
+        transition: all 0.3s ease-in-out;
+    }
+}
