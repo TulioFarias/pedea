@@ -47,3 +47,26 @@
         transition: all 0.5s ease-in-out;
     }
 }
+
+@media (max-width: 768px) {
+    .ButtonAddDataExplorer,
+    .EditDataExplorer,
+    .RemoveDataExplorer {
+        height: 28px; /* Reduz a altura do botão para tablets */
+        padding: 0 10px; /* Ajusta o padding horizontal para tablets */
+        font-size: 12px; /* Reduz o tamanho da fonte para tablets */
+    }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    .ButtonAddDataExplorer,
+    .EditDataExplorer,
+    .RemoveDataExplorer {
+        height: 26px; 
+        padding: 0 8px; 
+        font-size: 0px; 
+        margin-top: 8px;
+         
+    }
+}

@@ -108,3 +108,68 @@
     }
 }
 
+/* Tablet */
+@media (max-width: 768px) {
+    .ContainerWrapperImportCSV {
+        position: relative;
+        top: 130px;
+        right: 150px;
+        padding: 8px;
+        display: flex;
+         /* Reduz o padding para tablets */
+    }
+
+    .titleFilesImports {
+        font-size: 11px; /* Reduz o tamanho da fonte para tablets */
+    }
+
+    .customFormsFileImports {
+        gap: 8px; /* Reduz o gap entre os elementos para tablets */
+    }
+
+    .LabelRotulosImports {
+        font-size: 11px !important; /* Reduz o tamanho da fonte para tablets */
+    }
+
+    .inputRotulosImports::placeholder {
+        font-size: 9px; /* Reduz o tamanho da fonte do placeholder para tablets */
+    }
+
+    .BtnSubmitImport,
+    .ButtonAddCSV {
+        height: 28px; /* Reduz a altura do botão para tablets */
+        margin-top: 10px; /* Ajusta a margem superior para tablets */
+    }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    .ContainerWrapperImportCSV {
+        position: relative;
+        
+        padding: 5px; /* Reduz o padding para celulares */
+    }
+
+    .titleFilesImports {
+        font-size: 10px; /* Reduz o tamanho da fonte para celulares */
+    }
+
+    .customFormsFileImports {
+        gap: 6px; /* Reduz o gap entre os elementos para celulares */
+    }
+
+    .LabelRotulosImports {
+        font-size: 10px !important; /* Reduz o tamanho da fonte para celulares */
+    }
+
+    .inputRotulosImports::placeholder {
+        font-size: 8px; /* Reduz o tamanho da fonte do placeholder para celulares */
+    }
+
+    .BtnSubmitImport,
+    .ButtonAddCSV {
+        height: 24px; /* Reduz a altura do botão para celulares */
+        margin-top: 8px; /* Ajusta a margem superior para celulares */
+    }
+}
+

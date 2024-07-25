@@ -53,7 +53,6 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
   }, [])
 
   const onSubmit = async formData => {
-    console.log(formData)
     try {
       await toast.promise(
         apiPEDEA.post('/createValueDataExplorer', { fileName: formData.path }),
