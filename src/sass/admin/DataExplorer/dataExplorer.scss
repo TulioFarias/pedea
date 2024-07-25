@@ -1,6 +1,8 @@
 .ContainerAllInfoDataExplorer {
     display: flex;
+    gap: 10px;
     justify-content: space-between;
+    overflow: auto;
   }
   
   .ContainerButtonsDataExplorer {
@@ -28,6 +30,19 @@
       font-size: 14px;
     }
 
+  }
+
+  .containerOne{
+  
+  }
+
+  .containerTwo{
+    
+
+  }
+
+  .containerThree{
+  
   }
 
   .ContainerButtonsFeatures{
@@ -123,9 +138,9 @@
   @media (max-width: 480px) {
     .ContainerButtonsDataExplorer {
       width: 100%; 
-      padding: 5px;
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
 
       hr{
         display: none;
@@ -136,6 +151,36 @@
         font-weight: bold;
         font-size: 8px;
       }
+    }
+
+    .containerOne{
+      grid-column: 1;
+      display: flex;
+      gap: 5px;
+      padding: 5px;
+      align-items: center;
+      border: 1px dashed rgb(117, 114, 114);
+    border-radius: 10px;
+
+      p{
+        text-align: start;
+      }
+    }
+  
+    .containerTwo{
+      grid-column: 2;
+      height: max-content;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px dashed rgb(117, 114, 114);
+    border-radius: 10px;
+  
+    }
+  
+    .containerThree{
+      grid-column: 1 / span 2; 
     }
   
     .ContainerTableRotulosData {
@@ -155,8 +200,7 @@
     padding: 5px;
     display: flex;
     height: max-content;
-    flex-direction: column;
-    gap: 2px;
+    gap: 1px;
    
   
   }

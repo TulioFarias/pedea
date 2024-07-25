@@ -16,27 +16,35 @@ function DataExplorer() {
     <div className="containerWrapperOptions">
       <div className="ContainerAllInfoDataExplorer">
         <div className="ContainerButtonsDataExplorer">
-          <p>
-            Use os botões abaixo para adicionar, editar ou excluir rótulos no
-            explorador de dados
-          </p>
-          <div className="ContainerButtonsFeatures">
-            <AddInfoDataExplorer />
-            <EditDataExplorer />
-            <RemoveDataExplorer />
+          <div className="containerOne">
+            <p>
+              Use os botões abaixo para adicionar, editar ou excluir rótulos no
+              explorador de dados.
+            </p>
+            <div className="ContainerButtonsFeatures">
+              <AddInfoDataExplorer />
+              <EditDataExplorer />
+              <RemoveDataExplorer />
+            </div>
           </div>
+
           <hr />
-          <p>
-            Para adicionar dados através de um arquivo CSV, basta seguir o
-            exemplo
-          </p>
-          <div className="containerToltip">
-            <Tooltip title={textExemple} className="toltip">
-              <InfoRoundedIcon />
-            </Tooltip>
-            <a className="linktoltip">Exemplo como arquivo .CSV</a>
+
+          <div className="containerTwo">
+            <p>
+              Para adicionar dados através de um arquivo CSV, basta seguir o
+              exemplo:
+            </p>
+            <div className="containerToltip">
+              <Tooltip title={textExemple} className="toltip">
+                <InfoRoundedIcon />
+              </Tooltip>
+              <a className="linktoltip">Exemplo como arquivo .CSV</a>
+            </div>
           </div>
-          <ContainerImportCSV />
+          <div className="containerThree">
+            <ContainerImportCSV />
+          </div>
         </div>
         <div className="ContainerTableViewRotulos">
           <TableViewRotulosData />

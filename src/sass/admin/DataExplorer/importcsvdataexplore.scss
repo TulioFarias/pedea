@@ -111,16 +111,13 @@
 /* Tablet */
 @media (max-width: 768px) {
     .ContainerWrapperImportCSV {
-        position: relative;
-        top: 130px;
-        right: 150px;
         padding: 8px;
-        display: flex;
+    
          /* Reduz o padding para tablets */
     }
 
     .titleFilesImports {
-        font-size: 11px; /* Reduz o tamanho da fonte para tablets */
+        font-size: 8px; /* Reduz o tamanho da fonte para tablets */
     }
 
     .customFormsFileImports {
@@ -145,13 +142,12 @@
 /* Celular */
 @media (max-width: 480px) {
     .ContainerWrapperImportCSV {
-        position: relative;
         
         padding: 5px; /* Reduz o padding para celulares */
     }
 
     .titleFilesImports {
-        font-size: 10px; /* Reduz o tamanho da fonte para celulares */
+        font-size: 8px!important; /* Reduz o tamanho da fonte para celulares */
     }
 
     .customFormsFileImports {
@@ -159,17 +155,32 @@
     }
 
     .LabelRotulosImports {
-        font-size: 10px !important; /* Reduz o tamanho da fonte para celulares */
+        font-size: 8px !important; /* Reduz o tamanho da fonte para celulares */
     }
 
-    .inputRotulosImports::placeholder {
+    .inputRotulosImports{
+     width: 190px; 
+     height: 30px;  
+
+     &::placeholder {
         font-size: 8px; /* Reduz o tamanho da fonte do placeholder para celulares */
     }
+   }
+
+   .containerButtonAddDataCSV{
+     
+    p{
+        font-size: 8px;
+    }
+   }
 
     .BtnSubmitImport,
     .ButtonAddCSV {
+        width: 190px;
         height: 24px; /* Reduz a altura do botão para celulares */
-        margin-top: 8px; /* Ajusta a margem superior para celulares */
+        margin-top: 8px;
+        font-size: 10px;
+         /* Ajusta a margem superior para celulares */
     }
 }
 
