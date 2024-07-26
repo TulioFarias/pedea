@@ -75,36 +75,12 @@ $space-btnToogle-open: 200px;
     height: 50px;
     gap: 8px;
     position: relative;
-    left: 30px;
+    left: 150px;
+   
 
 }
 
-.ContainerNotificationBtns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    right: 30px;
 
-    button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: none;
-        border-radius: 10px;
-        color: rgb(122, 122, 122);
-        background-color: transparent;
-
-        &:hover{
-            background-color: rgba(122, 122, 122, 0.295);
-            transition: 0.5s all ease-in-out;
-            color: rgba(44, 64, 63, 0.726);
-        }
-    }
-
-}
 
 .ContainerUserCustom{
     display: flex;
@@ -299,13 +275,7 @@ $space-btnToogle-open: 200px;
     }
     
  
-    .ContainerNotificationBtns{
-        display: flex;
-        gap: 10px;
-        position: absolute;
-        right: 30px;
     
-    }
 
     .ContainerUserCustom{
         display: flex;

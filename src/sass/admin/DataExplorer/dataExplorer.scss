@@ -124,13 +124,13 @@
   
   @media (max-width: 768px) {
     .ContainerButtonsDataExplorer {
-      width: 30vw; /* Ajusta a largura para tablets */
-      height: auto; /* Ajusta a altura para tablets */
+      width: 30vw; 
+      height: auto; 
     }
   
     .ContainerTableRotulosData {
-      width: 100%; /* Ajusta a largura para tablets */
-      height: auto; /* Ajusta a altura para tablets */
+      width: 100%;
+      height: auto; 
     }
   }
   
@@ -184,13 +184,13 @@
     }
   
     .ContainerTableRotulosData {
-      width: 100%; /* Ajusta a largura para celulares */
-      height: auto; /* Ajusta a altura para celulares */
+      width: 100%; 
+      height: auto; 
     }
   
     .ContainerAllInfoDataExplorer {
-      flex-direction: column; /* Alinha os itens em coluna para celulares */
-      align-items: center; /* Centraliza os itens para celulares */
+      flex-direction: column;
+      align-items: center; 
     }
 
     

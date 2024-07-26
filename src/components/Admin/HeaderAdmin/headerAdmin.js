@@ -85,15 +85,6 @@ function HeaderAdm({
       </div>
 
       <div className="containerButtonsHeader">
-        <div className="ContainerNotificationBtns">
-          <Button>
-            <NotificationsNoneRoundedIcon />
-          </Button>
-          <Button>
-            <DarkModeOutlinedIcon />
-          </Button>
-        </div>
-
         <div className="ContainerUserCustom">
           {user &&
             user.map(value => (
