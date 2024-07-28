@@ -1,10 +1,12 @@
 import React from 'react'
+
 import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
 import EditDataExplorer from './buttonsFeaturesDataExplorer/editDataExplorer/editDataExplorer'
 import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer/removeDataExplorer'
 import ContainerImportCSV from './importCSVDataExplorer/importCSV'
-import TableViewRotulosData from './tableviewallrotulos'
+import TableViewRotulosData from './tablesViews/tableviewallrotulos'
+
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import { Tooltip } from '@mui/material'
 
