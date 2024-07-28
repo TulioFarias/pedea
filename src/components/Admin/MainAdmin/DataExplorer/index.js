@@ -48,9 +48,9 @@ function DataExplorer() {
             <ContainerImportCSV />
           </div>
         </div>
-        <div className="ContainerTableViewRotulos">
+       
           <TableViewRotulosData />
-        </div>
+       
       </div>
     </div>
   )

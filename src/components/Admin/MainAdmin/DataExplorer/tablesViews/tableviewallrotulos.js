@@ -3,7 +3,7 @@ import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
 import { useState, useEffect } from 'react';
 import apiPEDEA from '../../../../../services/api';
-
+import '../../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import ChangeTable from './tablefilesDataExplorer';
 
 function TableViewRotulosData() {
@@ -69,15 +69,17 @@ function TableViewRotulosData() {
   return (
     <div className="ContainerTableRotulosData">
       <div className="headerContainerTableRotulos">
-        <p>
+        <h2>
           {selectedTable === 'TableRotulos'
             ? 'Tabela de rótulos ativos no exporador de dados:'
             : 'Tabela de arquivos cadastrados:'}
-        </p>
-        <Button className="BtnChangeTableRotulos" onClick={openSideBar}>
+        </h2>
+        <button className="BtnChangeTableRotulos" onClick={openSideBar}>
           <TuneRoundedIcon />
-        </Button>
+      </button>
+
       </div>
+      
       <div className="TableViewRotulos">
         <Paper className="ContainerTableView">
           <TableContainer>
@@ -152,7 +154,7 @@ function TableViewRotulosData() {
           <TablePagination
             rowsPerPageOptions={[10, 25, 100]}
             component="div"
-            count={selectedTable === 'TableViewRotulos' ? dataExplorer.length : tableFilesRotulos.length}
+            count={selectedTable === 'TableRotulos' ? dataExplorer.length : tableFilesRotulos.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

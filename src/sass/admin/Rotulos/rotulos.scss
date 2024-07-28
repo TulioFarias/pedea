@@ -120,25 +120,7 @@
     font-weight: 900;
 }
 
-.BtnChangeTableRotulos{
-    position: relative;
-    left: 130px;
-    background-color: transparent;
-    border-radius: 10px;
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    &:hover{
-        background-color:  rgba(44, 64, 63, 0.726);
-        color: rgb(92, 89, 89);
-        transition: all 0.3s ease-in-out;
-    }
-}
 
 #containerOffCanvasTable{
     background-color: rgba(44, 64, 63, 0.726);
