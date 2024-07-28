@@ -1,17 +1,18 @@
 
-import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
+
+import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
 import { useState, useEffect } from 'react';
 import apiPEDEA from '../../../../../services/api';
 import '../../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import ChangeTable from './tablefilesDataExplorer';
 
+import TableViewIcon from '@mui/icons-material/TableView';
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [selectedTable, setSelectedTable] = useState('TableViewRotulos');
+  const [selectedTable, setSelectedTable] = useState('TableRotulos');
   const [showSideBar, setShowSideBar] = useState(false);
 
 
@@ -75,7 +76,7 @@ function TableViewRotulosData() {
             : 'Tabela de arquivos cadastrados:'}
         </h2>
         <button className="BtnChangeTableRotulos" onClick={openSideBar}>
-          <TuneRoundedIcon />
+          <TableViewIcon />
       </button>
 
       </div>

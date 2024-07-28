@@ -63,7 +63,7 @@ function MainAdmin() {
           {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'DataExplorer' && <DataExplorer />}
           {selectedOption === 'Link6' && <Link6 />}
-          {selectedOption === 'Rotulos' && <Rotulos />}
+          {selectedOption === 'Rotulos Bilingue' && <Rotulos />}
           {selectedOption === 'Configurações' && <SettingsAdmin />}
         </motion.div>
       </Container>

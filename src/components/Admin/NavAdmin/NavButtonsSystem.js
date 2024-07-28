@@ -78,20 +78,20 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
             <Nav.Link
-              href="/Rotulos"
+              href="/Rotulos Bilingue"
               onClick={e => {
                 e.preventDefault()
-                handleButtonClick('Rotulos')
+                handleButtonClick('Rotulos Bilingue')
               }}
               className={`links-btnsNav ${
-                activeButton === 'Rotulos' ? 'nav-link active' : 'nav-link'
+                activeButton === 'Rotulos Bilingue' ? 'nav-link active' : 'nav-link'
               }`}
               disabled={!admin}
             >
               {admin ? (
                 <>
                   <AppsRoundedIcon />
-                  Rótulos
+                  Rótulos Bilíngue 
                 </>
               ) : (
                 <div className="disableLink">
