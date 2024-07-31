@@ -130,18 +130,7 @@ function SettingsSystemAndUser() {
                   </Col>
                 </Row>
 
-                <Row className="inputsValuesUser">
-                  <Col sm="9">
-                    <Form.Label className="customLabelUser">Cargo:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="role"
-                      value={'Cargo'}
-                      readOnly
-                      className="valueInputCustom"
-                    />
-                  </Col>
-                </Row>
+              
                 <Row className="inputsValuesUser">
                   <Col sm="9">
                     <Form.Label className="customLabelUser">

@@ -17,6 +17,11 @@
     }
 }
 
+.containerEdit{
+    display: flex;
+    gap: 5px;
+}
+
 
 .EditDataExplorer{
     border: none;
@@ -24,7 +29,27 @@
     border-radius: 10px;
     background-color: rgb(71, 71, 71);
     color: white;
+    width: 50%;
 
+
+    &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(255, 254, 254);
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.editDataExplorerCSV{
+    border: none;
+    height: 32px;
+    border-radius: 10px;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 
     &:hover{
         color: rgb(44, 64, 63);

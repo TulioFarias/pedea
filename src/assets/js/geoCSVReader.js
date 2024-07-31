@@ -98,6 +98,8 @@ function geoCSVReader(resource, geoWorkspace, serverURL, serverType) {
   })
 
   return { tree, layers }
+
+  
 }
 
 export default geoCSVReader
