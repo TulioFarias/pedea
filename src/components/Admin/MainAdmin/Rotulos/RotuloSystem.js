@@ -1,17 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import '../../../../../sass/admin/Rotulos/rotulos.scss'
+import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import { Tooltip } from '@mui/material'
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 
-import apiPEDEA from '../../../../../services/api'
-import ContainerInfoRotulos from '../changeTableView/TableInfoRotulos'
-import ContainerGetInfoRotulos from '../findRotulosAndFiles/getRotulos'
-import IfKeyExist from '../modalsRotulos/modalKeyExist'
+import apiPEDEA from '../../../../services/api'
+import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
+import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
+import IfKeyExist from './modalsRotulos/modalKeyExist'
+import CreateRotulosCSV from './csvRotulos/createCSVRotulos'
 
 function CreateRotulosSystem() {
   const [valueLanguage, setValueLanguage] = useState({
@@ -215,6 +216,10 @@ function CreateRotulosSystem() {
               </Button>
             </div>
           </Form>
+
+          <div>
+            <CreateRotulosCSV/>
+          </div>
 
           <IfKeyExist
             showModalIfKey={showModalIfKey}
