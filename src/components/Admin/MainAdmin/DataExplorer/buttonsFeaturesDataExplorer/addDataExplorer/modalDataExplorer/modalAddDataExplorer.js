@@ -46,34 +46,42 @@ function ModalAddDataExplorer({ show, handleClose }) {
 
   const onSubmit = async data => {
     try {
-        await toast.promise(
-            apiPEDEA.post('/createDataExplore', {
-                categoriadeinformação: data.categoriaDeInformacao,
-                classemaior: data.classeMaior,
-                subclassemaior: data.subclasseMaior,
-                classemenor: data.classeMenor,
-                nomenclaturagreencloud: data.nomeclaturaGreenCloud,
-                nomenclaturapedea: data.nomenclaturaPedea,
-                fonte: data.fonte,
-                colunaatributo: data.colunaAtributo,
-                linkdriveshp: data.linkDriveShp,
-                linkdrivekml: data.linkDriveKml,
-                key_rotulos: data.key_rotulos
-            }),
-            {
-                pending: 'Adicionando novo registro...',
-                success: 'Registro criado com sucesso!',
-                error: 'Erro ao adicionar novo registro.'
-            }
-        );
+      // Enviando a solicitação para a API e gerenciando o estado com toast
+      await toast.promise(
+        apiPEDEA.post('/createDataExplore', {
+          categoriadeinformação: data.categoriaDeInformacao,
+          classemaior: data.classeMaior,
+          subclassemaior: data.subclasseMaior,
+          classemenor: data.classeMenor,
+          nomenclaturagreencloud: data.nomeclaturaGreenCloud,
+          nomenclaturapedea: data.nomenclaturaPedea,
+          fonte: data.fonte,
+          colunaatributo: data.colunaAtributo,
+          linkdriveshp: data.linkDriveShp,
+          linkdrivekml: data.linkDriveKml,
+          key_rotulos: data.key_rotulos
+        }),
+        {
+          pending: 'Adicionando novo registro...',
+          success: 'Registro criado com sucesso!',
+          error: {
 
-        reset();
-        handleClose();
+            render({ data }) {
+
+              return (data.response && data.response.data && data.response.data.error) || 'Erro ao adicionar novo registro.';
+            }
+          }
+        }
+      );
+
+      reset();
+      handleClose();
     } catch (error) {
-        const errorMessage = error.response?.data?.error || 'Erro ao adicionar novo registro.';
-        console.error('Erro ao atualizar os dados:', errorMessage);
+
+      const errorMessage = error.response?.data?.error || 'Erro ao adicionar novo registro.';
+      console.error('Erro ao atualizar os dados:', errorMessage);
     }
-}
+  };
 
   return (
     <>

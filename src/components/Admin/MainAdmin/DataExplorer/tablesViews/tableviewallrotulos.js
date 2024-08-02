@@ -103,7 +103,6 @@ function TableViewRotulosData() {
                       <TableCell>Chave vinculada</TableCell>
                       <TableCell>Criado em</TableCell>
                       <TableCell>Atualizado em</TableCell>
-                      <TableCell>Ações</TableCell>
                     </>
                   ) : (
                     <>

@@ -68,7 +68,7 @@ function RegisterUser() {
         {
           pending: 'Verificando os dados...',
           success: 'Usuário cadastrado com sucesso.',
-          error: 'Ops! Aconteceu algo de errado, tente novamente...'
+          error: 'Não foi possivel fazer o cadastro.'
         }
       )
 
