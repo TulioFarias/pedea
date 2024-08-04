@@ -1,0 +1,74 @@
+#ContainerModalEditDataExplorerCSV .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    width: 30vw;
+  
+
+}
+
+.AllContainersCSV{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p{
+        color: rgb(201, 9, 9);
+    }
+}
+
+.containerSendFileCSV{
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+
+
+    .BtnFileSubmit{
+        margin-top: 10px;
+        background-color: rgb(44, 64, 63);
+        color: white;
+        border: none;
+        
+    
+        &:hover{
+            background-color: gray;
+            color: rgb(44, 64, 63);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+}
+
+
+.containerSendUpdate{
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+
+
+    .inputCheckBox{
+        margin-top: 10px;
+    }
+
+    .BtnSendUpdate{
+        margin-top: 10px;
+        background-color: rgb(44, 64, 63);
+        color: white;
+        border: none;
+        
+    
+        &:hover{
+            background-color: gray;
+            color: rgb(44, 64, 63);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+.LabelCSVFile{
+    font-size: 18px;
+    font-weight: 600;
+}
