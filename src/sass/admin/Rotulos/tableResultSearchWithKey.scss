@@ -25,10 +25,9 @@
     justify-content: center;
     
 
-
+ }
     .containerSearchWithKey{
         display: flex;
-        align-items: center;
         justify-content: center;
         gap: 15px;
         padding: 5px;
@@ -36,18 +35,29 @@
         background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
         backdrop-filter: blur(10px);
         margin-top: 0px;
-        width: 300px;
+        width: 20vw;
         
 
         label{
             color: white;
         }
-    }
 
     .btnSubmitGetRotulos{
+        border: none;
         height: 40px;
-        position: relative;
-        top: 7px;
+        border-radius: 10px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 28px;
+    
+        &:hover{
+            color: rgb(44, 64, 63);
+            background-color: rgb(255, 254, 254);
+            transition: all 0.3s ease-in-out;
+        }
     }
     
 }

@@ -38,7 +38,7 @@ function CreateRotulosCSV() {
         <div className="ContainerAllImportCSVRotulos">
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="formFileName">
-                    <Form.Label>Nome</Form.Label>
+                    <Form.Label className="LabelCSV">Nome:</Form.Label>
                     <Form.Control 
                         type="text" 
                         placeholder="Digite o nome do arquivo" 
@@ -50,8 +50,8 @@ function CreateRotulosCSV() {
                     </Form.Control.Feedback>
                 </Form.Group>
                 
-                <Form.Group controlId="formFileCSV">
-                    <Form.Label>Arquivo CSV</Form.Label>
+                <Form.Group controlId="formFileCSV" className="formGroupTwo">
+                    <Form.Label className="LabelCSV">Arquivo CSV:</Form.Label>
                     <Controller
                         name="file"
                         control={control}
