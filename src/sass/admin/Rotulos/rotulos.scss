@@ -79,6 +79,23 @@
     }
 }
 
+.btnSubmitAddRotulos{
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(255, 254, 254);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
 .ActionCollumCustomRotulosTable{
     display: flex;
     gap: 20px;
@@ -92,7 +109,7 @@
 }
 
 .ContainerGetWithKeyRotulos{
-    margin-top: 15px;
+    margin-top: 10px;
    
 }
 
@@ -139,30 +156,6 @@
 }
 
 
-.buttonChangeMapWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-    border-radius: 10px;
- 
-
-
-    button{
-        background-color: transparent;
-        color: white;
-        border: 1px solid;
-        padding: 5px;
-        border-radius: 10px;
-
-        &:hover{
-            background-color: #cacaca;
-            color: rgba(44, 64, 63, 0.726);
-            transition: all 0.3s ease-in-out;
-        }
-
-    }
-}
 
 .containerBtnsTableView{
     display: flex;

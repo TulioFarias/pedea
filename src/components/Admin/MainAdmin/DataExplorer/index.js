@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect , useState} from 'react'
 
 import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
@@ -9,10 +9,32 @@ import TableViewRotulosData from './tablesViews/tableviewallrotulos'
 
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import { Tooltip } from '@mui/material'
+import apiPEDEA from '../../../../services/api'
 
 function DataExplorer() {
   const textExemple =
     'O arquivo .CSV a ser importado precisa ter a sua primeira linha definida apenas com nomes de campos. Entre estes campos, um precisa se chamar "ID", outro "Categoria de Informação", e assim por diante, conforme o exemplo: "ID", "Categoria de Informação", "Classe Maior", "Subclasse Maior", "Classe Menor", "Nomenclatura Greencloud", "Nomenclatura PEDEA", "Fonte", "Coluna Atributo", "Link Drive SHP", "Link Drive KML". As demais linhas precisam conter dados correspondentes aos campos definidos na primeira linha. Certifique-se de que o arquivo esteja em UTF-8.'
+
+
+    const handleDownload = async () => {
+      try {
+          const response = await apiPEDEA.get('/downloadExemple', {
+              responseType: 'blob', 
+          });
+  
+          const blob = new Blob([response.data], { type: response.headers['content-type'] });
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'arquivo-exemplo.csv'; 
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+      } catch (error) {
+          console.error('Erro ao iniciar o download:', error);
+      }
+  };
 
   return (
     <div className="containerWrapperOptions">
@@ -41,7 +63,7 @@ function DataExplorer() {
               <Tooltip title={textExemple} className="toltip">
                 <InfoRoundedIcon />
               </Tooltip>
-              <a className="linktoltip">Exemplo como arquivo .CSV</a>
+              <a className="linktoltip" href="#" onClick={handleDownload}>Exemplo como arquivo .CSV</a>
             </div>
           </div>
           <div className="containerThree">
