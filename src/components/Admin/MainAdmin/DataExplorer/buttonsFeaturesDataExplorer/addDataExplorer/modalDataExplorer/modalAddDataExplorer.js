@@ -46,7 +46,6 @@ function ModalAddDataExplorer({ show, handleClose }) {
 
   const onSubmit = async data => {
     try {
-      // Enviando a solicitação para a API e gerenciando o estado com toast
       await toast.promise(
         apiPEDEA.post('/createDataExplore', {
           categoriadeinformação: data.categoriaDeInformacao,

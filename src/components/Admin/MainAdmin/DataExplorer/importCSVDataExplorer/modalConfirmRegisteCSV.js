@@ -11,7 +11,7 @@ import '../../../../../sass/admin/DataExplorer/modalsDataExplorer/confirmsendDat
 
 function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
   const [data, setData] = useState([])
-  const [selectedPath, setSelectedPath] = useState('')
+  
 
   const schema = Yup.object().shape({
     confirmSend: Yup.bool().oneOf(
