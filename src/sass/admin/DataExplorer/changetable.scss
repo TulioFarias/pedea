@@ -1,0 +1,23 @@
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    
+}
+.buttonClass{
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    height: 32px;
+    color: white;
+    border: 1px solid rgb(204, 204, 204);
+
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.445);
+        color: white;
+        border: none;
+        transition: all 0.4s ease-in-out;
+    }
+}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import '../../../../../sass/admin/DataExplorer/changetable.scss'
 
 
 
@@ -28,7 +29,7 @@ function ChangeTable({ setShowSideBar, showSideBar, setSelectedTable }) {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <div className="buttonContainer">
-              <div className="buttonChangeMapWrapper">
+              
                 <button
                   className="buttonClass"
                   onClick={() => handleSelectTable('TableRotulos')}
@@ -41,7 +42,7 @@ function ChangeTable({ setShowSideBar, showSideBar, setSelectedTable }) {
                 >
                   Tabela de arquivos .csv cadastrados
                 </button>
-              </div>
+              
             </div>
           </Offcanvas.Body>
         </Offcanvas>
