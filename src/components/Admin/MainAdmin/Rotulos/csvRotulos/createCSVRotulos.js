@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from "react-toastify";
 import '../../../../../sass/admin/Rotulos/containerImportCSV.scss'
 import ModalSendInfoCSV from "./modalSendInfoCSV";
+import apiPEDEA from "../../../../../services/api";
 
 
 
@@ -24,18 +25,39 @@ function CreateRotulosCSV() {
     });
 
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm({
+    const { register, handleSubmit,  reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
-    
-        toast.success("Arquivo e nome enviados com sucesso.");
+    const onSubmit = async data => {
+        try {
+            const formData = new FormData()
+            if (data.file && data.file.length > 0) {
+              formData.append('file', data.file[0])
+              formData.append('name', data.name)
+            }
+      
+            await toast.promise(
+              apiPEDEA.post('/createRotulosCSV', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              }),
+              {
+                pending: 'Cadastrando...',
+                success: 'Arquivo de rótulos criado com sucesso!',
+                error: 'Chave ou arquivo inválido, verifique novamente.'
+              }
+            )
+      
+            reset()
+          } catch (error) {
+            console.log(error)
+          }
     };
 
     return (
-        <div className="ContainerAllImportCSVRotulos">
+<div className="ContainerAllImportCSVRotulos">
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="formFileName">
                     <Form.Label className="LabelCSV">Nome:</Form.Label>
@@ -52,17 +74,11 @@ function CreateRotulosCSV() {
                 
                 <Form.Group controlId="formFileCSV" className="formGroupTwo">
                     <Form.Label className="LabelCSV">Arquivo CSV:</Form.Label>
-                    <Controller
-                        name="file"
-                        control={control}
-                        render={({ field }) => (
-                            <Form.Control 
-                                type="file" 
-                                accept=".csv"
-                                {...field}
-                                isInvalid={!!errors.file}
-                            />
-                        )}
+                    <Form.Control 
+                        type="file" 
+                        accept=".csv"
+                        {...register('file')}
+                        isInvalid={!!errors.file}
                     />
                     <Form.Control.Feedback type="invalid">
                         {errors.file?.message}
@@ -70,16 +86,14 @@ function CreateRotulosCSV() {
                 </Form.Group>
 
                 <div className="containerBtnsSubmit">
-                <Button variant="primary" type="submit" className="BtnSubmitRotulosCSV">
-                    Enviar
-                </Button>
+                    <Button variant="primary" type="submit" className="BtnSubmitRotulosCSV">
+                        Enviar
+                    </Button>
 
-                <Button variant="primary" onClick={openModal} className="BtnSubmitRotulosCSV">
-                    Adicionar dados do .csv
-                </Button>
+                    <Button variant="primary" onClick={openModal} className="BtnSubmitRotulosCSV">
+                        Adicionar dados do .csv
+                    </Button>
                 </div>
-
-                
             </Form>
 
             <ModalSendInfoCSV showModal={showModal} setShowModal={setShowModal}/>

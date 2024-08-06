@@ -49,7 +49,6 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
     loadDataCSVRotulos()
   }, [])
 
-  console.log(data)
 
   const onSubmit = async formData => {
     try {

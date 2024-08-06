@@ -65,7 +65,7 @@ function TableViewRotulosData() {
     setShowSideBar(!showSideBar);
   };
 
-
+  console.log(dataExplorer)
 
   return (
     <div className="ContainerTableRotulosData">
@@ -98,6 +98,7 @@ function TableViewRotulosData() {
                       <TableCell>Nomenclatura PEDEA</TableCell>
                       <TableCell>Fonte</TableCell>
                       <TableCell>Coluna Atributo</TableCell>
+                      <TableCell>Modulos de gráficos</TableCell>
                       <TableCell>Link Drive SHP</TableCell>
                       <TableCell>Link Drive KML</TableCell>
                       <TableCell>Chave vinculada</TableCell>
@@ -129,6 +130,7 @@ function TableViewRotulosData() {
                         <TableCell>{item.nomenclatura_pedea}</TableCell>
                         <TableCell>{item.fonte}</TableCell>
                         <TableCell>{item.coluna_atributo}</TableCell>
+                        <TableCell>{item.modules}</TableCell>
                         <TableCell>{item.link_drive_shp}</TableCell>
                         <TableCell>{item.link_drive_kml}</TableCell>
                         <TableCell>{item.key_rotulo}</TableCell>
