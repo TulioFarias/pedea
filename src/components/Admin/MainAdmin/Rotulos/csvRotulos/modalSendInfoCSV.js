@@ -37,7 +37,7 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
   useEffect(() => {
     async function loadDataCSVRotulos() {
       try {
-        const { data } = await apiPEDEA.get('')
+        const { data } = await apiPEDEA.get('/getAllRotulosCSVBilingue')
         if (data) {
           setData(data)
         }
@@ -48,7 +48,6 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
 
     loadDataCSVRotulos()
   }, [])
-
 
   const onSubmit = async formData => {
     try {

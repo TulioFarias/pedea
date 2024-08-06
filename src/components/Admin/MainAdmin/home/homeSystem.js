@@ -13,7 +13,7 @@ function HomeSystem() {
           </h2>
         </div>
 
-        <div className="ContainerAllInfoHomeSystem">
+        {/* <div className="ContainerAllInfoHomeSystem">
           <div className="ContainerTxtHomeAdmin">
             <p></p>
             <p></p>
@@ -23,7 +23,7 @@ function HomeSystem() {
           <div className="ContainerUpdateSystemHome">
             <h4>Atualizações:</h4>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )

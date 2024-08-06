@@ -22,6 +22,7 @@ function TableViewRotulosData() {
         const { data } = await apiPEDEA.get('/infoDataExplorer');
         const sortedData = data.sort((a, b) => a.id - b.id);
         setDataExplorer(sortedData);
+        console.log(data)
       } catch (error) {
         console.error('Erro ao buscar os dados do usuário:', error);
       }
