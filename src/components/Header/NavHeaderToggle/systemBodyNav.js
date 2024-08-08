@@ -4,12 +4,18 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-
+import { mapInstance } from '../../../_config/layers/map'
+import { ServerTypeHelper } from '../../../_config/layers/helpers'
+import ImageWMS from 'ol/source/ImageWMS';
 import '../../../sass/Header/navOffCanvas.scss'
 
 function BodyNavSystem({ data, selectedNomenclature }) {
   const [openDropdowns, setOpenDropdowns] = useState({})
   const [checkedNomenclatures, setCheckedNomenclatures] = useState({})
+  const [indexShape, setIndexShape] =  useState(mapInstance)
+  const clientWidth = document.documentElement.clientWidth;
+  const clientHeight = document.documentElement.clientHeight;
+
 
   useEffect(() => {
     const initialCheckedState = {}
@@ -19,6 +25,129 @@ function BodyNavSystem({ data, selectedNomenclature }) {
     })
     setCheckedNomenclatures(initialCheckedState)
   }, [data, selectedNomenclature])
+
+  const handleLayerClick = layerId => {
+    // Obtenha todos os layers do mapa
+    const layers = mapInstance.getLayers().getArray();
+  
+    // Encontre o layer que corresponde ao layerId
+    const matchingLayer = layers.find(layer => {
+      return layer.get('title') === layerId;
+    });
+  
+    // Verifique se o layer foi encontrado
+    if (matchingLayer) {
+      // Exiba o layer encontrado e o título para verificação
+      console.log('Matching Layer:', matchingLayer);
+      console.log('Title:', matchingLayer.get('title'));
+  
+      // Aplique ações no layer encontrado
+      matchingLayer.setVisible(!matchingLayer.getVisible());
+  
+      // if (matchingLayer.getVisible()) {
+      //   mapInstance.hasNewVisibleLayer(layerId);
+      // } else {
+      //   mapInstance.hasNewVisibleLayer(-layerId);
+      // }
+  
+      // Adicione outras ações conforme necessário
+      handleLayerZIndexer(matchingLayer);
+      handleLayerZoomFocus(matchingLayer);
+  
+      if (clientWidth <= 900) {
+        handleGetLegendGraphic(matchingLayer, layerId);
+      }
+    } else {
+      console.log(`No layer found with title ${layerId}`);
+    }
+  };
+
+  const handleGetLegendGraphic = (layer, index) => {
+
+    if (layer.getVisible() && (layer.get('serverType') === ServerTypeHelper.GEOSERVER || layer.get('serverType') === ServerTypeHelper.MAPSERVER)) {
+
+      const wmsSource = new ImageWMS({
+        url: layer.get('url'),
+        params: { 'LAYERS': layer.get('wmsName') },
+        ratio: 1,
+        serverType: layer.get('serverType'),
+      });
+
+      const graphicUrl =
+        wmsSource.getLegendUrl(mapInstance.getView().getResolution(),
+          { "legend_options": "bgColor:#212835;fontColor:#FFFFFF;forceLabels:on;" },
+        );
+      const img = document.getElementById('layerLegend' + index);
+      const legendTitle = document.getElementById('layerLegendTitle' + index);
+      img.src = graphicUrl;
+      img.onclick = () => window.open(graphicUrl, '_blank').focus();
+      img.style.visibility = 'visible';
+      img.style.display = 'inherit';
+      img.style.cursor = 'pointer';
+      legendTitle.style.visibility = 'visible';
+      legendTitle.style.display = 'inherit';
+    } else if (!layer.getVisible()) {
+      const legendTitle = document.getElementById('layerLegendTitle' + index);
+      const img = document.getElementById('layerLegend' + index);
+      img.style.visibility = 'hidden';
+      img.style.display = 'none';
+      legendTitle.style.visibility = 'hidden';
+      legendTitle.style.display = 'none';
+    }
+
+
+  }
+
+
+  const handleLayerZIndexer = (layer) => {
+
+    const vector = mapInstance.getLayers().getArray()[mapInstance.getLayers().getArray().length - 4];
+    const vectorForCSV = mapInstance.getLayers().getArray()[mapInstance.getLayers().getArray().length - 3];
+    const vectorForGeolocation = mapInstance.getLayers().getArray()[mapInstance.getLayers().getArray().length - 2];
+    const graticule = mapInstance.getLayers().getArray()[mapInstance.getLayers().getArray().length - 1];
+
+    if (layer.getVisible()) {
+      setIndexShape(indexShape + 1)
+      layer.setZIndex(indexShape);
+      vector.setZIndex(indexShape + 1)
+      vectorForCSV.setZIndex(indexShape + 2)
+      vectorForGeolocation.setZIndex(indexShape + 3)
+      graticule.setZIndex(indexShape + 4);
+    }
+
+  }
+
+
+  const handleLayerZoomFocus = async (layer) => {
+
+    let method = 'GET'
+    let url = 'https://pedea.sema.ce.gov.br/api/v1/geoextent/layer?layer=' + layer.get('wmsName').split(':')[1]
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = function () {
+
+      let str = xhr.response;
+
+      let regex = /[-\d]{1,}.[\d]{1,}/g;
+
+      let extent = str.match(regex);
+
+      if (extent && extent[0] && extent[1] && extent[2] && extent[3]) {
+        try {
+          extent = extent.map((e) => parseFloat(e));
+
+          mapInstance.getView().fit(extent, mapInstance.getSize());
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    };
+    xhr.onerror = function () {
+      console.log(xhr.response);
+    };
+    xhr.send();
+
+  }
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
@@ -61,11 +190,21 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   }
 
   const handleCheckboxChange = (e, nomenclature) => {
+    const { checked } = e;
+
     setCheckedNomenclatures(prevState => ({
       ...prevState,
-      [nomenclature]: !prevState[nomenclature]
-    }))
+      [nomenclature]: checked
+    }));
+
+   
+    handleLayerClick(nomenclature);
   }
+  
+  const getCheckedValue = (nomenclature) => {
+    
+    return checkedNomenclatures[nomenclature] || false;
+  };
 
   const groupByCategory = array => {
     return array.reduce((acc, item) => {
@@ -178,9 +317,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                         <Form.Check
                           type="checkbox"
                           label={nomenclature}
-                          onClick={e => e.stopPropagation()}
                           onChange={e => handleCheckboxChange(e, nomenclature)}
-                          checked={checkedNomenclatures[nomenclature]}
+                          checked={getCheckedValue(nomenclature)}
+                          data-layer-id={groupedData[category][majorClass].layerId}
+                        
                         />
                       </NavDropdown.Item>
                     )
@@ -224,11 +364,11 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           <Form.Check
                             type="checkbox"
                             label={nomenclature}
-                            onClick={e => e.stopPropagation()}
+                            data-layer-id={groupedData[category][majorClass].layerId}
                             onChange={e =>
                               handleCheckboxChange(e, nomenclature)
                             }
-                            checked={checkedNomenclatures[nomenclature]}
+                            checked={getCheckedValue(nomenclature)}
                           />
                         </NavDropdown.Item>
                       ))}
@@ -276,12 +416,9 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           >
                             <Form.Check
                               type="checkbox"
-                              label={nomenclature}
-                              onClick={e => e.stopPropagation()}
-                              onChange={e =>
-                                handleCheckboxChange(e, nomenclature)
-                              }
-                              checked={checkedNomenclatures[nomenclature]}
+                              data-layer-id={groupedData[category][majorClass].layerId}
+                              onChange={(e) => handleCheckboxChange(e, minorClass)}
+                              checked={getCheckedValue(nomenclature)}
                             />
                           </NavDropdown.Item>
                         ))}

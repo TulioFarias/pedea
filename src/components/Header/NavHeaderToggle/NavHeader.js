@@ -2,7 +2,7 @@ import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
 import Autocomplete from '@mui/material/Autocomplete'
 import Popper from '@mui/material/Popper'
 import TextField from '@mui/material/TextField'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState , useRef} from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
@@ -18,7 +18,9 @@ import BodyNavSystem from './systemBodyNav'
 function NavOptions() {
   const { t } = useTranslation()
   const [dataExplorer, setDataExplorer] = useState([])
-  const [rotulosDataExplorer, setRotulosDataExplorer] = useState([])
+  const [visibleLayer, setVisibleLayer] = useState(0)
+  const switcherRef = useRef();
+  
   const [selectedNomenclature, setSelectedNomenclature] = useState('')
 
   useEffect(() => {
@@ -48,32 +50,33 @@ function NavOptions() {
     setSelectedNomenclature(value)
   }
 
-  const deactivateLayers = () => {
-    const layers = mapInstance.getLayers().getArray()
+  const hasNewVisibleLayer = (index) => {
+    setVisibleLayer(index);
+  }
 
-    for (let i = 0; i < layers.length; i++) {
-      const layer = layers[i]
+  const deactivateVisibleLayers = () => {
 
-      if (
-        layer.getVisible() &&
-        layer.get('serverType') === ServerTypeHelper.GEOSERVER
-      ) {
-        layer.setVisible(false)
+    if (!mapInstance || !mapInstance.getLayers) {
+      console.error('Instância do mapa não é válida ou getLayers não está disponível.');
+      return;
+    }
 
-        const checkbox = document.getElementById('layer' + i)
-
-        if (checkbox) {
-          checkbox.checked = false
-        }
+    for (let i = 0; i < mapInstance.getLayers().getArray().length; i++) {
+      if (mapInstance.getLayers().getArray()[i].getVisible() && (mapInstance.getLayers().getArray()[i].get('serverType') && mapInstance.getLayers().getArray()[i].get('serverType') === ServerTypeHelper.GEOSERVER)) {
+        mapInstance.getLayers().getArray()[i].setVisible(false);
+        // mapInstance.hasNewVisibleLayer(-i);
       }
     }
 
-    return false
+    return false;
+
   }
 
   const CustomPopper = props => {
     return <Popper {...props} placement="right-start" />
   }
+
+
 
   return (
     <div>
@@ -140,12 +143,14 @@ function NavOptions() {
           <BodyNavSystem
             data={dataExplorer}
             selectedNomenclature={selectedNomenclature}
+            hasNewVisibleLayer={hasNewVisibleLayer}
+            switcherRef={switcherRef}
           />
         </Offcanvas.Body>
       </Container>
 
       <div className="desativarCamadas">
-        <a onClick={deactivateLayers}>{t('Desativar camadas visíveis')}</a>
+        <a onClick={deactivateVisibleLayers}>{t('Desativar camadas visíveis')}</a>
       </div>
 
       <Button
