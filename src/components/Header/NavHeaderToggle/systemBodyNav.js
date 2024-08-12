@@ -27,76 +27,63 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   }, [data, selectedNomenclature])
 
   const handleLayerClick = layerId => {
-    // Obtenha todos os layers do mapa
+
     const layers = mapInstance.getLayers().getArray();
   
-    // Encontre o layer que corresponde ao layerId
+
     const matchingLayer = layers.find(layer => {
       return layer.get('title') === layerId;
     });
   
-    // Verifique se o layer foi encontrado
     if (matchingLayer) {
-      // Exiba o layer encontrado e o título para verificação
-      console.log('Matching Layer:', matchingLayer);
-      console.log('Title:', matchingLayer.get('title'));
-  
-      // Aplique ações no layer encontrado
       matchingLayer.setVisible(!matchingLayer.getVisible());
   
-      // if (matchingLayer.getVisible()) {
-      //   mapInstance.hasNewVisibleLayer(layerId);
-      // } else {
-      //   mapInstance.hasNewVisibleLayer(-layerId);
-      // }
-  
-      // Adicione outras ações conforme necessário
       handleLayerZIndexer(matchingLayer);
       handleLayerZoomFocus(matchingLayer);
   
-      if (clientWidth <= 900) {
-        handleGetLegendGraphic(matchingLayer, layerId);
-      }
+      // if (clientWidth <= 900) {
+      //   handleGetLegendGraphic(matchingLayer, layerId);
+      // }
     } else {
       console.log(`No layer found with title ${layerId}`);
     }
   };
 
-  const handleGetLegendGraphic = (layer, index) => {
+  // const handleGetLegendGraphic = (layer, index) => {
 
-    if (layer.getVisible() && (layer.get('serverType') === ServerTypeHelper.GEOSERVER || layer.get('serverType') === ServerTypeHelper.MAPSERVER)) {
+  //   if (layer.getVisible() && (layer.get('serverType') === ServerTypeHelper.GEOSERVER || layer.get('serverType') === ServerTypeHelper.MAPSERVER)) {
 
-      const wmsSource = new ImageWMS({
-        url: layer.get('url'),
-        params: { 'LAYERS': layer.get('wmsName') },
-        ratio: 1,
-        serverType: layer.get('serverType'),
-      });
+  //     const wmsSource = new ImageWMS({
+  //       url: layer.get('url'),
+  //       params: { 'LAYERS': layer.get('wmsName') },
+  //       ratio: 1,
+  //       serverType: layer.get('serverType'),
+  //     });
 
-      const graphicUrl =
-        wmsSource.getLegendUrl(mapInstance.getView().getResolution(),
-          { "legend_options": "bgColor:#212835;fontColor:#FFFFFF;forceLabels:on;" },
-        );
-      const img = document.getElementById('layerLegend' + index);
-      const legendTitle = document.getElementById('layerLegendTitle' + index);
-      img.src = graphicUrl;
-      img.onclick = () => window.open(graphicUrl, '_blank').focus();
-      img.style.visibility = 'visible';
-      img.style.display = 'inherit';
-      img.style.cursor = 'pointer';
-      legendTitle.style.visibility = 'visible';
-      legendTitle.style.display = 'inherit';
-    } else if (!layer.getVisible()) {
-      const legendTitle = document.getElementById('layerLegendTitle' + index);
-      const img = document.getElementById('layerLegend' + index);
-      img.style.visibility = 'hidden';
-      img.style.display = 'none';
-      legendTitle.style.visibility = 'hidden';
-      legendTitle.style.display = 'none';
-    }
+  //     const graphicUrl =
+  //       wmsSource.getLegendUrl(mapInstance.getView().getResolution(),
+  //         { "legend_options": "bgColor:#212835;fontColor:#FFFFFF;forceLabels:on;" },
+  //       );
+  //     const img = document.getElementById('layerLegend' + index);
+  //     const legendTitle = document.getElementById('layerLegendTitle' + index);
+  //     img.src = graphicUrl;
+  //     img.onclick = () => window.open(graphicUrl, '_blank').focus();
+  //     img.style.visibility = 'visible';
+  //     img.style.display = 'inherit';
+  //     img.style.cursor = 'pointer';
+  //     legendTitle.style.visibility = 'visible';
+  //     legendTitle.style.display = 'inherit';
+  //   } else if (!layer.getVisible()) {
+  //     const legendTitle = document.getElementById('layerLegendTitle' + index);
+  //     const img = document.getElementById('layerLegend' + index);
+  //     img.style.visibility = 'hidden';
+  //     img.style.display = 'none';
+  //     legendTitle.style.visibility = 'hidden';
+  //     legendTitle.style.display = 'none';
+  //   }
 
 
-  }
+  // }
 
 
   const handleLayerZIndexer = (layer) => {
@@ -151,7 +138,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
-      const newOpenDropdowns = { ...prevState }
+      const newOpenDropdowns = { ...prevState };
 
       if (minorClass) {
         newOpenDropdowns[category] = {
@@ -160,37 +147,34 @@ function BodyNavSystem({ data, selectedNomenclature }) {
             ...newOpenDropdowns[category]?.[majorClass],
             [subMajorClass]: {
               ...newOpenDropdowns[category]?.[majorClass]?.[subMajorClass],
-              [minorClass]:
-                !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]?.[
-                  minorClass
-                ]
+              [minorClass]: !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]?.[minorClass]
             }
           }
-        }
+        };
       } else if (subMajorClass) {
         newOpenDropdowns[category] = {
           ...newOpenDropdowns[category],
           [majorClass]: {
             ...newOpenDropdowns[category]?.[majorClass],
-            [subMajorClass]:
-              !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]
+            [subMajorClass]: !newOpenDropdowns[category]?.[majorClass]?.[subMajorClass]
           }
-        }
+        };
       } else if (majorClass) {
         newOpenDropdowns[category] = {
           ...newOpenDropdowns[category],
           [majorClass]: !newOpenDropdowns[category]?.[majorClass]
-        }
+        };
       } else {
-        newOpenDropdowns[category] = !newOpenDropdowns[category]
+        newOpenDropdowns[category] = !newOpenDropdowns[category];
       }
 
-      return newOpenDropdowns
-    })
-  }
+      return newOpenDropdowns;
+    });
+  };
 
   const handleCheckboxChange = (e, nomenclature) => {
-    const { checked } = e;
+    const { checked } = e.target;
+    e.stopPropagation();
 
     setCheckedNomenclatures(prevState => ({
       ...prevState,
@@ -317,7 +301,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                         <Form.Check
                           type="checkbox"
                           label={nomenclature}
-                          onChange={e => handleCheckboxChange(e, nomenclature)}
+                          onChange={e => {
+                          
+                            handleCheckboxChange(e, nomenclature);
+                          }}
                           checked={getCheckedValue(nomenclature)}
                           data-layer-id={groupedData[category][majorClass].layerId}
                         
@@ -365,9 +352,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                             type="checkbox"
                             label={nomenclature}
                             data-layer-id={groupedData[category][majorClass].layerId}
-                            onChange={e =>
-                              handleCheckboxChange(e, nomenclature)
-                            }
+                            onChange={e => {
+                            
+                              handleCheckboxChange(e, nomenclature);
+                            }}
                             checked={getCheckedValue(nomenclature)}
                           />
                         </NavDropdown.Item>
@@ -417,7 +405,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                             <Form.Check
                               type="checkbox"
                               data-layer-id={groupedData[category][majorClass].layerId}
-                              onChange={(e) => handleCheckboxChange(e, minorClass)}
+                              label={nomenclature}
+                              onChange={e => {
+                                handleCheckboxChange(e, nomenclature);
+                              }}
                               checked={getCheckedValue(nomenclature)}
                             />
                           </NavDropdown.Item>

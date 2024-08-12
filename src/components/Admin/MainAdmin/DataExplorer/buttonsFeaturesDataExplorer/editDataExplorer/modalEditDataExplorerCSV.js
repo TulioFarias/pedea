@@ -61,7 +61,7 @@ function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
       formData.append('file', data.file[0]);
 
       await toast.promise(
-        apiPEDEA.put('/createUpdateCSV', formData, {
+        apiPEDEA.post('/createUpdateCSV', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
