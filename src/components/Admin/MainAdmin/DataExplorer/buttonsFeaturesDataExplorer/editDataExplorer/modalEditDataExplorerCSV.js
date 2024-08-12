@@ -45,7 +45,7 @@ function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
   useEffect(() => {
     async function getInfoDataExplorer() {
       try {
-        const { data } = await apiPEDEA.get('/infoDataExplorerCSV');
+        const { data } = await apiPEDEA.get('/getAllCSVUpdate');
         setFiles(data);
       } catch (error) {
         console.error('Erro ao buscar os dados do usuário:', error);

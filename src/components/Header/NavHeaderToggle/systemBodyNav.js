@@ -26,6 +26,12 @@ function BodyNavSystem({ data, selectedNomenclature }) {
     setCheckedNomenclatures(initialCheckedState)
   }, [data, selectedNomenclature])
 
+  useEffect(() => {
+    if (selectedNomenclature) {
+      handleLayerClick(selectedNomenclature);
+    }
+  }, [selectedNomenclature]);
+
   const handleLayerClick = layerId => {
 
     const layers = mapInstance.getLayers().getArray();
