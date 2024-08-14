@@ -24,6 +24,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
         item.nomenclatura_pedea === selectedNomenclature
     })
     setCheckedNomenclatures(initialCheckedState)
+
+    if (selectedNomenclature) {
+      openDropdownForNomenclature(selectedNomenclature);
+    }
   }, [data, selectedNomenclature])
 
   useEffect(() => {
@@ -91,6 +95,28 @@ function BodyNavSystem({ data, selectedNomenclature }) {
 
   // }
 
+
+
+  const openDropdownForNomenclature = (nomenclature) => {
+    const category = data.find(item => item.nomenclatura_pedea === nomenclature)?.categoria_de_informacao;
+    const majorClass = data.find(item => item.nomenclatura_pedea === nomenclature)?.classe_maior;
+    const subMajorClass = data.find(item => item.nomenclatura_pedea === nomenclature)?.sub_classe_maior;
+    const minorClass = data.find(item => item.nomenclatura_pedea === nomenclature)?.classe_menor;
+
+    setOpenDropdowns(prevState => ({
+      ...prevState,
+      [category]: {
+        ...(prevState[category] || {}),
+        [majorClass]: {
+          ...(prevState[category]?.[majorClass] || {}),
+          [subMajorClass]: {
+            ...(prevState[category]?.[majorClass]?.[subMajorClass] || {}),
+            [minorClass]: true
+          }
+        }
+      }
+    }));
+  };
 
   const handleLayerZIndexer = (layer) => {
 
@@ -269,7 +295,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
             title={
               <>
                 {openDropdowns[category] ? (
-                  <FolderOpenRoundedIcon />
+                  <FolderOpenRoundedIcon className='openfolder'/>
                 ) : (
                   <FolderRoundedIcon />
                 )}
@@ -311,6 +337,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           
                             handleCheckboxChange(e, nomenclature);
                           }}
+                          onClick={(e) => e.stopPropagation()}
                           checked={getCheckedValue(nomenclature)}
                           data-layer-id={groupedData[category][majorClass].layerId}
                         
@@ -362,6 +389,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                             
                               handleCheckboxChange(e, nomenclature);
                             }}
+                            onClick={(e) => e.stopPropagation()}
                             checked={getCheckedValue(nomenclature)}
                           />
                         </NavDropdown.Item>
@@ -415,6 +443,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                               onChange={e => {
                                 handleCheckboxChange(e, nomenclature);
                               }}
+                               onClick={(e) => e.stopPropagation()}
                               checked={getCheckedValue(nomenclature)}
                             />
                           </NavDropdown.Item>

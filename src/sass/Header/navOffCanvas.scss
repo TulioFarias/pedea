@@ -19,7 +19,14 @@
     :hover{
         color: white;
     }
+    
 
+    .openfolder{
+
+        ::after{
+            color: green;
+        }
+    }
 
     .dropdown-toggle::after{
         display: none;
