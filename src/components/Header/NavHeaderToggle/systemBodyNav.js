@@ -8,6 +8,7 @@ import { mapInstance } from '../../../_config/layers/map'
 import { ServerTypeHelper } from '../../../_config/layers/helpers'
 import ImageWMS from 'ol/source/ImageWMS';
 import '../../../sass/Header/navOffCanvas.scss'
+import ToolSystem from './toolSystem'
 
 function BodyNavSystem({ data, selectedNomenclature }) {
   const [openDropdowns, setOpenDropdowns] = useState({})
@@ -167,6 +168,8 @@ function BodyNavSystem({ data, selectedNomenclature }) {
     xhr.send();
 
   }
+
+ 
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
@@ -339,9 +342,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           }}
                           onClick={(e) => e.stopPropagation()}
                           checked={getCheckedValue(nomenclature)}
-                          data-layer-id={groupedData[category][majorClass].layerId}
+                          
                         
                         />
+                        <ToolSystem/>
                       </NavDropdown.Item>
                     )
                   )}
@@ -384,7 +388,6 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           <Form.Check
                             type="checkbox"
                             label={nomenclature}
-                            data-layer-id={groupedData[category][majorClass].layerId}
                             onChange={e => {
                             
                               handleCheckboxChange(e, nomenclature);
@@ -392,6 +395,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                             onClick={(e) => e.stopPropagation()}
                             checked={getCheckedValue(nomenclature)}
                           />
+                           <ToolSystem />
                         </NavDropdown.Item>
                       ))}
 
@@ -438,7 +442,6 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           >
                             <Form.Check
                               type="checkbox"
-                              data-layer-id={groupedData[category][majorClass].layerId}
                               label={nomenclature}
                               onChange={e => {
                                 handleCheckboxChange(e, nomenclature);
@@ -446,6 +449,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                                onClick={(e) => e.stopPropagation()}
                               checked={getCheckedValue(nomenclature)}
                             />
+                             <ToolSystem/>
                           </NavDropdown.Item>
                         ))}
                       </NavDropdown>
