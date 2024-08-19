@@ -14,8 +14,10 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   const [openDropdowns, setOpenDropdowns] = useState({})
   const [checkedNomenclatures, setCheckedNomenclatures] = useState({})
   const [indexShape, setIndexShape] =  useState(mapInstance)
+  const [shapeNames, setShapeNames] = useState([]);
   const clientWidth = document.documentElement.clientWidth;
   const clientHeight = document.documentElement.clientHeight;
+  
 
 
   useEffect(() => {
@@ -24,11 +26,19 @@ function BodyNavSystem({ data, selectedNomenclature }) {
       initialCheckedState[item.nomenclatura_pedea] =
         item.nomenclatura_pedea === selectedNomenclature
     })
-    setCheckedNomenclatures(initialCheckedState)
+
 
     if (selectedNomenclature) {
       openDropdownForNomenclature(selectedNomenclature);
     }
+
+    const layers = mapInstance.getLayers().getArray();
+    const shapeNamesArray = layers.map(layer => layer);
+    setShapeNames(shapeNamesArray); 
+
+    
+
+    setCheckedNomenclatures(initialCheckedState)
   }, [data, selectedNomenclature])
 
   useEffect(() => {
@@ -36,6 +46,8 @@ function BodyNavSystem({ data, selectedNomenclature }) {
       handleLayerClick(selectedNomenclature);
     }
   }, [selectedNomenclature]);
+
+  
 
   const handleLayerClick = layerId => {
 
@@ -45,6 +57,8 @@ function BodyNavSystem({ data, selectedNomenclature }) {
     const matchingLayer = layers.find(layer => {
       return layer.get('title') === layerId;
     });
+
+
   
     if (matchingLayer) {
       matchingLayer.setVisible(!matchingLayer.getVisible());
@@ -135,6 +149,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
       graticule.setZIndex(indexShape + 4);
     }
 
+
   }
 
 
@@ -168,8 +183,6 @@ function BodyNavSystem({ data, selectedNomenclature }) {
     xhr.send();
 
   }
-
- 
 
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
@@ -343,9 +356,8 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           onClick={(e) => e.stopPropagation()}
                           checked={getCheckedValue(nomenclature)}
                           
-                        
                         />
-                        <ToolSystem/>
+                        <ToolSystem />
                       </NavDropdown.Item>
                     )
                   )}
@@ -449,7 +461,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                                onClick={(e) => e.stopPropagation()}
                               checked={getCheckedValue(nomenclature)}
                             />
-                             <ToolSystem/>
+                              <ToolSystem />
                           </NavDropdown.Item>
                         ))}
                       </NavDropdown>

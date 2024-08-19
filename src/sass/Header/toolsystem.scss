@@ -6,17 +6,15 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .ContainerLinks{
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .linksTools{
-    
-    color: red;
 
     :hover{
         transform: scale(1.1);
@@ -29,27 +27,21 @@
 }
 
 
-.ButtonFilter{
-    border: 1px solid rgba(44, 64, 63, 0.719);
-    border-radius: 10px;
-    background-color: transparent;
-    color: rgba(44, 64, 63, 0.719);
-
-   
-}
-
 
 .ContainerFilter{
     border-radius: 10px;
     display: flex;
     padding: 10px;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
-    p{
-        font-size: 16px;
+    p{  
+        border-top: 1px dashed;
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 600;
         margin-bottom: 0px;
-        padding-left: 5px;
+        padding-left: 10px;
     }
 }
 
@@ -73,10 +65,9 @@
 }
 
 .inputTxtFilter{
-    background-color: transparent;
     margin-left: 5px;
     width: 260px;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.274);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.384);
 }
+
