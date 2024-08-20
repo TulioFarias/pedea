@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 
 function ToolSystem({ wmsName }) {
 
-  console.log(wmsName)
+
 
   const [filter, setFilter] = useState(false);
   const [data, setData] = useState([]);
@@ -51,7 +51,7 @@ function ToolSystem({ wmsName }) {
     e.stopPropagation();
   };
 
-  const handleLayerFilterUpdaterClick = () => {
+  const handleLayerFilterUpdaterClick = (e) => {
     let attribute = layerAttributes[selectedAttribute]?.replace(":", "");
     let attributeType = layerAttributesTypes[selectedAttribute];
     let operator = selectedOperator;
@@ -63,11 +63,15 @@ function ToolSystem({ wmsName }) {
     console.log('Aplicar Filtro:', filter);
 
 
+    handleClickInsideDropdown(e)
+
+
   };
 
-  const handleLayerFilterReseterClick = () => {
+  const handleLayerFilterReseterClick = (e) => {
 
     console.log('Resetar Filtro');
+    handleClickInsideDropdown(e)
 
   };
 
@@ -79,6 +83,8 @@ function ToolSystem({ wmsName }) {
     } else {
       return `'${value}'`;
     }
+
+    
   };
 
   return (
@@ -155,6 +161,8 @@ function ToolSystem({ wmsName }) {
               label="Digite um valor..."
               variant="filled"
               onChange={(e) => setFilterValue(e.target.value)}
+              onClick={handleClickInsideDropdown} 
+              
               sx={{
                 color: 'white',
                 '& .MuiInputBase-input': { color: 'white' },
@@ -177,6 +185,7 @@ function ToolSystem({ wmsName }) {
             >
               Filtrar
             </Button>
+             
             <Button
               variant="outlined"
               sx={{
@@ -187,7 +196,6 @@ function ToolSystem({ wmsName }) {
               }}
               onClick={handleLayerFilterReseterClick}
               size="small"
-              color="error"
             >
               Resetar
             </Button>

@@ -6,24 +6,46 @@
     gap: 10px;
     background-color: transparent;
     position: fixed;
-    top: 190px;
-    left: 20px;
+    top: 150px;
+    left: 15px;
     z-index: 2;
     width: max-content;
 }
 .my-custom-btns{
     padding:  4px 6px;
     background-color: rgba(44,64,63,.8);
-    outline: none;
     border: none;
     border-radius: 5px;
+    width: 35px;
+    height: 35px;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover{
         transform: scale(1.05);
         transition: 0.3s all ease-in-out;
     }
 
+}
+
+.ToolBtns{
+    padding:  4px 6px;
+    background-color: rgba(44,64,63,.8);
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        transform: scale(1.05);
+        transition: 0.3s all ease-in-out;
+    }
 }
 
 .GridLayer {

@@ -1,0 +1,55 @@
+
+.containerBtnLegend{
+    position: fixed;
+    bottom: 80px;
+}
+.containerLegend{
+    position: fixed;
+    bottom: 80px;
+    left: 5px;
+    width: 260px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: rgba(44,64,63,.8);
+    padding: 5px;
+    overflow: auto;
+}
+
+.containerTitle{
+
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.titleLegend{
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding-left: 6px;
+}
+
+.containerLayers{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.layerItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.layerItemTitleAndImg{
+
+}
+
+.titleLayers{
+    color: white;
+    margin-bottom: 0px;
+}
+
+
