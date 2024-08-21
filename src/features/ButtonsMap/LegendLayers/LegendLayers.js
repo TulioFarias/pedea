@@ -6,21 +6,27 @@ import LegendToggleIcon from '@mui/icons-material/LegendToggle';
 import ImageWMS from 'ol/source/ImageWMS';
 import { ServerTypeHelper } from '../../../_config/layers/helpers';
 import { mapInstance } from '../../../_config/layers/map';
-
+import Slider from '@mui/material/Slider';
 function LegendLayers() {
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [layersData, setLayersData] = useState([]);
 
-  
+    const ID_TYPE = "LayerOpacitySlider";
+
+
     const toggleLegend = () => {
         setIsLegendVisible(!isLegendVisible);
     };
 
 
-    const handleOpacity = (event, index) => {
-        const value = parseFloat(event.target.value);
-        const layers = mapInstance.getLayers().getArray();
-        layers[index].setOpacity(value);
+    const handleOpacity = (event) => {
+        let value = parseFloat(event.target.value)
+       
+        let index = parseInt(event.target.id.replace(ID_TYPE, ""));
+        console.log(value)
+        console.log(index)
+        mapInstance.getLayers().getArray()[index].setOpacity(event);
+       
     };
 
 
@@ -85,22 +91,31 @@ function LegendLayers() {
                             <div key={index} className="layerItem">
 
                                 <div className='layerItemTitleAndImg'>
-                                <p className='titleLayers'>{layer.title}</p>
-                                <img
-                                    src={layer.graphicUrl}
-                                    alt="Layer Legend"
-                                    onClick={() => window.open(layer.graphicUrl, '_blank').focus()}
-                                    className='imgLegend'
-                                />
+                                    <p className='titleLayers'>{layer.title}</p>
+                                    <img
+                                        src={layer.graphicUrl}
+                                        alt="Layer Legend"
+                                        onClick={() => window.open(layer.graphicUrl, '_blank').focus()}
+                                        className='imgLegend'
+                                    />
                                 </div>
-                              
-                                <input
-                                    type='range'
-                                    min="0"
-                                    max="1"
-                                    step="0.01"
-                                    value={layer.opacity}
-                                    onInput={(event) => handleOpacity(event, index)}
+
+                                <Slider
+                                    id={ID_TYPE + index}
+                                    size="small"
+                                    aria-label="Small"
+                                    valueLabelDisplay="auto"
+                                    defaultValue="100"
+                                    min={0}
+                                    max={100}
+                                    step={0.01}
+                                    onInput={handleOpacity}
+                                    sx={{
+                                        color: 'rgba(1, 185, 176, 0.8);',
+                                        '& .MuiSlider-thumb': {
+                                            backgroundColor: 'rgba(1, 185, 176, 0.8)',
+                                        },
+                                    }}
                                 />
                             </div>
                         ))}
