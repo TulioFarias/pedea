@@ -10,6 +10,7 @@ import ResetZoom from './ResetZoom/ResetZoom';
 import ZoomInOut from './ZoomInOut/ZoomInOut';
 import LegendLayers from './LegendLayers/LegendLayers';
 import GrapichModules from './GrapichModules/GrapichModules';
+import openBox from '../../assets/img/openbox.png'
 
 import HomeRepairServiceRoundedIcon from '@mui/icons-material/HomeRepairServiceRounded';
 
@@ -30,9 +31,8 @@ function ButtonsMap() {
           aria-label="toggle buttons" 
           onClick={toggleButtons}
           className='ToolBtns'
-         
         >
-          <HomeRepairServiceRoundedIcon/>
+          {showButtons ? <img src={openBox}/>: <HomeRepairServiceRoundedIcon />}
         </button>
 
         {showButtons && (

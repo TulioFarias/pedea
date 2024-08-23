@@ -55,8 +55,13 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   
 
     const matchingLayer = layers.find(layer => {
+
+      setShapeNames(layer.get('wmsName'))
       return layer.get('title') === layerId;
+      
     });
+
+    
 
 
   
@@ -66,9 +71,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
       handleLayerZIndexer(matchingLayer);
       handleLayerZoomFocus(matchingLayer);
   
-      // if (clientWidth <= 900) {
-      //   handleGetLegendGraphic(matchingLayer, layerId);
-      // }
+     
     } else {
       console.log(`No layer found with title ${layerId}`);
     }
@@ -303,6 +306,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
 
   const groupedData = groupByCategory(data)
 
+
   return (
     <div>
       {Object.keys(groupedData).map((category, idx) => (
@@ -357,7 +361,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                           checked={getCheckedValue(nomenclature)}
                           
                         />
-                        <ToolSystem />
+                         <ToolSystem wmsName={nomenclature} />
                       </NavDropdown.Item>
                     )
                   )}
@@ -407,7 +411,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                             onClick={(e) => e.stopPropagation()}
                             checked={getCheckedValue(nomenclature)}
                           />
-                           <ToolSystem />
+                            <ToolSystem wmsName={nomenclature} />
                         </NavDropdown.Item>
                       ))}
 
@@ -461,7 +465,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
                                onClick={(e) => e.stopPropagation()}
                               checked={getCheckedValue(nomenclature)}
                             />
-                              <ToolSystem />
+                               <ToolSystem wmsName={nomenclature} />
                           </NavDropdown.Item>
                         ))}
                       </NavDropdown>

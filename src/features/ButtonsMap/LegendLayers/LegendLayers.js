@@ -21,12 +21,12 @@ function LegendLayers() {
 
     const handleOpacity = (event) => {
         let value = parseFloat(event.target.value)
-       
+
         let index = parseInt(event.target.id.replace(ID_TYPE, ""));
         console.log(value)
         console.log(index)
         mapInstance.getLayers().getArray()[index].setOpacity(event);
-       
+
     };
 
 
@@ -105,16 +105,20 @@ function LegendLayers() {
                                     size="small"
                                     aria-label="Small"
                                     valueLabelDisplay="auto"
-                                    defaultValue="100"
+                                    defaultValue={100}
                                     min={0}
                                     max={100}
                                     step={0.01}
                                     onInput={handleOpacity}
                                     sx={{
+                                        width: '220px', 
+                                        height: '2px',  
                                         color: 'rgba(1, 185, 176, 0.8);',
                                         '& .MuiSlider-thumb': {
+                                            width: '10px',
+                                            height: '10px',
                                             backgroundColor: 'rgba(1, 185, 176, 0.8)',
-                                        },
+                                        }
                                     }}
                                 />
                             </div>
