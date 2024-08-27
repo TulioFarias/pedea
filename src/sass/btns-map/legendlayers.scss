@@ -31,29 +31,26 @@
 
 }
 
-.containerLayers{
+.PopUpLayerItem{
     padding: 10px;
     display: flex;
     flex-direction: column;
-    
-}
-
-.layerItem{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     gap: 10px;
-}
-
-.layerItemTitleAndImg{
-
-}
-
-.titleLayers{
-    color: white;
-    margin-bottom: 0px;
-    font-size: 14px;
     
 }
 
+.PopUpLayerLegendTitle{
+    color: white;
+}
+
+.PopUpLayerLegend{
+    width: 20px;
+
+}
+
+
+.LayerOpacity{
+    height: 5px;
+    
+}
 

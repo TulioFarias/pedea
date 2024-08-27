@@ -30,15 +30,13 @@
     height: 76vh;
     border-radius: 20px;
     padding: 10px;
-    
-    background-color: rgb(44, 64, 63);
-    color: white;
+    background-color: #cacaca2a;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.541);
     gap: 20px;
 
 
     .form-label{
         font-size: 14px!important;
-        color: white
     }
 }
 
@@ -58,7 +56,7 @@
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow:  0px 0px 2px 2px rgba(255, 255, 255, 0.637);
+    box-shadow:  0px 0px 2px 2px rgba(0, 0, 0, 0.411);
 }
 
 .user-imageSettings img {
@@ -155,13 +153,12 @@
             height: max-content;
             border-radius: 20px;
             padding: 10px;
-            background-color: #cacaca;
             gap: 20px;
         
         
             .form-label{
                 font-size: 12px!important;
-                color: gray;
+    
             }
         }
         
@@ -308,13 +305,12 @@
         height: max-content;
         border-radius: 20px;
         padding: 10px;
-        background-color: #cacaca;
         gap: 20px;
     
     
         .form-label{
             font-size: 12px!important;
-            color: gray;
+        
         }
     }
     

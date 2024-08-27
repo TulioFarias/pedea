@@ -6,31 +6,30 @@ import LegendToggleIcon from '@mui/icons-material/LegendToggle';
 import ImageWMS from 'ol/source/ImageWMS';
 import { ServerTypeHelper } from '../../../_config/layers/helpers';
 import { mapInstance } from '../../../_config/layers/map';
-import Slider from '@mui/material/Slider';
+
 function LegendLayers() {
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [layersData, setLayersData] = useState([]);
 
     const ID_TYPE = "LayerOpacitySlider";
 
-
     const toggleLegend = () => {
-        setIsLegendVisible(!isLegendVisible);
+        setIsLegendVisible(prevState => !prevState);
     };
-
 
     const handleOpacity = (event) => {
-        let value = parseFloat(event.target.value)
-
+        let value = parseFloat(event.target.value);
         let index = parseInt(event.target.id.replace(ID_TYPE, ""));
-        console.log(value)
-        console.log(index)
-        mapInstance.getLayers().getArray()[index].setOpacity(event);
 
+        const layers = mapInstance.getLayers().getArray();
+        if (layers[index]) {
+            layers[index].setOpacity(value);
+        } else {
+            console.error("Layer not found for index:", index);
+        }
     };
 
-
-    const handleGetLegendGraphic = (layer, index) => {
+    const handleGetLegendGraphic = (layer) => {
         if (layer.getVisible() && (layer.get('serverType') === ServerTypeHelper.GEOSERVER || layer.get('serverType') === ServerTypeHelper.MAPSERVER)) {
             const wmsSource = new ImageWMS({
                 url: layer.get('url'),
@@ -50,17 +49,22 @@ function LegendLayers() {
         return null;
     };
 
-
     const checkVisibleLayers = () => {
         const visibleLayers = mapInstance.getLayers().getArray()
-            .map((layer, index) => handleGetLegendGraphic(layer, index))
+            .map((layer) => handleGetLegendGraphic(layer))
             .filter(legend => legend !== null);
-        setLayersData(visibleLayers);
+
+        const uniqueLayers = visibleLayers.filter(
+            (currentLayer, index, allLayers) =>
+                allLayers.findIndex(layer => layer.title === currentLayer.title) === index
+        );
+
+        setLayersData(uniqueLayers);
     };
 
     useEffect(() => {
         checkVisibleLayers();
-    }, [mapInstance]);
+    }, []);
 
     return (
         <>
@@ -88,39 +92,20 @@ function LegendLayers() {
 
                     <div className='containerLayers'>
                         {layersData.map((layer, index) => (
-                            <div key={index} className="layerItem">
-
-                                <div className='layerItemTitleAndImg'>
-                                    <p className='titleLayers'>{layer.title}</p>
-                                    <img
-                                        src={layer.graphicUrl}
-                                        alt="Layer Legend"
-                                        onClick={() => window.open(layer.graphicUrl, '_blank').focus()}
-                                        className='imgLegend'
-                                    />
-                                </div>
-
-                                <Slider
-                                    id={ID_TYPE + index}
-                                    size="small"
-                                    aria-label="Small"
-                                    valueLabelDisplay="auto"
-                                    defaultValue={100}
-                                    min={0}
-                                    max={100}
-                                    step={0.01}
-                                    onInput={handleOpacity}
-                                    sx={{
-                                        width: '220px', 
-                                        height: '2px',  
-                                        color: 'rgba(1, 185, 176, 0.8);',
-                                        '& .MuiSlider-thumb': {
-                                            width: '10px',
-                                            height: '10px',
-                                            backgroundColor: 'rgba(1, 185, 176, 0.8)',
-                                        }
-                                    }}
+                            <div key={'popUpLayerItem' + index} className="PopUpLayerItem">
+                                <span id={'popUpLayerLegendTitle' + index} className='PopUpLayerLegendTitle'> {layer.title} </span>
+                                <img alt="N/A" id={'popUpLayerLegend' + index} className='PopUpLayerLegend' src={layer.graphicUrl} />
+                                <input 
+                                    id={ID_TYPE + index} 
+                                    onInput={handleOpacity} 
+                                    className="LayerOpacity" 
+                                    type="range" 
+                                    defaultValue={layer.opacity} 
+                                    min="0" 
+                                    max="1" 
+                                    step="0.01" 
                                 />
+                                 
                             </div>
                         ))}
                     </div>
@@ -151,3 +136,4 @@ function LegendLayers() {
 }
 
 export default LegendLayers;
+
