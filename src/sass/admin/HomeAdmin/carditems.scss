@@ -1,0 +1,36 @@
+.ContainerCards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.CardContainers {
+    cursor: pointer;
+    width: 24rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+}
+
+.CardBodys {
+    padding: 10px; 
+}
+
+.CardTitles {
+    font-size: 16px;
+}
+
+.CardTxts, .list-group-item {
+    font-size: 14px;
+}
+
+.list-group-item {
+    padding: 5px 10px; 
+}

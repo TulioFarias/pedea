@@ -120,7 +120,6 @@ function HeaderAdm({
 HeaderAdm.propTypes = {
   setSidebarOpen: PropTypes.func.isRequired,
   sidebarOpen: PropTypes.bool.isRequired,
-  toggleTheme: PropTypes.bool.isRequired,
   handleOptionChange: PropTypes.func.isRequired,
   setActiveButton: PropTypes.func.isRequired
 }

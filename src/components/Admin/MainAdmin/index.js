@@ -17,15 +17,14 @@ function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
   const [activeButton, setActiveButton] = useState('Home')
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [darkTheme, setDarkTheme] = useState(false)
+
+
 
   const handleOptionChange = async option => {
     await setSelectedOption(option)
   }
 
-  const toggleTheme = () => {
-    setDarkTheme(prevTheme => !prevTheme)
-  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -36,7 +35,6 @@ function MainAdmin() {
       <HeaderAdmin
         setSidebarOpen={setSidebarOpen}
         sidebarOpen={sidebarOpen}
-        toggleTheme={toggleTheme}
         handleOptionChange={handleOptionChange}
         setActiveButton={setActiveButton}
       />
@@ -59,7 +57,8 @@ function MainAdmin() {
           transition={{ duration: 1.5 }}
           key={selectedOption || 'empty'}
         >
-          {selectedOption === 'Home' && <HomeAdmin />}
+          {selectedOption === 'Home' && <HomeAdmin   setActiveButton={setActiveButton}
+        handleOptionChange={handleOptionChange}/>}
           {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'DataExplorer' && <DataExplorer />}
           {selectedOption === 'Link6' && <Link6 />}
