@@ -1,17 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import '../../../../sass/admin/HomeAdmin/carditems.scss'
 import DataExplorerImg from '../../../../assets/img/exploradordedados.jpg'
 import FaqImg from '../../../../assets/img/faq.png'
 import ConfigImg from '../../../../assets/img/configuracoes.png'
 import PropTypes from 'prop-types'
+import apiPEDEA from "../../../../services/api";
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify';
 
 function CardItems({ setActiveButton,  handleOptionChange }) {
 
-    const handleButtonClick = option => {
-        setActiveButton(option)
-        handleOptionChange(option)
-    }
+    const [user , setUser] = useState()
+    const userData = useSelector(state => state.userInfoSlice.infoUser)
+    const { id: loggedInUserId } = userData
+
+
+    const handleButtonClick = (option) => {
+        if (option === 'Configurações' || user?.admin) {
+            setActiveButton(option);
+            handleOptionChange(option);
+        } else {
+            toast.error('Você não tem permissão para acessar esses módulos, acesso apenas para administradores.');
+        }
+    };
+
+
+    useEffect( () => {
+
+        async function getUser() {
+            try {
+                const { data } = await apiPEDEA.get('/admin');
+                const loggedInUser = data.find(user => user.id === loggedInUserId);
+                if (loggedInUser) {
+                    setUser(loggedInUser); 
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+
+        getUser()
+    },[])
+
+
 
     return (
 
@@ -38,7 +71,7 @@ function CardItems({ setActiveButton,  handleOptionChange }) {
             <Card className="CardContainers" onClick={e => {
                 e.preventDefault()
                 handleButtonClick('DataExplorer')
-            }} style={{ backgroundImage: `url(${DataExplorerImg})` }}>
+            }} >
                 <Card.Body className="CardBodys">
                     <Card.Title className="CardTitles">2. Módulo de Explorador de Dados</Card.Title>
                     <Card.Text className="CardTxts">
