@@ -73,15 +73,6 @@ function HeaderAdm({
           <MenuOpenRoundedIcon />
         </button>
 
-        <FormControl
-          type="text"
-          placeholder="Procurar por..."
-          className="inputSearch"
-        />
-
-        <Button variant="outline-secondary" className="SearchButton">
-          <img src={Search} alt="Search Icon" />
-        </Button>
       </div>
 
       <div className="containerButtonsHeader">
