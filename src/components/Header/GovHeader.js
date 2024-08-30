@@ -46,7 +46,7 @@ function GovHeader() {
 
             <span className="custom-span">|</span>
             <a
-              href="https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR"
+              href="https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR"
               target="_blank"
               className="linksHeaderGov"
               rel="noreferrer"

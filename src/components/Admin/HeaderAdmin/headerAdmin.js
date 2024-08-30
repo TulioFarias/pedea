@@ -1,16 +1,14 @@
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
-import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { Container, FormControl, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import userIcon from '../../../assets/icons/icon-user.png'
-import Search from '../../../assets/icons/search.png'
+
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
 
@@ -69,13 +67,25 @@ function HeaderAdm({
     >
       <div className="containerDivLeft">
         <button className="OpenNavBarWithToogle" onClick={toggleSidebar}>
-          {' '}
           <MenuOpenRoundedIcon />
         </button>
 
+        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://www.ceara.gov.br/', '_blank')}>
+          Portal do Governo
+        </button>
+        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/', '_blank')}>
+          Ceará Transparente
+        </button>
+        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR', '_blank')}>
+          Ouvidoria
+        </button>
+        
+        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR', '_blank')}>
+          Acesso a informação
+        </button>
       </div>
 
-      <div className="containerButtonsHeader">
+     
         <div className="ContainerUserCustom">
           {user &&
             user.map(value => (
@@ -99,11 +109,11 @@ function HeaderAdm({
               </div>
             ))}
 
-          <a className=" backButton" onClick={voltar}>
+          <button className="backButton" onClick={voltar}>
             <LogoutRoundedIcon />
-          </a>
+          </button>
         </div>
-      </div>
+      
     </Container>
   )
 }

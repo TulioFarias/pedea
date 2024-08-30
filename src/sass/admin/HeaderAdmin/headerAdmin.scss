@@ -9,9 +9,9 @@ $space-btnToogle-open: 200px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
-    gap: 100px;
+    gap: 50px;
     
 }
 
@@ -21,7 +21,7 @@ $space-btnToogle-open: 200px;
     justify-content: center;
     position: relative;
     right: $space-btnToogle-closed;
-    gap: 2px;
+    gap: 10px;
     
 }
 
@@ -41,58 +41,71 @@ $space-btnToogle-open: 200px;
     }
 }
 
-.inputSearch{
-    width: 250px;
-}
 
-
-.SearchButton{
-    background-color: rgba(44, 64, 63, 0.726);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
   
-    
-    img{
-        width: 25px;
-        height: 25px;
-    }
-
-
-    &:hover{
-        background-color: rgb(16, 29, 129);
-        transition: 0.6s all ease-in-out;
-
-    }
-}
-
-.containerButtonsHeader{
-    display: flex;
-    align-items: center;
-    width: 80px;
-    height: 50px;
-    gap: 8px;
+  .btnLinkHeaderAdmin {
+    width: 100px;
     position: relative;
-    left: 150px;
-   
-
-}
-
-
-
-.ContainerUserCustom{
+    height: 40px;
+    border: 1px ridge rgba(44, 64, 63, 0.726);
+    outline: none;
+    background-color: transparent;
+    transition: 1s;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;
-    height: 9vh;
-    gap: 15px;
-    
-}
-
+    color: rgba(44, 64, 63, 0.726);
+    padding: 5px 10px;
+  
+    &::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 3%;
+      width: 95%;
+      height: 40%;
+      outline: none;
+      background-color: transparent;
+      transition: 0.5s;
+      transform-origin: center;
+    }
+  
+    &::before {
+      content: "";
+      transform-origin: center;
+      position: absolute;
+      top: 80%;
+      left: 3%;
+      width: 95%;
+      height: 40%;
+      background-color: transparent;
+      transition: 0.5s;
+      outline: none;
+    }
+  
+    &:hover::before,
+    &:hover::after {
+      transform: scale(0);
+    }
+  
+    &:hover {
+      box-shadow: inset 0px 0px 25px rgba(44, 64, 63, 0.726);
+      animation: shake 1s ease-in-out;
+    }
+  }
+  
 
 
 .containerUser{
@@ -102,6 +115,7 @@ $space-btnToogle-open: 200px;
     border-radius: 20px;
     padding: 0px 5px 0px 5px;
     background-color: rgba(155, 155, 155, 0.384);
+    position: relative;
     
 
 
@@ -120,6 +134,22 @@ $space-btnToogle-open: 200px;
     }
     
 }
+
+
+
+.ContainerUserCustom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    height: 9vh;
+    gap: 15px;
+    position: relative;
+    left: 350px;
+    
+}
+
 
 .containerImageHeaderAdmin{
     width: 50px;
