@@ -71,49 +71,48 @@ function HeaderAdm({
         </button>
 
         <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://www.ceara.gov.br/', '_blank')}>
-          Portal do Governo
+          {t('Portal do Governo')}
         </button>
         <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/', '_blank')}>
-          Ceará Transparente
+          {t('Ceará Transparente')}
         </button>
         <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR', '_blank')}>
-          Ouvidoria
+          {t('Ouvidoria')}
         </button>
         
         <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR', '_blank')}>
-          Acesso a informação
+          {t('Acesso a informação')}
         </button>
       </div>
 
      
-        <div className="ContainerUserCustom">
-          {user &&
-            user.map(value => (
-              <div className="containerUser" key={value.id}>
-                <div className="containerImageHeaderAdmin">
-                  <img
-                    alt="userphoto"
-                    className="custom-userPhoto"
-                    src={value.path ? value.url : userIcon}
-                    onClick={e => {
-                      e.preventDefault()
-                      SendToSettings('Configurações')
-                    }}
-                  />
-                </div>
-
-                <p className="user">
-                  {t(`Seja bem vindo(a),`)} <br />
-                  <p className="nameUser">{value.name}</p>
-                </p>
+      <div className="ContainerUserCustom">
+        {user &&
+          user.map(value => (
+            <div className="containerUser" key={value.id}>
+              <div className="containerImageHeaderAdmin">
+                <img
+                  alt="userphoto"
+                  className="custom-userPhoto"
+                  src={value.path ? value.url : userIcon}
+                  onClick={e => {
+                    e.preventDefault()
+                    SendToSettings('Configurações')
+                  }}
+                />
               </div>
-            ))}
 
-          <button className="backButton" onClick={voltar}>
-            <LogoutRoundedIcon />
-          </button>
-        </div>
-      
+              <p className="user">
+                {t(`Seja bem vindo(a),`)} <br />
+                <p className="nameUser">{value.name}</p>
+              </p>
+            </div>
+          ))}
+
+        <button className="backButton" onClick={voltar}>
+          <LogoutRoundedIcon />
+        </button>
+      </div>
     </Container>
   )
 }
@@ -126,3 +125,4 @@ HeaderAdm.propTypes = {
 }
 
 export default HeaderAdm
+
