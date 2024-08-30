@@ -1,40 +1,42 @@
-import '../../sass/login/loginSystem.scss'
-import { yupResolver } from '@hookform/resolvers/yup'
-import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded'
-import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
-import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import ReCAPTCHA from 'react-google-recaptcha'
-import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import * as Yup from 'yup'
+import React, { useState } from 'react';
+import '../../sass/login/loginSystem.scss';
+import { yupResolver } from '@hookform/resolvers/yup';
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
+import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
+import Form from 'react-bootstrap/Form';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 
-import backIcon from '../../assets/icons/backicon.png'
-import logo from '../../assets/img/pedea-logo.png'
-import api from '../../services/api'
-import { login } from '../../utils/redux/user/actions'
-import RecoverPasswordModal from './RecoverPasswordModal'
+import backIcon from '../../assets/icons/backicon.png';
+import logo from '../../assets/img/pedea-logo.png';
+import api from '../../services/api';
+import { login } from '../../utils/redux/user/actions';
+import RecoverPasswordModal from './RecoverPasswordModal';
+import SplashScreen from './splash'; 
+
 function LoginSystem() {
-  const navigate = useNavigate()
-  const [show, setShow] = useState(false)
-  const [form, setForm] = useState({ email: '', password: '' })
-  const [recaptcha, setRecaptcha] = useState(null)
-  const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [recaptcha, setRecaptcha] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // Adiciona o estado de loading
 
-  const changeForm = async e => {
-    const { name, value } = e.target
+  const changeForm = async (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-    setForm({ ...form, [name]: value })
-  }
+  const handleClickRecaptcha = (event) => {
+    setRecaptcha(event);
+  };
 
-  const handleClickRecaptcha = event => {
-    setRecaptcha(event)
-  }
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -42,47 +44,51 @@ function LoginSystem() {
       .required('O email é obrigatório.'),
     password: Yup.string()
       .required('A senha é obrigatória.')
-      .min(6, 'A senha deve ter no minímo 6 dígitos.')
-  })
+      .min(6, 'A senha deve ter no mínimo 6 dígitos.'),
+  });
 
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema)
-  })
+    resolver: yupResolver(schema),
+  });
 
   const handleBack = () => {
-    navigate('/')
-  }
+    navigate('/');
+  };
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
       const response = await toast.promise(
         api.post('/login', {
           email: data.email,
-          password: data.password
+          password: data.password,
         }),
         {
           pending: 'Verificando os dados...',
-          success: 'Seja bem-vindo(a).',
-          error: 'Senha ou e-mail inválidos.'
+          error: 'Senha ou e-mail inválidos.',
         }
-      )
+      );
 
-      dispatch(login(response.data))
+      dispatch(login(response.data));
 
+      setLoading(true);
       setTimeout(() => {
-        navigate('/admin')
-      }, 2500)
+        navigate('/admin');
+      }, 2500);
     } catch (error) {
-      return error
+      return error;
     }
-  }
+  };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword);
+  };
+
+  if (loading) {
+    return <SplashScreen />; // Exibe o SplashScreen enquanto carrega
   }
 
   return (
@@ -94,7 +100,7 @@ function LoginSystem() {
         <img src={logo} />
 
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
-          <h1 className="titleLogin">Sistema de Admininstração</h1>
+          <h1 className="titleLogin">Sistema de Administração</h1>
           <hr className="hrLoginAndRegister" />
           <div className="custom-info">
             <Form.Label htmlFor="email" className="LabelForm">
@@ -172,7 +178,9 @@ function LoginSystem() {
       </div>
       <RecoverPasswordModal show={show} setShow={setShow} />
     </>
-  )
+  );
 }
 
-export default LoginSystem
+export default LoginSystem;
+
+

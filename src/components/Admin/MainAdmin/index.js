@@ -7,11 +7,12 @@ import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
 import FAQ from './FAQ'
 import HomeAdmin from './home'
-import Link6 from './Link6'
 import Rotulos from './Rotulos/index'
 import SettingsAdmin from './settings/settings'
 import '../../../sass/admin/admin.scss'
 import DataExplorer from './DataExplorer'
+
+
 
 function MainAdmin() {
   const [selectedOption, setSelectedOption] = useState('Home')
@@ -19,10 +20,11 @@ function MainAdmin() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
 
-
   const handleOptionChange = async option => {
     await setSelectedOption(option)
   }
+
+ 
 
 
   return (
@@ -61,7 +63,6 @@ function MainAdmin() {
         handleOptionChange={handleOptionChange}/>}
           {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'DataExplorer' && <DataExplorer />}
-          {selectedOption === 'Link6' && <Link6 />}
           {selectedOption === 'Rotulos Bilingue' && <Rotulos />}
           {selectedOption === 'Configurações' && <SettingsAdmin />}
         </motion.div>
