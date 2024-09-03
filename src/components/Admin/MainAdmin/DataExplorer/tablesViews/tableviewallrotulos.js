@@ -10,6 +10,7 @@ import TableViewIcon from '@mui/icons-material/TableView';
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
+  const [tableFilesCSVEdit, setTableFilesCSVEdit] = useState([])
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedTable, setSelectedTable] = useState('TableRotulos');
@@ -36,6 +37,16 @@ function TableViewRotulosData() {
       }
     }
 
+    async function loadTableFilesCSVEdit() {
+      try {
+        const { data } = await apiPEDEA.get('/infoAllCSVDataExplorerEdit');
+        setTableFilesCSVEdit(data);
+      } catch (error) {
+        console.error('Erro ao buscar os dados dos arquivos:', error);
+      }
+    }
+
+    loadTableFilesCSVEdit()
     getInfoDataExplorer();
     loadTableFilesRotulos();
   }, []);
@@ -65,19 +76,23 @@ function TableViewRotulosData() {
     setShowSideBar(!showSideBar);
   };
 
+  console.log(tableFilesCSVEdit)
+  console.log(tableFilesRotulos)
+
 
   return (
     <div className="ContainerTableRotulosData">
       <div className="headerContainerTableRotulos">
         <h2>
           {selectedTable === 'TableRotulos'
-            ? 'Tabela de rótulos ativos no exporador de dados:'
-            : 'Tabela de arquivos cadastrados:'}
+            ? 'Tabela de rótulos ativos no explorador de dados:'
+            : selectedTable === 'FilesRotulos'
+            ? 'Tabela de arquivos cadastrados:'
+            : 'Tabela de arquivos em edição:'}
         </h2>
         <button className="BtnChangeTableRotulos" onClick={openSideBar}>
           <TableViewIcon />
-      </button>
-
+        </button>
       </div>
       
       <div className="TableViewRotulos">
@@ -88,6 +103,7 @@ function TableViewRotulosData() {
                 <TableRow>
                   {selectedTable === 'TableRotulos' ? (
                     <>
+                  
                       <TableCell>ID</TableCell>
                       <TableCell>Categoria de Informação</TableCell>
                       <TableCell>Classe Maior</TableCell>
@@ -104,8 +120,17 @@ function TableViewRotulosData() {
                       <TableCell>Criado em</TableCell>
                       <TableCell>Atualizado em</TableCell>
                     </>
+                  ) : selectedTable === 'FilesRotulos' ? (
+                    <>
+                    
+                      <TableCell>Nome</TableCell>
+                      <TableCell>Arquivo</TableCell>
+                      <TableCell>Data de Criação</TableCell>
+                      <TableCell>Data de Atualização</TableCell>
+                    </>
                   ) : (
                     <>
+                     
                       <TableCell>Nome</TableCell>
                       <TableCell>Arquivo</TableCell>
                       <TableCell>Data de Criação</TableCell>
@@ -117,45 +142,60 @@ function TableViewRotulosData() {
               <TableBody>
                 {selectedTable === 'TableRotulos'
                   ? dataExplorer
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map(item => (
-                      <TableRow key={item.id} hover role="checkbox" tabIndex={-1}>
-                        <TableCell>{item.id}</TableCell>
-                        <TableCell>{item.categoria_de_informacao}</TableCell>
-                        <TableCell>{item.classe_maior}</TableCell>
-                        <TableCell>{item.sub_classe_maior}</TableCell>
-                        <TableCell>{item.classe_menor}</TableCell>
-                        <TableCell>{item.nomenclatura_greencloud}</TableCell>
-                        <TableCell>{item.nomenclatura_pedea}</TableCell>
-                        <TableCell>{item.fonte}</TableCell>
-                        <TableCell>{item.coluna_atributo}</TableCell>
-                        <TableCell>{item.modules}</TableCell>
-                        <TableCell>{item.link_drive_shp}</TableCell>
-                        <TableCell>{item.link_drive_kml}</TableCell>
-                        <TableCell>{item.key_rotulo}</TableCell>
-                        <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
-                        <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
-
-                      </TableRow>
-                    ))
-                  : tableFilesRotulos
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map(item => (
-                      <TableRow key={item.id}>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.path}</TableCell>
-                        <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
-                        <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
-
-                      </TableRow>
-                    ))}
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(item => (
+                        <TableRow key={item.id} hover role="checkbox" tabIndex={-1}>
+                          <TableCell>{item.id}</TableCell>
+                          <TableCell>{item.categoria_de_informacao}</TableCell>
+                          <TableCell>{item.classe_maior}</TableCell>
+                          <TableCell>{item.sub_classe_maior}</TableCell>
+                          <TableCell>{item.classe_menor}</TableCell>
+                          <TableCell>{item.nomenclatura_greencloud}</TableCell>
+                          <TableCell>{item.nomenclatura_pedea}</TableCell>
+                          <TableCell>{item.fonte}</TableCell>
+                          <TableCell>{item.coluna_atributo}</TableCell>
+                          <TableCell>{item.modules}</TableCell>
+                          <TableCell>{item.link_drive_shp}</TableCell>
+                          <TableCell>{item.link_drive_kml}</TableCell>
+                          <TableCell>{item.key_rotulo}</TableCell>
+                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
+                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
+                        </TableRow>
+                      ))
+                  : selectedTable === 'FilesRotulos'
+                  ? tableFilesRotulos
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(item => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.path}</TableCell>
+                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
+                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
+                        </TableRow>
+                      ))
+                  : tableFilesCSVEdit
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(item => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.path}</TableCell>
+                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
+                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
+                        </TableRow>
+                      ))}
               </TableBody>
             </Table>
           </TableContainer>
           <TablePagination
             rowsPerPageOptions={[10, 25, 100]}
             component="div"
-            count={selectedTable === 'TableRotulos' ? dataExplorer.length : tableFilesRotulos.length}
+            count={
+              selectedTable === 'TableRotulos'
+                ? dataExplorer.length
+                : selectedTable === 'FilesRotulos'
+                ? tableFilesRotulos.length
+                : tableFilesCSVEdit.length
+            }
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

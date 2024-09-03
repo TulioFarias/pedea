@@ -42,6 +42,13 @@ function ChangeTable({ setShowSideBar, showSideBar, setSelectedTable }) {
                 >
                   Tabela de arquivos .csv cadastrados
                 </button>
+
+                <button
+                  className="buttonClass"
+                  onClick={() => handleSelectTable('FilesEdit')}
+                >
+                  Tabela de arquivos .csv edição
+                </button>
               
             </div>
           </Offcanvas.Body>
