@@ -30,7 +30,8 @@ $space-btnToogle-open: 200px;
     height: 40px;
     border-radius: 10px;
     color: rgba(44, 64, 63, 0.726);
-    border: none;
+    border: 1px solid;
+    background-color: transparent;
 
     &:hover{
         transition: 0.6s all ease-in-out;
@@ -44,9 +45,9 @@ $space-btnToogle-open: 200px;
 
 @keyframes shake {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+    25% { transform: translateX(-1px); }
+    50% { transform: translateX(1px); }
+    75% { transform: translateX(-1px); }
     100% { transform: translateX(0); }
   }
   
@@ -231,6 +232,9 @@ $space-btnToogle-open: 200px;
         transition: all 1s ease-in-out;
         
     }
+
+
+   
 }
 
 @media only screen and (max-width: 1040px){
