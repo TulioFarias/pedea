@@ -177,7 +177,6 @@ function ContainerGetInfoRotulos() {
                 </Table>
               </div>
             ))}
-          <hr className="LineHR" />
 
           <div className="containerTableResultFiles">
             {filesRotulosData &&
@@ -225,7 +224,6 @@ function ContainerGetInfoRotulos() {
                 </div>
               ))}
           </div>
-          <hr className="LineHR" />
 
           {valuesDataFileRotulos && valuesDataFileRotulos.length > 0 && (
             <div className="containerTableResultValues">

@@ -50,6 +50,7 @@ function ModalChangePhotoUser({ showModalPhoto, setShowModalPhoto }) {
         formData.append('file', data.file[0])
       }
 
+
       const response = await toast.promise(
         api.put(`/admin/update-user/${loggedInUserId}`, formData, {
           headers: {

@@ -25,11 +25,9 @@ function EditaModalDataExplorer({ show, handleClose }) {
     fonte: Yup.string().required('Campo obrigatório'),
     coluna_atributo: Yup.string().required('Campo obrigatório'),
     link_drive_shp: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
+      .url('URL inválida'),
     link_drive_kml: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
+      .url('URL inválida'),
     key_rotulos: Yup.string().nullable()
   })
 
@@ -77,6 +75,9 @@ function EditaModalDataExplorer({ show, handleClose }) {
   }
 
   const onSubmit = async data => {
+
+    console.log(data.key_rotulos)
+
     try {
       const response = await toast.promise(
         apiPEDEA.put('/updateDataExplorer/', {
@@ -92,6 +93,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
           linkdriveshp: data.link_drive_shp,
           linkdrivekml: data.link_drive_kml,
           key_rotulos: data.key_rotulos
+          
         }),
         {
           pending: 'Atualizando...',
@@ -99,6 +101,8 @@ function EditaModalDataExplorer({ show, handleClose }) {
           error: 'Erro ao atualizar os dados'
         }
       )
+
+      console.log(response)
 
       reset()
       handleClose()
@@ -312,7 +316,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                             type="text"
                             {...register('key_rotulos')}
                             isInvalid={errors.key_rotulos}
-                            defaultValue={item.key_rotulos}
+                            defaultValue={item.key_rotulo}
                             disabled={!isEditable}
                             className="inputEditModalDE"
                           />

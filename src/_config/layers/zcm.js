@@ -3,6 +3,7 @@ import geoCSVReader from '../../assets/js/geoCSVReader'
 import { ServerTypeHelper } from './helpers'
 
 
+
 const geoWorkspace = 'zcm'
 const serverURL = 'https://pedea.sema.ce.gov.br/geoserver/zcm/wms'
 const serverType = ServerTypeHelper.GEOSERVER
@@ -33,6 +34,8 @@ const fetchZmcData = async () => {
 };
 
 const zcmData = await fetchZmcData()
+
+
 
 
 const { tree, layers } = geoCSVReader(

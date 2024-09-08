@@ -5,6 +5,7 @@ import apiPEDEA from '../../services/api';
 import { useSelector } from 'react-redux';
 import logoPEDEA from '../../assets/img/pedea-logo.png';
 
+import { dotSpinner } from 'ldrs'
 function SplashScreen() {
   const [user, setUser] = useState(null);
   const userData = useSelector(state => state.userInfoSlice.infoUser);
@@ -16,7 +17,7 @@ function SplashScreen() {
         const { data } = await apiPEDEA.get('/admin');
         const loggedInUser = data.find(user => user.id === loggedInUserId);
         if (loggedInUser) {
-          setUser(loggedInUser); 
+          setUser(loggedInUser);
         }
       } catch (error) {
         console.error('Erro ao buscar usuário:', error);
@@ -25,6 +26,9 @@ function SplashScreen() {
 
     getUser();
   }, [loggedInUserId]);
+
+
+  dotSpinner.register()
 
   return (
     <div className="splash-screen-container">
@@ -50,12 +54,12 @@ function SplashScreen() {
         </motion.h1>
       </motion.div>
 
-      <motion.div
-        className="loading-spinner"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-      />
+
+      <l-dot-spinner
+        size="50"
+        speed="0.9"
+        color="white"
+      ></l-dot-spinner>
     </div>
   );
 }
