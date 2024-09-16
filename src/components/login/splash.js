@@ -57,7 +57,7 @@ function SplashScreen() {
 
       <l-dot-spinner
         size="50"
-        speed="0.9"
+        speed="1.0"
         color="white"
       ></l-dot-spinner>
     </div>

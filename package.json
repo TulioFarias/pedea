@@ -15,7 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
-    "bootstrap-icons": "^1.11.1",
+    "bootstrap-icons": "^1.11.3",
     "css-loader": "^6.8.1",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.0.14",
