@@ -272,17 +272,7 @@ $space-btnToogle-open: 200px;
 
     
     
-    .SearchButton{
-        background-color: rgba(44, 64, 63, 0.726);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       
-        &:hover{
-            background-color: rgb(16, 29, 129);
-            border: 1px solid white;
-        }
-    }
+    
 
     .containerButtonsHeader{
         display: flex;
@@ -415,136 +405,81 @@ $space-btnToogle-open: 200px;
 
 @media only screen and (max-width: 480px){
 
-    .bodyHeader{
-        background-color: rgb(231, 230, 230);
-        height: 10vh;
-        box-shadow: rgba(44, 64, 63, 0.726) 1px 3px 3px, rgba(44, 64, 63, 0.726) 1px 8px 12px;
-        justify-content: start;
-        gap: 0px;
-    }
+  .containerDivLeft{
+    display: none;
+    
+}
+
+.OpenNavBarWithToogle{
+   display: none;
+}
 
   
+  .btnLinkHeaderAdmin {
+    display: none;
+  }
+  
 
-    .custom-userPhoto{
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        
-    }
-    
-    .containerUser{
-    
-        p{
-            display: none;
-            width: 190px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
-        }   
-        
-    }
 
-    .OpenNavBarWithToogle{   
-        display: none;
-    
-    }
-
-    .inputSearch{
-        width: 250px;
-    }
+.containerUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 0px 5px 0px 5px;
+    background-color: rgba(155, 155, 155, 0.384);
+    position: relative;
     
 
-    .containerDivLeft{
-        display: flex;
+
+    p{ 
         position: relative;
-        left: 75px;
-        right: 0;
-        
-    }
-    
-    .containerDivs{
-        display: flex;
-        
-    }
-    
-    .inputSearch{
-        width: 120px;
-        height: 30px;
-    }
-    
-    .SearchButton{
-        background-color: rgba(44, 64, 63, 0.726);
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img{
-            width: 10px;
-            height: 10px;
-        }
-    
-    
-        &:hover{
-            background-color: rgb(16, 29, 129);
-            border: 1px solid white;
-        }
-    }
-
-    .containerButtonsHeader{
-        display: flex;
-        align-items: center;
-        gap: 0px;
-        position: relative;
-        left: 100px;
-    
-        button{
-            display: none;
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            color: rgb(122, 122, 122);
-            background-color: transparent;
-    
-            &:hover{
-                background-color: rgba(122, 122, 122, 0.295);
-                transition: 0.5s all ease-in-out;
-            }
-        }
-    }
-
-   
-    
-
-    .custom-userPhoto{
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        
-        
-    }
-    
-    .containerUser{
-       display: flex;
-       align-items: center;
-       justify-content: center;
-    
-        p{
-        margin-top: 20px;
-        position: relative;
-        top: 8px;
-        width: 105px;
+        top: 10px; 
+        width: 150px;
         text-align: center;
-        font-size: 10px;
+        font-size: 14px;
         font-weight: 600;
-            
-           
-        }
-        
-        
-        
+        color: rgb(90, 90, 90);
+    } 
+    
+    .nameUser{
+        color: rgb(90, 90, 90);
     }
+    
+}
+
+
+
+.ContainerUserCustom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    height: 9vh;
+    position: relative;
+    left: 20px;
+
+    
+}
+
+
+.containerImageHeaderAdmin{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.custom-userPhoto{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+
     
    //** buttonExit **//
 

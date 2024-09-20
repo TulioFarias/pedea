@@ -308,13 +308,13 @@ $border-radius: 1rem;
     }
     
     .links-btnsNav.active::before {
-        top: calc(-#{$border-radius} * -2.7);
+        top: calc(-#{$border-radius} * -2.5);
         border-radius: 0 100vw 0 0;
         box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
     }
     
     .links-btnsNav.active::after {
-        bottom: calc(-#{$border-radius} * -2.7);
+        bottom: calc(-#{$border-radius} * -2.5);
         border-radius: 0 0 100vw 0;
         box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
     }

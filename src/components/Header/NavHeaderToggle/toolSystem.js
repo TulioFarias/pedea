@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import FilterSystem from "./filterSystem";
 
 function ToolSystem({ wmsName }) {
-  console.log(wmsName);
+
 
   const [filter, setFilter] = useState(false);
   const [data, setData] = useState([]);

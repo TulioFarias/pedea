@@ -66,6 +66,7 @@ function CreateRotulosCSV() {
                         placeholder="Digite o nome do arquivo" 
                         {...register('name')}
                         isInvalid={!!errors.name}
+                        className="inputCSV"
                     />
                     <Form.Control.Feedback type="invalid">
                         {errors.name?.message}
@@ -79,6 +80,7 @@ function CreateRotulosCSV() {
                         accept=".csv"
                         {...register('file')}
                         isInvalid={!!errors.file}
+                        className="inputCSV"
                     />
                     <Form.Control.Feedback type="invalid">
                         {errors.file?.message}

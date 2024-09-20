@@ -88,6 +88,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+  
 
     &:hover{
         color: rgb(44, 64, 63);
@@ -139,17 +140,6 @@
 
 
 
-#containerOffCanvasTable{
-    background-color: rgba(44, 64, 63, 0.726);
-    color: white;
-    margin-top: 90px;
-    height: 100%;
-    overflow: auto;
-    border-left: 1px solid white;
-    border-top: 1px solid white;
-    border-radius:10px 0px;
-   
-}
 
 .titleSideBarChangeTable{
     font-size: 30px;
@@ -195,11 +185,201 @@
 
 
 
+@media only screen and (max-width: 1040px){
 
-@media only screen and (max-width: 740px){
 
-    .containerInfos{
-        width: max-content;
+}
+
+ 
+
+@media only screen and (max-width: 480px){
+    .ContainerAllRotulosOptions{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 82vw;
+        height: 82vh;
+        overflow: auto;
+    
     }
     
-  }
+    
+    
+    .ContainerAddInfoRotulos{
+        border-radius: 10px;
+        width: 51vw;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+       
+        
+    }
+    
+    .containerInfos{
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #cacaca;
+        width: max-content;
+        
+    
+        .btnSubmitAddRotulos{
+            height: 40px;
+            position: relative;
+            top: 30px;
+        }
+        
+    }
+    
+    .titleRegisterRotulo{
+        color: gray;
+        font-weight: 900;
+        font-size: 10px;
+        
+       
+    }
+    
+    .containersLabelsFormRegisterRotulos{
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           grid-template-rows: 1fr 1fr 75px;
+           width: 255px;
+           gap: 5px;
+           margin-bottom: 0px; 
+          
+    }
+    
+    
+    
+    
+    .LabelRotulos{
+        color: gray;
+        font-size: 12px !important;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
+        
+    }
+    
+    .customToltip{
+        color: rgb(153, 153, 153);
+        margin-left: 5px;
+        margin-top: 0px;
+        width: 20px;
+        height: 20px;
+        display: none!important;
+    }
+    
+    .InputRotulos{
+        width: 125px;
+        height: 35px;
+    
+        &::placeholder{
+            color: gray;
+            font-size: 12px;
+        }
+    }
+    
+    .btnSubmitAddRotulos{
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        &:hover{
+            color: rgb(44, 64, 63);
+            background-color: rgb(255, 254, 254);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+    .ActionCollumCustomRotulosTable{
+        display: flex;
+        gap: 20px;
+    }
+    
+    .ContainersRegisterFileRotulos{
+        display: flex;
+        gap: 50px;
+        margin-top: 15px;
+        
+        
+    }
+    
+    .ContainerGetWithKeyRotulos{
+        margin-top: 10px;
+       
+    }
+    
+    
+    .containerTableInfoRotulos{
+        width: 100vw;
+        height: 82vh;
+        background-color: rgb(44, 64, 63);
+        padding: 12px;
+        border-radius: 10px;
+        overflow: auto;
+    
+    }
+    
+    .headerContainerTableRotulos{
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px dashed white;
+        margin-bottom: 10px;
+    }
+    
+    .titleTableRotulos{
+        color: white;
+        font-size: 18px;
+        font-weight: 900;
+    }
+    
+    
+    
+    
+    .titleSideBarChangeTable{
+        font-size: 30px;
+    }
+    
+    
+    
+    .containerBtnsTableView{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    
+        :hover{
+            transform: scale(1.04);
+        }
+    
+    }
+    
+    .btnEditCustom{
+        padding: 5px;
+        background-color:  rgba(44, 64, 63, 0.726);
+        border: none;
+        border-radius: 10px;
+        color: white;
+    }
+    
+    .btnRemoveCustom{
+        padding: 5px;
+        background-color: rgb(78, 27, 27);
+        border: none;
+        border-radius: 10px;
+        color: white;
+    
+        :hover{
+            transform: scale(1.04);
+           
+        }
+    }
+    
+    
+    
+ 
+   }
+

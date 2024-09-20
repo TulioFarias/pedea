@@ -39,3 +39,73 @@
         transition: all 0.3s ease-in-out;
     }
 }
+
+
+
+
+@media only screen and (max-width: 1040px){
+
+
+}
+
+ 
+
+@media only screen and (max-width: 480px){
+    
+    .ContainerAllImportCSVRotulos{
+        background-color: #cacaca;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        width: max-content;
+    }
+    
+    .formGroupTwo{
+        margin-top: 20px;
+    }
+    
+    .LabelCSV{
+        color: gray;
+        font-size: 12px !important;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .inputCSV{
+        width: 255px;
+        height: 35px;
+
+        &::placeholder{
+            color: gray;
+            font-size: 12px;
+        }
+    }
+    
+    .containerBtnsSubmit{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .BtnSubmitRotulosCSV{
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        gap: 5px;
+    
+        &:hover{
+            color: rgb(44, 64, 63);
+            background-color: rgb(255, 254, 254);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+ 
+   }
+

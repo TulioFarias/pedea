@@ -59,11 +59,11 @@ function CreateRotulosSystem() {
   }
 
   const onSubmit = async (data, event) => {
-    console.log(data)
+ 
 
     try {
       const foundItem = await dataInfoKey.find(item => item.key === data.key)
-      console.log(foundItem)
+  
 
       if (!foundItem) {
         const APIResponse = await apiPEDEA.post('/rotulos', {
@@ -214,8 +214,13 @@ function CreateRotulosSystem() {
               >
                 Cadastrar
               </Button>
+
+              
             </div>
+         
           </Form>
+
+          
 
           <div>
             <CreateRotulosCSV/>
