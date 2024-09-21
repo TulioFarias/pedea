@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react'
+import React from 'react'
 
 import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'

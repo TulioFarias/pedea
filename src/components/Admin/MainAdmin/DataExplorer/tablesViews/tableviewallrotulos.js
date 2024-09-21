@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import apiPEDEA from '../../../../../services/api';
 import '../../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import ChangeTable from './tablefilesDataExplorer';
-
+import DownloadIcon from '@mui/icons-material/Download';
 import TableViewIcon from '@mui/icons-material/TableView';
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
@@ -15,6 +15,7 @@ function TableViewRotulosData() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedTable, setSelectedTable] = useState('TableRotulos');
   const [showSideBar, setShowSideBar] = useState(false);
+  
 
 
   useEffect(() => {
@@ -76,11 +77,44 @@ function TableViewRotulosData() {
     setShowSideBar(!showSideBar);
   };
 
+  const handleDownloadTable = async () => {
+
+    try {
+      const response = await apiPEDEA.get('/downloadExploradorDados', {
+        responseType: 'blob',
+      });
+
+      console.log(response)
+  
+      const blob = new Blob([response.data], { type: response.headers['content-type'] });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'tabela-explorador-dados.csv'; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Erro ao iniciar o download da tabela:', error);
+    }
+  };
+
 
 
   return (
     <div className="ContainerTableRotulosData">
       <div className="headerContainerTableRotulos">
+
+        <div className='containerDownloadTable'>
+        <p>Baixar tabela do explorador de dados em formato .csv</p>
+        <button className='btnDownload' onClick={handleDownloadTable}>
+          <span class="buttonText">Baixar</span>
+          <DownloadIcon fontSize='small' className='iconDownload'/>
+          </button>
+          
+        </div>
+
         <h2>
           {selectedTable === 'TableRotulos'
             ? 'Tabela de rótulos ativos no explorador de dados:'
@@ -88,9 +122,15 @@ function TableViewRotulosData() {
             ? 'Tabela de arquivos cadastrados:'
             : 'Tabela de arquivos em edição:'}
         </h2>
+
+        <div className='containerChangeTable'>
+
+        <p>Mudar tabela de arquivos</p>
         <button className="BtnChangeTableRotulos" onClick={openSideBar}>
           <TableViewIcon />
         </button>
+        </div>
+       
       </div>
       
       <div className="TableViewRotulos">
