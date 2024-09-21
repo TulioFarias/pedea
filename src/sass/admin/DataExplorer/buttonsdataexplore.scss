@@ -50,6 +50,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+    
 
     &:hover{
         color: rgb(44, 64, 63);
@@ -77,9 +78,9 @@
     .ButtonAddDataExplorer,
     .EditDataExplorer,
     .RemoveDataExplorer {
-        height: 28px; /* Reduz a altura do botão para tablets */
-        padding: 0 10px; /* Ajusta o padding horizontal para tablets */
-        font-size: 12px; /* Reduz o tamanho da fonte para tablets */
+        height: 28px; 
+        padding: 0 10px; 
+        font-size: 12px; 
     }
 }
 
@@ -94,4 +95,17 @@
         margin-top: 8px;
          
     }
+
+    .editDataExplorerCSV{
+        border: none;
+        height: 28px;
+        border-radius: 10px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px;
+        margin-top: 6px;
+    }    
 }

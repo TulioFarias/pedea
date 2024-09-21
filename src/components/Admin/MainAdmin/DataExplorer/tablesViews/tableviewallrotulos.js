@@ -76,8 +76,6 @@ function TableViewRotulosData() {
     setShowSideBar(!showSideBar);
   };
 
-  console.log(tableFilesCSVEdit)
-  console.log(tableFilesRotulos)
 
 
   return (

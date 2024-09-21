@@ -95,10 +95,12 @@ function ModalAddDataExplorer({ show, handleClose }) {
         </Modal.Header>
 
         <Modal.Body>
-          <p>
+          <h1 >
             Crie um rótulo no explorador de dados preenchendo os campos abaixo:
-          </p>
+          </h1>
+          <p className='titleTxt'>Os campos com * marcados são obrigatórios</p>
           <Form onSubmit={handleSubmit(onSubmit)} className="BodyModalAdd">
+           
             <Form.Group controlId="categoriaDeInformacao">
               <Form.Label>Categoria de Informação</Form.Label>
               <Form.Control

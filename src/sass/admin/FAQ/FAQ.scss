@@ -64,3 +64,76 @@
     height: 40vh;
 
 }
+
+@media (max-width: 480px) {
+
+    #containerFAQs{
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        border: 1px solid red;
+        
+    }
+    
+    .ContainerAllFAQ{
+        height: 83vh;
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(44, 64, 63);
+        padding: 10px;
+        border-radius: 10px;
+        overflow: auto;
+    
+        
+    
+        hr{
+            border: 1px dashed white;
+            margin-top: 0px;
+        }
+    }
+    
+    .containerTitleFAQ{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    
+        .iconTitleFAQlink{
+            position: relative;
+            left: 120px;
+            cursor: pointer;
+            color: white;
+    
+            &:hover{
+                color: gray;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+    .containerOneFAQ{
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.267);
+        max-height: max-content;
+        border: 1px solid;
+    
+    }
+    
+    
+    .containerTwoFAQ{
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 3px;
+        background-color: rgba(255, 255, 255, 0.267);
+        height: 40vh;
+    
+    }
+
+}

@@ -25,7 +25,7 @@ function LoginSystem() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [recaptcha, setRecaptcha] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); // Adiciona o estado de loading
+  const [loading, setLoading] = useState(false); 
 
   const changeForm = async (e) => {
     const { name, value } = e.target;
@@ -88,7 +88,7 @@ function LoginSystem() {
   };
 
   if (loading) {
-    return <SplashScreen />; // Exibe o SplashScreen enquanto carrega
+    return <SplashScreen />; 
   }
 
   return (
@@ -152,6 +152,7 @@ function LoginSystem() {
           <ReCAPTCHA
             sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
             onChange={handleClickRecaptcha}
+    
           />
 
           <button

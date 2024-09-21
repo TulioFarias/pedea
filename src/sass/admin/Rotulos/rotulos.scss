@@ -198,7 +198,7 @@
         flex-direction: column;
         gap: 10px;
         width: 82vw;
-        height: 82vh;
+        height: max-content;
         overflow: auto;
     
     }
@@ -287,6 +287,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 14px;
+        height: 30px!important;
+        width: 80px!important;
     
         &:hover{
             color: rgb(44, 64, 63);
@@ -315,12 +318,13 @@
     
     
     .containerTableInfoRotulos{
-        width: 100vw;
-        height: 82vh;
+        width: 70vw;
+        height: 50vh;
         background-color: rgb(44, 64, 63);
         padding: 12px;
         border-radius: 10px;
         overflow: auto;
+   
     
     }
     
@@ -333,7 +337,7 @@
     
     .titleTableRotulos{
         color: white;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 900;
     }
     

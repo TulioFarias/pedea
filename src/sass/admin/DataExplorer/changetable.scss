@@ -1,11 +1,18 @@
-
+#containerOffCanvasTable{
+    background-color: #2c403fb0;
+    border-radius: 10px 0px 0px 10px;
+    color: white;
+}
 .buttonContainer{
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+ 
     
 }
+
+
 .buttonClass{
     border: none;
     border-radius: 10px;
