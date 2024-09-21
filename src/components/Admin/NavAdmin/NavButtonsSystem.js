@@ -91,7 +91,7 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
               {admin ? (
                 <>
                   <AppsRoundedIcon />
-                  Rótulos Bilíngue 
+                 {t("Rótulos Bilíngue")}
                 </>
               ) : (
                 <div className="disableLink">
@@ -119,7 +119,7 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
               {admin ? (
                 <>
                   <TravelExploreRoundedIcon />
-                  Explorador de Dados
+                  {t("Explorador de Dados")}
                 </>
               ) : (
                 <div className="disableLink">

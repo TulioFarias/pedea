@@ -102,7 +102,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
           <Form onSubmit={handleSubmit(onSubmit)} className="BodyModalAdd">
            
             <Form.Group controlId="categoriaDeInformacao">
-              <Form.Label>Categoria de Informação</Form.Label>
+              <Form.Label>Categoria de Informação *</Form.Label>
               <Form.Control
                 as="select"
                 {...register('categoriaDeInformacao')}
@@ -125,7 +125,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="classeMaior">
-              <Form.Label>Classe Maior</Form.Label>
+              <Form.Label>Classe Maior * </Form.Label>
               <Form.Control
                 as="select"
                 {...register('classeMaior')}
@@ -171,7 +171,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="nomenclaturaPedea">
-              <Form.Label>Nomenclatura Green Cloud</Form.Label>
+              <Form.Label>Nomenclatura Green Cloud *</Form.Label>
               <Form.Control
                 type="text"
                 {...register('nomeclaturaGreenCloud')}
@@ -184,7 +184,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="nomenclaturaPedea">
-              <Form.Label>Nomenclatura PEDEA</Form.Label>
+              <Form.Label>Nomenclatura PEDEA *</Form.Label>
               <Form.Control
                 type="text"
                 {...register('nomenclaturaPedea')}
@@ -210,7 +210,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="colunaAtributo">
-              <Form.Label>Coluna Atributo</Form.Label>
+              <Form.Label>Coluna Atributo * </Form.Label>
               <Form.Control
                 type="text"
                 {...register('colunaAtributo')}
@@ -223,7 +223,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="linkDriveShp">
-              <Form.Label>Link Drive SHP</Form.Label>
+              <Form.Label>Link Drive SHP * </Form.Label>
               <Form.Control
                 type="text"
                 {...register('linkDriveShp')}
@@ -236,7 +236,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="linkDriveKml">
-              <Form.Label>Link Drive KML</Form.Label>
+              <Form.Label>Link Drive KML * </Form.Label>
               <Form.Control
                 type="text"
                 {...register('linkDriveKml')}
@@ -249,7 +249,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
             </Form.Group>
 
             <Form.Group controlId="keyRotulo">
-              <Form.Label>Chave Rotulo</Form.Label>
+              <Form.Label>Chave Rotulo </Form.Label>
               <Form.Control
                 type="text"
                 {...register('key_rotulos')}

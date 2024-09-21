@@ -35,10 +35,17 @@
     font-size: 14px;
     background-color: transparent;
     color: white;
+  
+}
+
+.list-group-flush{
+    border-radius: 10px;
+    background-color: rgba(172, 172, 172, 0.24);
 }
 
 .list-group-item {
-    padding: 5px 10px; 
+    padding: 5px 10px;
+    
 }
 
 @media only screen and (max-width: 1040px){

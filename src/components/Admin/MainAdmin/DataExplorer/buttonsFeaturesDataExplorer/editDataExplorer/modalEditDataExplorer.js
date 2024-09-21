@@ -92,7 +92,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
           colunaatributo: data.coluna_atributo,
           linkdriveshp: data.link_drive_shp,
           linkdrivekml: data.link_drive_kml,
-          key_rotulos: data.key_rotulos
+          key_rotulo: data.key_rotulos
           
         }),
         {
@@ -122,6 +122,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
       <Modal.Header closeButton>
         <Modal.Title>Editar Informação do Explorer de Dados</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form>
           <Form.Group controlId="selectId" className="ContainerId">
@@ -143,6 +144,8 @@ function EditaModalDataExplorer({ show, handleClose }) {
             </Form.Control>
           </Form.Group>
 
+          
+
           {selectedId && (
             <>
               <div className="BtnEditDE">
@@ -155,13 +158,15 @@ function EditaModalDataExplorer({ show, handleClose }) {
                 </Button>
               </div>
 
+              <p className='titleTxt'>Os campos com * marcados são obrigatórios</p>
+
               {dataExplorer.map(
                 item =>
                   item.id === parseInt(selectedId) && (
                     <React.Fragment key={item.id}>
                       <div className="ContainerAllInfoEdit">
                         <Form.Group controlId="categoria_de_informacao">
-                          <Form.Label>Categoria de Informação</Form.Label>
+                          <Form.Label>Categoria de Informação *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('categoria_de_informacao')}
@@ -176,7 +181,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="classe_maior">
-                          <Form.Label>Classe Maior</Form.Label>
+                          <Form.Label>Classe Maior *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('classe_maior')}
@@ -191,7 +196,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="sub_classe_maior">
-                          <Form.Label>Subclasse Maior</Form.Label>
+                          <Form.Label>Subclasse Maior </Form.Label>
                           <Form.Control
                             type="text"
                             {...register('sub_classe_maior')}
@@ -221,7 +226,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="nomenclatura_pedea">
-                          <Form.Label>Nomenclatura Green Cloud</Form.Label>
+                          <Form.Label>Nomenclatura Green Cloud *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('nomenclatura_greencloud')}
@@ -236,7 +241,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="nomenclatura_pedea">
-                          <Form.Label>Nomenclatura PEDEA</Form.Label>
+                          <Form.Label>Nomenclatura PEDEA *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('nomenclatura_pedea')}
@@ -266,7 +271,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="coluna_atributo">
-                          <Form.Label>Coluna Atributo</Form.Label>
+                          <Form.Label>Coluna Atributo * </Form.Label>
                           <Form.Control
                             type="text"
                             {...register('coluna_atributo')}
@@ -281,7 +286,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="link_drive_shp">
-                          <Form.Label>Link Drive SHP</Form.Label>
+                          <Form.Label>Link Drive SHP *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('link_drive_shp')}
@@ -296,7 +301,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="link_drive_kml">
-                          <Form.Label>Link Drive KML</Form.Label>
+                          <Form.Label>Link Drive KML *</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('link_drive_kml')}
@@ -311,7 +316,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
                         </Form.Group>
 
                         <Form.Group controlId="key_rotulos">
-                          <Form.Label>Chave</Form.Label>
+                          <Form.Label>Chave Rotulo</Form.Label>
                           <Form.Control
                             type="text"
                             {...register('key_rotulos')}

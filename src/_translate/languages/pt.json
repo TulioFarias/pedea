@@ -36,7 +36,51 @@
             "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.": "Informações do Sistema © 2024 Governo do Estado do Ceará. Todos os direitos reservados.",
 
 
-            "Lista de Informações": "Lista de Informações"
+            "Lista de Informações": "Lista de Informações",
+
+            "Rótulos Bilíngue": "Rótulos Bilíngue",
+
+            "Sistema de administração da plataforma de dados PEDEA": "Sistema de administração da plataforma de dados PEDEA",
+
+            "Bem-vindo(a) à Plataforma de Administrador da PEDEA!": "Bem-vindo(a) à Plataforma de Administrador da PEDEA!",
+
+            "É um prazer tê-lo(a) conosco. Aqui você terá acesso a uma série de ferramentas para gerenciar e otimizar as funcionalidades de nossa plataforma. Para facilitar sua navegação, preparamos um tutorial completo, que o(a) guiará pelos principais módulos disponíveis. Vale ressaltar que alguns recursos são restritos apenas para usuários administradores, portanto, siga as instruções com atenção. Vamos começar!": "É um prazer tê-lo(a) conosco. Aqui você terá acesso a uma série de ferramentas para gerenciar e otimizar as funcionalidades de nossa plataforma. Para facilitar sua navegação, preparamos um tutorial completo, que o(a) guiará pelos principais módulos disponíveis. Vale ressaltar que alguns recursos são restritos apenas para usuários administradores, portanto, siga as instruções com atenção. Vamos começar!",
+
+            "Na página inicial, você encontrará uma visão geral das funcionalidades disponíveis na plataforma. Este é o ponto de partida para acessar todos os módulos que você irá gerenciar. Através dela, você poderá navegar facilmente para cada seção utilizando o menu principal.": "Na página inicial, você encontrará uma visão geral das funcionalidades disponíveis na plataforma. Este é o ponto de partida para acessar todos os módulos que você irá gerenciar. Através dela, você poderá navegar facilmente para cada seção utilizando o menu principal.",
+
+            "Aproveite ao máximo a plataforma! Seguindo este tutorial, você estará preparado(a) para explorar todas as funcionalidades que a PEDEA tem a oferecer. Se precisar de ajuda, não hesite em consultar nossa equipe de suporte.": "Aproveite ao máximo a plataforma! Seguindo este tutorial, você estará preparado(a) para explorar todas as funcionalidades que a PEDEA tem a oferecer. Se precisar de ajuda, não hesite em consultar nossa equipe de suporte.",
+
+            "Boas práticas e boa gestão! 🚀": "Boas práticas e boa gestão! 🚀",
+
+            
+                "1. Módulo de Rótulos Bilíngues": "1. Módulo de Rótulos Bilíngues",
+                "Neste módulo, você terá o controle das chaves de tradução, essenciais para a internacionalização de nossa plataforma. As chaves estão disponíveis em três idiomas: Português, Inglês e Espanhol. Aqui, você pode:": "Neste módulo, você terá o controle das chaves de tradução, essenciais para a internacionalização de nossa plataforma. As chaves estão disponíveis em três idiomas: Português, Inglês e Espanhol. Aqui, você pode:",
+                "Criar novas chaves: Defina o nome da chave e adicione as traduções correspondentes nos três idiomas.": "Criar novas chaves: Defina o nome da chave e adicione as traduções correspondentes nos três idiomas.",
+                "Editar ou excluir chaves existentes: Gerencie as chaves conforme necessário, atualizando traduções ou removendo chaves que não são mais relevantes.": "Editar ou excluir chaves existentes: Gerencie as chaves conforme necessário, atualizando traduções ou removendo chaves que não são mais relevantes.",
+                "Importar chaves via CSV: Se preferir, você pode importar um arquivo CSV contendo as chaves e suas respectivas traduções. Esse método agiliza a criação de várias chaves de uma só vez.": "Importar chaves via CSV: Se preferir, você pode importar um arquivo CSV contendo as chaves e suas respectivas traduções. Esse método agiliza a criação de várias chaves de uma só vez.",
+                "Pesquisar chaves por camada e idioma: Facilite a localização de chaves específicas utilizando o sistema de busca, que permite filtrar resultados por idioma ou camada.": "Pesquisar chaves por camada e idioma: Facilite a localização de chaves específicas utilizando o sistema de busca, que permite filtrar resultados por idioma ou camada.",
+              
+                "2. Módulo de Explorador de Dados": "2. Módulo de Explorador de Dados",
+                "O Explorador de Dados permite que você gerencie categorias e dados dentro da plataforma. As principais funções incluem:": "O Explorador de Dados permite que você gerencie categorias e dados dentro da plataforma. As principais funções incluem:",
+                "Criação de novas categorias: Estruture os dados criando categorias específicas conforme a necessidade.": "Criação de novas categorias: Estruture os dados criando categorias específicas conforme a necessidade.",
+                "Edição e exclusão de dados: Atualize ou remova dados existentes dentro das categorias.": "Edição e exclusão de dados: Atualize ou remova dados existentes dentro das categorias.",
+                "Importação de dados via CSV: Como no módulo anterior, você pode adicionar dados a partir de um arquivo CSV, seguindo um modelo predefinido.": "Importação de dados via CSV: Como no módulo anterior, você pode adicionar dados a partir de um arquivo CSV, seguindo um modelo predefinido.",
+                "Tabela dinâmica: Navegue entre os dados ativos no explorador e os arquivos enviados ao banco de dados, permitindo uma análise e manipulação de dados mais eficiente.": "Tabela dinâmica: Navegue entre os dados ativos no explorador e os arquivos enviados ao banco de dados, permitindo uma análise e manipulação de dados mais eficiente.",
+              
+                "3. Módulo de Perguntas Frequentes": "3. Módulo de Perguntas Frequentes",
+                "Este módulo é dedicado à gestão das perguntas frequentes da plataforma. Você terá a capacidade de:": "Este módulo é dedicado à gestão das perguntas frequentes da plataforma. Você terá a capacidade de:",
+                "Adicionar, editar ou excluir perguntas e respostas: Mantenha as informações sempre atualizadas e relevantes.": "Adicionar, editar ou excluir perguntas e respostas: Mantenha as informações sempre atualizadas e relevantes.",
+                "Card de Informações Ativas: Visualize e manipule os dados ativos relacionados às perguntas frequentes.": "Card de Informações Ativas: Visualize e manipule os dados ativos relacionados às perguntas frequentes.",
+                "Card de Atualizações da Plataforma: Gerencie os dados da página de atualizações evolutivas, mantendo os usuários informados sobre as novidades e melhorias na PEDEA.": "Card de Atualizações da Plataforma: Gerencie os dados da página de atualizações evolutivas, mantendo os usuários informados sobre as novidades e melhorias na PEDEA.",
+              
+                "4. Módulo de Configurações": "4. Módulo de Configurações",
+                "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:": "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:",
+                "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.": "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.",
+                "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização."
+              
+              
+
+            
 
         
     }
