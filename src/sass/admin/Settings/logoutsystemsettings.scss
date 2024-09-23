@@ -1,8 +1,20 @@
 
 
 .ContainerLogoutUserSettings{
-    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
+    width: 20vw;
+    height: 30vh;
     padding: 10px;
-    background-color: rgb(202, 202, 202);
+    background-color: #cacaca2a;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.541);
+
+    .logout-div{
+        padding: 40px 60px;
+        border-radius: 10px;
+    }
+
 }

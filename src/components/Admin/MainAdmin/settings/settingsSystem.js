@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
-import '../../../../../sass/admin/Settings/settings.scss'
+import '../../../../sass/admin/Settings/settings.scss'
 import EditRoundedIcon from '@mui/icons-material/EditRounded'
 import React, { useEffect, useState } from 'react'
 import {
@@ -16,10 +16,10 @@ import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
-import userIcon from '../../../../../assets/icons/icon-user.png'
-import api from '../../../../../services/api'
-import ModalChangePassword from '../modalSettings/PasswordChange'
-import ModalChangePhotoUser from '../modalSettings/PhotoUserChange'
+import userIcon from '../../../../assets/icons/icon-user.png'
+import api from '../../../../services/api'
+import ModalChangePassword from './modalSettings/PasswordChange'
+import ModalChangePhotoUser from './modalSettings/PhotoUserChange'
 
 function SettingsSystemAndUser() {
   const [showModalPhoto, setShowModalPhoto] = useState(false)

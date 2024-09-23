@@ -3,6 +3,7 @@
 .ContainerAllSettingsInfo{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .titleSettings{
@@ -10,9 +11,6 @@
     font-weight: bold;
 }
 .ContainerSettingsAndUser{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:20px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -127,11 +125,7 @@
 }
 
 
-.containerSystemSettings{
-    border-radius: 20px;
-    padding: 10px;
-    background-color: rgb(243, 243, 243);
-}
+
 
 @media only screen and (max-width: 1000px){
     .ContainerSettingsAndUser{
