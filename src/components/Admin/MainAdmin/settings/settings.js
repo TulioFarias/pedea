@@ -3,7 +3,7 @@ import React from 'react'
 import '../../../../sass/admin/Settings/settings.scss'
 
 import SettingsSystemAndUser from './settingsSystem'
-import LogoutComponent from './settingsLogout'
+
 function SettingsAdmin() {
   return (
     <>
@@ -12,7 +12,7 @@ function SettingsAdmin() {
 
         <div className="ContainerAllSettingsInfo">
           <SettingsSystemAndUser />
-          <LogoutComponent/>
+     
         </div>
       </div>
     </>

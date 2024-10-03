@@ -16,10 +16,12 @@ import apiPEDEA from '../../../services/api'
 import BodyNavSystem from './systemBodyNav'
 
 function NavOptions() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [dataExplorer, setDataExplorer] = useState([])
+  const [rotulosKey, setRotulosKey] = useState([])
   const [visibleLayer, setVisibleLayer] = useState(0)
   const switcherRef = useRef();
+
   
   const [selectedNomenclature, setSelectedNomenclature] = useState('')
 
@@ -34,20 +36,33 @@ function NavOptions() {
       }
     }
 
-    async function getInfoRotulosDataExplorer() {
+    async function getRotulosBilingue() {
       try {
-        const { data } = apiPEDEA.get('/getAllRotulos')
+        const { data } = await apiPEDEA.get('/getRotulosBilingue')
+        const sortedData = data.sort((a, b) => a.id - b.id)
+        console.log(sortedData)
+
+        setRotulosKey(sortedData)
+
       } catch (error) {
         console.error('Error fetching user data:', error)
       }
     }
 
     getInfoDataExplorer()
-    getInfoRotulosDataExplorer()
+    getRotulosBilingue()
   }, [])
 
   const handleSelectChange = (event, value) => {
-    setSelectedNomenclature(value)
+   
+    const selectedItem = rotulosKey.find(item =>
+      item.pt_br === value || item.en === value || item.es === value
+    )
+  
+
+    if (selectedItem) {
+      setSelectedNomenclature(selectedItem.key)
+    }
   }
 
   const hasNewVisibleLayer = (index) => {
@@ -76,6 +91,25 @@ function NavOptions() {
     return <Popper {...props} placement="right-start" />
   }
 
+  const getLocalizedLabel = (item) => {
+    switch (i18n.language) {
+      case 'en':
+        return item.en
+      case 'es':
+        return item.es
+      default:
+        return item.pt_br
+    }
+  }
+
+  const getSearchOptions = () => {
+    return rotulosKey.flatMap(item => [
+      item.pt_br,
+      item.en,   
+      item.es   
+    ])
+  }
+
 
 
   return (
@@ -89,7 +123,7 @@ function NavOptions() {
           <Autocomplete
             freeSolo
             id="ContainerInput"
-            options={dataExplorer.map(item => item.nomenclatura_pedea)}
+            options={getSearchOptions()}
             onChange={handleSelectChange}
             renderInput={params => (
               <TextField

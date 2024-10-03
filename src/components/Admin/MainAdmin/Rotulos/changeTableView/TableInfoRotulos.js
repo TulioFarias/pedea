@@ -27,7 +27,7 @@ function ContainerInfoRotulos({
   useEffect(() => {
     async function loadRotulosData() {
       try {
-        const { data } = await api.get('/getAllRotulos');
+        const { data } = await api.get('/getRotulosBilingue');
         setRotulosData(data);
       } catch (error) {
         console.error('Error fetching user data:', error);

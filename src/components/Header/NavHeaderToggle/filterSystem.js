@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
-import { mapInstance } from "../../../_config/layers/map";
+
 
 function FilterSystem({ 
   layerAttributes, 
