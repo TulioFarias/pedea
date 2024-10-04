@@ -59,7 +59,7 @@ function NavOptions() {
       item.pt_br === value || item.en === value || item.es === value
     )
   
-    
+    console.log(value)
     if (selectedItem) {
       setSelectedNomenclature(selectedItem.key)
     }
