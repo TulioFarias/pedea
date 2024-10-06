@@ -9,8 +9,6 @@ import PropTypes from 'prop-types';
 import FilterSystem from "./filterSystem";
 
 function ToolSystem({ wmsName }) {
-
-
   const [filter, setFilter] = useState(false);
   const [data, setData] = useState([]);
   const [layerAttributes, setLayerAttributes] = useState([]);
@@ -42,6 +40,7 @@ function ToolSystem({ wmsName }) {
   };
 
   const handleClickInsideDropdown = (e) => {
+    e.preventDefault();
     e.stopPropagation();
   };
 
@@ -73,31 +72,46 @@ function ToolSystem({ wmsName }) {
   };
 
   const layerName = wmsName.split(':')[1];
-  if (!layerName) {
-    console.error('Invalid wmsName:', wmsName);
-  }
+
+  const handleDownloadTxt = () => {
+    const link = document.createElement('a');
+    link.href = `/portal/metadata/${layerName}_metadados.txt`;
+    link.download = `${layerName}_metadados.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadXml = () => {
+    const link = document.createElement('a');
+    link.href = `https://pedea.sema.ce.gov.br/geoserver/wfs?request=GetFeature&service=WFS&outputFormat=application/vnd.google-earth.kml+xml&version=1.0.0&typeName=${layerName}&mode=download`;
+    link.download = `${layerName}.kml`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="ContainerTools">
       <div className="ContainerLinks">
-        <a 
+        <div 
           className="linksTools" 
-          onClick={handleClickInsideDropdown}  
-          href={`/portal/metadata/${layerName}_metadados.txt`} 
-          download 
-          rel="noreferrer"
+          onClick={handleDownloadTxt} 
+          role="button" 
+          tabIndex={0}
+      
         >
           <img src={iconTxt} alt="Icon TXT" className="iconIMG" />
-        </a>
-        <a 
+        </div>
+        <div 
           className="linksTools" 
-          onClick={handleClickInsideDropdown} 
-          href={`https://pedea.sema.ce.gov.br/geoserver/wfs?request=GetFeature&service=WFS&outputFormat=application/vnd.google-earth.kml+xml&version=1.0.0&typeName=${layerName}&mode=download`} 
-          download 
-          rel="noreferrer"
+          onClick={handleDownloadXml} 
+          role="button" 
+          tabIndex={0}
+         
         >
           <img src={iconXML} alt="Icon XML" className="iconIMG" />
-        </a>
+        </div>
         <IconButton
           onClick={handleClickFilter}
           sx={{
@@ -139,4 +153,3 @@ ToolSystem.propTypes = {
 };
 
 export default ToolSystem;
-

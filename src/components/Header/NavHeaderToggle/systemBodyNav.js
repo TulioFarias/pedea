@@ -190,7 +190,7 @@ function BodyNavSystem({ data, selectedNomenclature }) {
   const toggleDropdown = (category, majorClass, subMajorClass, minorClass) => {
     setOpenDropdowns(prevState => {
       const newOpenDropdowns = { ...prevState };
-
+  
       if (minorClass) {
         newOpenDropdowns[category] = {
           ...newOpenDropdowns[category],
@@ -218,10 +218,18 @@ function BodyNavSystem({ data, selectedNomenclature }) {
       } else {
         newOpenDropdowns[category] = !newOpenDropdowns[category];
       }
-
+  
+      // Close all other dropdowns when a new one is opened (optional)
+      Object.keys(newOpenDropdowns).forEach(cat => {
+        if (cat !== category) {
+          newOpenDropdowns[cat] = false;
+        }
+      });
+  
       return newOpenDropdowns;
     });
   };
+  
 
   const handleCheckboxChange = (e, nomenclature) => {
     const { checked } = e.target;

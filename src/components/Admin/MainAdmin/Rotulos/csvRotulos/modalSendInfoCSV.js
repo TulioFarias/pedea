@@ -50,6 +50,8 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
   }, [])
 
   const onSubmit = async formData => {
+
+    console.log('Ta enviando daqui')
     try {
       await toast.promise(
         apiPEDEA.post('/createValueDataExplorer', { fileName: formData.path }),

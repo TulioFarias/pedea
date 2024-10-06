@@ -1,116 +1,125 @@
-import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
-import Autocomplete from '@mui/material/Autocomplete'
-import Popper from '@mui/material/Popper'
-import TextField from '@mui/material/TextField'
-import React, { useEffect, useState , useRef} from 'react'
-import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
-import Offcanvas from 'react-bootstrap/Offcanvas'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState, useRef } from 'react';
+import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded';
+import Autocomplete from '@mui/material/Autocomplete';
+import Popper from '@mui/material/Popper';
+import TextField from '@mui/material/TextField';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useTranslation } from 'react-i18next';
 
-import '../../../sass/Header/ContainerButton.scss'
-import { ServerTypeHelper } from '../../../_config/layers/helpers'
-import { mapInstance } from '../../../_config/layers/map'
-import apiPEDEA from '../../../services/api'
-import BodyNavSystem from './systemBodyNav'
+import '../../../sass/Header/ContainerButton.scss';
+import { ServerTypeHelper } from '../../../_config/layers/helpers';
+import { mapInstance } from '../../../_config/layers/map';
+import apiPEDEA from '../../../services/api';
+import BodyNavSystem from './systemBodyNav';
 
 function NavOptions() {
-  const { t, i18n } = useTranslation()
-  const [dataExplorer, setDataExplorer] = useState([])
-  const [rotulosKey, setRotulosKey] = useState([])
-  const [visibleLayer, setVisibleLayer] = useState(0)
+  const { t, i18n } = useTranslation();
+  const [dataExplorer, setDataExplorer] = useState([]);
+  const [rotulosKey, setRotulosKey] = useState([]);
+  const [visibleLayer, setVisibleLayer] = useState(0);
   const switcherRef = useRef();
-
   
-  const [selectedNomenclature, setSelectedNomenclature] = useState('')
+  const [selectedNomenclature, setSelectedNomenclature] = useState('');
 
   useEffect(() => {
     async function getInfoDataExplorer() {
       try {
-        const { data } = await apiPEDEA.get('/infoDataExplorer')
-        const sortedData = data.sort((a, b) => a.id - b.id)
-        setDataExplorer(sortedData)
+        const { data } = await apiPEDEA.get('/infoDataExplorer');
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setDataExplorer(sortedData);
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Error fetching user data:', error);
       }
     }
 
     async function getRotulosBilingue() {
       try {
-        const { data } = await apiPEDEA.get('/getRotulosBilingue')
-        const sortedData = data.sort((a, b) => a.id - b.id)
-        console.log(sortedData)
-
-        setRotulosKey(sortedData)
-
+        const { data } = await apiPEDEA.get('/getRotulosBilingue');
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setRotulosKey(sortedData);
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Error fetching user data:', error);
       }
     }
 
-    getInfoDataExplorer()
-    getRotulosBilingue()
-  }, [])
+    getInfoDataExplorer();
+    getRotulosBilingue();
+  }, []);
+
+ 
+  const filterOptions = (options, state) => {
+    const inputValue = state.inputValue.trim().toLowerCase();
+  
+    if (!inputValue) {
+   
+      return rotulosKey.map(item => item.key);
+    }
+  
+    return rotulosKey
+      .filter(item => 
+        item.pt_br.toLowerCase().includes(inputValue) ||
+        item.en.toLowerCase().includes(inputValue) ||
+        item.es.toLowerCase().includes(inputValue)
+      )
+      .map(item => {
+       
+        if (item.pt_br.toLowerCase().includes(inputValue)) {
+          return item.pt_br;
+        } else if (item.en.toLowerCase().includes(inputValue)) {
+          return item.en;
+        } else if (item.es.toLowerCase().includes(inputValue)) {
+          return item.es;
+        }
+        return item.key; 
+      });
+  };
 
   const handleSelectChange = (event, value) => {
-   
-    const selectedItem = rotulosKey.find(item =>
+    const selectedItem = rotulosKey.find(item => 
       item.pt_br === value || item.en === value || item.es === value
-    )
-  
-    console.log(value)
+    );
+
     if (selectedItem) {
-      setSelectedNomenclature(selectedItem.key)
+      setSelectedNomenclature(selectedItem.key);
+    } else {
+      setSelectedNomenclature('');
     }
-  }
+  };
 
   const hasNewVisibleLayer = (index) => {
     setVisibleLayer(index);
-  }
+  };
 
   const deactivateVisibleLayers = () => {
-
     if (!mapInstance || !mapInstance.getLayers) {
       console.error('Instância do mapa não é válida ou getLayers não está disponível.');
       return;
     }
 
     for (let i = 0; i < mapInstance.getLayers().getArray().length; i++) {
-      if (mapInstance.getLayers().getArray()[i].getVisible() && (mapInstance.getLayers().getArray()[i].get('serverType') && mapInstance.getLayers().getArray()[i].get('serverType') === ServerTypeHelper.GEOSERVER)) {
+      if (mapInstance.getLayers().getArray()[i].getVisible() &&
+          mapInstance.getLayers().getArray()[i].get('serverType') === ServerTypeHelper.GEOSERVER) {
         mapInstance.getLayers().getArray()[i].setVisible(false);
-        // mapInstance.hasNewVisibleLayer(-i);
       }
     }
-
     return false;
+  };
 
-  }
-
-  const CustomPopper = props => {
-    return <Popper {...props} placement="right-start" />
-  }
+  const CustomPopper = props => <Popper {...props} placement="right-start" />;
 
   const getLocalizedLabel = (item) => {
     switch (i18n.language) {
       case 'en':
-        return item.en
+        return item.en;
       case 'es':
-        return item.es
+        return item.es;
       default:
-        return item.pt_br
+        return item.pt_br;
     }
-  }
-
-  const getSearchOptions = () => {
-    return rotulosKey.flatMap(item => [
-      item.pt_br,
-      item.en,   
-      item.es   
-    ])
-  }
-
-
+  };
 
   return (
     <div>
@@ -123,7 +132,8 @@ function NavOptions() {
           <Autocomplete
             freeSolo
             id="ContainerInput"
-            options={getSearchOptions()}
+            options={rotulosKey.map(item => getLocalizedLabel(item))}
+            filterOptions={filterOptions}
             onChange={handleSelectChange}
             renderInput={params => (
               <TextField
@@ -135,35 +145,17 @@ function NavOptions() {
                   </>
                 }
                 sx={{
-                  '& .MuiInputBase-input': {
-                    color: 'white'
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: 'white'
-                  },
-                  '& .MuiInputLabel-root.Mui-focused': {
-                    color: 'white'
-                  },
-                  '& .MuiInputLabel-root.MuiInputLabel-shrink': {
-                    color: 'white'
-                  },
+                  '& .MuiInputBase-input': { color: 'white' },
+                  '& .MuiInputLabel-root': { color: 'white' },
+                  '& .MuiInputLabel-root.Mui-focused': { color: 'white' },
+                  '& .MuiInputLabel-root.MuiInputLabel-shrink': { color: 'white' },
                   '& .MuiOutlinedInput-root': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'white'
-                    },
-                    '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'white'
-                    },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'white'
-                    }
+                    '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                    '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' }
                   },
-                  '& .MuiAutocomplete-popupIndicator': {
-                    color: 'white'
-                  },
-                  '& .MuiAutocomplete-clearIndicator': {
-                    color: 'white'
-                  }
+                  '& .MuiAutocomplete-popupIndicator': { color: 'white' },
+                  '& .MuiAutocomplete-clearIndicator': { color: 'white' }
                 }}
               />
             )}
@@ -196,7 +188,8 @@ function NavOptions() {
         {t('Baixar Dados')}
       </Button>
     </div>
-  )
+  );
 }
 
-export default NavOptions
+export default NavOptions;
+
