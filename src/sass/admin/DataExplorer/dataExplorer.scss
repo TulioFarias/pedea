@@ -227,7 +227,7 @@
       p{
         margin-bottom: 0px;
         font-weight: bold;
-        font-size: 8px;
+        font-size: 10px;
       }
     }
 
@@ -315,7 +315,7 @@
     .linktoltip{
       cursor: pointer;
       color: white;
-      font-size: 10px;
+      font-size: 12px;
 
       &:hover{
         color: #2c403f;
@@ -325,7 +325,7 @@
   }
   
   .ContainerTableRotulosData {
-    width: 66vw;
+    width: 70vw;
     height: 82vh;
     padding: 10px;
     background-color: #2c403f;
@@ -336,7 +336,7 @@
   
     h2 {
       font-weight: 900;
-      font-size: 28px;
+      font-size: 17px;
   
     }
 
@@ -353,7 +353,5 @@
     
   }
 
-  .viewTable{
-    color: red;
-  }
+
   }

@@ -138,48 +138,48 @@
     }
 }
 
-/* Celular */
+
 @media (max-width: 480px) {
     .ContainerWrapperImportCSV {
         
-        padding: 5px; /* Reduz o padding para celulares */
+        padding: 5px; 
     }
 
     .titleFilesImports {
-        font-size: 8px!important; /* Reduz o tamanho da fonte para celulares */
+        font-size: 10px!important; 
     }
 
     .customFormsFileImports {
-        gap: 6px; /* Reduz o gap entre os elementos para celulares */
+        gap: 6px; 
     }
 
     .LabelRotulosImports {
-        font-size: 8px !important; /* Reduz o tamanho da fonte para celulares */
+        font-size: 10px !important; 
     }
 
     .inputRotulosImports{
-     width: 190px; 
+     width: 240px; 
      height: 30px;  
 
      &::placeholder {
-        font-size: 8px; /* Reduz o tamanho da fonte do placeholder para celulares */
+        font-size: 10px; 
     }
    }
 
    .containerButtonAddDataCSV{
      
     p{
-        font-size: 8px;
+        font-size: 10px;
     }
    }
 
     .BtnSubmitImport,
     .ButtonAddCSV {
-        width: 190px;
-        height: 24px; /* Reduz a altura do botão para celulares */
+        width: 240px;
+        height: 24px; 
         margin-top: 8px;
         font-size: 10px;
-         /* Ajusta a margem superior para celulares */
+      
     }
 }
 

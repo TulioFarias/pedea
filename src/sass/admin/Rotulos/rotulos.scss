@@ -4,7 +4,8 @@
     gap: 10px;
     width: 82vw;
     height: 82vh;
-    overflow: auto;
+
+    padding-right: 10px;
 
 }
 
@@ -12,12 +13,10 @@
 
 .ContainerAddInfoRotulos{
     border-radius: 10px;
-    width: 51vw;
+    width: 46vw;
     height: max-content;
     display: flex;
     flex-direction: column;
-   
-    
 }
 
 .containerInfos{
@@ -117,7 +116,7 @@
 
 .containerTableInfoRotulos{
     width: 100vw;
-    height: 82vh;
+    height: 83vh;
     background-color: rgb(44, 64, 63);
     padding: 12px;
     border-radius: 10px;
