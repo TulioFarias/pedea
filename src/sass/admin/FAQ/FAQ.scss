@@ -68,28 +68,20 @@
 @media (max-width: 480px) {
 
     #containerFAQs{
-        display: flex;
+        display: grid;
         gap: 15px;
-        justify-content: center;
-        border: 1px solid red;
+  
         
     }
     
     .ContainerAllFAQ{
-        height: 83vh;
-        width: max-content;
-        display: flex;
-        flex-direction: column;
-        background-color: rgb(44, 64, 63);
-        padding: 10px;
-        border-radius: 10px;
-        overflow: auto;
-    
-        
-    
+        width: 70vw;
+        height: 70vh;
+
         hr{
             border: 1px dashed white;
             margin-top: 0px;
+            
         }
     }
     
@@ -97,15 +89,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        
         h1{
             color: white;
             font-weight: bold;
             font-size: 14px;
+            text-align: center;
         }
     
         .iconTitleFAQlink{
             position: relative;
-            left: 120px;
+            left: 0px;
             cursor: pointer;
             color: white;
     
@@ -121,7 +115,6 @@
         padding: 10px;
         background-color: rgba(255, 255, 255, 0.267);
         max-height: max-content;
-        border: 1px solid;
     
     }
     
@@ -132,7 +125,7 @@
         padding: 10px;
         margin-top: 3px;
         background-color: rgba(255, 255, 255, 0.267);
-        height: 40vh;
+        height: 43vh;
     
     }
 

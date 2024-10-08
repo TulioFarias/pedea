@@ -68,3 +68,76 @@
         transition: all 0.9s ease-in-out;
     }
 }
+
+@media (max-width: 480px) {
+
+    
+.ContainerFAQAllItens{
+    margin-top: 0px;
+    height: 500px;
+    p{
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        bottom: 20px;
+    }
+}
+.carouselCustomFAQ{
+    height: 30vh;
+    width: max-content;
+    position: relative;
+    right: 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .carousel-indicators{
+       top: 130px;
+    }
+}
+
+
+
+.ContainerItensCarousel{
+    margin-left: 0px;
+    width: max-content;
+}
+
+.LabelFAQEditAndDelete{
+    font-size: 12px!important;
+}
+
+.ContainerBtnsFAQ{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    
+}
+
+
+.BtnsIconsEditFAQ{
+    background-color: rgb(46, 43, 43);
+    border: none;
+
+
+    &:hover{
+        background-color: white;
+        color: rgb(44, 64, 63);
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+.BtnsIconsFAQDelete{
+    background-color: rgb(78, 27, 27);
+    border: none;
+
+    &:hover{
+        background-color: white;
+        color: red;
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+}

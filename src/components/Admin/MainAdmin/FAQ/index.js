@@ -11,29 +11,36 @@ function FAQ() {
     <>
       <div className="containerWrapperOptions" id="containerFAQs">
         <div className="ContainerAllFAQ">
-          <div className="containerTitleFAQ">
-            <h1>Gerenciamento de Perguntas Frequentes:</h1>
-            <a
-              href="http://localhost:3000/perguntasfrequentes"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <OpenInNewRoundedIcon className="iconTitleFAQlink" />
-            </a>
-          </div>
+        
+              <div className="containerTitleFAQ">
+                <h1>Gerenciamento de Perguntas Frequentes:</h1>
+                <a
+                  href="http://localhost:3000/perguntasfrequentes"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <OpenInNewRoundedIcon className="iconTitleFAQlink" />
+                </a>
+              </div>
 
-          <hr />
-          <div className="containerOneFAQ">
-            <AddInfoFAQ />
-          </div>
+              <hr />
+              <div className="containerOneFAQ">
+                <AddInfoFAQ />
+              </div>
 
-          <div className="containerTwoFAQ">
-            <ShowContainerEditFAQ />
-          </div>
+              <div className="containerTwoFAQ">
+                <ShowContainerEditFAQ />
+              </div>
+        
+
         </div>
+
         <div>
-          <ChangeLogContainer />
-        </div>
+            <ChangeLogContainer />
+          </div>
+        
+        
+
       </div>
     </>
   )

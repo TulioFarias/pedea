@@ -2,7 +2,7 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import React, { useEffect, useState } from 'react'
 import { Carousel, Form, Button } from 'react-bootstrap'
-
+import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss'
 import apiPEDEA from '../../../../../services/api'
 import ModalChangeLogDelete from './modalsChangeLogs/modalDeleteChangeLog'
 import ModalEditChangeLog from './modalsChangeLogs/modalEditChangeLog'
@@ -62,12 +62,13 @@ function ShowAndEditChangeLog() {
                     />
                   </Form.Group>
                   <Form.Group className="groupItemsTwo">
-                    <Form.Label>Mensagem de atualização:</Form.Label>
+                    <Form.Label className="labelmsg">Mensagem de atualização:</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
                       value={log.message}
                       readOnly
+                      className='inputTxtArea'
                     />
                   </Form.Group>
                   <div className="logDates">
