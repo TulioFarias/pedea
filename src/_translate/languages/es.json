@@ -75,10 +75,15 @@
             "4. Módulo de Configurações": "4. Módulo de Configuraciones",
             "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:": "Finalmente, el módulo de configuraciones le permite gestionar su propia información de usuario. Las opciones incluyen:",
             "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.": "Ver datos personales: Verifique y mantenga sus datos actualizados.",
-            "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Cambio de imagen y contraseña: Cambie su foto de perfil y contraseña directamente aquí, garantizando seguridad y personalización."
+            "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Cambio de imagen y contraseña: Cambie su foto de perfil y contraseña directamente aquí, garantizando seguridad y personalización.",
     
           
+            "Preencha os campos abaixo para cadastrar um rótulo:": 
+            "Complete los campos a continuación para registrar una etiqueta:",
 
+            " Chave:": " Llave:",
+
+            "Digite um nome para chave:" : "Introduzca un nombre para la clave:"
 
     }
 

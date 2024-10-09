@@ -75,7 +75,14 @@
             "4. Módulo de Configurações": "4. Settings Module",
             "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:": "Finally, the settings module allows you to manage your own user information. Options include:",
             "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.": "View personal data: Check and keep your data up to date.",
-            "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Change image and password: Change your profile picture and password directly here, ensuring security and personalization."
+            "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Change image and password: Change your profile picture and password directly here, ensuring security and personalization.",
+
+
+            "Preencha os campos abaixo para cadastrar um rótulo:": "Fill in the fields below to register a label:",
+
+            " Chave:": " Key:",
+
+            "Digite um nome para chave:" : "Enter a name for the key:"
           
           
 

@@ -5,16 +5,17 @@ import '../../../../sass/admin/Rotulos/rotulos.scss'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-import { Tooltip } from '@mui/material'
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
-
+import Flag from 'react-flagkit'
+import { useTranslation } from 'react-i18next'
 import apiPEDEA from '../../../../services/api'
 import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
 import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
 import IfKeyExist from './modalsRotulos/modalKeyExist'
 import CreateRotulosCSV from './csvRotulos/createCSVRotulos'
-
+import KeyIcon from '@mui/icons-material/Key';
 function CreateRotulosSystem() {
+
+  const { t } = useTranslation()
   const [valueLanguage, setValueLanguage] = useState({
     key: '',
     pt_br: '',
@@ -100,14 +101,6 @@ function CreateRotulosSystem() {
     loadRotulosData()
   }, [])
 
-  const infoUserTutorial = {
-    createRotuos: {
-      key: 'Para criar uma chave para um rótulo com nome à sua escolha, é necessário definir os valores em três idiomas: português, inglês e espanhol. ',
-      pt: 'Escreva um valor para esse campo em português.',
-      en: 'Escreva um valor para esse campo em inglês.',
-      es: 'Escreva um valor para esse campo em espanhol'
-    }
-  }
 
   return (
     <Container fluid className="containerWrapperOptions">
@@ -115,94 +108,71 @@ function CreateRotulosSystem() {
         <div className="ContainerAddInfoRotulos">
           <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
             <div className="titleRegisterRotulo">
-              <p>Preencha os campos abaixo para cadastrar um rótulo:</p>
+              <p>{t("Preencha os campos abaixo para cadastrar um rótulo:")}</p>
             </div>
 
             <div className="containersLabelsFormRegisterRotulos">
               <Form.Group>
                 <Form.Label className="LabelRotulos">
-                  Chave:
-                  <Tooltip
-                    title={infoUserTutorial.createRotuos.key}
-                    className="customToltip"
-                    placement="right"
-                  >
-                    <InfoRoundedIcon />
-                  </Tooltip>
+                 {t(" Chave:" )}
+                  <KeyIcon/>
+                  
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Digite a chave"
                   onChange={handleChange}
                   {...register('key')}
                   className="InputRotulos"
                   isInvalid={errors.key}
+                  placeholder={t("Digite um nome para chave")}
                 />
                 <p className="txtErrorPassword">{errors.key?.message}</p>
               </Form.Group>
 
               <Form.Group>
                 <Form.Label className="LabelRotulos">
-                  Português:
-                  <Tooltip
-                    title={infoUserTutorial.createRotuos.pt}
-                    className="customToltip"
-                    placement="right"
-                  >
-                    <InfoRoundedIcon />
-                  </Tooltip>
+                  PT-BR
+                  <Flag country="BR" />
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Digite valor em português"
                   onChange={handleChange}
                   {...register('pt_br')}
                   className="InputRotulos"
                   isInvalid={errors.pt_br}
+                  placeholder='Digite nome em português'
                 />
                 <p className="txtErrorPassword">{errors.pt_br?.message}</p>
               </Form.Group>
 
               <Form.Group>
                 <Form.Label className="LabelRotulos">
-                  Inglês:
-                  <Tooltip
-                    title={infoUserTutorial.createRotuos.en}
-                    className="customToltip"
-                    placement="right"
-                  >
-                    <InfoRoundedIcon />
-                  </Tooltip>
+                  EN 
+                  <Flag country="US" />
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Digite valor em inglês"
                   onChange={handleChange}
                   {...register('en')}
                   className="InputRotulos"
                   isInvalid={errors.en}
+                  placeholder='Digite nome em inglês'
                 />
                 <p className="txtErrorPassword">{errors.en?.message}</p>
               </Form.Group>
 
               <Form.Group>
                 <Form.Label className="LabelRotulos">
-                  Espanhol:
-                  <Tooltip
-                    title={infoUserTutorial.createRotuos.es}
-                    className="customToltip"
-                    placement="right"
-                  >
-                    <InfoRoundedIcon />
-                  </Tooltip>
+                 ES
+                 <Flag country="ES" />
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Digite valor em espanhol"
                   onChange={handleChange}
                   {...register('es')}
                   className="InputRotulos"
                   isInvalid={errors.es}
+                  placeholder='Digite um nome em espanhol'
                 />
                 <p className="txtErrorPassword">{errors.es?.message}</p>
               </Form.Group>
@@ -212,7 +182,7 @@ function CreateRotulosSystem() {
                 className="btnSubmitAddRotulos"
                 type="submit"
               >
-                Cadastrar
+                {t("Cadastrar")}
               </Button>
 
               
