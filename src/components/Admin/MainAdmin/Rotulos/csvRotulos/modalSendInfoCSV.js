@@ -58,7 +58,8 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
           success: 'Dados enviados com sucesso!',
           error: {
             render({ data }) {
-              const errorMessage = data.response?.data?.message;
+              console.log(data)
+              const errorMessage = data.response?.data?.message || data.response?.data?.details || 'Erro desconhecido';
               return `Erro: ${errorMessage}`;
             }
           }
