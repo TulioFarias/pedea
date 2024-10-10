@@ -50,25 +50,28 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
   }, [])
 
   const onSubmit = async formData => {
-
-    console.log('Ta enviando daqui')
     try {
       await toast.promise(
-        apiPEDEA.post('/createValueDataExplorer', { fileName: formData.path }),
+        apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path }),
         {
           pending: 'Enviando dados...',
           success: 'Dados enviados com sucesso!',
-          error: 'Erro ao enviar dados.'
+          error: {
+            render({ data }) {
+              const errorMessage = data.response?.data?.message;
+              return `Erro: ${errorMessage}`;
+            }
+          }
         }
-      )
-
-      reset()
-      closeModal()
+      );
+  
+      reset();
+      closeModal();
     } catch (error) {
-      console.error('Erro ao enviar dados:', error)
-      toast.error('Erro ao enviar dados.')
+      console.error('Erro ao enviar dados:', error);
     }
   }
+  
 
   return (
     <>

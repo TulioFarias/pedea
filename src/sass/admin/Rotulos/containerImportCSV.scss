@@ -22,6 +22,73 @@
     justify-content: space-between;
 }
 
+.containerExempleDownload{
+    padding: 10px 5px 5px 5px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-style: italic;
+    background-color: #b1adad;
+    border-radius: 10px;
+    width: max-content;
+   
+}
+
+.titleExempleDownload{
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.BtnDownloadExemple {
+    position: relative; 
+    overflow: hidden;
+    margin-top: 10px;
+    width: 160px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.3s ease-in-out; 
+    
+    &:hover {
+        color: rgb(44, 64, 63);
+        background-color: rgb(255, 254, 254);
+    }
+}
+
+.BtnDownloadExemple span {
+    display: block;
+    margin-left: 0.3em;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;  
+    opacity: 1; 
+    transform: translateX(0); 
+}
+
+.BtnDownloadExemple svg {
+    position: absolute;
+    transform-origin: center center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
+    opacity: 0; 
+    transform: translateX(-1.2em); 
+}
+
+.BtnDownloadExemple:hover svg {
+    transform: translateX(0) rotate(0deg) scale(1.1); 
+    opacity: 1; 
+}
+
+.BtnDownloadExemple:hover span {
+    transform: translateX(-5em); 
+    opacity: 0; 
+}
+
+.BtnDownloadExemple:active {
+    transform: scale(0.95);
+}
+
 .BtnSubmitRotulosCSV{
     margin-top: 10px;
     border: none;

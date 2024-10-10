@@ -83,7 +83,11 @@
 
             " Chave:": " Llave:",
 
-            "Digite um nome para chave:" : "Introduzca un nombre para la clave:"
+            "Digite um nome para chave:" : "Introduzca un nombre para la clave:",
+
+            "Cadastrar" : "Registro",
+
+            "Nome:" : "Nombre:"
 
     }
 

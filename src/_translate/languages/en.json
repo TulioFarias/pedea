@@ -82,7 +82,11 @@
 
             " Chave:": " Key:",
 
-            "Digite um nome para chave:" : "Enter a name for the key:"
+            "Digite um nome para chave:" : "Enter a name for the key:",
+
+            "Cadastrar" : "Register",
+
+            "Nome:" : "Name:"
           
           
 

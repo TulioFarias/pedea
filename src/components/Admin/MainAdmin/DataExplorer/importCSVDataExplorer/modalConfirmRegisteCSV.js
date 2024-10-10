@@ -56,17 +56,23 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
         {
           pending: 'Enviando dados...',
           success: 'Dados enviados com sucesso!',
-          error: 'Erro ao enviar dados.'
+          error: {
+            render({ data }) {
+              const errorResponse = data?.response?.data?.error || 'Erro ao enviar dados.';
+              return errorResponse;
+            }
+          }
         }
-      )
-
-      reset()
-      closeModal()
+      );
+  
+      reset();
+      closeModal();
     } catch (error) {
-      console.error('Erro ao enviar dados:', error)
-      toast.error('Erro ao enviar dados.')
+      console.error('Erro ao enviar dados:', error);
+      const errorMessage = error?.response?.data?.error || 'Erro ao enviar dados.';
+      toast.error(errorMessage);
     }
-  }
+  };
 
   return (
     <>
