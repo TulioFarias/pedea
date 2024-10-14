@@ -6,13 +6,16 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import apiPEDEA from '../../../../../services/api'
+
+
 function AddInfoChangeLog() {
   const schema = Yup.object().shape({
-    version: Yup.number('Insira o número da versão').required(
-      'A numeração da versão é obrigatória.'
-    ),
+    version: Yup.string()
+      .matches(/^\d+$/, 'A versão deve conter apenas números.')
+      .required('A numeração da versão é obrigatória.'),
     message: Yup.string().required('A mensagem é obrigatória.')
   })
+
   const {
     handleSubmit,
     register,
@@ -22,7 +25,7 @@ function AddInfoChangeLog() {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
       await toast.promise(
         apiPEDEA.post('/addInfoEvolution', {
@@ -41,52 +44,48 @@ function AddInfoChangeLog() {
       console.error(error)
     }
   }
+
   return (
-    <>
-      <div>
-        <div className="containerAddChangeLog">
-          <Form
-            onSubmit={handleSubmit(onSubmit)}
-            className="containerFormChangeLog"
-          >
-            <p>
-              Para adicionar um novo registro de atualização, preencha os campos
-              abaixo:
-            </p>
-            <Form.Group className="containerInputsChangeLog">
-              <label className="labelChangeLog">Versão de atualização:</label>
-              <InputGroup>
-                <Form.Control
-                  type="text"
-                  placeholder="Digite o número da versão de atualização"
-                  {...register('version')}
-                  className="inputChangeLog"
-                  isInvalid={errors.version}
-                />
-              </InputGroup>
-              <p className="errorTxtChangeLog">{errors.version?.message}</p>
-            </Form.Group>
-
-            <Form.Group className="containerInputsChangeLog">
-              <label className="labelChangeLog">Mensagem de atualização:</label>
+    <div>
+      <div className="containerAddChangeLog">
+        <Form onSubmit={handleSubmit(onSubmit)} className="containerFormChangeLog">
+          <p>Para adicionar um novo registro de atualização, preencha os campos abaixo:</p>
+          <Form.Group className="containerInputsChangeLog">
+            <label className="labelChangeLog">Versão de atualização:</label>
+            <InputGroup>
               <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Escreva a mensagem de atualização"
-                {...register('message')}
+                type="number"
+                placeholder="Digite o número da versão de atualização"
+                {...register('version')}
                 className="inputChangeLog"
-                isInvalid={errors.message}
+                isInvalid={!!errors.version}
+                onKeyDown={(e) =>
+                  ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()
+                } // Impede entrada de caracteres não numéricos
               />
-              <p className="errorTxtChangeLog">{errors.message?.message}</p>
-            </Form.Group>
+            </InputGroup>
+            <p className="errorTxtChangeLog">{errors.version?.message}</p>
+          </Form.Group>
 
-            <Button className="BtnChangeLogSubmit" type="submit">
-              Registrar nova atualização
-            </Button>
-          </Form>
-        </div>
+          <Form.Group className="containerInputsChangeLog">
+            <label className="labelChangeLog">Mensagem de atualização:</label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Escreva a mensagem de atualização"
+              {...register('message')}
+              className="inputChangeLog"
+              isInvalid={!!errors.message}
+            />
+            <p className="errorTxtChangeLog">{errors.message?.message}</p>
+          </Form.Group>
+
+          <Button className="BtnChangeLogSubmit" type="submit">
+            Registrar nova atualização
+          </Button>
+        </Form>
       </div>
-    </>
+    </div>
   )
 }
 

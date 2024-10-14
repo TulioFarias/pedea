@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 
 import '../../../../../../sass/admin/DataExplorer/modalsDataExplorer/editModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../services/api'
+
 function ModalEditChangeLog({
   openModalEdit,
   setOpenModalEdit,
@@ -17,8 +18,12 @@ function ModalEditChangeLog({
     version: '',
     message: ''
   })
+
+  // Validação com Regex para garantir que a versão seja numérica
   const schema = Yup.object().shape({
-    version: Yup.number().required('A versão de atualização é obrigatória.'),
+    version: Yup.string()
+      .matches(/^\d+$/, 'A versão deve conter apenas números.')
+      .required('A versão de atualização é obrigatória.'),
     message: Yup.string().required('A nova mensagem é obrigatória.')
   })
 
@@ -29,13 +34,14 @@ function ModalEditChangeLog({
   } = useForm({
     resolver: yupResolver(schema)
   })
+
   const closeModal = () => {
     setOpenModalEdit(false)
   }
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
-      const response = await toast.promise(
+      await toast.promise(
         apiPEDEA.put('/updateChangeLog', {
           id: idEditValueLog,
           version: data.version,
@@ -47,21 +53,15 @@ function ModalEditChangeLog({
           error: 'Chave não corresponde ao ID fornecido.'
         }
       )
-
       closeModal()
     } catch (error) {
-      return console.log(error)
+      console.error(error)
     }
   }
 
-  const handleChangeQuestion = e => {
-    const { value } = e.target
-    setValueEditChangeLog(prevData => ({ ...prevData, version: value }))
-  }
-
-  const handleChangeAnswer = e => {
-    const { value } = e.target
-    setValueEditChangeLog(prevData => ({ ...prevData, message: value }))
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setValueEditChangeLog((prevData) => ({ ...prevData, [name]: value }))
   }
 
   return (
@@ -85,13 +85,18 @@ function ModalEditChangeLog({
             <Form.Group controlId="formVersion">
               <Form.Label className="labelInputChangeLog">Versão:</Form.Label>
               <Form.Control
-                type="text"
+                type="number" // Alterado para tipo numérico
                 {...register('version')}
-                onChange={handleChangeQuestion}
-                isInvalid={errors.version}
+                name="version"
+                onChange={handleChange}
+                isInvalid={!!errors.version}
+                onKeyDown={(e) =>
+                  ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()
+                } // Impede caracteres inválidos
               />
               <p className="txtErrorChangeLog">{errors.version?.message}</p>
             </Form.Group>
+
             <Form.Group controlId="formMessage">
               <Form.Label className="labelInputChangeLog">
                 Mensagem de Atualização:
@@ -100,8 +105,9 @@ function ModalEditChangeLog({
                 as="textarea"
                 rows={3}
                 {...register('message')}
-                onChange={handleChangeAnswer}
-                isInvalid={errors.message}
+                name="message"
+                onChange={handleChange}
+                isInvalid={!!errors.message}
               />
               <p className="txtErrorChangeLog">{errors.message?.message}</p>
             </Form.Group>
@@ -128,3 +134,4 @@ ModalEditChangeLog.propTypes = {
 }
 
 export default ModalEditChangeLog
+
