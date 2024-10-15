@@ -108,7 +108,7 @@
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        width: 200px;
+        width: max-content;
         overflow: hidden;
         transition: all 0.5s ease-in-out;
         &:hover {
@@ -125,11 +125,11 @@
     }
     
     .CardTitles {
-        font-size: 10px;
+        font-size: 12px;
     }
     
     .CardTxts, .list-group-item {
-        font-size: 8px;
+        font-size: 12px;
         background-color: transparent;
         color: white;
         display: none;

@@ -85,14 +85,14 @@ function ModalEditChangeLog({
             <Form.Group controlId="formVersion">
               <Form.Label className="labelInputChangeLog">Versão:</Form.Label>
               <Form.Control
-                type="number" // Alterado para tipo numérico
+                type="number"
                 {...register('version')}
                 name="version"
                 onChange={handleChange}
                 isInvalid={!!errors.version}
                 onKeyDown={(e) =>
                   ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()
-                } // Impede caracteres inválidos
+                } 
               />
               <p className="txtErrorChangeLog">{errors.version?.message}</p>
             </Form.Group>

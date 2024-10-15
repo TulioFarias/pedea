@@ -422,4 +422,19 @@
         padding: 10px;
         background-color: rgb(243, 243, 243);
     }
+
+
+    .inputsValuesUser .input-group {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      
+        input {
+          flex: 1; 
+        }
+      
+        button {
+          flex-shrink: 0; 
+        }
+      }
        }

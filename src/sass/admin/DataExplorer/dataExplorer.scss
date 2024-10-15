@@ -194,11 +194,7 @@
     
   }
 
-  
 
-  .viewTable{
-    color: red;
-  }
   
   @media (max-width: 768px) {
     .ContainerButtonsDataExplorer {
@@ -212,7 +208,7 @@
     }
   }
   
-  /* Celular */
+
   @media (max-width: 480px) {
     .ContainerButtonsDataExplorer {
       width: 100%; 
@@ -345,6 +341,102 @@
       margin-top: 0px;
       margin-bottom: 5px;
     }
+  }
+  
+
+  .headerContainerTableRotulos{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .containerDownloadTable{
+    grid-row: 1;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px dashed;
+    gap: 0px;
+    border-radius: 10px;
+    width: 250px;
+
+
+    p{
+      font-size: 12px;
+    }
+    
+
+    .btnDownload {
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.267);
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: transparent;
+      color: white;
+      transition: all 0.3s ease-in-out;
+    
+    }
+
+    
+    .btnDownload .buttonText {
+      transform: translateX(22px);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    
+   
+    .btnDownload:hover {
+      background: #17795d6c;
+      transform: scale(1.02);
+      
+    }
+    
+    
+   
+  }
+
+
+  .containerChangeTable{
+    grid-row: 2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 250px;
+    border: 1px dashed;
+
+
+    p{
+      font-size: 12px;
+    }
+
+    .BtnChangeTableRotulos{
+      color: white;
+      background-color: transparent;
+      border-radius: 10px;
+      border: none;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      &:hover{
+          color: rgb(92, 89, 89);
+          transition: all 0.3s ease-in-out;
+          background-color: white;
+      }
+  }
+
   }
   
   .ContainerTableView{

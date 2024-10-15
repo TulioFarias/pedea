@@ -396,12 +396,20 @@
         height: 37vh;
     
     }
+
+    .carouselCustomChangeLog{
+        
+        .carousel-control-prev, .carousel-control-next{
+            display: none;
+        }
+    }
     
     .containerItemsDataChangeLog{
         background-color:  rgb(44, 64, 63);
         border-radius: 10px;
         padding: 10px;
         width: max-content;
+        height: max-content;
         position: relative;
         display: flex;
         flex-direction: column;

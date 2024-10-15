@@ -74,27 +74,36 @@
     
 .ContainerFAQAllItens{
     margin-top: 0px;
-    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     p{
         font-size: 12px;
         text-align: center;
         font-weight: bold;
-        position: relative;
-        bottom: 20px;
     }
 }
 .carouselCustomFAQ{
     height: 30vh;
-    width: max-content;
     position: relative;
     right: 25px;
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    .carousel-inner{
+        position: relative;
+        width: 380px;
+        right: 70px;
+        
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
+    }
 
     .carousel-indicators{
-       top: 130px;
+       top: 150px;
+       left: 140px;
     }
 }
 
