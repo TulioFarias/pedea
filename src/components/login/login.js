@@ -161,7 +161,7 @@ function LoginSystem() {
 
           <p className="end-txt">
             Não tem cadastro?{' '}
-            <Link href="#" className="link-end" to="/register">
+            <Link href="#" className="link-end" to="/cadastro">
               Clique aqui
             </Link>
           </p>

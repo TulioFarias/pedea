@@ -2,7 +2,7 @@ import '../../sass/login/resetPass.scss'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
-import ReCAPTCHA from 'react-google-recaptcha'
+
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -19,7 +19,7 @@ function LoginSystem() {
     password: '',
     confirmPassword: ''
   })
-  const [recaptcha, setRecaptcha] = useState(null)
+
 
   const changeForm = async e => {
     const { name, value } = e.target
@@ -27,9 +27,7 @@ function LoginSystem() {
     setForm({ ...form, [name]: value })
   }
 
-  const handleClickRecaptcha = event => {
-    setRecaptcha(event)
-  }
+
 
   const schema = Yup.object().shape({
     token: Yup.string().required('O token é obrigatório.'),
@@ -116,6 +114,7 @@ function LoginSystem() {
                 value={form.token}
                 onChange={changeForm}
                 placeholder="XXXXXXXXXXX"
+                isInvalid={!!errors.token}
               />
               <p className="error-txt">{errors.token?.message}</p>
             </div>
@@ -133,6 +132,7 @@ function LoginSystem() {
                 value={form.password}
                 onChange={changeForm}
                 placeholder="Sua nova senha..."
+                isInvalid={!!errors.password}
               />
               <p className="error-txt">{errors.password?.message}</p>
             </div>
@@ -153,6 +153,7 @@ function LoginSystem() {
                 value={form.confirmPassword}
                 onChange={changeForm}
                 placeholder="Por favor, confirme sua senha..."
+                isInvalid={!!errors.confirmPassword}
               />
               <p className="error-txtRegister">
                 {errors.confirmPassword?.message}
@@ -160,12 +161,8 @@ function LoginSystem() {
             </div>
           </div>
 
-          <ReCAPTCHA
-            sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-            onChange={handleClickRecaptcha}
-          />
-
-          <button type="submit" className="Btn-Form" disabled={!recaptcha}>
+      
+          <button type="submit" className="Btn-Form" >
             Enviar
           </button>
         </Form>

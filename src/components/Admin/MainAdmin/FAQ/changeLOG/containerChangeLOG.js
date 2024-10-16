@@ -14,7 +14,7 @@ function ChangeLogContainer() {
             Gerenciamento de atualizações do log:
           </p>
           <a
-            href="http://localhost:3000/changelogpedea"
+            href="http://localhost:3000/atualizacoespedea"
             target="_blank"
             rel="noreferrer"
           >

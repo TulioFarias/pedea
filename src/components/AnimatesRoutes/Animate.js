@@ -20,10 +20,10 @@ function AnimatedRoutes() {
           <Routes location={location} key={location.pathname}>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
-            <Route element={<ResetPass />} path="/resetpassword" />
-            <Route element={<Register />} path="/register" />
+            <Route element={<ResetPass />} path="/recuperarsenha" />
+            <Route element={<Register />} path="/cadastro" />
             <Route element={<WebPageFAQ />} path="/perguntasfrequentes" />
-            <Route element={<PageChangeLog />} path="/changelogpedea" />
+            <Route element={<PageChangeLog />} path="/atualizacoespedea" />
             <Route element={<Private Admin={<Admin />} />} path="/admin" />
           </Routes>
         </Fragment>
