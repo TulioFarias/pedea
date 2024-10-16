@@ -101,7 +101,6 @@ function TableViewRotulosData() {
   };
 
 
-
   return (
     <div className="ContainerTableRotulosData">
       <div className="headerContainerTableRotulos">
@@ -192,7 +191,7 @@ function TableViewRotulosData() {
                           <TableCell>{item.nomenclatura_pedea}</TableCell>
                           <TableCell>{item.fonte}</TableCell>
                           <TableCell>{item.coluna_atributo}</TableCell>
-                          <TableCell>{item.modules}</TableCell>
+                          <TableCell>{item.modulos_graficos ? 'Sim' : 'Não'}</TableCell>
                           <TableCell>{item.link_drive_shp}</TableCell>
                           <TableCell>{item.link_drive_kml}</TableCell>
                           <TableCell>{item.key_rotulo}</TableCell>

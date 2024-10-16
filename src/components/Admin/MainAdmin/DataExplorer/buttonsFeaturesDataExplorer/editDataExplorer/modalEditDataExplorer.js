@@ -76,13 +76,13 @@ function EditaModalDataExplorer({ show, handleClose }) {
 
   const onSubmit = async data => {
 
-    console.log(data.key_rotulos)
+    console.log(data)
 
     try {
       const response = await toast.promise(
-        apiPEDEA.put('/updateDataExplorer/', {
+        apiPEDEA.put('/updateDataExplorer', {
           id: parseInt(selectedId),
-          categoriadeinformação: data.categoria_de_informacao,
+          categoriadeinformacao: data.categoria_de_informacao,
           classemaior: data.classe_maior,
           subclassemaior: data.sub_classe_maior,
           classemenor: data.classe_menor,
@@ -92,17 +92,21 @@ function EditaModalDataExplorer({ show, handleClose }) {
           colunaatributo: data.coluna_atributo,
           linkdriveshp: data.link_drive_shp,
           linkdrivekml: data.link_drive_kml,
-          key_rotulo: data.key_rotulos
+          key_rotulos: data.key_rotulos
           
         }),
         {
           pending: 'Atualizando...',
           success: 'Dados atualizados no banco de dados',
-          error: 'Erro ao atualizar os dados'
+          error: {
+            render({ data }) {
+
+              return (data.response && data.response.data && data.response.data.error) || 'Error desconhecido, fale com administrador do sistema.';
+            }
+          }
         }
       )
 
-      console.log(response)
 
       reset()
       handleClose()

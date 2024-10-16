@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Modal, Form } from 'react-bootstrap'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
@@ -11,7 +10,7 @@ import '../../sass/login/RecoverPass.scss'
 import api from '../../services/api'
 function RecoverPasswordModal({ show, setShow }) {
   const [email, setEmail] = useState('')
-  const [recaptcha, setRecaptcha] = useState(null)
+
   const handleEmailChange = event => {
     setEmail(event.target.value)
   }
@@ -26,7 +25,7 @@ function RecoverPasswordModal({ show, setShow }) {
           pending: 'Verificando seu email...',
           success:
             'As instruções para recuperar sua senha foram enviadas para o seu e-mail.',
-          error: 'Ops! Seu e-mail não está cadastrado...'
+          error: 'Esse email não está cadastrado no sistema.'
         }
       )
 
@@ -73,15 +72,11 @@ function RecoverPasswordModal({ show, setShow }) {
               />
               <p className="error-txtRecover">{errors.email?.message}</p>
             </Form.Group>
-            <ReCAPTCHA
-              sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-              onChange={value => setRecaptcha(value)}
-              className="reCapModalRecover"
-            />
+      
             <button
               className="Btn-FormRecover"
               type="submit"
-              disabled={!recaptcha}
+         
             >
               Enviar
             </button>

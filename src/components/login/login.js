@@ -5,25 +5,24 @@ import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import Form from 'react-bootstrap/Form';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
-
 import backIcon from '../../assets/icons/backicon.png';
 import logo from '../../assets/img/pedea-logo.png';
 import api from '../../services/api';
 import { login } from '../../utils/redux/user/actions';
 import RecoverPasswordModal from './RecoverPasswordModal';
-import SplashScreen from './splash'; 
+import SplashScreen from './splash';
+import emailIcon from '../../assets/icons/o-email.png'
 
 function LoginSystem() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [form, setForm] = useState({ email: '', password: '' });
-  const [recaptcha, setRecaptcha] = useState(null);
+
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); 
 
@@ -32,9 +31,6 @@ function LoginSystem() {
     setForm({ ...form, [name]: value });
   };
 
-  const handleClickRecaptcha = (event) => {
-    setRecaptcha(event);
-  };
 
   const dispatch = useDispatch();
 
@@ -114,6 +110,7 @@ function LoginSystem() {
               name="email"
               value={form.email}
               onChange={changeForm}
+              isInvalid={!!errors.email}            
             />
             <p className="error-txt">{errors.email?.message}</p>
           </div>
@@ -141,6 +138,8 @@ function LoginSystem() {
               name="password"
               value={form.password}
               onChange={changeForm}
+              isInvalid={!!errors.password}
+              
             />
 
             <p className="error-txt">{errors.password?.message}</p>
@@ -149,16 +148,11 @@ function LoginSystem() {
           <Link className="RetrieveAccLink" onClick={() => setShow(true)}>
             Esqueceu sua senha?
           </Link>
-          <ReCAPTCHA
-            sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-            onChange={handleClickRecaptcha}
-    
-          />
+        
 
           <button
             type="submit"
             className="Btn-Form"
-            disabled={!recaptcha}
             formNoValidate
           >
             Entrar

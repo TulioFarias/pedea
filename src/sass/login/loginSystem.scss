@@ -128,7 +128,7 @@
 
 .titleLogin{
     font-size: 40px;
-    font-weight: 500;
+    font-weight: 800;
     color: white;
     margin-bottom: 10px;
     text-align: center;
@@ -136,29 +136,52 @@
 }
 
 .LabelForm{
-    font-size: 18px;
-    color: white;
+    font-size: 14px;
     margin-bottom: 6px;
+    color: rgb(231, 231, 231);
     
 }
 
-.InputForm{ 
-    width: 300px;
-    height: 32px;
-    padding-left: 10px;
-    outline: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 800;
-    
+.InputForm {
+  width: 300px;
+  height: 32px;
+  padding-left: 10px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: rgb(231, 231, 231); 
+  color: rgb(97, 97, 97);
+  border: 1px solid transparent;
+}
+
+
+.InputForm:focus {
+  background-color: rgb(231, 231, 231); 
+  color: rgb(97, 97, 97); 
+  border: 1px solid #ccc; 
+}
+
+
+.InputForm::placeholder {
+  color: lightgray; 
+  opacity: 1; 
+}
+
+.InputForm:-webkit-autofill,
+.InputForm:-webkit-autofill:hover,
+.InputForm:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(97, 97, 97); /* Cor cinza */
+  -webkit-box-shadow: 0 0 0px 1000px rgb(231, 231, 231) inset; /* Cor de fundo */
+  transition: background-color 5000s ease-in-out 0s; /* Previne troca rápida de cor */
 }
 
 .IconVisibility{
   border: none;
-  color:  #2c403f;
+  color:  #2c403fa6;
   position: relative;
-  left: 120px;
-  top: 67px;
+  left: 110px;
+  top: 61px;
   background-color: transparent;
  
 

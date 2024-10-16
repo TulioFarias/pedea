@@ -81,8 +81,7 @@ function CreateRotulosCSV() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="formFileName">
                     <Form.Label className="LabelCSV">
-                        {t("Nome:")}
-
+                       Nome:
                     </Form.Label>
                     <Form.Control
                         type="text"

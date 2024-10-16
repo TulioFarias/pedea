@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,7 +23,7 @@ function RegisterUser() {
     password: '',
     confirmPassword: ''
   })
-  const [recaptcha, setRecaptcha] = useState(null)
+
 
   const changeForm = async e => {
     const { name, value } = e.target
@@ -195,13 +194,8 @@ function RegisterUser() {
                     </Col>
                   </Row>
                 </div>
-                <ReCAPTCHA
-                  sitekey="6LezFHMpAAAAALIlQvnIfK6w0b__ZbmkJDiJ_f8I"
-                  onChange={value => setRecaptcha(value)}
-                  className="ReCaptchaRegister"
-                />
+               
                 <button
-                  disabled={!recaptcha}
                   type="submit"
                   className="Btn-FormRegister"
                 >
