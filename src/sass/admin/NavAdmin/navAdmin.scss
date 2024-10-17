@@ -327,12 +327,256 @@ $border-radius: 1rem;
 //***  tamanho do container do NavBar-expanded **// 
 
 
-@media only screen and (max-width: 1040px){
+@media (min-width: 768px) and (max-width: 1024px){
     .bodyNav{
         width: 17vw;
         height: 97vh;
     }
-  }
+    
+    .containerDivsLanguage{
+        margin-top: 2px;
+        display: flex;
+        gap: 1px;
+        margin-bottom: 0px;
+    }
+
+    .imgPEDEA{
+        
+
+    }
+
+
+    .my-btns-linguage{
+        width: 5px;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .hrNavOptionsOne{
+        position: relative;
+        bottom: 5px;
+        margin-bottom: 0px;
+        border: 1px dashed white;
+    }
+
+  
+
+
+    .titleText{
+        color: rgba(204, 204, 204, 0.76);
+        display: flex;
+        margin-top: 10px;
+        margin-left: 0px;
+        justify-content: center;
+        align-items: center;
+        width: 14vw;
+       
+    
+        h5{
+            font-size: 14px;
+            font-weight: 800;
+            
+        }
+    
+    }
+
+    .NavOptionsLinks{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1px;
+        position: relative;
+        right: 8px;
+        gap: 8px;
+
+
+    }
+
+    .links-btnsNav{
+        display: flex;
+        color: rgb(173, 173, 173);
+        gap: 5px;
+        align-items: center;
+        border: none;
+        border-radius: 100px 0 0 100px;
+        font-size: 12px;
+        transition: all 0s ease-in-out;
+    
+        &:hover{
+            color: white;
+            background-color: rgb(151, 151, 151);
+            width: 113%;
+        }
+
+        
+    
+    }
+    .links-btnsNav.active{
+        color: rgba(44, 64, 63, 0.726);
+        background-color: rgb(165, 165, 165);
+        position: relative;
+        width: 112%;
+    }
+    
+    .links-btnsNav.active::before, .links-btnsNav.active::after{
+        content: '';
+        position: absolute;
+        width: 0.8rem;
+        height: $border-radius;
+        background: rgba(44, 64, 63, 0.726);
+        left: 93%;
+        
+    }
+    
+    .links-btnsNav.active::before {
+        top: calc(-#{$border-radius} * -2.5);
+        border-radius: 0 100vw 0 110vw;
+        box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
+    }
+    
+    .links-btnsNav.active::after {
+        bottom: calc(-#{$border-radius} * -2.5);
+        border-radius: 110vw 0 100vw 0;
+        box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
+    }
+
+
+
+
+
+     //** start container mobile after click **//
+
+     .bodyNav-expanded{
+
+        .bodyNav{
+            width: 17vw;
+        }
+        .containerDivsLanguage{
+            display: flex;
+            gap: 10px;
+            margin-right: 10px;
+            
+        }
+        .my-btns-linguage{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+            height: 15px;
+            border: none;
+            background-color: transparent;
+            position: relative;
+            right: 25px;
+ 
+
+        
+            &:hover{
+                transform: scale(1.03);
+                transition: 0.5s all ease-in-out;
+            }
+        
+            button{
+                border-radius: 50%;
+            }
+        }
+
+    
+        .imgPEDEA{
+            display: none;
+        }
+    
+        .hrNavOptionsOne{
+            position: relative;
+            bottom: 5px;
+            margin-bottom: 0px;
+            border: 1px dashed white;
+        }
+
+        .hrNavOptionsTwo{
+            position: relative;
+            bottom: 20px;
+            margin-bottom: 0px;
+            border: 1px dashed white;
+        }
+    
+    
+        .titleText{
+            color: rgba(204, 204, 204, 0.76);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 12vw;
+           
+        
+            h5{
+                font-size: 10px;
+                font-weight: 800;
+                
+            }
+        
+        }
+    
+        .NavOptionsLinks{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1px;
+            position: relative;
+            right: 8px;
+            gap: 8px;
+    
+    
+        }
+    
+        .links-btnsNav{
+            display: flex;
+            color: rgb(173, 173, 173);
+            gap: 5px;
+            align-items: center;
+            border: none;
+            border-radius: 100px 0 0 100px;
+            font-size: 0px;
+        
+            &:hover{
+                color: white;
+                background-color: rgb(165, 165, 165);
+                width: 113%;
+            }
+    
+            
+        
+        }
+        .links-btnsNav.active{
+            color: rgba(44, 64, 63, 0.726);
+            background-color: rgb(165, 165, 165);
+            position: relative;
+            width: 101%;
+        }
+        
+        .links-btnsNav.active::before, .links-btnsNav.active::after{
+            content: '';
+            position: absolute;
+            width: 0.7rem;
+            height: $border-radius;
+            background: rgba(44, 64, 63, 0.726);
+            left: 81%;
+            
+        }
+        
+        .links-btnsNav.active::before {
+            top: calc(-#{$border-radius} * -2.5);
+            border-radius: 0 100vw 0 110vw;
+            box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
+        }
+        
+        .links-btnsNav.active::after {
+            bottom: calc(-#{$border-radius} * -2.5);
+            border-radius: 110vw 0 100vw 0;
+            box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
+        }
+    }
+}
 
 @media only screen and (max-width: 480px){
     .bodyNav{

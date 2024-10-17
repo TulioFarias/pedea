@@ -91,7 +91,7 @@ function CreateRotulosSystem() {
   useEffect(() => {
     async function loadRotulosData() {
       try {
-        const { data } = await apiPEDEA.get('/getAllRotulos')
+        const { data } = await apiPEDEA.get('/getRotulosBilingue')
         setDataInfoKey(data)
       } catch (error) {
         console.error('Error fetching user data:', error)
