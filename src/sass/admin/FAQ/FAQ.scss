@@ -67,21 +67,22 @@
 
 @media (min-width: 480px) and (max-width: 1024px){
     #containerFAQs{
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 15px;
         justify-content: center;
-        border: 1px solid red;
     }
     
     .ContainerAllFAQ{
         height: 83vh;
-        width: 40vw;
+        width: 72vw;
         display: flex;
         flex-direction: column;
         background-color: rgb(44, 64, 63);
         padding: 10px;
         border-radius: 10px;
         overflow: auto;
+
     
         
     
@@ -104,7 +105,8 @@
     
         .iconTitleFAQlink{
             position: relative;
-            left: 0px;
+            left: 5 0px;
+            bottom: 4px;
             cursor: pointer;
             color: white;
     
@@ -119,7 +121,8 @@
         border-radius: 10px;
         padding: 10px;
         background-color: rgba(255, 255, 255, 0.267);
-        max-height: max-content;
+        height: max-content;
+       
     
     }
     
@@ -130,7 +133,7 @@
         padding: 10px;
         margin-top: 3px;
         background-color: rgba(255, 255, 255, 0.267);
-        height: max-content;
+        height: 100vh;
     
     }
 

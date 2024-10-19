@@ -55,6 +55,7 @@ function ShowContainerEditFAQ() {
                   type="text"
                   defaultValue={faq.question}
                   readOnly
+                  className='inputValuesFAQ'
                 />
               </Form.Group>
               <Form.Group>
@@ -66,6 +67,7 @@ function ShowContainerEditFAQ() {
                   rows={3}
                   defaultValue={faq.answer}
                   readOnly
+                  className='inputValuesFAQ'
                 />
               </Form.Group>
               <div className="ContainerBtnsFAQ">

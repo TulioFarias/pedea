@@ -253,7 +253,7 @@
 
 .containerChangeLOG{
     height: 83vh;
-    width: 35vw;
+    width: 72vw;
     border-radius: 10px;
     background-color: rgb(44, 64, 63);
     padding: 10px;
@@ -378,7 +378,7 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.267);
     backdrop-filter: blur(10px);
-    height: 40vh;
+    height: 50vh;
     margin-top: 3px;
   
 
@@ -403,6 +403,7 @@
     border-radius: 10px;
     padding: 10px;
     width: 80%;
+    height: max-content;
     position: relative;
     left: 70px;
     top: 10px;
@@ -418,16 +419,23 @@
     .labelgroupone{
         position: relative;
         top: 3px;
+        font-size: 12px;
     }
     
     .inputgroupone{
         width: 70px;
         height: 30px;
+        font-size: 12px;
     }
 }
 
 .groupItemsTwo{
     margin-top: 15px;
+    font-size: 12px;
+}
+
+.labelmsg{
+    font-size: 12px!important;
 }
 
 .logDates{
@@ -465,7 +473,7 @@
     justify-content: center;
     position: relative;
     top: 14px;
-    gap: 5px
+    gap: 5px;
 }
 
 .btnEditChangeLog{
