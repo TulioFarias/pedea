@@ -230,7 +230,7 @@ $space-btnToogle-open: 200px;
    
 }
 
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 480px) and (max-width: 1024px){
 
     .bodyHeader{
         background-color: rgb(231, 230, 230);
@@ -251,6 +251,7 @@ $space-btnToogle-open: 200px;
         border-radius: 10px;
         color: rgba(44, 64, 63, 0.726);
         border: none;
+        display: none;
     
         &:hover{
             transition: 0.6s all ease-in-out;
@@ -509,6 +510,7 @@ $space-btnToogle-open: 200px;
     border-radius: 20px;
     padding: 0px 5px 0px 5px;
     background-color: rgba(155, 155, 155, 0.384);
+    height: 55px;
     position: relative;
     
 

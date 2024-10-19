@@ -8,7 +8,7 @@ function SettingsAdmin() {
   return (
     <>
       <div className="containerWrapperOptions">
-        <h2 className="titleSettings">Configurações</h2>
+        <h2 className="titleSettings">Configurações do Usuário</h2>
 
         <div className="ContainerAllSettingsInfo">
           <SettingsSystemAndUser />

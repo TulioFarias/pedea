@@ -3,6 +3,7 @@
     gap: 10px;
     justify-content: space-between;
     overflow: auto;
+   
   }
   
   .ContainerButtonsDataExplorer {
@@ -196,9 +197,19 @@
 
 
   
-  @media (max-width: 768px) {
+  @media (min-width: 480px) and (max-width: 1024px) {
+
+    .ContainerAllInfoDataExplorer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+
+      overflow: auto;
+     
+    }
     .ContainerButtonsDataExplorer {
-      width: 30vw; 
+      width: 73vw; 
       height: auto; 
     }
   
@@ -211,10 +222,12 @@
 
   @media (max-width: 480px) {
     .ContainerButtonsDataExplorer {
-      width: 100%; 
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: max-content; 
+      display: flex;
+      flex-direction: column;
       grid-template-rows: auto auto;
+     
 
       hr{
         display: none;
@@ -223,12 +236,11 @@
       p{
         margin-bottom: 0px;
         font-weight: bold;
-        font-size: 10px;
+        font-size: 14px;
       }
     }
 
     .containerOne{
-      grid-column: 1;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -236,6 +248,7 @@
       align-items: center;
       border: 1px dashed rgb(117, 114, 114);
       border-radius: 10px;
+      height: max-content;
 
       p{
         text-align: start;
@@ -243,8 +256,8 @@
     }
   
     .containerTwo{
-      grid-column: 2;
-      height: 23vh;
+    
+      height: max-content;
       padding: 5px;
       display: flex;
       flex-direction: column;
@@ -253,10 +266,8 @@
       border-radius: 10px;
   
     }
-  
-    .containerThree{
-      grid-column: 1 / span 2; 
-    }
+
+
   
     .ContainerTableRotulosData {
       width: 100%; 
@@ -274,6 +285,7 @@
     border-radius: 10px;
     padding: 5px;
     display: flex;
+    width: 240px;
     height: max-content;
     gap: 1px;
    

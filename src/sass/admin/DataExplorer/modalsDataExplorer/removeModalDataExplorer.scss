@@ -42,3 +42,56 @@
     justify-content: flex-end;
     gap: 10px;
 }
+
+
+@media (min-width: 480px) and (max-width: 1024px){
+
+}
+
+@media (max-width: 480px) {
+    #ContainerModalDeleteDataExplorer .modal-content{
+        background-color: rgba(255, 255, 255, 0.267);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        width: 400px;
+    
+    }
+    
+    .ContainerRemove{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ContainerAllInfoDelete{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px; 
+        background-color: rgba(199, 199, 199, 0.644);
+        border-radius: 10px;
+        padding: 10px;
+        height: max-content;
+    }
+    
+    .containerConfirmDelete{
+        width: 367px;
+        border-radius: 10px;
+        background-color:  rgba(199, 199, 199, 0.644);
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .containerBtnsDelete{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    
+}

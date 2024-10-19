@@ -88,7 +88,7 @@ function SettingsSystemAndUser() {
           <div key={value.id}>
             <Container fluid>
               <div className="containerUserSettings">
-                <h3 className="titleUserSettings">Detalhes do usuário</h3>
+                <h3 className="titleUserSettings">Informações cadastrais:</h3>
                 <Row>
                   <Col sm={3}>
                     <div className="user-imageSettings">

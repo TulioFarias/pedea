@@ -81,3 +81,92 @@
    
 }
 
+@media (min-width: 480px) and (max-width: 1024px){
+
+}
+
+@media (max-width: 480px) {
+    #ContainerAddDataExplorer {
+        color: rgb(63, 63, 63);
+      
+       
+    }
+    
+    #ContainerAddDataExplorer .modal-content {
+        background-color: rgba(255, 255, 255, 0.267);
+        backdrop-filter: blur(10px);
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        
+        h1{
+            
+            color: black;
+            background-color: rgba(255, 255, 255, 0.267);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            padding: 5px;
+        }
+    }
+    
+    .titleTxt{
+        color: black;
+        background-color: rgba(255, 255, 255, 0.267);
+        border-radius: 10px;
+        font-size: 12px;
+        width: max-content;
+        padding: 5px;
+    }
+    
+       
+    
+    
+    .BodyModalAdd {
+        display: flex;
+        flex-direction: column;
+        gap: 25px; 
+        background-color: rgba(199, 199, 199, 0.644);
+        border-radius: 10px;
+        padding: 10px;
+        height: max-content;
+    
+    }
+    
+    .inputDataExplorer{
+        width: 300px;
+    }
+    
+    
+    .ContainerBtnModalAdd{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    
+    
+    
+    .BtnAddDataExplorer{
+        background-color: rgb(44, 64, 63);
+        color: white;
+        border: none;
+        
+    
+        &:hover{
+            background-color: gray;
+            color: rgb(44, 64, 63);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+    .BtnCloseAddDataExplorer{
+        background-color: rgb(88, 88, 88);
+        color: white;
+        border: none;
+        
+       
+    }
+}
+

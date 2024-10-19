@@ -248,6 +248,259 @@
     }
 }
 
+@media (min-width: 480px) and (max-width: 1024px){
+    
+
+.containerChangeLOG{
+    height: 83vh;
+    width: 35vw;
+    border-radius: 10px;
+    background-color: rgb(44, 64, 63);
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+   
+
+    hr{
+        border: 1px dashed white;
+        margin-top: 0px;
+    }
+
+}
+
+.containerTitleAndLinkChangeLog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .titleChangeLog{
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 25px;
+        margin-bottom: 0px;
+        
+        
+    }
+
+    .iconLinkChangeLog{
+        position: relative;
+        left: 140px;
+        cursor: pointer;
+        color: white;
+
+        &:hover{
+            color: gray;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+
+.containerAddChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    margin-top: 0px;
+    height: max-content;
+}
+
+
+.containerFormChangeLog{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    p{
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+}
+
+.labelChangeLog{
+    font-size: 14px;
+    font-weight: 900;
+    padding-left: 5px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.inputChangeLog{
+    
+
+    &::placeholder{
+        font-size: 12px;
+    }
+}
+
+.errorTxtChangeLog {
+    color: red;
+    font-size: 12px !important;
+    padding-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+   
+  }
+  
+  
+
+
+
+.BtnChangeLogSubmit{
+    border: none;
+    height: 32px;
+    width: 250px;
+    margin-top: 14px;
+    border-radius: 10px;
+    background-color: rgb(44, 64, 63);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(255, 254, 254);
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+
+.containerShowChangeLog{
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    height: 40vh;
+    margin-top: 3px;
+  
+
+
+    p{
+        margin-bottom: 0px;
+        font-weight: 900;
+        text-align: center;
+    }
+   
+}
+
+.containerCarousel{
+    padding: 10px;
+    margin-top: 0px;
+    height: 37vh;
+
+}
+
+.containerItemsDataChangeLog{
+    background-color:  rgb(44, 64, 63);
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    position: relative;
+    left: 70px;
+    top: 10px;
+
+   
+}
+
+.groupItemOne{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .labelgroupone{
+        position: relative;
+        top: 3px;
+    }
+    
+    .inputgroupone{
+        width: 70px;
+        height: 30px;
+    }
+}
+
+.groupItemsTwo{
+    margin-top: 15px;
+}
+
+.logDates{
+    padding: 5px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+
+
+    .groupDate{
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 0px;
+    }
+
+    .labelsdate{
+        font-size: 14px;
+        position: relative;
+        top: 5px;
+    }
+
+    .inputsdate{
+        width: 200px;
+        height: 30px;
+    }
+}
+
+.containerBtnsChangeLog{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 14px;
+    gap: 5px
+}
+
+.btnEditChangeLog{
+    background-color: rgb(46, 43, 43);
+    border: none;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &:hover{
+        background-color: white;
+        color: rgb(44, 64, 63);
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+.btnDeleteChangeLog{
+    background-color: rgb(78, 27, 27);
+    border: none;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        background-color: white;
+        color: red;
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+}
+
 @media (max-width: 480px) {
 
     .containerChangeLOG{

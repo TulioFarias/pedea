@@ -71,3 +71,85 @@
     color: red;
     font-size: 12px;
 }
+
+@media (min-width: 480px) and (max-width: 1024px){
+
+}
+
+@media (max-width: 480px) {
+
+    
+#ContainerModalEditDataExplorer .modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    width: 400px;
+
+}
+
+.ContainerId{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputID{
+    width: 300px;
+}
+
+.BtnEditDE{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-top: 15px;
+       margin-bottom: 15px;
+}
+
+.ContainerAllInfoEdit{
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+    height: max-content;
+}
+
+
+
+.containerBtnsAtt{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.BtnEditSubmit{
+    background-color: rgb(44, 64, 63);
+    color: white;
+    border: none;
+    height: 38px;
+    
+
+    &:hover{
+        background-color: gray;
+        color: rgb(44, 64, 63);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.BtnCloseEditDataExplorer{
+    background-color: rgb(88, 88, 88);
+    color: white;
+    border: none;
+    
+   
+}
+
+.txtErrorChangeLog{
+    color: red;
+    font-size: 12px;
+}
+    
+}

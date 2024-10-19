@@ -69,6 +69,71 @@
     }
 }
 
+@media (min-width: 480px) and (max-width: 1024px){
+    
+.ContainerFAQAllItens{
+    margin-top: 0px;
+    p{
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        bottom: 20px;
+    }
+}
+.carouselCustomFAQ{
+    height: 30vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .carousel-indicators{
+       top: 210px;
+    }
+}
+
+.ContainerItensCarousel{
+    height: max-content;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    background-color:  rgb(44, 64, 63);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    width: 300px;
+}
+
+.LabelFAQEditAndDelete{
+    font-size: 12px;
+}
+
+.ContainerBtnsFAQ{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+
+.BtnsIconsEditFAQ{
+    background-color: rgb(46, 43, 43);
+    border: none;
+
+
+    &:hover{
+        background-color: white;
+        color: rgb(44, 64, 63);
+        transition: all 0.9s ease-in-out;
+    }
+}
+
+
+}
+
 @media (max-width: 480px) {
 
     
