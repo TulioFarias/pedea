@@ -91,6 +91,13 @@
             margin-top: 0px;
         }
     }
+
+    .containerTitleAndLinkChangeLog .iconLinkChangeLog {
+        position: relative;
+        left: 100px!important;
+        cursor: pointer;
+        color: white;
+    }
     
     .containerTitleFAQ{
         display: flex;
@@ -139,7 +146,7 @@
 
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) and (min-width: 375px) {
 
     #containerFAQs{
         display: grid;
@@ -150,7 +157,7 @@
     
     .ContainerAllFAQ{
         width: 70vw;
-        height: 70vh;
+        height: 100vh;
 
         hr{
             border: 1px dashed white;
@@ -199,7 +206,7 @@
         padding: 10px;
         margin-top: 3px;
         background-color: rgba(255, 255, 255, 0.267);
-        height: 43vh;
+        height: 50vh;
     
     }
 

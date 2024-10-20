@@ -9,6 +9,7 @@
 .titleSettings{
     text-align: center;
     font-weight: bold;
+    
 }
 .ContainerSettingsAndUser{
     padding: 10px;
@@ -80,7 +81,8 @@
 
 
 .file-btn{
-    position: absolute; 
+    position: absolute;
+    left: 55px; 
     width: 100%; 
     height: 100%;
     cursor: pointer;
@@ -92,6 +94,7 @@
     border: 1px dashed;
     background-color: transparent;
     color: gray;
+
 
     &:hover{
         transform: scale(1.05);
@@ -139,149 +142,164 @@
         justify-content: center;
         height: max-content;
 
-        .containerUserSettings{
-            display: flex;
-            flex-direction: column;
-            width: 270px;
-            height: max-content;
-            align-items: center;
-            height: max-content;
-            border-radius: 20px;
-            padding: 10px;
-            gap: 20px;
         
-        
-            .form-label{
-                font-size: 12px!important;
-    
-            }
-        }
-        .titleSettings{
-            text-align: center;
-            font-weight: bold;
-            
-        }
-        
-        .titleUserSettings{
-            font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            font-size: 16px;
-           
-        }
-        
-        
-        .user-imageSettings{
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            left: 80px;
-        }
-        
-        .user-imageSettings img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            border-radius: 50%; 
-        }
-        
-        
-        .containerFileImg{
-            display: flex;
-            align-items: center;
-            width: 30px;
-            height: 30px;
-            position: relative;
-            justify-content: center;
-            top: 0px;
-            left: 140px;
-            cursor: pointer;
-            }
-        
-        
-        
-        .file-btn{
-            position: absolute; 
-            width: 100%; 
-            height: 100%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            cursor: pointer;
-            border: 1px dashed;
-        
-            &:hover{
-                transform: scale(1.05);
-                transition: 0.3s all ease-in-out;
-                color: rgb(0, 136, 247);
-                background-color: rgb(78, 78, 78);
-        
-            }
-        }
-        
-        
-        
-        
-        .inputsValuesUser {
-            width: 240px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
-        }
-        
-        .inputsValuesUserName{
-            width: 240px;
-            position: relative;
-            top: 10px;
-            left: 0px;
-            display: flex;
-            flex-direction: column;
-            padding-left: 15px;
-    
-            ::placeholder{
-                font-size: 10px;
-            }
-        }
-        
-        .valueInputCustom{
-            color: gray;
-            width: max-content;
-            height: 30px;
-            border: 1px solid;
-        }
-    
-        .input-group{
-            width: 208px;
-    
-            & button{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 30px;
-            }
-        }
-        
-        
-        .containerSystemSettings{
-            border-radius: 20px;
-            padding: 10px;
-            background-color: rgb(243, 243, 243);
-        }
         
        
     }
+
+
+    .titleSettings{
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        
+    }
+
+    .containerUserSettings{
+        display: flex;
+        flex-direction: column;
+        width: 270px;
+        height: max-content;
+        align-items: center;
+        height: max-content;
+        border-radius: 20px;
+        padding: 10px;
+        gap: 20px;
+    
+    
+        .form-label{
+            font-size: 12px!important;
+
+        }
+    }
+    
+ 
+
+    
+    .titleUserSettings{
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        font-size: 14px;
+       
+    }
+    
+    
+    .user-imageSettings{
+        width: 120px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        left: 30px;
+        bottom: 30px;
+    }
+    
+    .user-imageSettings img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        border-radius: 50%; 
+    }
+    
+    
+    .containerFileImg{
+        display: flex;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        justify-content: center;
+        top: 55px;
+        left: 55px;
+        cursor: pointer;
+        }
+    
+    
+    
+    .file-btn{
+        position: absolute; 
+        width: 100%; 
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        cursor: pointer;
+        border: 1px dashed;
+        position: relative;
+        left: 10px;
+        top: 30px;
+    
+        &:hover{
+            transform: scale(1.05);
+            transition: 0.3s all ease-in-out;
+            color: rgb(0, 136, 247);
+            background-color: rgb(78, 78, 78);
+    
+        }
+    }
+    
+    
+    
+    
+    .inputsValuesUser {
+        width: 240px;
+        display: grid;
+        font-size: 12px;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+    }
+    
+    
+    .inputsValuesUserName{
+        width: 240px;
+        position: relative;
+        top: 10px;
+        right: 300px;
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+
+        ::placeholder{
+            font-size: 10px;
+        }
+    }
+    
+    .valueInputCustom{
+        color: gray;
+        width: max-content;
+        height: 30px;
+        border: 1px solid;
+    }
+
+    .input-group{
+        width: 208px;
+
+        & button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+        }
+    }
+    
+    
+    .containerSystemSettings{
+        border-radius: 20px;
+        padding: 10px;
+        background-color: rgb(243, 243, 243);
+    }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 480px) and (min-width: 375px){
 
 
     .ContainerSettingsAndUser{
@@ -324,15 +342,15 @@
     
     
     .user-imageSettings{
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         overflow: hidden;
         position: relative;
-        left: 80px;
+        left: 20px;
     }
     
     .user-imageSettings img {
@@ -351,7 +369,7 @@
         position: relative;
         justify-content: center;
         top: 0px;
-        left: 140px;
+        left: 55px;
         cursor: pointer;
         }
     
@@ -411,17 +429,7 @@
     
     }
 
-    .input-group{
-        width: 208px;
-
-        & button{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 30px;
-        }
-    }
-    
+  
     
     .containerSystemSettings{
         border-radius: 20px;
@@ -433,14 +441,19 @@
     .inputsValuesUser .input-group {
         display: flex;
         align-items: center;
-        width: 100%;
+        width: 220%;
       
         input {
           flex: 1; 
         }
-      
-        button {
-          flex-shrink: 0; 
+
+        & button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
         }
+      
+        
       }
        }

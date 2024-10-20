@@ -87,6 +87,7 @@
  }
  
  .AddinputFAQ{
+    
  
      &::placeholder{
          color: gray;
@@ -129,7 +130,7 @@
         flex-direction: column;
      
         p{
-         font-size: 12px;
+         font-size: 14px;
         }
       
      }
@@ -149,17 +150,19 @@
      }
      
      .AddinputFAQ{
-        width: 210px;
+        width: 200px;
          &::placeholder{
              color: gray;
              font-size: 12px;
          }
+
+         
      }
      
      .btnSubmitFAQ{
          border: none;
          height: 30px;
-         width: 220px;
+         width: 200px;
          margin-top: 20px;
          border-radius: 10px;
          background-color: rgb(44, 64, 63);

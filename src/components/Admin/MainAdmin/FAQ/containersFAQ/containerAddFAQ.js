@@ -51,14 +51,15 @@ function AddInfoFAQ() {
   return (
     <Container className="containerWrapperAddInfoFAQ">
       <Form className="FormsContainerAddFAQ" onSubmit={handleSubmit(onSubmit)}>
-        <div className="containerInputsFAQ">
+       
           <p>
-            Para adicionar uma nova pergunta e uma nova resposta na página de
-            FAQ PEDEA, preencha os campos abaixo:
+            Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:
           </p>
+       
 
-          <label className="labelsInputsFAQ">Adicione uma pergunta:</label>
-          <InputGroup>
+        <div className="containerInputsFAQ">
+        <label className="labelsInputsFAQ">Adicione uma pergunta:</label>
+         
             <Form.Control
               type="text"
               placeholder="Digite a pergunta..."
@@ -66,7 +67,7 @@ function AddInfoFAQ() {
               className="AddinputFAQ"
               isInvalid={errors.question}
             />
-          </InputGroup>
+         
           <p className="txtErrorAddFAQ">{errors.question?.message}</p>
         </div>
         <div className="containerInputsFAQ">

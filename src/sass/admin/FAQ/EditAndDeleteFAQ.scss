@@ -2,7 +2,7 @@
 .ContainerFAQAllItens{
     margin-top: 0px;
     p{
-        font-size: 15px;
+        font-size: 14px;
         text-align: center;
         font-weight: bold;
         position: relative;
@@ -82,14 +82,14 @@
     }
 }
 .carouselCustomFAQ{
-    height: 30vh;
+    height: 40vh;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .carousel-indicators{
-       top: 210px;
+       top: 245px;
     }
 }
 
@@ -153,7 +153,7 @@
     }
 }
 .carouselCustomFAQ{
-    height: 30vh;
+    height: 35vh;
     position: relative;
     right: 25px;
     padding: 10px;

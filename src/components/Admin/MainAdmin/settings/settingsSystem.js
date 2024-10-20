@@ -89,7 +89,7 @@ function SettingsSystemAndUser() {
             <Container fluid>
               <div className="containerUserSettings">
                 <h3 className="titleUserSettings">Informações cadastrais:</h3>
-                <Row>
+                <Row className='RowContainerFileAndNameUser'>
                   <Col sm={3}>
                     <div className="user-imageSettings">
                       <img
@@ -104,8 +104,13 @@ function SettingsSystemAndUser() {
                         <CloudUploadRoundedIcon />
                       </button>
                     </div>
-                    <div className="inputsValuesUserName">
-                      <Form.Label className="customLabelUser">Nome:</Form.Label>
+                  
+                  </Col>
+                </Row>
+
+                <Row className="inputsValuesUser">
+                <Col sm="9">
+                <Form.Label className="customLabelUser">Nome:</Form.Label>
                       <Form.Control
                         type="text"
                         name="name"
@@ -113,11 +118,11 @@ function SettingsSystemAndUser() {
                         readOnly
                         className="valueInputCustom"
                       />
-                    </div>
-                  </Col>
+                </Col>
                 </Row>
 
                 <Row className="inputsValuesUser">
+
                   <Col sm="9">
                     <Form.Label className="customLabelUser">Email:</Form.Label>
                     <Form.Control
