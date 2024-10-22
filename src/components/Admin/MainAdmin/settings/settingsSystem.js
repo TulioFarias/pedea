@@ -1,8 +1,8 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded'
-import '../../../../sass/admin/Settings/settings.scss'
-import EditRoundedIcon from '@mui/icons-material/EditRounded'
-import React, { useEffect, useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup';
+import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded';
+import '../../../../sass/admin/Settings/settings.scss';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -11,51 +11,52 @@ import {
   FormControl,
   InputGroup,
   Container
-} from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
-import * as Yup from 'yup'
+} from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import * as Yup from 'yup';
 
-import userIcon from '../../../../assets/icons/icon-user.png'
-import api from '../../../../services/api'
-import ModalChangePassword from './modalSettings/PasswordChange'
-import ModalChangePhotoUser from './modalSettings/PhotoUserChange'
-
+import userIcon from '../../../../assets/icons/icon-user.png';
+import api from '../../../../services/api';
+import ModalChangePassword from './modalSettings/PasswordChange';
+import ModalChangePhotoUser from './modalSettings/PhotoUserChange';
+import { useTranslation } from 'react-i18next'
 function SettingsSystemAndUser() {
-  const [showModalPhoto, setShowModalPhoto] = useState(false)
-  const [showPassword, setShowPassword] = useState(false)
-  const [user, setUser] = useState([])
-  const userData = useSelector(state => state.userInfoSlice.infoUser)
-  const { id: loggedInUserId } = userData
+  const [showModalPhoto, setShowModalPhoto] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState([]);
+  const userData = useSelector(state => state.userInfoSlice.infoUser);
+  const { id: loggedInUserId } = userData;
 
-  const handleShowPhoto = () => setShowModalPhoto(true)
-  const handleShowPassword = () => setShowPassword(true)
+  const handleShowPhoto = () => setShowModalPhoto(true);
+  const handleShowPassword = () => setShowPassword(true);
+  const { t } = useTranslation()
   useEffect(() => {
     async function loadUserData() {
       try {
-        const { data } = await api.get('/admin')
-        const loggedInUser = data.filter(user => user.id === loggedInUserId)
+        const { data } = await api.get('/admin');
+        const loggedInUser = data.filter(user => user.id === loggedInUserId);
 
         if (loggedInUser) {
-          setUser(loggedInUser)
+          setUser(loggedInUser);
         }
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Error fetching user data:', error);
       }
     }
 
-    loadUserData()
-  }, [loggedInUserId])
+    loadUserData();
+  }, [loggedInUserId]);
 
   const schema = Yup.object().shape({
     file: Yup.mixed().required('Por favor, carregue um arquivo')
-  })
+  });
 
   const {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
   const formatarDataLegivel = dataString => {
     const meses = [
@@ -71,24 +72,24 @@ function SettingsSystemAndUser() {
       'outubro',
       'novembro',
       'dezembro'
-    ]
+    ];
 
-    const data = new Date(dataString)
-    const dia = data.getDate()
-    const mes = meses[data.getMonth()]
-    const ano = data.getFullYear()
+    const data = new Date(dataString);
+    const dia = data.getDate();
+    const mes = meses[data.getMonth()];
+    const ano = data.getFullYear();
 
-    return `${dia} de ${mes} de ${ano}`
-  }
+    return `${dia} de ${mes} de ${ano}`;
+  };
 
   return (
-    <Container fluid className="ContainerSettingsAndUser ">
+    <Container fluid className="ContainerSettingsAndUser">
       {user &&
         user.map(value => (
           <div key={value.id}>
             <Container fluid>
               <div className="containerUserSettings">
-                <h3 className="titleUserSettings">Informações cadastrais:</h3>
+                <h3 className="titleUserSettings">{t("Informações cadastrais:")}</h3>
                 <Row className='RowContainerFileAndNameUser'>
                   <Col sm={3}>
                     <div className="user-imageSettings">
@@ -104,27 +105,25 @@ function SettingsSystemAndUser() {
                         <CloudUploadRoundedIcon />
                       </button>
                     </div>
-                  
                   </Col>
                 </Row>
 
                 <Row className="inputsValuesUser">
-                <Col sm="9">
-                <Form.Label className="customLabelUser">Nome:</Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="name"
-                        value={value.name}
-                        readOnly
-                        className="valueInputCustom"
-                      />
-                </Col>
+                  <Col sm="9">
+                    <Form.Label className="customLabelUser">{t(" Nome:")}</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={value.name}
+                      readOnly
+                      className="valueInputCustom"
+                    />
+                  </Col>
                 </Row>
 
                 <Row className="inputsValuesUser">
-
                   <Col sm="9">
-                    <Form.Label className="customLabelUser">Email:</Form.Label>
+                    <Form.Label className="customLabelUser">{t(" Email:")}</Form.Label>
                     <Form.Control
                       type="text"
                       name="role"
@@ -135,11 +134,10 @@ function SettingsSystemAndUser() {
                   </Col>
                 </Row>
 
-              
                 <Row className="inputsValuesUser">
                   <Col sm="9">
                     <Form.Label className="customLabelUser">
-                      Criado em:
+                      {t("Criado em:")}
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -153,7 +151,7 @@ function SettingsSystemAndUser() {
                 <Row className="inputsValuesUser">
                   <Col sm="9">
                     <Form.Label className="customLabelUser">
-                      Trocar sua senha?
+                      {t("Trocar sua senha?")}
                     </Form.Label>
                     <InputGroup>
                       <FormControl
@@ -181,7 +179,9 @@ function SettingsSystemAndUser() {
           </div>
         ))}
     </Container>
-  )
+  );
 }
 
-export default SettingsSystemAndUser
+export default SettingsSystemAndUser;
+
+

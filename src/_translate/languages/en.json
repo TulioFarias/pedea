@@ -78,15 +78,127 @@
             "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Change image and password: Change your profile picture and password directly here, ensuring security and personalization.",
 
 
+            "AQUI TRADUCAO ROTULOS BILINGUE" : "",
+
+
             "Preencha os campos abaixo para cadastrar um rótulo:": "Fill in the fields below to register a label:",
 
             " Chave:": " Key:",
 
-            "Digite um nome para chave:" : "Enter a name for the key:",
+            "Digite um nome para chave": "Enter a name for the key",
+            "Digite nome em português": "Enter name in Portuguese",
+            "Digite nome em inglês": "Enter name in English",
+            "Digite um nome em espanhol": "Enter a name in Spanish",
+            "Cadastrar": "Register",
 
-            "Cadastrar" : "Register",
+            " Nome:" : " Name:",
 
-            "Nome:" : "Name:"
+            "Digite o nome do arquivo": "Enter the file name",
+
+             "Arquivo exemplo de import .csv *": "Sample import file .csv *",
+
+             "Arquivo CSV:": "CSV File:",
+
+              "Enviar": "Send",
+
+              "Adicionar dados do .csv": "Add data from .csv",
+
+               "Arquivo exemplo": "Example file",
+
+               "Buscar valores e arquivos de um rótulo:": "Fetch values and files from a label:",
+
+               "Digite o valor da chave...": "Enter the key value...",
+
+                "Aqui estão os valores encontrados:": "Here are the values found:",
+
+                "Tabela de rótulos cadastrados:": "Table of registered labels:",
+
+
+                "TRADUCAO DATA EXPLORER" : "",
+
+                 "Use os botões abaixo para adicionar, editar ou excluir rótulos no explorador de dados.": "Use the buttons below to add, edit, or delete labels in the data explorer.",
+
+                 "Para adicionar dados através de um arquivo CSV, basta seguir o exemplo:": "To add data via a CSV file, just follow the example:",
+
+                  "Exemplo como arquivo .CSV": "Example as a .CSV file",
+
+                   "Adicionar": "Add",
+
+                   "Editar": "Edit",
+                   "Editar CSV": "Edit CSV",
+
+                   "Remover": "Remove",
+
+                    "Preencha os campos abaixo para adicionar novo arquivo .csv ao explorador de dados:": "Fill in the fields below to add a new .csv file to the data explorer:",
+
+                    "Nome do arquivo:": "File name:",
+
+                    "Escolha um nome para o arquivo.": "Choose a name for the file.",
+
+                    "Arquivo .CSV:": ".CSV File:",
+                    "Adicionar CSV": "Add CSV",
+
+                    "Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:": "To add the data from the submitted .csv file, click the button below:",
+
+                    "Adicionar dados do arquivo CSV": "Add data from the CSV file",
+
+                    "Baixar tabela do explorador de dados em formato .csv": "Download data explorer table in .csv format",
+
+                    "Baixar": "Download",
+
+                    "Tabela de rótulos ativos no explorador de dados:": "Active label table in the data explorer:",
+                    "Tabela de arquivos cadastrados:": "Registered file table:",
+                    "Tabela de arquivos em edição:": "Editing file table:",
+
+                    "Mudar tabela de arquivos": "Change file table",
+
+                    "Mudar de tabela.": "Change table.",
+                    "Tabela do explorador de dados": "Data explorer table",
+                    "Tabela de arquivos .csv cadastrados": "Registered .csv files table",
+                    "Tabela de arquivos .csv edição": "Editing .csv files table",
+
+
+                    "FAQ": "",
+
+                    "A pergunta deve ter no máximo 255 caracteres.": "The question must have a maximum of 255 characters.",
+                    "A pergunta é obrigatória": "The question is required.",
+                    "A resposta deve ter no máximo 2000 caracteres.": "The answer must have a maximum of 2000 characters.",
+                    "A resposta é obrigatória": "The answer is required.",
+                    "Adicionando FAQ...": "Adding FAQ...",
+                    "FAQ adicionada com sucesso!": "FAQ added successfully!",
+                    "Erro ao adicionar FAQ.": "Error adding FAQ.",
+                    "Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:": "To add a new question and answer, fill in the fields below:",
+                    "Adicione uma pergunta:": "Add a question:",
+                    "Digite a pergunta...": "Type the question...",
+                    "Adicione uma resposta:": "Add an answer:",
+                    "Digite a resposta...": "Type the answer...",
+                    "Criar nova FAQ": "Create new FAQ",
+
+                    "Todas as perguntas ativas na página de perguntas frequentes estão abaixo:": "All active questions on the FAQ page are below:",
+                    "Pergunta ativa:": "Active question:",
+                    "Resposta ativa:": "Active answer:",
+
+                    "To add a new update record, fill in the fields below:": "To add a new update record, fill in the fields below:",
+
+                    "Versão de atualização:": "Update version:",
+                    "Digite o número da versão de atualização": "Enter the update version number",
+                    "Escreva a mensagem de atualização": "Write the update message",
+                    "Registrar nova atualização": "Register new update",
+
+                    "Todas as atualizações de log estão abaixo:": "All log updates are below:",
+                    "Versão da atualização:": "Update version:",
+                    "Mensagem de atualização:": "Update message:",
+                    "Criado em:": "Created at:",
+                    "Atualizado em:": "Updated at:",
+
+                    "CONFIGURACOES": "",
+
+                    "Configurações do Usuário": "User Settings",
+                    "Informações cadastrais:": "Registration information:",
+                    "Nome:": "Name:",
+                    "Email:": "Email:",
+                    
+                    "Trocar sua senha?": "Change your password?"
           
           
 

@@ -7,6 +7,7 @@ import '../../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import ChangeTable from './tablefilesDataExplorer';
 import DownloadIcon from '@mui/icons-material/Download';
 import TableViewIcon from '@mui/icons-material/TableView';
+import { useTranslation } from 'react-i18next'
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
@@ -16,6 +17,7 @@ function TableViewRotulosData() {
   const [selectedTable, setSelectedTable] = useState('TableRotulos');
   const [showSideBar, setShowSideBar] = useState(false);
   
+  const { t } = useTranslation()
 
 
   useEffect(() => {
@@ -106,9 +108,9 @@ function TableViewRotulosData() {
       <div className="headerContainerTableRotulos">
 
         <div className='containerDownloadTable'>
-        <p>Baixar tabela do explorador de dados em formato .csv</p>
+        <p>{t("Baixar tabela do explorador de dados em formato .csv")}</p>
         <button className='btnDownload' onClick={handleDownloadTable}>
-          <span class="buttonText">Baixar</span>
+          <span class="buttonText">{t("Baixar")}</span>
           <DownloadIcon fontSize='small' className='iconDownload'/>
           </button>
           
@@ -116,15 +118,15 @@ function TableViewRotulosData() {
 
         <h2>
           {selectedTable === 'TableRotulos'
-            ? 'Tabela de rótulos ativos no explorador de dados:'
+            ? t('Tabela de rótulos ativos no explorador de dados:')
             : selectedTable === 'FilesRotulos'
-            ? 'Tabela de arquivos cadastrados:'
-            : 'Tabela de arquivos em edição:'}
+            ? t('Tabela de arquivos cadastrados:')
+            : t('Tabela de arquivos em edição:')}
         </h2>
 
         <div className='containerChangeTable'>
 
-        <p>Mudar tabela de arquivos</p>
+        <p>{t("Mudar tabela de arquivos")}</p>
         <button className="BtnChangeTableRotulos" onClick={openSideBar}>
           <TableViewIcon />
         </button>

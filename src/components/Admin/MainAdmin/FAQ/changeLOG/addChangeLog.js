@@ -1,20 +1,21 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
-import { Form, InputGroup, Button } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
-import * as Yup from 'yup'
-
-import apiPEDEA from '../../../../../services/api'
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import React from 'react';
+import { Form, InputGroup, Button } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import apiPEDEA from '../../../../../services/api';
+import { useTranslation } from 'react-i18next'; 
 
 function AddInfoChangeLog() {
+  const { t } = useTranslation(); 
+
   const schema = Yup.object().shape({
     version: Yup.string()
-      .matches(/^\d+$/, 'A versão deve conter apenas números.')
-      .required('A numeração da versão é obrigatória.'),
-    message: Yup.string().required('A mensagem é obrigatória.')
-  })
+      .matches(/^\d+$/, 'A versão deve conter apenas números.') 
+      .required('A numeração da versão é obrigatória.'), 
+    message: Yup.string().required('A mensagem é obrigatória.') 
+  });
 
   const {
     handleSubmit,
@@ -23,7 +24,7 @@ function AddInfoChangeLog() {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
   const onSubmit = async (data) => {
     try {
@@ -33,29 +34,29 @@ function AddInfoChangeLog() {
           message: data.message
         }),
         {
-          pending: 'Adicionando novo registro...',
-          success: 'Registro de atualização criado com sucesso!',
-          error: 'Erro ao adicionar novo registro.'
+          pending: 'Adicionando novo registro...', 
+          success: 'Registro de atualização criado com sucesso!', 
+          error: 'Erro ao adicionar novo registro.' 
         }
-      )
+      );
 
-      reset()
+      reset();
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <div>
       <div className="containerAddChangeLog">
         <Form onSubmit={handleSubmit(onSubmit)} className="containerFormChangeLog">
-          <p>Para adicionar um novo registro de atualização, preencha os campos abaixo:</p>
+          <p>{t('Para adicionar um novo registro de atualização, preencha os campos abaixo:')}</p> 
           <Form.Group className="containerInputsChangeLog">
-            <label className="labelChangeLog">Versão de atualização:</label>
+            <label className="labelChangeLog">{t('Versão de atualização:')}</label> 
             <InputGroup>
               <Form.Control
                 type="number"
-                placeholder="Digite o número da versão de atualização"
+                placeholder={t('Digite o número da versão de atualização')} 
                 {...register('version')}
                 className="inputChangeLog"
                 isInvalid={!!errors.version}
@@ -68,11 +69,11 @@ function AddInfoChangeLog() {
           </Form.Group>
 
           <Form.Group className="containerInputsChangeLog">
-            <label className="labelChangeLog">Mensagem de atualização:</label>
+            <label className="labelChangeLog">{t('Mensagem de atualização:')}</label> 
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="Escreva a mensagem de atualização"
+              placeholder={t('Escreva a mensagem de atualização')} 
               {...register('message')}
               className="inputChangeLog"
               isInvalid={!!errors.message}
@@ -81,12 +82,13 @@ function AddInfoChangeLog() {
           </Form.Group>
 
           <Button className="BtnChangeLogSubmit" type="submit">
-            Registrar nova atualização
+            {t('Registrar nova atualização')} 
           </Button>
         </Form>
       </div>
     </div>
-  )
+  );
 }
 
-export default AddInfoChangeLog
+export default AddInfoChangeLog;
+

@@ -124,7 +124,7 @@ function CreateRotulosSystem() {
                   {...register('key')}
                   className="InputRotulos"
                   isInvalid={errors.key}
-                  placeholder={t("Digite um nome para chave")}
+                  placeholder={t('Digite um nome para chave')}
                 />
                 <p className="txtErrorPassword">{errors.key?.message}</p>
               </Form.Group>
@@ -140,7 +140,7 @@ function CreateRotulosSystem() {
                   {...register('pt_br')}
                   className="InputRotulos"
                   isInvalid={errors.pt_br}
-                  placeholder='Digite nome em português'
+                  placeholder={t('Digite nome em português')}
                 />
                 <p className="txtErrorPassword">{errors.pt_br?.message}</p>
               </Form.Group>
@@ -156,7 +156,7 @@ function CreateRotulosSystem() {
                   {...register('en')}
                   className="InputRotulos"
                   isInvalid={errors.en}
-                  placeholder='Digite nome em inglês'
+                  placeholder={t('Digite nome em inglês')}
                 />
                 <p className="txtErrorPassword">{errors.en?.message}</p>
               </Form.Group>
@@ -172,7 +172,7 @@ function CreateRotulosSystem() {
                   {...register('es')}
                   className="InputRotulos"
                   isInvalid={errors.es}
-                  placeholder='Digite um nome em espanhol'
+                  placeholder={t('Digite um nome em espanhol')}
                 />
                 <p className="txtErrorPassword">{errors.es?.message}</p>
               </Form.Group>

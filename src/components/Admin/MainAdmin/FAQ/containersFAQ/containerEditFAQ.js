@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import { Carousel, Button, Form } from 'react-bootstrap'
-import '../../../../../sass/admin/FAQ/EditAndDeleteFAQ.scss'
-import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
-
-import apiPEDEA from '../../../../../services/api'
-import ModalFAQDelete from '../modalFAQ/modalDeleteFAQ'
-import ModalEditFAQ from '../modalFAQ/modalEditFAQ'
+import React, { useState, useEffect } from 'react';
+import { Carousel, Button, Form } from 'react-bootstrap';
+import '../../../../../sass/admin/FAQ/EditAndDeleteFAQ.scss';
+import DrawRoundedIcon from '@mui/icons-material/DrawRounded';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import apiPEDEA from '../../../../../services/api';
+import ModalFAQDelete from '../modalFAQ/modalDeleteFAQ';
+import ModalEditFAQ from '../modalFAQ/modalEditFAQ';
+import { useTranslation } from 'react-i18next';
 
 function ShowContainerEditFAQ() {
-  const [valuesFAQ, setValuesFAQ] = useState([])
-  const [openModal, setOpenModal] = useState(false)
-  const [openModalDelete, setOpenModalDelete] = useState(false)
-  const [idEditValueFAQ, setIdEditValueFAQ] = useState(null)
+  const { t } = useTranslation(); // Hook para tradução
+  const [valuesFAQ, setValuesFAQ] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [idEditValueFAQ, setIdEditValueFAQ] = useState(null);
 
   useEffect(() => {
     async function loadRotulosData() {
       try {
-        const { data } = await apiPEDEA.get('/allValuesFAQ')
-        setValuesFAQ(data)
+        const { data } = await apiPEDEA.get('/allValuesFAQ');
+        setValuesFAQ(data);
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Error fetching user data:', error);
       }
     }
 
-    loadRotulosData()
-  }, [])
+    loadRotulosData();
+  }, []);
 
-  const openModalNow = id => {
-    setOpenModal(true)
-    setIdEditValueFAQ(id)
-  }
+  const openModalNow = (id) => {
+    setOpenModal(true);
+    setIdEditValueFAQ(id);
+  };
 
-  const OpenModalDeleteFAQ = id => {
-    setOpenModalDelete(true)
-    setIdEditValueFAQ(id)
-  }
+  const OpenModalDeleteFAQ = (id) => {
+    setOpenModalDelete(true);
+    setIdEditValueFAQ(id);
+  };
 
   return (
     <div className="ContainerFAQAllItens">
       <p>
-        Todas as perguntas ativas na página de perguntas frequentes estão
-        abaixo:
+        {t("Todas as perguntas ativas na página de perguntas frequentes estão abaixo:")}
       </p>
       <Carousel interval={null} controls={true} className="carouselCustomFAQ">
         {valuesFAQ.map((faq, index) => (
@@ -49,7 +49,7 @@ function ShowContainerEditFAQ() {
             <div className="ContainerItensCarousel">
               <Form.Group>
                 <Form.Label className="LabelFAQEditAndDelete">
-                  Pergunta ativa:
+                  {t("Pergunta ativa:")}
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -60,7 +60,7 @@ function ShowContainerEditFAQ() {
               </Form.Group>
               <Form.Group>
                 <Form.Label className="LabelFAQEditAndDelete">
-                  Reposta ativa:
+                  {t("Resposta ativa:")}
                 </Form.Label>
                 <Form.Control
                   as="textarea"
@@ -99,7 +99,8 @@ function ShowContainerEditFAQ() {
         idEditValue={idEditValueFAQ}
       />
     </div>
-  )
+  );
 }
 
-export default ShowContainerEditFAQ
+export default ShowContainerEditFAQ;
+

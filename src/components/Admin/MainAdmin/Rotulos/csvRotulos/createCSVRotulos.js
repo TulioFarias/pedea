@@ -81,11 +81,11 @@ function CreateRotulosCSV() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="formFileName">
                     <Form.Label className="LabelCSV">
-                       Nome:
+                       {t(" Nome:")}
                     </Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Digite o nome do arquivo"
+                        placeholder={t("Digite o nome do arquivo")}
                         {...register('name')}
                         isInvalid={!!errors.name}
                         className="inputCSV"
@@ -97,10 +97,10 @@ function CreateRotulosCSV() {
 
                 <div className="containerExempleDownload">
 
-                    <p className="titleExempleDownload">Arquivo exemplo de import .csv *</p>
+                    <p className="titleExempleDownload">{t("Arquivo exemplo de import .csv *")}</p>
                     <Button variant="primary" className="BtnDownloadExemple" onClick={handleDownload}>
                         <DownloadIcon />
-                        <span>Arquivo exemplo</span>
+                        <span>{t("Arquivo exemplo")}</span>
                     </Button>
 
                 </div>
@@ -108,7 +108,7 @@ function CreateRotulosCSV() {
 
 
                 <Form.Group controlId="formFileCSV" className="formGroupTwo">
-                    <Form.Label className="LabelCSV">Arquivo CSV:</Form.Label>
+                    <Form.Label className="LabelCSV">{t("Arquivo CSV:")}</Form.Label>
                     <Form.Control
                         type="file"
                         accept=".csv"
@@ -123,13 +123,13 @@ function CreateRotulosCSV() {
 
                 <div className="containerBtnsSubmit">
                     <Button variant="primary" type="submit" className="BtnSubmitRotulosCSV">
-                        Enviar
+                        {t("Enviar")}
                     </Button>
 
 
 
                     <Button variant="primary" onClick={openModal} className="BtnSubmitRotulosCSV">
-                        Adicionar dados do .csv
+                      {t("Adicionar dados do .csv")}
                     </Button>
                 </div>
             </Form>

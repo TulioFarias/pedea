@@ -77,17 +77,133 @@
                 "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:": "Por fim, o módulo de configurações permite que você gerencie suas próprias informações de usuário. As opções incluem:",
                 "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.": "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.",
                 "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.",
-              
+               
+
+                "AQUI TRADUCAO ROTULOS BILINGUE" : "",
               
                 "Preencha os campos abaixo para cadastrar um rótulo:": "Preencha os campos abaixo para cadastrar um rótulo:",
 
                 " Chave:": " Chave:",
 
-                "Digite um nome para chave:": "Digite um nome para chave:",
+                "Digite um nome para chave": "Digite um nome para chave",
+                "Digite nome em português": "Digite nome em português",
+                "Digite nome em inglês": "Digite nome em inglês",
+                "Digite um nome em espanhol": "Digite um nome em espanhol",
+                "Cadastrar": "Cadastrar",
 
-                "Cadastrar" : "Cadastrar",
+                " Nome:" : " Nome:",
 
-                "Nome:" : "Nome:"
+                "Digite o nome do arquivo": "Digite o nome do arquivo",
+
+                "Arquivo exemplo de import .csv *": "Arquivo exemplo de import .csv *",
+
+                "Arquivo exemplo": "Arquivo exemplo",
+
+                "Arquivo CSV:": "Arquivo CSV:",
+
+                "Enviar": "Enviar",
+
+                "Adicionar dados do .csv": "Adicionar dados do .csv",
+
+                "Buscar valores e arquivos de um rótulo:": "Buscar valores e arquivos de um rótulo:",
+
+                "Digite o valor da chave...": "Digite o valor da chave...",
+
+                 "Aqui estão os valores encontrados:": "Aqui estão os valores encontrados:",
+
+                "Tabela de rótulos cadastrados:": "Tabela de rótulos cadastrados:",
+
+
+
+                "TRADUCAO DATA EXPLORER" : "",
+
+
+                "Use os botões abaixo para adicionar, editar ou excluir rótulos no explorador de dados.": "Use os botões abaixo para adicionar, editar ou excluir rótulos no explorador de dados.",
+
+                "Para adicionar dados através de um arquivo CSV, basta seguir o exemplo:": "Para adicionar dados através de um arquivo CSV, basta seguir o exemplo:",
+
+                "Exemplo como arquivo .CSV": "Exemplo como arquivo .CSV",
+
+                "Adicionar": "Adicionar",
+
+                "Editar": "Editar",
+                "Editar CSV": "Editar CSV",
+                
+                "Remover": "Remover",
+
+                 "Preencha os campos abaixo para adicionar novo arquivo .csv ao explorador de dados:": "Preencha os campos abaixo para adicionar novo arquivo .csv ao explorador de dados:",
+
+                 "Nome do arquivo:": "Nome do arquivo:",
+
+                 "Escolha um nome para o arquivo.": "Escolha um nome para o arquivo.",
+
+                 "Arquivo .CSV:": "Arquivo .CSV:",
+                "Adicionar CSV": "Adicionar CSV",
+
+                "Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:": "Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:",
+
+                "Adicionar dados do arquivo CSV": "Adicionar dados do arquivo CSV" ,
+                "Baixar tabela do explorador de dados em formato .csv": "Baixar tabela do explorador de dados em formato .csv",
+                "Baixar": "Baixar",
+
+                "Tabela de rótulos ativos no explorador de dados:": "Tabela de rótulos ativos no explorador de dados:",
+                "Tabela de arquivos cadastrados:": "Tabela de arquivos cadastrados:",
+                "Tabela de arquivos em edição:": "Tabela de arquivos em edição:",
+
+                "Mudar tabela de arquivos": "Mudar tabela de arquivos",
+
+                "Mudar de tabela.": "Mudar de tabela.",
+                "Tabela do explorador de dados": "Tabela do explorador de dados",
+                "Tabela de arquivos .csv cadastrados": "Tabela de arquivos .csv cadastrados",
+                "Tabela de arquivos .csv edição": "Tabela de arquivos .csv edição",
+
+                "FAQ": "",
+
+                    "A pergunta deve ter no máximo 255 caracteres.": "A pergunta deve ter no máximo 255 caracteres.",
+                    "A pergunta é obrigatória": "A pergunta é obrigatória",
+                    "A resposta deve ter no máximo 2000 caracteres.": "A resposta deve ter no máximo 2000 caracteres.",
+                    "A resposta é obrigatória": "A resposta é obrigatória",
+                    "Adicionando FAQ...": "Adicionando FAQ...",
+                    "FAQ adicionada com sucesso!": "FAQ adicionada com sucesso!",
+                    "Erro ao adicionar FAQ.": "Erro ao adicionar FAQ.",
+                    "Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:": "Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:",
+                    "Adicione uma pergunta:": "Adicione uma pergunta:",
+                    "Digite a pergunta...": "Digite a pergunta...",
+                    "Adicione uma resposta:": "Adicione uma resposta:",
+                    "Digite a resposta...": "Digite a resposta...",
+                    "Criar nova FAQ": "Criar nova FAQ",
+
+
+                    "Todas as perguntas ativas na página de perguntas frequentes estão abaixo:": "Todas as perguntas ativas na página de perguntas frequentes estão abaixo:",
+                    "Pergunta ativa:": "Pergunta ativa:",
+                    "Resposta ativa:": "Resposta ativa:",
+
+                    "Para adicionar um novo registro de atualização, preencha os campos abaixo:": "Para adicionar um novo registro de atualização, preencha os campos abaixo:",
+
+                    "Versão de atualização:": "Versão de atualização:",
+                    "Digite o número da versão de atualização": "Digite o número da versão de atualização",
+                    "Escreva a mensagem de atualização": "Escreva a mensagem de atualização",
+                    "Registrar nova atualização": "Registrar nova atualização",
+
+                    "Todas as atualizações de log estão abaixo:": "Todas as atualizações de log estão abaixo:",
+                    "Versão da atualização:": "Versão da atualização:",
+                    "Mensagem de atualização:": "Mensagem de atualização:",
+                    "Criado em:": "Criado em:",
+                    "Atualizado em:": "Atualizado em:",
+
+
+                    "CONFIGURACOES": "",
+
+                    "Configurações do Usuário": "Configurações do Usuário",
+                    "Informações cadastrais:": "Informações cadastrais:",
+                        "Nome:": "Nome:",
+                        "Email:": "Email:",
+                        "Trocar sua senha?": "Trocar sua senha?"
+                  
+                  
+
+
+                
 
             
 

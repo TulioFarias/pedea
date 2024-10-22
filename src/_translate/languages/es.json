@@ -77,17 +77,127 @@
             "Visualizar dados pessoais: Verifique e mantenha seus dados atualizados.": "Ver datos personales: Verifique y mantenga sus datos actualizados.",
             "Troca de imagem e senha: Altere sua foto de perfil e senha diretamente por aqui, garantindo segurança e personalização.": "Cambio de imagen y contraseña: Cambie su foto de perfil y contraseña directamente aquí, garantizando seguridad y personalización.",
     
+
+
+            "AQUI TRADUCAO ROTULOS BILINGUE" : "",
           
             "Preencha os campos abaixo para cadastrar um rótulo:": 
             "Complete los campos a continuación para registrar una etiqueta:",
 
             " Chave:": " Llave:",
 
-            "Digite um nome para chave:" : "Introduzca un nombre para la clave:",
+            "Digite um nome para chave": "Introduce un nombre para la clave",
+            "Digite nome em português": "Introduce el nombre en portugués",
+            "Digite nome em inglês": "Introduce el nombre en inglés",
+            "Digite um nome em espanhol": "Introduce un nombre en español",
+            "Cadastrar": "Registrar",
 
-            "Cadastrar" : "Registro",
+            " Nome:" : " Nombre:",
 
-            "Nome:" : "Nombre:"
+            "Digite o nome do arquivo": "Introduce el nombre del archivo",
+
+            "Arquivo exemplo de import .csv *": "Archivo de ejemplo de importación .csv *",
+
+            "Enviar": "Enviar",
+             "Adicionar dados do .csv": "Agregar datos del .csv",
+
+             "Buscar valores e arquivos de um rótulo:": "Buscar valores y archivos de una etiqueta:",
+
+              "Digite o valor da chave...": "Introduce el valor de la clave...",
+
+              "Aqui estão os valores encontrados:": "Aquí están los valores encontrados:",
+
+            "Tabela de rótulos cadastrados:": "Tabla de rótulos registrados:",
+
+            "Arquivo exemplo": "Archivo de ejemplo",
+
+
+            "TRADUCAO DATA EXPLORER" : "",
+
+            "Use os botões abaixo para adicionar, editar ou excluir rótulos no explorador de dados.": "Utilice los botones a continuación para agregar, editar o eliminar etiquetas en el explorador de datos.",
+
+            "Para adicionar dados através de um arquivo CSV, basta seguir o exemplo:": "Para agregar datos a través de un archivo CSV, solo siga el ejemplo:",
+
+            "Exemplo como arquivo .CSV": "Ejemplo como archivo .CSV",
+
+              "Adicionar": "Agregar",
+
+              "Editar": "Editar",
+              "Remover": "Eliminar",
+
+              "Preencha os campos abaixo para adicionar novo arquivo .csv ao explorador de dados:": "Complete los campos a continuación para agregar un nuevo archivo .csv al explorador de datos:",
+
+              "Nome do arquivo:": "Nombre del archivo:",
+
+              "Escolha um nome para o arquivo.": "Elige un nombre para el archivo.",
+
+              "Arquivo .CSV:": "Archivo .CSV:",
+              "Adicionar CSV": "Agregar CSV",
+
+              "Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:": "Para agregar los datos del archivo .csv enviado, haga clic en el botón a continuación:",
+
+               "Adicionar dados do arquivo CSV": "Agregar datos del archivo CSV",
+
+               "Baixar tabela do explorador de dados em formato .csv": "Descargar tabla del explorador de datos en formato .csv",
+
+               "Baixar": "Descargar",
+
+               "Tabela de rótulos ativos no explorador de dados:": "Tabla de etiquetas activas en el explorador de datos:",
+               "Tabela de arquivos cadastrados:": "Tabla de archivos registrados:",
+               "Tabela de arquivos em edição:": "Tabla de archivos en edición:",
+
+               "Mudar tabela de arquivos": "Cambiar tabla de archivos",
+
+               "Mudar de tabela.": "Cambiar de tabla.",
+                "Tabela do explorador de dados": "Tabla del explorador de datos",
+                "Tabela de arquivos .csv cadastrados": "Tabla de archivos .csv registrados",
+                "Tabela de arquivos .csv edição": "Tabla de archivos .csv en edición",
+
+
+                "FAQ": "",
+
+                "A pergunta deve ter no máximo 255 caracteres.": "La pregunta debe tener un máximo de 255 caracteres.",
+                "A pergunta é obrigatória": "La pregunta es obligatoria.",
+                "A resposta deve ter no máximo 2000 caracteres.": "La respuesta debe tener un máximo de 2000 caracteres.",
+                "A resposta é obrigatória": "La respuesta es obligatoria.",
+                "Adicionando FAQ...": "Agregando FAQ...",
+                "FAQ adicionada com sucesso!": "FAQ agregada con éxito!",
+                "Erro ao adicionar FAQ.": "Error al agregar FAQ.",
+                "Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:": "Para agregar una nueva pregunta y respuesta, complete los campos a continuación:",
+                "Adicione uma pergunta:": "Agregue una pregunta:",
+                "Digite a pergunta...": "Escriba la pregunta...",
+                "Adicione uma resposta:": "Agregue una respuesta:",
+                "Digite a resposta...": "Escriba la respuesta...",
+                "Criar nova FAQ": "Crear nueva FAQ",
+
+
+                "Todas as perguntas ativas na página de perguntas frequentes estão abaixo:": "Todas las preguntas activas en la página de preguntas frecuentes están a continuación:",
+                "Pergunta ativa:": "Pregunta activa:",
+                "Resposta ativa:": "Respuesta activa:",
+
+                 "Para agregar un nuevo registro de actualización, complete los campos a continuación:": "Para agregar un nuevo registro de actualización, complete los campos a continuación:",
+
+                 "Versão de atualização:": "Versión de actualización:",
+                  "Digite o número da versão de atualização": "Ingrese el número de la versión de actualización",
+                  "Escreva a mensagem de atualização": "Escriba el mensaje de actualización",
+                  "Registrar nova atualização": "Registrar nueva actualización",
+
+                  "Todas as atualizações de log estão abaixo:": "Todas las actualizaciones de registro están abajo:",
+                  "Versão da atualização:": "Versión de actualización:",
+                  "Mensagem de atualização:": "Mensaje de actualización:",
+                  "Criado em:": "Creado en:",
+                  "Atualizado em:": "Actualizado en:",
+
+                  "CONFIGURACOES": "",
+
+                  "Configurações do Usuário": "Configuraciones del Usuario",
+                  "Informações cadastrais:": "Información de registro:",
+                  "Nome:": "Nombre:",
+                  "Email:": "Correo electrónico:",
+
+                  "Trocar sua senha?": "¿Cambiar su contraseña?"
+          
+          
 
     }
 

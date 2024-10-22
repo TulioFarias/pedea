@@ -2,12 +2,14 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import React, { useEffect, useState } from 'react'
 import { Carousel, Form, Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next' 
 import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss'
 import apiPEDEA from '../../../../../services/api'
 import ModalChangeLogDelete from './modalsChangeLogs/modalDeleteChangeLog'
 import ModalEditChangeLog from './modalsChangeLogs/modalEditChangeLog'
 
 function ShowAndEditChangeLog() {
+  const { t } = useTranslation() 
   const [dataChangeLog, setDataChangeLog] = useState([])
   const [openModalEdit, setOpenModalEdit] = useState(false)
   const [openModalDelete, setOpenModalDelete] = useState(false)
@@ -41,7 +43,7 @@ function ShowAndEditChangeLog() {
     <>
       <div>
         <div className="containerShowChangeLog">
-          <p>Todas as atualizações de log estão abaixo:</p>
+          <p>{t('Todas as atualizações de log estão abaixo:')}</p>
           <Carousel
             interval={null}
             controls={true}
@@ -52,7 +54,7 @@ function ShowAndEditChangeLog() {
                 <div className="containerItemsDataChangeLog">
                   <Form.Group className="groupItemOne">
                     <Form.Label className="labelgroupone">
-                      Versão da atualização:
+                      {t('Versão da atualização:')}
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -62,7 +64,7 @@ function ShowAndEditChangeLog() {
                     />
                   </Form.Group>
                   <Form.Group className="groupItemsTwo">
-                    <Form.Label className="labelmsg">Mensagem de atualização:</Form.Label>
+                    <Form.Label className="labelmsg">{t('Mensagem de atualização:')}</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
@@ -73,7 +75,7 @@ function ShowAndEditChangeLog() {
                   </Form.Group>
                   <div className="logDates">
                     <Form.Group className="groupDate">
-                      <Form.Label className="labelsdate">Criado em:</Form.Label>
+                      <Form.Label className="labelsdate">{t('Criado em:')}</Form.Label>
                       <Form.Control
                         type="text"
                         value={new Date(log.createdAt).toLocaleString()}
@@ -83,7 +85,7 @@ function ShowAndEditChangeLog() {
                     </Form.Group>
                     <Form.Group className="groupDate">
                       <Form.Label className="labelsdate">
-                        Atualizado em:
+                        {t('Atualizado em:')}
                       </Form.Label>
                       <Form.Control
                         type="text"
@@ -130,3 +132,4 @@ function ShowAndEditChangeLog() {
 }
 
 export default ShowAndEditChangeLog
+

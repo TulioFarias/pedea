@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next'
 import api from '../../../../../services/api';
 import ModalConfirmDelete from '../modalsRotulos/modalDelete';
 import EditModalRotulos from '../modalsRotulos/modalEdit';
@@ -20,6 +20,9 @@ function ContainerInfoRotulos({
   setEditItemId,
   editItemId
 }) {
+
+
+  const { t } = useTranslation()
   const [rotulosData, setRotulosData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
@@ -66,7 +69,7 @@ function ContainerInfoRotulos({
     <div className="containerTableInfoRotulos">
       <div className="headerContainerTableRotulos">
         <p className="titleTableRotulos">
-          Tabela de rótulos cadastrados:
+          {t("Tabela de rótulos cadastrados:")}
         </p>
       </div>
 

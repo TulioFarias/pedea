@@ -8,10 +8,11 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import { saveAs } from 'file-saver'
-
+import { useTranslation } from 'react-i18next'
 import api from '../../../../../services/api'
 
 function ContainerGetInfoRotulos() {
+  const { t } = useTranslation()
   const [findDataRotulos, setfindDataRotulos] = useState({
     key: ''
   })
@@ -123,15 +124,15 @@ function ContainerGetInfoRotulos() {
     <>
       <div className="containerResultofRotulos">
         <p className="titleGetRotulosWithKey">
-          Buscar valores e arquivos de um rótulo:
+          {t("Buscar valores e arquivos de um rótulo:")}
         </p>
         <Form className="ResultRotulos" onSubmit={handleSubmit(onSubmit)}>
           <div className="containerSearchWithKey">
             <Form.Group>
-              <Form.Label className="LabelRotulos">Chave:</Form.Label>
+              <Form.Label className="LabelRotulos">{t(" Chave:")}</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Digite o valor da chave..."
+                placeholder={t("Digite o valor da chave...")}
                 className="InputRotulos"
                 {...register('key')}
                 onChange={handleChange}
@@ -154,7 +155,7 @@ function ContainerGetInfoRotulos() {
           {rotulosData &&
             rotulosData.map(value => (
               <div key={value.id}>
-                <p>Aqui estão os valores encontrados:</p>
+                <p>{t("Aqui estão os valores encontrados:")}</p>
                 <Table striped bordered hover>
                   <thead>
                     <tr className="tableResultHeader">

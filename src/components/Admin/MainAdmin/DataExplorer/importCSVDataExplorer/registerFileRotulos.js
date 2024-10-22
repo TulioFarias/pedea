@@ -6,13 +6,15 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-
+import { useTranslation } from 'react-i18next'
 import ModalConfirmAddDataExplorer from './modalConfirmRegisteCSV'
 
 import '../../../../../sass/admin/DataExplorer/importcsvdataexplore.scss'
 import api from '../../../../../services/api'
 
 function ImportFileRotulos() {
+
+  const { t } = useTranslation()
   const [findDataRotulos, setfindDataRotulos] = useState({
     key: '',
     file: null,
@@ -95,8 +97,7 @@ function ImportFileRotulos() {
     <>
       <div>
         <p className="titleFilesImports">
-          Preencha os campos abaixo para adicionar novo arquivo .csv ao
-          explorador de dados:
+          {t("Preencha os campos abaixo para adicionar novo arquivo .csv ao explorador de dados:")}
         </p>
       </div>
 
@@ -106,7 +107,7 @@ function ImportFileRotulos() {
       >
         <Form.Group>
           <Form.Label className="LabelRotulosImports">
-            Nome do arquivo:
+            {t("Nome do arquivo:")}
             <Tooltip
               title={infoUserTutorial.importFile.name}
               className="toltipCustom"
@@ -119,7 +120,7 @@ function ImportFileRotulos() {
             className="inputRotulosImports"
             {...register('name')}
             onChange={handleChange}
-            placeholder="Escolha um nome para o arquivo."
+            placeholder={t("Escolha um nome para o arquivo.")}
             isInvalid={errors.name}
           />
           <p className="txtErrorPassword">{errors.name?.message}</p>
@@ -127,7 +128,7 @@ function ImportFileRotulos() {
 
         <Form.Group>
           <Form.Label className="LabelRotulosImports">
-            Arquivo .CSV:
+            {t("Arquivo .CSV:")}
             <Tooltip
               title={infoUserTutorial.importFile.file}
               className="toltipCustom"
@@ -146,18 +147,17 @@ function ImportFileRotulos() {
         </Form.Group>
 
         <Button variant="secondary" type="submit" className="BtnSubmitImport">
-          Adicionar CSV
+          {t("Adicionar CSV")}
         </Button>
       </Form>
 
       <hr className="HRCustom" />
       <div className="containerButtonAddDataCSV">
         <p>
-          Para adicionar os dados do arquivo .csv enviados, clique no botão
-          abaixo:
+          {t("Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:")}
         </p>
         <Button className="ButtonAddCSV" onClick={openModal}>
-          Adicionar dados do arquivo CSV
+          {t("Adicionar dados do arquivo CSV")}
         </Button>
       </div>
 
