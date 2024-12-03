@@ -6,9 +6,9 @@ import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import PEDEA from '../../../assets/img/pedea-logo.png'
 import userIcon from '../../../assets/icons/icon-user.png'
-
+import SettingsIcon from '@mui/icons-material/Settings';
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
 
@@ -63,25 +63,16 @@ function HeaderAdm({
   return (
     <Container
       fluid
-      className={`bodyHeader ${sidebarOpen ? 'bodyHeader-expanded' : ''}`}
+      className='bodyHeader'
     >
+
+
       <div className="containerDivLeft">
+      <div className="containerLogo">
+        <img src={PEDEA} alt="PEDEA Logo" className="imgPEDEA" />
+      </div>
         <button className="OpenNavBarWithToogle" onClick={toggleSidebar}>
           <MenuOpenRoundedIcon />
-        </button>
-
-        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://www.ceara.gov.br/', '_blank')}>
-          {t('Portal do Governo')}
-        </button>
-        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/', '_blank')}>
-          {t('Ceará Transparente')}
-        </button>
-        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/ouvidoria?locale=pt-BR', '_blank')}>
-          {t('Ouvidoria')}
-        </button>
-        
-        <button className="btnLinkHeaderAdmin " onClick={() => window.open('https://cearatransparente.ce.gov.br/portal-da-transparencia/acesso-a-informacao?locale=pt-BR', '_blank')}>
-          {t('Acesso a informação')}
         </button>
       </div>
 
@@ -109,10 +100,19 @@ function HeaderAdm({
             </div>
           ))}
 
+        <button className='SettingsBtn' onClick={e => {
+                    e.preventDefault()
+                    SendToSettings('Configurações')
+                  }}> 
+          <SettingsIcon/>
+        </button>
+
         <button className="backButton" onClick={voltar}>
           <LogoutRoundedIcon />
         </button>
+
       </div>
+
     </Container>
   )
 }

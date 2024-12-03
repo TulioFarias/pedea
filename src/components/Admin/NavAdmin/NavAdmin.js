@@ -6,7 +6,7 @@ import Flag from 'react-flagkit'
 import { useTranslation } from 'react-i18next'
 
 import '../../../sass/admin/NavAdmin/navAdmin.scss'
-import PEDEA from '../../../assets/img/pedea-logo.png'
+
 import ButtonSystem from './NavButtonsSystem'
 
 function NavAdmin({
@@ -55,9 +55,7 @@ function NavAdmin({
         </Tooltip>
       </div>
 
-      <div className="container divImg">
-        <img src={PEDEA} alt="PEDEA Logo" className="imgPEDEA" />
-      </div>
+      
 
       <hr className="hrNavOptionsOne" />
       <ButtonSystem

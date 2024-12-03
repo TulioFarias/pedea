@@ -90,22 +90,15 @@ function CreateRotulosCSV() {
                         isInvalid={!!errors.name}
                         className="inputCSV"
                     />
-                    <Form.Control.Feedback type="invalid">
+                    <Form.Control.Feedback type="invalid" className="txtErrorPassword">
                         {errors.name?.message}
                     </Form.Control.Feedback>
                 </Form.Group>
-
-                <div className="containerExempleDownload">
-
-                    <p className="titleExempleDownload">{t("Arquivo exemplo de import .csv *")}</p>
                     <Button variant="primary" className="BtnDownloadExemple" onClick={handleDownload}>
+                        Exemplo de arquivo para import
                         <DownloadIcon />
-                        <span>{t("Arquivo exemplo")}</span>
+                        
                     </Button>
-
-                </div>
-
-
 
                 <Form.Group controlId="formFileCSV" className="formGroupTwo">
                     <Form.Label className="LabelCSV">{t("Arquivo CSV:")}</Form.Label>
@@ -116,7 +109,7 @@ function CreateRotulosCSV() {
                         isInvalid={!!errors.file}
                         className="inputCSV"
                     />
-                    <Form.Control.Feedback type="invalid">
+                    <Form.Control.Feedback type="invalid" className="txtErrorPassword">
                         {errors.file?.message}
                     </Form.Control.Feedback>
                 </Form.Group>

@@ -16,12 +16,6 @@ import KeyIcon from '@mui/icons-material/Key';
 function CreateRotulosSystem() {
 
   const { t } = useTranslation()
-  const [valueLanguage, setValueLanguage] = useState({
-    key: '',
-    pt_br: '',
-    en: '',
-    es: ''
-  })
   const [dataInfoKey, setDataInfoKey] = useState([])
   const [tableUpdated, setTableUpdated] = useState(false)
   const [showModalIfKey, setShowModalIfKey] = useState(false)
@@ -47,13 +41,7 @@ function CreateRotulosSystem() {
     resolver: yupResolver(schema)
   })
 
-  const handleChange = event => {
-    const { name, value } = event.target
-    setValueLanguage(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
-  }
+
 
   const showModalToUpdate = () => {
     setShowModalIfKey(true)
@@ -120,7 +108,7 @@ function CreateRotulosSystem() {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  onChange={handleChange}
+         
                   {...register('key')}
                   className="InputRotulos"
                   isInvalid={errors.key}
@@ -136,7 +124,7 @@ function CreateRotulosSystem() {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  onChange={handleChange}
+         
                   {...register('pt_br')}
                   className="InputRotulos"
                   isInvalid={errors.pt_br}
@@ -152,7 +140,7 @@ function CreateRotulosSystem() {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  onChange={handleChange}
+         
                   {...register('en')}
                   className="InputRotulos"
                   isInvalid={errors.en}
@@ -168,7 +156,7 @@ function CreateRotulosSystem() {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  onChange={handleChange}
+         
                   {...register('es')}
                   className="InputRotulos"
                   isInvalid={errors.es}

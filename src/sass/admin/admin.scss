@@ -39,7 +39,7 @@ $containerWrapper-width-open: 90vw;
 
 
 .containerWrapperOptions{
-    background-color: rgb(231, 230, 230);
+    background-color: rgba(231, 230, 230, 0.637);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     border-radius: 12px;
     padding: 10px;
@@ -79,7 +79,7 @@ $containerWrapper-width-open: 90vw;
 @media (min-width: 480px) and (max-width: 1024px){
 
     .containerWrapperOptions{
-        background-color: rgb(231, 230, 230);
+        background-color: rgba(231, 230, 230, 0.637);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 12px;
         padding: 10px;
@@ -106,7 +106,7 @@ $containerWrapper-width-open: 90vw;
 @media only screen and (max-width: 480px){
 
     .containerWrapperOptions{
-        background-color: rgb(231, 230, 230);
+        background-color: rgba(231, 230, 230, 0.637);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 12px;
         padding: 10px;

@@ -1,5 +1,5 @@
 .ContainerAllImportCSVRotulos{
-    background-color: #cacaca;
+    background-color: #e9e8e8;
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
@@ -17,21 +17,16 @@
     flex-direction: row;
 }
 
+.errorTxt{
+    
+}
+
 .containerBtnsSubmit{
     display: flex;
     justify-content: space-between;
 }
 
-.containerExempleDownload{
-    padding: 10px 5px 5px 5px;
-    margin-top: 10px;
-    font-weight: 700;
-    font-style: italic;
-    background-color: #b1adad;
-    border-radius: 10px;
-    width: max-content;
-   
-}
+
 
 .titleExempleDownload{
     font-size: 14px;
@@ -42,7 +37,8 @@
     position: relative; 
     overflow: hidden;
     margin-top: 10px;
-    width: 150px;
+    font-size: 10px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     background-color: rgb(71, 71, 71);
@@ -59,35 +55,6 @@
     }
 }
 
-.BtnDownloadExemple span {
-    display: block;
-    margin-left: 0.3em;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;  
-    opacity: 1; 
-    transform: translateX(0); 
-}
-
-.BtnDownloadExemple svg {
-    position: absolute;
-    transform-origin: center center;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
-    opacity: 0; 
-    transform: translateX(-1.2em); 
-}
-
-.BtnDownloadExemple:hover svg {
-    transform: translateX(0) rotate(0deg) scale(1.1); 
-    opacity: 1; 
-}
-
-.BtnDownloadExemple:hover span {
-    transform: translateX(-5em); 
-    opacity: 0; 
-}
-
-.BtnDownloadExemple:active {
-    transform: scale(0.95);
-}
 
 .BtnSubmitRotulosCSV{
     margin-top: 10px;
@@ -112,6 +79,60 @@
 
 @media only screen and (max-width: 1040px){
 
+    .ContainerAllImportCSVRotulos{
+        background-color: #e9e8e8;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        width: 70vw;
+    }
+    
+    .formGroupTwo{
+        margin-top: 20px;
+    }
+    
+    .LabelCSV{
+        color: gray;
+        font-size: 12px !important;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .inputCSV{
+        width: 67vw;
+        height: 35px;
+
+        &::placeholder{
+            color: gray;
+            font-size: 12px;
+        }
+    }
+    
+    .containerBtnsSubmit{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .BtnSubmitRotulosCSV{
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        gap: 5px;
+    
+        &:hover{
+            color: rgb(44, 64, 63);
+            background-color: rgb(255, 254, 254);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
 
 }
 
@@ -120,7 +141,7 @@
 @media only screen and (max-width: 480px){
     
     .ContainerAllImportCSVRotulos{
-        background-color: #cacaca;
+        background-color: #e9e8e8;
         border-radius: 10px;
         padding: 10px;
         margin-top: 10px;

@@ -5,11 +5,15 @@ $border-radius: 1rem;
 .bodyNav{
 
     background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 12%);
-    height: 97vh;
+    height: 85%;
     width: $bodyNav-width-collapsed;
     position: absolute;
-    top: 0;
-    border-radius:  0 20px 20px 0px;
+    top: 102px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: x;
+    border-radius:  20px;
    
     
 }
@@ -330,7 +334,13 @@ $border-radius: 1rem;
 @media (min-width: 768px) and (max-width: 1024px){
     .bodyNav{
         width: 17vw;
-        height: 95vh;
+        height: 82%;
+        top: 110px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: x;
+        border-radius:  20px;
     }
     
     .containerDivsLanguage{
@@ -581,7 +591,13 @@ $border-radius: 1rem;
 @media only screen and (max-width: 480px){
     .bodyNav{
         width: 17vw;
-        height: 97vh;
+        height: 85%;
+        top: 92px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: x;
+        border-radius:  20px;
     }
     
     .containerDivsLanguage{
@@ -605,7 +621,7 @@ $border-radius: 1rem;
 
     .hrNavOptionsOne{
         position: relative;
-        bottom: 20px;
+        bottom: 5px;
         margin-bottom: 0px;
         border: 1px dashed white;
     }

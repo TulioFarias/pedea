@@ -136,10 +136,26 @@ function TableViewRotulosData() {
       
       <div className="TableViewRotulos">
         <Paper className="ContainerTableView">
+        <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={
+              selectedTable === 'TableRotulos'
+                ? dataExplorer.length
+                : selectedTable === 'FilesRotulos'
+                ? tableFilesRotulos.length
+                : tableFilesCSVEdit.length
+            }
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
           <TableContainer>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
+                  
                   {selectedTable === 'TableRotulos' ? (
                     <>
                   
