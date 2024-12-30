@@ -13,6 +13,7 @@ import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
 import IfKeyExist from './modalsRotulos/modalKeyExist'
 import CreateRotulosCSV from './csvRotulos/createCSVRotulos'
 import KeyIcon from '@mui/icons-material/Key';
+import { Snackbar, Alert } from '@mui/material';
 function CreateRotulosSystem() {
 
   const { t } = useTranslation()
@@ -20,6 +21,7 @@ function CreateRotulosSystem() {
   const [tableUpdated, setTableUpdated] = useState(false)
   const [showModalIfKey, setShowModalIfKey] = useState(false)
   const [editItemId, setEditItemId] = useState(null)
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
 
   const handleTableUpdate = () => {
     setTableUpdated(prev => !prev)
@@ -49,31 +51,42 @@ function CreateRotulosSystem() {
 
   const onSubmit = async (data, event) => {
  
-
     try {
-      const foundItem = await dataInfoKey.find(item => item.key === data.key)
-  
+      const foundItem = dataInfoKey.find(item => item.key === data.key);
 
       if (!foundItem) {
-        const APIResponse = await apiPEDEA.post('/rotulos', {
-          key: data.key,
-          pt_br: data.pt_br,
-          en: data.en,
-          es: data.es
-        })
+          const APIResponse = await apiPEDEA.post('/rotulos', {
+              key: data.key,
+              pt_br: data.pt_br,
+              en: data.en,
+              es: data.es
+          });
 
-        toast.success('Cadastrado com sucesso.')
+          setSnackbar({
+              open: true,
+              message: 'Cadastrado com sucesso.',
+              severity: 'success'
+          });
       } else {
-        toast.error('Chave já cadastrada.')
-        showModalToUpdate()
+          setSnackbar({
+              open: true,
+              message: 'Chave já cadastrada.',
+              severity: 'error'
+          });
+          showModalToUpdate();
       }
 
-      reset()
-      handleTableUpdate()
-      event.preventDefault()
-    } catch (error) {
-      console.log(error)
-    }
+      reset();
+      handleTableUpdate();
+      event.preventDefault();
+  } catch (error) {
+      console.error(error);
+      setSnackbar({
+          open: true,
+          message: 'Erro ao processar a solicitação.',
+          severity: 'error'
+      });
+  }
   }
 
   useEffect(() => {
@@ -203,6 +216,18 @@ function CreateRotulosSystem() {
           editItemId={editItemId}
         />
       </div>
+
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    >
+        <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '300px' }}>
+            {snackbar.message}
+        </Alert>
+    </Snackbar>
     </Container>
   )
 }

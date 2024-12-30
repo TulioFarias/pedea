@@ -76,7 +76,7 @@ function ContainerInfoRotulos({
       <TableContainer component={Paper} className="TableRotulos">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
-            <TableRow>
+            <TableRow className='headerTable'>
               <TableCell>ID</TableCell>
               <TableCell>Chave</TableCell>
               <TableCell>Português</TableCell>

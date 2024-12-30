@@ -10,12 +10,18 @@ import * as Yup from 'yup'
 import { saveAs } from 'file-saver'
 import { useTranslation } from 'react-i18next'
 import api from '../../../../../services/api'
+import { Snackbar, Alert } from '@mui/material';
 
 function ContainerGetInfoRotulos() {
   const { t } = useTranslation()
   const [findDataRotulos, setfindDataRotulos] = useState({
     key: ''
   })
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: '',
+});
   const [rotulosData, setRotulosData] = useState([])
   const [filesRotulosData, setFilesRotulosData] = useState([])
   const [valuesDataFileRotulos, setValuesDataFileRotulos] = useState([])
@@ -39,44 +45,59 @@ function ContainerGetInfoRotulos() {
     }))
   }
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
-      const responseRotulos = await toast.promise(
-        api.post('/getRotulos', {
-          key: data.key
-        }),
-        {
-          pending: 'Buscando...',
-          success: 'Dados encontrados.',
-          error: 'Chave não encontrada, verifique e tente novamente...'
-        }
-      )
+        setSnackbar({
+            open: true,
+            message: 'Buscando...',
+            severity: 'info',
+        });
 
-      if (responseRotulos.data.result) {
-        setRotulosData([responseRotulos.data.result])
+        const responseRotulos = await api.post('/getRotulos', {
+            key: data.key,
+        });
 
-        const responseFiles = await api.post('/getWithKeyRotulosCSV', {
-          key: data.key
-        })
+        setSnackbar({
+            open: true,
+            message: 'Dados encontrados.',
+            severity: 'success',
+        });
 
-        if (responseFiles.data.result) {
-          setFilesRotulosData([responseFiles.data.result])
-        }
+        if (responseRotulos.data.result) {
+            setRotulosData([responseRotulos.data.result]);
 
-        if (responseFiles.data.dataRotulos) {
-          setValuesDataFileRotulos(responseFiles.data.dataRotulos)
+            const responseFiles = await api.post('/getWithKeyRotulosCSV', {
+                key: data.key,
+            });
+
+            if (responseFiles.data.result) {
+                setFilesRotulosData([responseFiles.data.result]);
+            }
+
+            if (responseFiles.data.dataRotulos) {
+                setValuesDataFileRotulos(responseFiles.data.dataRotulos);
+            } else {
+                console.log('Arquivos não encontrados para esta chave.');
+            }
         } else {
-          console.log('Arquivos não encontrados para esta chave.')
+            setSnackbar({
+                open: true,
+                message: 'Dados não encontrados... Verificar a chave e tentar novamente.',
+                severity: 'error',
+            });
         }
-      } else {
-        toast.error(
-          'Dados não encontrados... Verificar a chave e tentar novamente.'
-        )
-      }
     } catch (error) {
-      console.log(error)
+        console.error(error);
+
+        setSnackbar({
+            open: true,
+            message: 'Erro ao buscar dados. Por favor, tente novamente.',
+            severity: 'error',
+        });
     }
-  }
+};
+
+
 
   const formatarDataLegivel = dataString => {
     const meses = [
@@ -276,6 +297,24 @@ function ContainerGetInfoRotulos() {
           )}
         </div>
       </div>
+
+
+      <Snackbar
+    open={snackbar.open}
+    autoHideDuration={6000}
+    onClose={() => setSnackbar({ ...snackbar, open: false })}
+    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+  
+>
+    <Alert
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        severity={snackbar.severity}
+        sx={{ width: '300px' }} 
+    >
+        {snackbar.message}
+    </Alert>
+</Snackbar>
+
     </>
   )
 }

@@ -3,14 +3,18 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-
+import { Snackbar, Alert } from '@mui/material';
 import apiPEDEA from '../../../../../services/api'
 
 
 function ModalSendInfoCSV({ showModal, setShowModal }) {
   const [data, setData] = useState([])
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: '',
+});
   
 
   const schema = Yup.object().shape({
@@ -49,29 +53,40 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
     loadDataCSVRotulos()
   }, [])
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData) => {
     try {
-      await toast.promise(
-        apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path }),
-        {
-          pending: 'Enviando dados...',
-          success: 'Dados enviados com sucesso!',
-          error: {
-            render({ data }) {
-              console.log(data)
-              const errorMessage = data.response?.data?.message || data.response?.data?.details || 'Erro desconhecido';
-              return `Erro: ${errorMessage}`;
-            }
-          }
-        }
-      );
-  
-      reset();
-      closeModal();
+        setSnackbar({
+            open: true,
+            message: 'Enviando dados...',
+            severity: 'info',
+        });
+
+        await apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path });
+
+        setSnackbar({
+            open: true,
+            message: 'Dados enviados com sucesso!',
+            severity: 'success',
+        });
+
+        reset();
+        closeModal();
     } catch (error) {
-      console.error('Erro ao enviar dados:', error);
+        console.error('Erro ao enviar dados:', error);
+
+        const errorMessage =
+            error.response?.data?.message ||
+            error.response?.data?.details ||
+            'Erro desconhecido';
+
+        setSnackbar({
+            open: true,
+            message: `Erro: ${errorMessage}`,
+            severity: 'error',
+        });
     }
-  }
+};
+
   
 
   return (
@@ -140,6 +155,23 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        
+    >
+        <Alert
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+            severity={snackbar.severity}
+            sx={{ width: '300px' }} 
+        >
+            {snackbar.message}
+        </Alert>
+    </Snackbar>
+
     </>
   )
 }

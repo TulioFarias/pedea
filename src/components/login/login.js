@@ -8,7 +8,8 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
+import Alert from '@mui/material/Alert';
 import * as Yup from 'yup';
 import backIcon from '../../assets/icons/backicon.png';
 import logo from '../../assets/img/pedea-logo.png';
@@ -16,7 +17,7 @@ import api from '../../services/api';
 import { login } from '../../utils/redux/user/actions';
 import RecoverPasswordModal from './RecoverPasswordModal';
 import SplashScreen from './splash';
-import emailIcon from '../../assets/icons/o-email.png'
+import Snackbar from '@mui/material/Snackbar';
 
 function LoginSystem() {
   const navigate = useNavigate();
@@ -25,6 +26,9 @@ function LoginSystem() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   const changeForm = async (e) => {
     const { name, value } = e.target;
@@ -57,16 +61,18 @@ function LoginSystem() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await toast.promise(
-        api.post('/login', {
-          email: data.email,
-          password: data.password,
-        }),
-        {
-          pending: 'Verificando os dados...',
-          error: 'Senha ou e-mail inválidos.',
-        }
-      );
+      setSnackbarSeverity('info');
+      setSnackbarMessage('Verificando os dados...');
+      setSnackbarOpen(true);
+
+      const response = await api.post('/login', {
+        email: data.email,
+        password: data.password,
+      });
+
+      setSnackbarSeverity('success');
+      setSnackbarMessage('Login realizado com sucesso!');
+      setSnackbarOpen(true);
 
       dispatch(login(response.data));
 
@@ -75,12 +81,19 @@ function LoginSystem() {
         navigate('/admin');
       }, 2500);
     } catch (error) {
-      return error;
+      const errorMessage = error.response?.data?.error
+      setSnackbarSeverity('error');
+      setSnackbarMessage(errorMessage);
+      setSnackbarOpen(true);
     }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   if (loading) {
@@ -172,6 +185,18 @@ function LoginSystem() {
         </p>
       </div>
       <RecoverPasswordModal show={show} setShow={setShow} />
+
+      
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '300px' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </>
   );
 }

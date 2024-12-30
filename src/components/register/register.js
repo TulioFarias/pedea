@@ -7,14 +7,13 @@ import Form from 'react-bootstrap/Form'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-
 import backIcon from '../../assets/icons/backicon.png'
 import logo from '../../assets/img/pedea-logo.png'
 import api from '../../services/api'
 import { createUser } from '../../utils/redux/user/actions'
-
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 function RegisterUser() {
   const navigate = useNavigate()
   const [form, setForm] = useState({
@@ -23,6 +22,12 @@ function RegisterUser() {
     password: '',
     confirmPassword: ''
   })
+
+  const [snackbar, setSnackbar] = useState({ 
+     open: false,
+     message: '', 
+     severity: '' 
+    });
 
 
   const changeForm = async e => {
@@ -56,30 +61,39 @@ function RegisterUser() {
     navigate('/login')
   }
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
-      const registerUser = await toast.promise(
-        api.post('/register', {
-          name: data.name,
-          email: data.email,
-          password: data.password
-        }),
-        {
-          pending: 'Verificando os dados...',
-          success: 'Usuário cadastrado com sucesso.',
-          error: 'Não foi possivel fazer o cadastro.'
-        }
-      )
+      const registerUser = await api.post('/register', {
+        name: data.name,
+        email: data.email,
+        password: data.password
+      });
 
-      dispatch(createUser(registerUser))
+      dispatch(createUser(registerUser));
+
+      setSnackbar({
+        open: true,
+        message: 'Usuário cadastrado com sucesso.',
+        severity: 'success'
+      });
 
       setTimeout(() => {
-        navigate('/login')
-      }, 2000)
+        navigate('/login');
+      }, 2000);
     } catch (error) {
-      return error
+      const errorMessage = error.response?.data?.error || 'Não foi possível fazer o cadastro.';
+      console.log(error)
+      setSnackbar({
+        open: true,
+        message: errorMessage,
+        severity: 'error'
+      });
     }
-  }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
 
   return (
     <>
@@ -219,6 +233,17 @@ function RegisterUser() {
             </p>
           </div>
         </Row>
+
+        <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '300px' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
       </div>
     </>
   )

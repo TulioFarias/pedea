@@ -4,22 +4,33 @@ import '../../../../sass/admin/HomeAdmin/carditems.scss';
 import PropTypes from 'prop-types';
 import apiPEDEA from "../../../../services/api";
 import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function CardItems({ setActiveButton, handleOptionChange }) {
     const { t } = useTranslation();
     const [user, setUser] = useState();
     const userData = useSelector(state => state.userInfoSlice.infoUser);
     const { id: loggedInUserId } = userData;
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
+
 
     const handleButtonClick = (option) => {
         if (option === 'Configurações' || user?.admin) {
             setActiveButton(option);
             handleOptionChange(option);
         } else {
-            toast.error(t('Você não tem permissão para acessar esses módulos, acesso apenas para administradores.'));
+            setSnackbar({
+                open: true,
+                message: 'Você não tem permissão para acessar esses módulos, acesso apenas para administradores.',
+                severity: 'error',
+            });
         }
+    };
+
+    const handleCloseSnackbar = () => {
+        setSnackbar({ ...snackbar, open: false });
     };
 
     useEffect(() => {
@@ -107,6 +118,17 @@ function CardItems({ setActiveButton, handleOptionChange }) {
                     </ListGroup>
                 </Card.Body>
             </Card>
+
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={6000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '300px' }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </div>
     );
 }

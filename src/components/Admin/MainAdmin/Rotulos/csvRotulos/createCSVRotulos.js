@@ -3,16 +3,18 @@ import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from "react-toastify";
 import '../../../../../sass/admin/Rotulos/containerImportCSV.scss'
 import ModalSendInfoCSV from "./modalSendInfoCSV";
 import apiPEDEA from "../../../../../services/api";
 import { useTranslation } from 'react-i18next'
 import DownloadIcon from '@mui/icons-material/Download';
+import { Snackbar, Alert } from '@mui/material';
 
 function CreateRotulosCSV() {
     const { t } = useTranslation()
     const [showModal, setShowModal] = useState(false)
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
+
 
     const openModal = () => {
 
@@ -29,32 +31,43 @@ function CreateRotulosCSV() {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = async data => {
+    const onSubmit = async (data) => {
         try {
-            const formData = new FormData()
+            const formData = new FormData();
             if (data.file && data.file.length > 0) {
-                formData.append('file', data.file[0])
-                formData.append('name', data.name)
+                formData.append('file', data.file[0]);
+                formData.append('name', data.name);
             }
-
-            await toast.promise(
-                apiPEDEA.post('/createRotulosCSV', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }),
-                {
-                    pending: 'Cadastrando...',
-                    success: 'Arquivo de rótulos criado com sucesso!',
-                    error: 'Chave ou arquivo inválido, verifique novamente.'
+    
+            setSnackbar({
+                open: true,
+                message: 'Cadastrando...',
+                severity: 'info'
+            });
+    
+            await apiPEDEA.post('/createRotulosCSV', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
                 }
-            )
-
-            reset()
+            });
+    
+            setSnackbar({
+                open: true,
+                message: 'Arquivo de rótulos criado com sucesso!',
+                severity: 'success'
+            });
+    
+            reset();
         } catch (error) {
-            console.log(error)
+            console.error(error);
+            setSnackbar({
+                open: true,
+                message: 'Chave ou arquivo inválido, verifique novamente.',
+                severity: 'error'
+            });
         }
     };
+    
 
     const handleDownload = async () => {
         try {
@@ -128,6 +141,22 @@ function CreateRotulosCSV() {
             </Form>
 
             <ModalSendInfoCSV showModal={showModal} setShowModal={setShowModal} />
+
+            <Snackbar
+            open={snackbar.open}
+            autoHideDuration={6000}
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+            <Alert 
+                onClose={() => setSnackbar({ ...snackbar, open: false })} 
+                severity={snackbar.severity}
+                sx={{ width: '300px' }}
+            >
+                {snackbar.message}
+            </Alert>
+        </Snackbar>
+
         </div>
     );
 }

@@ -52,30 +52,31 @@ function NavOptions() {
  
   const filterOptions = (options, state) => {
     const inputValue = state.inputValue.trim().toLowerCase();
-  
-    if (!inputValue) {
    
+    if (!inputValue) {
       return rotulosKey.map(item => item.key);
     }
-  
+   
     return rotulosKey
-      .filter(item => 
-        item.pt_br.toLowerCase().includes(inputValue) ||
-        item.en.toLowerCase().includes(inputValue) ||
-        item.es.toLowerCase().includes(inputValue)
-      )
+      .filter(item => {
+        
+        return (
+          (item.pt_br && typeof item.pt_br === 'string' && item.pt_br.toLowerCase().includes(inputValue)) ||
+          (item.en && typeof item.en === 'string' && item.en.toLowerCase().includes(inputValue)) ||
+          (item.es && typeof item.es === 'string' && item.es.toLowerCase().includes(inputValue))
+        );
+      })
       .map(item => {
-       
-        if (item.pt_br.toLowerCase().includes(inputValue)) {
+        if (item.pt_br && typeof item.pt_br === 'string' && item.pt_br.toLowerCase().includes(inputValue)) {
           return item.pt_br;
-        } else if (item.en.toLowerCase().includes(inputValue)) {
+        } else if (item.en && typeof item.en === 'string' && item.en.toLowerCase().includes(inputValue)) {
           return item.en;
-        } else if (item.es.toLowerCase().includes(inputValue)) {
+        } else if (item.es && typeof item.es === 'string' && item.es.toLowerCase().includes(inputValue)) {
           return item.es;
         }
         return item.key; 
       });
-  };
+   }
 
   const handleSelectChange = (event, value) => {
     const selectedItem = rotulosKey.find(item => 
