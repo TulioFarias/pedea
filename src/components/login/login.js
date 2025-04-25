@@ -39,9 +39,8 @@ function LoginSystem() {
   const dispatch = useDispatch();
 
   const schema = Yup.object().shape({
-    email: Yup.string()
-      .email('Digite um email válido.')
-      .required('O email é obrigatório.'),
+    cpf: Yup.string()
+      .required('O cpf é obrigatório.'),
     password: Yup.string()
       .required('A senha é obrigatória.')
       .min(6, 'A senha deve ter no mínimo 6 dígitos.'),
@@ -60,13 +59,14 @@ function LoginSystem() {
   };
 
   const onSubmit = async (data) => {
+    const cpfSemMascara = data.cpf.replace(/\D/g, '');
     try {
       setSnackbarSeverity('info');
       setSnackbarMessage('Verificando os dados...');
       setSnackbarOpen(true);
 
       const response = await api.post('/login', {
-        email: data.email,
+        cpf: cpfSemMascara,
         password: data.password,
       });
 
@@ -100,6 +100,14 @@ function LoginSystem() {
     return <SplashScreen />; 
   }
 
+  const maskCPF = (value) => {
+    const numeric = value.replace(/\D/g, '').slice(0, 11);
+    return numeric
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  };
+
   return (
     <>
       <div className="container-form">
@@ -109,23 +117,27 @@ function LoginSystem() {
         <img src={logo} />
 
         <Form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
-          <h1 className="titleLogin">Sistema de Administração</h1>
+          <h3 className="titleLogin">Sistema de Administração</h3>
           <hr className="hrLoginAndRegister" />
           <div className="custom-info">
-            <Form.Label htmlFor="email" className="LabelForm">
-              Email:
+            <Form.Label htmlFor="cpf" className="LabelForm">
+             CPF:
             </Form.Label>
             <Form.Control
-              {...register('email')}
-              type="email"
+              {...register('cpf')}
+              type="text"
               className="InputForm"
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={changeForm}
-              isInvalid={!!errors.email}            
+              id="cpf"
+              name="cpf"
+              placeholder="000.000.000-00"
+              value={form.cpf}
+              onChange={(e) => {
+                const masked = maskCPF(e.target.value);
+                changeForm({ target: { name: 'cpf', value: masked } });
+              }}
+              isInvalid={!!errors.cpf}            
             />
-            <p className="error-txt">{errors.email?.message}</p>
+            <p className="error-txt">{errors.cpf?.message}</p>
           </div>
           <button
             type="button"
@@ -151,6 +163,7 @@ function LoginSystem() {
               name="password"
               value={form.password}
               onChange={changeForm}
+              placeholder="********"
               isInvalid={!!errors.password}
               
             />

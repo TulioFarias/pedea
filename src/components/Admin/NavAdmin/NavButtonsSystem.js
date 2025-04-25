@@ -2,6 +2,8 @@ import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded'
 import QuestionAnswerRoundedIcon from '@mui/icons-material/QuestionAnswerRounded'
+import PeopleIcon from '@mui/icons-material/People';
+import PasswordIcon from '@mui/icons-material/Password';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
@@ -158,6 +160,35 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
             </Nav.Link>
           </motion.div>
         </Nav.Item>
+
+        <Nav.Item className="OptionsItems">
+          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+            <Nav.Link
+              href="/Rotulos Bilingue"
+              onClick={e => {
+                e.preventDefault()
+                handleButtonClick('Rotulos Bilingue')
+              }}
+              className={`links-btnsNav ${
+                activeButton === 'Rotulos Bilingue' ? 'nav-link active' : 'nav-link'
+              }`}
+              disabled={!admin}
+            >
+              {admin ? (
+                <>
+                  <PeopleIcon />
+                 {t("Usuários")}
+                </>
+              ) : (
+                <div className="disableLink">
+                  <HttpsRoundedIcon />
+                  <p>Acesso restrito</p>
+                </div>
+              )}
+            </Nav.Link>
+          </motion.div>
+        </Nav.Item>
+   
 
         <Nav.Item className="OptionsItems">
           <motion.div whileHover={{ y: -10 }} transition={{ duration: 1 }}>

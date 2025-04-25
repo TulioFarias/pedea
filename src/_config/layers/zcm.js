@@ -38,7 +38,7 @@ const zcmData = await fetchZmcData()
 
 
 const { tree, layers } = geoCSVReader(
-  zcmData ,
+  zmc ,
   geoWorkspace,
   serverURL,
   serverType

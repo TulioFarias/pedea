@@ -81,18 +81,7 @@ function HeaderAdm({
         {user &&
           user.map(value => (
             <div className="containerUser" key={value.id}>
-              <div className="containerImageHeaderAdmin">
-                <img
-                  alt="userphoto"
-                  className="custom-userPhoto"
-                  src={value.path ? value.url : userIcon}
-                  onClick={e => {
-                    e.preventDefault()
-                    SendToSettings('Configurações')
-                  }}
-                />
-              </div>
-
+            
               <p className="user">
                 {t(`Seja bem vindo(a),`)} <br />
                 <p className="nameUser">{value.name}</p>

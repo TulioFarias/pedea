@@ -6,8 +6,6 @@ function geoCSVReader(resource, geoWorkspace, serverURL, serverType) {
   const rows = resource.split('\n')
 
   function populateTree(object, title, folderSequence, hasSubFolder = true) {
-
-    console.log(object)
     
     if (title && object && !object.find(e => e.title === title)) {
       object.push({

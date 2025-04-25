@@ -18,6 +18,7 @@ function RegisterUser() {
   const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '',
+    cpf: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -32,12 +33,19 @@ function RegisterUser() {
 
   const changeForm = async e => {
     const { name, value } = e.target
-    setForm({ ...form, [name]: value })
+
+    const uppercasedFields = ['name'];
+
+    const formattedValue = uppercasedFields.includes(name)
+      ? value.toUpperCase()
+      : value;
+      setForm({ ...form, [name]: formattedValue })
   }
 
   const dispatch = useDispatch()
   const schema = Yup.object().shape({
     name: Yup.string().required('O nome é obrigatório.'),
+    cpf: Yup.string().required('O cpf é obrigatório.'),
     email: Yup.string()
       .email('Digite um email válido.')
       .required('O email é obrigatório.'),
@@ -57,14 +65,14 @@ function RegisterUser() {
     resolver: yupResolver(schema)
   })
 
-  const handleBack = () => {
-    navigate('/login')
-  }
 
   const onSubmit = async (data) => {
+    const cpfSemMascara = data.cpf.replace(/\D/g, '');
+
     try {
       const registerUser = await api.post('/register', {
         name: data.name,
+        cpf: cpfSemMascara,
         email: data.email,
         password: data.password
       });
@@ -91,6 +99,18 @@ function RegisterUser() {
     }
   };
 
+  const maskCPF = (value) => {
+    const numeric = value.replace(/\D/g, '').slice(0, 11);
+    return numeric
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  };
+
+  const handleBack = () => {
+    navigate('/login');
+  };
+
   const handleCloseSnackbar = () => {
     setSnackbar({ ...snackbar, open: false });
   };
@@ -98,26 +118,26 @@ function RegisterUser() {
   return (
     <>
       <div className="container-formRegister">
-        <Row>
+       
           <div>
             <button className="btnBackRegister" onClick={handleBack}>
               <img src={backIcon} alt="Back" />
             </button>
           </div>
           <img src={logo} alt="Logo" className="pedeaImg" />
-        </Row>
-        <Row>
+        
+   
           <Col>
             <div className="containerRegisterUsers">
-              <h1 className="titleRegister">Cadastro Portal Admin</h1>
+              <h3 className="titleRegister">Cadastro Portal Admin</h3>
               <hr className="hrLoginAndRegister" />
-              <h6 className="txtRegister">
+              <h8 className="txtRegister">
                 Para realizar seu cadastro ao sistema de administração da PEDEA,
                 preencha os campos abaixo:
-              </h6>
+              </h8>
               <Form onSubmit={handleSubmit(onSubmit)} className="formRegister">
                 <div className="containerUserInfo">
-                  <Row>
+             
                     <Col>
                       <Form.Label htmlFor="name" className="LabelFormRegister">
                         Nome:
@@ -137,8 +157,31 @@ function RegisterUser() {
                         {errors.name?.message}
                       </p>
                     </Col>
-                  </Row>
-                  <Row>
+             
+                    <Col>
+                      <Form.Label htmlFor="cpf" className="LabelFormRegister">
+                       CPF:
+                      </Form.Label>
+                      <Form.Control
+                        {...register('cpf')}
+                        type="text"
+                        className="InputFormRegister"
+                        id="cpf"
+                        name="cpf"
+                        value={form.cpf}
+                        onChange={(e) => {
+                          const masked = maskCPF(e.target.value);
+                          changeForm({ target: { name: 'cpf', value: masked } });
+                        }}
+                        placeholder="000.000.000-00"
+                        isInvalid={errors.cpf}
+                      />
+                      <p className="error-txtRegister">
+                        {errors.cpf?.message}
+                      </p>
+                    </Col>
+                
+               
                     <Col>
                       <Form.Label htmlFor="email" className="LabelFormRegister">
                         Email:
@@ -158,8 +201,8 @@ function RegisterUser() {
                         {errors.email?.message}
                       </p>
                     </Col>
-                  </Row>
-                  <Row>
+                 
+             
                     <Col>
                       <Form.Label
                         htmlFor="password"
@@ -182,8 +225,8 @@ function RegisterUser() {
                         {errors.password?.message}
                       </p>
                     </Col>
-                  </Row>
-                  <Row>
+                
+                 
                     <Col>
                       <Form.Label
                         htmlFor="confirmPassword"
@@ -206,7 +249,7 @@ function RegisterUser() {
                         {errors.confirmPassword?.message}
                       </p>
                     </Col>
-                  </Row>
+               
                 </div>
                
                 <button
@@ -215,24 +258,19 @@ function RegisterUser() {
                 >
                   Cadastrar
                 </button>
-                <p className="end-txtRegister">
-                  Já tem conta criada?{' '}
-                  <Link className="link-endRegister" to="/login">
-                    Clique aqui
-                  </Link>
-                </p>
+               
               </Form>
             </div>
           </Col>
-        </Row>
-        <Row>
+     
+  
           <div>
             <p className="govTxt">
               © 2024 - Secretaria do Meio Ambiente e Mudança de Clima do Estado
               do Ceará
             </p>
           </div>
-        </Row>
+      
 
         <Snackbar
         open={snackbar.open}
