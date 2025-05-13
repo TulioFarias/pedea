@@ -1,45 +1,154 @@
-import React from 'react'
-import '../../../../sass/admin/HomeAdmin/homeAdmin.scss'
+import React, { useState, useEffect } from 'react'
+import '../../../../sass/admin/Users/users.scss'
 
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { Button, Form, Row, Col, Table } from 'react-bootstrap'
+import PeopleIcon from '@mui/icons-material/People'
+import axios from 'axios'
 
-function UserSystem({setActiveButton, handleOptionChange }) {
+function UserSystem({ setActiveButton, handleOptionChange }) {
 
   const { t } = useTranslation()
 
+  // Estado para armazenar os valores de CPF, Nome e os usuários
+  const [searchParams, setSearchParams] = useState({ cpf: '', nome: '' })
+  const [users, setUsers] = useState([])
+
+  // Função para atualizar os campos de CPF e Nome
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setSearchParams(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  // Função para buscar os usuários
+  const handleSearch = () => {
+    fetchUsers()
+  }
+
+  // Função para limpar os campos
+  const handleClear = () => {
+    setSearchParams({ cpf: '', nome: '' })
+  }
+
+
+  const fetchUsers = async (data) => {
+    const cpfSemMascara = data.cpf.replace(/\D/g, '');
+    try {
+      const response = await axios.get('/users', { 
+        params: searchParams 
+      })
+
+      console.log(response)
+      setUsers(response.data) 
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error)
+    }
+  }
+
+   const maskCPF = (value) => {
+    const numeric = value.replace(/\D/g, '').slice(0, 11);
+    return numeric
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  };
 
   return (
-    <>
-      <div className="ContainerHomeAdmin">
+    <div className="ContainerUsers">
 
-        <div className='ContainerWelcome'>
-          <h5 className='TitleWelcome'>{t("Bem-vindo(a) à Plataforma de Administrador da PEDEA!")}</h5>
-
-          <p className='TxtWelcome'>{t("É um prazer tê-lo(a) conosco. Aqui você terá acesso a uma série de ferramentas para gerenciar e otimizar as funcionalidades de nossa plataforma. Para facilitar sua navegação, preparamos um tutorial completo, que o(a) guiará pelos principais módulos disponíveis. Vale ressaltar que alguns recursos são restritos apenas para usuários administradores, portanto, siga as instruções com atenção. Vamos começar!")}</p>
-
-
-
-          <p className='TxtInicial'>
-         {t("Na página inicial, você encontrará uma visão geral das funcionalidades disponíveis na plataforma. Este é o ponto de partida para acessar todos os módulos que você irá gerenciar. Através dela, você poderá navegar facilmente para cada seção utilizando o menu principal.")}
-          </p>
-
+      <div className="ContainerSearch">
+        <div className="containerHeader">
+          <PeopleIcon />
+          <h6>{t("Consultar usuários")}</h6>
         </div>
 
-        
+        <Form>
+          <Row className="align-items-center">
+            <Col sm={6}>
+              <Form.Control
+                type="text"
+                placeholder={t('Digite o CPF')}
+                name="cpf"
+                value={searchParams.cpf}
+               onChange={(e) => {
+                const masked = maskCPF(e.target.value);
+                handleInputChange({ target: { name: 'cpf', value: masked } });
+              }}
+              />
+            </Col>
 
 
-        <div className='ContainerFooterHome'>
-          <p className='TxtFooterHome'>{t("Aproveite ao máximo a plataforma! Seguindo este tutorial, você estará preparado(a) para explorar todas as funcionalidades que a PEDEA tem a oferecer. Se precisar de ajuda, não hesite em consultar nossa equipe de suporte.")}</p>
+            <Col sm={6}>
+              <Form.Control
+                type="text"
+                placeholder={t('Digite o Nome')}
+                name="nome"
+                value={searchParams.nome}
+                onChange={handleInputChange}
+              />
+            </Col>
 
-          <p className='TxtFooterHome'>{t("Boas práticas e boa gestão! 🚀")}</p>
-        </div>
 
+            <div className='containerButtons'>
+              <Button variant="primary" onClick={handleSearch}>
+                {t("Pesquisar")}
+              </Button>
+      
+              <Button variant="secondary" onClick={handleClear}>
+                {t("Limpar")}
+              </Button>
+            </div>
+              
+           
+          </Row>
+        </Form>
       </div>
-    </>
-  )
-}
 
+      {/* Tabela de Usuários */}
+      <div className="ContainerTable">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>{t("Nome")}</th>
+              <th>{t("CPF")}</th>
+              <th>{t("Email")}</th>
+              <th>{t("Ações")}</th> 
+            </tr>
+          </thead>
+          <tbody>
+            {users.length > 0 ? (
+              users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.nome}</td>
+                  <td>{user.cpf}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    <Button variant="warning" onClick={() => handleEdit(user.id)}>
+                      {t("Editar")}
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">{t("Nenhum usuário encontrado.")}</td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </div>
+    </div>
+  )
+
+  function handleEdit(userId) {
+    console.log('Editando usuário com ID:', userId)
+   
+  }
+}
 
 UserSystem.propTypes = {
   setActiveButton: PropTypes.func.isRequired,
@@ -47,3 +156,4 @@ UserSystem.propTypes = {
 }
 
 export default UserSystem
+
