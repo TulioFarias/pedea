@@ -9,8 +9,7 @@ function SettingsAdmin() {
   return (
     <>
       <div className="containerWrapperOptions">
-        <h2 className="titleSettings">{t("Configurações do Usuário")}</h2>
-
+       
         <div className="ContainerAllSettingsInfo">
           <SettingsSystemAndUser />
      

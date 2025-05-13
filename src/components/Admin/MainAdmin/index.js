@@ -11,6 +11,7 @@ import Rotulos from './Rotulos/index'
 import SettingsAdmin from './settings/settings'
 import '../../../sass/admin/admin.scss'
 import DataExplorer from './DataExplorer'
+import Users from './Users'
 
 
 
@@ -64,6 +65,7 @@ function MainAdmin() {
           {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'DataExplorer' && <DataExplorer />}
           {selectedOption === 'Rotulos Bilingue' && <Rotulos />}
+          {selectedOption === 'Usuarios' && <Users />}
           {selectedOption === 'Configurações' && <SettingsAdmin />}
         </motion.div>
       </Container>

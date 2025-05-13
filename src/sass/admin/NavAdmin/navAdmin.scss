@@ -1,14 +1,14 @@
 $bodyNav-width-collapsed: 15vw;
-$bodyNav-width-expanded: 7vw;
+$bodyNav-width-expanded: 8vw;
 $border-radius: 1rem;
 
 .bodyNav{
 
     background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 12%);
-    height: 85%;
+    height: 83%;
     width: $bodyNav-width-collapsed;
     position: absolute;
-    top: 102px;
+    top: 82px;
     left: 10px;
     display: flex;
     flex-direction: column;
@@ -150,30 +150,6 @@ $border-radius: 1rem;
 
 }
 
-.links-btnsNav.active::before, .links-btnsNav.active::after{
-    content: '';
-    position: absolute;
-    width: $border-radius;
-    height: $border-radius;
-    background: rgba(44, 64, 63, 0.726);
-    left: 93.6%;
-    transition: all 1s ease-in-out;
-
-}
-
-.links-btnsNav.active::before {
-    top: calc(-#{$border-radius} * -2.5);
-    border-radius: 0 100vw 0 0;
-    box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
-    transition: all 1s ease-in-out;
-}
-
-.links-btnsNav.active::after {
-    bottom: calc(-#{$border-radius} * -2.5);
-    border-radius: 0 0 100vw 0;
-    box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
-    transition: all 1s ease-in-out;
-}
 
 
 
@@ -182,13 +158,17 @@ $border-radius: 1rem;
 .bodyNav-expanded {
     width: $bodyNav-width-expanded;
     transition: all 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
 
     .containerDivsLanguage{
         display: flex;
         justify-content: center;
         position: relative;
-        left: 10px;
+        left: 0px;
+        right: 20px;
         gap: 12px;
         flex-direction: column;
         margin-top: 2px;
@@ -202,7 +182,7 @@ $border-radius: 1rem;
         height: 15px;
         border: none;
         background-color: transparent;
-        margin-left: 30px;
+        margin-left: 0px;
         transition: all 0.8s ease-in-out;
        
     
@@ -269,13 +249,13 @@ $border-radius: 1rem;
         align-items: center;
         border: none;
         border-radius: 100px 0 0 100px;
-        font-size: 9px;
-        width: 113px;
+        font-size: 12px;
+        width: 100px;
     
         &:hover{
             color: rgba(44, 64, 63, 0.726);
             background-color: rgb(151, 151, 151);
-            width: 114px;
+            width: 103px;
         }
 
         transition: all 1s ease-in-out;
@@ -291,40 +271,13 @@ $border-radius: 1rem;
         color: rgba(44, 64, 63, 0.726);
         background-color: rgb(165, 165, 165);
         position: relative;
-        width: 119px;
+        width: 103px;
         
         
         
        
     }
     
-    .links-btnsNav.active::before, .links-btnsNav.active::after{
-        content: '';
-        position: absolute;
-        width: $border-radius;
-        height: $border-radius;
-        background: rgba(44, 64, 63, 0.726);
-        border-radius: 100px;
-        left: 81%;
-        
-        
-        
-    }
-    
-    .links-btnsNav.active::before {
-        top: calc(-#{$border-radius} * -2.5);
-        border-radius: 0 100vw 0 0;
-        box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
-    }
-    
-    .links-btnsNav.active::after {
-        bottom: calc(-#{$border-radius} * -2.5);
-        border-radius: 0 0 100vw 0;
-        box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
-    }
-    
-    
-
     
 }
 

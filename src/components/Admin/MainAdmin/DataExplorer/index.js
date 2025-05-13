@@ -56,9 +56,7 @@ function DataExplorer() {
           <hr />
 
           <div className="containerTwo">
-            <p>
-              {t("Para adicionar dados através de um arquivo CSV, basta seguir o exemplo:")}
-            </p>
+          
             <div className="containerToltip">
               <Tooltip title={textExemple} className="toltip">
                 <InfoRoundedIcon />
