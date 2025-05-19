@@ -127,7 +127,7 @@ function RegisterUser() {
           <img src={logo} alt="Logo" className="pedeaImg" />
         
    
-          <Col>
+      
             <div className="containerRegisterUsers">
               <h3 className="titleRegister">Cadastro Portal Admin</h3>
               <hr className="hrLoginAndRegister" />
@@ -261,7 +261,7 @@ function RegisterUser() {
                
               </Form>
             </div>
-          </Col>
+      
      
   
           <div>

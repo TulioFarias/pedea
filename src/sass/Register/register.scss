@@ -1,7 +1,7 @@
 .container-formRegister{
     background-color: #7d7d7d;
     background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@
 .containerRegisterUsers{
         background-color: #e4e4e423;
         box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-        width: 100%;
+        width: 30%;
         height: max-content;
         padding: 10px;
         border-radius: 10px;
@@ -144,6 +144,7 @@
    .txtRegister{
     color: white;
     font-size: 14px;
+    text-align: center;
    }
 
     .RetrieveAccLink{
