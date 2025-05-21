@@ -41,7 +41,7 @@ function ShowAndEditChangeLog() {
 
   return (
     <>
-      <div>
+  
         <div className="containerShowChangeLog">
           <p>{t('Todas as atualizações de log estão abaixo:')}</p>
           <Carousel
@@ -114,7 +114,7 @@ function ShowAndEditChangeLog() {
             ))}
           </Carousel>
         </div>
-      </div>
+    
 
       <ModalEditChangeLog
         openModalEdit={openModalEdit}

@@ -48,170 +48,132 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 74 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="ContainerButtonsSystem"
-    >
-      <div className="titleText">
-        <h5>{t('Menu de navegação')}</h5>
-      </div>
+  <motion.div
+    initial={{ opacity: 0, y: 74 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="ContainerButtonsSystem"
+  >
+    <div className="titleText">
+      <h5>{t('Menu de navegação')}</h5>
+    </div>
 
-      <Nav defaultActiveKey="" className="NavOptionsLinks">
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/admin"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('Home')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'Home' ? 'nav-link active' : 'nav-link'
-              }`}
-            >
-              <HomeRoundedIcon />
-              {t('Home')}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
+    <Nav defaultActiveKey="" className="NavOptionsLinks">
+      <Nav.Item className="OptionsItems">
+        <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+          <Nav.Link
+            href="/admin"
+            onClick={e => {
+              e.preventDefault()
+              handleButtonClick('Home')
+            }}
+            className={`links-btnsNav ${
+              activeButton === 'Home' ? 'nav-link active' : 'nav-link'
+            }`}
+          >
+            <HomeRoundedIcon />
+            {t('Home')}
+          </Nav.Link>
+        </motion.div>
+      </Nav.Item>
 
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/Rotulos Bilingue"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('Rotulos Bilingue')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'Rotulos Bilingue' ? 'nav-link active' : 'nav-link'
-              }`}
-              disabled={!admin}
-            >
-              {admin ? (
-                <>
-                  <AppsRoundedIcon />
-                 {t("Rótulos Bilíngue")}
-                </>
-              ) : (
-                <div className="disableLink">
-                  <HttpsRoundedIcon />
-                  <p>Acesso restrito</p>
-                </div>
-              )}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
+      {admin && (
+        <>
+          <Nav.Item className="OptionsItems">
+            <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+              <Nav.Link
+                href="/Rotulos Bilingue"
+                onClick={e => {
+                  e.preventDefault()
+                  handleButtonClick('Rotulos Bilingue')
+                }}
+                className={`links-btnsNav ${
+                  activeButton === 'Rotulos Bilingue' ? 'nav-link active' : 'nav-link'
+                }`}
+              >
+                <AppsRoundedIcon />
+                {t("Rótulos Bilíngue")}
+              </Nav.Link>
+            </motion.div>
+          </Nav.Item>
 
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/DataExplorer"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('DataExplorer')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'DataExplorer' ? 'nav-link active' : 'nav-link'
-              }`}
-              disabled={!admin}
-            >
-              {admin ? (
-                <>
-                  <TravelExploreRoundedIcon />
-                  {t("Explorador de Dados")}
-                </>
-              ) : (
-                <div className="disableLink">
-                  <HttpsRoundedIcon />
-                  <p>Acesso restrito</p>
-                </div>
-              )}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
+          <Nav.Item className="OptionsItems">
+            <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+              <Nav.Link
+                href="/DataExplorer"
+                onClick={e => {
+                  e.preventDefault()
+                  handleButtonClick('DataExplorer')
+                }}
+                className={`links-btnsNav ${
+                  activeButton === 'DataExplorer' ? 'nav-link active' : 'nav-link'
+                }`}
+              >
+                <TravelExploreRoundedIcon />
+                {t("Explorador de Dados")}
+              </Nav.Link>
+            </motion.div>
+          </Nav.Item>
 
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/FAQ"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('FAQ')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'FAQ' ? 'nav-link active' : 'nav-link'
-              }`}
-              disabled={!admin}
-            >
-              {admin ? (
-                <>
-                  <QuestionAnswerRoundedIcon />
-                  FAQ
-                </>
-              ) : (
-                <div className="disableLink">
-                  <HttpsRoundedIcon />
-                  <p>Acesso restrito</p>
-                </div>
-              )}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
+          <Nav.Item className="OptionsItems">
+            <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+              <Nav.Link
+                href="/FAQ"
+                onClick={e => {
+                  e.preventDefault()
+                  handleButtonClick('FAQ')
+                }}
+                className={`links-btnsNav ${
+                  activeButton === 'FAQ' ? 'nav-link active' : 'nav-link'
+                }`}
+              >
+                <QuestionAnswerRoundedIcon />
+                FAQ
+              </Nav.Link>
+            </motion.div>
+          </Nav.Item>
 
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
-            <Nav.Link
-              href="/Usuarios"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('Usuarios')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'Usuarios' ? 'nav-link active' : 'nav-link'
-              }`}
-              disabled={!admin}
-            >
-              {admin ? (
-                <>
-                  <PeopleIcon />
-                 {t("Usuários")}
-                </>
-              ) : (
-                <div className="disableLink">
-                  <HttpsRoundedIcon />
-                  <p>Acesso restrito</p>
-                </div>
-              )}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
-   
+          <Nav.Item className="OptionsItems">
+            <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>
+              <Nav.Link
+                href="/Usuarios"
+                onClick={e => {
+                  e.preventDefault()
+                  handleButtonClick('Usuarios')
+                }}
+                className={`links-btnsNav ${
+                  activeButton === 'Usuarios' ? 'nav-link active' : 'nav-link'
+                }`}
+              >
+                <PeopleIcon />
+                {t("Usuários")}
+              </Nav.Link>
+            </motion.div>
+          </Nav.Item>
+        </>
+      )}
 
-        <Nav.Item className="OptionsItems">
-          <motion.div whileHover={{ y: -10 }} transition={{ duration: 1 }}>
-            <Nav.Link
-              href="/Configurações"
-              onClick={e => {
-                e.preventDefault()
-                handleButtonClick('Configurações')
-              }}
-              className={`links-btnsNav ${
-                activeButton === 'Configurações'
-                  ? 'nav-link active'
-                  : 'nav-link'
-              }`}
-            >
-              <SettingsRoundedIcon />
-              {t('Configurações')}
-            </Nav.Link>
-          </motion.div>
-        </Nav.Item>
-      </Nav>
-    </motion.div>
-  )
+      <Nav.Item className="OptionsItems">
+        <motion.div whileHover={{ y: -10 }} transition={{ duration: 1 }}>
+          <Nav.Link
+            href="/Configurações"
+            onClick={e => {
+              e.preventDefault()
+              handleButtonClick('Configurações')
+            }}
+            className={`links-btnsNav ${
+              activeButton === 'Configurações' ? 'nav-link active' : 'nav-link'
+            }`}
+          >
+            <SettingsRoundedIcon />
+            {t('Configurações')}
+          </Nav.Link>
+        </motion.div>
+      </Nav.Item>
+    </Nav>
+  </motion.div>
+)
+
 }
 
 ButtonSystem.propTypes = {

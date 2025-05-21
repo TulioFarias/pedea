@@ -1,14 +1,14 @@
-$bodyNav-width-collapsed: 15vw;
+$bodyNav-width-collapsed: 13vw;
 $bodyNav-width-expanded: 8vw;
 $border-radius: 1rem;
 
 .bodyNav{
 
     background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 12%);
-    height: 83%;
+    height: 84%;
     width: $bodyNav-width-collapsed;
     position: absolute;
-    top: 82px;
+    top: 100px;
     left: 10px;
     display: flex;
     flex-direction: column;
@@ -71,10 +71,9 @@ $border-radius: 1rem;
     color: rgba(204, 204, 204, 0.76);
     display: flex;
     margin-top: 20px;
-    margin-left: 10px;
     justify-content: center;
     align-items: center;
-    width: 14vw;
+    width: 100%;
 
     h5{
         font-size: 20px;
@@ -99,31 +98,28 @@ $border-radius: 1rem;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    width: 15vw;
+    width: 100%;
     gap: 22px;
 }
 
-.OptionsItems {
-    width: 99.5%;
-    border: none;
-    
 
-}
 
 .links-btnsNav{
     display: flex;
     color: rgb(173, 173, 173);
+
     gap: 5px;
     align-items: center;
     border: none;
     border-radius: 100px 0 0 100px;
     transition: 1s all ease-in-out;
-    
+    width: 107%;
     
 
     &:hover{
         color: rgba(44, 64, 63, 0.726);
         background-color: rgb(151, 151, 151);
+        width: 107%;
     }
 
     
@@ -143,7 +139,8 @@ $border-radius: 1rem;
 
 .links-btnsNav.active{
     color: rgba(44, 64, 63, 0.726);
-    background-color: rgb(165, 165, 165);
+    background-color: rgb(151, 151, 151);
+    width: 107%;
     position: relative;
     transition: all 1s ease-in-out;
     
@@ -178,7 +175,7 @@ $border-radius: 1rem;
     }
 
     .my-btns-linguage{
-        width: 15px;
+        width: 100%;
         height: 15px;
         border: none;
         background-color: transparent;
@@ -208,13 +205,14 @@ $border-radius: 1rem;
         margin-top: 20px;
         margin-bottom: 0px;
         border: 1px dashed white;
+        width: 100%;
     }
     
    
 
     .titleText{
         color: rgba(204, 204, 204, 0.76);
-        width: 5vw;
+        width: 100%;
         transition: all 1s ease-in-out;
     
         h5{
@@ -230,18 +228,11 @@ $border-radius: 1rem;
         flex-direction: column;
         justify-content: center;
         padding: 10px;
-        width: 109%;
+        width: 100%;
         gap: 20px;
     }
     
-    .OptionsItems{
-        width: 113%;
-        font-size: 0px;
-        display: flex;
-        align-items: center;
-        border: none;
-    }
-
+   
     .links-btnsNav{
         display: flex;
         color: rgb(173, 173, 173);
@@ -250,12 +241,11 @@ $border-radius: 1rem;
         border: none;
         border-radius: 100px 0 0 100px;
         font-size: 12px;
-        width: 100px;
-    
+ 
         &:hover{
             color: rgba(44, 64, 63, 0.726);
             background-color: rgb(151, 151, 151);
-            width: 103px;
+            width: 98%;
         }
 
         transition: all 1s ease-in-out;
@@ -271,7 +261,7 @@ $border-radius: 1rem;
         color: rgba(44, 64, 63, 0.726);
         background-color: rgb(165, 165, 165);
         position: relative;
-        width: 103px;
+        width: 98%;
         
         
         
@@ -288,7 +278,7 @@ $border-radius: 1rem;
     .bodyNav{
         width: 17vw;
         height: 82%;
-        top: 110px;
+        top: 90px;
         left: 10px;
         display: flex;
         flex-direction: column;
@@ -382,29 +372,7 @@ $border-radius: 1rem;
         width: 112%;
     }
     
-    .links-btnsNav.active::before, .links-btnsNav.active::after{
-        content: '';
-        position: absolute;
-        width: 0.8rem;
-        height: $border-radius;
-        background: rgba(44, 64, 63, 0.726);
-        left: 93%;
-        
-    }
     
-    .links-btnsNav.active::before {
-        top: calc(-#{$border-radius} * -2.5);
-        border-radius: 0 100vw 0 110vw;
-        box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
-    }
-    
-    .links-btnsNav.active::after {
-        bottom: calc(-#{$border-radius} * -2.5);
-        border-radius: 110vw 0 100vw 0;
-        box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
-    }
-
-
 
 
 
@@ -517,27 +485,7 @@ $border-radius: 1rem;
             width: 101%;
         }
         
-        .links-btnsNav.active::before, .links-btnsNav.active::after{
-            content: '';
-            position: absolute;
-            width: 0.7rem;
-            height: $border-radius;
-            background: rgba(44, 64, 63, 0.726);
-            left: 81%;
-            
-        }
-        
-        .links-btnsNav.active::before {
-            top: calc(-#{$border-radius} * -2.5);
-            border-radius: 0 100vw 0 110vw;
-            box-shadow: 5px -5px  0 5px rgb(165, 165, 165);
-        }
-        
-        .links-btnsNav.active::after {
-            bottom: calc(-#{$border-radius} * -2.5);
-            border-radius: 110vw 0 100vw 0;
-            box-shadow: 5px 5px  0 5px rgb(165, 165, 165);
-        }
+       
     }
 }
 

@@ -7,10 +7,49 @@
     gap: 10px;
     padding: 5px 10px 5px 10px;
     margin: 5px 0px 15px 0px;
+    color: rgb(44, 64, 63);
+
+    p{
+        font-weight: bold;
+    }
 }
 
 .containerButtons{
     display: flex;
     gap: 15px;
     margin: 15px 0px 15px 5px;
+}
+
+.btnSearch{
+     background-color: rgb(44, 64, 63);
+     border: none;
+
+     &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(224, 223, 223);
+        transition: all 0.5s ease-in-out;
+     }
+}
+
+.btnClean{
+    background-color: rgb(71, 71, 71);
+    color: white;
+    border: none;
+
+     &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(224, 223, 223);
+        transition: all 0.5s ease-in-out;
+     }
+}
+
+.btnEditUser{
+     background-color: rgb(44, 64, 63);
+     border: none;
+
+     &:hover{
+        color: rgb(44, 64, 63);
+        background-color: rgb(224, 223, 223);
+        transition: all 0.5s ease-in-out;
+     }
 }

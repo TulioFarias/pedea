@@ -43,7 +43,10 @@ function ShowContainerEditFAQ() {
       <p>
         {t("Todas as perguntas ativas na página de perguntas frequentes estão abaixo:")}
       </p>
-      <Carousel interval={null} controls={true} className="carouselCustomFAQ">
+      <Carousel 
+      interval={null} 
+      controls={true} 
+      className="carouselCustomFAQ">
         {valuesFAQ.map((faq, index) => (
           <Carousel.Item key={index}>
             <div className="ContainerItensCarousel">

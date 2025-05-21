@@ -1,130 +1,55 @@
 
 
-.ContainerAllSettingsInfo{
+.containerInfoSettings{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
+    color: rgb(44, 64, 63);
+    margin: 5px 0px 15px 0px;
+
+    p{
+        margin-top: 2px;
+        font-weight: bold;
+    }
 }
 
-.titleSettings{
-    text-align: center;
-    font-weight: bold;
-    
-}
-.ContainerSettingsAndUser{
+.ContainerInfoUser{
+    border-radius: 10px;
+    background-color: rgb(44, 64, 63);
+    width: 50%;
+    margin-left: 10px;
     padding: 10px;
     display: flex;
-    align-items: center;
-    width: 35vw;
-    
-    
-  
-   
+    justify-content: center;
 }
 
 .containerUserSettings{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: max-content;
+    width: 100%;
     border-radius: 20px;
     padding: 10px;
-    background-color: #cacaca2a;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.541);
     gap: 20px;
+    
 
 
     .form-label{
         font-size: 14px!important;
+        color: white;
+        margin-bottom: 0px;
+        
     }
 }
-
-.titleUserSettings{
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 15px;
-   
-}
-
-
-.user-imageSettings{
-    width: 140px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.411);
-    box-shadow:  0px 0px 2px 2px rgba(0, 0, 0, 0.411);
-}
-
-.user-imageSettings img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover; 
-    border-radius: 50%; 
-}
-
-
-.containerFileImg{
-    display: flex;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    justify-content: center;
-    top: 120px;
-    left: 8px;
-    cursor: pointer;
-}
-
-
-
-.file-btn{
-    position: absolute;
-    left: 55px; 
-    width: 100%; 
-    height: 100%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    cursor: pointer;
-    border: 1px dashed;
-    background-color: transparent;
-    color: gray;
-
-
-    &:hover{
-        transform: scale(1.05);
-        transition: 0.3s all ease-in-out;
-        color: rgb(0, 136, 247);
-        background-color: rgb(78, 78, 78);
-
-    }
-}
-
-
 
 
 .inputsValuesUser{
-    width: 30vw;
     display: flex;
     justify-content: center;
-    margin-top: 5px;
 }
 
-.inputsValuesUserName{
-    width: 13vw;
-    position: relative;
-    top: 30px;
-    left: 53px;
-}
 
 .valueInputCustom{
     color: gray;
+    font-weight: bold;
     
 }
 

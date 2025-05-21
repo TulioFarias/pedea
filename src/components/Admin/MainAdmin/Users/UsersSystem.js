@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import '../../../../sass/admin/Users/users.scss'
-
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button, Form, Row, Col, Table } from 'react-bootstrap'
 import PeopleIcon from '@mui/icons-material/People'
-import axios from 'axios'
-
-function UserSystem({ setActiveButton, handleOptionChange }) {
+import apiPEDEA from '../../../../services/api'
+import SearchIcon from '@mui/icons-material/Search';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+function UserSystem() {
 
   const { t } = useTranslation()
 
-  // Estado para armazenar os valores de CPF, Nome e os usuários
+  
   const [searchParams, setSearchParams] = useState({ cpf: '', nome: '' })
   const [users, setUsers] = useState([])
+  
 
-  // Função para atualizar os campos de CPF e Nome
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setSearchParams(prevState => ({
@@ -24,30 +26,35 @@ function UserSystem({ setActiveButton, handleOptionChange }) {
     }))
   }
 
-  // Função para buscar os usuários
-  const handleSearch = () => {
-    fetchUsers()
-  }
+ 
+ const handleClear = () => {
+  setSearchParams({ cpf: '', nome: '' })
+  setUsers([]) 
+}
 
-  // Função para limpar os campos
-  const handleClear = () => {
-    setSearchParams({ cpf: '', nome: '' })
-  }
+  
 
 
-  const fetchUsers = async (data) => {
-    const cpfSemMascara = data.cpf.replace(/\D/g, '');
-    try {
-      const response = await axios.get('/users', { 
-        params: searchParams 
-      })
+const handleSearch = async () => {
+  try {
+    const params = {}
 
-      console.log(response)
-      setUsers(response.data) 
-    } catch (error) {
-      console.error('Erro ao buscar usuários:', error)
+    if (searchParams.cpf.trim()) {
+      params.cpf = searchParams.cpf.replace(/\D/g, '') 
     }
+
+    if (searchParams.nome.trim()) {
+      params.nome = searchParams.nome.trim()
+    }
+
+    const { data } = await apiPEDEA.get('/users', { params })
+    setUsers(data)
+  } catch (error) {
+    console.error('Erro ao buscar usuários:', error)
+    setUsers([])
   }
+}
+
 
    const maskCPF = (value) => {
     const numeric = value.replace(/\D/g, '').slice(0, 11);
@@ -63,7 +70,7 @@ function UserSystem({ setActiveButton, handleOptionChange }) {
       <div className="ContainerSearch">
         <div className="containerHeader">
           <PeopleIcon />
-          <h6>{t("Consultar usuários")}</h6>
+          <p>{t("Consultar usuários")}</p>
         </div>
 
         <Form>
@@ -94,11 +101,13 @@ function UserSystem({ setActiveButton, handleOptionChange }) {
 
 
             <div className='containerButtons'>
-              <Button variant="primary" onClick={handleSearch}>
+              <Button className='btnSearch' onClick={handleSearch}>
+                <SearchIcon/>
                 {t("Pesquisar")}
               </Button>
       
-              <Button variant="secondary" onClick={handleClear}>
+              <Button variant="secondary" className='btnClean' onClick={handleClear}>
+                <CleaningServicesIcon/>
                 {t("Limpar")}
               </Button>
             </div>
@@ -108,36 +117,42 @@ function UserSystem({ setActiveButton, handleOptionChange }) {
         </Form>
       </div>
 
-      {/* Tabela de Usuários */}
+     
       <div className="ContainerTable">
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>{t("Id")}</th>
               <th>{t("Nome")}</th>
               <th>{t("CPF")}</th>
               <th>{t("Email")}</th>
-              <th>{t("Ações")}</th> 
+              <th>{t("Administrador")}</th>
+              <th>{t("Gerente")}</th>
+              <th></th> 
             </tr>
           </thead>
           <tbody>
-            {users.length > 0 ? (
-              users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.nome}</td>
-                  <td>{user.cpf}</td>
-                  <td>{user.email}</td>
-                  <td>
-                    <Button variant="warning" onClick={() => handleEdit(user.id)}>
-                      {t("Editar")}
-                    </Button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4">{t("Nenhum usuário encontrado.")}</td>
+           {users.length > 0 ? (
+            users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.cpf}</td>
+                <td>{user.email}</td>
+                <td>{user.admin ? t("Sim") : t("Não")}</td>
+                <td>{user.gerente ? t("Sim") : t("Não")}</td>
+                <td>
+                  <Button  className='btnEditUser' onClick={() => handleEdit(user.id)}>
+                    <EditNoteRoundedIcon />
+                  </Button>
+                </td>
               </tr>
-            )}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="7" >{t("Nenhum usuário encontrado.")}</td>
+            </tr>
+          )}
           </tbody>
         </Table>
       </div>
@@ -148,11 +163,6 @@ function UserSystem({ setActiveButton, handleOptionChange }) {
     console.log('Editando usuário com ID:', userId)
    
   }
-}
-
-UserSystem.propTypes = {
-  setActiveButton: PropTypes.func.isRequired,
-  handleOptionChange: PropTypes.func.isRequired,
 }
 
 export default UserSystem
