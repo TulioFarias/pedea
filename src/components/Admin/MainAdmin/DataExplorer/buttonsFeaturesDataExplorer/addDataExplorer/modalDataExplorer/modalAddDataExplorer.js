@@ -1,17 +1,22 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-
+import { useSelector } from 'react-redux';
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../../services/api'
 import dataValues from './values'
 
+
 function ModalAddDataExplorer({ show, handleClose }) {
+   const [user, setUser] = useState([]);
+  const userData = useSelector(state => state.userInfoSlice.infoUser);
+  const { id: loggedInUserId } = userData;
   const [subcategorias, setSubcategorias] = useState([])
+
 
   const schema = Yup.object().shape({
     categoriaDeInformacao: Yup.string().required('Campo obrigatório'),
@@ -81,6 +86,23 @@ function ModalAddDataExplorer({ show, handleClose }) {
       console.error('Erro ao atualizar os dados:', errorMessage);
     }
   };
+
+  useEffect(() => {
+      async function loadUserData() {
+        try {
+          const { data } = await apiPEDEA.get('/admin');
+          const loggedInUser = data.filter(user => user.id === loggedInUserId);
+  
+          if (loggedInUser) {
+            setUser(loggedInUser);
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      }
+  
+      loadUserData();
+    }, [loggedInUserId]);
 
   return (
     <>

@@ -1,13 +1,20 @@
 
 
-import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useRef} from 'react';
 import apiPEDEA from '../../../../../services/api';
 import '../../../../../sass/admin/DataExplorer/dataExplorer.scss'
-import ChangeTable from './tablefilesDataExplorer';
-import DownloadIcon from '@mui/icons-material/Download';
-import TableViewIcon from '@mui/icons-material/TableView';
 import { useTranslation } from 'react-i18next'
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import BackupTableIcon from '@mui/icons-material/BackupTable';
+import { InputText } from 'primereact/inputtext';
+import { FloatLabel } from 'primereact/floatlabel';
+import { SplitButton } from 'primereact/splitbutton';
+import { Toast } from 'primereact/toast';
+import ChangeTable from './tablefilesDataExplorer';
+
+
+
 function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
@@ -16,9 +23,11 @@ function TableViewRotulosData() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedTable, setSelectedTable] = useState('TableRotulos');
   const [showSideBar, setShowSideBar] = useState(false);
+  const [globalFilter, setGlobalFilter] = useState('');
+  const dt = useRef(null);
+  const toast = useRef(null);
   
   const { t } = useTranslation()
-
 
   useEffect(() => {
     async function getInfoDataExplorer() {
@@ -86,8 +95,6 @@ function TableViewRotulosData() {
         responseType: 'blob',
       });
 
-      console.log(response)
-  
       const blob = new Blob([response.data], { type: response.headers['content-type'] });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -102,164 +109,157 @@ function TableViewRotulosData() {
     }
   };
 
+    const items = [
+  {
+    label: 'Trocar tabela',
+    icon: 'pi pi-table',
+    command: () => openSideBar()
+  },
+  {
+    label: 'Baixar tabela',
+    icon: 'pi pi-download',
+    command: () =>{
+      handleDownloadTable()
+       toast.current.show({
+      severity: 'success',
+      summary: 'Baixando...',
+      detail: 'O arquivo está sendo baixado!',
+      life: 2000
+    });
+    }
+  }
+];
 
-  return (
-    <div className="ContainerTableRotulosData">
-      <div className="headerContainerTableRotulos">
 
-        <div className='containerDownloadTable'>
-        <p>{t("Baixar tabela do explorador de dados em formato .csv")}</p>
-        <button className='btnDownload' onClick={handleDownloadTable}>
-          <span class="buttonText">{t("Baixar")}</span>
-          <DownloadIcon fontSize='small' className='iconDownload'/>
-          </button>
-          
-        </div>
+   const header = (
+    <div className="table-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 
-        <h2>
+      <h3 style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <BackupTableIcon/>
           {selectedTable === 'TableRotulos'
             ? t('Tabela de rótulos ativos no explorador de dados:')
             : selectedTable === 'FilesRotulos'
             ? t('Tabela de arquivos cadastrados:')
             : t('Tabela de arquivos em edição:')}
-        </h2>
+        </h3>
 
-        <div className='containerChangeTable'>
 
-        <p>{t("Mudar tabela de arquivos")}</p>
-        <button className="BtnChangeTableRotulos" onClick={openSideBar}>
-          <TableViewIcon />
-        </button>
+        <div style={{ display: 'flex', msFlexDirection: 'column', alignItems: 'center', gap: '5px' }}>
+           <FloatLabel>
+          <InputText
+            id="busca"
+            type="search"
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+          />
+          <label htmlFor="busca">Pesquisar...</label>
+        </FloatLabel>
+
+        <div className="card flex justify-content-center">
+          <Toast ref={toast} />
+          <SplitButton
+            label="Tabelas"
+            model={items}
+            severity="secondary"
+            rounded
+            className="tabelas-split"
+            menuStyle={{
+              backgroundColor: '#f0f0f0',
+              borderRadius: '8px',
+              padding: '8px 0px 0px 0px',
+              minWidth: '180px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }}
+          />
         </div>
+        </div>
+
        
       </div>
-      
-      <div className="TableViewRotulos">
-        <Paper className="ContainerTableView">
-        <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={
-              selectedTable === 'TableRotulos'
-                ? dataExplorer.length
-                : selectedTable === 'FilesRotulos'
-                ? tableFilesRotulos.length
-                : tableFilesCSVEdit.length
-            }
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-          <TableContainer>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  
-                  {selectedTable === 'TableRotulos' ? (
-                    <>
-                  
-                      <TableCell>ID</TableCell>
-                      <TableCell>Categoria de Informação</TableCell>
-                      <TableCell>Classe Maior</TableCell>
-                      <TableCell>Subclasse Maior</TableCell>
-                      <TableCell>Classe Menor</TableCell>
-                      <TableCell>Nomenclatura GreenCloud</TableCell>
-                      <TableCell>Nomenclatura PEDEA</TableCell>
-                      <TableCell>Fonte</TableCell>
-                      <TableCell>Coluna Atributo</TableCell>
-                      <TableCell>Modulos de gráficos</TableCell>
-                      <TableCell>Link Drive SHP</TableCell>
-                      <TableCell>Link Drive KML</TableCell>
-                      <TableCell>Chave vinculada</TableCell>
-                      <TableCell>Criado em</TableCell>
-                      <TableCell>Atualizado em</TableCell>
-                    </>
-                  ) : selectedTable === 'FilesRotulos' ? (
-                    <>
-                    
-                      <TableCell>Nome</TableCell>
-                      <TableCell>Arquivo</TableCell>
-                      <TableCell>Data de Criação</TableCell>
-                      <TableCell>Data de Atualização</TableCell>
-                    </>
-                  ) : (
-                    <>
-                     
-                      <TableCell>Nome</TableCell>
-                      <TableCell>Arquivo</TableCell>
-                      <TableCell>Data de Criação</TableCell>
-                      <TableCell>Data de Atualização</TableCell>
-                    </>
-                  )}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {selectedTable === 'TableRotulos'
-                  ? dataExplorer
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map(item => (
-                        <TableRow key={item.id} hover role="checkbox" tabIndex={-1}>
-                          <TableCell>{item.id}</TableCell>
-                          <TableCell>{item.categoria_de_informacao}</TableCell>
-                          <TableCell>{item.classe_maior}</TableCell>
-                          <TableCell>{item.sub_classe_maior}</TableCell>
-                          <TableCell>{item.classe_menor}</TableCell>
-                          <TableCell>{item.nomenclatura_greencloud}</TableCell>
-                          <TableCell>{item.nomenclatura_pedea}</TableCell>
-                          <TableCell>{item.fonte}</TableCell>
-                          <TableCell>{item.coluna_atributo}</TableCell>
-                          <TableCell>{item.modulos_graficos ? 'Sim' : 'Não'}</TableCell>
-                          <TableCell>{item.link_drive_shp}</TableCell>
-                          <TableCell>{item.link_drive_kml}</TableCell>
-                          <TableCell>{item.key_rotulo}</TableCell>
-                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
-                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
-                        </TableRow>
-                      ))
-                  : selectedTable === 'FilesRotulos'
-                  ? tableFilesRotulos
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map(item => (
-                        <TableRow key={item.id}>
-                          <TableCell>{item.name}</TableCell>
-                          <TableCell>{item.path}</TableCell>
-                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
-                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
-                        </TableRow>
-                      ))
-                  : tableFilesCSVEdit
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map(item => (
-                        <TableRow key={item.id}>
-                          <TableCell>{item.name}</TableCell>
-                          <TableCell>{item.path}</TableCell>
-                          <TableCell>{formatTimestamp(item.createdAt)}</TableCell>
-                          <TableCell>{formatTimestamp(item.updatedAt)}</TableCell>
-                        </TableRow>
-                      ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={
-              selectedTable === 'TableRotulos'
-                ? dataExplorer.length
-                : selectedTable === 'FilesRotulos'
-                ? tableFilesRotulos.length
-                : tableFilesCSVEdit.length
-            }
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </div>
+  );
 
-      <ChangeTable
+
+  return (
+    <div className="ContainerTableRotulosData">
+      
+       <div className="card" style={{ height: '100%' }}>
+          {selectedTable === 'TableRotulos' && (
+            <DataTable
+              ref={dt}
+              value={dataExplorer}
+              header={header}
+              globalFilter={globalFilter}
+              dataKey="id"
+              emptyMessage="Nenhum dado encontrado."
+              stripedRows
+              paginator rows={5}
+              rowsPerPageOptions={[5, 10, 25, 50]}
+              tableStyle={{ minWidth: '50rem' }}
+            >
+              <Column field="id" header="ID" />
+              <Column field="categoria_de_informacao" header="Categoria de Informação" />
+              <Column field="classe_maior" header="Classe Maior" />
+              <Column field="sub_classe_maior" header="Subclasse Maior" />
+              <Column field="classe_menor" header="Classe Menor" />
+              <Column field="coluna_atributo" header="Coluna Atributo" style={{ width: '10%' }} />
+              <Column field="nomenclatura_greencloud" header="Nomenclatura GreenCloud" />
+              <Column field="nomenclatura_pedea" header="Nomenclatura PEDEA" />
+              <Column field="fonte" header="Fonte" />
+              <Column field="modulos_graficos" header="Módulos de Gráficos" body={(rowData) => (rowData.modulos_graficos ? 'Sim' : 'Não')} />
+              <Column field="link_drive_shp" header="Link Drive SHP" />
+              <Column field="link_drive_kml" header="Link Drive KML" />
+              <Column field="key_rotulo" header="Chave vinculada" />
+              <Column header="Usuário" body={(rowData) => rowData.user?.name || ''} />
+              <Column field="createdAt" header="Criado em" body={(rowData) => formatTimestamp(rowData.createdAt)} />
+              <Column field="updatedAt" header="Atualizado em" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
+            </DataTable>
+          )}
+
+          {selectedTable === 'FilesRotulos' && (
+            <DataTable
+              ref={dt}
+              value={tableFilesRotulos} // ou o nome da sua outra fonte de dados
+              header={header}
+              globalFilter={globalFilter}
+              dataKey="id"
+              emptyMessage="Nenhum arquivo cadastrado."
+              stripedRows
+              paginator rows={5}
+              rowsPerPageOptions={[5, 10, 25, 50]}
+              tableStyle={{ minWidth: '50rem' }}
+            >
+              <Column field="id" header="ID" />
+              <Column field="name" header="Nome do Arquivo" />
+              <Column field="user.name" header="Enviado por" body={(rowData) => rowData.user?.name || ''} />
+              <Column field="createdAt" header="Data de Criação" body={(rowData) => formatTimestamp(rowData.createdAt)} />
+              <Column field="updatedAt" header="Data de Atualização" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
+            </DataTable>
+          )}
+
+          {selectedTable === 'FilesEdit' && (
+            <DataTable
+              ref={dt}
+              value={tableFilesCSVEdit}
+              header={header}
+              globalFilter={globalFilter}
+              dataKey="id"
+              emptyMessage="Nenhum rótulo em edição."
+              stripedRows
+              paginator rows={5}
+              rowsPerPageOptions={[5, 10, 25, 50]}
+              tableStyle={{ minWidth: '50rem' }}
+            >
+              <Column field="id" header="ID" />
+              <Column field="name" header="Nome do Arquivo" />
+              <Column field="user.name" header="Enviado por" body={(rowData) => rowData.user?.name || ''} />
+              <Column field="createdAt" header="Data de Criação" body={(rowData) => formatTimestamp(rowData.createdAt)} />
+              <Column field="updatedAt" header="Data de Atualização" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
+            </DataTable>
+          )}
+        </div>
+
+
+          <ChangeTable
         showSideBar={showSideBar}
         setShowSideBar={setShowSideBar}
         setSelectedTable={setSelectedTable}

@@ -4,6 +4,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ToastContainer } from 'react-toastify'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+import 'primereact/resources/themes/saga-green/theme.css';
 
 import NewRoutes from './_config/routes'
 

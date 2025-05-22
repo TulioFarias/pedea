@@ -5,12 +5,15 @@ import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-
+import { useSelector } from 'react-redux';
 import apiPEDEA from '../../../../../services/api'
 import '../../../../../sass/admin/DataExplorer/modalsDataExplorer/confirmsendDataExplorer.scss'
 
 function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
   const [data, setData] = useState([])
+  const [user, setUser] = useState([]);
+  const userData = useSelector(state => state.userInfoSlice.infoUser);
+  const { id: loggedInUserId } = userData;
   
 
   const schema = Yup.object().shape({
@@ -38,6 +41,7 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
     async function loadDataCSVRotulos() {
       try {
         const { data } = await apiPEDEA.get('/getAllRotulosCSV')
+        console.log(data)
         if (data) {
           setData(data)
         }
@@ -46,13 +50,30 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
       }
     }
 
+     async function loadUserData() {
+      try {
+        const { data } = await  apiPEDEA.get('/admin');
+        const loggedInUser = data.filter(user => user.id === loggedInUserId);
+
+        if (loggedInUser) {
+          setUser(loggedInUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
     loadDataCSVRotulos()
+    loadUserData()
   }, [])
 
   const onSubmit = async formData => {
     try {
       await toast.promise(
-        apiPEDEA.post('/createValueDataExplorer', { fileName: formData.path }),
+        apiPEDEA.post('/createValueDataExplorer', { 
+          fileName: formData.path,
+          user_id: loggedInUserId
+        }),
         {
           pending: 'Enviando dados...',
           success: 'Dados enviados com sucesso!',
@@ -105,7 +126,7 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
                       value={item.path}
                       className="optionValueSelect"
                     >
-                      {item.path}
+                      {item.path} 
                     </option>
                   ))}
                 </Form.Control>

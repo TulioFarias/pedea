@@ -111,85 +111,18 @@
     justify-content: space-between;
   }
 
-  .containerDownloadTable{
-    padding: 5px;
-    margin-bottom: 5px;
-    width: 200px;
-    gap: 0px;
-    border-radius: 10px;
-
-
-    p{
-      font-size: 12px;
-    }
-    
-
-    .btnDownload {
-      position: relative;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.267);
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: transparent;
-      color: white;
-      transition: all 0.3s ease-in-out;
-    
-    }
-
-    
-    .btnDownload .buttonText {
-      transform: translateX(22px);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    
-   
-    .btnDownload:hover {
-      background: #17795d6c;
-      transform: scale(1.02);
-      
-    }
-    
-    
-   
-  }
-
-
-  .containerChangeTable{
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 5px;
-    padding: 5px;
-
-
-    p{
-      font-size: 12px;
-    }
-
-    .BtnChangeTableRotulos{
-      color: white;
-      background-color: transparent;
-      border-radius: 10px;
-      border: none;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
   
-      &:hover{
-          color: rgb(92, 89, 89);
-          transition: all 0.3s ease-in-out;
-          background-color: white;
-      }
-  }
+.tabelas-split .p-menuitem > a {
+  text-decoration: none !important;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
 
-  }
+  
   
   .ContainerTableView{
     height: max-content;

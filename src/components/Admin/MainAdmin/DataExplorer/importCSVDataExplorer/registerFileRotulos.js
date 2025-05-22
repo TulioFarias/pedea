@@ -1,20 +1,25 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import { Tooltip } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import { useTranslation } from 'react-i18next'
 import ModalConfirmAddDataExplorer from './modalConfirmRegisteCSV'
-
+import { useSelector } from 'react-redux';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import '../../../../../sass/admin/DataExplorer/importcsvdataexplore.scss'
 import api from '../../../../../services/api'
-
+import StorageIcon from '@mui/icons-material/Storage';
 function ImportFileRotulos() {
-
+  const userData = useSelector(state => state.userInfoSlice.infoUser);
+  const { id: loggedInUserId } = userData;
+  
   const { t } = useTranslation()
+
+  const [user, setUser] = useState([]);
   const [findDataRotulos, setfindDataRotulos] = useState({
     key: '',
     file: null,
@@ -41,12 +46,30 @@ function ImportFileRotulos() {
     setModalConfirm(true)
   }
 
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await api.get('/admin');
+        const loggedInUser = data.filter(user => user.id === loggedInUserId);
+
+        if (loggedInUser) {
+          setUser(loggedInUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    loadUserData();
+  }, [loggedInUserId]);
+
   const onSubmit = async data => {
     try {
       const formData = new FormData()
       if (data.file && data.file.length > 0) {
         formData.append('file', data.file[0])
         formData.append('name', data.name)
+        formData.append('user_id', loggedInUserId) 
       }
 
       await toast.promise(
@@ -88,8 +111,7 @@ function ImportFileRotulos() {
   const infoUserTutorial = {
     importFile: {
       name: 'Escolha um nome descritivo para o arquivo.',
-      file: 'Selecione o arquivo que deseja importar.',
-      key: 'Escolha uma chave única para o arquivo.'
+      file: 'Selecione o arquivo que deseja importar.'
     }
   }
 
@@ -147,7 +169,8 @@ function ImportFileRotulos() {
         </Form.Group>
 
         <Button variant="secondary" type="submit" className="BtnSubmitImport">
-          {t("Adicionar CSV")}
+          {t("Enviar arquivo")}
+          <FileUploadIcon/>
         </Button>
       </Form>
 
@@ -157,7 +180,8 @@ function ImportFileRotulos() {
           {t("Para adicionar os dados do arquivo .csv enviados, clique no botão abaixo:")}
         </p>
         <Button className="ButtonAddCSV" onClick={openModal}>
-          {t("Adicionar dados do arquivo CSV")}
+          {t("Importar dados para o banco")}
+          <StorageIcon/>
         </Button>
       </div>
 
