@@ -128,7 +128,7 @@ const handleSearch = async () => {
               <th>{t("Email")}</th>
               <th>{t("Administrador")}</th>
               <th>{t("Gerente")}</th>
-              <th></th> 
+              <th>{t("Editar")}</th> 
             </tr>
           </thead>
           <tbody>

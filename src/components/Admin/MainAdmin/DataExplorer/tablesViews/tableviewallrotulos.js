@@ -19,8 +19,6 @@ function TableViewRotulosData() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
   const [tableFilesCSVEdit, setTableFilesCSVEdit] = useState([])
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedTable, setSelectedTable] = useState('TableRotulos');
   const [showSideBar, setShowSideBar] = useState(false);
   const [globalFilter, setGlobalFilter] = useState('');
@@ -63,14 +61,7 @@ function TableViewRotulosData() {
     loadTableFilesRotulos();
   }, []);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
 
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -156,20 +147,14 @@ function TableViewRotulosData() {
         </FloatLabel>
 
         <div className="card flex justify-content-center">
-          <Toast ref={toast} />
+          <Toast ref={toast} className='toastdownload'/>
           <SplitButton
             label="Tabelas"
             model={items}
             severity="secondary"
             rounded
             className="tabelas-split"
-            menuStyle={{
-              backgroundColor: '#f0f0f0',
-              borderRadius: '8px',
-              padding: '8px 0px 0px 0px',
-              minWidth: '180px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+           
           />
         </div>
         </div>
@@ -181,8 +166,7 @@ function TableViewRotulosData() {
 
   return (
     <div className="ContainerTableRotulosData">
-      
-       <div className="card" style={{ height: '100%' }}>
+    
           {selectedTable === 'TableRotulos' && (
             <DataTable
               ref={dt}
@@ -194,7 +178,7 @@ function TableViewRotulosData() {
               stripedRows
               paginator rows={5}
               rowsPerPageOptions={[5, 10, 25, 50]}
-              tableStyle={{ minWidth: '50rem' }}
+              tableStyle={{ minWidth: '50rem', height: '37.4rem'}}
             >
               <Column field="id" header="ID" />
               <Column field="categoria_de_informacao" header="Categoria de Informação" />
@@ -209,7 +193,7 @@ function TableViewRotulosData() {
               <Column field="link_drive_shp" header="Link Drive SHP" />
               <Column field="link_drive_kml" header="Link Drive KML" />
               <Column field="key_rotulo" header="Chave vinculada" />
-              <Column header="Usuário" body={(rowData) => rowData.user?.name || ''} />
+              <Column header="Enviado por" body={(rowData) => rowData.user?.name || ''} />
               <Column field="createdAt" header="Criado em" body={(rowData) => formatTimestamp(rowData.createdAt)} />
               <Column field="updatedAt" header="Atualizado em" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
             </DataTable>
@@ -218,7 +202,7 @@ function TableViewRotulosData() {
           {selectedTable === 'FilesRotulos' && (
             <DataTable
               ref={dt}
-              value={tableFilesRotulos} // ou o nome da sua outra fonte de dados
+              value={tableFilesRotulos} 
               header={header}
               globalFilter={globalFilter}
               dataKey="id"
@@ -256,7 +240,7 @@ function TableViewRotulosData() {
               <Column field="updatedAt" header="Data de Atualização" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
             </DataTable>
           )}
-        </div>
+  
 
 
           <ChangeTable
