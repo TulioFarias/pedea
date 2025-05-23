@@ -180,22 +180,73 @@ function TableViewRotulosData() {
               rowsPerPageOptions={[5, 10, 25, 50]}
               tableStyle={{ minWidth: '50rem', height: '37.4rem'}}
             >
-              <Column field="id" header="ID" />
-              <Column field="categoria_de_informacao" header="Categoria de Informação" />
-              <Column field="classe_maior" header="Classe Maior" />
-              <Column field="sub_classe_maior" header="Subclasse Maior" />
-              <Column field="classe_menor" header="Classe Menor" />
-              <Column field="coluna_atributo" header="Coluna Atributo" style={{ width: '10%' }} />
-              <Column field="nomenclatura_greencloud" header="Nomenclatura GreenCloud" />
-              <Column field="nomenclatura_pedea" header="Nomenclatura PEDEA" />
-              <Column field="fonte" header="Fonte" />
-              <Column field="modulos_graficos" header="Módulos de Gráficos" body={(rowData) => (rowData.modulos_graficos ? 'Sim' : 'Não')} />
-              <Column field="link_drive_shp" header="Link Drive SHP" />
-              <Column field="link_drive_kml" header="Link Drive KML" />
-              <Column field="key_rotulo" header="Chave vinculada" />
-              <Column header="Enviado por" body={(rowData) => rowData.user?.name || ''} />
-              <Column field="createdAt" header="Criado em" body={(rowData) => formatTimestamp(rowData.createdAt)} />
-              <Column field="updatedAt" header="Atualizado em" body={(rowData) => formatTimestamp(rowData.updatedAt)} />
+              <Column field="id" header="ID" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+                      
+              <Column field="categoria_de_informacao" header="Categoria de Informação" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="classe_maior" header="Classe Maior" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="sub_classe_maior" header="Subclasse Maior" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="classe_menor" header="Classe Menor" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="coluna_atributo" header="Coluna Atributo" style={{ width: '10%' }} 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="nomenclatura_greencloud" header="Nomenclatura GreenCloud" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="nomenclatura_pedea" header="Nomenclatura PEDEA" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="fonte" header="Fonte" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="modulos_graficos" header="Módulos de Gráficos" 
+                      body={(rowData) => (rowData.modulos_graficos ? 'Sim' : 'Não')} 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="link_drive_shp" header="Link Drive SHP" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="link_drive_kml" header="Link Drive KML" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="key_rotulo" header="Chave vinculada" 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column header="Enviado por" 
+                      body={(rowData) => rowData.user?.name || ''}
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }} />
+
+              <Column field="createdAt" header="Criado em" 
+                      body={(rowData) => formatTimestamp(rowData.createdAt)} 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
+
+              <Column field="updatedAt" header="Atualizado em" 
+                      body={(rowData) => formatTimestamp(rowData.updatedAt)} 
+                      headerStyle={{ textAlign: 'center' }}
+                      bodyStyle={{ textAlign: 'center' }}/>
             </DataTable>
           )}
 
@@ -213,7 +264,7 @@ function TableViewRotulosData() {
               tableStyle={{ minWidth: '50rem' }}
             >
               <Column field="id" header="ID" />
-              <Column field="name" header="Nome do Arquivo" />
+              <Column field="path" header="Nome do Arquivo" />
               <Column field="user.name" header="Enviado por" body={(rowData) => rowData.user?.name || ''} />
               <Column field="createdAt" header="Data de Criação" body={(rowData) => formatTimestamp(rowData.createdAt)} />
               <Column field="updatedAt" header="Data de Atualização" body={(rowData) => formatTimestamp(rowData.updatedAt)} />

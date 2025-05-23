@@ -9,11 +9,14 @@ import Flag from 'react-flagkit'
 import { useTranslation } from 'react-i18next'
 import apiPEDEA from '../../../../services/api'
 import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
-import ContainerGetInfoRotulos from './findRotulosAndFiles/getRotulos'
 import IfKeyExist from './modalsRotulos/modalKeyExist'
 import CreateRotulosCSV from './csvRotulos/createCSVRotulos'
 import KeyIcon from '@mui/icons-material/Key';
+import { useSelector } from 'react-redux';
 import { Snackbar, Alert } from '@mui/material';
+
+
+
 function CreateRotulosSystem() {
 
   const { t } = useTranslation()
@@ -22,6 +25,9 @@ function CreateRotulosSystem() {
   const [showModalIfKey, setShowModalIfKey] = useState(false)
   const [editItemId, setEditItemId] = useState(null)
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
+    const [user, setUser] = useState([]);
+  const userData = useSelector(state => state.userInfoSlice.infoUser);
+  const { id: loggedInUserId } = userData;
 
   const handleTableUpdate = () => {
     setTableUpdated(prev => !prev)
@@ -59,7 +65,8 @@ function CreateRotulosSystem() {
               key: data.key,
               pt_br: data.pt_br,
               en: data.en,
-              es: data.es
+              es: data.es,
+              user_id: loggedInUserId
           });
 
           setSnackbar({
@@ -185,17 +192,14 @@ function CreateRotulosSystem() {
               >
                 {t("Cadastrar")}
               </Button>
-
-              
             </div>
-         
+
+            <hr/>
+            
+              <CreateRotulosCSV/>
           </Form>
-
           
-
-          <div>
-            <CreateRotulosCSV/>
-          </div>
+       
 
           <IfKeyExist
             showModalIfKey={showModalIfKey}
@@ -203,10 +207,6 @@ function CreateRotulosSystem() {
             handleTableUpdate={handleTableUpdate}
             setEditItemId={setEditItemId}
           />
-
-          <div className="ContainerGetWithKeyRotulos">
-            <ContainerGetInfoRotulos />
-          </div>
         </div>
 
         <ContainerInfoRotulos

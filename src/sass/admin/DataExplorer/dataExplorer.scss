@@ -91,30 +91,8 @@
     text-align: center;
     overflow: auto;
   
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
-  
-    }
-
-    hr{
-      border: 1px dashed white;
-      margin-top: 0px;
-      margin-bottom: 5px;
-    }
   }
 
- 
-  
-.tabelas-split .p-menuitem > a {
-  text-decoration: none !important;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #333;
-}
 
   
   
@@ -140,13 +118,26 @@
 
     a{
       text-decoration: none;
-      color: red!important;
     }
 
     :hover{
         background-color: none;
       }
   }
+
+  .p-tieredmenu .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
+    color: white;
+}
+
+.p-menuitem-link{
+  color: white;
+}
+
+.p-tieredmenu .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-icon {
+    margin-right: 0.5rem;
+    color: white;
+
+}
   
 
   

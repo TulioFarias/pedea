@@ -17,13 +17,24 @@
     flex-direction: row;
 }
 
-.errorTxt{
-    
-}
 
 .containerBtnsSubmit{
     display: flex;
+    background-color: rgba(255, 255, 255, 0.267);
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
     justify-content: space-between;
+
+
+    p{
+        font-size: 14px;
+        width: 100%;
+        color: white;
+        margin-bottom: 0px;
+        text-align: center;
+    }
 }
 
 
@@ -34,14 +45,13 @@
 }
 
 .BtnDownloadExemple {
-    position: relative; 
-    overflow: hidden;
-    margin-top: 10px;
-    font-size: 10px;
-    height: 30px;
+    font-size: 14px;
+    height: 40px;
+    width: 100%;
     border: none;
     border-radius: 10px;
     background-color: rgb(71, 71, 71);
+    margin-bottom: 10px;
     color: white;
     display: flex;
     align-items: center;
@@ -57,10 +67,10 @@
 
 
 .BtnSubmitRotulosCSV{
-    margin-top: 10px;
+    
     border: none;
     border-radius: 10px;
-    background-color: rgb(71, 71, 71);
+    background-color: rgb(44, 64, 63);
     color: white;
     display: flex;
     align-items: center;
@@ -79,13 +89,7 @@
 
 @media only screen and (max-width: 1040px){
 
-    .ContainerAllImportCSVRotulos{
-        background-color: #e9e8e8;
-        border-radius: 10px;
-        padding: 10px;
-        margin-top: 10px;
-        width: 70vw;
-    }
+    
     
     .formGroupTwo{
         margin-top: 20px;

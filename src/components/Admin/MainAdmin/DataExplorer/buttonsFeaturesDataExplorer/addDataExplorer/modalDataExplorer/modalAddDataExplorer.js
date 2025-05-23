@@ -63,7 +63,8 @@ function ModalAddDataExplorer({ show, handleClose }) {
           colunaatributo: data.colunaAtributo,
           linkdriveshp: data.linkDriveShp,
           linkdrivekml: data.linkDriveKml,
-          key_rotulos: data.key_rotulos
+          key_rotulos: data.key_rotulos,
+          user_id: loggedInUserId
         }),
         {
           pending: 'Adicionando novo registro...',

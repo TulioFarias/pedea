@@ -2,9 +2,6 @@
 .ContainerAllRotulosOptions{
     display: flex;
     gap: 10px;
-    width: 82vw;
-    height: 82vh;
-
     padding-right: 10px;
 
 }
@@ -13,29 +10,33 @@
 
 .ContainerAddInfoRotulos{
     border-radius: 10px;
-    width: 46vw;
-    height: max-content;
     display: flex;
     flex-direction: column;
+    width: 20%;
 }
 
 .containerInfos{
     padding: 10px;
     width: 100%;
+    height: 82vh;
     border-radius: 10px;
-    background-color: #e9e8e8;
+    background-color: rgb(44, 64, 63);
     
 
     .btnSubmitAddRotulos{
         height: 40px;
-        position: relative;
-        top: 30px;
+    }
+    
+      hr{
+      width: 100%;
+      border: 1px dashed white;
+      margin-top: 10px;
     }
     
 }
 
 .titleRegisterRotulo{
-    color: gray;
+    color: white;
     font-weight: 900;
     font-size: 16px;
     
@@ -45,7 +46,8 @@
 .containersLabelsFormRegisterRotulos{
        display: flex;
        width: max-content;
-       gap: 15px;
+       flex-direction: column;
+       gap: 5px;
        width: 100%;
       
 }
@@ -54,13 +56,11 @@
 
 
 .LabelRotulos{
-    color: gray;
+    color: white;
     font-size: 14px !important;
-    margin-left: 5px;
+    padding-left: 5px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
     border-radius: 10px;
     
@@ -128,27 +128,13 @@
 
 }
 
-.headerContainerTableRotulos{
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px dashed white;
-    margin-bottom: 10px;
+.containerTableBilingue{
+    width: 100%;
 }
-
-.titleTableRotulos{
-    color: white;
-    font-size: 18px;
-    font-weight: 900;
-}
-
-
-
 
 .titleSideBarChangeTable{
     font-size: 30px;
 }
-
-
 
 .containerBtnsTableView{
     display: flex;
