@@ -41,7 +41,7 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
     async function loadDataCSVRotulos() {
       try {
         const { data } = await apiPEDEA.get('/getAllRotulosCSV')
-        console.log(data)
+      
         if (data) {
           setData(data)
         }

@@ -1,0 +1,19 @@
+
+.containerTableGeoserver{
+    width: 84vw;
+    height: 83.2vh;
+    margin-top: 1px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    overflow: auto;
+
+}
+
+.containerHeaderGeoserver{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    gap: 5px;
+}

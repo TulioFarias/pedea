@@ -1,21 +1,21 @@
 import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
-import HttpsRoundedIcon from '@mui/icons-material/HttpsRounded'
+
 import QuestionAnswerRoundedIcon from '@mui/icons-material/QuestionAnswerRounded'
 import PeopleIcon from '@mui/icons-material/People';
-import PasswordIcon from '@mui/icons-material/Password';
+
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import '../../../sass/admin/NavAdmin/navAdmin.scss'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded'
-
+import PostAddIcon from '@mui/icons-material/PostAdd';
 import api from '../../../services/api'
-
+import TranslateIcon from '@mui/icons-material/Translate';
 function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
   const { t } = useTranslation()
 
@@ -91,7 +91,7 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
                   activeButton === 'Rotulos Bilingue' ? 'nav-link active' : 'nav-link'
                 }`}
               >
-                <AppsRoundedIcon />
+                <TranslateIcon/>
                 {t("Rótulos Bilíngue")}
               </Nav.Link>
             </motion.div>
@@ -109,11 +109,29 @@ function ButtonSystem({ handleOptionChange, setActiveButton, activeButton }) {
                   activeButton === 'DataExplorer' ? 'nav-link active' : 'nav-link'
                 }`}
               >
-                <TravelExploreRoundedIcon />
+                <PostAddIcon/>
                 {t("Explorador de Dados")}
               </Nav.Link>
             </motion.div>
           </Nav.Item>
+
+          <Nav.Item className="OptionsItems">
+        <motion.div whileHover={{ y: -10 }} transition={{ duration: 1 }}>
+          <Nav.Link
+            href="/Geoserver"
+            onClick={e => {
+              e.preventDefault()
+              handleButtonClick('Geoserver')
+            }}
+            className={`links-btnsNav ${
+              activeButton === 'Geoserver' ? 'nav-link active' : 'nav-link'
+            }`}
+          >
+            <TravelExploreRoundedIcon />
+            {t('Geoserver')}
+          </Nav.Link>
+        </motion.div>
+      </Nav.Item>
 
           <Nav.Item className="OptionsItems">
             <motion.div whileHover={{ y: -10 }} transition={{ duration: 0.5 }}>

@@ -8,6 +8,8 @@ import PeopleIcon from '@mui/icons-material/People'
 import apiPEDEA from '../../../../services/api'
 import SearchIcon from '@mui/icons-material/Search';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import { DataTable } from 'primereact/datatable'
+import { Column } from 'primereact/column'
 function UserSystem() {
 
   const { t } = useTranslation()
@@ -68,7 +70,7 @@ const handleSearch = async () => {
     <div className="ContainerUsers">
 
       <div className="ContainerSearch">
-        <div className="containerHeader">
+        <div className="containerHeaderUsers">
           <PeopleIcon />
           <p>{t("Consultar usuários")}</p>
         </div>
@@ -118,43 +120,37 @@ const handleSearch = async () => {
       </div>
 
      
-      <div className="ContainerTable">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>{t("Id")}</th>
-              <th>{t("Nome")}</th>
-              <th>{t("CPF")}</th>
-              <th>{t("Email")}</th>
-              <th>{t("Administrador")}</th>
-              <th>{t("Gerente")}</th>
-              <th>{t("Editar")}</th> 
-            </tr>
-          </thead>
-          <tbody>
-           {users.length > 0 ? (
-            users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.cpf}</td>
-                <td>{user.email}</td>
-                <td>{user.admin ? t("Sim") : t("Não")}</td>
-                <td>{user.gerente ? t("Sim") : t("Não")}</td>
-                <td>
-                  <Button  className='btnEditUser' onClick={() => handleEdit(user.id)}>
-                    <EditNoteRoundedIcon />
-                  </Button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="7" >{t("Nenhum usuário encontrado.")}</td>
-            </tr>
-          )}
-          </tbody>
-        </Table>
+     <div className="ContainerTable">
+        <DataTable
+          value={users}
+          dataKey="id"
+          emptyMessage={t("Nenhum usuário encontrado.")}
+          stripedRows
+          responsiveLayout="scroll"
+        >
+          <Column field="id" header={t("Id")} />
+          <Column field="name" header={t("Nome")} />
+          <Column field="cpf" header={t("CPF")} />
+          <Column field="email" header={t("Email")} />
+          <Column
+            field="admin"
+            header={t("Administrador")}
+            body={rowData => (rowData.admin ? t("Sim") : t("Não"))}
+          />
+          <Column
+            field="gerente"
+            header={t("Gerente")}
+            body={rowData => (rowData.gerente ? t("Sim") : t("Não"))}
+          />
+          <Column
+            header={t("Editar")}
+            body={rowData => (
+              <Button className="btnEditUser" onClick={() => handleEdit(rowData.id)}>
+                <EditNoteRoundedIcon />
+              </Button>
+            )}
+          />
+        </DataTable>
       </div>
     </div>
   )

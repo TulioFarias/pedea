@@ -12,6 +12,7 @@ import SettingsAdmin from './settings/settings'
 import '../../../sass/admin/admin.scss'
 import DataExplorer from './DataExplorer'
 import Users from './Users'
+import Geoserver from './Geoserver'
 
 
 
@@ -65,6 +66,7 @@ function MainAdmin() {
           {selectedOption === 'FAQ' && <FAQ />}
           {selectedOption === 'DataExplorer' && <DataExplorer />}
           {selectedOption === 'Rotulos Bilingue' && <Rotulos />}
+          {selectedOption === 'Geoserver' && <Geoserver />}
           {selectedOption === 'Usuarios' && <Users />}
           {selectedOption === 'Configurações' && <SettingsAdmin />}
         </motion.div>

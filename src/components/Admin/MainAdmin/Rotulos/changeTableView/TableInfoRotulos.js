@@ -106,7 +106,8 @@ function ContainerInfoRotulos({
         tableStyle={{ minWidth: '60rem' }}
       >
         <Column field="id" header="ID" 
-                headerStyle={{ textAlign: 'center' }}
+                headerStyle={{ textAlign: 'center'
+                 }}
                 bodyStyle={{ textAlign: 'center' }}/>
                 
         <Column field="key" header="Chave" 
