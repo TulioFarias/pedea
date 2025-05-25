@@ -7,13 +7,17 @@ import { useTranslation } from 'react-i18next'
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import axios from 'axios'
 import '../../../../sass/admin/geoserver/geoserver.scss'
-
+import apiPEDEA from '../../../../services/api'
 function GeoserverSystem() {
 
   const { t } = useTranslation()
   const dt = useRef(null)
   const [globalFilter, setGlobalFilter] = useState(null);
   const [layers, setLayers] = useState([])
+  const [dataExplorer, setDataExplorer] = useState([]);
+  const [status, setStatus] = useState([])
+
+  console.log(status)
 
   useEffect(() => {
     const fetchCapabilities = async () => {
@@ -31,7 +35,7 @@ function GeoserverSystem() {
         const parsedLayers = []
 
        layerElements.forEach((layer) => {
-        console.log(layer)
+
           const name = layer.querySelector('Name')?.textContent
           const title = layer.querySelector('Title')?.textContent
 
@@ -74,12 +78,40 @@ function GeoserverSystem() {
             })
           }
         })
+        
 
         setLayers(parsedLayers)
+
+
+        try {
+        const { data } = await apiPEDEA.get('/infoDataExplorer');
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setDataExplorer(sortedData);
+
+        // Comparação entre títulos e nomenclaturas
+         const nomesWMS = parsedLayers.map((layer) => layer.title?.trim())
+         const nomesAPI = sortedData.map((item) => item.nomenclatura_pedea?.trim())
+
+        const resultadosComparacao = nomesAPI.map((nome) => {
+        const encontrado = nome && nomesWMS.includes(nome);
+        return { nome, status: !!encontrado };
+      });
+        console.log('Tem correspondência?',resultadosComparacao)
+        setStatus(resultadosComparacao) 
+      } catch (error) {
+        console.error('Erro ao buscar os dados do usuário:', error);
+      }
+
+
+         
+    
       } catch (error) {
         console.error('Erro ao buscar GetCapabilities:', error)
       }
     }
+
+
+    
 
     fetchCapabilities()
   }, [])
@@ -124,10 +156,13 @@ function GeoserverSystem() {
         dataKey="name"
         emptyMessage="Nenhum dado encontrado."
         stripedRows
+        sortOrder={1}
+        sortMode="single"
         paginator rows={5}
         rowsPerPageOptions={[5, 10, 25, 50]}
         tableStyle={{ minWidth: '60rem' }}
       >
+      <Column header="#" headerStyle={{ width: '3rem' }} body={(data, options) => options.rowIndex + 1}></Column>
         <Column
           field="name"
           header="Nome da Camada"
@@ -156,6 +191,7 @@ function GeoserverSystem() {
           headerStyle={{ textAlign: 'center' }}
           bodyStyle={{ verticalAlign: 'middle' }}
         />
+    
       </DataTable>
     </div>
   )
