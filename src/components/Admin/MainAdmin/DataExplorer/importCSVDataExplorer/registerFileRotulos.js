@@ -85,14 +85,10 @@ const handleFileChange = ({ files }) => {
   return (
     <>
       <Toast ref={toast} />
-
-
         <p className="titleFilesImports">
-          {t("Enviar arquivo .CSV:")}
+          {t("Primeiro, envie o arquivo e depois importe os dados para o banco de dados.")}
         </p>
         
-   
-
       <form className="customFormsFileImports" onSubmit={handleSubmit(onSubmit)}>
 
         <div className="p-field inputNameCustom">
@@ -104,7 +100,7 @@ const handleFileChange = ({ files }) => {
               onChange={(e) => setValue('name', e.target.value)}
               style={{ width: '100%' , borderRadius: '10px'}}
             />
-            <label htmlFor="name">{t("Escolha um nome para o arquivo.")}</label>
+            <label htmlFor="name">{t("Nome para o arquivo")}</label>
           </FloatLabel>
           {errors.name && <p className="txtErrorPassword">{errors.name.message}</p>}
         </div>

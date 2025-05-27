@@ -1,13 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { Toast } from 'primereact/toast'
 import * as Yup from 'yup'
 
 import '../../../../../sass/admin/Rotulos/modalRotulos.scss'
 import api from '../../../../../services/api'
+
 function EditModalRotulos({
   openModalEdit,
   setOpenModalEdit,
@@ -20,6 +21,8 @@ function EditModalRotulos({
     en: '',
     es: ''
   })
+
+  const toastRef = useRef(null)
 
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
@@ -41,129 +44,117 @@ function EditModalRotulos({
     setOpenModalEdit(false)
   }
 
-  const handleChangeKey = e => {
+  const handleChange = field => e => {
     const { value } = e.target
-    setFormData(prevData => ({ ...prevData, key: value }))
-  }
-
-  const handleChangePT = e => {
-    const { value } = e.target
-    setFormData(prevData => ({ ...prevData, pt_br: value }))
-  }
-
-  const handleChangeEN = e => {
-    const { value } = e.target
-    setFormData(prevData => ({ ...prevData, en: value }))
-  }
-
-  const handleChangeES = e => {
-    const { value } = e.target
-    setFormData(prevData => ({ ...prevData, es: value }))
+    setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   const onSubmitUpdate = async data => {
     try {
-      const response = await toast.promise(
-        api.put('/rotulosUpdate', {
-          id: editItemId,
-          key: data.key,
-          pt_br: data.pt_br,
-          en: data.en,
-          es: data.es
-        }),
-        {
-          pending: 'Atualizando...',
-          success: 'Dados atualizados no banco de dados',
-          error: 'Chave não corresponde ao ID fornecido.'
-        }
-      )
+      toastRef.current.show({
+        severity: 'info',
+        summary: 'Atualizando...',
+        detail: 'Por favor, aguarde.',
+        life: 2000
+      })
+
+      await api.put('/rotulosUpdate', {
+        id: editItemId,
+        key: data.key,
+        pt_br: data.pt_br,
+        en: data.en,
+        es: data.es
+      })
+
+      toastRef.current.show({
+        severity: 'success',
+        summary: 'Sucesso!',
+        detail: 'Dados atualizados no banco de dados.',
+        life: 3000
+      })
 
       reset()
       handleTableUpdate()
       handleClose()
     } catch (error) {
-      return console.log(error)
+      toastRef.current.show({
+        severity: 'error',
+        summary: 'Erro!',
+        detail: 'Chave não corresponde ao ID fornecido.',
+        life: 3000
+      })
+      console.log(error)
     }
   }
 
   return (
     <>
-      <div>
-        <Modal
-          show={openModalEdit}
-          onHide={handleClose}
-          id="customModalRotulos"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title className="titleEditRotulos">
-              Editar valores do rótulo.
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form onSubmit={handleSubmit(onSubmitUpdate)}>
-              <Form.Group className="mb-3">
-                <Form.Label className="labelValuesRotulos">Chave:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  {...register('key')}
-                  onChange={handleChangeKey}
-                />
-                <p className="txtErrorPassword">{errors.key?.message}</p>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label className="labelValuesRotulos">
-                  Novo valor em português:
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  {...register('pt_br')}
-                  onChange={handleChangePT}
-                />
-                <p className="txtErrorPassword">{errors.pt_br?.message}</p>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label className="labelValuesRotulos">
-                  Novo valor em inglês:
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  {...register('en')}
-                  onChange={handleChangeEN}
-                />
-                <p className="txtErrorPassword">{errors.en?.message}</p>
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label className="labelValuesRotulos">
-                  Novo valor em espanhol:
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  rows={3}
-                  {...register('es')}
-                  onChange={handleChangeES}
-                />
-                <p className="txtErrorPassword">{errors.es?.message}</p>
-              </Form.Group>
-              <Button variant="secondary" type="submit">
-                Salvar
-              </Button>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              className="btnClose"
-              variant="outline-secondary"
-              onClick={handleClose}
-            >
-              Fechar
+      <Toast ref={toastRef} />
+      <Modal show={openModalEdit} onHide={handleClose} id="customModalRotulos">
+        <Modal.Header closeButton>
+          <Modal.Title className="titleEditRotulos">
+            Editar valores do rótulo.
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit(onSubmitUpdate)}>
+            <Form.Group className="mb-3">
+              <Form.Label className="labelValuesRotulos">Chave:</Form.Label>
+              <Form.Control
+                type="text"
+                {...register('key')}
+                onChange={handleChange('key')}
+              />
+              <p className="txtErrorPassword">{errors.key?.message}</p>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="labelValuesRotulos">
+                Novo valor em português:
+              </Form.Label>
+              <Form.Control
+                type="text"
+                {...register('pt_br')}
+                onChange={handleChange('pt_br')}
+              />
+              <p className="txtErrorPassword">{errors.pt_br?.message}</p>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="labelValuesRotulos">
+                Novo valor em inglês:
+              </Form.Label>
+              <Form.Control
+                type="text"
+                {...register('en')}
+                onChange={handleChange('en')}
+              />
+              <p className="txtErrorPassword">{errors.en?.message}</p>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="labelValuesRotulos">
+                Novo valor em espanhol:
+              </Form.Label>
+              <Form.Control
+                type="text"
+                {...register('es')}
+                onChange={handleChange('es')}
+              />
+              <p className="txtErrorPassword">{errors.es?.message}</p>
+            </Form.Group>
+            <Button variant="secondary" type="submit">
+              Salvar
             </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="btnClose"
+            variant="outline-secondary"
+            onClick={handleClose}
+          >
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

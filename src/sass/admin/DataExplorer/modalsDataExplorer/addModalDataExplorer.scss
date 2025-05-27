@@ -1,50 +1,22 @@
-/* addModalDataExplorer.scss */
+#ContainerModalAdd{
 
-.p-fluid form {
-  display: grid !important; /* garantir grid */
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem 1.5rem;
-}
-
-/* Forçar os campos a se adaptarem dentro do grid */
-.p-fluid form > .p-float-label {
-  width: 100% !important; /* evitar larguras fixas */
-  margin-bottom: 0 !important;
-  display: flex !important;
-  flex-direction: column;
-}
-
-/* Ajustar o label para não interferir na largura */
-.p-fluid form > .p-float-label label {
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-}
-
-/* InputText e Dropdown ocupando 100% da célula do grid */
-.p-fluid form > .p-float-label .p-inputtext,
-.p-fluid form > .p-float-label .p-dropdown {
-  width: 100% !important;
-  box-sizing: border-box;
-}
-
-/* O grupo de botões fica numa linha abaixo do grid, ocupando 4 colunas */
-.p-fluid form > .mt-3.flex {
-  grid-column: 1 / -1;
-  display: flex !important;
-  justify-content: flex-end !important;
-  gap: 1rem !important;
-  margin-top: 1.5rem !important;
-}
-
-/* Responsividade */
-@media (max-width: 900px) {
-  .p-fluid form {
-    grid-template-columns: repeat(2, 1fr);
+  .modal-content{
+        background-color: rgba(255, 255, 255, 0.267);
+          backdrop-filter: blur(10px);
+          display: flex;
+          justify-content: center;
+          width: 55vw;
   }
-}
 
-@media (max-width: 600px) {
-  .p-fluid form {
-    grid-template-columns: 1fr;
+  .ContainerForm{
+        display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    background-color: rgba(199, 199, 199, 0.644);
+    border-radius: 10px;
+    padding: 10px;
+    height: max-content;
+
   }
+  
 }

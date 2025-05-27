@@ -1,44 +1,36 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useEffect, useState } from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
-import '../../../../sass/admin/Rotulos/rotulos.scss'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
-import * as Yup from 'yup'
-import Flag from 'react-flagkit'
-import { useTranslation } from 'react-i18next'
-import apiPEDEA from '../../../../services/api'
-import ContainerInfoRotulos from './changeTableView/TableInfoRotulos'
-import IfKeyExist from './modalsRotulos/modalKeyExist'
-import CreateRotulosCSV from './csvRotulos/createCSVRotulos'
+import React, { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
+import { useTranslation } from 'react-i18next';
+import Flag from 'react-flagkit';
 import KeyIcon from '@mui/icons-material/Key';
 import { useSelector } from 'react-redux';
-import { Snackbar, Alert } from '@mui/material';
-
-
+import apiPEDEA from '../../../../services/api';
+import ContainerInfoRotulos from './changeTableView/TableInfoRotulos';
+import IfKeyExist from './modalsRotulos/modalKeyExist';
+import CreateRotulosCSV from './csvRotulos/createCSVRotulos';
+import '../../../../sass/admin/Rotulos/rotulos.scss';
 
 function CreateRotulosSystem() {
-
-  const { t } = useTranslation()
-  const [dataInfoKey, setDataInfoKey] = useState([])
-  const [tableUpdated, setTableUpdated] = useState(false)
-  const [showModalIfKey, setShowModalIfKey] = useState(false)
-  const [editItemId, setEditItemId] = useState(null)
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
-    const [user, setUser] = useState([]);
+  const { t } = useTranslation();
+  const toast = useRef(null);
+  const [dataInfoKey, setDataInfoKey] = useState([]);
+  const [tableUpdated, setTableUpdated] = useState(false);
+  const [showModalIfKey, setShowModalIfKey] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
   const userData = useSelector(state => state.userInfoSlice.infoUser);
   const { id: loggedInUserId } = userData;
-
-  const handleTableUpdate = () => {
-    setTableUpdated(prev => !prev)
-  }
 
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
     pt_br: Yup.string().required('Esse campo é obrigatório.'),
     en: Yup.string().required('Esse campo é obrigatório.'),
     es: Yup.string().required('Esse campo é obrigatório.')
-  })
+  });
 
   const {
     register,
@@ -47,159 +39,114 @@ function CreateRotulosSystem() {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
-
+  const handleTableUpdate = () => {
+    setTableUpdated(prev => !prev);
+  };
 
   const showModalToUpdate = () => {
-    setShowModalIfKey(true)
-  }
+    setShowModalIfKey(true);
+  };
 
   const onSubmit = async (data, event) => {
- 
+    event.preventDefault();
     try {
       const foundItem = dataInfoKey.find(item => item.key === data.key);
 
       if (!foundItem) {
-          const APIResponse = await apiPEDEA.post('/rotulos', {
-              key: data.key,
-              pt_br: data.pt_br,
-              en: data.en,
-              es: data.es,
-              user_id: loggedInUserId
-          });
+        await apiPEDEA.post('/rotulos', {
+          key: data.key,
+          pt_br: data.pt_br,
+          en: data.en,
+          es: data.es,
+          user_id: loggedInUserId
+        });
 
-          setSnackbar({
-              open: true,
-              message: 'Cadastrado com sucesso.',
-              severity: 'success'
-          });
+        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastrado com sucesso.' });
       } else {
-          setSnackbar({
-              open: true,
-              message: 'Chave já cadastrada.',
-              severity: 'error'
-          });
-          showModalToUpdate();
+        toast.current.show({ severity: 'error', summary: 'Erro', detail: 'Chave já cadastrada.' });
+        showModalToUpdate();
       }
 
       reset();
       handleTableUpdate();
-      event.preventDefault();
-  } catch (error) {
+    } catch (error) {
       console.error(error);
-      setSnackbar({
-          open: true,
-          message: 'Erro ao processar a solicitação.',
-          severity: 'error'
-      });
-  }
-  }
+      toast.current.show({ severity: 'error', summary: 'Erro', detail: 'Erro ao processar a solicitação.' });
+    }
+  };
 
   useEffect(() => {
     async function loadRotulosData() {
       try {
-        const { data } = await apiPEDEA.get('/getRotulosBilingue')
-        setDataInfoKey(data)
+        const { data } = await apiPEDEA.get('/getRotulosBilingue');
+        setDataInfoKey(data);
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Erro ao buscar dados:', error);
       }
     }
-
-    loadRotulosData()
-  }, [])
-
+    loadRotulosData();
+  }, []);
 
   return (
-    <Container fluid className="containerWrapperOptions">
+    <div className="containerWrapperOptions">
+      <Toast ref={toast} />
       <div className="ContainerAllRotulosOptions">
         <div className="ContainerAddInfoRotulos">
-          <Form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
+          <form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
             <div className="titleRegisterRotulo">
               <p>{t("Preencha os campos abaixo para cadastrar um rótulo:")}</p>
             </div>
 
             <div className="containersLabelsFormRegisterRotulos">
-              <Form.Group>
-                <Form.Label className="LabelRotulos">
-                 {t(" Chave:" )}
-                  <KeyIcon/>
-                  
-                </Form.Label>
-                <Form.Control
-                  type="text"
          
-                  {...register('key')}
-                  className="InputRotulos"
-                  isInvalid={errors.key}
-                  placeholder={t('Digite um nome para chave')}
-                />
-                <p className="txtErrorPassword">{errors.key?.message}</p>
-              </Form.Group>
+              <div className="p-float-label label-float-rotulos">
+                <InputText id="key" {...register('key')} className={`InputRotulos ${errors.key ? 'p-invalid' : ''}`} />
+                <label htmlFor="key">
+                  {t("Chave")} <KeyIcon fontSize="small" />
+                </label>
+                {errors.key && <small className="p-error">{errors.key.message}</small>}
+              </div>
 
-              <Form.Group>
-                <Form.Label className="LabelRotulos">
-                  PT-BR
-                  <Flag country="BR" />
-                </Form.Label>
-                <Form.Control
-                  type="text"
-         
-                  {...register('pt_br')}
-                  className="InputRotulos"
-                  isInvalid={errors.pt_br}
-                  placeholder={t('Digite nome em português')}
-                />
-                <p className="txtErrorPassword">{errors.pt_br?.message}</p>
-              </Form.Group>
+      
+              <div className="p-float-label label-float-rotulos">
+                <InputText id="pt_br" {...register('pt_br')} className={`InputRotulos ${errors.pt_br ? 'p-invalid' : ''}`} />
+                <label htmlFor="pt_br">
+                  PT-BR <Flag country="BR" />
+                </label>
+                {errors.pt_br && <small className="p-error">{errors.pt_br.message}</small>}
+              </div>
 
-              <Form.Group>
-                <Form.Label className="LabelRotulos">
-                  EN 
-                  <Flag country="US" />
-                </Form.Label>
-                <Form.Control
-                  type="text"
-         
-                  {...register('en')}
-                  className="InputRotulos"
-                  isInvalid={errors.en}
-                  placeholder={t('Digite nome em inglês')}
-                />
-                <p className="txtErrorPassword">{errors.en?.message}</p>
-              </Form.Group>
+        
+              <div className="p-float-label label-float-rotulos">
+                <InputText id="en" {...register('en')} className={`InputRotulos ${errors.en ? 'p-invalid' : ''}`} />
+                <label htmlFor="en">
+                  EN <Flag country="US" />
+                </label>
+                {errors.en && <small className="p-error">{errors.en.message}</small>}
+              </div>
 
-              <Form.Group>
-                <Form.Label className="LabelRotulos">
-                 ES
-                 <Flag country="ES" />
-                </Form.Label>
-                <Form.Control
-                  type="text"
-         
-                  {...register('es')}
-                  className="InputRotulos"
-                  isInvalid={errors.es}
-                  placeholder={t('Digite um nome em espanhol')}
-                />
-                <p className="txtErrorPassword">{errors.es?.message}</p>
-              </Form.Group>
+      
+              <div className="p-float-label label-float-rotulos">
+                <InputText id="es" {...register('es')} className={`InputRotulos ${errors.es ? 'p-invalid' : ''}`} />
+                <label htmlFor="es">
+                  ES <Flag country="ES" />
+                </label>
+                {errors.es && <small className="p-error">{errors.es.message}</small>}
+              </div>
 
               <Button
-                variant="secondary"
-                className="btnSubmitAddRotulos"
                 type="submit"
-              >
-                {t("Cadastrar")}
-              </Button>
+                label={t("Cadastrar")}
+                icon="pi pi-check"
+                className="btnSubmitAddRotulos p-button-secondary"
+              />
             </div>
 
-            <hr/>
-            
-              <CreateRotulosCSV/>
-          </Form>
-          
-       
+            <hr />
+            <CreateRotulosCSV />
+          </form>
 
           <IfKeyExist
             showModalIfKey={showModalIfKey}
@@ -216,20 +163,8 @@ function CreateRotulosSystem() {
           editItemId={editItemId}
         />
       </div>
-
-
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-    >
-        <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '300px' }}>
-            {snackbar.message}
-        </Alert>
-    </Snackbar>
-    </Container>
-  )
+    </div>
+  );
 }
 
-export default CreateRotulosSystem
+export default CreateRotulosSystem;

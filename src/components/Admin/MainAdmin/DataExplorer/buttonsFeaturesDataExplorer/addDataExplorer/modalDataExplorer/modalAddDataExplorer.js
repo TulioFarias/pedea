@@ -4,13 +4,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import * as Yup from 'yup'
 import { useSelector } from 'react-redux'
-
-import { Dialog } from 'primereact/dialog'
-import { InputText } from 'primereact/inputtext'
-import { Dropdown } from 'primereact/dropdown'
-import { Button } from 'primereact/button'
-import { Message } from 'primereact/message'
-import { Toast } from 'primereact/toast'
+import { Modal, Button, Form, Alert } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../../services/api'
@@ -19,7 +14,6 @@ import dataValues from './values'
 function ModalAddDataExplorer({ show, handleClose }) {
   const [user, setUser] = useState([])
   const [subcategorias, setSubcategorias] = useState([])
-  const toastRef = useRef(null)
   const userData = useSelector((state) => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
 
@@ -38,10 +32,9 @@ function ModalAddDataExplorer({ show, handleClose }) {
   })
 
   const {
-    register,
+    control,
     handleSubmit,
     reset,
-    control,
     watch,
     formState: { errors }
   } = useForm({
@@ -58,9 +51,21 @@ function ModalAddDataExplorer({ show, handleClose }) {
     setSubcategorias(dataValues.Categorias[selectedCategoria] || [])
   }, [selectedCategoria])
 
-  const onSubmit = async (data) => {
-    toastRef.current?.show({ severity: 'info', summary: 'Aguarde', detail: 'Adicionando novo registro...', life: 2000 })
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await apiPEDEA.get('/admin')
+        const loggedInUser = data.find((user) => user.id === loggedInUserId)
+        if (loggedInUser) setUser(loggedInUser)
+      } catch (error) {
+        console.error('Erro ao carregar usuário:', error)
+      }
+    }
+    loadUserData()
+  }, [loggedInUserId])
 
+  const onSubmit = async (data) => {
+    toast.info('Adicionando novo registro...')
     try {
       await apiPEDEA.post('/createDataExplore', {
         categoriadeinformação: data.categoriaDeInformacao,
@@ -77,105 +82,93 @@ function ModalAddDataExplorer({ show, handleClose }) {
         user_id: loggedInUserId
       })
 
-      toastRef.current?.show({ severity: 'success', summary: 'Sucesso', detail: 'Registro criado com sucesso!' })
+      toast.success('Registro criado com sucesso!')
       reset()
       handleClose()
     } catch (error) {
       console.error('Erro:', error)
       const msg = error?.response?.data?.error || 'Erro ao adicionar novo registro.'
-      toastRef.current?.show({ severity: 'error', summary: 'Erro', detail: msg })
+      toast.error(msg)
     }
   }
 
-  useEffect(() => {
-    async function loadUserData() {
-      try {
-        const { data } = await apiPEDEA.get('/admin')
-        const loggedInUser = data.find((user) => user.id === loggedInUserId)
-        if (loggedInUser) setUser(loggedInUser)
-      } catch (error) {
-        console.error('Erro ao carregar usuário:', error)
-      }
+  const dropdownFields = [
+    {
+      name: 'categoriaDeInformacao',
+      label: 'Categoria de Informação *',
+      options: Object.keys(dataValues.Categorias).map((cat) => ({ label: cat, value: cat }))
+    },
+    {
+      name: 'classeMaior',
+      label: 'Classe Maior *',
+      options: subcategorias.map((item) => ({ label: item, value: item }))
     }
-    loadUserData()
-  }, [loggedInUserId])
+  ]
+
+  const inputFields = [
+    { name: 'subclasseMaior', label: 'Subclasse Maior' },
+    { name: 'classeMenor', label: 'Classe Menor' },
+    { name: 'nomeclaturaGreenCloud', label: 'Nomenclatura Green Cloud *' },
+    { name: 'nomenclaturaPedea', label: 'Nomenclatura PEDEA *' },
+    { name: 'fonte', label: 'Fonte *' },
+    { name: 'colunaAtributo', label: 'Coluna Atributo *' },
+    { name: 'linkDriveShp', label: 'Link Drive SHP *' },
+    { name: 'linkDriveKml', label: 'Link Drive KML *' },
+    { name: 'key_rotulos', label: 'Chave Rótulo' }
+  ]
 
   return (
-    <>
-      <Toast ref={toastRef} />
-
-      <Dialog
-        header="Adicionar informação ao Explorer de Dados"
-        visible={show}
-        onHide={handleClose}
-        style={{ width: '50vw' }}
-        modal
-      >
-        <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
-
-          <div className="p-float-label mb-3">
-            <Controller
-              name="categoriaDeInformacao"
-              control={control}
-              render={({ field }) => (
-                <Dropdown
-                  {...field}
-                  options={Object.keys(dataValues.Categorias).map((cat) => ({ label: cat, value: cat }))}
-                  className={errors.categoriaDeInformacao ? 'p-invalid' : ''}
-                />
-              )}
-            />
-            <label>Categoria de Informação *</label>
-          </div>
-          {errors.categoriaDeInformacao && <Message severity="error" text={errors.categoriaDeInformacao.message} />}
-
-          <div className="p-float-label mb-3">
-            <Controller
-              name="classeMaior"
-              control={control}
-              render={({ field }) => (
-                <Dropdown
-                  {...field}
-                  options={subcategorias.map((item) => ({ label: item, value: item }))}
-                  className={errors.classeMaior ? 'p-invalid' : ''}
-                />
-              )}
-            />
-            <label>Classe Maior *</label>
-          </div>
-          {errors.classeMaior && <Message severity="error" text={errors.classeMaior.message} />}
-
-          {[
-            { name: 'subclasseMaior', label: 'Subclasse Maior' },
-            { name: 'classeMenor', label: 'Classe Menor' },
-            { name: 'nomeclaturaGreenCloud', label: 'Nomenclatura Green Cloud *' },
-            { name: 'nomenclaturaPedea', label: 'Nomenclatura PEDEA *' },
-            { name: 'fonte', label: 'Fonte *' },
-            { name: 'colunaAtributo', label: 'Coluna Atributo *' },
-            { name: 'linkDriveShp', label: 'Link Drive SHP *' },
-            { name: 'linkDriveKml', label: 'Link Drive KML *' },
-            { name: 'key_rotulos', label: 'Chave Rótulo' }
-          ].map((fieldInfo) => (
-            <div className="p-float-label mb-3" key={fieldInfo.name}>
-              <InputText
-                id={fieldInfo.name}
-                {...register(fieldInfo.name)}
-                className={errors[fieldInfo.name] ? 'p-invalid' : ''}
+    <Modal show={show} onHide={handleClose} size="lg" centered id="ContainerModalAdd">
+      <Modal.Header closeButton>
+        <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleSubmit(onSubmit)} className='ContainerForm'>
+          {dropdownFields.map(({ name, label, options }) => (
+            <Form.Group className="mb-3" controlId={name} key={name}>
+              <Form.Label>{label}</Form.Label>
+              <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                  <Form.Select {...field} isInvalid={!!errors[name]}>
+                    <option value="">Selecione</option>
+                    {options.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </Form.Select>
+                )}
               />
-              <label htmlFor={fieldInfo.name}>{fieldInfo.label}</label>
-              {errors[fieldInfo.name] && (
-                <Message severity="error" text={errors[fieldInfo.name].message} />
-              )}
-            </div>
+              {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
+            </Form.Group>
           ))}
 
-          <div className="mt-3 flex justify-content-end gap-2">
-            <Button label="Adicionar" icon="pi pi-check" type="submit" />
-            <Button label="Fechar" icon="pi pi-times" severity="secondary" onClick={handleClose} />
-          </div>
-        </form>
-      </Dialog>
-    </>
+          {inputFields.map(({ name, label }) => (
+            <Form.Group className="mb-3" controlId={name} key={name}>
+              <Form.Label>{label}</Form.Label>
+              <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                  <Form.Control type="text" {...field} isInvalid={!!errors[name]} />
+                )}
+              />
+              {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
+            </Form.Group>
+          ))}
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Fechar
+        </Button>
+        <Button variant="primary" onClick={handleSubmit(onSubmit)}>
+          Adicionar
+        </Button>
+      </Modal.Footer>
+    </Modal>
   )
 }
 
