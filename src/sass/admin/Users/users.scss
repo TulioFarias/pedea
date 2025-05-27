@@ -1,59 +1,86 @@
-.ContainerUsers{
+.ContainerUsers {
     width: 100%;
 }
 
-.containerHeaderUsers{
+.containerHeaderUsers {
     display: flex;
     gap: 10px;
     padding: 5px 10px 5px 10px;
     margin: 5px 0px 15px 0px;
     color: rgb(44, 64, 63);
 
-    p{
+    p {
         font-weight: bold;
     }
 }
 
-.containerButtons{
+.formInputsPrime {
     display: flex;
-    gap: 15px;
-    margin: 15px 0px 15px 5px;
+    gap: 10px;
+    padding: 5px 10px 5px 10px;
+    margin: 5px 0px 15px 0px;
+
 }
 
-.btnSearch{
-     background-color: rgb(44, 64, 63);
-     border: none;
+.formInputsPrime .p-float-label label {
 
-     &:hover{
+  font-weight: bold; 
+}
+
+
+.btnSearchPrime {
+    background-color: rgb(44, 64, 63);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 5px;
+
+    &:hover {
         color: rgb(44, 64, 63);
         background-color: rgb(224, 223, 223);
         transition: all 0.5s ease-in-out;
-     }
+    }
 }
 
-.btnClean{
+.btnCleanPrime {
     background-color: rgb(71, 71, 71);
     color: white;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 5px;
 
-     &:hover{
+    &:hover {
         color: rgb(44, 64, 63);
         background-color: rgb(224, 223, 223);
         transition: all 0.5s ease-in-out;
-     }
+    }
 }
 
-.btnEditUser{
-     background-color: rgb(44, 64, 63);
-     border: none;
+.containerButtonsPrime {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
 
-     &:hover{
+.btnEditUser {
+    background-color: rgb(44, 64, 63);
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
         color: rgb(44, 64, 63);
         background-color: rgb(224, 223, 223);
         transition: all 0.5s ease-in-out;
-     }
+    }
 }
 
-.ContainerTable{
+.ContainerTable {
     border-radius: 10px;
+    width: 99.5%;
+    padding-left: 10px;
 }

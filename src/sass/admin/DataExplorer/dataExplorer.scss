@@ -92,12 +92,19 @@
     overflow: auto;
   
   }
+  .btndownloadCSV{
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+  }
 
 
-  
+  .table-header{
+    padding-top: 5px;
+  }
   
   .ContainerTableView{
-    height: max-content;
+    
     overflow: auto;
     
   }

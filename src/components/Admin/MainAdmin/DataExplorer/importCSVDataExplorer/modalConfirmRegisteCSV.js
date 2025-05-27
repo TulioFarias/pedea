@@ -1,20 +1,19 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
 import * as Yup from 'yup'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
+import { Toast } from 'primereact/toast'
 import apiPEDEA from '../../../../../services/api'
 import '../../../../../sass/admin/DataExplorer/modalsDataExplorer/confirmsendDataExplorer.scss'
 
 function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
   const [data, setData] = useState([])
-  const [user, setUser] = useState([]);
-  const userData = useSelector(state => state.userInfoSlice.infoUser);
-  const { id: loggedInUserId } = userData;
-  
+  const toast = useRef(null)
+  const userData = useSelector(state => state.userInfoSlice.infoUser)
+  const { id: loggedInUserId } = userData
 
   const schema = Yup.object().shape({
     confirmSend: Yup.bool().oneOf(
@@ -41,67 +40,56 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
     async function loadDataCSVRotulos() {
       try {
         const { data } = await apiPEDEA.get('/getAllRotulosCSV')
-      
-        if (data) {
-          setData(data)
-        }
+        if (data) setData(data)
       } catch (err) {
         console.error(err)
       }
     }
 
-     async function loadUserData() {
-      try {
-        const { data } = await  apiPEDEA.get('/admin');
-        const loggedInUser = data.filter(user => user.id === loggedInUserId);
-
-        if (loggedInUser) {
-          setUser(loggedInUser);
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    }
-
     loadDataCSVRotulos()
-    loadUserData()
   }, [])
 
   const onSubmit = async formData => {
     try {
-      await toast.promise(
-        apiPEDEA.post('/createValueDataExplorer', { 
-          fileName: formData.path,
-          user_id: loggedInUserId
-        }),
-        {
-          pending: 'Enviando dados...',
-          success: 'Dados enviados com sucesso!',
-          error: {
-            render({ data }) {
-              const errorResponse = data?.response?.data?.error || 'Erro ao enviar dados.';
-              return errorResponse;
-            }
-          }
-        }
-      );
-  
-      reset();
-      closeModal();
+      toast.current.show({
+        severity: 'info',
+        summary: 'Processando...',
+        detail: 'Enviando dados...',
+        life: 1500
+      })
+
+      await apiPEDEA.post('/createValueDataExplorer', {
+        fileName: formData.path,
+        user_id: loggedInUserId
+      })
+
+      toast.current.show({
+        severity: 'success',
+        summary: 'Sucesso!',
+        detail: 'Dados enviados com sucesso!',
+        life: 3000
+      })
+
+      reset()
+      closeModal()
     } catch (error) {
-      console.error('Erro ao enviar dados:', error);
-      const errorMessage = error?.response?.data?.error || 'Erro ao enviar dados.';
-      toast.error(errorMessage);
+      console.error('Erro ao enviar dados:', error)
+      const errorMessage = error?.response?.data?.error || 'Erro ao enviar dados.'
+
+      toast.current.show({
+        severity: 'error',
+        summary: 'Erro',
+        detail: errorMessage,
+        life: 4000
+      })
     }
-  };
+  }
 
   return (
     <>
-      <Modal
-        show={showModalConfirm}
-        onHide={closeModal}
-        id="ContainerModalConfirmSend"
-      >
+      <Toast ref={toast} />
+
+      <Modal show={showModalConfirm} onHide={closeModal} id="ContainerModalConfirmSend">
         <Modal.Header closeButton>
           <Modal.Title className="titleModalFAQ">
             Adicionar dados do arquivo
@@ -126,7 +114,7 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
                       value={item.path}
                       className="optionValueSelect"
                     >
-                      {item.path} 
+                      {item.path}
                     </option>
                   ))}
                 </Form.Control>

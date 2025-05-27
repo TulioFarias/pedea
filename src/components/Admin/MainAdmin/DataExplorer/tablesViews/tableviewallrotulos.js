@@ -142,6 +142,8 @@
               type="search"
               value={globalFilter}
               onChange={(e) => setGlobalFilter(e.target.value)}
+              style={{width: '200px', borderRadius: '10px'}}
+              className='valueInputCustom'
             />
             <label htmlFor="busca">Pesquisar...</label>
           </FloatLabel>
@@ -175,10 +177,11 @@
                 globalFilter={globalFilter}
                 dataKey="id"
                 emptyMessage="Nenhum dado encontrado."
-                stripedRows
+                resizableColumns 
+                showGridlines
                 paginator rows={5}
                 rowsPerPageOptions={[5, 10, 25, 50]}
-                tableStyle={{ minWidth: '50rem', height: '37.4rem'}}
+                tableStyle={{ minWidth: '50rem', height: '37.12rem'}}
               >
                 <Column field="id" header="ID" 
                         headerStyle={{ textAlign: 'center' }}

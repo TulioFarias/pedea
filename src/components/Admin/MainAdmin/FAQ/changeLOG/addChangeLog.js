@@ -1,94 +1,131 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
-import { Form, InputGroup, Button } from 'react-bootstrap';
+import React, { useRef, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import apiPEDEA from '../../../../../services/api';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Button } from 'primereact/button';
+import { FloatLabel } from 'primereact/floatlabel';
+import { Toast } from 'primereact/toast';
+import ShowAndEditChangeLog from './showandeditChangeLog';
+import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss';
+import { useSelector } from 'react-redux';
 
 function AddInfoChangeLog() {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
+  const toast = useRef(null);
+   const [user, setUser] = useState([]);
+    const userData = useSelector(state => state.userInfoSlice.infoUser);
+    const { id: loggedInUserId } = userData;
 
   const schema = Yup.object().shape({
     version: Yup.string()
-      .matches(/^\d+$/, 'A versão deve conter apenas números.') 
-      .required('A numeração da versão é obrigatória.'), 
-    message: Yup.string().required('A mensagem é obrigatória.') 
+      .matches(/^\d+$/, t('A versão deve conter apenas números.'))
+      .required(t('A numeração da versão é obrigatória.')),
+    message: Yup.string().required(t('A mensagem é obrigatória.')),
   });
 
   const {
     handleSubmit,
     register,
     reset,
-    formState: { errors }
+    setValue,
+    formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
+    toast.current.show({
+      severity: 'info',
+      summary: t('Aguarde'),
+      detail: t('Adicionando...'),
+      life: 2000,
+    });
+
     try {
-      await toast.promise(
-        apiPEDEA.post('/addInfoEvolution', {
-          version: data.version,
-          message: data.message
-        }),
-        {
-          pending: 'Adicionando novo registro...', 
-          success: 'Registro de atualização criado com sucesso!', 
-          error: 'Erro ao adicionar novo registro.' 
-        }
-      );
+      await apiPEDEA.post('/addInfoEvolution', {
+        version: data.version,
+        message: data.message,
+        user_id: loggedInUserId
+      });
+
+      toast.current.show({
+        severity: 'success',
+        summary: t('Sucesso'),
+        detail: t('Registro de atualização criado com sucesso!'),
+        life: 3000,
+      });
 
       reset();
     } catch (error) {
+      toast.current.show({
+        severity: 'error',
+        summary: t('Erro'),
+        detail: t('Erro ao adicionar novo registro.'),
+        life: 4000,
+      });
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await apiPEDEA.get('/admin');
+        const loggedInUser = data.filter(user => user.id === loggedInUserId);
+        if (loggedInUser) {
+          setUser(loggedInUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    loadUserData();
+  }, [loggedInUserId]);
+
   return (
-    <div>
-      <div className="containerAddChangeLog">
-        <Form onSubmit={handleSubmit(onSubmit)} className="containerFormChangeLog">
-          <p>{t('Para adicionar um novo registro de atualização, preencha os campos abaixo:')}</p> 
-          <Form.Group className="containerInputsChangeLog">
-            <label className="labelChangeLog">{t('Versão de atualização:')}</label> 
-            <InputGroup>
-              <Form.Control
-                type="number"
-                placeholder={t('Digite o número da versão de atualização')} 
-                {...register('version')}
-                className="inputChangeLog"
-                isInvalid={!!errors.version}
-                onKeyDown={(e) =>
-                  ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()
-                } // Impede entrada de caracteres não numéricos
-              />
-            </InputGroup>
-            <p className="errorTxtChangeLog">{errors.version?.message}</p>
-          </Form.Group>
+    <div className='FormsContainerAddChangeLog'>
+      <Toast ref={toast} />
 
-          <Form.Group className="containerInputsChangeLog">
-            <label className="labelChangeLog">{t('Mensagem de atualização:')}</label> 
-            <Form.Control
-              as="textarea"
-              rows={3}
-              placeholder={t('Escreva a mensagem de atualização')} 
-              {...register('message')}
-              className="inputChangeLog"
-              isInvalid={!!errors.message}
+      <form  onSubmit={handleSubmit(onSubmit)}>
+        <p>{t('Para adicionar um novo registro de atualização, preencha os campos abaixo:')}</p>
+
+        <div className="containerInputsChangeLog">
+          <FloatLabel>
+            <InputText
+              id="version"
+              {...register('version')}
+              onChange={(e) => setValue('version', e.target.value)}
+              className={`inputChangeLog valueInputCustom ${errors.version ? 'p-invalid' : ''}`}
+              style={{ width: '100%', borderRadius: '10px' }}
+              keyfilter="int"
             />
-            <p className="errorTxtChangeLog">{errors.message?.message}</p>
-          </Form.Group>
+            <label htmlFor="version">{t('Digite o número da versão')}</label>
+          </FloatLabel>
 
-          <Button className="BtnChangeLogSubmit" type="submit">
-            {t('Registrar nova atualização')} 
-          </Button>
-        </Form>
-      </div>
+          <FloatLabel>
+            <InputTextarea
+              id="message"
+              {...register('message')}
+              onChange={(e) => setValue('message', e.target.value)}
+              rows={4}
+              className={`inputChangeLog valueInputCustom ${errors.message ? 'p-invalid' : ''}`}
+              style={{ width: '100%' , borderRadius: '10px' }}
+            />
+            <label htmlFor="message">{t('Escreva a mensagem de atualização')}</label>
+          </FloatLabel>
+        </div>
+
+        <Button type="submit" label={t('Registrar nova atualização')} className="btnSubmitChangeLog p-button-primary" />
+      </form>
+
+      <ShowAndEditChangeLog />
     </div>
   );
 }
 
 export default AddInfoChangeLog;
-

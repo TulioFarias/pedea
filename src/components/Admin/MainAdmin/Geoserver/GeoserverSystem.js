@@ -17,8 +17,6 @@ function GeoserverSystem() {
   const [dataExplorer, setDataExplorer] = useState([]);
   const [status, setStatus] = useState([])
 
-  console.log(status)
-
   useEffect(() => {
     const fetchCapabilities = async () => {
       try {
@@ -88,7 +86,7 @@ function GeoserverSystem() {
         const sortedData = data.sort((a, b) => a.id - b.id);
         setDataExplorer(sortedData);
 
-        // Comparação entre títulos e nomenclaturas
+
          const nomesWMS = parsedLayers.map((layer) => layer.title?.trim())
          const nomesAPI = sortedData.map((item) => item.nomenclatura_pedea?.trim())
 
@@ -96,15 +94,10 @@ function GeoserverSystem() {
         const encontrado = nome && nomesWMS.includes(nome);
         return { nome, status: !!encontrado };
       });
-        console.log('Tem correspondência?',resultadosComparacao)
         setStatus(resultadosComparacao) 
       } catch (error) {
         console.error('Erro ao buscar os dados do usuário:', error);
       }
-
-
-         
-    
       } catch (error) {
         console.error('Erro ao buscar GetCapabilities:', error)
       }
@@ -119,7 +112,7 @@ function GeoserverSystem() {
 
    const header = (
     <>
-     <div className="flex justify-between items-center containerHeader">
+     <div className="flex justify-between items-center containerHeaderGeoserver">
 
       <div className='containerTitle'>
         <TravelExploreIcon/>
@@ -132,7 +125,9 @@ function GeoserverSystem() {
             id="busca"
             type="search"
             value={globalFilter}
+            className='valueInputCustom'
             onChange={(e) => setGlobalFilter(e.target.value)}
+            style={{width: '200px', borderRadius: '10px'}}
           />
           <label htmlFor="busca">Pesquisar...</label>
         </FloatLabel>
@@ -155,12 +150,13 @@ function GeoserverSystem() {
         globalFilter={globalFilter}
         dataKey="name"
         emptyMessage="Nenhum dado encontrado."
-        stripedRows
+        resizableColumns 
+        showGridlines
         sortOrder={1}
         sortMode="single"
         paginator rows={5}
         rowsPerPageOptions={[5, 10, 25, 50]}
-        tableStyle={{ minWidth: '60rem' }}
+        tableStyle={{ minWidth: '60rem' ,}}
       >
       <Column header="#" headerStyle={{ width: '3rem' }} body={(data, options) => options.rowIndex + 1}></Column>
         <Column
@@ -176,7 +172,7 @@ function GeoserverSystem() {
           bodyStyle={{  }}
         />
         <Column
-          header="Visualização"
+          header="Camadas"
           body={(rowData) =>
             rowData.preview ? (
               <img

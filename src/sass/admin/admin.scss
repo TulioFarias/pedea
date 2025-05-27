@@ -1,44 +1,44 @@
 $containerMainSystem-width-closed: 85%;
 $containerMainSystem-width-open: 90%;
-$containerWrapper-width-closed: 83vw; 
-$containerWrapper-width-open: 90vw; 
+$containerWrapper-width-closed: 83vw;
+$containerWrapper-width-open: 90vw;
 
 
-.containerAdminSystem{
-    font-family: 'Roboto' , sans-serif;
+.containerAdminSystem {
+    font-family: 'Roboto', sans-serif;
     width: 100vw;
     height: 100vh;
     background-color: rgb(165, 165, 165);
 }
 
-.ContainerMainSystem{
+.ContainerMainSystem {
     width: $containerMainSystem-width-closed;
     height: max-content;
     position: relative;
     left: 130px;
     top: 10px;
-    
+
 
 }
 
 //*** aumentar tamanho do container do mainsystem **// 
 
-.ContainerMainSystem-expanded{
+.ContainerMainSystem-expanded {
     width: $containerMainSystem-width-open;
     transition: all 1s ease-in-out;
     left: 70px;
 
-    .containerWrapperOptions{
+    .containerWrapperOptions {
         width: 90vw;
         transition: all 1s ease-in-out;
     }
-    
+
 }
 
 //*** final do tamanho do container do mainsystem **// 
 
 
-.containerWrapperOptions{
+.containerWrapperOptions {
     background-color: rgba(231, 230, 230, 0.637);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     border-radius: 12px;
@@ -46,10 +46,21 @@ $containerWrapper-width-open: 90vw;
     height: 84vh;
     width: 100%;
     overflow: auto;
-    
-    
+
+
 }
 
+.valueInputCustom {
+    &:focus {
+        border-color: rgb(44, 64, 63) !important;
+        box-shadow: 0 0 0 0.2rem rgba(44, 64, 63, 0.25) !important;
+    }
+
+    &:hover {
+        border-color: rgb(44, 64, 63) !important;
+        color: rgb(44, 64, 63) !important;
+    }
+}
 
 
 
@@ -58,73 +69,73 @@ $containerWrapper-width-open: 90vw;
     align-items: center;
     gap: 10px;
 
-    img{
+    img {
         width: 30px;
         height: 30px;
     }
 }
+
 .btns {
     background-color: transparent;
     border: none;
-    
-    &:hover{
+
+    &:hover {
         transform: scale(1.05);
         transition: 0.3s all ease-in-out;
         background-color: transparent;
     }
 
-    
+
 }
 
-@media (min-width: 480px) and (max-width: 1024px){
+@media (min-width: 480px) and (max-width: 1024px) {
 
-    .containerWrapperOptions{
+    .containerWrapperOptions {
         background-color: rgba(231, 230, 230, 0.637);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 12px;
         padding: 10px;
         height: 81vh;
         width: 75vw;
-        
-        
+
+
     }
-    
-   
-.ContainerMainSystem{
-    width: 80%;
-    height: max-content;
-    position: relative;
-    left: 100px;
-    top: 20px;
+
+
+    .ContainerMainSystem {
+        width: 80%;
+        height: max-content;
+        position: relative;
+        left: 100px;
+        top: 20px;
+
+    }
 
 }
 
-   }
 
 
+@media only screen and (max-width: 480px) {
 
-@media only screen and (max-width: 480px){
-
-    .containerWrapperOptions{
+    .containerWrapperOptions {
         background-color: rgba(231, 230, 230, 0.637);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 12px;
         padding: 10px;
         height: 84vh;
         width: 77vw;
-        
-        
+
+
     }
-    
-   
-.ContainerMainSystem{
-    width: 80%;
-    height: max-content;
-    position: relative;
-    left: 30px;
-    top: 10px;
+
+
+    .ContainerMainSystem {
+        width: 80%;
+        height: max-content;
+        position: relative;
+        left: 30px;
+        top: 10px;
+
+    }
 
 }
-
-   }
-    

@@ -1,5 +1,6 @@
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
 import React, { useState } from 'react'
+import { Button } from 'primereact/button'
 import NoteAltRoundedIcon from '@mui/icons-material/NoteAltRounded';
 import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
 import EditaModalDataExplorer from './modalEditDataExplorer'
@@ -19,11 +20,11 @@ function EditDataExplorer() {
   return (
     <>
       <div className='containerEdit'>
-      <button className="EditDataExplorer" onClick={handleShowModal}>
+      <Button className="EditDataExplorer" onClick={handleShowModal}>
         <EditNoteRoundedIcon />
         {t("Editar")}
-      </button>
-      <button className='editDataExplorerCSV' onClick={handleShowModalCSV}> <NoteAltRoundedIcon/>{t("Editar CSV")}</button>
+      </Button>
+      <Button className='editDataExplorerCSV' onClick={handleShowModalCSV}> <NoteAltRoundedIcon/>{t("Editar (.CSV)")}</Button>
       </div>
       
       <EditaModalDataExplorer show={showModal} handleClose={handleCloseModal} />

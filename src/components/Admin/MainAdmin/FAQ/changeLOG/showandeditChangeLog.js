@@ -1,15 +1,19 @@
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
-import DrawRoundedIcon from '@mui/icons-material/DrawRounded'
 import React, { useEffect, useState } from 'react'
-import { Carousel, Form, Button } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next' 
+import { useTranslation } from 'react-i18next'
 import '../../../../../sass/admin/FAQ/changeLOG/changelog.scss'
 import apiPEDEA from '../../../../../services/api'
 import ModalChangeLogDelete from './modalsChangeLogs/modalDeleteChangeLog'
 import ModalEditChangeLog from './modalsChangeLogs/modalEditChangeLog'
 
+import { Card } from 'primereact/card'
+import { InputText } from 'primereact/inputtext'
+import { InputTextarea } from 'primereact/inputtextarea'
+import { Button } from 'primereact/button'
+import { ButtonGroup } from 'primereact/buttongroup'
+import { Carousel } from 'primereact/carousel'
+
 function ShowAndEditChangeLog() {
-  const { t } = useTranslation() 
+  const { t } = useTranslation()
   const [dataChangeLog, setDataChangeLog] = useState([])
   const [openModalEdit, setOpenModalEdit] = useState(false)
   const [openModalDelete, setOpenModalDelete] = useState(false)
@@ -21,100 +25,102 @@ function ShowAndEditChangeLog() {
         const { data } = await apiPEDEA.get('/allValuesLog')
         setDataChangeLog(data)
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error('Error fetching change log data:', error)
       }
     }
 
     loadRotulosData()
   }, [])
 
-  const openModalNow = id => {
-    console.log(id)
+  const openModalNow = (id) => {
     setOpenModalEdit(true)
     setIdEditValueLog(id)
   }
 
-  const OpenModalDeleteLog = id => {
+  const openModalDeleteLog = (id) => {
     setOpenModalDelete(true)
     setIdEditValueLog(id)
   }
 
+  const logTemplate = (log, index) => {
+    return (
+      <Card key={index} className="FAQCard">
+        <div className="faqInputGroup">
+          <label className="LabelFAQEditAndDelete">{t('Versão da atualização:')}</label>
+          <InputText
+            value={log.version}
+            readOnly
+            className="inputValuesFAQ p-inputtext-sm valueInputCustom"
+            style={{ width: '100%', borderRadius: '10px' }}
+          />
+        </div>
+
+        <div className="faqInputGroup">
+          <label className="LabelFAQEditAndDelete">{t('Mensagem de atualização:')}</label>
+          <InputTextarea
+            value={log.message}
+            readOnly
+            className="inputValuesFAQ p-inputtextarea-sm valueInputCustom"
+            rows={4}
+            style={{ width: '100%' , borderRadius: '10px'}}
+          />
+        </div>
+
+        <div className="faqInputGroup">
+          <label className="LabelFAQEditAndDelete">{t('Criado em:')}</label>
+          <InputText
+            value={new Date(log.createdAt).toLocaleString()}
+            readOnly
+            className="inputValuesFAQ p-inputtext-sm valueInputCustom"
+            style={{ width: '100%', borderRadius: '10px' }}
+          />
+        </div>
+
+        <div className="faqInputGroup">
+          <label className="LabelFAQEditAndDelete">{t('Atualizado em:')}</label>
+          <InputText
+            value={new Date(log.updatedAt).toLocaleString()}
+            readOnly
+            className="inputValuesFAQ p-inputtext-sm valueInputCustom"
+            style={{ width: '100%' , borderRadius: '10px'}}
+          />
+        </div>
+
+        <ButtonGroup className="ButtonGroupFAQ">
+          <Button
+            label={t("Editar")}
+            icon="pi pi-pencil"
+            severity="warning"
+            onClick={() => openModalNow(log.id)}
+            className='btnEditarFaq'
+          />
+          <Button
+            label={t("Deletar")}
+            icon="pi pi-trash"
+            severity="danger"
+            onClick={() => openModalDeleteLog(log.id)}
+            className='btnDeleteFaq'
+          />
+        </ButtonGroup>
+      </Card>
+    )
+  }
+
   return (
     <>
-  
-        <div className="containerShowChangeLog">
-          <p>{t('Todas as atualizações de log estão abaixo:')}</p>
-          <Carousel
-            interval={null}
-            controls={true}
-            className="carouselCustomChangeLog"
-          >
-            {dataChangeLog.map((log, index) => (
-              <Carousel.Item key={index} className="containerCarousel">
-                <div className="containerItemsDataChangeLog">
-                  <Form.Group className="groupItemOne">
-                    <Form.Label className="labelgroupone">
-                      {t('Versão da atualização:')}
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={log.version}
-                      readOnly
-                      className="inputgroupone"
-                    />
-                  </Form.Group>
-                  <Form.Group className="groupItemsTwo">
-                    <Form.Label className="labelmsg">{t('Mensagem de atualização:')}</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      value={log.message}
-                      readOnly
-                      className='inputTxtArea'
-                    />
-                  </Form.Group>
-                  <div className="logDates">
-                    <Form.Group className="groupDate">
-                      <Form.Label className="labelsdate">{t('Criado em:')}</Form.Label>
-                      <Form.Control
-                        type="text"
-                        value={new Date(log.createdAt).toLocaleString()}
-                        readOnly
-                        className="inputsdate"
-                      />
-                    </Form.Group>
-                    <Form.Group className="groupDate">
-                      <Form.Label className="labelsdate">
-                        {t('Atualizado em:')}
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        value={new Date(log.updatedAt).toLocaleString()}
-                        readOnly
-                        className="inputsdate"
-                      />
-                    </Form.Group>
-                    <div className="containerBtnsChangeLog">
-                      <Button
-                        className="btnEditChangeLog"
-                        onClick={() => openModalNow(log.id)}
-                      >
-                        <DrawRoundedIcon />
-                      </Button>
-                      <Button
-                        className="btnDeleteChangeLog"
-                        onClick={() => OpenModalDeleteLog(log.id)}
-                      >
-                        <DeleteForeverRoundedIcon />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </div>
-    
+      <div className="containerShowChangeLog">
+
+        <Carousel
+          value={dataChangeLog}
+          itemTemplate={logTemplate}
+          numVisible={1}
+          numScroll={1}
+          circular
+          showIndicators
+          showNavigators
+          className="FAQCarousel"
+        />
+      </div>
 
       <ModalEditChangeLog
         openModalEdit={openModalEdit}
@@ -123,13 +129,12 @@ function ShowAndEditChangeLog() {
       />
 
       <ModalChangeLogDelete
-        idEditValueLog={idEditValueLog}
-        setOpenModalDelete={setOpenModalDelete}
         openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        idEditValueLog={idEditValueLog}
       />
     </>
   )
 }
 
 export default ShowAndEditChangeLog
-

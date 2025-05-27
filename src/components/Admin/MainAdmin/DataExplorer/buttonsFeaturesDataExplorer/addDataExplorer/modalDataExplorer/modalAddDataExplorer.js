@@ -1,22 +1,27 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import PropTypes from 'prop-types'
-import React, { useState , useEffect} from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import React, { useState, useEffect, useRef } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import * as Yup from 'yup'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
+
+import { Dialog } from 'primereact/dialog'
+import { InputText } from 'primereact/inputtext'
+import { Dropdown } from 'primereact/dropdown'
+import { Button } from 'primereact/button'
+import { Message } from 'primereact/message'
+import { Toast } from 'primereact/toast'
+
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../../services/api'
 import dataValues from './values'
 
-
 function ModalAddDataExplorer({ show, handleClose }) {
-   const [user, setUser] = useState([]);
-  const userData = useSelector(state => state.userInfoSlice.infoUser);
-  const { id: loggedInUserId } = userData;
+  const [user, setUser] = useState([])
   const [subcategorias, setSubcategorias] = useState([])
-
+  const toastRef = useRef(null)
+  const userData = useSelector((state) => state.userInfoSlice.infoUser)
+  const { id: loggedInUserId } = userData
 
   const schema = Yup.object().shape({
     categoriaDeInformacao: Yup.string().required('Campo obrigatório'),
@@ -27,12 +32,8 @@ function ModalAddDataExplorer({ show, handleClose }) {
     nomenclaturaPedea: Yup.string().required('Campo obrigatório'),
     fonte: Yup.string().required('Campo obrigatório'),
     colunaAtributo: Yup.string().required('Campo obrigatório'),
-    linkDriveShp: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
-    linkDriveKml: Yup.string()
-      .url('URL inválida')
-      .required('Campo obrigatório'),
+    linkDriveShp: Yup.string().url('URL inválida').required('Campo obrigatório'),
+    linkDriveKml: Yup.string().url('URL inválida').required('Campo obrigatório'),
     key_rotulos: Yup.string().nullable()
   })
 
@@ -40,270 +41,140 @@ function ModalAddDataExplorer({ show, handleClose }) {
     register,
     handleSubmit,
     reset,
+    control,
+    watch,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    defaultValues: {
+      categoriaDeInformacao: '',
+      classeMaior: ''
+    }
   })
 
-  const handleCategoriaChange = categoria => {
-    setSubcategorias(dataValues.Categorias[categoria] || [])
-  }
-
-  const onSubmit = async data => {
-    try {
-      await toast.promise(
-        apiPEDEA.post('/createDataExplore', {
-          categoriadeinformação: data.categoriaDeInformacao,
-          classemaior: data.classeMaior,
-          subclassemaior: data.subclasseMaior,
-          classemenor: data.classeMenor,
-          nomenclaturagreencloud: data.nomeclaturaGreenCloud,
-          nomenclaturapedea: data.nomenclaturaPedea,
-          fonte: data.fonte,
-          colunaatributo: data.colunaAtributo,
-          linkdriveshp: data.linkDriveShp,
-          linkdrivekml: data.linkDriveKml,
-          key_rotulos: data.key_rotulos,
-          user_id: loggedInUserId
-        }),
-        {
-          pending: 'Adicionando novo registro...',
-          success: 'Registro criado com sucesso!',
-          error: {
-
-            render({ data }) {
-
-              return (data.response && data.response.data && data.response.data.error) || 'Erro ao adicionar novo registro.';
-            }
-          }
-        }
-      );
-
-      reset();
-      handleClose();
-    } catch (error) {
-
-      const errorMessage = error.response?.data?.error || 'Erro ao adicionar novo registro.';
-      console.error('Erro ao atualizar os dados:', errorMessage);
-    }
-  };
+  const selectedCategoria = watch('categoriaDeInformacao')
 
   useEffect(() => {
-      async function loadUserData() {
-        try {
-          const { data } = await apiPEDEA.get('/admin');
-          const loggedInUser = data.filter(user => user.id === loggedInUserId);
-  
-          if (loggedInUser) {
-            setUser(loggedInUser);
-          }
-        } catch (error) {
-          console.error('Error fetching user data:', error);
-        }
+    setSubcategorias(dataValues.Categorias[selectedCategoria] || [])
+  }, [selectedCategoria])
+
+  const onSubmit = async (data) => {
+    toastRef.current?.show({ severity: 'info', summary: 'Aguarde', detail: 'Adicionando novo registro...', life: 2000 })
+
+    try {
+      await apiPEDEA.post('/createDataExplore', {
+        categoriadeinformação: data.categoriaDeInformacao,
+        classemaior: data.classeMaior,
+        subclassemaior: data.subclasseMaior,
+        classemenor: data.classeMenor,
+        nomenclaturagreencloud: data.nomeclaturaGreenCloud,
+        nomenclaturapedea: data.nomenclaturaPedea,
+        fonte: data.fonte,
+        colunaatributo: data.colunaAtributo,
+        linkdriveshp: data.linkDriveShp,
+        linkdrivekml: data.linkDriveKml,
+        key_rotulos: data.key_rotulos,
+        user_id: loggedInUserId
+      })
+
+      toastRef.current?.show({ severity: 'success', summary: 'Sucesso', detail: 'Registro criado com sucesso!' })
+      reset()
+      handleClose()
+    } catch (error) {
+      console.error('Erro:', error)
+      const msg = error?.response?.data?.error || 'Erro ao adicionar novo registro.'
+      toastRef.current?.show({ severity: 'error', summary: 'Erro', detail: msg })
+    }
+  }
+
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await apiPEDEA.get('/admin')
+        const loggedInUser = data.find((user) => user.id === loggedInUserId)
+        if (loggedInUser) setUser(loggedInUser)
+      } catch (error) {
+        console.error('Erro ao carregar usuário:', error)
       }
-  
-      loadUserData();
-    }, [loggedInUserId]);
+    }
+    loadUserData()
+  }, [loggedInUserId])
 
   return (
     <>
-      <Modal
-        show={show}
+      <Toast ref={toastRef} />
+
+      <Dialog
+        header="Adicionar informação ao Explorer de Dados"
+        visible={show}
         onHide={handleClose}
-        size="lg"
-        id="ContainerAddDataExplorer"
+        style={{ width: '50vw' }}
+        modal
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
-        </Modal.Header>
+        <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
 
-        <Modal.Body>
-          <h1 >
-            Crie um rótulo no explorador de dados preenchendo os campos abaixo:
-          </h1>
-          <p className='titleTxt'>Os campos com * marcados são obrigatórios</p>
-          <Form onSubmit={handleSubmit(onSubmit)} className="BodyModalAdd">
-           
-            <Form.Group controlId="categoriaDeInformacao">
-              <Form.Label>Categoria de Informação *</Form.Label>
-              <Form.Control
-                as="select"
-                {...register('categoriaDeInformacao')}
-                onChange={e => {
-                  handleCategoriaChange(e.target.value)
-                }}
-                isInvalid={errors.categoriaDeInformacao}
-                className="inputDataExplorer"
-              >
-                <option value="">Selecione...</option>
-                {Object.keys(dataValues.Categorias).map(categoria => (
-                  <option key={categoria} value={categoria}>
-                    {categoria}
-                  </option>
-                ))}
-              </Form.Control>
-              <Form.Control.Feedback type="invalid">
-                {errors.categoriaDeInformacao?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="classeMaior">
-              <Form.Label>Classe Maior * </Form.Label>
-              <Form.Control
-                as="select"
-                {...register('classeMaior')}
-                isInvalid={errors.classeMaior}
-                className="inputDataExplorer"
-              >
-                <option value="">Selecione...</option>
-                {subcategorias.map(subcategoria => (
-                  <option key={subcategoria} value={subcategoria}>
-                    {subcategoria}
-                  </option>
-                ))}
-              </Form.Control>
-              <Form.Control.Feedback type="invalid">
-                {errors.classeMaior?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="subclasseMaior">
-              <Form.Label>Subclasse Maior</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('subclasseMaior')}
-                isInvalid={errors.subclasseMaior}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.subclasseMaior?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="classeMenor">
-              <Form.Label>Classe Menor</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('classeMenor')}
-                isInvalid={errors.classeMenor}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.classeMenor?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="nomenclaturaPedea">
-              <Form.Label>Nomenclatura Green Cloud *</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('nomeclaturaGreenCloud')}
-                isInvalid={errors.nomeclaturaGreenCloud}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.nomeclaturaGreenCloud?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="nomenclaturaPedea">
-              <Form.Label>Nomenclatura PEDEA *</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('nomenclaturaPedea')}
-                isInvalid={errors.nomenclaturaPedea}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.nomenclaturaPedea?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="fonte">
-              <Form.Label>Fonte</Form.Label>
-              <Form.Control
-                type="text"
-                {...register('fonte')}
-                isInvalid={errors.fonte}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.fonte?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="colunaAtributo">
-              <Form.Label>Coluna Atributo * </Form.Label>
-              <Form.Control
-                type="text"
-                {...register('colunaAtributo')}
-                isInvalid={errors.colunaAtributo}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.colunaAtributo?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="linkDriveShp">
-              <Form.Label>Link Drive SHP * </Form.Label>
-              <Form.Control
-                type="text"
-                {...register('linkDriveShp')}
-                isInvalid={errors.linkDriveShp}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.linkDriveShp?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="linkDriveKml">
-              <Form.Label>Link Drive KML * </Form.Label>
-              <Form.Control
-                type="text"
-                {...register('linkDriveKml')}
-                isInvalid={errors.linkDriveKml}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.linkDriveKml?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="keyRotulo">
-              <Form.Label>Chave Rotulo </Form.Label>
-              <Form.Control
-                type="text"
-                {...register('key_rotulos')}
-                isInvalid={errors.key_rotulos}
-                className="inputDataExplorer"
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.key_rotulo?.message}
-              </Form.Control.Feedback>
-            </Form.Group>
-          </Form>
-
-          <div className="ContainerBtnModalAdd">
-            <Button
-              variant="primary"
-              onClick={handleSubmit(onSubmit)}
-              className="BtnAddDataExplorer"
-            >
-              Adicionar
-            </Button>
-
-            <Button
-              variant="primary"
-              className="BtnCloseAddDataExplorer"
-              onClick={handleClose}
-            >
-              Fechar
-            </Button>
+          <div className="p-float-label mb-3">
+            <Controller
+              name="categoriaDeInformacao"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  {...field}
+                  options={Object.keys(dataValues.Categorias).map((cat) => ({ label: cat, value: cat }))}
+                  className={errors.categoriaDeInformacao ? 'p-invalid' : ''}
+                />
+              )}
+            />
+            <label>Categoria de Informação *</label>
           </div>
-        </Modal.Body>
-      </Modal>
+          {errors.categoriaDeInformacao && <Message severity="error" text={errors.categoriaDeInformacao.message} />}
+
+          <div className="p-float-label mb-3">
+            <Controller
+              name="classeMaior"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  {...field}
+                  options={subcategorias.map((item) => ({ label: item, value: item }))}
+                  className={errors.classeMaior ? 'p-invalid' : ''}
+                />
+              )}
+            />
+            <label>Classe Maior *</label>
+          </div>
+          {errors.classeMaior && <Message severity="error" text={errors.classeMaior.message} />}
+
+          {[
+            { name: 'subclasseMaior', label: 'Subclasse Maior' },
+            { name: 'classeMenor', label: 'Classe Menor' },
+            { name: 'nomeclaturaGreenCloud', label: 'Nomenclatura Green Cloud *' },
+            { name: 'nomenclaturaPedea', label: 'Nomenclatura PEDEA *' },
+            { name: 'fonte', label: 'Fonte *' },
+            { name: 'colunaAtributo', label: 'Coluna Atributo *' },
+            { name: 'linkDriveShp', label: 'Link Drive SHP *' },
+            { name: 'linkDriveKml', label: 'Link Drive KML *' },
+            { name: 'key_rotulos', label: 'Chave Rótulo' }
+          ].map((fieldInfo) => (
+            <div className="p-float-label mb-3" key={fieldInfo.name}>
+              <InputText
+                id={fieldInfo.name}
+                {...register(fieldInfo.name)}
+                className={errors[fieldInfo.name] ? 'p-invalid' : ''}
+              />
+              <label htmlFor={fieldInfo.name}>{fieldInfo.label}</label>
+              {errors[fieldInfo.name] && (
+                <Message severity="error" text={errors[fieldInfo.name].message} />
+              )}
+            </div>
+          ))}
+
+          <div className="mt-3 flex justify-content-end gap-2">
+            <Button label="Adicionar" icon="pi pi-check" type="submit" />
+            <Button label="Fechar" icon="pi pi-times" severity="secondary" onClick={handleClose} />
+          </div>
+        </form>
+      </Dialog>
     </>
   )
 }

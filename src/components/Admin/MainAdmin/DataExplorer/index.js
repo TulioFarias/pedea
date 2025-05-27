@@ -1,4 +1,3 @@
-import React from 'react'
 
 import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
@@ -7,15 +6,13 @@ import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer
 import ContainerImportCSV from './importCSVDataExplorer/importCSV'
 import TableViewRotulosData from './tablesViews/tableviewallrotulos'
 import { useTranslation } from 'react-i18next'
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
-import { Tooltip } from '@mui/material'
 import apiPEDEA from '../../../../services/api'
+import { Button } from 'primereact/button'
 
 function DataExplorer() {
 
   const { t } = useTranslation()
-  const textExemple =
-    'O arquivo .CSV a ser importado precisa ter a sua primeira linha definida apenas com nomes de campos. Entre estes campos, um precisa se chamar "ID", outro "Categoria de Informação", e assim por diante, conforme o exemplo: "ID", "Categoria de Informação", "Classe Maior", "Subclasse Maior", "Classe Menor", "Nomenclatura Greencloud", "Nomenclatura PEDEA", "Fonte", "Coluna Atributo", "Link Drive SHP", "Link Drive KML". As demais linhas precisam conter dados correspondentes aos campos definidos na primeira linha. Certifique-se de que o arquivo esteja em UTF-8.'
+ 
 
 
     const handleDownload = async () => {
@@ -52,18 +49,15 @@ function DataExplorer() {
               <RemoveDataExplorer />
             </div>
           </div>
-
-          <hr />
-
-          <div className="containerTwo">
-          
-            <div className="containerToltip">
-              <Tooltip title={textExemple} className="toltip">
-                <InfoRoundedIcon />
-              </Tooltip>
-              <a className="linktoltip" href="#" onClick={handleDownload}>{t("Exemplo como arquivo .CSV")}</a>
-            </div>
-          </div>
+         
+              <Button
+              icon="pi pi-download"
+              label={t("Download de Exemplo (.CSV)")}
+              className="p-button-outlined p-button-sm btndownloadCSV"
+              onClick={handleDownload}
+            />
+       
+         
           <div className="containerThree">
             <ContainerImportCSV />
           </div>

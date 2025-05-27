@@ -2,11 +2,13 @@
 
 .ButtonAddDataExplorer{
     border: none;
-    height: 32px;
+    height: 40px;
     margin-top: 12px;
     border-radius: 10px;
     background-color: rgb(44, 64, 63);
     color: white;
+    display: flex;
+    justify-content: center;
 
 
 
@@ -25,11 +27,13 @@
 
 .EditDataExplorer{
     border: none;
-    height: 32px;
+    height: 40px;
     border-radius: 10px;
     background-color: rgb(71, 71, 71);
     color: white;
     width: 50%;
+    display: flex;
+    justify-content: center;
 
 
     &:hover{
@@ -41,7 +45,7 @@
 
 .editDataExplorerCSV{
     border: none;
-    height: 32px;
+    height: 40px;
     border-radius: 10px;
     background-color: rgb(71, 71, 71);
     color: white;
@@ -50,7 +54,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    font-size: 10px;
+    font-size: 12px;
     
 
     &:hover{
@@ -61,8 +65,11 @@
 }
 
 .RemoveDataExplorer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
-    height: 32px;
+    height: 40px;
     border-radius: 10px;
     background-color: rgb(78, 27, 27);
     color: white;

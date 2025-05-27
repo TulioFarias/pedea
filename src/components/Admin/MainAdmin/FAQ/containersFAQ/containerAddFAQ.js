@@ -1,15 +1,26 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import React, { useRef , useState, useEffect} from 'react';
 import '../../../../../sass/admin/FAQ/addfaq.scss';
-import { Form, InputGroup, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import apiPEDEA from '../../../../../services/api';
+import { useSelector } from 'react-redux';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Button } from 'primereact/button';
+import { FloatLabel } from 'primereact/floatlabel';
+import { Toast } from 'primereact/toast';
+import ShowContainerEditFAQ from './containerEditFAQ';
+
 
 function AddInfoFAQ() {
   const { t } = useTranslation();
+  const toast = useRef(null);
+    const [user, setUser] = useState([]);
+    const userData = useSelector(state => state.userInfoSlice.infoUser);
+    const { id: loggedInUserId } = userData;
+
   const schema = Yup.object().shape({
     question: Yup.string()
       .max(255, t('A pergunta deve ter no máximo 255 caracteres.'))
@@ -23,71 +34,102 @@ function AddInfoFAQ() {
     handleSubmit,
     register,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    toast.current.show({
+      severity: 'info',
+      summary: t('Aguarde'),
+      detail: t('Adicionando...'),
+      life: 2000,
+    });
+
     try {
-      await toast.promise(
-        apiPEDEA.post('/addFAQ', {
-          question: data.question,
-          answer: data.answer,
-        }),
-        {
-          pending: t('Adicionando FAQ...'),
-          success: t('FAQ adicionada com sucesso!'),
-          error: t('Erro ao adicionar FAQ.'),
-        }
-      );
+      await apiPEDEA.post('/addFAQ', {
+        question: data.question,
+        answer: data.answer,
+        user_id: loggedInUserId
+      });
+
+      toast.current.show({
+        severity: 'success',
+        summary: t('Sucesso'),
+        detail: t('Adicionado com sucesso!'),
+        life: 3000,
+      });
 
       reset();
     } catch (error) {
+      toast.current.show({
+        severity: 'error',
+        summary: t('Erro'),
+        detail: t('Error ao adicionar!'),
+        life: 4000,
+      });
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    async function loadUserData() {
+      try {
+        const { data } = await apiPEDEA.get('/admin');
+        const loggedInUser = data.filter(user => user.id === loggedInUserId);
+        if (loggedInUser) {
+          setUser(loggedInUser);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    loadUserData();
+  }, [loggedInUserId]);
+
   return (
-    <Container className="containerWrapperAddInfoFAQ">
-      <Form className="FormsContainerAddFAQ" onSubmit={handleSubmit(onSubmit)}>
-        <p>
-          {t('Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:')}
-        </p>
+    <div className='FormsContainerAddFAQ'>
+      <Toast ref={toast} />
+      <form  onSubmit={handleSubmit(onSubmit)}>
+        <p>{t('Para adicionar uma nova pergunta e resposta, preencha os campos abaixo:')}</p>
 
-        <div className="containerInputsFAQ">
-          <label className="labelsInputsFAQ">{t('Adicione uma pergunta:')}</label>
-          <Form.Control
-            type="text"
-            placeholder={t('Digite a pergunta...')}
-            {...register('question')}
-            className="AddinputFAQ"
-            isInvalid={errors.question}
-          />
-          <p className="txtErrorAddFAQ">{errors.question?.message}</p>
-        </div>
 
-        <div className="containerInputsFAQ">
-          <label className="labelsInputsFAQ">{t('Adicione uma resposta:')}</label>
-          <Form.Group>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              placeholder={t('Digite a resposta...')}
-              {...register('answer')}
-              className="AddinputFAQ"
-              isInvalid={errors.answer}
+        <div className='containerInputsFAQ'>
+
+          <FloatLabel>
+            <InputText
+              id="question"
+              {...register('question')}
+              onChange={(e) => setValue('question', e.target.value)}
+              className={`AddinputFAQ valueInputCustom ${errors.question ? 'p-invalid' : ''}`}
+              style={{ width: '100%' , borderRadius: '10px'}}
             />
-          </Form.Group>
-          <p className="txtErrorAddFAQ">{errors.answer?.message}</p>
+            <label htmlFor="question">{t('Digite a pergunta')}</label>
+          </FloatLabel>
+
+          <FloatLabel>
+            <InputTextarea
+              id="answer"
+              {...register('answer')}
+              onChange={(e) => setValue('answer', e.target.value)}
+              rows={4}
+              className={`AddinputFAQ valueInputCustom ${errors.answer ? 'p-invalid' : ''}`}
+              style={{ width: '100%', borderRadius: '10px' }}
+            />
+            <label htmlFor="answer">{t('Digite a resposta')}</label>
+          </FloatLabel>
+
         </div>
 
-        <button type="submit" className="btnSubmitFAQ">
-          {t('Criar nova FAQ')}
-        </button>
-      </Form>
-    </Container>
+        <Button type="submit" label={t('Criar nova FAQ')} className="btnSubmitFAQ p-button-primary" />
+      </form>
+
+      <ShowContainerEditFAQ/>
+
+    </div>
   );
 }
 

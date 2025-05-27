@@ -3,40 +3,34 @@
 .FormsContainerAddFAQ{
    display: flex;
    flex-direction: column;
+   border-radius: 10px;
+   padding: 10px;
+   background-color: rgba(77, 76, 76, 0.137);
+   max-height: 100%;
+   width: 50%;
+
 
    p{
     font-size: 14px;
+    color: #495057;
+    font-weight: bold;
+    padding-left: 5px;
    }
  
 }
 
 .containerInputsFAQ{
-    padding: 5px;
     display: flex;
     flex-direction: column;
-
-}
-
-.labelsInputsFAQ{
-    font-size: 14px;
-    font-weight: 900;
-    padding-left: 5px;
-    margin-bottom: 5px;
-}
-
-.AddinputFAQ{
-
-    &::placeholder{
-        color: gray;
-        font-size: 12px;
-    }
+    padding-top: 20px;
+    gap: 40px;
+    
 }
 
 .btnSubmitFAQ{
     border: none;
-    height: 30px;
-    width: 200px;
-    margin-top: 20px;
+    height: 40px;
+    width: 150px;
     border-radius: 10px;
     background-color: rgb(44, 64, 63);
     color: white;
@@ -47,14 +41,6 @@
         background-color: rgb(255, 254, 254);
         transition: all 0.5s ease-in-out;
     }
-}
-
-.txtErrorAddFAQ{
-    color: red;
-    font-size: 12px!important;
-    margin-top: 2px;
-    padding-left: 5px;
-    margin-bottom: 0px;
 }
 
 

@@ -1,172 +1,50 @@
-#ContainerAddDataExplorer {
-    color: rgb(63, 63, 63);
-  
-   
+/* addModalDataExplorer.scss */
+
+.p-fluid form {
+  display: grid !important; /* garantir grid */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 1.5rem;
 }
 
-#ContainerAddDataExplorer .modal-content {
-    background-color: rgba(255, 255, 255, 0.267);
-    backdrop-filter: blur(10px);
-    width: max-content;
-    display: flex;
-    flex-direction: column;
-    
-    h1{
-        
-        color: black;
-        background-color: rgba(255, 255, 255, 0.267);
-        border-radius: 10px;
-        text-align: center;
-        font-size: 20px;
-        padding: 5px;
-    }
+/* Forçar os campos a se adaptarem dentro do grid */
+.p-fluid form > .p-float-label {
+  width: 100% !important; /* evitar larguras fixas */
+  margin-bottom: 0 !important;
+  display: flex !important;
+  flex-direction: column;
 }
 
-.titleTxt{
-    color: black;
-    background-color: rgba(255, 255, 255, 0.267);
-    border-radius: 10px;
-    font-size: 12px;
-    width: max-content;
-    padding: 5px;
+/* Ajustar o label para não interferir na largura */
+.p-fluid form > .p-float-label label {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
 }
 
-   
-
-
-.BodyModalAdd {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px; 
-    background-color: rgba(199, 199, 199, 0.644);
-    border-radius: 10px;
-    padding: 10px;
-    height: max-content;
-
+/* InputText e Dropdown ocupando 100% da célula do grid */
+.p-fluid form > .p-float-label .p-inputtext,
+.p-fluid form > .p-float-label .p-dropdown {
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
-.inputDataExplorer{
-    width: 300px;
+/* O grupo de botões fica numa linha abaixo do grid, ocupando 4 colunas */
+.p-fluid form > .mt-3.flex {
+  grid-column: 1 / -1;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 1rem !important;
+  margin-top: 1.5rem !important;
 }
 
-
-.ContainerBtnModalAdd{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-top: 10px;
-    gap: 10px;
+/* Responsividade */
+@media (max-width: 900px) {
+  .p-fluid form {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-
-
-.BtnAddDataExplorer{
-    background-color: rgb(44, 64, 63);
-    color: white;
-    border: none;
-    
-
-    &:hover{
-        background-color: gray;
-        color: rgb(44, 64, 63);
-        transition: all 0.3s ease-in-out;
-    }
+@media (max-width: 600px) {
+  .p-fluid form {
+    grid-template-columns: 1fr;
+  }
 }
-
-.BtnCloseAddDataExplorer{
-    background-color: rgb(88, 88, 88);
-    color: white;
-    border: none;
-    
-   
-}
-
-@media (min-width: 480px) and (max-width: 1024px){
-
-}
-
-@media (max-width: 480px) {
-    #ContainerAddDataExplorer {
-        color: rgb(63, 63, 63);
-      
-       
-    }
-    
-    #ContainerAddDataExplorer .modal-content {
-        background-color: rgba(255, 255, 255, 0.267);
-        backdrop-filter: blur(10px);
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        
-        h1{
-            
-            color: black;
-            background-color: rgba(255, 255, 255, 0.267);
-            border-radius: 10px;
-            text-align: center;
-            font-size: 20px;
-            padding: 5px;
-        }
-    }
-    
-    .titleTxt{
-        color: black;
-        background-color: rgba(255, 255, 255, 0.267);
-        border-radius: 10px;
-        font-size: 12px;
-        width: max-content;
-        padding: 5px;
-    }
-    
-       
-    
-    
-    .BodyModalAdd {
-        display: flex;
-        flex-direction: column;
-        gap: 25px; 
-        background-color: rgba(199, 199, 199, 0.644);
-        border-radius: 10px;
-        padding: 10px;
-        height: max-content;
-    
-    }
-    
-    .inputDataExplorer{
-        width: 300px;
-    }
-    
-    
-    .ContainerBtnModalAdd{
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        margin-top: 10px;
-        gap: 10px;
-    }
-    
-    
-    
-    .BtnAddDataExplorer{
-        background-color: rgb(44, 64, 63);
-        color: white;
-        border: none;
-        
-    
-        &:hover{
-            background-color: gray;
-            color: rgb(44, 64, 63);
-            transition: all 0.3s ease-in-out;
-        }
-    }
-    
-    .BtnCloseAddDataExplorer{
-        background-color: rgb(88, 88, 88);
-        color: white;
-        border: none;
-        
-       
-    }
-}
-

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import '../../../../sass/admin/Users/users.scss'
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded'
-import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { Button, Form, Row, Col, Table } from 'react-bootstrap'
+import { FloatLabel } from 'primereact/floatlabel'
+import { InputText } from 'primereact/inputtext'
 import PeopleIcon from '@mui/icons-material/People'
 import apiPEDEA from '../../../../services/api'
 import SearchIcon from '@mui/icons-material/Search';
+import { Button } from 'primereact/button'
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
@@ -71,52 +72,58 @@ const handleSearch = async () => {
 
       <div className="ContainerSearch">
         <div className="containerHeaderUsers">
-          <PeopleIcon />
-          <p>{t("Consultar usuários")}</p>
-        </div>
+                <PeopleIcon />
+                <p>{t("Consultar usuários")}</p>
+              </div>
 
-        <Form>
-          <Row className="align-items-center">
-            <Col sm={6}>
-              <Form.Control
-                type="text"
-                placeholder={t('Digite o CPF')}
+              <div className="formInputsPrime">
+                <div className="input-group">
+            <FloatLabel style={{ width: '100%' }}>
+              <InputText
+                id="cpf"
                 name="cpf"
                 value={searchParams.cpf}
-               onChange={(e) => {
-                const masked = maskCPF(e.target.value);
-                handleInputChange({ target: { name: 'cpf', value: masked } });
-              }}
+                onChange={(e) => {
+                  const masked = maskCPF(e.target.value)
+                  handleInputChange({ target: { name: 'cpf', value: masked } })
+                }}
+                className="p-inputtext-sm valueInputCustom "
+                style={{ width: '100%', borderRadius: '10px' }}
               />
-            </Col>
+              <label htmlFor="cpf">{t('Digite o CPF')}</label>
+            </FloatLabel>
+          </div>
 
-
-            <Col sm={6}>
-              <Form.Control
-                type="text"
-                placeholder={t('Digite o Nome')}
+          <div className="input-group">
+            <FloatLabel style={{ width: '100%' }}>
+              <InputText
+                id="nome"
                 name="nome"
                 value={searchParams.nome}
                 onChange={handleInputChange}
+                className="p-inputtext-sm valueInputCustom "
+                style={{ width: '100%', borderRadius: '10px' }}
               />
-            </Col>
+              <label htmlFor="nome">{t('Digite o Nome')}</label>
+            </FloatLabel>
+          </div>
+         
+        </div>
+         <div className="containerButtonsPrime">
+       
+            <Button  label={t("Pesquisar")} className="btnSearchPrime" onClick={handleSearch} >
+              <SearchIcon />
+            </Button>
 
-
-            <div className='containerButtons'>
-              <Button className='btnSearch' onClick={handleSearch}>
-                <SearchIcon/>
-                {t("Pesquisar")}
-              </Button>
-      
-              <Button variant="secondary" className='btnClean' onClick={handleClear}>
-                <CleaningServicesIcon/>
-                {t("Limpar")}
-              </Button>
-            </div>
-              
+            
            
-          </Row>
-        </Form>
+            <Button  label={t("Limpar")} className="btnCleanPrime" severity="secondary" onClick={handleClear} >
+               <CleaningServicesIcon/>
+            </Button>
+
+          </div>
+      
+
       </div>
 
      

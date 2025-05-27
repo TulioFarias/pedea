@@ -1,25 +1,26 @@
-.container-formRegister{
-    background-color: #7d7d7d;
-    background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-    font-family: 'Roboto', sans-serif;
+.container-formRegister {
+  background-color: #7d7d7d;
+  background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Roboto', sans-serif;
 
 }
-.containerRegisterUsers{
-        background-color: #e4e4e423;
-        box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-        width: 30%;
-        height: max-content;
-        padding: 10px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+.containerRegisterUsers {
+  background-color: #e4e4e423;
+  box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
+  width: 30%;
+  height: max-content;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 
@@ -27,440 +28,443 @@
 //** btnBackRegister animate **//
 
 .btnBackRegister {
-    position: absolute;
-    background: transparent;
-    border: none;
-    top: 30px;
-    left: 50px;
-    width: 56px;
-    height: 56px;
-    margin: 0;
-    overflow: hidden;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
+  position: absolute;
+  background: transparent;
+  border: none;
+  top: 30px;
+  left: 50px;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 
-    img{
-        width: 28px;
-        height: 28px;
-    }
+  img {
+    width: 28px;
+    height: 28px;
   }
-  
-  .btnBackRegister:before,
-  .btnBackRegister:after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    inset: 7px;
-  }
-  
-  .btnBackRegister:before {
-    border: 2px solid #f0eeef;
-    transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-      transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-  }
-  
-  .btnBackRegister:after {
-    border: 2px solid #96daf0;
-    transform: scale(1.3);
-    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0;
-  }
-  
-  .btnBackRegister:hover:before,
-  .btnBackRegister:focus:before {
-    opacity: 0;
-    transform: scale(0.7);
-    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .btnBackRegister:hover:after,
-  .btnBackRegister:focus:after {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-      transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-  }
-  
-  .btnBackRegister-box {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .btnBackRegister-elem {
-    display: block;
-    width: 20px;
-    height: 20px;
-    margin: 17px 18px 0 18px;
-    transform: rotate(180deg);
-    fill: #f0eeef;
-  }
-  
-  .btnBackRegister:hover .btnBackRegister-box,
-  .btnBackRegister:focus .btnBackRegister-box {
-    transition: 0.4s;
-    transform: translateX(-56px);
-  }
+}
+
+.btnBackRegister:before,
+.btnBackRegister:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+}
+
+.btnBackRegister:before {
+  border: 2px solid #f0eeef;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.btnBackRegister:after {
+  border: 2px solid #96daf0;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.btnBackRegister:hover:before,
+.btnBackRegister:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btnBackRegister:hover:after,
+.btnBackRegister:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.btnBackRegister-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.btnBackRegister-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #f0eeef;
+}
+
+.btnBackRegister:hover .btnBackRegister-box,
+.btnBackRegister:focus .btnBackRegister-box {
+  transition: 0.4s;
+  transform: translateX(-56px);
+}
 
 
 //** **//
 
-.formRegister{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+.formRegister {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
-    .containerUserInfo{
-        margin-top: 10px;
-        width: max-content;
-        height: max-content;
-        padding: 10px;
-        grid-template-columns: 2fr 2fr;
-        gap: 25px;
-        background-color: #ffffff3f;
-        border-radius: 15px;
-    }
+.containerUserInfo {
+  margin-top: 10px;
+  width: max-content;
+  height: max-content;
+  padding: 10px;
+  grid-template-columns: 2fr 2fr;
+  gap: 25px;
+  background-color: #ffffff3f;
+  border-radius: 15px;
+}
 
-    .hrLoginAndRegister{
-        width: 102.5%;
-        border: 1px dashed white;
-        
-    }
+.hrLoginAndRegister {
+  width: 102.5%;
+  border: 1px dashed white;
 
-   .titleRegister{
-    color: white;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    font-weight: 800;
-    
-   }
+}
 
-   .txtRegister{
-    color: white;
-    font-size: 14px;
-    text-align: center;
-   }
+.titleRegister {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-size: 30px;
+  font-weight: 800;
 
-    .RetrieveAccLink{
-        position: relative;
-        left: 70px;
-        bottom: 10px;
-        color: rgb(165, 165, 165);
-        
-        &:hover{
-            color: #2C403F;
-        }
-    }
-   
-    .customContainerUser{
-        width: 340px;
-        
-        
-    }
+}
 
-    
-    .LabelFormRegister{
-        font-size: 16px;
-        color: rgb(231, 231, 231);
-        
-    }
-    
-    .InputFormRegister {
-      width: 300px;
-      height: 35px;
-      padding-left: 10px;
-      outline: none;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 800;
-      background-color: rgb(231, 231, 231);
-      color: rgb(97, 97, 97); 
-      border: 1px solid transparent;
+.txtRegister {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.RetrieveAccLink {
+  position: relative;
+  left: 70px;
+  bottom: 10px;
+  color: rgb(165, 165, 165);
+
+  &:hover {
+    color: #2C403F;
   }
+}
 
-  .InputFormRegister:focus {
-      background-color: rgb(231, 231, 231); 
-      color: rgb(97, 97, 97); 
-      border: 1px solid #ccc; 
-  }
-  
+.customContainerUser {
+  width: 340px;
 
-  .InputFormRegister::placeholder {
-      font-size: 12px; 
-      color: rgba(156, 156, 156, 0.541);
-      opacity: 1; 
-  }
 
-  .InputFormRegister:-webkit-autofill,
-.InputFormRegister:-webkit-autofill:hover,
-.InputFormRegister:-webkit-autofill:focus {
-  -webkit-text-fill-color: rgb(97, 97, 97); /* Cor cinza */
-  -webkit-box-shadow: 0 0 0px 1000px rgb(231, 231, 231) inset; /* Cor de fundo */
-  transition: background-color 5000s ease-in-out 0s; /* Previne troca rápida de cor */
 }
 
 
-    .error-txtRegister{
-        margin-top: 6px;
-        font-size: 14px;
-        line-height: 16px;
-        color: rgba(173, 2, 2, 0.849);
-        
-    }
+.LabelFormRegister {
+  font-size: 16px;
+  color: rgb(231, 231, 231);
 
-    .ReCaptchaRegister{
-        margin-top: 10px;
-    }
+}
 
-    //** btnRegister **//
+.InputFormRegister {
+  width: 300px;
+  height: 35px;
+  padding-left: 10px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: rgb(231, 231, 231);
+  color: rgb(97, 97, 97);
+  border: 1px solid transparent;
+}
+
+.InputFormRegister:focus {
+  background-color: rgb(231, 231, 231);
+  color: rgb(97, 97, 97);
+  border: 1px solid #ccc;
+}
+
+
+.InputFormRegister::placeholder {
+  font-size: 12px;
+  color: rgba(156, 156, 156, 0.541);
+  opacity: 1;
+}
+
+.InputFormRegister:-webkit-autofill,
+.InputFormRegister:-webkit-autofill:hover,
+.InputFormRegister:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(97, 97, 97);
+  /* Cor cinza */
+  -webkit-box-shadow: 0 0 0px 1000px rgb(231, 231, 231) inset;
+  /* Cor de fundo */
+  transition: background-color 5000s ease-in-out 0s;
+  /* Previne troca rápida de cor */
+}
+
+
+.error-txtRegister {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(173, 2, 2, 0.849);
+
+}
+
+.ReCaptchaRegister {
+  margin-top: 10px;
+}
+
+//** btnRegister **//
 
 .Btn-FormRegister {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 36px;
-    border-color: transparent;
-    width: 120px;
-    height: 45px;
-    background-color: inherit;
-    border-radius: 100px;
-    font-weight: 600;
-    color: white;
-    box-shadow: 0 0 0 2px #2C403F;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    
-  }
-  
-  
-  .Btn-FormRegister .arr-1 {
-    right: 16px;
-  }
-  
-  .Btn-FormRegister .arr-2 {
-    left: -25%;
-  }
-  
-  
-  
-  .Btn-FormRegister .text {
-    position: relative;
-    z-index: 1;
-    transform: translateX(-12px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .Btn-FormRegister:hover {
-    box-shadow: 0 0 0 12px transparent;
-    border-radius: 12px;
-    transform: scale(1.03);
-    transition: 0.4s all ease-in-out;
-    border: none;
-    background-color: #2C403F
-  }
-  
-  .Btn-FormRegister:hover .arr-1 {
-    right: -25%;
-  }
-  
-  .Btn-FormRegister:hover .arr-2 {
-    left: 16px;
-  }
-  
-  .Btn-FormRegister:hover .text {
-    transform: translateX(12px);
-  }
-  
-  .Btn-FormRegister:hover img {
-    color: white;
-  }
-  
-  .Btn-FormRegister:active {
-    scale: 0.95;
-    box-shadow: 0 0 0 4px white;
-  }
-  
-  .Btn-FormRegister:hover .circle {
-    width: 220px;
-    height: 220px;
-    opacity: 1;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-color: transparent;
+  width: 120px;
+  height: 45px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 0 2px #2C403F;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+
+.Btn-FormRegister .arr-1 {
+  right: 16px;
+}
+
+.Btn-FormRegister .arr-2 {
+  left: -25%;
+}
+
+
+
+.Btn-FormRegister .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.Btn-FormRegister:hover {
+  box-shadow: 0 0 0 12px transparent;
+  border-radius: 12px;
+  transform: scale(1.03);
+  transition: 0.4s all ease-in-out;
+  border: none;
+  background-color: #2C403F
+}
+
+.Btn-FormRegister:hover .arr-1 {
+  right: -25%;
+}
+
+.Btn-FormRegister:hover .arr-2 {
+  left: 16px;
+}
+
+.Btn-FormRegister:hover .text {
+  transform: translateX(12px);
+}
+
+.Btn-FormRegister:hover img {
+  color: white;
+}
+
+.Btn-FormRegister:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px white;
+}
+
+.Btn-FormRegister:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
 
 //** end **//
 
 
-    .end-txtRegister{
-        color: white;
-        font-size: 18px;
-        margin-top: 5px;
-        display: flex;
-        gap: 5px;
-    }
-    
-    .link-endRegister{
-        font-size: 18px;
-        color: white;
-    
-        &:hover{
-            color: #2C403F;
-        }
-    }
+.end-txtRegister {
+  color: white;
+  font-size: 18px;
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+}
+
+.link-endRegister {
+  font-size: 18px;
+  color: white;
+
+  &:hover {
+    color: #2C403F;
+  }
+}
 
 
-    
-
-    @media only screen and (max-width: 740px){
-      
-        .containerRegisterUsers{
-            background-color: #e4e4e423;
-            box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-            width: 85%;
-            height: max-content;
-            padding: 5px;
-            border-radius: 10px;
-            display: flex;
-            margin-left: 30px;
-            flex-direction: column;
-            align-items: center;
-            
-    }
 
 
-    .btnBackRegister{
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: 2px;
-        left: 10px;
-        background: transparent;
-        border: none;
-        display: none;
-    
-        img{
-            width: 30px;
-        }
-    
-    
-        :hover{
-            transform: scale(1.05);
-            transition: all 0.1s ease-in-out;
-        }
-    }
+@media only screen and (max-width: 740px) {
 
-    .formRegister{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: max-content;
+  .containerRegisterUsers {
+    background-color: #e4e4e423;
+    box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
+    width: 85%;
+    height: max-content;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 30px;
+    flex-direction: column;
+    align-items: center;
 
-    }
+  }
 
-    .containerUserInfo{
-        width: max-content;
-        display: flex;
-        padding: 5px;
-        gap: 5px;
-        background-color: #ffffff3f;
-        border-radius: 15px;
-    }
 
-    .hrLoginAndRegister{
-        width: 103.5%;
-        border: 1px dashed white;
-        margin-bottom: 10px;
-    }
+  .btnBackRegister {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 2px;
+    left: 10px;
+    background: transparent;
+    border: none;
+    display: none;
 
-    h6{
-        color: white;
-        font-size: 12px;
-    }
-
-    .RetrieveAccLink{
-        position: relative;
-        left: 70px;
-        bottom: 10px;
-        color: rgb(165, 165, 165);
-        
-        &:hover{
-            color: #2C403F;
-        }
-    }
-   
-    .customContainerUser{
-        width: max-content;
-       
-        
-        
-    }
-
-    .LabelFormRegister{
-        font-size: 12px;
-        color: white;
-        margin-bottom: 6px;
-        
-    }
-
-    .btnBackRegister{
-        color: red;
-    }
-    
-    .InputFormRegister{
-        
-        width: 300px;
-        height: 30px;
-        padding-left: 10px;
-        outline: none;
-        border-radius: 5px;
-        font-size: 18px;
-        color: black;
-
-        &::placeholder{
-            font-size: 10px;
-            color: rgba(156, 156, 156, 0.541);
-        }
-    
-    
-    }
-
-   
-    .error-txtRegister{
-        margin-top: 6px;
-        margin-left: 5px;
-        font-size: 11px;
-        line-height: 16px;
-        color: rgba(173, 2, 2, 0.849);
-        
+    img {
+      width: 30px;
     }
 
 
-    
+    :hover {
+      transform: scale(1.05);
+      transition: all 0.1s ease-in-out;
+    }
+  }
 
-    .end-txtRegister{
-        color: white;
-        font-size: 14px;
-        margin-top: 10px;
-        display: flex;
-        gap: 5px;
+  .formRegister {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: max-content;
+
+  }
+
+  .containerUserInfo {
+    width: max-content;
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+    background-color: #ffffff3f;
+    border-radius: 15px;
+  }
+
+  .hrLoginAndRegister {
+    width: 103.5%;
+    border: 1px dashed white;
+    margin-bottom: 10px;
+  }
+
+  h6 {
+    color: white;
+    font-size: 12px;
+  }
+
+  .RetrieveAccLink {
+    position: relative;
+    left: 70px;
+    bottom: 10px;
+    color: rgb(165, 165, 165);
+
+    &:hover {
+      color: #2C403F;
     }
-    
-    .link-endRegister{
-        font-size: 14px;
-        color: white;
-    
-        &:hover{
-            color: #2C403F;
-        }
+  }
+
+  .customContainerUser {
+    width: max-content;
+
+
+
+  }
+
+  .LabelFormRegister {
+    font-size: 12px;
+    color: white;
+    margin-bottom: 6px;
+
+  }
+
+  .btnBackRegister {
+    color: red;
+  }
+
+  .InputFormRegister {
+
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+
+    &::placeholder {
+      font-size: 10px;
+      color: rgba(156, 156, 156, 0.541);
     }
+
+
+  }
+
+
+  .error-txtRegister {
+    margin-top: 6px;
+    margin-left: 5px;
+    font-size: 11px;
+    line-height: 16px;
+    color: rgba(173, 2, 2, 0.849);
+
+  }
+
+
+
+
+  .end-txtRegister {
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .link-endRegister {
+    font-size: 14px;
+    color: white;
+
+    &:hover {
+      color: #2C403F;
     }
+  }
+}

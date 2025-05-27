@@ -1,5 +1,6 @@
 import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded'
 import React, { useState } from 'react'
+import { Button } from 'primereact/button'
 
 import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
 import ModalAddDataExplorer from './modalDataExplorer/modalAddDataExplorer'
@@ -12,10 +13,10 @@ function AddInfoDataExplorer() {
 
   return (
     <>
-      <button className="ButtonAddDataExplorer" onClick={handleShowModal}>
+      <Button  className="ButtonAddDataExplorer" onClick={handleShowModal}>
         <PlaylistAddRoundedIcon />
        {t("Adicionar")}
-      </button>
+      </Button>
 
       <ModalAddDataExplorer show={showModal} handleClose={handleCloseModal} />
     </>

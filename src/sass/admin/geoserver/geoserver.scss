@@ -13,6 +13,14 @@
 .containerHeaderGeoserver{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding-top: 5px;
+}
+
+.containerHeaderGeoserver{
+    display: flex;
+    align-items: center;
     justify-content: center;
     justify-content: space-between;
     gap: 5px;

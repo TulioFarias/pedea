@@ -12,45 +12,25 @@
     }
 }
 
-.ContainerInfoUser{
-    border-radius: 10px;
-    background-color: rgb(44, 64, 63);
-    width: 50%;
-    margin-left: 10px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
 .containerUserSettings{
-    display: flex;
+    display:flex;
     flex-direction: column;
     width: 100%;
     border-radius: 20px;
     padding: 10px;
-    gap: 20px;
-    
-
-
-    .form-label{
-        font-size: 14px!important;
-        color: white;
-        margin-bottom: 0px;
-        
-    }
-}
-
-
-.inputsValuesUser{
-    display: flex;
-    justify-content: center;
-}
-
-
-.valueInputCustom{
-    color: gray;
+    gap: 10px;
     font-weight: bold;
     
+
+
+    
+}
+
+.btnPass{
+    background-color: rgb(44, 64, 63);
+    border: none;
+    height: 40px;
+    border-radius: 5px;
 }
 
 
@@ -58,117 +38,8 @@
 
 @media (min-width: 480px) and (max-width: 1024px){
     
-    .ContainerSettingsAndUser{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap:20px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: max-content;
-
-        
-        
-       
-    }
-
-
-    .titleSettings{
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        
-    }
-
-    .containerUserSettings{
-        display: flex;
-        flex-direction: column;
-        width: 270px;
-        height: max-content;
-        align-items: center;
-        height: max-content;
-        border-radius: 20px;
-        padding: 10px;
-        gap: 20px;
+  
     
-    
-        .form-label{
-            font-size: 12px!important;
-
-        }
-    }
-    
- 
-
-    
-    .titleUserSettings{
-        font-weight: bold;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        font-size: 14px;
-       
-    }
-    
-    
-    .user-imageSettings{
-        width: 120px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        left: 30px;
-        bottom: 30px;
-    }
-    
-    .user-imageSettings img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        border-radius: 50%; 
-    }
-    
-    
-    .containerFileImg{
-        display: flex;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        justify-content: center;
-        top: 55px;
-        left: 55px;
-        cursor: pointer;
-        }
-    
-    
-    
-    .file-btn{
-        position: absolute; 
-        width: 100%; 
-        height: 100%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        cursor: pointer;
-        border: 1px dashed;
-        position: relative;
-        left: 10px;
-        top: 30px;
-    
-        &:hover{
-            transform: scale(1.05);
-            transition: 0.3s all ease-in-out;
-            color: rgb(0, 136, 247);
-            background-color: rgb(78, 78, 78);
-    
-        }
-    }
     
     
     
@@ -228,99 +99,7 @@
 @media only screen and (max-width: 480px) and (min-width: 375px){
 
 
-    .ContainerSettingsAndUser{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap:20px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: max-content;
-       
-    }
-    
-    .containerUserSettings{
-        display: flex;
-        flex-direction: column;
-        width: 270px;
-        height: max-content;
-        align-items: center;
-        height: max-content;
-        border-radius: 20px;
-        padding: 10px;
-        gap: 20px;
-    
-    
-        .form-label{
-            font-size: 12px!important;
-        
-        }
-    }
-    
-    .titleUserSettings{
-        font-weight: bold;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        font-size: 14px;
-       
-    }
-    
-    
-    .user-imageSettings{
-        width: 120px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        left: 20px;
-    }
-    
-    .user-imageSettings img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        border-radius: 50%; 
-    }
-    
-    
-    .containerFileImg{
-        display: flex;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        justify-content: center;
-        top: 0px;
-        left: 55px;
-        cursor: pointer;
-        }
-    
-    
-    
-    .file-btn{
-        position: absolute; 
-        width: 100%; 
-        height: 100%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        cursor: pointer;
-        border: 1px dashed;
-    
-        &:hover{
-            transform: scale(1.05);
-            transition: 0.3s all ease-in-out;
-            color: rgb(0, 136, 247);
-            background-color: rgb(78, 78, 78);
-    
-        }
-    }
+   
     
     
     

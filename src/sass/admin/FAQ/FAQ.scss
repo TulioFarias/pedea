@@ -1,211 +1,32 @@
+.headerFaq{
+    display: flex;
+    gap: 10px;
+    color: rgb(44, 64, 63);
+    margin: 5px 0px 15px 0px;
+    
+       p{
+        margin-top: 2px;
+        font-weight: bold;
+    }
+}
+
 #containerFAQs{
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    gap: 10px;
 }
 
-.ContainerAllFAQ{
-    height: 83vh;
-    width: 40vw;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(44, 64, 63);
-    padding: 10px;
-    border-radius: 10px;
-    overflow: auto;
-
-    
-
-    hr{
-        border: 1px dashed white;
-        margin-top: 0px;
-    }
-}
-
-.containerTitleFAQ{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    h1{
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        font-size: 25px;
-    }
-
-    .iconTitleFAQlink{
-        position: relative;
-        left: 120px;
-        cursor: pointer;
-        color: white;
-
-        &:hover{
-            color: gray;
-            transition: all 0.3s ease-in-out;
-        }
-    }
-}
-.containerOneFAQ{
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.267);
-    max-height: max-content;
-
+.p-float-label label {
+  font-weight: bold; 
 }
 
 
-.containerTwoFAQ{
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    height: 40vh;
-
-}
 
 @media (min-width: 480px) and (max-width: 1024px){
-    #containerFAQs{
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
-        justify-content: center;
-    }
-    
-    .ContainerAllFAQ{
-        height: 83vh;
-        width: 72vw;
-        display: flex;
-        flex-direction: column;
-        background-color: rgb(44, 64, 63);
-        padding: 10px;
-        border-radius: 10px;
-        overflow: auto;
-
-    
-        
-    
-        hr{
-            border: 1px dashed white;
-            margin-top: 0px;
-        }
-    }
-
-    .containerTitleAndLinkChangeLog .iconLinkChangeLog {
-        position: relative;
-        left: 100px!important;
-        cursor: pointer;
-        color: white;
-    }
-    
-    .containerTitleFAQ{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        h1{
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-    
-        .iconTitleFAQlink{
-            position: relative;
-            left: 5 0px;
-            bottom: 4px;
-            cursor: pointer;
-            color: white;
-    
-            &:hover{
-                color: gray;
-                transition: all 0.3s ease-in-out;
-            }
-        }
-    }
-    .containerOneFAQ{
-        color: white;
-        border-radius: 10px;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.267);
-        height: max-content;
-       
-    
-    }
-    
-    
-    .containerTwoFAQ{
-        color: white;
-        border-radius: 10px;
-        padding: 10px;
-        margin-top: 3px;
-        background-color: rgba(255, 255, 255, 0.267);
-        height: 100vh;
-    
-    }
 
 }
 
 @media only screen and (max-width: 480px) and (min-width: 375px) {
 
-    #containerFAQs{
-        display: grid;
-        gap: 15px;
-  
-        
-    }
-    
-    .ContainerAllFAQ{
-        width: 70vw;
-        height: 100vh;
-
-        hr{
-            border: 1px dashed white;
-            margin-top: 0px;
-            
-        }
-    }
-    
-    .containerTitleFAQ{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        h1{
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-            text-align: center;
-        }
-    
-        .iconTitleFAQlink{
-            position: relative;
-            left: 0px;
-            cursor: pointer;
-            color: white;
-    
-            &:hover{
-                color: gray;
-                transition: all 0.3s ease-in-out;
-            }
-        }
-    }
-    .containerOneFAQ{
-        color: white;
-        border-radius: 10px;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.267);
-        max-height: max-content;
-    
-    }
-    
-    
-    .containerTwoFAQ{
-        color: white;
-        border-radius: 10px;
-        padding: 10px;
-        margin-top: 3px;
-        background-color: rgba(255, 255, 255, 0.267);
-        height: 50vh;
-    
-    }
+   
 
 }

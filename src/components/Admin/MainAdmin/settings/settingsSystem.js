@@ -1,24 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import '../../../../sass/admin/Settings/settings.scss';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BadgeIcon from '@mui/icons-material/Badge';
-import {
-  Row,
-  Col,
-  Button,
-  Form,
-  FormControl,
-  InputGroup,
-  Container
-} from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import api from '../../../../services/api';
 import ModalChangePassword from './modalSettings/PasswordChange';
 import ModalChangePhotoUser from './modalSettings/PhotoUserChange';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { InputText } from 'primereact/inputtext'; 
+import { Button } from 'primereact/button';
+import PasswordIcon from '@mui/icons-material/Password';
 function SettingsSystemAndUser() {
   const [showModalPhoto, setShowModalPhoto] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -28,13 +21,13 @@ function SettingsSystemAndUser() {
 
   const handleShowPhoto = () => setShowModalPhoto(true);
   const handleShowPassword = () => setShowPassword(true);
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+
   useEffect(() => {
     async function loadUserData() {
       try {
         const { data } = await api.get('/admin');
         const loggedInUser = data.filter(user => user.id === loggedInUserId);
-
         if (loggedInUser) {
           setUser(loggedInUser);
         }
@@ -58,18 +51,8 @@ function SettingsSystemAndUser() {
 
   const formatarDataLegivel = dataString => {
     const meses = [
-      'janeiro',
-      'fevereiro',
-      'março',
-      'abril',
-      'maio',
-      'junho',
-      'julho',
-      'agosto',
-      'setembro',
-      'outubro',
-      'novembro',
-      'dezembro'
+      'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+      'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
     ];
 
     const data = new Date(dataString);
@@ -80,62 +63,56 @@ function SettingsSystemAndUser() {
     return `${dia} de ${mes} de ${ano}`;
   };
 
- return (
-  <div className="ContainerSettingsAndUser">
-    <div className="containerInfoSettings">
-      <BadgeIcon />
-      <p>{t("Informações cadastrais")}</p>
-    </div>
+  return (
+    <>
+      <div className="containerInfoSettings">
+        <BadgeIcon />
+        <p>{t("Informações cadastrais")}</p>
+      </div>
 
-    {user &&
-      user.map((value) => (
-        <div key={value.id} className='ContainerInfoUser'>
+      {user && user.map((value) => (
+        <div key={value.id} className=''>
           <div className="containerUserSettings">
+            <label className="customLabelUser">{t(" Nome:")}</label>
+            <InputText
+              type="text"
+              name="name"
+              value={value.name}
+              readOnly
+              className="p-inputtext-sm valueInputCustom"
+            />
 
-              <Form.Label className="customLabelUser">{t(" Nome:")}</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={value.name}
+            <label className="customLabelUser">{t(" Email:")}</label>
+            <InputText
+              type="text"
+              name="email"
+              value={value.email}
+              readOnly
+              className="p-inputtext-sm valueInputCustom"
+            />
+
+            <label className="customLabelUser">{t("Criado em:")}</label>
+            <InputText
+              type="text"
+              name="createdAt"
+              value={formatarDataLegivel(value.createdAt)}
+              readOnly
+              className="p-inputtext-sm valueInputCustom"
+            />
+
+            <label className="customLabelUser">{t("Trocar sua senha?")}</label>
+            <div className="d-flex align-items-center">
+              <InputText
+                type="password"
+                name="password"
+                value="XXXXXXXXXXX"
                 readOnly
-                className="valueInputCustom"
+                className="p-inputtext-sm valueInputCustom"
               />
-
-              <Form.Label className="customLabelUser">{t(" Email:")}</Form.Label>
-              <Form.Control
-                type="text"
-                name="role"
-                value={value.email}
-                readOnly
-                className="valueInputCustom"
-              />
-
-              <Form.Label className="customLabelUser">
-                {t("Criado em:")}
-              </Form.Label>
-              <Form.Control
-                type="text"
-                name="create"
-                value={formatarDataLegivel(value.createdAt)}
-                readOnly
-                className="valueInputCustom"
-              />
-
-              <Form.Label className="customLabelUser">
-                {t("Trocar sua senha?")}
-              </Form.Label>
-              <InputGroup>
-                <FormControl
-                  type="password"
-                  name="password"
-                  className="valueInputCustom"
-                  value={"XXXXXXXXXXX"}
-                />
-                <Button variant="secondary" onClick={handleShowPassword}>
-                  <EditRoundedIcon />
-                </Button>
-              </InputGroup>
-           
+              <Button onClick={handleShowPassword} className='btnPass'>
+                <PasswordIcon/>
+              </Button>
+            </div>
           </div>
 
           <ModalChangePhotoUser
@@ -148,11 +125,8 @@ function SettingsSystemAndUser() {
           />
         </div>
       ))}
-  </div>
-);
-
+    </>
+  );
 }
 
 export default SettingsSystemAndUser;
-
-
