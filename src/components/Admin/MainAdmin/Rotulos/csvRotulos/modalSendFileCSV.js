@@ -1,177 +1,114 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import * as Yup from 'yup'
-import { Snackbar, Alert } from '@mui/material';
-import apiPEDEA from '../../../../../services/api'
-import { useTranslation } from 'react-i18next'
+import React, { useRef, useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { Form, Button, Modal } from "react-bootstrap";
+import * as Yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Toast } from 'primereact/toast';
+import '../../../../../sass/admin/Rotulos/containerImportCSV.scss';
+import apiPEDEA from "../../../../../services/api";
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-function ModalSendFileCsv({ showModalFile, setShowModalFile }) {
-  const { t } = useTranslation()
-  const [data, setData] = useState([])
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: '',
-    severity: '',
-});
 
-console.log(showModalFile)
-  
+function CreateRotulosCSV({ showModalFile, setShowModalFile }) {
+    const { t } = useTranslation();
+    const toast = useRef(null);
+    const userData = useSelector(state => state.userInfoSlice.infoUser);
+    const { id: loggedInUserId } = userData;
 
-  const schema = Yup.object().shape({
-    confirmSend: Yup.bool().oneOf(
-      [true],
-      'Confirme o envio de dados para prosseguir'
-    ),
-    path: Yup.string().required('Selecione um caminho para prosseguir')
-  })
+    const handleClose = () => setShowModalFile(false);
 
-  const closeModal = () => {
-    setShowModalFile(false)
-  }
+    const schema = Yup.object().shape({
+        name: Yup.string().required(t('O nome do arquivo é obrigatório')),
+        file: Yup.mixed().required(t('O arquivo CSV é obrigatório'))
+    });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(schema)
-  })
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
 
-  useEffect(() => {
-    async function loadDataCSVRotulos() {
-      try {
-        const { data } = await apiPEDEA.get('/getAllRotulosCSVBilingue')
-        if (data) {
-          setData(data)
+    const onSubmit = async data => {
+        try {
+            const formData = new FormData();
+            if (data.file && data.file.length > 0) {
+                formData.append('file', data.file[0]);
+                formData.append('name', data.name);
+                formData.append('user_id', loggedInUserId)
+            }
+
+            toast.current.show({ severity: 'info', summary: t('Aguarde...'), detail: t('Cadastrando...'), life: 2000 });
+
+            await apiPEDEA.post('/createRotulosCSV', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            toast.current.show({ severity: 'success', summary: t('Sucesso'), detail: t('Arquivo de rótulos criado com sucesso!'), life: 3000 });
+            reset();
+            handleClose();
+        } catch (error) {
+            console.error(error);
+            toast.current.show({ severity: 'error', summary: t('Erro'), detail: t('Chave ou arquivo inválido, verifique novamente.'), life: 4000 });
         }
-      } catch (err) {
-        console.error(err)
-      }
-    }
+    };
 
-    loadDataCSVRotulos()
-  }, [])
+    return (
+        <>
+            <Toast ref={toast} />
+            <Modal show={showModalFile} onHide={handleClose} centered id="modalImportCsvBilingue">
+                <Modal.Header closeButton>
+                    <Modal.Title>{t("Importar Rótulos via CSV")}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form onSubmit={handleSubmit(onSubmit)} className="ContainerAllImportCSVRotulos">
+                        <Form.Group controlId="formFileName">
+                            <Form.Label className="LabelCSV">{t("Nome:")}</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder={t("Digite o nome do arquivo")}
+                                {...register('name')}
+                                isInvalid={!!errors.name}
+                                className="inputCSV"
+                            />
+                            {errors.name && (
+                                <small className="text-danger">{errors.name.message}</small>
+                            )}
+                        </Form.Group>
 
-  const onSubmit = async (formData) => {
-    try {
-        setSnackbar({
-            open: true,
-            message: 'Enviando dados...',
-            severity: 'info',
-        });
+                        <Form.Group controlId="formFileCSV" className="formGroupTwo mt-3">
+                            <Form.Label className="LabelCSV">{t("Arquivo CSV:")}</Form.Label>
+                            <Form.Control
+                                type="file"
+                                accept=".csv"
+                                {...register('file')}
+                                isInvalid={!!errors.file}
+                                className="inputCSV"
+                            />
+                            {errors.file && (
+                                <small className="text-danger">{errors.file.message}</small>
+                            )}
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
 
-        await apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path });
-
-        setSnackbar({
-            open: true,
-            message: 'Dados enviados com sucesso!',
-            severity: 'success',
-        });
-
-        reset();
-        closeModal();
-    } catch (error) {
-        console.error('Erro ao enviar dados:', error);
-
-        const errorMessage =
-            error.response?.data?.message ||
-            error.response?.data?.details ||
-            'Erro desconhecido';
-
-        setSnackbar({
-            open: true,
-            message: `Erro: ${errorMessage}`,
-            severity: 'error',
-        });
-    }
-};
-
-  
-
-  return (
-    <>
-      <Modal
-        show={showModalFile}
-        onHide={closeModal}
-        id="ContainerModalConfirmSendFile"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className="titleModalFAQ">
-            Adicionar dados do arquivo
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="bodyModalFAQEdit">
-          <Form onSubmit={handleSubmit(onSubmit)}>
-                <Form.Group controlId="formFileName">
-                    <Form.Label className="LabelCSV">
-                       {t(" Nome:")}
-                    </Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder={t("Digite o nome do arquivo")}
-                        {...register('name')}
-                        isInvalid={!!errors.name}
-                        className="inputCSV"
-                    />
-                    <Form.Control.Feedback type="invalid" className="txtErrorPassword">
-                        {errors.name?.message}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                
-
-                <Form.Group controlId="formFileCSV" className="formGroupTwo">
-                    <Form.Label className="LabelCSV">{t("Arquivo CSV:")}</Form.Label>
-                    <Form.Control
-                        type="file"
-                        accept=".csv"
-                        {...register('file')}
-                        isInvalid={!!errors.file}
-                        className="inputCSV"
-                    />
-                    <Form.Control.Feedback type="invalid" className="txtErrorPassword">
-                        {errors.file?.message}
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-               <Button variant="primary" type="submit" className="BtnSubmitRotulosCSV">
+                    <Button
+                        variant="primary"
+                        onClick={handleSubmit(onSubmit)}
+                        className="BtnSubmitRotulosCSV"
+                    >
                         {t("Enviar")}
                     </Button>
-            </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="btnsClose" onClick={closeModal}>
-            Fechar
-          </Button>
-        </Modal.Footer>
-      </Modal>
 
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        
-    >
-        <Alert
-            onClose={() => setSnackbar({ ...snackbar, open: false })}
-            severity={snackbar.severity}
-            sx={{ width: '300px' }} 
-        >
-            {snackbar.message}
-        </Alert>
-    </Snackbar>
-
-    </>
-  )
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 }
 
-ModalSendFileCsv.propTypes = {
+CreateRotulosCSV.propTypes = {
     showModalFile: PropTypes.bool.isRequired,
     setShowModalFile: PropTypes.func.isRequired
-}
+};
 
-export default ModalSendFileCsv
+export default CreateRotulosCSV;

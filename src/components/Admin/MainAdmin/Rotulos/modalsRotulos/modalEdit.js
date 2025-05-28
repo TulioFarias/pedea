@@ -1,13 +1,13 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import PropTypes from 'prop-types'
-import React, { useState, useRef } from 'react'
-import { Button, Modal, Form } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import { Toast } from 'primereact/toast'
-import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+import PropTypes from 'prop-types';
+import React, { useState, useRef } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { Toast } from 'primereact/toast';
+import * as Yup from 'yup';
 
-import '../../../../../sass/admin/Rotulos/modalRotulos.scss'
-import api from '../../../../../services/api'
+import '../../../../../sass/admin/Rotulos/modalRotulos.scss';
+import api from '../../../../../services/api';
 
 function EditModalRotulos({
   openModalEdit,
@@ -20,16 +20,16 @@ function EditModalRotulos({
     pt_br: '',
     en: '',
     es: ''
-  })
+  });
 
-  const toastRef = useRef(null)
+  const toast = useRef(null);
 
   const schema = Yup.object().shape({
     key: Yup.string().required('A chave é obrigatória'),
     pt_br: Yup.string().required('O novo valor é obrigatório.'),
     en: Yup.string().required('O novo valor é obrigatório.'),
     es: Yup.string().required('O novo valor é obrigatório.')
-  })
+  });
 
   const {
     register,
@@ -38,25 +38,25 @@ function EditModalRotulos({
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
   const handleClose = () => {
-    setOpenModalEdit(false)
-  }
+    setOpenModalEdit(false);
+  };
 
   const handleChange = field => e => {
-    const { value } = e.target
-    setFormData(prev => ({ ...prev, [field]: value }))
-  }
+    const { value } = e.target;
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
   const onSubmitUpdate = async data => {
     try {
-      toastRef.current.show({
+      toast.current.show({
         severity: 'info',
         summary: 'Atualizando...',
         detail: 'Por favor, aguarde.',
         life: 2000
-      })
+      });
 
       await api.put('/rotulosUpdate', {
         id: editItemId,
@@ -64,33 +64,33 @@ function EditModalRotulos({
         pt_br: data.pt_br,
         en: data.en,
         es: data.es
-      })
+      });
 
-      toastRef.current.show({
+      toast.current.show({
         severity: 'success',
         summary: 'Sucesso!',
         detail: 'Dados atualizados no banco de dados.',
         life: 3000
-      })
+      });
 
-      reset()
-      handleTableUpdate()
-      handleClose()
+      reset();
+      handleTableUpdate();
+      handleClose();
     } catch (error) {
-      toastRef.current.show({
+      toast.current.show({
         severity: 'error',
         summary: 'Erro!',
         detail: 'Chave não corresponde ao ID fornecido.',
         life: 3000
-      })
-      console.log(error)
+      });
+      console.error(error);
     }
-  }
+  };
 
   return (
     <>
-      <Toast ref={toastRef} />
-      <Modal show={openModalEdit} onHide={handleClose} id="customModalRotulos">
+      <Toast ref={toast} />
+      <Modal show={openModalEdit} onHide={handleClose} id="customModalRotulos" centered>
         <Modal.Header closeButton>
           <Modal.Title className="titleEditRotulos">
             Editar valores do rótulo.
@@ -156,7 +156,7 @@ function EditModalRotulos({
         </Modal.Footer>
       </Modal>
     </>
-  )
+  );
 }
 
 EditModalRotulos.propTypes = {
@@ -164,6 +164,6 @@ EditModalRotulos.propTypes = {
   editItemId: PropTypes.string.isRequired,
   setOpenModalEdit: PropTypes.func.isRequired,
   handleTableUpdate: PropTypes.func.isRequired
-}
+};
 
-export default EditModalRotulos
+export default EditModalRotulos;

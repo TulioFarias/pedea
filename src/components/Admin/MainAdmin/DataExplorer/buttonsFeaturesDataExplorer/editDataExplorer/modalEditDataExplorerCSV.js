@@ -121,7 +121,6 @@ function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
     setIsConfirmed(e.target.checked);
   };
 
-  console.log(files)
   return (
     <>
       <Toast ref={toast} />

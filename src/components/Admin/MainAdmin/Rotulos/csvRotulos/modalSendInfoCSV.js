@@ -1,21 +1,15 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import * as Yup from 'yup'
-import { Snackbar, Alert } from '@mui/material';
-import apiPEDEA from '../../../../../services/api'
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import PropTypes from 'prop-types';
+import React, { useState, useEffect, useRef } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
+import { Toast } from 'primereact/toast';
+import apiPEDEA from '../../../../../services/api';
 
 function ModalSendInfoCSV({ showModal, setShowModal }) {
-  const [data, setData] = useState([])
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: '',
-    severity: '',
-});
-  
+  const [data, setData] = useState([]);
+  const toast = useRef(null);
 
   const schema = Yup.object().shape({
     confirmSend: Yup.bool().oneOf(
@@ -23,11 +17,11 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
       'Confirme o envio de dados para prosseguir'
     ),
     path: Yup.string().required('Selecione um caminho para prosseguir')
-  })
+  });
 
   const closeModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   const {
     register,
@@ -36,65 +30,68 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
   useEffect(() => {
     async function loadDataCSVRotulos() {
       try {
-        const { data } = await apiPEDEA.get('/getAllRotulosCSVBilingue')
+        const { data } = await apiPEDEA.get('/getAllRotulosCSVBilingue');
         if (data) {
-          setData(data)
+          setData(data);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
     }
 
-    loadDataCSVRotulos()
-  }, [])
+    loadDataCSVRotulos();
+  }, []);
 
   const onSubmit = async (formData) => {
     try {
-        setSnackbar({
-            open: true,
-            message: 'Enviando dados...',
-            severity: 'info',
-        });
+      toast.current.show({ 
+        severity: 'info', 
+        summary: 'Aguarde...', 
+        detail: 'Enviando dados...', 
+        life: 2000 
+      });
 
-        await apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path });
+      await apiPEDEA.post('/createRotulosDataCSV', { fileName: formData.path });
 
-        setSnackbar({
-            open: true,
-            message: 'Dados enviados com sucesso!',
-            severity: 'success',
-        });
+      toast.current.show({ 
+        severity: 'success', 
+        summary: 'Sucesso', 
+        detail: 'Dados enviados com sucesso!', 
+        life: 3000 
+      });
 
-        reset();
-        closeModal();
+      reset();
+      closeModal();
     } catch (error) {
-        console.error('Erro ao enviar dados:', error);
+      console.error('Erro ao enviar dados:', error);
 
-        const errorMessage =
-            error.response?.data?.message ||
-            error.response?.data?.details ||
-            'Erro desconhecido';
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.details ||
+        'Erro desconhecido';
 
-        setSnackbar({
-            open: true,
-            message: `Erro: ${errorMessage}`,
-            severity: 'error',
-        });
+      toast.current.show({ 
+        severity: 'error', 
+        summary: 'Erro', 
+        detail: `Erro: ${errorMessage}`, 
+        life: 4000 
+      });
     }
-};
-
-  
+  };
 
   return (
     <>
+      <Toast ref={toast} />
       <Modal
         show={showModal}
         onHide={closeModal}
         id="ContainerModalConfirmSend"
+        centered
       >
         <Modal.Header closeButton>
           <Modal.Title className="titleModalFAQ">
@@ -155,30 +152,13 @@ function ModalSendInfoCSV({ showModal, setShowModal }) {
           </Button>
         </Modal.Footer>
       </Modal>
-
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        
-    >
-        <Alert
-            onClose={() => setSnackbar({ ...snackbar, open: false })}
-            severity={snackbar.severity}
-            sx={{ width: '300px' }} 
-        >
-            {snackbar.message}
-        </Alert>
-    </Snackbar>
-
     </>
-  )
+  );
 }
 
 ModalSendInfoCSV.propTypes = {
-    showModal: PropTypes.bool.isRequired,
-    setShowModal: PropTypes.func.isRequired
-}
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired
+};
 
-export default ModalSendInfoCSV
+export default ModalSendInfoCSV;

@@ -82,6 +82,8 @@ function ContainerInfoRotulos({
             type="search"
             value={globalFilter}
             onChange={(e) => setGlobalFilter(e.target.value)}
+            className='valueInputCustom'
+            style={{borderRadius: '10px'}}
           />
           <label htmlFor="busca">Pesquisar...</label>
         </FloatLabel>

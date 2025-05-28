@@ -80,6 +80,7 @@ function SettingsSystemAndUser() {
               value={value.name}
               readOnly
               className="p-inputtext-sm valueInputCustom"
+              style={{ width: '100%', borderRadius: '10px' }} 
             />
 
             <label className="customLabelUser">{t(" Email:")}</label>
@@ -89,6 +90,7 @@ function SettingsSystemAndUser() {
               value={value.email}
               readOnly
               className="p-inputtext-sm valueInputCustom"
+              style={{ width: '100%', borderRadius: '10px' }} 
             />
 
             <label className="customLabelUser">{t("Criado em:")}</label>
@@ -98,6 +100,7 @@ function SettingsSystemAndUser() {
               value={formatarDataLegivel(value.createdAt)}
               readOnly
               className="p-inputtext-sm valueInputCustom"
+              style={{ width: '100%', borderRadius: '10px' }} 
             />
 
             <label className="customLabelUser">{t("Trocar sua senha?")}</label>
@@ -108,6 +111,7 @@ function SettingsSystemAndUser() {
                 value="XXXXXXXXXXX"
                 readOnly
                 className="p-inputtext-sm valueInputCustom"
+                style={{ width: '100%', borderRadius: '10px' }} 
               />
               <Button onClick={handleShowPassword} className='btnPass'>
                 <PasswordIcon/>

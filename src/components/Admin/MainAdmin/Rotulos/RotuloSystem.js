@@ -93,8 +93,8 @@ function CreateRotulosSystem() {
     <div className="containerWrapperOptions">
       <Toast ref={toast} />
       <div className="ContainerAllRotulosOptions">
-        <div className="ContainerAddInfoRotulos">
-          <form className="containerInfos" onSubmit={handleSubmit(onSubmit)}>
+        <div className="containerInfo">
+          <form  onSubmit={handleSubmit(onSubmit)}>
             <div className="titleRegisterRotulo">
               <p>{t("Preencha os campos abaixo para cadastrar um rótulo:")}</p>
             </div>
@@ -102,7 +102,11 @@ function CreateRotulosSystem() {
             <div className="containersLabelsFormRegisterRotulos">
          
               <div className="p-float-label label-float-rotulos">
-                <InputText id="key" {...register('key')} className={`InputRotulos ${errors.key ? 'p-invalid' : ''}`} />
+                <InputText 
+                id="key" 
+                {...register('key')} 
+                className={`InputRotulos valueInputCustom ${errors.key ? 'p-invalid' : ''}`} 
+                style={{ width: '100%', borderRadius: '10px' }}  />
                 <label htmlFor="key">
                   {t("Chave")} <KeyIcon fontSize="small" />
                 </label>
@@ -111,7 +115,12 @@ function CreateRotulosSystem() {
 
       
               <div className="p-float-label label-float-rotulos">
-                <InputText id="pt_br" {...register('pt_br')} className={`InputRotulos ${errors.pt_br ? 'p-invalid' : ''}`} />
+                <InputText 
+                id="pt_br" 
+                {...register('pt_br')} 
+                className={`InputRotulos valueInputCustom ${errors.pt_br ? 'p-invalid' : ''} `}
+                style={{ width: '100%', borderRadius: '10px' }} 
+                />
                 <label htmlFor="pt_br">
                   PT-BR <Flag country="BR" />
                 </label>
@@ -120,7 +129,11 @@ function CreateRotulosSystem() {
 
         
               <div className="p-float-label label-float-rotulos">
-                <InputText id="en" {...register('en')} className={`InputRotulos ${errors.en ? 'p-invalid' : ''}`} />
+                <InputText 
+                id="en" {...register('en')} 
+                className={`InputRotulos  valueInputCustom ${errors.en ? 'p-invalid' : ''}`} 
+                style={{ width: '100%', borderRadius: '10px' }} 
+                />
                 <label htmlFor="en">
                   EN <Flag country="US" />
                 </label>
@@ -129,7 +142,12 @@ function CreateRotulosSystem() {
 
       
               <div className="p-float-label label-float-rotulos">
-                <InputText id="es" {...register('es')} className={`InputRotulos ${errors.es ? 'p-invalid' : ''}`} />
+                <InputText 
+                id="es" 
+                {...register('es')} 
+                className={`InputRotulos valueInputCustom ${errors.es ? 'p-invalid' : ''}`}
+                style={{ width: '100%', borderRadius: '10px' }} 
+                 />
                 <label htmlFor="es">
                   ES <Flag country="ES" />
                 </label>
@@ -145,8 +163,10 @@ function CreateRotulosSystem() {
             </div>
 
             <hr />
-            <CreateRotulosCSV />
+            
           </form>
+
+           <CreateRotulosCSV />
 
           <IfKeyExist
             showModalIfKey={showModalIfKey}
@@ -154,6 +174,7 @@ function CreateRotulosSystem() {
             handleTableUpdate={handleTableUpdate}
             setEditItemId={setEditItemId}
           />
+          
         </div>
 
         <ContainerInfoRotulos
@@ -163,6 +184,8 @@ function CreateRotulosSystem() {
           editItemId={editItemId}
         />
       </div>
+
+      
     </div>
   );
 }

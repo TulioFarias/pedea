@@ -99,17 +99,23 @@ function AddInfoFAQ() {
 
         <div className='containerInputsFAQ'>
 
-          <FloatLabel>
-            <InputText
-              id="question"
-              {...register('question')}
-              onChange={(e) => setValue('question', e.target.value)}
-              className={`AddinputFAQ valueInputCustom ${errors.question ? 'p-invalid' : ''}`}
-              style={{ width: '100%' , borderRadius: '10px'}}
-            />
-            <label htmlFor="question">{t('Digite a pergunta')}</label>
-          </FloatLabel>
+          <div className="p-input-icon-left" style={{ width: '100%' }}>
+            <i className="pi pi-question" />
+            <FloatLabel>
+              <InputText
+                id="question"
+                {...register('question')}
+                onChange={(e) => setValue('question', e.target.value)}
+                className={`AddinputFAQ valueInputCustom ${errors.question ? 'p-invalid' : ''}`}
+                style={{ width: '100%', borderRadius: '10px' }}
+              />
+              <label htmlFor="question">{t('Digite a pergunta')}</label>
+            </FloatLabel>
+          </div>
 
+
+          <div className="p-input-icon-left" style={{ width: '100%' }}>
+          <i className="pi pi-comment" />
           <FloatLabel>
             <InputTextarea
               id="answer"
@@ -121,6 +127,7 @@ function AddInfoFAQ() {
             />
             <label htmlFor="answer">{t('Digite a resposta')}</label>
           </FloatLabel>
+        </div>
 
         </div>
 

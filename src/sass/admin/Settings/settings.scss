@@ -15,22 +15,24 @@
 .containerUserSettings{
     display:flex;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
     border-radius: 20px;
     padding: 10px;
     gap: 10px;
     font-weight: bold;
     
+}
 
+.p-float-label label {
 
-    
+  font-weight: bold; 
 }
 
 .btnPass{
     background-color: rgb(44, 64, 63);
     border: none;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 

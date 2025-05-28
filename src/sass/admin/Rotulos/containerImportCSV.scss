@@ -1,20 +1,19 @@
-.ContainerAllImportCSVRotulos{
-    background-color: #e9e8e8;
+#modalImportCsvBilingue
+.modal-content{
+    background-color: rgba(255, 255, 255, 0.267);
+    backdrop-filter: blur(10px);
+
+}
+
+.containerInfo{
+    height: 81.9vh;
+    background-color: #2c403f;
     border-radius: 10px;
+    color: white;
+    text-align: center;
+    overflow: auto;
     padding: 10px;
-    margin-top: 10px;
-}
-
-.formGroupTwo{
-    margin-top: 20px;
-}
-
-.LabelCSV{
-    color: gray;
-    font-size: 14px !important;
-    margin-left: 5px;
-    display: flex;
-    flex-direction: row;
+  
 }
 
 
@@ -37,12 +36,6 @@
     }
 }
 
-
-
-.titleExempleDownload{
-    font-size: 14px;
-    margin-bottom: 0px;
-}
 
 .BtnDownloadExemple {
     font-size: 14px;

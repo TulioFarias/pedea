@@ -7,7 +7,6 @@ import * as Yup from 'yup'
 import { Toast } from 'primereact/toast'
 import { Button as PrimeButton } from 'primereact/button'
 
-
 import '../../../../../sass/admin/Rotulos/modalRotulos.scss'
 import api from '../../../../../services/api'
 
@@ -78,15 +77,9 @@ function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
   return (
     <>
       <Toast ref={toast} />
-      <Modal
-        show={openModal}
-        onHide={handleClose}
-        id="customModalDelete"
-      >
+      <Modal show={openModal} onHide={handleClose} id="customModalDelete" centered>
         <Modal.Header closeButton>
-          <Modal.Title className="titleDeleteRotulos">
-            Excluir rótulo
-          </Modal.Title>
+          <Modal.Title className="titleDeleteRotulos">Excluir rótulo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>⚠️ Os dados excluídos não podem ser recuperados.</p>
@@ -115,8 +108,13 @@ function ModalConfirmDelete({ openModal, setOpenModal, handleTableUpdate }) {
               <p className="txtErrorPassword">{errors.key?.message}</p>
             </Form.Group>
 
-            <div className="d-flex justify-content-end" >
-              <PrimeButton label="Confirmar" severity="danger" type="submit" style={{borderRadius: '10px'}}/>
+            <div className="d-flex justify-content-end">
+              <PrimeButton
+                label="Confirmar"
+                severity="danger"
+                type="submit"
+                style={{ borderRadius: '10px' }}
+              />
             </div>
           </Form>
         </Modal.Body>
