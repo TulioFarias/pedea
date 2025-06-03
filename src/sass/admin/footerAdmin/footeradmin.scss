@@ -1,9 +1,10 @@
 .my-div-footerAdmin{
-    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 25%);
+    background-color: white;
     display: flex;
     justify-content: center;
     gap: 6px;
-    color: rgba(204, 204, 204, 0.76);
+    color: #24A637;
+    border-top: 3px solid #24A637;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -17,8 +18,8 @@
 }
 
 .footer-textTwoAdmin{
-  border-left: 1px solid #6c6868!important;
-  color: rgba(204, 204, 204, 0.76);
+  border-left: 1px solid #24A637!important;
+  color: #24A637;
   text-decoration: none;
   margin: 5px 0px 8px 0px;
   display: flex;

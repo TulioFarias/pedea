@@ -26,7 +26,7 @@
 
     .BtnFileSubmit{
         margin-top: 10px;
-        background-color: rgb(44, 64, 63);
+        background-color: #24A637;
         color: white;
         border: none;
         
@@ -53,20 +53,21 @@
         margin-top: 10px;
     }
 
-    .BtnSendUpdate{
-        margin-top: 10px;
-        background-color: rgb(44, 64, 63);
-        color: white;
-        border: none;
-        
-    
-        &:hover{
-            background-color: gray;
-            color: rgb(44, 64, 63);
-            transition: all 0.3s ease-in-out;
-        }
-    }
+  
 }
+
+.BtnSendUpdate{
+            color: white;
+            background: linear-gradient(to right, #ff6900, #fcb900);
+            border: none;
+           
+
+            &:hover{
+                background: linear-gradient(to right, #ff6a005b, #fcb90062);
+                color: white;
+            }
+    }
+
 
 .LabelCSVFile{
     font-size: 18px;

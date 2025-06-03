@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Container } from 'react-bootstrap'
-
 import FooterAdmin from '../FooterAdmin'
 import HeaderAdmin from '../HeaderAdmin/headerAdmin'
 import NavAdmin from '../NavAdmin/NavAdmin'
@@ -13,6 +12,8 @@ import '../../../sass/admin/admin.scss'
 import DataExplorer from './DataExplorer'
 import Users from './Users'
 import Geoserver from './Geoserver'
+import { Button } from 'primereact/button'
+
 
 
 
@@ -26,7 +27,10 @@ function MainAdmin() {
     await setSelectedOption(option)
   }
 
- 
+    const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
 
 
   return (
@@ -37,23 +41,33 @@ function MainAdmin() {
       transition={{}}
     >
       <HeaderAdmin
-        setSidebarOpen={setSidebarOpen}
-        sidebarOpen={sidebarOpen}
         handleOptionChange={handleOptionChange}
         setActiveButton={setActiveButton}
       />
+
+      
       <NavAdmin
         handleOptionChange={handleOptionChange}
+        setSidebarOpen={setSidebarOpen}
         sidebarOpen={sidebarOpen}
         setActiveButton={setActiveButton}
         activeButton={activeButton}
       />
+
+       
+
       <Container
         fluid
         className={`ContainerMainSystem ${
           sidebarOpen ? 'ContainerMainSystem-expanded' : ''
         }`}
       >
+        <Button 
+          className="ButtonSideBar" 
+          icon={sidebarOpen ? 'pi pi-chevron-right' : 'pi pi-chevron-left'} 
+          aria-label="Alternar menu"
+          onClick={toggleSidebar}
+        />
         <motion.div
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

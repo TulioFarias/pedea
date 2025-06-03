@@ -35,37 +35,23 @@
     height: max-content;
 }
 
+.BtnEditAtualizar{
+       color: white;
+            background: linear-gradient(to right, #ff6900, #fcb900);
+            border: none;
+           
 
-
-.containerBtnsAtt{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-top: 10px;
-    gap: 10px;
+            &:hover{
+                background: linear-gradient(to right, #ff6a005b, #fcb90062);
+                color: white;
+            }
 }
 
-.BtnEditSubmit{
-    background-color: rgb(44, 64, 63);
-    color: white;
-    border: none;
-    height: 38px;
-    
 
-    &:hover{
-        background-color: gray;
-        color: rgb(44, 64, 63);
-        transition: all 0.3s ease-in-out;
-    }
-}
 
-.BtnCloseEditDataExplorer{
-    background-color: rgb(88, 88, 88);
-    color: white;
-    border: none;
-    
-   
-}
+
+
+
 
 .txtErrorChangeLog{
     color: red;

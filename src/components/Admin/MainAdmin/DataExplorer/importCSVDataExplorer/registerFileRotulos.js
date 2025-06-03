@@ -12,8 +12,9 @@ import { FileUpload } from 'primereact/fileupload'
 import { Button } from 'primereact/button'
 import ModalConfirmAddDataExplorer from './modalConfirmRegisteCSV'
 import api from '../../../../../services/api'
-
+import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
 import '../../../../../sass/admin/DataExplorer/importcsvdataexplore.scss'
+import apiPEDEA from '../../../../../services/api'
 
 function ImportFileRotulos() {
   const userData = useSelector(state => state.userInfoSlice.infoUser)
@@ -30,27 +31,27 @@ function ImportFileRotulos() {
   })
 
   const {
-  register,
-  handleSubmit,
-  reset,
-  setValue,
-  formState: { errors }
-} = useForm({
-  resolver: yupResolver(schema),
-  defaultValues: {
-    file: null,
-    name: ''
-  }
-})
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      file: null,
+      name: ''
+    }
+  })
 
   const onSubmit = async data => {
     try {
       const formData = new FormData()
       if (data.file) {
-          formData.append('file', data.file)
-          formData.append('name', data.name)
-          formData.append('user_id', loggedInUserId)
-        }
+        formData.append('file', data.file)
+        formData.append('name', data.name)
+        formData.append('user_id', loggedInUserId)
+      }
 
       toast.current.show({ severity: 'info', summary: 'Processando...', detail: 'Enviando arquivo...', life: 1000 })
 
@@ -69,26 +70,59 @@ function ImportFileRotulos() {
     }
   }
 
-const handleFileChange = ({ files }) => {
-  if (files && files.length > 0) {
-    const file = files[0]
-    setValue('file', file, { shouldValidate: true }) 
-    setFileName(file.name)
+  const handleFileChange = ({ files }) => {
+    if (files && files.length > 0) {
+      const file = files[0]
+      setValue('file', file, { shouldValidate: true })
+      setFileName(file.name)
+    }
   }
-}
 
 
   const openModal = () => {
     setModalConfirm(true)
   }
 
+
+
+  const handleDownload = async () => {
+    try {
+      const response = await apiPEDEA.get('/downloadExemple', {
+        responseType: 'blob',
+      });
+
+      const blob = new Blob([response.data], { type: response.headers['content-type'] });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'arquivo-exemplo.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Erro ao iniciar o download:', error);
+    }
+  };
+
   return (
-    <>
+    <div className='ContainerImports'>
       <Toast ref={toast} />
-        <p className="titleFilesImports">
-          {t("Primeiro, envie o arquivo e depois importe os dados para o banco de dados.")}
-        </p>
-        
+      <p className="titleFilesImports">
+        {t("Primeiro, envie o arquivo e depois importe os dados para o banco de dados.")}
+      </p>
+
+      <div className='containerDownload'>
+            <p className="titleFilesImports">
+                {t("Baixar arquivo exemplo →")}
+              </p>
+        <Button className='download' onClick={handleDownload}>
+          <SimCardDownloadIcon/>
+        </Button>
+
+      </div>
+
+
       <form className="customFormsFileImports" onSubmit={handleSubmit(onSubmit)}>
 
         <div className="p-field inputNameCustom">
@@ -98,7 +132,7 @@ const handleFileChange = ({ files }) => {
               className={`inputRotulosImports valueInputCustom ${errors.name ? 'p-invalid' : ''}`}
               {...register('name')}
               onChange={(e) => setValue('name', e.target.value)}
-              style={{ width: '100%' , borderRadius: '10px'}}
+              style={{ width: '100%', borderRadius: '10px' }}
             />
             <label htmlFor="name">{t("Nome para o arquivo")}</label>
           </FloatLabel>
@@ -142,7 +176,7 @@ const handleFileChange = ({ files }) => {
         showModalConfirm={showModalConfirm}
         setModalConfirm={setModalConfirm}
       />
-    </>
+    </div>
   )
 }
 

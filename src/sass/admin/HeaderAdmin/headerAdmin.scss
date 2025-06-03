@@ -1,62 +1,45 @@
 
-
-
-
 .bodyHeader{
-    background-color: rgba(44, 64, 63, 0.726);
-    height: 10vh;
+    background-image: 
+    url('../../../assets/img/header-logo-gov.svg'),
+    linear-gradient(to left, #56BFC9, #24A637 65%);
+    background-repeat: no-repeat;
+    background-size: 25% auto, cover;
+    background-position: bottom left, center;
+    height: 11vh;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: rgba(58, 57, 57, 0.726) 1px 3px 3px, rgba(71, 70, 70, 0.726) 1px 8px 12px;
-    gap: 50px;
-    
-}
-
-
-
-.containerDivLeft{
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 15px;
+   
     
 }
+
 
 .containerLogo{
   padding: 10px 10px 10px 0px;
   cursor: pointer;
+  margin-left: 300px;
 
   img{
-    width: 320px;
+    width: 100%;
   }
 
 }
 
-.OpenNavBarWithToogle{
-    width: 40px;
-    height: 40px;
+.ContainerUserCustom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 405px;
     border-radius: 10px;
-    color: rgba(255, 255, 255, 0.726);
-    border: none;
-    background-color: transparent;
-    transition: 0.5s all ease-in-out;
-
-    &:hover{
-        
-        background-color: rgba(255, 255, 255, 0.144);
-        color: rgba(255, 255, 255, 0.219);
-       
-
-    }
+    padding: 5px 10px 5px 10px;
+    height: 9vh;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.082); 
+    
 }
-
-
-
-  
- 
-
 
 .containerUser{
     display: flex;
@@ -65,8 +48,6 @@
     border-radius: 20px;
     padding: 0px 5px 0px 5px;
     position: relative;
-    
-
 
     p{ 
         position: relative;
@@ -75,53 +56,19 @@
         text-align: center;
         font-size: 14px;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.726);
+        color: white;
     } 
     
-    .nameUser{
-        color: rgba(255, 255, 255, 0.726);
-    }
+  
     
 }
 
 
-
-.ContainerUserCustom{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 5px 10px 5px 10px;
-    height: 9vh;
-    gap: 15px;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.082); 
-    
-}
-
-
-.containerImageHeaderAdmin{
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid  rgba(255, 255, 255, 0.726); 
-}
-.custom-userPhoto{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    border-radius: 50%;
-    cursor: pointer;
-}
 
 .SettingsBtn{
   border: none;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.726);
+  color: white;
   transition: 0.5s all ease-in-out;
 
   &:hover{      

@@ -1,8 +1,7 @@
 
 
 .container-form{
-    background-color: #7d7d7d;
-    background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
+    background-color: #97979794;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -10,7 +9,6 @@
     flex-direction: column;
     gap: 30px;
     font-family: 'Roboto', sans-serif;
-
     
 }
 
@@ -100,23 +98,23 @@
 
 //** **//
 
-.customBody-form{
-    background-color: #e4e4e423;
-    box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-    width: 30%;
-    height: max-content;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.customBody-form {
+  background-color: #e4e4e4;
+  box-shadow: #24a63836 0px 10px 20px, #24a63836 0px 6px 6px;
+  width: 30%;
+  height: max-content;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color:rgb(44, 64, 63);
 
-    hr{
-        width: 107%;
-        border: 1px dashed white;
-        margin-bottom: 20px;
-    }
+  hr {
+    width: 107%;
+    border: 1px dashed rgb(44, 64, 63);
+  }
 }
 
 .custom-info{
@@ -129,67 +127,44 @@
 .titleLogin{
     font-size: 30px;
     font-weight: 800;
-    color: white;
+    color: rgb(44, 64, 63);
     margin-bottom: 10px;
     text-align: center;
     
 }
 
-.LabelForm{
-    font-size: 14px;
-    margin-bottom: 2px;
-    color: rgb(231, 231, 231);
-    
+.containerInputs{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+
+
+  .input{
+    width: 200px;
+  }
 }
 
-.InputForm {
-  width: 300px;
-  height: 35px;
-  padding-left: 10px;
-  outline: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 800;
-  background-color: rgb(231, 231, 231); 
-  color: rgb(97, 97, 97);
-  border: 1px solid transparent;
-}
+.esqueceuSenha{
+  padding-top: 10px;
+  padding-left: 350px;
+  color: rgb(44, 64, 63);
 
-
-.InputForm:focus {
-  background-color: rgb(231, 231, 231); 
-  color: rgb(97, 97, 97); 
-  border: 1px solid #ccc; 
+  &:hover{
+    color: #24A637;
+  }
 }
 
 
-.InputForm::placeholder {
-  color: lightgray; 
-  opacity: 1; 
-}
 
-.InputForm:-webkit-autofill,
-.InputForm:-webkit-autofill:hover,
-.InputForm:-webkit-autofill:focus {
-  -webkit-text-fill-color: rgb(97, 97, 97); /* Cor cinza */
-  -webkit-box-shadow: 0 0 0px 1000px rgb(231, 231, 231) inset; /* Cor de fundo */
-  transition: background-color 5000s ease-in-out 0s; /* Previne troca rápida de cor */
-}
 
-.IconVisibility{
-  border: none;
-  color:  #2c403fa6;
-  position: relative;
-  left: 107px;
-  top: 60px;
-  background-color: transparent;
- 
 
-}
 
-.recaptcha{
-  cursor: pointer;
-}
+
+
+
+
 
 
 
@@ -209,8 +184,8 @@
     background-color: inherit;
     border-radius: 100px;
     font-weight: 600;
-    color: white;
-    box-shadow: 0 0 0 2px #2C403F;
+    color:rgb(44, 64, 63);
+    box-shadow: 0 0 0 2px rgb(44, 64, 63);
     cursor: pointer;
     overflow: hidden;
     outline: none;
@@ -244,7 +219,8 @@
     transform: scale(1.03);
     transition: 0.4s all ease-in-out;
     border: none;
-    background-color: #2C403F
+    background-color: #2C403F;
+    color: white;
     
   }
   
@@ -287,7 +263,7 @@
 
 
 .end-txt{
-    color: white;
+    color: rgb(44, 64, 63);
     font-size: 18px;
     margin-top: 10px;
     display: flex;
@@ -296,16 +272,16 @@
 
 .link-end{
     font-size: 18px;
-    color: white;
+    color: rgb(44, 64, 63);
 
     &:hover{
-        color: #2C403F;
+        color: #24A637;
     }
 }
 
 .govTxt{
-    color: white;
-    font-size: 14px;
+    color: rgb(44, 64, 63);
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 1100px){

@@ -3,11 +3,11 @@ import '../../../../sass/admin/DataExplorer/dataExplorer.scss'
 import AddInfoDataExplorer from './buttonsFeaturesDataExplorer/addDataExplorer/addDataExplorer'
 import EditDataExplorer from './buttonsFeaturesDataExplorer/editDataExplorer/editDataExplorer'
 import RemoveDataExplorer from './buttonsFeaturesDataExplorer/removeDataExplorer/removeDataExplorer'
-import ContainerImportCSV from './importCSVDataExplorer/importCSV'
 import TableViewRotulosData from './tablesViews/tableviewallrotulos'
 import { useTranslation } from 'react-i18next'
 import apiPEDEA from '../../../../services/api'
 import { Button } from 'primereact/button'
+import ImportFileRotulos from './importCSVDataExplorer/registerFileRotulos'
 
 function DataExplorer() {
 
@@ -49,18 +49,9 @@ function DataExplorer() {
               <RemoveDataExplorer />
             </div>
           </div>
-         
-              <Button
-              icon="pi pi-download"
-              label={t("Download de Exemplo (.CSV)")}
-              className="p-button-outlined p-button-sm btndownloadCSV"
-              onClick={handleDownload}
-            />
+     
+            <ImportFileRotulos/>
        
-         
-          <div className="containerThree">
-            <ContainerImportCSV />
-          </div>
         </div>
        
           <TableViewRotulosData />

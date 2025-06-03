@@ -9,28 +9,22 @@
   .ContainerButtonsDataExplorer {
     display: flex;
     flex-direction: column;
-    background-color: #2c403f;
+    background-color: #24a63836;
     border-radius: 10px;
     width: 15.5vw;
-    height: 82vh;
-    color: white;
+    height: 80vh;
     padding: 10px;
+    margin-top: 15px;
     gap: 10px;
     overflow: auto;
 
-
-    hr{
-      width: 100%;
-      border: 1px dashed white;
-      margin-top: 0px;
-      margin-bottom: 0px;
-    }
 
     p{
       margin-bottom: 0px;
       font-weight: bold;
       font-size: 14px;
       text-align: center;
+      color: rgb(44, 64, 63);
     }
 
   }
@@ -84,18 +78,21 @@
   
   .ContainerTableRotulosData {
     width: 66vw;
-    height: 81.9vh;
+    height: 80vh;
     background-color: #2c403f;
     border-radius: 10px;
     color: white;
     text-align: center;
     overflow: auto;
+    margin-top: 15px;
   
   }
+
   .btndownloadCSV{
     border-radius: 10px;
-    border: 1px solid white;
-    color: white;
+    color: black;
+    width: 40px;
+    
   }
 
 

@@ -164,7 +164,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
         <Button variant="secondary" onClick={handleClose}>
           Fechar
         </Button>
-        <Button variant="primary" onClick={handleSubmit(onSubmit)}>
+        <Button className='btnAdd' onClick={handleSubmit(onSubmit)}>
           Adicionar
         </Button>
       </Modal.Footer>

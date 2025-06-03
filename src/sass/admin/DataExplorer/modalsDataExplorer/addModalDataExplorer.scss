@@ -18,5 +18,17 @@
     height: max-content;
 
   }
+
+  .btnAdd{
+    color: white;
+    background-color: #24A637;
+    border: 1px solid #24A637;
+
+    &:hover{
+      background-color: white;
+      color: #24A637;
+      border: 1px solid white;
+    }
+  }
   
 }

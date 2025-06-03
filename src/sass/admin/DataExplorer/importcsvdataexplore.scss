@@ -1,24 +1,52 @@
 
 
-.ContainerWrapperImportCSV{
+
+.ContainerImports{
     background-color: rgba(255, 255, 255, 0.267);
     border-radius: 10px;
     padding: 10px;
     height: max-content;
+}
 
-    
+.containerDownload{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+       color: rgb(44, 64, 63);
+
+
+    p{
+        padding-top: 25px;
+        color: rgb(44, 64, 63);
+    }
+
+    .download{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        width: 35px;
+        background-color: transparent;
+        color:  rgb(44, 64, 63);
+        border: none;
+        border-radius: 10px;
+
+        &:hover{
+            background-color:  rgb(44, 64, 63);
+            color: white;
+            transition: all 0.7s ease;
+        }
+    }
 }
 
 .titleFilesImports{
     padding-bottom: 25px;
 }
 
-.inputNameCustom .p-float-label input:focus + label,
-.inputNameCustom .p-float-label.p-inputwrapper-filled label {
-  color: white;
-}
+
 .inputRotulosImportsUpload {
-    background-color: rgb(44, 64, 63);
+    background-color: #24A637;
 }
 
 .customFormsFileImports{
@@ -36,7 +64,7 @@
     width: 100%;
     margin-top: 12px;
     border-radius: 10px;
-    background-color: rgb(44, 64, 63);
+    background-color: #24A637;
     color: white;
 
 
@@ -68,7 +96,7 @@
     font-size: 14px;
     margin-top: 12px;
     border-radius: 10px;
-    background-color: rgb(44, 64, 63);
+    background-color: #24A637;
     color: white;
 
 

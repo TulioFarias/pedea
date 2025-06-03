@@ -359,6 +359,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
           </Button>
           <Button
             variant="primary"
+            className='BtnEditAtualizar'
             disabled={!isEditable}
             onClick={handleSubmit(onSubmit)}
           >

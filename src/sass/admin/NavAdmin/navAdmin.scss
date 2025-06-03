@@ -4,12 +4,11 @@ $border-radius: 1rem;
 
 .bodyNav{
 
-    background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgb(44, 64, 63) 12%);
+    background: linear-gradient(to top, #56BFC9, #24A637 65%);
     height: 84%;
     width: $bodyNav-width-collapsed;
     position: absolute;
-    top: 100px;
-    left: 10px;
+    top: 110px;
     display: flex;
     flex-direction: column;
     overflow-y: x;
@@ -22,11 +21,9 @@ $border-radius: 1rem;
 .containerDivsLanguage{
     margin-top: 10px;
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    
-    
-
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
 }
 
 
@@ -42,11 +39,9 @@ $border-radius: 1rem;
         transform: scale(1.03);
         transition: 0.5s all ease-in-out;
     }
-
-    button{
-        border-radius: 50%;
-    }
 }
+
+
 
 
 .divImg{
@@ -68,7 +63,7 @@ $border-radius: 1rem;
 
 
 .titleText{
-    color: rgba(204, 204, 204, 0.76);
+    color: white;
     display: flex;
     margin-top: 20px;
     justify-content: center;
@@ -106,8 +101,7 @@ $border-radius: 1rem;
 
 .links-btnsNav{
     display: flex;
-    color: rgb(173, 173, 173);
-
+    color: white;
     gap: 5px;
     align-items: center;
     border: none;
@@ -117,8 +111,8 @@ $border-radius: 1rem;
     
 
     &:hover{
-        color: rgba(44, 64, 63, 0.726);
-        background-color: rgb(151, 151, 151);
+        color: #24A637;
+        background-color: white;
         width: 107%;
     }
 
@@ -138,8 +132,8 @@ $border-radius: 1rem;
 
 
 .links-btnsNav.active{
-    color: rgba(44, 64, 63, 0.726);
-    background-color: rgb(151, 151, 151);
+    color: #24A637;
+    background-color: white;
     width: 107%;
     position: relative;
     transition: all 1s ease-in-out;
@@ -211,7 +205,7 @@ $border-radius: 1rem;
    
 
     .titleText{
-        color: rgba(204, 204, 204, 0.76);
+        color: white;
         width: 100%;
         transition: all 1s ease-in-out;
     
@@ -235,7 +229,7 @@ $border-radius: 1rem;
    
     .links-btnsNav{
         display: flex;
-        color: rgb(173, 173, 173);
+        color: white;
         gap: 5px;
         align-items: center;
         border: none;
@@ -243,8 +237,8 @@ $border-radius: 1rem;
         font-size: 12px;
  
         &:hover{
-            color: rgba(44, 64, 63, 0.726);
-            background-color: rgb(151, 151, 151);
+            color: #24A637;
+            background-color: white;
             width: 98%;
         }
 
@@ -258,8 +252,8 @@ $border-radius: 1rem;
         color: rgb(77, 0, 0);
     }
     .links-btnsNav.active{
-        color: rgba(44, 64, 63, 0.726);
-        background-color: rgb(165, 165, 165);
+        color: #24A637;
+        background-color:white;
         position: relative;
         width: 98%;
         
@@ -479,7 +473,7 @@ $border-radius: 1rem;
         
         }
         .links-btnsNav.active{
-            color: rgba(44, 64, 63, 0.726);
+            color: #24A637;
             background-color: rgb(165, 165, 165);
             position: relative;
             width: 101%;
@@ -580,7 +574,7 @@ $border-radius: 1rem;
     
     }
     .links-btnsNav.active{
-        color: rgba(44, 64, 63, 0.726);
+        color: #24A637;
         background-color: rgb(165, 165, 165);
         position: relative;
         width: 110%;

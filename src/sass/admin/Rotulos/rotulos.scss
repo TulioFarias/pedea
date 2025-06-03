@@ -8,36 +8,11 @@
 
 
 
-.ContainerAddInfoRotulos{
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-}
-
-.containerInfos{
-    padding: 10px;
-    width: 100%;
-    height: 82vh;
-    border-radius: 10px;
-    background-color: rgb(44, 64, 63);
-    
-
-  
-      hr{
-      width: 100%;
-      border: 1px dashed white;
-      margin-top: 10px;
-    }
-    
-}
-
 .titleRegisterRotulo{
-    color: white;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 14px;
     margin-bottom: 10px;
-    
+    color:  rgb(44, 64, 63);
    
 }
 
@@ -46,7 +21,7 @@
        flex-direction: column;
        gap: 20px;
        width: 100%;
-       padding-top: 10px;
+       padding-top: 20px;
       
 }
 
@@ -57,15 +32,10 @@
     
 }
 
-
-.label-float-rotulos.p-float-label input:focus + label,
-.label-float-rotulos.p-float-label.p-inputwrapper-filled label {
-  color: white;
-}
 .btnSubmitAddRotulos{
     border: none;
     border-radius: 10px;
-    background-color: rgb(71, 71, 71);
+    background-color: #24A637;
     color: white;
     display: flex;
     align-items: center;
@@ -92,29 +62,7 @@
     
 }
 
-.ContainerGetWithKeyRotulos{
-    margin-top: 10px;
-   
-}
 
-
-.containerTableInfoRotulos{
-    width: 100vw;
-    height: 83vh;
-    background-color: rgb(44, 64, 63);
-    padding: 12px;
-    border-radius: 10px;
-    overflow: auto;
-
-}
-
-.containerTableBilingue{
-    width: 100%;
-}
-
-.titleSideBarChangeTable{
-    font-size: 30px;
-}
 
 .containerBtnsTableView{
     display: flex;

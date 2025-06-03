@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import PEDEA from '../../../assets/img/pedea-logo.png'
-import userIcon from '../../../assets/icons/icon-user.png'
 import SettingsIcon from '@mui/icons-material/Settings';
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
@@ -15,8 +14,6 @@ import { logout } from '../../../utils/redux/user/actions'
 import '../../../sass/admin/HeaderAdmin/headerAdmin.scss'
 
 function HeaderAdm({
-  sidebarOpen,
-  setSidebarOpen,
   handleOptionChange,
   setActiveButton
 }) {
@@ -51,9 +48,6 @@ function HeaderAdm({
     navigate('/login')
   }
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
 
   const SendToSettings = options => {
     handleOptionChange(options)
@@ -66,22 +60,16 @@ function HeaderAdm({
       className='bodyHeader'
     >
 
-
-      <div className="containerDivLeft">
       <div className="containerLogo">
         <img src={PEDEA} alt="PEDEA Logo" className="imgPEDEA" />
       </div>
-        <button className="OpenNavBarWithToogle" onClick={toggleSidebar}>
-          <MenuOpenRoundedIcon />
-        </button>
-      </div>
 
-     
+
       <div className="ContainerUserCustom">
         {user &&
           user.map(value => (
             <div className="containerUser" key={value.id}>
-            
+
               <p className="user">
                 {t(`Seja bem vindo(a),`)} <br />
                 <p className="nameUser">{value.name}</p>
@@ -90,10 +78,10 @@ function HeaderAdm({
           ))}
 
         <button className='SettingsBtn' onClick={e => {
-                    e.preventDefault()
-                    SendToSettings('Configurações')
-                  }}> 
-          <SettingsIcon/>
+          e.preventDefault()
+          SendToSettings('Configurações')
+        }}>
+          <SettingsIcon />
         </button>
 
         <button className="backButton" onClick={voltar}>
@@ -107,7 +95,6 @@ function HeaderAdm({
 }
 
 HeaderAdm.propTypes = {
-  setSidebarOpen: PropTypes.func.isRequired,
   sidebarOpen: PropTypes.bool.isRequired,
   handleOptionChange: PropTypes.func.isRequired,
   setActiveButton: PropTypes.func.isRequired
