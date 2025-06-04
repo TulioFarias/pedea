@@ -13,6 +13,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 import backIcon from '../../assets/icons/backicon.png';
 import logo from '../../assets/img/pedea-logo.png';
+import sema from '../../assets/img/logo-sema-white.png';
 import '../../sass/Register/register.scss';
 
 import api from '../../services/api';
@@ -111,7 +112,11 @@ function RegisterUser() {
           <img src={backIcon} alt="Voltar" />
         </button>
 
-        <img src={logo} alt="Logo PEDEA" className="pedeaImg" />
+         <div className='containerLogosRegister'>
+          <img src={sema} alt="Logo PEDEA" className='logo-sema' />
+          <img src={logo} alt="Logo PEDEA" className='logo-pedea'/>
+
+        </div>
 
         <div className="containerRegisterUsers">
           <h3 className="titleRegister">Cadastro Portal Admin</h3>
@@ -207,19 +212,26 @@ function RegisterUser() {
               )}
             </div>
 
-            <Button
-              type="submit"
-              className="Btn-Form"
-              label="Cadastrar"
-              style={{ marginTop: '1rem', width: '100%', borderRadius: '10px' }}
-            />
 
-            <p className="end-txt">
-              Já tem cadastro?{' '}
-              <Link to="/login" className="link-end">
-                Clique aqui
-              </Link>
-            </p>
+            <div className='containerBtnAndLink'>
+
+              <Button
+                type="submit"
+                className="Btn-Form"
+                label="Cadastrar"
+                style={{ marginTop: '1rem', borderRadius: '10px' }}
+              />
+
+              <p className="end-txt">
+                Já tem cadastro?{' '}
+                <Link to="/login" className="link-end">
+                  Clique aqui
+                </Link>
+              </p>
+
+            </div>
+
+
           </form>
         </div>
 

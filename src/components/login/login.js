@@ -13,6 +13,7 @@ import { Toast } from 'primereact/toast';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import backIcon from '../../assets/icons/backicon.png';
 import logo from '../../assets/img/pedea-logo.png';
+import sema from '../../assets/img/logo-sema-white.png';
 import '../../sass/login/loginSystem.scss';
 import api from '../../services/api';
 import { login } from '../../utils/redux/user/actions';
@@ -107,7 +108,13 @@ function LoginSystem() {
         <button className="btnBack" onClick={handleBack}>
           <img src={backIcon} alt="Voltar" />
         </button>
-        <img src={logo} alt="Logo PEDEA" />
+
+        <div className='containerLogos'>
+          <img src={sema} alt="Logo PEDEA" className='logo-sema' />
+          <img src={logo} alt="Logo PEDEA" className='logo-pedea'/>
+
+        </div>
+
 
         <form onSubmit={handleSubmit(onSubmit)} className="customBody-form">
           <h3 className="titleLogin">Sistema de Administração</h3>
@@ -135,33 +142,33 @@ function LoginSystem() {
             </div>
 
             <div className="custom-info">
-              <FloatLabel> 
-                  <InputText
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    {...register('password')}
-                    value={form.password}
-                    onChange={(e) => {
-                      setForm({ ...form, password: e.target.value });
-                      setValue('password', e.target.value);
-                    }}
-                    className={errors.password ? 'p-invalid' : ''}
-                    style={{ width: '100%', borderRadius: '10px' }}
-                  />
-                  <label htmlFor="password">Senha</label>
-                  <span
-                    className={`pi ${showPassword ? 'pi-eye-slash' : 'pi-eye'}`}
-                    style={{
-                      position: 'absolute',
-                      top: '50%',
-                      right: '0.75rem',
-                      transform: 'translateY(-50%)',
-                      cursor: 'pointer',
-                      color: '#6c757d',
-                    }}
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  />
-            
+              <FloatLabel>
+                <InputText
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  {...register('password')}
+                  value={form.password}
+                  onChange={(e) => {
+                    setForm({ ...form, password: e.target.value });
+                    setValue('password', e.target.value);
+                  }}
+                  className={errors.password ? 'p-invalid' : ''}
+                  style={{ width: '100%', borderRadius: '10px' }}
+                />
+                <label htmlFor="password">Senha</label>
+                <span
+                  className={`pi ${showPassword ? 'pi-eye-slash' : 'pi-eye'}`}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    right: '0.75rem',
+                    transform: 'translateY(-50%)',
+                    cursor: 'pointer',
+                    color: '#6c757d',
+                  }}
+                  onClick={() => setShowPassword((prev) => !prev)}
+                />
+
                 {errors.password && <small className="p-error">{errors.password.message}</small>}
               </FloatLabel>
             </div>

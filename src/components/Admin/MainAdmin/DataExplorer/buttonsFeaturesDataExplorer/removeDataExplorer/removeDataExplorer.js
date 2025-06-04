@@ -4,7 +4,8 @@ import { Button } from 'primereact/button'
 import '../../../../../../sass/admin/DataExplorer/buttonsdataexplore.scss'
 import DeleteModalDataExplorer from './modalRemoveDataExplorer'
 import { useTranslation } from 'react-i18next'
-function RemoveDataExplorer() {
+import PropTypes from 'prop-types';
+function RemoveDataExplorer({handleTableUpdate}) {
   const [showModal, setShowModal] = useState(false)
   const { t } = useTranslation()
   const handleShowModal = () => setShowModal(true)
@@ -19,9 +20,14 @@ function RemoveDataExplorer() {
       <DeleteModalDataExplorer
         show={showModal}
         handleClose={handleCloseModal}
+        handleTableUpdate={handleTableUpdate}
       />
     </>
   )
 }
+
+RemoveDataExplorer.propTypes = {
+    handleTableUpdate: PropTypes.func.isRequired
+  };
 
 export default RemoveDataExplorer

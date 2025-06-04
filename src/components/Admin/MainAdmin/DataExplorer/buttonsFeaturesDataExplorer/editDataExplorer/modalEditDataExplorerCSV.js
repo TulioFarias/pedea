@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import apiPEDEA from '../../../../../../services/api';
 import '../../../../../../sass/admin/DataExplorer/modalsDataExplorer/editModalDataExplorerCSV.scss';
 
-function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
+function EditDataExplorerCSV({ show, handleCloseModalCSV,handleTableUpdate }) {
   const toast = useRef(null);
   const [files, setFiles] = useState([]);
   const [selectedFilePath, setSelectedFilePath] = useState('');
@@ -106,6 +106,7 @@ function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
       toast.current?.show({ severity: 'success', summary: 'Sucesso', detail: 'Dados enviados com sucesso!', life: 3000 });
       resetFileUpdate();
       handleCloseModalCSV();
+      handleTableUpdate()
     } catch (error) {
       console.error('Erro ao atualizar o arquivo:', error);
       toast.current?.show({ severity: 'error', summary: 'Erro', detail: 'Erro ao atualizar o arquivo', life: 3000 });
@@ -228,7 +229,8 @@ function EditDataExplorerCSV({ show, handleCloseModalCSV }) {
 
 EditDataExplorerCSV.propTypes = {
   show: PropTypes.bool.isRequired,
-  handleCloseModalCSV: PropTypes.func.isRequired
+  handleCloseModalCSV: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 };
 
 export default EditDataExplorerCSV;

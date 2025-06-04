@@ -4,19 +4,19 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(45deg, #7d7d7d 0%, #2c403f 68%);
+  background-color: #97979794;
   text-align: center;
   gap: 50px;
 
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: white;
+    color: #24A637;
   }
 
   p {
     font-size: 1.5rem;
-    color: white;
+    color: #24A637;
     margin-bottom: 2rem;
   }
 
@@ -26,7 +26,7 @@
 .loading-spinner {
   width: 50px;
   height: 50px;
-  border: 3px solid white;
+  border: 3px solid #24A637;
   border-left-color: #2c403f;
   border-radius: 50%;
   animation: spin 1.5s linear infinite;

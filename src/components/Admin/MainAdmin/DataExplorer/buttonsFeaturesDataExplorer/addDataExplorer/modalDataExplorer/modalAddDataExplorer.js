@@ -4,16 +4,17 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import * as Yup from 'yup'
 import { useSelector } from 'react-redux'
-import { Modal, Button, Form, Alert } from 'react-bootstrap'
-import { toast } from 'react-toastify'
+import { Modal, Button, Form } from 'react-bootstrap'
+import { Toast } from 'primereact/toast'
 
 import '../../../../../../../sass/admin/DataExplorer/modalsDataExplorer/addModalDataExplorer.scss'
 import apiPEDEA from '../../../../../../../services/api'
 import dataValues from './values'
 
-function ModalAddDataExplorer({ show, handleClose }) {
+function ModalAddDataExplorer({ show, handleClose, handleTableUpdate }) {
   const [user, setUser] = useState([])
   const [subcategorias, setSubcategorias] = useState([])
+  const toast = useRef(null)
   const userData = useSelector((state) => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
 
@@ -65,7 +66,7 @@ function ModalAddDataExplorer({ show, handleClose }) {
   }, [loggedInUserId])
 
   const onSubmit = async (data) => {
-    toast.info('Adicionando novo registro...')
+    toast.current.show({ severity: 'info', summary: 'Processando', detail: 'Adicionando novo registro...', life: 2000 })
     try {
       await apiPEDEA.post('/createDataExplore', {
         categoriadeinformação: data.categoriaDeInformacao,
@@ -82,13 +83,14 @@ function ModalAddDataExplorer({ show, handleClose }) {
         user_id: loggedInUserId
       })
 
-      toast.success('Registro criado com sucesso!')
+      toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Registro criado com sucesso!', life: 3000 })
       reset()
       handleClose()
+      handleTableUpdate()
     } catch (error) {
       console.error('Erro:', error)
       const msg = error?.response?.data?.error || 'Erro ao adicionar novo registro.'
-      toast.error(msg)
+      toast.current.show({ severity: 'error', summary: 'Erro', detail: msg, life: 4000 })
     }
   }
 
@@ -118,63 +120,67 @@ function ModalAddDataExplorer({ show, handleClose }) {
   ]
 
   return (
-    <Modal show={show} onHide={handleClose} size="lg" centered id="ContainerModalAdd">
-      <Modal.Header closeButton>
-        <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleSubmit(onSubmit)} className='ContainerForm'>
-          {dropdownFields.map(({ name, label, options }) => (
-            <Form.Group className="mb-3" controlId={name} key={name}>
-              <Form.Label>{label}</Form.Label>
-              <Controller
-                name={name}
-                control={control}
-                render={({ field }) => (
-                  <Form.Select {...field} isInvalid={!!errors[name]}>
-                    <option value="">Selecione</option>
-                    {options.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </Form.Select>
-                )}
-              />
-              {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
-            </Form.Group>
-          ))}
+    <>
+      <Toast ref={toast} position="top-right" />
+      <Modal show={show} onHide={handleClose} size="lg" centered id="ContainerModalAdd">
+        <Modal.Header closeButton>
+          <Modal.Title>Adicionar informação ao Explorer de Dados</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit(onSubmit)} className='ContainerForm'>
+            {dropdownFields.map(({ name, label, options }) => (
+              <Form.Group className="mb-3" controlId={name} key={name}>
+                <Form.Label>{label}</Form.Label>
+                <Controller
+                  name={name}
+                  control={control}
+                  render={({ field }) => (
+                    <Form.Select {...field} isInvalid={!!errors[name]}>
+                      <option value="">Selecione</option>
+                      {options.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  )}
+                />
+                {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
+              </Form.Group>
+            ))}
 
-          {inputFields.map(({ name, label }) => (
-            <Form.Group className="mb-3" controlId={name} key={name}>
-              <Form.Label>{label}</Form.Label>
-              <Controller
-                name={name}
-                control={control}
-                render={({ field }) => (
-                  <Form.Control type="text" {...field} isInvalid={!!errors[name]} />
-                )}
-              />
-              {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
-            </Form.Group>
-          ))}
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Fechar
-        </Button>
-        <Button className='btnAdd' onClick={handleSubmit(onSubmit)}>
-          Adicionar
-        </Button>
-      </Modal.Footer>
-    </Modal>
+            {inputFields.map(({ name, label }) => (
+              <Form.Group className="mb-3" controlId={name} key={name}>
+                <Form.Label>{label}</Form.Label>
+                <Controller
+                  name={name}
+                  control={control}
+                  render={({ field }) => (
+                    <Form.Control type="text" {...field} isInvalid={!!errors[name]} />
+                  )}
+                />
+                {errors[name] && <Form.Control.Feedback type="invalid">{errors[name].message}</Form.Control.Feedback>}
+              </Form.Group>
+            ))}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Fechar
+          </Button>
+          <Button className='btnAdd' onClick={handleSubmit(onSubmit)}>
+            Adicionar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   )
 }
 
 ModalAddDataExplorer.propTypes = {
   show: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired
+  handleClose: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default ModalAddDataExplorer

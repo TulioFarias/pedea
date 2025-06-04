@@ -9,7 +9,7 @@ import { Toast } from 'primereact/toast'
 import apiPEDEA from '../../../../../services/api'
 import '../../../../../sass/admin/DataExplorer/modalsDataExplorer/confirmsendDataExplorer.scss'
 
-function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
+function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm , handleTableUpdate}) {
   const [data, setData] = useState([])
   const toast = useRef(null)
   const userData = useSelector(state => state.userInfoSlice.infoUser)
@@ -47,6 +47,7 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
     }
 
     loadDataCSVRotulos()
+    handleTableUpdate()
   }, [])
 
   const onSubmit = async formData => {
@@ -155,7 +156,8 @@ function ModalConfirmAddDataExplorer({ showModalConfirm, setModalConfirm }) {
 
 ModalConfirmAddDataExplorer.propTypes = {
   showModalConfirm: PropTypes.bool.isRequired,
-  setModalConfirm: PropTypes.func.isRequired
+  setModalConfirm: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default ModalConfirmAddDataExplorer

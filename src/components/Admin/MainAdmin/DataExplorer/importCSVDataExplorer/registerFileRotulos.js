@@ -15,8 +15,8 @@ import api from '../../../../../services/api'
 import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
 import '../../../../../sass/admin/DataExplorer/importcsvdataexplore.scss'
 import apiPEDEA from '../../../../../services/api'
-
-function ImportFileRotulos() {
+import PropTypes from 'prop-types';
+function ImportFileRotulos({handleTableUpdate}) {
   const userData = useSelector(state => state.userInfoSlice.infoUser)
   const { id: loggedInUserId } = userData
   const { t } = useTranslation()
@@ -175,9 +175,15 @@ function ImportFileRotulos() {
       <ModalConfirmAddDataExplorer
         showModalConfirm={showModalConfirm}
         setModalConfirm={setModalConfirm}
+        handleTableUpdate={handleTableUpdate}
       />
     </div>
   )
 }
+
+
+ImportFileRotulos.propTypes = {
+    handleTableUpdate: PropTypes.func.isRequired
+  };
 
 export default ImportFileRotulos

@@ -12,10 +12,12 @@
   import { SplitButton } from 'primereact/splitbutton';
   import { Toast } from 'primereact/toast';
   import ChangeTable from './tablefilesDataExplorer';
+  import PropTypes from 'prop-types';
 
 
 
-  function TableViewRotulosData() {
+  function TableViewRotulosData({tableUpdated,
+  handleTableUpdate}) {
     const [dataExplorer, setDataExplorer] = useState([]);
     const [tableFilesRotulos, setTableFilesRotulos] = useState([]);
     const [tableFilesCSVEdit, setTableFilesCSVEdit] = useState([])
@@ -59,7 +61,7 @@
       loadTableFilesCSVEdit()
       getInfoDataExplorer();
       loadTableFilesRotulos();
-    }, []);
+    }, [tableUpdated]);
 
 
 
@@ -305,5 +307,10 @@
       </div>
     );
   }
+
+ TableViewRotulosData.propTypes = {
+    tableUpdated: PropTypes.bool.isRequired,
+    handleTableUpdate: PropTypes.func.isRequired
+  };
 
   export default TableViewRotulosData;

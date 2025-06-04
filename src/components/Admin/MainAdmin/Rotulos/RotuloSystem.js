@@ -110,7 +110,7 @@ function CreateRotulosSystem() {
                 <label htmlFor="key">
                   {t("Chave")} <KeyIcon fontSize="small" />
                 </label>
-                {errors.key && <small className="p-error">{errors.key.message}</small>}
+                {errors.key && <small className="p-error" >{errors.key.message}</small>}
               </div>
 
       

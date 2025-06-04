@@ -141,6 +141,11 @@ $containerWrapper-width-open: 90vw;
 
     }
 
+
+    .ButtonSideBar{
+        display: none;
+}
+
 }
 
 
@@ -167,5 +172,9 @@ $containerWrapper-width-open: 90vw;
         top: 10px;
 
     }
+
+        .ButtonSideBar{
+        display: none;
+}
 
 }

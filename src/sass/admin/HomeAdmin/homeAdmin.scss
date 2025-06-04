@@ -64,28 +64,9 @@
     .ContainerHomeAdmin{
         overflow: auto;
     }
-    .ContainerTitleHome{
-        border-radius: 10px;
-        background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgba(44, 64, 63, 0.877) 25%);
-        color: white;
-        padding: 10px;
-        height: 55px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 5px 10px 1px rgba(2, 2, 2, 0.61);
-        
-    }
+  
+   
     
-    .titleHomeAdmin{
-       text-align: center;
-       font-weight: bold;
-       font-size: 30px;
-    }
-    
-    .ContainerWelcome{
-        padding: 10px;
-    }
     
     .TitleWelcome{
         font-weight: bold;
@@ -127,14 +108,12 @@
     }
     .ContainerTitleHome{
         border-radius: 10px;
-        background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgba(44, 64, 63, 0.877) 25%);
         color: white;
         padding: 10px;
         height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0px 5px 10px 1px rgba(2, 2, 2, 0.61);
         
     }
     
@@ -194,7 +173,7 @@
     }
     .ContainerTitleHome{
         border-radius: 10px;
-        background: linear-gradient(15deg, rgb(134, 134, 134) 0%, rgba(44, 64, 63, 0.877) 25%);
+     
         color: white;
         padding: 10px;
         height: 35px;

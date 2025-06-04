@@ -98,6 +98,19 @@
 
 //** **//
 
+.containerLogos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+
+  .logo-sema{
+    width: 300px;
+    height: 150px;
+  }
+}
+
 .customBody-form {
   background-color: #e4e4e4;
   box-shadow: #24a63836 0px 10px 20px, #24a63836 0px 6px 6px;
@@ -147,26 +160,13 @@
 }
 
 .esqueceuSenha{
-  padding-top: 10px;
-  padding-left: 350px;
+  padding: 10px;
   color: rgb(44, 64, 63);
 
   &:hover{
     color: #24A637;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //** btnLogin **//
@@ -286,28 +286,27 @@
 
 @media only screen and (max-width: 1100px){
   .customBody-form{
-    background-color: #e4e4e423;
-    box-shadow: 5px 5px 5px 5px rgba(27, 27, 27, 0.329);
-    width: 50%;
-    height: max-content;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    hr{
-        border: 1px dashed white;
-        margin-bottom: 20px;
-    }
+   
 }
 }
 
 
 @media only screen and (max-width: 740px){
+
+  .containerLogos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+
+  .logo-sema{
+    width: 140px;
+    height: 70px;
+  }
+}
     .container-form img {
-        width: 90%;
+        width: 60%;
     }
 
     .customBody-form{
@@ -335,8 +334,16 @@
         }
     }
 
+    .titleLogin{
+    font-size: 30px;
+    font-weight: 800;
+    color: rgb(44, 64, 63);
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+
     .govTxt{
-        color: white;
         font-size: 12px;
         width: 350px;
         margin-left: 15px;

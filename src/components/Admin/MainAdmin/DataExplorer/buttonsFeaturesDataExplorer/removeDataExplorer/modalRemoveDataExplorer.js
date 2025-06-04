@@ -11,7 +11,7 @@ import { Toast } from 'primereact/toast'
 import apiPEDEA from '../../../../../../services/api'
 import '../../../../../../sass/admin/DataExplorer/modalsDataExplorer/removeModalDataExplorer.scss'
 
-function DeletaModalDataExplorer({ show, handleClose }) {
+function DeletaModalDataExplorer({ show, handleClose,handleTableUpdate }) {
   const toast = useRef(null)
 
   const [dataExplorer, setDataExplorer] = useState([])
@@ -95,6 +95,7 @@ function DeletaModalDataExplorer({ show, handleClose }) {
       setIsDeletable(false)
       setIsChecked(false)
       handleClose()
+      handleTableUpdate()
     } catch (error) {
       toast.current?.show({
         severity: 'error',
@@ -322,7 +323,8 @@ function DeletaModalDataExplorer({ show, handleClose }) {
 
 DeletaModalDataExplorer.propTypes = {
   show: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired
+  handleClose: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default DeletaModalDataExplorer

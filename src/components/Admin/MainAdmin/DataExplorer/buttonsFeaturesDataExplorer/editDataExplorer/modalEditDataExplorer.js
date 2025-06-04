@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 import apiPEDEA from '../../../../../../services/api'
 import '../../../../../../sass/admin/DataExplorer/modalsDataExplorer/editModalDataExplorer.scss'
 
-function EditaModalDataExplorer({ show, handleClose }) {
+function EditaModalDataExplorer({ show, handleClose, handleTableUpdate }) {
   const toast = useRef(null)
 
   const [dataExplorer, setDataExplorer] = useState([])
@@ -117,6 +117,7 @@ function EditaModalDataExplorer({ show, handleClose }) {
       toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Dados atualizados no banco de dados', life: 3000 })
       reset()
       handleClose()
+      handleTableUpdate()
     } catch (error) {
       toast.current.clear()
       const message = (error.response && error.response.data && error.response.data.error) || 'Erro desconhecido, fale com o administrador do sistema.'
@@ -373,7 +374,8 @@ function EditaModalDataExplorer({ show, handleClose }) {
 
 EditaModalDataExplorer.propTypes = {
   show: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired
+  handleClose: PropTypes.func.isRequired,
+  handleTableUpdate: PropTypes.func.isRequired
 }
 
 export default EditaModalDataExplorer

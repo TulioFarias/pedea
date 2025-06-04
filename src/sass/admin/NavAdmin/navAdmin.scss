@@ -311,7 +311,7 @@ $border-radius: 1rem;
 
 
     .titleText{
-        color: rgba(204, 204, 204, 0.76);
+        color: white;
         display: flex;
         margin-top: 10px;
         margin-left: 0px;
@@ -342,7 +342,7 @@ $border-radius: 1rem;
 
     .links-btnsNav{
         display: flex;
-        color: rgb(173, 173, 173);
+        color: white;
         gap: 5px;
         align-items: center;
         border: none;
@@ -360,11 +360,13 @@ $border-radius: 1rem;
     
     }
     .links-btnsNav.active{
-        color: rgba(44, 64, 63, 0.726);
-        background-color: rgb(165, 165, 165);
+        color: #24A637;
+        background-color: white;
         position: relative;
         width: 112%;
     }
+
+    
     
     
 
