@@ -4,7 +4,6 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 
 import ResetPass from '../../components/login/resetPassword'
 import Admin from '../../containers/Admin'
-import Home from '../../containers/Home'
 import Login from '../../containers/Login'
 import WebPageFAQ from '../../containers/perguntasFrequentes(FAQ)'
 import PageChangeLog from '../../containers/perguntasFrequentes(FAQ)/pageChangeLog'
@@ -18,7 +17,7 @@ function AnimatedRoutes() {
       <AnimatePresence>
         <Fragment>
           <Routes location={location} key={location.pathname}>
-            <Route element={<Home />} path="/" />
+            <Route element={<Login />} path="/" />
             <Route element={<Login />} path="/login" />
             <Route element={<ResetPass />} path="/recuperarsenha" />
             <Route element={<Register />} path="/cadastro" />

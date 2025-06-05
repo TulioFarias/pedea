@@ -1,0 +1,45 @@
+# Ignorar dependências locais (serão instaladas no container)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignorar arquivos de log
+*.log
+logs/
+
+# Ignorar variáveis de ambiente locais
+.env
+.env.*
+
+# Ignorar arquivos temporários e de cache
+*.swp
+*.bak
+*.tmp
+*.seed
+*.pid
+*.pid.lock
+
+# Ignorar diretórios de uploads, temporários e de build
+uploads/
+storage/
+storages/
+tmp/
+dist/
+build/
+
+# Ignorar arquivos CSV e planilhas
+*.csv
+*.xlsx
+
+# Ignorar arquivos de controle de versões de IDEs e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Ignorar cobertura de testes
+coverage/
+
+# Ignorar arquivos de configuração locais
+*.local.js
+*.local.json
