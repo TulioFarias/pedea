@@ -85,7 +85,7 @@ function LoginSystem() {
       setLoading(true);
       setTimeout(() => {
         navigate('/admin');
-      }, 2500);
+      }, 2000);
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Erro no login';
       toast.current.show({

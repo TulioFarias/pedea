@@ -1,5 +1,4 @@
-
-.ContainerAllRotulosOptions{
+.ContainerAllRotulosOptions {
     display: flex;
     gap: 10px;
     padding-right: 10px;
@@ -8,31 +7,31 @@
 
 
 
-.titleRegisterRotulo{
+.titleRegisterRotulo {
     font-weight: bold;
     font-size: 14px;
     margin-bottom: 10px;
-    color:  rgb(44, 64, 63);
-   
+    color: rgb(44, 64, 63);
+
 }
 
-.containersLabelsFormRegisterRotulos{
-       display: flex;
-       flex-direction: column;
-       gap: 20px;
-       width: 100%;
-       padding-top: 20px;
-      
+.containersLabelsFormRegisterRotulos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding-top: 20px;
+
 }
 
 
-.InputRotulos{
+.InputRotulos {
     width: 100%;
     margin-top: 10px;
-    
+
 }
 
-.btnSubmitAddRotulos{
+.btnSubmitAddRotulos {
     border: none;
     border-radius: 10px;
     background-color: #24A637;
@@ -41,58 +40,58 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-  
 
-    &:hover{
+
+    &:hover {
         color: rgb(44, 64, 63);
         background-color: rgb(255, 254, 254);
         transition: all 0.3s ease-in-out;
     }
 }
 
-.ActionCollumCustomRotulosTable{
+.ActionCollumCustomRotulosTable {
     display: flex;
     gap: 20px;
 }
 
-.ContainersRegisterFileRotulos{
+.ContainersRegisterFileRotulos {
     display: flex;
     gap: 50px;
     margin-top: 15px;
-    
+
 }
 
 
 
-.containerBtnsTableView{
+.containerBtnsTableView {
     display: flex;
     flex-direction: row;
     gap: 10px;
 
-    :hover{
+    :hover {
         transform: scale(1.04);
     }
 
 }
 
-.btnEditCustom{
+.btnEditCustom {
     padding: 5px;
-    background-color:  rgba(44, 64, 63, 0.726);
+    background-color: rgba(44, 64, 63, 0.726);
     border: none;
     border-radius: 10px;
     color: white;
 }
 
-.btnRemoveCustom{
+.btnRemoveCustom {
     padding: 5px;
     background-color: rgb(78, 27, 27);
     border: none;
     border-radius: 10px;
     color: white;
 
-    :hover{
+    :hover {
         transform: scale(1.04);
-       
+
     }
 }
 
@@ -102,104 +101,18 @@
 
 
 
-@media (min-width: 480px) and (max-width: 1024px){
-    .ContainerAllRotulosOptions{
+@media (min-width: 481px) and (max-width: 1281px) {}
+
+
+
+@media only screen and (max-width: 481px) {
+    .ContainerAllRotulosOptions {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 82vw;
-        height: max-content;
-        overflow: auto;
-    
+        padding-right: 10px;
+
     }
-    
-    
-    
-    .ContainerAddInfoRotulos{
-        border-radius: 10px;
-        width: 51vw;
-        height: max-content;
-        display: flex;
-        flex-direction: column;
-       
-        
-    }
-   
-    
-    .btnEditCustom{
-        padding: 5px;
-        background-color:  rgba(44, 64, 63, 0.726);
-        border: none;
-        border-radius: 10px;
-        color: white;
-    }
-    
-    .btnRemoveCustom{
-        padding: 5px;
-        background-color: rgb(78, 27, 27);
-        border: none;
-        border-radius: 10px;
-        color: white;
-    
-        :hover{
-            transform: scale(1.04);
-           
-        }
-    }
-    
+
 
 }
-
- 
-
-@media only screen and (max-width: 480px){
-    .ContainerAllRotulosOptions{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 82vw;
-        height: max-content;
-        overflow: auto;
-    
-    }
-    
-    
-    
-    .ContainerAddInfoRotulos{
-        border-radius: 10px;
-        width: 51vw;
-        height: max-content;
-        display: flex;
-        flex-direction: column;
-       
-        
-    }
-    
-
-    
-    .btnEditCustom{
-        padding: 5px;
-        background-color:  rgba(44, 64, 63, 0.726);
-        border: none;
-        border-radius: 10px;
-        color: white;
-    }
-    
-    .btnRemoveCustom{
-        padding: 5px;
-        background-color: rgb(78, 27, 27);
-        border: none;
-        border-radius: 10px;
-        color: white;
-    
-        :hover{
-            transform: scale(1.04);
-           
-        }
-    }
-    
-    
-    
- 
-   }
-

@@ -1,5 +1,5 @@
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
-import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded'
+
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
@@ -10,7 +10,7 @@ import PEDEA from '../../../assets/img/pedea-logo.png'
 import SettingsIcon from '@mui/icons-material/Settings';
 import api from '../../../services/api'
 import { logout } from '../../../utils/redux/user/actions'
-
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import '../../../sass/admin/HeaderAdmin/headerAdmin.scss'
 
 function HeaderAdm({
@@ -69,20 +69,10 @@ function HeaderAdm({
         {user &&
           user.map(value => (
             <div className="containerUser" key={value.id}>
-
-              <p className="user">
-                {t(`Seja bem vindo(a),`)} <br />
-                <p className="nameUser">{value.name}</p>
-              </p>
+                <PersonRoundedIcon/>
+                <p>{value.name}</p>    
             </div>
           ))}
-
-        <button className='SettingsBtn' onClick={e => {
-          e.preventDefault()
-          SendToSettings('Configurações')
-        }}>
-          <SettingsIcon />
-        </button>
 
         <button className="backButton" onClick={voltar}>
           <LogoutRoundedIcon />

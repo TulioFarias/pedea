@@ -6,10 +6,8 @@ import GeoserverSystem from './GeoserverSystem'
 function Geoserver({setActiveButton, handleOptionChange}) {
   return (
     <>
-
         <GeoserverSystem setActiveButton={setActiveButton}
          handleOptionChange={handleOptionChange}/>
-      
     </>
   )
 }

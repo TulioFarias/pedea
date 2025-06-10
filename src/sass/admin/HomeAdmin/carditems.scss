@@ -15,7 +15,6 @@
     overflow: hidden;
     transition: all 0.5s ease-in-out;
     background-color: transparent;
-    border: 1px solid rgba(44, 64, 63, 0.863);
     box-shadow: rgba(44, 64, 63, 0.863) 0px 7px 14px -2px, rgba(0, 0, 0, 0.3) 0px 5px 19px 1px;
     
     &:hover {
@@ -45,7 +44,9 @@
 
 .CardTxts, .list-group-item {
     font-size: 14px;
-    background-color: transparent;
+    border-radius: 10px;
+    padding: 10px 30px;
+     background-color: #24a63836;
   
 }
 
@@ -59,12 +60,12 @@
     
 }
 
-@media only screen and (max-width: 1040px){
+@media (min-width: 481px) and (max-width: 1280px){
 
     .ContainerCards {
         display: flex;
         justify-content: center;
-        gap: 2px;
+        gap: 10px;
         padding: 5px;
     }
 
@@ -77,7 +78,7 @@
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        width: 200px;
+        width: 320px;
         overflow: hidden;
     
     }
@@ -89,8 +90,6 @@
     
     .CardTxts, .list-group-item {
         font-size: 10px;
-        background-color: transparent;
-        color: white;
     }
     
     .list-group-item {
@@ -102,19 +101,20 @@
 
  
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 481px){
     .ContainerCards {
         display: flex;
         justify-content: center;
-        gap: 2px;
-        padding: 5px;
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
     }
     
     .CardContainers {
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        width: max-content;
+        width: 100%;
         overflow: hidden;
         transition: all 0.5s ease-in-out;
         &:hover {
@@ -124,26 +124,6 @@
         }
     }
     
-    .CardBodys {
-        padding: 14px;
-        background: linear-gradient(15deg, rgba(134, 134, 134, 0.829) 0%, rgba(44, 64, 63, 0.863) 25%);
-        color: white;
-    }
-    
-    .CardTitles {
-        font-size: 12px;
-    }
-    
-    .CardTxts, .list-group-item {
-        font-size: 12px;
-        background-color: transparent;
-        color: white;
-        display: none;
-    }
-    
-    .list-group-item {
-        padding: 5px 10px; 
-    }
-   
+  
  
    }

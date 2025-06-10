@@ -44,7 +44,7 @@
 }
 
 
-@media (min-width: 480px) and (max-width: 1024px){
+@media (min-width: 481px) and (max-width: 1280px){
 
         
 
@@ -109,11 +109,12 @@
     
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 481px) {
 
     .FormsContainerAddFAQ{
         display: flex;
         flex-direction: column;
+        width: 100%;
      
         p{
          font-size: 14px;
@@ -121,54 +122,7 @@
       
      }
      
-     .containerInputsFAQ{
-         padding: 5px;
-         display: flex;
-         flex-direction: column;
      
-     }
-     
-     .labelsInputsFAQ{
-         font-size: 12px;
-         font-weight: 900;
-         padding-left: 5px;
-         margin-bottom: 5px;
-     }
-     
-     .AddinputFAQ{
-        width: 200px;
-         &::placeholder{
-             color: gray;
-             font-size: 12px;
-         }
-
-         
-     }
-     
-     .btnSubmitFAQ{
-         border: none;
-         height: 30px;
-         width: 200px;
-         margin-top: 20px;
-         border-radius: 10px;
-         background-color: rgb(44, 64, 63);
-         color: white;
-     
-     
-         &:hover{
-             color: rgb(44, 64, 63);
-             background-color: rgb(255, 254, 254);
-             transition: all 0.5s ease-in-out;
-         }
-     }
-     
-     .txtErrorAddFAQ{
-         color: red;
-         font-size: 12px!important;
-         margin-top: 2px;
-         padding-left: 5px;
-         margin-bottom: 0px;
-     }
 
   
 }

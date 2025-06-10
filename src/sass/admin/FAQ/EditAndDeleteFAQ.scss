@@ -1,6 +1,4 @@
 
-
-
 .FAQCarousel{
     padding: 10px;
 
@@ -48,6 +46,17 @@
 
 @media (max-width: 480px) {
 
+    
+.FAQCarousel{
+    padding: 10px;
 
+}
+
+    .FAQCard{
+    border-radius: 10px;
+    width: 100%;
+    color:  #495057;
+    background-color: rgba(77, 76, 76, 0.137);
+}
 
 }

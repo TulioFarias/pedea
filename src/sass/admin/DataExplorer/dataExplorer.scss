@@ -111,7 +111,6 @@
     align-items: center;
     justify-content: center;
     padding: 0px 0px;
-    border-radius: 10px;
     background-color: #607d8b;
     
   }
@@ -145,265 +144,53 @@
   
 
   
-  @media (min-width: 480px) and (max-width: 1024px) {
+  @media (min-width: 481px) and (max-width: 1280px) {
 
-    .ContainerAllInfoDataExplorer {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      justify-content: space-between;
-
-      overflow: auto;
-     
-    }
-    .ContainerButtonsDataExplorer {
-      width: 73vw; 
-      height: auto; 
-    }
-  
-    .ContainerTableRotulosData {
-      width: 100%;
-      height: auto; 
-    }
+    
   }
   
 
   @media (max-width: 480px) {
-    .ContainerButtonsDataExplorer {
-      width: 100%;
-      height: max-content; 
-      display: flex;
-      flex-direction: column;
-      grid-template-rows: auto auto;
-     
-
-      hr{
-        display: none;
-      }
-  
-      p{
-        margin-bottom: 0px;
-        font-weight: bold;
-        font-size: 14px;
-      }
-    }
-
-    .containerOne{
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding: 5px;
-      align-items: center;
-      border: 1px dashed rgb(117, 114, 114);
-      border-radius: 10px;
-      height: max-content;
-
-      p{
-        text-align: start;
-      }
-    }
-  
-    .containerTwo{
-    
-      height: max-content;
-      padding: 5px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      border: 1px dashed rgb(117, 114, 114);
-      border-radius: 10px;
-  
-    }
-
-
-  
-    .ContainerTableRotulosData {
-      width: 100%; 
-      height: auto; 
-    }
-  
     .ContainerAllInfoDataExplorer {
-      flex-direction: column;
-      align-items: center; 
-    }
-
-    
-  .ContainerButtonsFeatures{
-    background-color: rgba(255, 255, 255, 0.267);
-    border-radius: 10px;
-    padding: 5px;
     display: flex;
-    width: 240px;
-    height: max-content;
-    gap: 1px;
+    flex-direction: column;
+    overflow: auto;
    
-  
   }
 
-  .containerCSV{
+   .ContainerButtonsDataExplorer {
     display: flex;
     flex-direction: column;
-  }
-
-  .containerToltip{
-    background-color: rgba(255, 255, 255, 0.267);
+    background-color: #24a63836;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 80vh;
     padding: 10px;
+    margin-top: 15px;
     gap: 10px;
-    height: max-content;
- 
-
-    .toltip{
-      cursor: pointer;
-      color:  #2c403f;
+    overflow: auto;
 
 
-      &:hover{
-        color: white;
-        transition: all 0.3s ease-in-out;
-      }
+    p{
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      color: rgb(44, 64, 63);
     }
 
-    .linktoltip{
-      cursor: pointer;
-      color: white;
-      font-size: 12px;
-
-      &:hover{
-        color: #2c403f;
-        transition: all 0.3s ease-in-out;
-      }
-    }
   }
-  
-  .ContainerTableRotulosData {
-    width: 70vw;
-    height: 82vh;
-    padding: 10px;
+
+   .ContainerTableRotulosData {
+    width: 100%;
+    height: 80vh;
     background-color: #2c403f;
     border-radius: 10px;
     color: white;
     text-align: center;
     overflow: auto;
+    margin-top: 15px;
   
-    h2 {
-      font-weight: 900;
-      font-size: 17px;
-  
-    }
-
-    hr{
-      border: 1px dashed white;
-      margin-top: 0px;
-      margin-bottom: 5px;
-    }
   }
-  
-
-  .headerContainerTableRotulos{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .containerDownloadTable{
-    grid-row: 1;
-    padding: 5px;
-    margin-bottom: 5px;
-    border: 1px dashed;
-    gap: 0px;
-    border-radius: 10px;
-    width: 250px;
-
-
-    p{
-      font-size: 12px;
-    }
-    
-
-    .btnDownload {
-      position: relative;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.267);
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: transparent;
-      color: white;
-      transition: all 0.3s ease-in-out;
-    
-    }
-
-    
-    .btnDownload .buttonText {
-      transform: translateX(22px);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    
-   
-    .btnDownload:hover {
-      background: #17795d6c;
-      transform: scale(1.02);
-      
-    }
-    
-    
-   
-  }
-
-
-  .containerChangeTable{
-    grid-row: 2;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 5px;
-    padding: 5px;
-    width: 250px;
-    border: 1px dashed;
-
-
-    p{
-      font-size: 12px;
-    }
-
-    .BtnChangeTableRotulos{
-      color: white;
-      background-color: transparent;
-      border-radius: 10px;
-      border: none;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  
-      &:hover{
-          color: rgb(92, 89, 89);
-          transition: all 0.3s ease-in-out;
-          background-color: white;
-      }
-  }
-
-  }
-  
-  .ContainerTableView{
-    height: max-content;
-    overflow: auto;
-    
-  }
-
 
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import '../../../../sass/admin/HomeAdmin/homeAdmin.scss'
 import CardItems from './carditems'
 import PropTypes from 'prop-types'
@@ -12,15 +12,9 @@ function HomeSystem({setActiveButton, handleOptionChange }) {
   return (
     <>
       <div className="ContainerHomeAdmin">
-        <div className="ContainerTitleHome">
-          <h2 className="titleHomeAdmin">
-            {' '}
-            {t("Sistema de administração da plataforma de dados PEDEA")}
-          </h2>
-        </div>
 
         <div className='ContainerWelcome'>
-          <h5 className='TitleWelcome'>{t("Bem-vindo(a) à Plataforma de Administrador da PEDEA!")}</h5>
+          <h1 className='TitleWelcome'>{t("Bem-vindo(a) à Plataforma de Administrador da PEDEA!")}</h1>
 
           <p className='TxtWelcome'>{t("É um prazer tê-lo(a) conosco. Aqui você terá acesso a uma série de ferramentas para gerenciar e otimizar as funcionalidades de nossa plataforma. Para facilitar sua navegação, preparamos um tutorial completo, que o(a) guiará pelos principais módulos disponíveis. Vale ressaltar que alguns recursos são restritos apenas para usuários administradores, portanto, siga as instruções com atenção. Vamos começar!")}</p>
 

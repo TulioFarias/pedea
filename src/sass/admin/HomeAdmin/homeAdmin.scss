@@ -5,24 +5,11 @@
     justify-content: center;
     align-items: center;
     margin-top: 15px;
-}
-.ContainerTitleHome{
-    border-radius: 10px;
-    width: max-content;
-    background: linear-gradient(to left, #56BFC9, #24A637 65%);
-    color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    color: #2c403f;
+    gap: 10px;
 }
 
-.titleHomeAdmin{
-   text-align: center;
-   font-weight: bold;
-   font-size: 30px;
-}
+
 
 .ContainerWelcome{
     padding: 10px;
@@ -31,8 +18,10 @@
 .TitleWelcome{
     font-weight: bold;
     font-style: italic;
-    font-size: 22px;
-    margin-top: 10px;
+    font-size: 30px;
+    margin: 15px 0px;
+    text-align: center;
+    
 }
 
 .TxtWelcome{
@@ -47,75 +36,18 @@
 }
 
 
-
-
-.ContainerFooterHome{
-    padding: 5px;
-}
-
 .TxtFooterHome{
     font-weight: 600;
     margin-bottom: 0px;
 
 }
 
-@media only screen and (max-width: 1040px){
 
+@media (min-width: 481px) and (max-width: 1024px){
     .ContainerHomeAdmin{
         overflow: auto;
     }
-  
-   
-    
-    
-    .TitleWelcome{
-        font-weight: bold;
-        font-style: italic;
-        font-size: 22px;
-        margin-top: 10px;
-    }
-    
-    .TxtWelcome{
-        font-weight: 600;
-        margin-bottom: 0px;
-    }
-    
-    .TxtInicial{
-        margin-top: 10px;
-        font-weight: 600;
-        margin-bottom: 0px;
-    }
-    
-    
-    
-    
-    .ContainerFooterHome{
-        padding: 5px;
-        font-size: 10px;
-    }
-    
-    .TxtFooterHome{
-        font-weight: 600;
-        margin-bottom: 0px;
-    
-    }
 
-}
-
-@media (min-width: 768px) and (max-width: 1024px){
-    .ContainerHomeAdmin{
-        overflow: auto;
-    }
-    .ContainerTitleHome{
-        border-radius: 10px;
-        color: white;
-        padding: 10px;
-        height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    }
     
     .titleHomeAdmin{
        text-align: center;
@@ -124,49 +56,12 @@
        margin-top: 10px;
      
     }
-    
-    .ContainerWelcome{
-        padding: 10px;
-    }
-    
-    .TitleWelcome{
-        font-weight: bold;
-        font-style: italic;
-        font-size: 12px;
-        margin-top: 10px;
-    }
-    
-    .TxtWelcome{
-        font-weight: 600;
-        margin-bottom: 0px;
-        font-size: 12px;
-    }
-    
-    .TxtInicial{
-        margin-top: 10px;
-        font-weight: 600;
-        margin-bottom: 0px;
-        font-size: 12px;
-    }
-    
-    
-    
-    
-    .ContainerFooterHome{
-        padding: 5px;
-    }
-    
-    .TxtFooterHome{
-        font-weight: 600;
-        margin-bottom: 0px;
-        font-size: 12px;
-    
-    }
+
 }
 
  
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 481px){
 
     .ContainerHomeAdmin{
         overflow: auto;
@@ -231,5 +126,31 @@
     }
 
  
+   }
+
+   @media (min-width: 481px) and (max-width: 1280px){
+
+   }
+
+   @media only screen and (max-width: 481px){
+         .TitleWelcome{
+        font-weight: bold;
+        font-style: italic;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    
+    .TxtWelcome{
+        font-weight: 600;
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+    
+    .TxtInicial{
+        margin-top: 10px;
+        font-weight: 600;
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
    }
 

@@ -1,5 +1,4 @@
-
-.containerTableGeoserver{
+.containerTableGeoserver {
     width: 84vw;
     height: 83.2vh;
     margin-top: 1px;
@@ -10,7 +9,7 @@
 
 }
 
-.containerHeaderGeoserver{
+.containerHeaderGeoserver {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,10 +17,59 @@
     padding-top: 5px;
 }
 
-.containerHeaderGeoserver{
+.containerHeaderGeoserver {
     display: flex;
     align-items: center;
     justify-content: center;
     justify-content: space-between;
     gap: 5px;
+}
+
+@media (min-width: 481px) and (max-width: 1280px) {
+    .containerTableGeoserver {
+        width: 80vw;
+        height: 81vh;
+        margin-top: 1px;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        overflow: auto;
+
+    }
+
+    .containerHeaderGeoserver {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+        padding-top: 5px;
+    }
+
+    .containerHeaderGeoserver {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+}
+
+@media only screen and (max-width: 481px) {
+    .containerTableGeoserver {
+        width: 100%;
+        margin-top: 1px;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        overflow: auto;
+
+    }
+
+    .containerTitle{
+        font-size: 10px;
+        h3{
+            font-size: 10px;
+        }
+    }
 }

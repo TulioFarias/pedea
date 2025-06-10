@@ -118,7 +118,14 @@ $containerWrapper-width-open: 90vw;
 
 }
 
-@media (min-width: 480px) and (max-width: 1024px) {
+@media (min-width: 480px) and (max-width: 1280px) {
+
+    .containerAdminSystem {
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(165, 165, 165);
+}
 
     .containerWrapperOptions {
         background-color: rgba(231, 230, 230, 0.637);
@@ -126,7 +133,7 @@ $containerWrapper-width-open: 90vw;
         border-radius: 12px;
         padding: 10px;
         height: 81vh;
-        width: 75vw;
+        width: 80vw;
 
 
     }
@@ -141,9 +148,45 @@ $containerWrapper-width-open: 90vw;
 
     }
 
+    .ContainerMainSystem-expanded {
+    width: $containerMainSystem-width-open;
+    transition: all 1s ease-in-out;
+    left: 90px;
+
+    .containerWrapperOptions {
+        width: 83vw;
+        transition: all 1s ease-in-out;
+    }
 
     .ButtonSideBar{
-        display: none;
+        position: fixed;
+        left: 120px;
+        top: 120px;
+        transition: all 1s ease-in-out;
+    }
+
+  
+
+}
+
+
+    .ButtonSideBar{
+    position: fixed;
+    left: 200px;
+    top: 120px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    color: white;
+
+
+    &:hover{
+        color: white;
+        background-color: #24A637;
+        transition: all 0.8s ease;
+    }
 }
 
 }
