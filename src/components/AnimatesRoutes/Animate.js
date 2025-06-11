@@ -17,13 +17,13 @@ function AnimatedRoutes() {
       <AnimatePresence>
         <Fragment>
           <Routes location={location} key={location.pathname}>
-            <Route element={<Login />} path="/" />
-            <Route element={<Login />} path="/login" />
-            <Route element={<ResetPass />} path="/recuperarsenha" />
-            <Route element={<Register />} path="/cadastro" />
-            <Route element={<WebPageFAQ />} path="/perguntasfrequentes" />
-            <Route element={<PageChangeLog />} path="/atualizacoespedea" />
-            <Route element={<Private Admin={<Admin />} />} path="/admin" />
+            <Route element={<Login />} path="/gestor/" />
+            <Route element={<Login />} path="/gestor/login" />
+            <Route element={<ResetPass />} path="/gestor/recuperarsenha" />
+            <Route element={<Register />} path="/gestor/cadastro" />
+            <Route element={<WebPageFAQ />} path="/gestor/perguntasfrequentes" />
+            <Route element={<PageChangeLog />} path="/gestor/atualizacoespedea" />
+            <Route element={<Private Admin={<Admin />} />} path="/gestor/admin" />
           </Routes>
         </Fragment>
       </AnimatePresence>
